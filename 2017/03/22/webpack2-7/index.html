@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>webpack2学习篇（7） | 青史成灰</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="devServer
+
+12345678// webpack.server.jsvar config = require(&amp;apos;./webpack.config&amp;apos;)var webpack = require(&amp;apos;webpack&amp;apos;)var WebpackDevServer = require(&amp;apos;webpack-dev-server&amp;apos;)var com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack2学习篇（7）">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/index.html">
+<meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="devServer
+
+12345678// webpack.server.jsvar config = require(&amp;apos;./webpack.config&amp;apos;)var webpack = require(&amp;apos;webpack&amp;apos;)var WebpackDevServer = require(&amp;apos;webpack-dev-server&amp;apos;)var com">
+<meta property="og:updated_time" content="2017-03-22T03:01:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack2学习篇（7）">
+<meta name="twitter:description" content="devServer
+
+12345678// webpack.server.jsvar config = require(&amp;apos;./webpack.config&amp;apos;)var webpack = require(&amp;apos;webpack&amp;apos;)var WebpackDevServer = require(&amp;apos;webpack-dev-server&amp;apos;)var com">
+  
+    <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">青史成灰</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Every journey begins with the first step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xxxxxmiss.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-webpack2-7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-7/" class="article-date">
+  <time datetime="2017-03-22T03:00:47.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack2学习篇（7）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="devServer"><a href="#devServer" class="headerlink" title="devServer"></a>devServer</h3><blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// webpack.server.js</div><div class="line"></div><div class="line">var config = require(&apos;./webpack.config&apos;)</div><div class="line">var webpack = require(&apos;webpack&apos;)</div><div class="line">var WebpackDevServer = require(&apos;webpack-dev-server&apos;)</div><div class="line">var compiler = webpack(config)</div><div class="line"></div><div class="line">var server = new WebpackDevServer(compiler, devServer)</div></pre></td></tr></table></figure>
+<h4 id="devServer-clientLogLevel"><a href="#devServer-clientLogLevel" class="headerlink" title="devServer.clientLogLevel"></a>devServer.clientLogLevel</h4><p>string</p>
+<blockquote>
+<p>Default: info,可选值有<code>none</code>, <code>error</code>, <code>warning</code>, <code>info</code><br>指定终端输出日志信息的等级, 设置为<code>none</code>, 表示什么日志都不输出。</p>
+</blockquote>
+<h4 id="devServer-compress"><a href="#devServer-compress" class="headerlink" title="devServer.compress"></a>devServer.compress</h4><p>boolean</p>
+<blockquote>
+<p>放到服务器上的文件全部使用<code>gzip</code>压缩</p>
+</blockquote>
+<h4 id="devServer-contentBase"><a href="#devServer-contentBase" class="headerlink" title="devServer.contentBase"></a>devServer.contentBase</h4><p>boolean string array</p>
+<blockquote>
+<p>将哪些文件放到服务器上，默认使用当前工作目录。你可以像下面这样修改文件目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">contentBase: path.join(__dirname, &apos;public&apos;)</div><div class="line"></div><div class="line">// 或则</div><div class="line">contentBase: [path.join(__dirname, &apos;public&apos;), path.join(__dirname, &apos;assets&apos;)]</div></pre></td></tr></table></figure>
+<h4 id="devServer-filename"><a href="#devServer-filename" class="headerlink" title="devServer.filename"></a>devServer.filename</h4><p>string</p>
+<blockquote>
+<p>模块的编译默认是处于<code>lazy</code>模式，就是每次请求的时候才会编译。<br>通过该选项，可以配置每次请求的时候编译某个具体的文件，而不是编译所有的文件。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">lazy: true,</div><div class="line">filename: &apos;bundle.js&apos;</div></pre></td></tr></table></figure>
+<p><strong><em>注意：该选项只有在<code>lazy: true</code>时才有效</em></strong></p>
+<h4 id="devServer-noInfo"><a href="#devServer-noInfo" class="headerlink" title="devServer.noInfo"></a>devServer.noInfo</h4><p>boolean</p>
+<blockquote>
+<p>除了错误信息和警告信息，其他的信息都不在输出。</p>
+</blockquote>
+<h4 id="devServer-quiet"><a href="#devServer-quiet" class="headerlink" title="devServer.quiet"></a>devServer.quiet</h4><p>boolean</p>
+<blockquote>
+<p>不在输出任何信息，包括错误信息和警告信息。</p>
+</blockquote>
+<h4 id="devServer-stats"><a href="#devServer-stats" class="headerlink" title="devServer.stats"></a>devServer.stats</h4><p>string object</p>
+<blockquote>
+<p>这个选项可以让你精确的控制在编译的过程中哪些信息应该显示在终端。就相当于可以局部的控制应该显示哪些编译信息，而不是总体的设置。<br><strong><em>如果激活了<code>quiet</code>, <code>noInfo</code>选项，那么该选项就失效了</em></strong></p>
+</blockquote>
+<p>具体有哪些选项可以使用，可以参看<a href="https://webpack.js.org/configuration/stats/" target="_blank" rel="external">这里</a></p>
+<h4 id="devServer-watchContentBase"><a href="#devServer-watchContentBase" class="headerlink" title="devServer.watchContentBase"></a>devServer.watchContentBase</h4><p>boolan</p>
+<blockquote>
+<p>监听<code>contentBase</code>下的文件变动情况，一旦有文件发生了改动，就立即重新编译并刷新页面。</p>
+</blockquote>
+<h4 id="devServer-watchOptions"><a href="#devServer-watchOptions" class="headerlink" title="devServer.watchOptions"></a>devServer.watchOptions</h4><p>object</p>
+<blockquote>
+<p>配置文件监听的相关选项。</p>
+</blockquote>
+<h5 id="watchOptions-aggregateTimeout"><a href="#watchOptions-aggregateTimeout" class="headerlink" title="watchOptions.aggregateTimeout"></a>watchOptions.aggregateTimeout</h5><p>number</p>
+<blockquote>
+<p>Default: 300（毫秒数）<br>在这个300内发生的多次改动，不会重新编译，而是汇聚到一起做一次编译。</p>
+</blockquote>
+<h5 id="watchOptions-ignored"><a href="#watchOptions-ignored" class="headerlink" title="watchOptions.ignored"></a>watchOptions.ignored</h5><blockquote>
+<p>忽略对某些文件的监听，因为监听一个很大的文件夹是很浪费内存和消耗CPU</p>
+</blockquote>
+<p>支持正则和通配符使用<br><code>ignored: /node_modules/</code></p>
+<p><code>ignored: &#39;files/**/*.js&#39;</code></p>
+<h5 id="watchOptions-poll"><a href="#watchOptions-poll" class="headerlink" title="watchOptions.poll"></a>watchOptions.poll</h5><p>boolean number</p>
+<blockquote>
+<p>在某些文件系统，比如NFS中，监听如果不能正常工作，可以开启该选项。</p>
+</blockquote>
+<p><code>poll: true</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 每隔1000ms检查一次文件是否改动</div><div class="line">poll: 1000</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/" data-id="cj0ke3lrp00081s78h13ffpn1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/22/webpack2-6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">webpack2学习篇（六）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-7/">webpack2学习篇（7）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-6/">webpack2学习篇（六）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-5/">webpack2学习篇（五）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-4/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-3/">webpack学习篇（三）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xxxxxMiss<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>webpack2学习篇（二） | 青史成灰</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[TOC]
+懒加载在开发中，经常会遇到这样的需求：比如在React,Vue中的路由加载组件，如果在首次加载的时候，就将一堆的组件全部加载，毫无疑问在打开首页的时候会非常的慢，影响用户体验。为了实现第一次快速的加载，优化用户体验，可以通过动态路由。就是第一次只会加载一些必须的组件，剩下的组件等到需要的时候再去加载。使用webpack提供的require.ensure()可以轻松实现这一要求。
+语法r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack2学习篇（二）">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/22/webpack2-2/index.html">
+<meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="[TOC]
+懒加载在开发中，经常会遇到这样的需求：比如在React,Vue中的路由加载组件，如果在首次加载的时候，就将一堆的组件全部加载，毫无疑问在打开首页的时候会非常的慢，影响用户体验。为了实现第一次快速的加载，优化用户体验，可以通过动态路由。就是第一次只会加载一些必须的组件，剩下的组件等到需要的时候再去加载。使用webpack提供的require.ensure()可以轻松实现这一要求。
+语法r">
+<meta property="og:updated_time" content="2017-03-22T02:58:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack2学习篇（二）">
+<meta name="twitter:description" content="[TOC]
+懒加载在开发中，经常会遇到这样的需求：比如在React,Vue中的路由加载组件，如果在首次加载的时候，就将一堆的组件全部加载，毫无疑问在打开首页的时候会非常的慢，影响用户体验。为了实现第一次快速的加载，优化用户体验，可以通过动态路由。就是第一次只会加载一些必须的组件，剩下的组件等到需要的时候再去加载。使用webpack提供的require.ensure()可以轻松实现这一要求。
+语法r">
+  
+    <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">青史成灰</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Every journey begins with the first step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xxxxxmiss.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-webpack2-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-2/" class="article-date">
+  <time datetime="2017-03-22T02:58:05.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack2学习篇（二）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h3 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h3><p>在开发中，经常会遇到这样的需求：比如在React,Vue中的路由加载组件，如果在首次加载的时候，就将一堆的组件全部加载，毫无疑问在打开首页的时候会非常的慢，影响用户体验。为了实现第一次快速的加载，优化用户体验，可以通过动态路由。就是第一次只会加载一些必须的组件，剩下的组件等到需要的时候再去加载。使用webpack提供的<code>require.ensure()</code>可以轻松实现这一要求。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>require.ensure(dependencies: String[], callback: function(require), chunkName: String)</code></p>
+<h4 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h4><ul>
+<li>dependencies: 一个字符串数组，在callback中的代码执行之前需要加载的依赖模块</li>
+<li>callback: 当dependencies中的模块全部加载完毕之后，执行callback中的代码。callback中会传入一个require函数，我们可以在callback中使用这个require()函数引入其他的依赖模块</li>
+<li>chunkName（可选）: 通过require.ensure()生成的模块的名称。在不同的require.ensure()中传入相同的chunkName,可以保证依赖模块按正确的顺序引入到require.ensure()生成的模块中</li>
+</ul>
+<p>假如我们有如下的目录结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">file structure</div><div class="line">|</div><div class="line">js --|</div><div class="line">|    |-- entry.js</div><div class="line">|    |-- a.js</div><div class="line">|    |-- b.js</div><div class="line">webpack.config.js</div><div class="line">|</div><div class="line">dist</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\entry.js</div><div class="line">require(&apos;./a&apos;)</div><div class="line">require.ensure([], function(require)&#123;</div><div class="line">  require(&apos;./b&apos;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"></div><div class="line">\\a.js</div><div class="line">console.log(&apos;I AM A&apos;)</div><div class="line"></div><div class="line">\\b.js</div><div class="line">console.log(&apos;I AM B&apos;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">\\webpack.config.js</div><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    entry: &apos;./js/entry.js&apos;,</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;bundle.js&apos;,</div><div class="line">      path: &apos;./dist&apos;</div><div class="line">    &#125;    </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译后，我们发现dist下有bundle.js和0.bundle.js。<br>entry.js 和 a.js被编译到bundle.js。<br>b.js被编译到0.bundle.js。</p>
+<h3 id="关于require-ensure-需要注意的点"><a href="#关于require-ensure-需要注意的点" class="headerlink" title="关于require.ensure()需要注意的点"></a>关于require.ensure()需要注意的点</h3><ul>
+<li>空数组作为参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">require.ensure([], function(require)&#123;</div><div class="line">  require(&apos;./a.js&apos;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面的代码，webpack会创建一个模块，并且a.js被分割到这个模块中</p>
+<ul>
+<li><p>依赖作为参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">require.ensure([&apos;./a.js&apos;], function(require)&#123;</div><div class="line">  require(&apos;./b.js&apos;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>上面的代码，a.js,b.js会被编译到一个共同的模块中，并且从entry.js中分割出来。<br>但是只有b.js中的内容被执行，a.js中的内容并不会执行。如果需要执行a.js，那么我们必须通过像这样<code>require(&#39;./a.js&#39;)</code>以同步的方式来引入a.js。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-2/" data-id="cj0ke3lr500031s78k0p111df" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/22/webpack2-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          webpack学习篇（三）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/22/webpack2-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">webpack2学习篇（一）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-7/">webpack2学习篇（7）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-6/">webpack2学习篇（六）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-5/">webpack2学习篇（五）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-4/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-3/">webpack学习篇（三）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xxxxxMiss<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

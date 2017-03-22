@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>nodejs学习之module模块 | 青史成灰</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）
+
+[TOC]
+先看一个例子foo.js12const circle = require(&amp;apos;./circle.js&amp;apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs学习之module模块">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/index.html">
+<meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）
+
+[TOC]
+先看一个例子foo.js12const circle = require(&amp;apos;./circle.js&amp;apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125">
+<meta property="og:updated_time" content="2017-03-22T02:56:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs学习之module模块">
+<meta name="twitter:description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）
+
+[TOC]
+先看一个例子foo.js12const circle = require(&amp;apos;./circle.js&amp;apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125">
+  
+    <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">青史成灰</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Every journey begins with the first step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xxxxxmiss.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nodejs-module" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/nodejs-module/" class="article-date">
+  <time datetime="2017-03-22T02:55:52.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nodejs学习之module模块
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）</p>
+</blockquote>
+<p>[TOC]</p>
+<p>先看一个例子<br>foo.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const circle = require(&apos;./circle.js&apos;)</div><div class="line">console.log(`The area of a circle of radius 4 is $&#123;circle.area(4)`&#125;</div></pre></td></tr></table></figure></p>
+<p>circle.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const PI = Math.PI</div><div class="line"></div><div class="line">exports.area = (r) =&gt; PI * r * r</div><div class="line"></div><div class="line">exports.circumference = (r) =&gt; 2 * PI * r</div></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<ul>
+<li>circle.js导出了2个方法<code>area()</code>, <code>circumference()</code>, 导出一个模块中的方法或者对象，你可以将他们挂载到<code>exports</code>对象上</li>
+<li>如果没有导出一个模块中的方法或则对象，那么他么都是私有的，因为在解析的时候，这些模块都会被一个函数包裹起来。在上面的例子中，<code>PI</code>变量就是私有的，因为他没有挂载到<code>exports</code>对象上。</li>
+<li>如果你想导出的就是一个函数，那么重写<code>module.exports</code>即可。因为默认导出的是<code>module.exports</code>, <code>module.exports</code>是一个对象。</li>
+</ul>
+<p>看下面的例子<br>bar.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const square = require(&apos;./square.js&apos;);</div><div class="line">// 因为square.js导出的就是一个函数，所以直接调用。</div><div class="line">var mySquare = square(2);  // 如果导出的是一个对象，那么此处应该这样调用square.square(2)</div><div class="line">console.log(`The area of my square is $&#123;mySquare.area()&#125;`);</div></pre></td></tr></table></figure></p>
+<p>square.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// assigning to exports will not modify module, must use module.exports</div><div class="line">module.exports = (width) =&gt; &#123;</div><div class="line">  return &#123;</div><div class="line">    area: () =&gt; width * width</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h2><blockquote>
+<p>如果一个模块中引入了核心模块，那么核心模块总是被优先加载。<br>例如，<code>require(http)</code>, 总是会加载nodejs的<code>http</code>模块，即使你有一个模块也叫<code>http</code></p>
+</blockquote>
+<p>// 始终返回核心模块的实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">exports.builtinLibs = [</div><div class="line">  &apos;assert&apos;, &apos;buffer&apos;, &apos;child_process&apos;, &apos;cluster&apos;, &apos;crypto&apos;, &apos;dgram&apos;, &apos;dns&apos;,</div><div class="line">  &apos;domain&apos;, &apos;events&apos;, &apos;fs&apos;, &apos;http&apos;, &apos;https&apos;, &apos;net&apos;, &apos;os&apos;, &apos;path&apos;, &apos;punycode&apos;,</div><div class="line">  &apos;querystring&apos;, &apos;readline&apos;, &apos;repl&apos;, &apos;stream&apos;, &apos;string_decoder&apos;, &apos;tls&apos;, &apos;tty&apos;,</div><div class="line">  &apos;url&apos;, &apos;util&apos;, &apos;v8&apos;, &apos;vm&apos;, &apos;zlib&apos;</div><div class="line">];</div><div class="line"></div><div class="line">function addBuiltinLibsToObject(object) &#123;</div><div class="line">  // Make built-in modules available directly (loaded lazily).</div><div class="line">  exports.builtinLibs.forEach((name) =&gt; &#123;</div><div class="line">    // Goals of this mechanism are:</div><div class="line">    // - Lazy loading of built-in modules</div><div class="line">    // - Having all built-in modules available as non-enumerable properties</div><div class="line">    // - Allowing the user to re-assign these variables as if there were no</div><div class="line">    //   pre-existing globals with the same name.</div><div class="line"></div><div class="line">    const setReal = (val) =&gt; &#123;</div><div class="line">      // Deleting the property before re-assigning it disables the</div><div class="line">      // getter/setter mechanism.</div><div class="line">      delete object[name];</div><div class="line">      object[name] = val;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    Object.defineProperty(object, name, &#123;</div><div class="line">      get: () =&gt; &#123;</div><div class="line">        const lib = require(name);</div><div class="line"></div><div class="line">        // Disable the current getter/setter and set up a new</div><div class="line">        // non-enumerable property.</div><div class="line">        delete object[name];</div><div class="line">        Object.defineProperty(object, name, &#123;</div><div class="line">          get: () =&gt; lib,</div><div class="line">          set: setReal,</div><div class="line">          configurable: true,</div><div class="line">          enumerable: false</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        return lib;</div><div class="line">      &#125;,</div><div class="line">      set: setReal,</div><div class="line">      configurable: true,</div><div class="line">      enumerable: false</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="循环加载"><a href="#循环加载" class="headerlink" title="循环加载"></a>循环加载</h2><blockquote>
+<p>指的是一个模块a依赖模块b,而模块b又依赖模块a。</p>
+</blockquote>
+<p>下面通过nodejs官方文档的例子来说明nodejs是如何处理模块的循环加载</p>
+<p>a.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;a starting&apos;);</div><div class="line">exports.done = false;</div><div class="line">const b = require(&apos;./b.js&apos;);  // ①</div><div class="line">console.log(&apos;in a, b.done = %j&apos;, b.done);</div><div class="line">exports.done = true;</div><div class="line">console.log(&apos;a done&apos;);</div></pre></td></tr></table></figure></p>
+<p>b.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;b starting&apos;);</div><div class="line">exports.done = false;</div><div class="line">const a = require(&apos;./a.js&apos;);  // ②</div><div class="line">console.log(&apos;in b, a.done = %j&apos;, a.done);</div><div class="line">exports.done = true;</div><div class="line">console.log(&apos;b done&apos;);</div></pre></td></tr></table></figure></p>
+<p>main.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">console.log(&apos;main starting&apos;);</div><div class="line">const a = require(&apos;./a.js&apos;);</div><div class="line">const b = require(&apos;./b.js&apos;);</div><div class="line">console.log(&apos;in main, a.done=%j, b.done=%j&apos;, a.done, b.done);</div></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<ul>
+<li>main.js加载a.js, 进入a.js, 执行到<code>require(&#39;./b.js&#39;)</code>，进入b.js, 执行到<code>require(&#39;./a.js&#39;)</code></li>
+<li>此时发生了循环加载，为了阻止这种无限的循环，nodejs会将a.js中执行过的部分生成一个副本模块返回给b.js</li>
+<li>相当于执行a.js执行到①这个地方暂停了，此时a.js中导出的<code>exports.done = false</code></li>
+<li>等到b.js全部执行完毕，在从①暂停的地方继续执行a.js, 此时b.js中<code>exports.done = true</code></li>
+<li>最后执行main.js中为执行的部分</li>
+</ul>
+<p>所以最终输出的结果如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">index starting</div><div class="line">a starting</div><div class="line">b starting</div><div class="line">in b, a.done = false</div><div class="line">b done</div><div class="line">in a, b.done = true</div><div class="line">a done</div><div class="line">in main, a.done = true, b.done = true</div></pre></td></tr></table></figure></p>
+<h2 id="nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载"><a href="#nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载" class="headerlink" title="nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载"></a>nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj0ke3lqq00001s78qq2ngdfn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/22/webpack2-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          webpack2学习篇（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/22/nodejs-path/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodejs学习之path模块</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-7/">webpack2学习篇（7）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-6/">webpack2学习篇（六）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-5/">webpack2学习篇（五）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-4/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/22/webpack2-3/">webpack学习篇（三）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xxxxxMiss<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

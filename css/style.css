@@ -626,7 +626,6 @@ a.article-title:hover {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.4em;
   margin: 1.6em 20px;
-  text-align: center;
 }
 .article-entry blockquote footer {
   font-size: 14px;
@@ -1285,6 +1284,31 @@ pre .javascript .function {
   }
   .mobile-nav-link:hover {
     color: #fff;
+  }
+}
+#toc {
+  float: right;
+  font-size: 0.8em;
+  color: #258fb8;
+  margin: 5px;
+  position: relative;
+  left: 50px;
+}
+#toc .toc {
+  background-color: #eee;
+  list-style: none;
+  padding: 10px;
+}
+#toc .toc-item,
+#toc .toc-link {
+  list-style: none;
+}
+#toc ol {
+  margin: 0;
+}
+@media screen and (max-width: 640px) {
+  #toc {
+    display: none;
   }
 }
 @media screen and (min-width: 768px) {
