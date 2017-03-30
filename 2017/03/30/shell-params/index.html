@@ -3,39 +3,105 @@
 <head>
   <meta charset="utf-8">
   
-  <title>webpack2学习篇（五） | 青史成灰</title>
+  <title>shell传递参数 | 青史成灰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本章节主要介绍module常用配置项
+  <meta name="description" content="脚本获取参数格式$n
+n为从0开始的数字，$0：获取执行的脚本名称；$1获取第一个参数，$2获取第二个参数,以此类推。。。
 
-module.noParseRegExp
+几个特殊的字符用来处理参数
 
-让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。
 
-noParse: /jquery|backbone/
-module.rulesarray">
+字符
+描述
+
+
+
+
+$#
+传递到脚本的个数
+
+
+$*
+以“$1 $2 … $n”的形式输出所有传递的参数
+
+
+$$
+脚本运行的当前进程ID号
+
+
+$!
+后台运行的最后一个进程ID号
+
+
+$@
+以“$1” “$2” “$n”的形式输出所有参数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack2学习篇（五）">
-<meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/index.html">
+<meta property="og:title" content="shell传递参数">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/30/shell-params/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="本章节主要介绍module常用配置项
+<meta property="og:description" content="脚本获取参数格式$n
+n为从0开始的数字，$0：获取执行的脚本名称；$1获取第一个参数，$2获取第二个参数,以此类推。。。
 
-module.noParseRegExp
+几个特殊的字符用来处理参数
 
-让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。
 
-noParse: /jquery|backbone/
-module.rulesarray">
-<meta property="og:updated_time" content="2017-03-22T03:00:07.000Z">
+字符
+描述
+
+
+
+
+$#
+传递到脚本的个数
+
+
+$*
+以“$1 $2 … $n”的形式输出所有传递的参数
+
+
+$$
+脚本运行的当前进程ID号
+
+
+$!
+后台运行的最后一个进程ID号
+
+
+$@
+以“$1” “$2” “$n”的形式输出所有参数">
+<meta property="og:updated_time" content="2017-03-30T12:52:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack2学习篇（五）">
-<meta name="twitter:description" content="本章节主要介绍module常用配置项
+<meta name="twitter:title" content="shell传递参数">
+<meta name="twitter:description" content="脚本获取参数格式$n
+n为从0开始的数字，$0：获取执行的脚本名称；$1获取第一个参数，$2获取第二个参数,以此类推。。。
 
-module.noParseRegExp
+几个特殊的字符用来处理参数
 
-让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。
 
-noParse: /jquery|backbone/
-module.rulesarray">
+字符
+描述
+
+
+
+
+$#
+传递到脚本的个数
+
+
+$*
+以“$1 $2 … $n”的形式输出所有传递的参数
+
+
+$$
+脚本运行的当前进程ID号
+
+
+$!
+后台运行的最后一个进程ID号
+
+
+$@
+以“$1” “$2” “$n”的形式输出所有参数">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
@@ -88,10 +154,10 @@ module.rulesarray">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-webpack2-5" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-shell-params" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/22/webpack2-5/" class="article-date">
-  <time datetime="2017-03-22T02:59:48.000Z" itemprop="datePublished">2017-03-22</time>
+    <a href="/2017/03/30/shell-params/" class="article-date">
+  <time datetime="2017-03-30T12:31:56.000Z" itemprop="datePublished">2017-03-30</time>
 </a>
     
   </div>
@@ -102,7 +168,7 @@ module.rulesarray">
         
   
     <h1 class="article-title" itemprop="name">
-      webpack2学习篇（五）
+      shell传递参数
     </h1>
   
 
@@ -110,22 +176,52 @@ module.rulesarray">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>本章节主要介绍module常用配置项</p>
+        <h3 id="脚本获取参数格式-n"><a href="#脚本获取参数格式-n" class="headerlink" title="脚本获取参数格式$n"></a>脚本获取参数格式$n</h3><blockquote>
+<p>n为从0开始的数字，$0：获取执行的脚本名称；$1获取第一个参数，$2获取第二个参数,以此类推。。。</p>
 </blockquote>
-<h3 id="module-noParse"><a href="#module-noParse" class="headerlink" title="module.noParse"></a>module.noParse</h3><p>RegExp</p>
-<blockquote>
-<p>让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。</p>
-</blockquote>
-<p><code>noParse: /jquery|backbone/</code></p>
-<h3 id="module-rules"><a href="#module-rules" class="headerlink" title="module.rules"></a>module.rules</h3><p>array</p>
-<blockquote>
-</blockquote>
+<h3 id="几个特殊的字符用来处理参数"><a href="#几个特殊的字符用来处理参数" class="headerlink" title="几个特殊的字符用来处理参数"></a>几个特殊的字符用来处理参数</h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$#</td>
+<td>传递到脚本的个数</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>以“$1 $2 … $n”的形式输出所有传递的参数</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>脚本运行的当前进程ID号</td>
+</tr>
+<tr>
+<td>$!</td>
+<td>后台运行的最后一个进程ID号</td>
+</tr>
+<tr>
+<td>$@</td>
+<td>以“$1” “$2” “$n”的形式输出所有参数</td>
+</tr>
+<tr>
+<td>$-</td>
+<td>显示shell使用的当前选项，与set命令功能相同</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>显示最后命令退出的状态。 0表示没有错误，其他任何值表明有错误</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/" data-id="cj0wn82qh000atpo0wf3pmk3q" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj0wn82qg0009tpo00fwxymh6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,19 +230,19 @@ module.rulesarray">
     
 <nav id="article-nav">
   
-    <a href="/2017/03/22/webpack2-6/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/30/shell-operation/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          webpack2学习篇（六）
+          shell运算符
         
       </div>
     </a>
   
   
-    <a href="/2017/03/22/webpack2-4/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/30/shell-variable/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">webpack2学习篇（四）</div>
+      <div class="article-nav-title">shell变量</div>
     </a>
   
 </nav>
