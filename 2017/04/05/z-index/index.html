@@ -40,7 +40,7 @@
 
 12345678// z-index的值非auto&amp;lt;div">
 <meta property="og:image" content="https://xxxxxmiss.github.io/stacking-level.png">
-<meta property="og:updated_time" content="2017-04-06T10:50:23.000Z">
+<meta property="og:updated_time" content="2017-04-06T10:52:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解z-index">
 <meta name="twitter:description" content="z-index基本规则
@@ -156,14 +156,19 @@
 <p>上面的例子，同第一个例子一样，唯一不同的地方就是第一个图片祖先元素的<code>z-index:auto</code>, 那么此时第一个图片在覆盖第二个图片。<br>解释：<code>z-index: auto</code>当前层叠上下文生成的盒子层叠水平是<strong><em>0</em></strong>。盒子（除非是根元素）不会创建一个新的层叠上下文。</p>
 </blockquote>
 <h3 id="z-index中涉及到的重要概念"><a href="#z-index中涉及到的重要概念" class="headerlink" title="z-index中涉及到的重要概念"></a>z-index中涉及到的重要概念</h3><ul>
-<li>层叠上下文（stacking context）：html中元素在z轴上的堆叠顺序。<ul>
+<li><p>层叠上下文（stacking context）：html中元素在z轴上的堆叠顺序。</p>
+<ul>
 <li>页面根元素（可以理解为html或者为body）天生具有层叠上下文，称之为”根层叠上下文“。</li>
 <li>z-index为数值的定位元素具有层叠上下文。</li>
 <li>一些其他属性的元素<!-- ![](stacking-props.png) -->
+
+
+
 </li>
 </ul>
 </li>
-<li>层叠水平（stacking level）：层叠上下文中的每个元素都有一个层叠水平，层叠水平决定了<strong><em>同一个层叠上下文</em></strong>中的元素在z轴上的堆叠顺序。</li>
+<li><p>层叠水平（stacking level）：层叠上下文中的每个元素都有一个层叠水平，层叠水平决定了<strong><em>同一个层叠上下文</em></strong>中的元素在z轴上的堆叠顺序。</p>
+</li>
 <li>层叠顺序（stacking order）：元素发生层叠时有着特定的垂直显示顺序。</li>
 </ul>
 <h3 id="层叠上下文的几个特性"><a href="#层叠上下文的几个特性" class="headerlink" title="层叠上下文的几个特性"></a>层叠上下文的几个特性</h3><ul>
@@ -220,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj16a78nu000gn6o08vlvykkv" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj16a9r5p000gnio0n3j7nszv" class="article-share-link">Share</a>
       
       
     </footer>
