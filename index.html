@@ -343,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/06/z-index/demo/" data-id="cj167vsaj000hjro0h4tvrtfi" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/06/z-index/demo/" data-id="cj16811ug000hkbo09w4gjaxl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -385,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj167vs9b0008jro058uew5bi" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj16811t6000bkbo0uy2gs29i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -443,7 +443,7 @@
 <li>层叠上下文（stacking context）：html中元素在z轴上的堆叠顺序。<ul>
 <li>页面根元素（可以理解为html或者为body）天生具有层叠上下文，称之为”根层叠上下文“。</li>
 <li>z-index为数值的定位元素具有层叠上下文。</li>
-<li>一些其他属性的元素<br><img src="./z-index/stacking-props.png" alt=""></li>
+<li>一些其他属性的元素<br><img src="stacking-props.png" alt=""></li>
 </ul>
 </li>
 <li>层叠水平（stacking level）：层叠上下文中的每个元素都有一个层叠水平，层叠水平决定了<strong><em>同一个层叠上下文</em></strong>中的元素在z轴上的堆叠顺序。</li>
@@ -454,7 +454,7 @@
 <li>每个层叠上下文和兄弟元素独立：当进行层叠变化或者渲染的时候，只需要考虑后代元素。</li>
 <li>每个层叠上下文是自成体系的：当元素的内容被层叠后，整个元素被认为是在父层的层叠顺序中。</li>
 </ul>
-<h3 id="7阶层叠水平-stacking-level"><a href="#7阶层叠水平-stacking-level" class="headerlink" title="7阶层叠水平(stacking level)"></a>7阶层叠水平(stacking level)</h3><p><img src="./z-index/stacking-level.png" alt="层叠水平一览图"><br>为什么层叠顺序是这样的？</p>
+<h3 id="7阶层叠水平-stacking-level"><a href="#7阶层叠水平-stacking-level" class="headerlink" title="7阶层叠水平(stacking level)"></a>7阶层叠水平(stacking level)</h3><p><img src="stacking-level.png" alt="层叠水平一览图"><br>为什么层叠顺序是这样的？</p>
 <blockquote>
 <p>可以这样理解：<code>background,border</code>等主要用来装饰元素，<code>block</code>盒子<code>float</code>元素主要用来布局，而<code>inline, inline-block</code>主要用来展示内容，而内容是页面中最重要的实体，所以应该让其层叠水平更高。</p>
 </blockquote>
@@ -497,12 +497,12 @@
 <li>依赖<code>z-index</code>的层叠上下文元素的层叠顺序取决于<code>z-index</code>的值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.a&#123;</div><div class="line">    position: absolute;</div><div class="line">    z-index: 1;</div><div class="line">    top: 10px;</div><div class="line">    left: 40px;</div><div class="line">&#125;</div><div class="line">.box&#123;</div><div class="line">    display: flex; /*普通元素*/</div><div class="line">    background-color: blue;</div><div class="line">&#125;</div><div class="line">.box &gt; img&#123;</div><div class="line">    z-index: 1;  /*flex项是层叠上下文元素*/</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;img class=&quot;a&quot; class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;</div><div class="line">&lt;div class=&quot;box&quot;&gt;</div><div class="line">    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><a href="./z-index/demo.html">例子预览</a></p>
+<p><a href="demo.html">例子预览</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj167vs9q000gjro0z1e6t88g" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj16811th000gkbo0k3coyvce" class="article-share-link">Share</a>
       
       
     </footer>
@@ -645,7 +645,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj167vs8x0003jro0k9uge8ld" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj16811sh0003kbo0umd9u6kk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -725,7 +725,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj167vs930006jro07vfwbuiv" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj16811st0006kbo0f8e4si1u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -786,7 +786,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj167vs950007jro0zguna146" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj16811su0007kbo001k1o49r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -844,7 +844,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj167vs8y0004jro0l8rzektm" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj16811sj0004kbo0pue1fk0z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -938,7 +938,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/" data-id="cj167vs9n000fjro01a6f55om" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/" data-id="cj16811td000ekbo05c2ego4g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1023,7 +1023,7 @@ import {someMethod} from &apos;./tools/utils&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-6/" data-id="cj167vs9m000ejro0mf78mgtq" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-6/" data-id="cj16811te000fkbo0thwijuef" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1070,7 +1070,7 @@ import {someMethod} from &apos;./tools/utils&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/" data-id="cj167vs9l000djro0b2146t44" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/" data-id="cj16811tb000dkbo0aqj8tdtj" class="article-share-link">Share</a>
       
       
     </footer>
