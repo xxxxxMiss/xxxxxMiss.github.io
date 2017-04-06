@@ -65,6 +65,273 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-webpack2-5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-5/" class="article-date">
+  <time datetime="2017-03-22T02:59:48.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/webpack2-5/">webpack2学习篇（五）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本章节主要介绍module常用配置项</p>
+</blockquote>
+<h3 id="module-noParse"><a href="#module-noParse" class="headerlink" title="module.noParse"></a>module.noParse</h3><p>RegExp</p>
+<blockquote>
+<p>让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。</p>
+</blockquote>
+<p><code>noParse: /jquery|backbone/</code></p>
+<h3 id="module-rules"><a href="#module-rules" class="headerlink" title="module.rules"></a>module.rules</h3><p>array</p>
+<blockquote>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/" data-id="cj167nxsb000diko0kzl4u9gp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-webpack2-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-4/" class="article-date">
+  <time datetime="2017-03-22T02:59:12.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/webpack2-4/">webpack2学习篇（四）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本章节主要介绍output常用配置项</p>
+</blockquote>
+<h3 id="output-filename"><a href="#output-filename" class="headerlink" title="output.filename"></a>output.filename</h3><p><code>string</code></p>
+<blockquote>
+<p>用来指定编译生成的模块的名称。</p>
+</blockquote>
+<p><strong><em>虽然官方文档说该选项的默认值是<code>[name].js</code>, 但是经过我的测试，该熟悉必须指定。如果没有指定，在编译的时候控制台会输出<code>Config did not export an object</code>。官方文档可能没及时更新</em></strong></p>
+<ul>
+<li>单入口的时候，我们可以静态的指定一个输出模块名称</li>
+</ul>
+<p><code>filename: bundle.js</code></p>
+<ul>
+<li>多入口的时候，可以通过下面的形式来指定输出模块名称</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 使用entry中指定的key</div><div class="line">filename: &apos;[name].bundle.js&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 使用内部生成的id</div><div class="line">filename: &apos;[id].bundle.js&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 使用每次编译自动生成的hash值</div><div class="line">filename: &apos;[name].[hash].bundle.js&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 使用基于模块内容生成的chunkhash</div><div class="line">filename: &apos;[chunkhash].bundle.js&apos;</div></pre></td></tr></table></figure>
+<p><strong><em>虽然该选项叫<code>filename</code>, 但是可以指定一个输出目录, 就像这样的<code>js/[name]/bundle.js</code></em></strong></p>
+<h3 id="output-chunkFilename"><a href="#output-chunkFilename" class="headerlink" title="output.chunkFilename"></a>output.chunkFilename</h3><p><code>string</code></p>
+<blockquote>
+<p>这个选项主要用来指定动态加载生成的模块名称。</p>
+</blockquote>
+<p>我们已经知道，在<code>require.ensure(dependencies, callback, chunkName)</code>中可以指定一个<code>chunkName</code>参数</p>
+<ul>
+<li>如果指定了这个参数，那么在<code>output</code>中就可以这样来取得<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;[chunkhash].[name].js&apos;,</div><div class="line">      chunkFilename: &apos;[chunkhash].[name].js&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面<code>[name]</code>占位符就是你在<code>require.ensure(dependencies, callback, chunkName)</code>中指定的那个chunkName。</p>
+<ul>
+<li>如果在<code>require.ensure(dependencies, callback, chunkName)</code>中省略了这个<code>chunkName</code>参数，那么统一使用<code>output.chunkFilename</code>中指定的名称</li>
+<li>如果output中也没有指定<code>chunkFilename</code>选项，那么会使用<code>output.filename</code>中除了<code>[name]</code>占位符以外的占位符+<code>[id]</code>占位符作为模块名。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.export = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;[chunkhash].[name].js&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如上output配置，那么此时动态分割出来的模块名就是<code>[chunkhash].[id].js</code>。</p>
+<h3 id="output-path"><a href="#output-path" class="headerlink" title="output.path"></a>output.path</h3><blockquote>
+<p>指定编译后的模块输出目录, 既可以是相对路径，也可以是绝对路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 相对路径</div><div class="line">path: &apos;./dist&apos;</div><div class="line"></div><div class="line">// 绝对路径</div><div class="line">path: path.resolve(__dirname, &apos;dist/assets&apos;)</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="output-pathinfo"><a href="#output-pathinfo" class="headerlink" title="output.pathinfo"></a>output.pathinfo</h3><p>boolean</p>
+<blockquote>
+<p>Default: false<br>在编译的代码中创建一些注释信息，在开发中，当你想阅读编译后的源代码，这就显得非常的有用。<br><strong>在生产环境中不要开启该选项</strong>。</p>
+</blockquote>
+<h3 id="output-publicPath"><a href="#output-publicPath" class="headerlink" title="output.publicPath"></a>output.publicPath</h3><p>string</p>
+<blockquote>
+<p>Default: “”<br>这是一个非常重要的选项，主要用在动态加载，加载外部资源，比如加载外部资源（图片,css,js），如果指定了一个错误的值，那么将会得到404的错误。</p>
+</blockquote>
+<h3 id="output-sourceMapFilename"><a href="#output-sourceMapFilename" class="headerlink" title="output.sourceMapFilename"></a>output.sourceMapFilename</h3><p>string</p>
+<blockquote>
+<p>Default: ‘[file].map’<br>只有指定了<a href="https://webpack.js.org/configuration/devtool/" target="_blank" rel="external">devtool</a>选项，该选项才会生效。用来指定生成的sourcemap文件的名称。<br>当为一个模块生成sourcemap时，可以指定以下占位符<code>[name]</code>, <code>[id]</code>,  <code>[hash]</code>, <code>[chunkhash]</code>, <code>[file]</code>。一般情况下使用默认值即可，不需要显式地配置，因为用其他的值，当模块不存在时，就出问题了。</p>
+</blockquote>
+<h3 id="output-sourcePrefix"><a href="#output-sourcePrefix" class="headerlink" title="output.sourcePrefix"></a>output.sourcePrefix</h3><p>string<br><code>sourcePrefix: &quot;\t&quot;</code></p>
+<blockquote>
+<p>指定生成的sourcemap文件每一行开头的前缀。默认情况下使用空字符串，使用该选项的作用仅仅是使sourcemap中的代码看起来要美观一些。不要使用多行前缀，否则引起问题。<br>一般情况下完全没有必要显式的配置该选项。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-4/" data-id="cj167nxsa000ciko0q3x24k22" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-webpack2-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-3/" class="article-date">
+  <time datetime="2017-03-22T02:58:40.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/webpack2-3/">webpack学习篇（三）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<blockquote>
+<p>本章节主要介绍如何利用webpack来构建自己编写的js库，原文链接可以点击<a href="https://webpack.js.org/guides/author-libraries/" target="_blank" rel="external">这里</a></p>
+</blockquote>
+<p>假如我们要实现的一个数字和单词之间的互转(1 &lt;=&gt; one)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">\\ src/index.js</div><div class="line">import _ from &apos;lodash&apos;</div><div class="line">import numRef from &apos;./ref.json&apos;</div><div class="line"></div><div class="line">export function numToWord(num) &#123;</div><div class="line">    return _.reduce(numRef, (accum, ref) =&gt; &#123;</div><div class="line">        return ref.num === num ? ref.word : accum</div><div class="line">    &#125;, &apos;&apos;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">export function wordToNum(word) &#123;</div><div class="line">    return _.reduce(numRef, (accum, ref) =&gt; &#123;</div><div class="line">        return ref.word === word &amp;&amp; word.toLowerCase() ? ref.num : accum</div><div class="line">    &#125;, -1);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后我们可能用下面的这几种方式来使用这个库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// ES2015 modules</div><div class="line"></div><div class="line">import * as webpackNumbers from &apos;webpack-numbers&apos;;</div><div class="line"></div><div class="line">...</div><div class="line">webpackNumbers.wordToNum(&apos;Two&apos;) // output is 2</div><div class="line">...</div><div class="line"></div><div class="line">// CommonJS modules</div><div class="line"></div><div class="line">var webpackNumbers = require(&apos;webpack-numbers&apos;);</div><div class="line"></div><div class="line">...</div><div class="line">webpackNumbers.numToWord(3); // output is Three</div><div class="line">...</div><div class="line"></div><div class="line">// As a script tag</div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">...</div><div class="line">&lt;script src=&quot;https://unpkg.com/webpack-numbers&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    ...</div><div class="line">    /* webpackNumbers is available as a global variable */</div><div class="line">    webpackNumbers.wordToNum(&apos;Five&apos;) //output is 5</div><div class="line">    ...</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>下面来编写webpack配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    entry: &apos;./src/index.js&apos;,</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;webpack-numbers.js&apos;,</div><div class="line">      path: &apos;./dist&apos;</div><div class="line">    &#125;,</div><div class="line">    module: &#123;</div><div class="line">      rules: [</div><div class="line">        &#123;</div><div class="line">          test: /.json$/,</div><div class="line">          use: &apos;json-loader&apos;</div><div class="line">        &#125;</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果利用上面的配置进行编译，我们会发现lodash.js也会被编译到webpack-numbers.js中。<br>我们自己编写的这个webpack-numbers.js库依赖lodash.js，但是我们不希望lodash的源代码被编译到我们这个库中，而是希望他们分开，在用户下载我们的这个webpack-numbers.js库的同时也将依赖的库lodash.js下载下来。<br>要实现这个需求，我们可以按如下修改配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    ...</div><div class="line">    externals: &#123;</div><div class="line">      &apos;lodash&apos;: &#123;</div><div class="line">        commonjs: &apos;lodash&apos;,</div><div class="line">        commonjs2: &apos;lodash&apos;,</div><div class="line">        amd: &apos;lodash&apos;,</div><div class="line">        root: &apos;_&apos;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="output-library-output-libraryTarget"><a href="#output-library-output-libraryTarget" class="headerlink" title="output.library, output.libraryTarget"></a>output.library, output.libraryTarget</h3><blockquote>
+<p>因为我们的库可能需要运行在不同的环境下，如CommonJS, AMD, Node.js ,作为一个全局变量，为了让我们编写的库可以运行在不同的环境下，那么我们就需要做相应的配置。</p>
+</blockquote>
+<p>output.library</p>
+<blockquote>
+<p>导出的全局变量的名称</p>
+</blockquote>
+<p>output.libraryTarget<br><code>string</code></p>
+<blockquote>
+<p>Default: ‘var’，可选的值有<code>umd</code>, <code>amd</code>, <code>commonjs</code>, <code>commonjs2</code>, <code>commonjs-module</code>, <code>this</code>, <code>var</code><br>这些值指明了导出的环境, 下面我们依次来看看在各种环境下导出的代码是什么样的</p>
+</blockquote>
+<p>假如我们的配置文件是这样的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    entry: &apos;./ab.js&apos;,</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;webpack-lib&apos;,</div><div class="line">      path: &apos;./dist&apos;,</div><div class="line">      library: &apos;abConvert&apos;,</div><div class="line">      libraryTarget: &apos;var&apos; // 当为默认值的时候，可以不指定该属性</div><div class="line">    &#125;,</div><div class="line">    externals: &#123;</div><div class="line">      &apos;zepto&apos;: &#123;</div><div class="line">        commonjs: &apos;zepto&apos;,</div><div class="line">        commonjs2: &apos;zepto&apos;,</div><div class="line">        amd: &apos;zepto&apos;,</div><div class="line">        root: &apos;$&apos;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么各种取值下导出的代码会是这个样子的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\var</div><div class="line"></div><div class="line">var abConvert = (function(modules)&#123;</div><div class="line">    return ...</div><div class="line">  &#125;)()</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\umd</div><div class="line"></div><div class="line">(function webpackUniversalModuleDefinition(root, factory) &#123;</div><div class="line">  if(typeof exports === &apos;object&apos; &amp;&amp; typeof module === &apos;object&apos;)</div><div class="line">    module.exports = factory(require(&quot;zepto&quot;));</div><div class="line">  else if(typeof define === &apos;function&apos; &amp;&amp; define.amd)</div><div class="line">    define([&quot;zepto&quot;], factory);</div><div class="line">  else if(typeof exports === &apos;object&apos;)</div><div class="line">    exports[&quot;abConvert&quot;] = factory(require(&quot;zepto&quot;));</div><div class="line">  else</div><div class="line">    root[&quot;abConvert&quot;] = factory(root[&quot;$&quot;]);</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\\ amd</div><div class="line"></div><div class="line">define(&apos;abConvert&apos;, [&apos;zepto&apos;], function()&#123;&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ commonjs</div><div class="line"></div><div class="line">exports[&apos;abConvert&apos;] = (function(modules)&#123;</div><div class="line">  return ...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ commonjs2</div><div class="line"></div><div class="line">module.exports = (function(modules)&#123;</div><div class="line">  return ...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">\\ commonjs-module</div><div class="line"></div><div class="line">module.exports = (function(modules)&#123;</div><div class="line">  return ...</div><div class="line">&#125;)()</div><div class="line"></div><div class="line">Object.defineProperty(module.exports, &quot;__esModule&quot;, &#123; value: true &#125;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果libraryTarget指定为<code>commonjs-module</code>, 那么此时<code>module.exports</code>上会被定义一个<code>__esModule</code>, 表明此时采用的是es2015模块化方式定义的，并且此时的<code>library</code>属性会被忽略。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ this</div><div class="line"></div><div class="line">this[&apos;abConvert&apos;] = (function(modules)&#123;</div><div class="line">  </div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>当指定为<code>this</code>时，代表的是由运行环境决定。比如运行在浏览器中，此时<code>this</code>代表<code>window</code>，如果运行在nodejs环境，那么此时<code>this</code>代表<code>global</code>。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-3/" data-id="cj167nxs8000biko0kpo8vljt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-webpack2-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-2/" class="article-date">
+  <time datetime="2017-03-22T02:58:05.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/webpack2-2/">webpack2学习篇（二）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h3 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h3><p>在开发中，经常会遇到这样的需求：比如在React,Vue中的路由加载组件，如果在首次加载的时候，就将一堆的组件全部加载，毫无疑问在打开首页的时候会非常的慢，影响用户体验。为了实现第一次快速的加载，优化用户体验，可以通过动态路由。就是第一次只会加载一些必须的组件，剩下的组件等到需要的时候再去加载。使用webpack提供的<code>require.ensure()</code>可以轻松实现这一要求。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>require.ensure(dependencies: String[], callback: function(require), chunkName: String)</code></p>
+<h4 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h4><ul>
+<li>dependencies: 一个字符串数组，在callback中的代码执行之前需要加载的依赖模块</li>
+<li>callback: 当dependencies中的模块全部加载完毕之后，执行callback中的代码。callback中会传入一个require函数，我们可以在callback中使用这个require()函数引入其他的依赖模块</li>
+<li>chunkName（可选）: 通过require.ensure()生成的模块的名称。在不同的require.ensure()中传入相同的chunkName,可以保证依赖模块按正确的顺序引入到require.ensure()生成的模块中</li>
+</ul>
+<p>假如我们有如下的目录结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">file structure</div><div class="line">|</div><div class="line">js --|</div><div class="line">|    |-- entry.js</div><div class="line">|    |-- a.js</div><div class="line">|    |-- b.js</div><div class="line">webpack.config.js</div><div class="line">|</div><div class="line">dist</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\entry.js</div><div class="line">require(&apos;./a&apos;)</div><div class="line">require.ensure([], function(require)&#123;</div><div class="line">  require(&apos;./b&apos;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"></div><div class="line">\\a.js</div><div class="line">console.log(&apos;I AM A&apos;)</div><div class="line"></div><div class="line">\\b.js</div><div class="line">console.log(&apos;I AM B&apos;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">\\webpack.config.js</div><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    entry: &apos;./js/entry.js&apos;,</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;bundle.js&apos;,</div><div class="line">      path: &apos;./dist&apos;</div><div class="line">    &#125;    </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译后，我们发现dist下有bundle.js和0.bundle.js。<br>entry.js 和 a.js被编译到bundle.js。<br>b.js被编译到0.bundle.js。</p>
+<h3 id="关于require-ensure-需要注意的点"><a href="#关于require-ensure-需要注意的点" class="headerlink" title="关于require.ensure()需要注意的点"></a>关于require.ensure()需要注意的点</h3><ul>
+<li>空数组作为参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">require.ensure([], function(require)&#123;</div><div class="line">  require(&apos;./a.js&apos;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面的代码，webpack会创建一个模块，并且a.js被分割到这个模块中</p>
+<ul>
+<li><p>依赖作为参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">require.ensure([&apos;./a.js&apos;], function(require)&#123;</div><div class="line">  require(&apos;./b.js&apos;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>上面的代码，a.js,b.js会被编译到一个共同的模块中，并且从entry.js中分割出来。<br>但是只有b.js中的内容被执行，a.js中的内容并不会执行。如果需要执行a.js，那么我们必须通过像这样<code>require(&#39;./a.js&#39;)</code>以同步的方式来引入a.js。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-2/" data-id="cj167nxrw000aiko0z8udmycx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-webpack2-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/22/webpack2-1/" class="article-date">
@@ -120,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-1/" data-id="cj0wn82q80007tpo0istzal4v" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-1/" data-id="cj167nxrt0009iko0zln9e3wd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +457,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj0wn82q00004tpo073612j8m" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj167nxra0002iko03blq0abk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-path/" data-id="cj0wn82py0003tpo01xwq80pp" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-path/" data-id="cj167nxrf0004iko0q92foyf3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -317,7 +584,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
     </div>
   </div>
 
@@ -330,23 +597,23 @@
       <ul>
         
           <li>
+            <a href="/2017/04/06/z-index/index/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/05/variable-hoist/">JS中变量提升</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/05/z-index/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/05/z-index/">深入理解z-index</a>
+          </li>
+        
+          <li>
             <a href="/2017/03/30/shell-operation/">shell运算符</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/30/shell-params/">shell传递参数</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/30/shell-variable/">shell变量</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/29/shell-overview/">shell基本知识</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/22/webpack2-7/">webpack2学习篇（七）</a>
           </li>
         
       </ul>

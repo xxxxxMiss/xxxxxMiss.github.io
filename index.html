@@ -65,6 +65,1718 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-z-index/index" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/06/z-index/index/" class="article-date">
+  <time datetime="2017-04-06T09:27:05.000Z" itemprop="datePublished">2017-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+      a{
+        text-decoration: none;
+      }
+      #desc > li > a:hover,
+      #pic > div{
+        display: inline-block;
+      }
+      #pic > div:hover{
+        outline: 1px solid #ff8200;
+      }
+      /*#test:hover{
+        outline: 1px solid #ff8200;
+      }*/
+      
+      .box1{
+        position: relative;
+        z-index: 0;
+      }
+      .box1 > img{
+        position: absolute;
+        z-index: 99999;
+      }
+      
+      .box2{
+        position: relative;
+        z-index: 1;
+        margin-left: -20px;
+      }
+      .box2 > img{
+        position: absolute;
+        z-index: -1;
+      }
+      .box1:hover, .box2:hover{
+        outline: 1px solid #ff8200;
+      }
+      
+      
+      .box{
+        background-color: #FF8200;
+      }
+      .box > div{
+        z-index: 1;
+      }
+      
+      .box > div > img{
+        z-index: -1;
+        margin-left: -20px;
+      }
+      
+      #btngroup > button{
+        outline: none;
+        border: none;
+        background-color: #00CC19;
+        color: #FFFFFF;
+        padding: 10px 6px;
+        border-radius: 5px;
+        margin: 5px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+          作者：794465731@qq.com
+          时间：2016-05-08
+          描述：z-index深入理解
+          0，概念
+            1，层叠上下文stacking context
+            2, 层叠等级 stacking level
+            3, 层叠顺序 stacking order
+          1， 定位元素没有发生嵌套遵循
+            1，后来居上
+            2，哪个大，哪个上
+          2， 定位元素有嵌套
+            1，祖先优先原则，前提是z-index是数值，非auto
+          3，规则
+            1，从层叠顺序上讲，z-index=auto可以看成z-index=0，
+              但是从层叠上下文来讲，两者有着本质的区别：z-index=auto不会创建层叠上下文，
+              而z-index=0会创建层叠上下文
+            2,z-index不为auto的定位元素会创建层叠上下文
+            3,z-index层叠顺序的比较终止于父级层叠上下文
+            4,页面根元素天生具有层叠上下文，称之文“根层叠上下文”。
+            5,创建层叠上下文的2中情况
+              1，依赖z-index, 那么根据z-index具体的值来进行层叠
+              2，不依赖z-index, 那么遵循“后来居上”的原则
+        -->
+        <div style="width: 100px; height: 100px;" id="test">xxxx</div>
+        <ul id="desc">
+            <li><a>img</a></li>
+            <li><a>margin-left: -20px</a></li>
+        </ul>
+        <div id="pic">
+            <div id="first"><img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="100px"></div>
+            <div style="margin-left: -20px;"><img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="100px"></div>
+        </div>
+        <br>
+        
+        
+        <div style="background-color: #EDEBEB; position: absolute; left: 150px; width: 150px; height: 150px;">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="150px" style="position: relative; z-index: -1; margin-left: -20px;">
+        </div>
+        <br><br>
+        
+        
+        <div class="box1" style="width: 100px; height: 100px; display: inline-block;">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="100px">
+        </div>
+        <div class="box2" style="width: 100px; height: 100px; display: inline-block;">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="100px">
+        </div>
+        <br>
+        <br>
+        
+        
+        <div class="box" id="box">
+            <div id="subbox">
+              <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="100px" id="img">
+            </div>
+        </div>
+        <div id="btngroup">
+            <button id="btn1">改变img元素position为relative</button>
+            <button id="btn2">box元素display改为flex</button>
+            <button id="btn3">修改box元素的opacity不等于1</button>
+            <button id="btn4">将box元素旋转一定的角度</button>
+            <button id="btn5">改变box元素的混合模式</button>
+            <button id="btn6">改变box元素的filter</button>
+            <button id="btn7">将box元素设置为isolation</button>
+            <button id="btn8">将box元素设置为fixed</button>
+            <button id="btn8">改变box元素的will-change</button>
+            <button id="btn9">改变box元素的-webkit-overflow-scrolling</button>
+            <button id="btnReset">重置样式</button>
+          </div>
+  </body>
+  <script type="text/javascript">
+    var desc = document.getElementById('desc');
+    var pic = document.getElementById('pic');
+    pic.children[0].onclick = function(){
+      this.style.position = 'relative';
+      console.log(this.style.zIndex);
+    }
+    
+    var btngroup = document.getElementById('btngroup');
+    var domarr = [].slice.call(btngroup.children);
+    var box = document.getElementById('box');
+    var subbox = document.getElementById('subbox');
+    var img = document.getElementById('img');
+    domarr.forEach(function (v, i) {
+      if(i == 0){
+        domarr[0].onclick = toRelative(img);
+      }
+      
+      if(i == 1){
+        domarr[1].onclick = flex(box);
+      }
+      
+      if(i == 2){
+        domarr[2].onclick = opacity(box);
+      }
+      
+      if(i == 3){
+        domarr[3].onclick = rotate(box);
+      }
+      
+      if(i == 4){
+        domarr[4].onclick = changeMixBlendMode(box);
+      }
+      
+      if( i == 5){
+        domarr[5].onclick = filter(box);
+      }
+      
+      if( i == 6){
+        domarr[6].onclick = isolation(box);
+      }
+      
+      if( i == 7){
+        domarr[7].onclick = fixed(box);
+      }
+      
+      if( i == 8){
+        domarr[8].onclick = willChange(box);
+      }
+      
+      if(i == (domarr.length - 1)){
+        domarr[domarr.length -1].onclick = reset(box, subbox, img);
+      }
+    })  
+    
+    function toRelative (el) {
+      return function () {
+        el.style.position = 'relative';
+      }
+    }
+    
+    function flex (el) {
+      return function () {
+        el.style.display = 'flex';
+      }
+    }
+    
+    function opacity (el) {
+      return function () {
+        el.style.opacity = '.8';
+      }
+    }
+    
+    function rotate (el) {
+      return function () {
+        el.style.transform = 'rotate(15deg)';
+      }
+    }
+    
+    function changeMixBlendMode (el) {
+      return function () {
+        el.style.mixBlendMode = 'darken'
+      }
+    }
+    
+    function filter (el) {
+      return function () {
+        el.style.webkitFilter = 'blur(2px)'
+      }
+    }
+    
+    //  隔离，孤立， 分离
+    function isolation (el) {
+      return function () {
+        el.style.webkitIsolation = 'isolation';
+      }
+    }
+    
+    function fixed (el) {
+      return function () {
+        el.style.position = 'fixed';
+      }
+    }
+    
+    function willChange (el) {
+      return function () {
+        el.style.willChange = 'transform';
+      }
+    }
+    
+    function reset (el1, el2, el3) {
+      return function () {
+        el1.setAttribute('style', '');
+        el2.setAttribute('style', '');
+        el3.setAttribute('style', '');
+      }
+    }
+    
+    document.getElementById('test').onmouseenter = function () {
+      
+    }
+  </script>
+  
+</html>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/04/06/z-index/index/" data-id="cj167nxtj000iiko0ua7whdi1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-variable-hoist" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/05/variable-hoist/" class="article-date">
+  <time datetime="2017-04-05T15:05:04.000Z" itemprop="datePublished">2017-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/05/variable-hoist/">JS中变量提升</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###变量的生命周期</p>
+<ul>
+<li>声明阶段：这一阶段在作用域中注册一个变量。</li>
+<li>初始化阶段：这一阶段分配了内存并在作用域中让内存与变量建立了一个绑定。这一步变量自动被初始化为<code>undefined</code>。</li>
+<li>赋值阶段：这一阶段为初始化的变量分配一个具体的值。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj167nxri0005iko0xji3mhw8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-z-index" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/05/z-index/" class="article-date">
+  <time datetime="2017-04-05T06:40:04.000Z" itemprop="datePublished">2017-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="date" content="2017-04-05 14:25:57">
+<meta name="tags" content=""><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAzUABAAAAAAFNgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABbAAAABwAAAAcZMzaOEdERUYAAAGIAAAAHQAAACAAOQAET1MvMgAAAagAAAA+AAAAYHqhde9jbWFwAAAB6AAAAFIAAAFa4azkLWN2dCAAAAI8AAAAKAAAACgFgwioZnBnbQAAAmQAAAGxAAACZVO0L6dnYXNwAAAEGAAAAAgAAAAIAAAAEGdseWYAAAQgAAAFDgAACMz7eroHaGVhZAAACTAAAAAwAAAANgWEOEloaGVhAAAJYAAAAB0AAAAkDGEGa2htdHgAAAmAAAAAEwAAADBEgAAQbG9jYQAACZQAAAAaAAAAGgsICJBtYXhwAAAJsAAAACAAAAAgASgBD25hbWUAAAnQAAACZwAABOD4no+3cG9zdAAADDgAAABsAAAAmF+yXM9wcmVwAAAMpAAAAC4AAAAusPIrFAAAAAEAAAAAyYlvMQAAAADLVHQgAAAAAM/u9uZ4nGNgZGBg4ANiCQYQYGJgBEJuIGYB8xgABMMAPgAAAHicY2Bm42OcwMDKwMLSw2LMwMDQBqGZihmiwHycoKCyqJjB4YPDh4NsDP+BfNb3DIuAFCOSEgUGRgAKDgt4AAB4nGNgYGBmgGAZBkYGEAgB8hjBfBYGCyDNxcDBwMTA9MHhQ9SHrA8H//9nYACyQyFs/sP86/kX8HtB9UIBIxsDXICRCUgwMaACRoZhDwA3fxKSAAAAAAHyAHABJQB/AIEAdAFGAOsBIwC/ALgAxACGAGYAugBNACcA/wCIeJxdUbtOW0EQ3Q0PA4HE2CA52hSzmZDGe6EFCcTVjWJkO4XlCGk3cpGLcQEfQIFEDdqvGaChpEibBiEXSHxCPiESM2uIojQ7O7NzzpkzS8qRqnfpa89T5ySQwt0GzTb9Tki1swD3pOvrjYy0gwdabGb0ynX7/gsGm9GUO2oA5T1vKQ8ZTTuBWrSn/tH8Cob7/B/zOxi0NNP01DoJ6SEE5ptxS4PvGc26yw/6gtXhYjAwpJim4i4/plL+tzTnasuwtZHRvIMzEfnJNEBTa20Emv7UIdXzcRRLkMumsTaYmLL+JBPBhcl0VVO1zPjawV2ys+hggyrNgQfYw1Z5DB4ODyYU0rckyiwNEfZiq8QIEZMcCjnl3Mn+pED5SBLGvElKO+OGtQbGkdfAoDZPs/88m01tbx3C+FkcwXe/GUs6+MiG2hgRYjtiKYAJREJGVfmGGs+9LAbkUvvPQJSA5fGPf50ItO7YRDyXtXUOMVYIen7b3PLLirtWuc6LQndvqmqo0inN+17OvscDnh4Lw0FjwZvP+/5Kgfo8LK40aA4EQ3o3ev+iteqIq7wXPrIn07+xWgAAAAABAAH//wAPeJyFlctvG1UUh+/12DPN1B7P3JnYjj2Ox4/MuDHxJH5N3UdaEUQLqBIkfQQioJWQ6AMEQkIqsPGCPwA1otuWSmTBhjtps2ADWbJg3EpIXbGouqSbCraJw7kzNo2dRN1cnXN1ZvT7zuuiMEI7ncizyA0URofRBJpCdbQuIFShYY+GZRrxMDVtih5TwQPHtXDFFSIKoWIbuREBjLH27Ny4MsbVx+uOJThavebgVrNRLAiYx06rXsvhxLgWx9xpfHdrs/ekc2Pl2cpPCVEITQpwbj8VQhfXSq2m+Wxqaq2D73Kne5e3NjHqQNj3CRYlJlgUl/jRNP+2Gs2pNYRQiOnmUaQDqm30KqKiTTWPWjboxnTWpvgxjXo0KrtZXAHt7hwIz0YVcj88JnKlJKi3NPAwLyDwZudSmJSMMJFDYaOkaol6XtESx3Gt1VTytdZJ3DCLeaVhVnCBH1fycHTxFXwPX+l2e3d6H/TufGGmMTLTnbSJUdo00zuBswMO/nl3YLeL/wnu9/limCuD3vC54h5NBVz6Li414AI8Vx3iiosKcQXUbrvhFFiYb++HN4DaF4XzFW0fIN4XDWJ3a3XQoq9V8WiyRmdsatV9xUcHims1JloH0YUa090G3Tro3mC6c01f+YwCPquINr1PTaCP6rVTOOmf0GE2dBc7zWIhji3/5MchSuBHgDbU99RMWt3YUNMZMJmx92YP6NsHx/5/M1yvInpnkIOM3Z8fA3JQ2lW1RFC1KaBPDFXNAHYYvGy73aYZZZ3HifbeuiVZCpwA3oQBs0wGPYJbJfg60xrKEbKiNtTe1adwrpBRwlAuQ3q3VRaX0QmQ9a49BTSCuF1MLfQ6+tinOubRBZuWPNoMevGMT+V41KitO1is3D/tpMcq1JHZqDHGs8DoYGDkxJgKjHROeTCmhZvzPm9pod+ltKm4PN7Dyvvldlpsg8D+4AUJZ3F/JBstZz7cbFRxsaAGV6yX/dkcycWf8eS3QlQea+YLjdm3yrOnrhFpUyKVvFE4lpv4bO3Svx/6F/4xmiDu/RT5iI++lko18mY1oX+5UGKR6kmVjM/Zb76yfHtxy+h/SyQ0lLdpdKy/lWB6szatetQJ8nZ80A2Qt6ift6gJeavU3BO4gtxs/KCtNPVibCtYCWY3SIlSBPKXZALXiIR9oZeJ1AuMyxLpHIy/yO7vSiSE+kZvk0ihJ30HgHfzZtEMmvV58x6dtqns0XTAW7Vdm4HJ04OCp/crOO7rd9SGxQAE/mVA9xRN+kVSMRFF6S9JFGUtthkjBA5tFCWc2l4V43Ex9GmUP3SI37Jjmir9KqlaDJ4S4JB3vuM/jzyH1+8MuoZ+QGzfnvPoJb96cZlWjMcKLfgDwB7E634JTY+asjsPzS5CiVnEWY+KsrsIN5rn3mAPjqmQBxGjcGKB9f9ZxY3mYC2L85CJ2FXIxKKyHk+dg0FHbuEc7D5NzWUX32WxFcWNGRAbvwSx0RmIXVDuYySafluQBmzA/ssqJAMLnli+WIC90Gw4lm85wcp0qjArEDPJJV/sSx4P9ungTpgMw5gVC1XO4uULq0s3v1rqLi0vX/z65vlH50f8T/RHmSPTk5xxWBWOluMT6WiOy+tdvWxlV/XQb3o3c6Ssr+r6I708GsX9/nzp1tKFh0s3v7m4vAy/Hnb/KMOvc1wump6Il48K6mGDy02X9Yd65pa+nQIjk76lWxCkG8NBCP0HQS9IpAAAeJxjYGRgYGBhcCrq214Qz2/zlUGenQEEzr/77oug/zewFbB+AHI5GJhAogBwKQ0qeJxjYGRgYH3/P46BgZ0BBNgKGBgZUAEPAE/7At0AAAB4nGNngAB2IGYjhBsYBAAIYADVAAAAAAAAAAAAAFwAyAEeAaACCgKmAx4DggRmAAAAAQAAAAwAagAEAAAAAAACAAEAAgAWAAABAAChAAAAAHiclZI7bxQxFIWPd/JkUYQChEhIyAVKgdBMskm1QkKrRETpQiLRUczueB/K7HhlOxttg8LvoKPgP9DxFxANDR0tHRWi4NjrPIBEgh1p/dm+vufcawNYFWsQmP6e4jSyQB2fI9cwj++RE9wTjyPP4LYoI89iWbyLPIe6+Bh5Hs9rryMv4GbtW+RF3EhuRa7jbrIbeQkPkjdUETOLnL0Kip4FVvAhco1RXyMnSPEz8gzWxE7kWTwUp5HnsCLeR57HW/El8gJWa58iL+JO7UfkOh4l9yMv4UnyEtvQGGECgwF66MNBooF1bGCL1ELB/TYU+ZBRlvsKQ44Se6jQ4a7hef+fh72Crv25kp+8lNWGmeKoOI5jJLb1aGIGvb6TjfWNLdkqdFvJw4l1amjlXtXRZqRN7lSRylZZyhBqpVFWmTEXgWfUrpi/hZOQXdOd4rKuXOtEWT3k5IArPRzTUU5tHKjecZkTpnVbNOnt6jzN8240GD4xtikvZW56043rPMg/dS+dlOceXoR+WPbJ55Dsekq1lJpnypsMUsYOdCW30o103Ytu/lvh+5RWFLfBjm9/N8hJntPhvx92rnoE/kyHdGasGy754kw36vsVf/lFeBi+0COu+cfgQr42G3CRpeLoZ53gmfe3X6rcKt5oVxnptHR9JS8ehVUd5wvvahN2uqxOOpMXapibI5k7Zwbt4xBSaTfoKBufhAnO/uqNcfK8OTs0OQ6l7JIqFjDhYj5WcjevCnI/1DDiI8j4ndWb/5YzDZWh79yomWXeXj7Nnw70/2TIeFPTrlSh89k1ObOSRVZWZfgF0r/zJQB4nG2JUQuCQBCEd07TTg36fb2IyBaLd3vWaUh/vmSJnvpgmG8YcmS8X3Shf3R7QA4OBUocUKHGER5NNbOOEvwc1txnuWkTRb/aPjimJ5vXabI+3VfOiyS15UWvyezM2xiGOPyuMohOH8O8JiO4Af+FsAGNAEuwCFBYsQEBjlmxRgYrWCGwEFlLsBRSWCGwgFkdsAYrXFhZsBQrAAA=) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>深入理解z-index</title></head><body><article class="markdown-body"><h3 id="z-index"><a name="user-content-z-index" href="#z-index" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>z-index基本规则</h3>
+<ol>
+<li>如果定位元素<code>z-index</code>没有发生嵌套（就是说一个定位元素的子元素的<code>position</code>都是<code>static</code>）,那么此时遵守的规则为：<br>
+- 后来居上的准则<br>
+- 哪个大，哪个上</li>
+<li>如果定位元素发生了嵌套<ul>
+<li>祖先优先原则（z-index的值非<code>auto</code>）</li>
+<li>如果<code>z-index: auto</code>,那么就不遵守祖先优先的原则了   </li>
+</ul>
+</li>
+</ol>
+<pre><code>// z-index的值非auto
+&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;
+    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; z-index: 2&quot;&gt; // z-index: 2
+&lt;/div&gt;
+
+&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;
+    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; left: 100px; z-index: 1&quot;&gt; // z-index: 1
+&lt;/div&gt;
+</code></pre>
+
+<blockquote>
+<p>上面的例子，虽然第一个图片的<code>z-index:2</code>，第二个图片的<code>z-index: 1</code>，但是由于发生了嵌套，祖先元素都是<code>z-index: 1</code>，所以第二个图片覆盖在第一个图片上面。</p>
+</blockquote>
+<pre><code>// z-index的值为auto
+&lt;div style=&quot;position: relative; z-index: auto&quot;&gt;
+    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; z-index: 2&quot;&gt; // z-index: 2
+&lt;/div&gt;
+
+&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;
+    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; left: 100px; z-index: 1&quot;&gt; // z-index: 1
+&lt;/div&gt;
+</code></pre>
+
+<blockquote>
+<p>上面的例子，同第一个例子一样，唯一不同的地方就是第一个图片祖先元素的<code>z-index:auto</code>, 那么此时第一个图片在覆盖第二个图片。<br>
+解释：<code>z-index: auto</code>当前层叠上下文生成的盒子层叠水平是<strong><em>0</em></strong>。盒子（除非是根元素）不会创建一个新的层叠上下文。</p>
+</blockquote>
+<h3 id="z-index_1"><a name="user-content-z-index_1" href="#z-index_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>z-index中涉及到的重要概念</h3>
+<ul>
+<li>层叠上下文（stacking context）：html中元素在z轴上的堆叠顺序。<ul>
+<li>页面根元素（可以理解为html或者为body）天生具有层叠上下文，称之为”根层叠上下文“。</li>
+<li>z-index为数值的定位元素具有层叠上下文。</li>
+<li>一些其他属性的元素<br>
+<img alt="" src="/Users/qsch/workspace/blog/source/_posts/z-index/stacking-props.png"></li>
+</ul>
+</li>
+<li>层叠水平（stacking level）：层叠上下文中的每个元素都有一个层叠水平，层叠水平决定了<strong><em>同一个层叠上下文</em></strong>中的元素在z轴上的堆叠顺序。</li>
+<li>层叠顺序（stacking order）：元素发生层叠时有着特定的垂直显示顺序。</li>
+</ul>
+<h3 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>层叠上下文的几个特性</h3>
+<ul>
+<li>层叠上下文可以嵌套，组合成一个分层次的层叠上下文。</li>
+<li>每个层叠上下文和兄弟元素独立：当进行层叠变化或者渲染的时候，只需要考虑后代元素。</li>
+<li>每个层叠上下文是自成体系的：当元素的内容被层叠后，整个元素被认为是在父层的层叠顺序中。</li>
+</ul>
+<h3 id="7stacking-level"><a name="user-content-7stacking-level" href="#7stacking-level" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7阶层叠水平(stacking level)</h3>
+<p><img alt="层叠水平一览图" src="/Users/qsch/workspace/blog/source/_posts/z-index/stacking-level.png"><br>
+为什么层叠顺序是这样的？</p>
+<blockquote>
+<p>可以这样理解：<code>background,border</code>等主要用来装饰元素，<code>block</code>盒子<code>float</code>元素主要用来布局，而<code>inline, inline-block</code>主要用来展示内容，而内容是页面中最重要的实体，所以应该让其层叠水平更高。</p>
+</blockquote>
+<pre><code>.block, .inline-block{
+    height: 200px;
+}
+.block{
+    width: 300px;
+    background-color: rgba(37,148,233, .4);
+    margin-top: -13px;
+}
+
+.inline-block{
+    display: inline-block;
+    width: 200px;
+    background-color: #ff8200;
+}
+
+&lt;div class=&quot;inline-block&quot;&gt;
+    display: inline-block
+&lt;/div&gt;
+&lt;div class=&quot;block&quot;&gt;
+    display: block
+&lt;/div&gt;
+</code></pre>
+
+<blockquote>
+<p>上面的例子: <code>inline-block</code>的元素会覆盖在<code>block</code>元素的上面，但是<code>block</code>元素中的文字并没有被覆盖。因为文字是属于<code>inline</code>元素，对照7阶层叠上下文可以知道<code>inline</code>的堆叠顺序和<code>inline-block</code>是一个等级的，并且<code>block</code>元素出现在<code>inline-block</code>元素的后面，按照<strong><em>后来居上</em></strong>的规则，<code>inline-block</code>元素并不会覆盖<code>block</code>元素中的文字。</p>
+</blockquote>
+<h3 id="z-index_2"><a name="user-content-z-index_2" href="#z-index_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>z-index元层叠上下文的关系</h3>
+<ul>
+<li>定位元素默认<code>z-index:auto</code>可以看成是<code>z-index: 0</code>。</li>
+<li><code>z-index</code>不为<code>auto</code>的定位元素创建层叠上下文。</li>
+<li><code>z-index</code>层叠顺序的比较止步于父级层叠上下文。</li>
+</ul>
+<pre><code>.box{
+    position: absolute;
+    background-color: blue;
+    /*z-index: 0;*/
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+}
+.img{
+    position: relative;
+    margin-left: -100px;
+    z-index: -1;
+    width: 200px;
+}
+
+&lt;div class=&quot;box&quot;&gt;
+    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;    
+&lt;/div&gt;
+</code></pre>
+
+<blockquote>
+<p>上面的例子，如果<code>box</code>不加上<code>z-index:0</code>,那么此时的层叠上下文就是<code>body</code>元素，那么<code>z-index:-1</code>的元素会处于<code>body</code>元素的下面，所以<code>box</code>元素覆盖图片。<br>
+但是如果<code>box</code>元素加上<code>z-index:0</code>, 那么此次层叠上下文就变成了<code>box</code>元素，那么按照<strong><em>7阶层叠水平</em></strong>, <code>background</code>是处于最底层的，所以<code>z-index:-1</code>的图片会覆盖背景。</p>
+</blockquote>
+<pre><code>.box1{
+    position: relative;
+    z-index: 0;
+}
+.box1 img{
+    position: absolute;
+    z-index: 99999;
+}
+
+.box2{
+    position: relative;
+    z-index: 1;
+}
+.box2 img{
+    position: absolute;
+    left: 250px;
+    z-index: -1;
+}
+
+&lt;div class=&quot;box1&quot;&gt;
+    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;box2&quot;&gt;
+    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+
+<blockquote>
+<p>上面的例子，虽然<code>box1</code>中的<code>img</code>图片的<code>z-index:99999</code>很大，但是其父元素的<code>z-index: 0</code>没有第二个图片的父元素<code>box2</code>的<code>z-index:1</code>大，所以依然是第二个图片覆盖第一个图片。</p>
+</blockquote>
+<h3 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>其他参与层叠上下文的属性</h3>
+<ul>
+<li>
+<p><code>z-index</code>值不为<code>auto</code>的flex项（父元素display:flex|inline-flex）<br>
+<pre><code>// 设置为flex的父元素，可以改变子元素z-index不为auto的元素参数参与堆叠上下文
+.box{
+    /*display: flex;*/
+    background-color: blue;
+}
+.box &gt; div {
+    z-index: 1;
+}
+.box &gt; div &gt; img{
+    position: relative;
+    z-index: -1;
+}
+
+&lt;div class=&quot;box&quot;&gt;
+    &lt;div&gt;
+        &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></p>
+<blockquote>
+<p>当没有为<code>box</code>设置<code>display: flex</code>时，此时层叠上下文为根元素（html或者body），所以<code>img</code>设置为<code>z-index:-1</code>会堆叠在根元素下面，也就是背景会覆盖图片。但如果设置<code>box</code>为<code>display: flex</code>,那么此时<code>display:flex</code>的<strong><em>子元素</em></strong><code>z-index</code>不为<code>auto</code>的元素参与堆叠顺序，那么按照<strong><em>7阶堆叠顺序</em></strong>，<code>z-index</code>为负值的会堆叠在<code>background</code>上面。</p>
+</blockquote>
+</li>
+<li>
+<p><code>opacity != 1</code><br>
+<pre><code>.box{
+    background-color: blue;
+    /*opacity: .9;*/
+}
+.box &gt; img{
+    position: relative;
+    z-index: -1;
+}
+
+&lt;div class=&quot;box&quot;&gt;
+    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+</code></pre></p>
+</li>
+</ul>
+<blockquote>
+<p>当没有给<code>box</code>元素设置<code>opacity:.9</code>时，那么此时<code>box</code>为非层叠上下文元素，那么<code>img</code>会层叠到根层叠上下文元素的下面，所以<code>box</code>会覆盖<code>img</code>。一旦设置了<code>box</code>的<code>opacity: .9</code>是，此时层叠上下文为<code>box</code>元素，那么按照<strong><em>7阶堆叠顺序</em></strong>, 负的<code>z-index</code>会覆盖在<code>background</code>的上面。</p>
+</blockquote>
+<ul>
+<li>剩下的<code>transform != none</code>, <code>mix-blend-mode != normal</code>, <code>filter != none</code>, <code>isolation: isolation</code>, <code>position: fixed</code>, <code>will-change: 任意支持过渡的元素</code>, <code>-webkit-overflow-scrolling: touch</code>同理。</li>
+</ul>
+<h3 id="z-index_3"><a name="user-content-z-index_3" href="#z-index_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>非定位元素层叠上下文和<code>z-index</code>的关系</h3>
+<ul>
+<li>不依赖<code>z-index</code>的层叠上下文元素的层叠顺序均是<code>z-index:auto</code>级别。（可以查看上面的”其他属性创建层叠上下文的图“, 需要注意的是<code>flex</code>, 他是依赖<code>z-index</code>的）</li>
+<li>依赖<code>z-index</code>的层叠上下文元素的层叠顺序取决于<code>z-index</code>的值。<br>
+<pre><code>.a{
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 40px;
+}
+.box{
+    display: flex; /*普通元素*/
+    background-color: blue;
+}
+.box &gt; img{
+    z-index: 1;  /*flex项是层叠上下文元素*/
+}
+
+&lt;img class=&quot;a&quot; class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;
+&lt;div class=&quot;box&quot;&gt;
+    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+</code></pre></li>
+</ul>
+<p><a href="/Users/qsch/workspace/blog/source/_posts/z-index/index.html">例子预览</a></p></article></body></html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj167nxsv000hiko0vdp8uvt2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-z-index" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/05/z-index/" class="article-date">
+  <time datetime="2017-04-05T06:25:57.000Z" itemprop="datePublished">2017-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/05/z-index/">深入理解z-index</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="z-index基本规则"><a href="#z-index基本规则" class="headerlink" title="z-index基本规则"></a>z-index基本规则</h3><ol>
+<li>如果定位元素<code>z-index</code>没有发生嵌套（就是说一个定位元素的子元素的<code>position</code>都是<code>static</code>）,那么此时遵守的规则为：</li>
+</ol>
+<ul>
+<li>后来居上的准则</li>
+<li>哪个大，哪个上</li>
+</ul>
+<ol>
+<li>如果定位元素发生了嵌套<ul>
+<li>祖先优先原则（z-index的值非<code>auto</code>）</li>
+<li>如果<code>z-index: auto</code>,那么就不遵守祖先优先的原则了   </li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// z-index的值非auto</div><div class="line">&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;</div><div class="line">    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; z-index: 2&quot;&gt; // z-index: 2</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;</div><div class="line">    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; left: 100px; z-index: 1&quot;&gt; // z-index: 1</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的例子，虽然第一个图片的<code>z-index:2</code>，第二个图片的<code>z-index: 1</code>，但是由于发生了嵌套，祖先元素都是<code>z-index: 1</code>，所以第二个图片覆盖在第一个图片上面。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// z-index的值为auto</div><div class="line">&lt;div style=&quot;position: relative; z-index: auto&quot;&gt;</div><div class="line">    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; z-index: 2&quot;&gt; // z-index: 2</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;</div><div class="line">    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; left: 100px; z-index: 1&quot;&gt; // z-index: 1</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的例子，同第一个例子一样，唯一不同的地方就是第一个图片祖先元素的<code>z-index:auto</code>, 那么此时第一个图片在覆盖第二个图片。<br>解释：<code>z-index: auto</code>当前层叠上下文生成的盒子层叠水平是<strong><em>0</em></strong>。盒子（除非是根元素）不会创建一个新的层叠上下文。</p>
+</blockquote>
+<h3 id="z-index中涉及到的重要概念"><a href="#z-index中涉及到的重要概念" class="headerlink" title="z-index中涉及到的重要概念"></a>z-index中涉及到的重要概念</h3><ul>
+<li>层叠上下文（stacking context）：html中元素在z轴上的堆叠顺序。<ul>
+<li>页面根元素（可以理解为html或者为body）天生具有层叠上下文，称之为”根层叠上下文“。</li>
+<li>z-index为数值的定位元素具有层叠上下文。</li>
+<li>一些其他属性的元素<br><img src="./z-index/stacking-props.png" alt=""></li>
+</ul>
+</li>
+<li>层叠水平（stacking level）：层叠上下文中的每个元素都有一个层叠水平，层叠水平决定了<strong><em>同一个层叠上下文</em></strong>中的元素在z轴上的堆叠顺序。</li>
+<li>层叠顺序（stacking order）：元素发生层叠时有着特定的垂直显示顺序。</li>
+</ul>
+<h3 id="层叠上下文的几个特性"><a href="#层叠上下文的几个特性" class="headerlink" title="层叠上下文的几个特性"></a>层叠上下文的几个特性</h3><ul>
+<li>层叠上下文可以嵌套，组合成一个分层次的层叠上下文。</li>
+<li>每个层叠上下文和兄弟元素独立：当进行层叠变化或者渲染的时候，只需要考虑后代元素。</li>
+<li>每个层叠上下文是自成体系的：当元素的内容被层叠后，整个元素被认为是在父层的层叠顺序中。</li>
+</ul>
+<h3 id="7阶层叠水平-stacking-level"><a href="#7阶层叠水平-stacking-level" class="headerlink" title="7阶层叠水平(stacking level)"></a>7阶层叠水平(stacking level)</h3><p><img src="./z-index/stacking-level.png" alt="层叠水平一览图"><br>为什么层叠顺序是这样的？</p>
+<blockquote>
+<p>可以这样理解：<code>background,border</code>等主要用来装饰元素，<code>block</code>盒子<code>float</code>元素主要用来布局，而<code>inline, inline-block</code>主要用来展示内容，而内容是页面中最重要的实体，所以应该让其层叠水平更高。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">.block, .inline-block&#123;</div><div class="line">    height: 200px;</div><div class="line">&#125;</div><div class="line">.block&#123;</div><div class="line">    width: 300px;</div><div class="line">    background-color: rgba(37,148,233, .4);</div><div class="line">    margin-top: -13px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.inline-block&#123;</div><div class="line">    display: inline-block;</div><div class="line">    width: 200px;</div><div class="line">    background-color: #ff8200;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=&quot;inline-block&quot;&gt;</div><div class="line">    display: inline-block</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=&quot;block&quot;&gt;</div><div class="line">    display: block</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的例子: <code>inline-block</code>的元素会覆盖在<code>block</code>元素的上面，但是<code>block</code>元素中的文字并没有被覆盖。因为文字是属于<code>inline</code>元素，对照7阶层叠上下文可以知道<code>inline</code>的堆叠顺序和<code>inline-block</code>是一个等级的，并且<code>block</code>元素出现在<code>inline-block</code>元素的后面，按照<strong><em>后来居上</em></strong>的规则，<code>inline-block</code>元素并不会覆盖<code>block</code>元素中的文字。</p>
+</blockquote>
+<h3 id="z-index元层叠上下文的关系"><a href="#z-index元层叠上下文的关系" class="headerlink" title="z-index元层叠上下文的关系"></a>z-index元层叠上下文的关系</h3><ul>
+<li>定位元素默认<code>z-index:auto</code>可以看成是<code>z-index: 0</code>。</li>
+<li><code>z-index</code>不为<code>auto</code>的定位元素创建层叠上下文。</li>
+<li><code>z-index</code>层叠顺序的比较止步于父级层叠上下文。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    position: absolute;</div><div class="line">    background-color: blue;</div><div class="line">    /*z-index: 0;*/</div><div class="line">    width: 200px;</div><div class="line">    height: 100px;</div><div class="line">    display: inline-block;</div><div class="line">&#125;</div><div class="line">.img&#123;</div><div class="line">    position: relative;</div><div class="line">    margin-left: -100px;</div><div class="line">    z-index: -1;</div><div class="line">    width: 200px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=&quot;box&quot;&gt;</div><div class="line">    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;    </div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的例子，如果<code>box</code>不加上<code>z-index:0</code>,那么此时的层叠上下文就是<code>body</code>元素，那么<code>z-index:-1</code>的元素会处于<code>body</code>元素的下面，所以<code>box</code>元素覆盖图片。<br>但是如果<code>box</code>元素加上<code>z-index:0</code>, 那么此次层叠上下文就变成了<code>box</code>元素，那么按照<strong><em>7阶层叠水平</em></strong>, <code>background</code>是处于最底层的，所以<code>z-index:-1</code>的图片会覆盖背景。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">.box1&#123;</div><div class="line">    position: relative;</div><div class="line">    z-index: 0;</div><div class="line">&#125;</div><div class="line">.box1 img&#123;</div><div class="line">    position: absolute;</div><div class="line">    z-index: 99999;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.box2&#123;</div><div class="line">    position: relative;</div><div class="line">    z-index: 1;</div><div class="line">&#125;</div><div class="line">.box2 img&#123;</div><div class="line">    position: absolute;</div><div class="line">    left: 250px;</div><div class="line">    z-index: -1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=&quot;box1&quot;&gt;</div><div class="line">    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=&quot;box2&quot;&gt;</div><div class="line">    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的例子，虽然<code>box1</code>中的<code>img</code>图片的<code>z-index:99999</code>很大，但是其父元素的<code>z-index: 0</code>没有第二个图片的父元素<code>box2</code>的<code>z-index:1</code>大，所以依然是第二个图片覆盖第一个图片。</p>
+</blockquote>
+<h3 id="其他参与层叠上下文的属性"><a href="#其他参与层叠上下文的属性" class="headerlink" title="其他参与层叠上下文的属性"></a>其他参与层叠上下文的属性</h3><ul>
+<li><code>z-index</code>值不为<code>auto</code>的flex项（父元素display:flex|inline-flex）<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 设置为flex的父元素，可以改变子元素z-index不为auto的元素参数参与堆叠上下文</div><div class="line">.box&#123;</div><div class="line">    /*display: flex;*/</div><div class="line">    background-color: blue;</div><div class="line">&#125;</div><div class="line">.box &gt; div &#123;</div><div class="line">    z-index: 1;</div><div class="line">&#125;</div><div class="line">.box &gt; div &gt; img&#123;</div><div class="line">    position: relative;</div><div class="line">    z-index: -1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=&quot;box&quot;&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>当没有为<code>box</code>设置<code>display: flex</code>时，此时层叠上下文为根元素（html或者body），所以<code>img</code>设置为<code>z-index:-1</code>会堆叠在根元素下面，也就是背景会覆盖图片。但如果设置<code>box</code>为<code>display: flex</code>,那么此时<code>display:flex</code>的<strong><em>子元素</em></strong><code>z-index</code>不为<code>auto</code>的元素参与堆叠顺序，那么按照<strong><em>7阶堆叠顺序</em></strong>，<code>z-index</code>为负值的会堆叠在<code>background</code>上面。</p>
+</blockquote>
+<ul>
+<li><code>opacity != 1</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    background-color: blue;</div><div class="line">    /*opacity: .9;*/</div><div class="line">&#125;</div><div class="line">.box &gt; img&#123;</div><div class="line">    position: relative;</div><div class="line">    z-index: -1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=&quot;box&quot;&gt;</div><div class="line">    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>当没有给<code>box</code>元素设置<code>opacity:.9</code>时，那么此时<code>box</code>为非层叠上下文元素，那么<code>img</code>会层叠到根层叠上下文元素的下面，所以<code>box</code>会覆盖<code>img</code>。一旦设置了<code>box</code>的<code>opacity: .9</code>是，此时层叠上下文为<code>box</code>元素，那么按照<strong><em>7阶堆叠顺序</em></strong>, 负的<code>z-index</code>会覆盖在<code>background</code>的上面。</p>
+</blockquote>
+<ul>
+<li>剩下的<code>transform != none</code>, <code>mix-blend-mode != normal</code>, <code>filter != none</code>, <code>isolation: isolation</code>, <code>position: fixed</code>, <code>will-change: 任意支持过渡的元素</code>, <code>-webkit-overflow-scrolling: touch</code>同理。</li>
+</ul>
+<h3 id="非定位元素层叠上下文和z-index的关系"><a href="#非定位元素层叠上下文和z-index的关系" class="headerlink" title="非定位元素层叠上下文和z-index的关系"></a>非定位元素层叠上下文和<code>z-index</code>的关系</h3><ul>
+<li>不依赖<code>z-index</code>的层叠上下文元素的层叠顺序均是<code>z-index:auto</code>级别。（可以查看上面的”其他属性创建层叠上下文的图“, 需要注意的是<code>flex</code>, 他是依赖<code>z-index</code>的）</li>
+<li>依赖<code>z-index</code>的层叠上下文元素的层叠顺序取决于<code>z-index</code>的值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.a&#123;</div><div class="line">    position: absolute;</div><div class="line">    z-index: 1;</div><div class="line">    top: 10px;</div><div class="line">    left: 40px;</div><div class="line">&#125;</div><div class="line">.box&#123;</div><div class="line">    display: flex; /*普通元素*/</div><div class="line">    background-color: blue;</div><div class="line">&#125;</div><div class="line">.box &gt; img&#123;</div><div class="line">    z-index: 1;  /*flex项是层叠上下文元素*/</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;img class=&quot;a&quot; class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;</div><div class="line">&lt;div class=&quot;box&quot;&gt;</div><div class="line">    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="./z-index/index.html">例子预览</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj167nxsf000giko03bim6fiw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-shell-operation" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/30/shell-operation/" class="article-date">
@@ -198,7 +1910,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj0wn82pv0002tpo07q2ak0m4" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj167nxrc0003iko03tr3fr94" class="article-share-link">Share</a>
       
       
     </footer>
@@ -233,7 +1945,10 @@
         <h3 id="脚本获取参数格式-n"><a href="#脚本获取参数格式-n" class="headerlink" title="脚本获取参数格式$n"></a>脚本获取参数格式$n</h3><blockquote>
 <p>n为从0开始的数字，$0：获取执行的脚本名称；$1获取第一个参数，$2获取第二个参数,以此类推。。。</p>
 </blockquote>
-<h3 id="几个特殊的字符用来处理参数"><a href="#几个特殊的字符用来处理参数" class="headerlink" title="几个特殊的字符用来处理参数"></a>几个特殊的字符用来处理参数</h3><table>
+<h3 id="几个特殊的字符用来处理参数"><a href="#几个特殊的字符用来处理参数" class="headerlink" title="几个特殊的字符用来处理参数"></a>几个特殊的字符用来处理参数</h3><blockquote>
+<p>这些特殊的字符也可以用在shell函数中</p>
+</blockquote>
+<table>
 <thead>
 <tr>
 <th>字符</th>
@@ -275,7 +1990,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj0wn82qg0009tpo00fwxymh6" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj167nxrq0007iko03lgx13zh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +2051,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj0wn82q60006tpo0ij71su80" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj167nxrs0008iko0g52btajv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -394,7 +2109,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj0wn82q20005tpo0kshdzgrm" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj167nxrp0006iko0pbfxnwg2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -488,7 +2203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/" data-id="cj0wn82qo000dtpo03kypblh2" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/" data-id="cj167nxse000fiko0q4d11g8s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -573,274 +2288,7 @@ import {someMethod} from &apos;./tools/utils&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-6/" data-id="cj0wn82ql000ctpo0l9h4njg0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-webpack2-5" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/webpack2-5/" class="article-date">
-  <time datetime="2017-03-22T02:59:48.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/webpack2-5/">webpack2学习篇（五）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>本章节主要介绍module常用配置项</p>
-</blockquote>
-<h3 id="module-noParse"><a href="#module-noParse" class="headerlink" title="module.noParse"></a>module.noParse</h3><p>RegExp</p>
-<blockquote>
-<p>让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。</p>
-</blockquote>
-<p><code>noParse: /jquery|backbone/</code></p>
-<h3 id="module-rules"><a href="#module-rules" class="headerlink" title="module.rules"></a>module.rules</h3><p>array</p>
-<blockquote>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/" data-id="cj0wn82qh000atpo0wf3pmk3q" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-webpack2-4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/webpack2-4/" class="article-date">
-  <time datetime="2017-03-22T02:59:12.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/webpack2-4/">webpack2学习篇（四）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>本章节主要介绍output常用配置项</p>
-</blockquote>
-<h3 id="output-filename"><a href="#output-filename" class="headerlink" title="output.filename"></a>output.filename</h3><p><code>string</code></p>
-<blockquote>
-<p>用来指定编译生成的模块的名称。</p>
-</blockquote>
-<p><strong><em>虽然官方文档说该选项的默认值是<code>[name].js</code>, 但是经过我的测试，该熟悉必须指定。如果没有指定，在编译的时候控制台会输出<code>Config did not export an object</code>。官方文档可能没及时更新</em></strong></p>
-<ul>
-<li>单入口的时候，我们可以静态的指定一个输出模块名称</li>
-</ul>
-<p><code>filename: bundle.js</code></p>
-<ul>
-<li>多入口的时候，可以通过下面的形式来指定输出模块名称</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 使用entry中指定的key</div><div class="line">filename: &apos;[name].bundle.js&apos;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 使用内部生成的id</div><div class="line">filename: &apos;[id].bundle.js&apos;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 使用每次编译自动生成的hash值</div><div class="line">filename: &apos;[name].[hash].bundle.js&apos;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 使用基于模块内容生成的chunkhash</div><div class="line">filename: &apos;[chunkhash].bundle.js&apos;</div></pre></td></tr></table></figure>
-<p><strong><em>虽然该选项叫<code>filename</code>, 但是可以指定一个输出目录, 就像这样的<code>js/[name]/bundle.js</code></em></strong></p>
-<h3 id="output-chunkFilename"><a href="#output-chunkFilename" class="headerlink" title="output.chunkFilename"></a>output.chunkFilename</h3><p><code>string</code></p>
-<blockquote>
-<p>这个选项主要用来指定动态加载生成的模块名称。</p>
-</blockquote>
-<p>我们已经知道，在<code>require.ensure(dependencies, callback, chunkName)</code>中可以指定一个<code>chunkName</code>参数</p>
-<ul>
-<li>如果指定了这个参数，那么在<code>output</code>中就可以这样来取得<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;[chunkhash].[name].js&apos;,</div><div class="line">      chunkFilename: &apos;[chunkhash].[name].js&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>上面<code>[name]</code>占位符就是你在<code>require.ensure(dependencies, callback, chunkName)</code>中指定的那个chunkName。</p>
-<ul>
-<li>如果在<code>require.ensure(dependencies, callback, chunkName)</code>中省略了这个<code>chunkName</code>参数，那么统一使用<code>output.chunkFilename</code>中指定的名称</li>
-<li>如果output中也没有指定<code>chunkFilename</code>选项，那么会使用<code>output.filename</code>中除了<code>[name]</code>占位符以外的占位符+<code>[id]</code>占位符作为模块名。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.export = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;[chunkhash].[name].js&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>如上output配置，那么此时动态分割出来的模块名就是<code>[chunkhash].[id].js</code>。</p>
-<h3 id="output-path"><a href="#output-path" class="headerlink" title="output.path"></a>output.path</h3><blockquote>
-<p>指定编译后的模块输出目录, 既可以是相对路径，也可以是绝对路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 相对路径</div><div class="line">path: &apos;./dist&apos;</div><div class="line"></div><div class="line">// 绝对路径</div><div class="line">path: path.resolve(__dirname, &apos;dist/assets&apos;)</div></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="output-pathinfo"><a href="#output-pathinfo" class="headerlink" title="output.pathinfo"></a>output.pathinfo</h3><p>boolean</p>
-<blockquote>
-<p>Default: false<br>在编译的代码中创建一些注释信息，在开发中，当你想阅读编译后的源代码，这就显得非常的有用。<br><strong>在生产环境中不要开启该选项</strong>。</p>
-</blockquote>
-<h3 id="output-publicPath"><a href="#output-publicPath" class="headerlink" title="output.publicPath"></a>output.publicPath</h3><p>string</p>
-<blockquote>
-<p>Default: “”<br>这是一个非常重要的选项，主要用在动态加载，加载外部资源，比如加载外部资源（图片,css,js），如果指定了一个错误的值，那么将会得到404的错误。</p>
-</blockquote>
-<h3 id="output-sourceMapFilename"><a href="#output-sourceMapFilename" class="headerlink" title="output.sourceMapFilename"></a>output.sourceMapFilename</h3><p>string</p>
-<blockquote>
-<p>Default: ‘[file].map’<br>只有指定了<a href="https://webpack.js.org/configuration/devtool/" target="_blank" rel="external">devtool</a>选项，该选项才会生效。用来指定生成的sourcemap文件的名称。<br>当为一个模块生成sourcemap时，可以指定以下占位符<code>[name]</code>, <code>[id]</code>,  <code>[hash]</code>, <code>[chunkhash]</code>, <code>[file]</code>。一般情况下使用默认值即可，不需要显式地配置，因为用其他的值，当模块不存在时，就出问题了。</p>
-</blockquote>
-<h3 id="output-sourcePrefix"><a href="#output-sourcePrefix" class="headerlink" title="output.sourcePrefix"></a>output.sourcePrefix</h3><p>string<br><code>sourcePrefix: &quot;\t&quot;</code></p>
-<blockquote>
-<p>指定生成的sourcemap文件每一行开头的前缀。默认情况下使用空字符串，使用该选项的作用仅仅是使sourcemap中的代码看起来要美观一些。不要使用多行前缀，否则引起问题。<br>一般情况下完全没有必要显式的配置该选项。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-4/" data-id="cj0wn82qk000btpo0wk80ekan" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-webpack2-3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/webpack2-3/" class="article-date">
-  <time datetime="2017-03-22T02:58:40.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/webpack2-3/">webpack学习篇（三）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<blockquote>
-<p>本章节主要介绍如何利用webpack来构建自己编写的js库，原文链接可以点击<a href="https://webpack.js.org/guides/author-libraries/" target="_blank" rel="external">这里</a></p>
-</blockquote>
-<p>假如我们要实现的一个数字和单词之间的互转(1 &lt;=&gt; one)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">\\ src/index.js</div><div class="line">import _ from &apos;lodash&apos;</div><div class="line">import numRef from &apos;./ref.json&apos;</div><div class="line"></div><div class="line">export function numToWord(num) &#123;</div><div class="line">    return _.reduce(numRef, (accum, ref) =&gt; &#123;</div><div class="line">        return ref.num === num ? ref.word : accum</div><div class="line">    &#125;, &apos;&apos;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">export function wordToNum(word) &#123;</div><div class="line">    return _.reduce(numRef, (accum, ref) =&gt; &#123;</div><div class="line">        return ref.word === word &amp;&amp; word.toLowerCase() ? ref.num : accum</div><div class="line">    &#125;, -1);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后我们可能用下面的这几种方式来使用这个库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">// ES2015 modules</div><div class="line"></div><div class="line">import * as webpackNumbers from &apos;webpack-numbers&apos;;</div><div class="line"></div><div class="line">...</div><div class="line">webpackNumbers.wordToNum(&apos;Two&apos;) // output is 2</div><div class="line">...</div><div class="line"></div><div class="line">// CommonJS modules</div><div class="line"></div><div class="line">var webpackNumbers = require(&apos;webpack-numbers&apos;);</div><div class="line"></div><div class="line">...</div><div class="line">webpackNumbers.numToWord(3); // output is Three</div><div class="line">...</div><div class="line"></div><div class="line">// As a script tag</div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">...</div><div class="line">&lt;script src=&quot;https://unpkg.com/webpack-numbers&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    ...</div><div class="line">    /* webpackNumbers is available as a global variable */</div><div class="line">    webpackNumbers.wordToNum(&apos;Five&apos;) //output is 5</div><div class="line">    ...</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>下面来编写webpack配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    entry: &apos;./src/index.js&apos;,</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;webpack-numbers.js&apos;,</div><div class="line">      path: &apos;./dist&apos;</div><div class="line">    &#125;,</div><div class="line">    module: &#123;</div><div class="line">      rules: [</div><div class="line">        &#123;</div><div class="line">          test: /.json$/,</div><div class="line">          use: &apos;json-loader&apos;</div><div class="line">        &#125;</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>如果利用上面的配置进行编译，我们会发现lodash.js也会被编译到webpack-numbers.js中。<br>我们自己编写的这个webpack-numbers.js库依赖lodash.js，但是我们不希望lodash的源代码被编译到我们这个库中，而是希望他们分开，在用户下载我们的这个webpack-numbers.js库的同时也将依赖的库lodash.js下载下来。<br>要实现这个需求，我们可以按如下修改配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    ...</div><div class="line">    externals: &#123;</div><div class="line">      &apos;lodash&apos;: &#123;</div><div class="line">        commonjs: &apos;lodash&apos;,</div><div class="line">        commonjs2: &apos;lodash&apos;,</div><div class="line">        amd: &apos;lodash&apos;,</div><div class="line">        root: &apos;_&apos;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="output-library-output-libraryTarget"><a href="#output-library-output-libraryTarget" class="headerlink" title="output.library, output.libraryTarget"></a>output.library, output.libraryTarget</h3><blockquote>
-<p>因为我们的库可能需要运行在不同的环境下，如CommonJS, AMD, Node.js ,作为一个全局变量，为了让我们编写的库可以运行在不同的环境下，那么我们就需要做相应的配置。</p>
-</blockquote>
-<p>output.library</p>
-<blockquote>
-<p>导出的全局变量的名称</p>
-</blockquote>
-<p>output.libraryTarget<br><code>string</code></p>
-<blockquote>
-<p>Default: ‘var’，可选的值有<code>umd</code>, <code>amd</code>, <code>commonjs</code>, <code>commonjs2</code>, <code>commonjs-module</code>, <code>this</code>, <code>var</code><br>这些值指明了导出的环境, 下面我们依次来看看在各种环境下导出的代码是什么样的</p>
-</blockquote>
-<p>假如我们的配置文件是这样的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    entry: &apos;./ab.js&apos;,</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;webpack-lib&apos;,</div><div class="line">      path: &apos;./dist&apos;,</div><div class="line">      library: &apos;abConvert&apos;,</div><div class="line">      libraryTarget: &apos;var&apos; // 当为默认值的时候，可以不指定该属性</div><div class="line">    &#125;,</div><div class="line">    externals: &#123;</div><div class="line">      &apos;zepto&apos;: &#123;</div><div class="line">        commonjs: &apos;zepto&apos;,</div><div class="line">        commonjs2: &apos;zepto&apos;,</div><div class="line">        amd: &apos;zepto&apos;,</div><div class="line">        root: &apos;$&apos;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>那么各种取值下导出的代码会是这个样子的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\var</div><div class="line"></div><div class="line">var abConvert = (function(modules)&#123;</div><div class="line">    return ...</div><div class="line">  &#125;)()</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\umd</div><div class="line"></div><div class="line">(function webpackUniversalModuleDefinition(root, factory) &#123;</div><div class="line">  if(typeof exports === &apos;object&apos; &amp;&amp; typeof module === &apos;object&apos;)</div><div class="line">    module.exports = factory(require(&quot;zepto&quot;));</div><div class="line">  else if(typeof define === &apos;function&apos; &amp;&amp; define.amd)</div><div class="line">    define([&quot;zepto&quot;], factory);</div><div class="line">  else if(typeof exports === &apos;object&apos;)</div><div class="line">    exports[&quot;abConvert&quot;] = factory(require(&quot;zepto&quot;));</div><div class="line">  else</div><div class="line">    root[&quot;abConvert&quot;] = factory(root[&quot;$&quot;]);</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\\ amd</div><div class="line"></div><div class="line">define(&apos;abConvert&apos;, [&apos;zepto&apos;], function()&#123;&#125;)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ commonjs</div><div class="line"></div><div class="line">exports[&apos;abConvert&apos;] = (function(modules)&#123;</div><div class="line">  return ...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ commonjs2</div><div class="line"></div><div class="line">module.exports = (function(modules)&#123;</div><div class="line">  return ...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">\\ commonjs-module</div><div class="line"></div><div class="line">module.exports = (function(modules)&#123;</div><div class="line">  return ...</div><div class="line">&#125;)()</div><div class="line"></div><div class="line">Object.defineProperty(module.exports, &quot;__esModule&quot;, &#123; value: true &#125;)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>如果libraryTarget指定为<code>commonjs-module</code>, 那么此时<code>module.exports</code>上会被定义一个<code>__esModule</code>, 表明此时采用的是es2015模块化方式定义的，并且此时的<code>library</code>属性会被忽略。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ this</div><div class="line"></div><div class="line">this[&apos;abConvert&apos;] = (function(modules)&#123;</div><div class="line">  </div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<blockquote>
-<p>当指定为<code>this</code>时，代表的是由运行环境决定。比如运行在浏览器中，此时<code>this</code>代表<code>window</code>，如果运行在nodejs环境，那么此时<code>this</code>代表<code>global</code>。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-3/" data-id="cj0wn82qq000etpo0hvuhstwv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-webpack2-2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/webpack2-2/" class="article-date">
-  <time datetime="2017-03-22T02:58:05.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/webpack2-2/">webpack2学习篇（二）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h3 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h3><p>在开发中，经常会遇到这样的需求：比如在React,Vue中的路由加载组件，如果在首次加载的时候，就将一堆的组件全部加载，毫无疑问在打开首页的时候会非常的慢，影响用户体验。为了实现第一次快速的加载，优化用户体验，可以通过动态路由。就是第一次只会加载一些必须的组件，剩下的组件等到需要的时候再去加载。使用webpack提供的<code>require.ensure()</code>可以轻松实现这一要求。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>require.ensure(dependencies: String[], callback: function(require), chunkName: String)</code></p>
-<h4 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h4><ul>
-<li>dependencies: 一个字符串数组，在callback中的代码执行之前需要加载的依赖模块</li>
-<li>callback: 当dependencies中的模块全部加载完毕之后，执行callback中的代码。callback中会传入一个require函数，我们可以在callback中使用这个require()函数引入其他的依赖模块</li>
-<li>chunkName（可选）: 通过require.ensure()生成的模块的名称。在不同的require.ensure()中传入相同的chunkName,可以保证依赖模块按正确的顺序引入到require.ensure()生成的模块中</li>
-</ul>
-<p>假如我们有如下的目录结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">file structure</div><div class="line">|</div><div class="line">js --|</div><div class="line">|    |-- entry.js</div><div class="line">|    |-- a.js</div><div class="line">|    |-- b.js</div><div class="line">webpack.config.js</div><div class="line">|</div><div class="line">dist</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\entry.js</div><div class="line">require(&apos;./a&apos;)</div><div class="line">require.ensure([], function(require)&#123;</div><div class="line">  require(&apos;./b&apos;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"></div><div class="line">\\a.js</div><div class="line">console.log(&apos;I AM A&apos;)</div><div class="line"></div><div class="line">\\b.js</div><div class="line">console.log(&apos;I AM B&apos;)</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">\\webpack.config.js</div><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    entry: &apos;./js/entry.js&apos;,</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;bundle.js&apos;,</div><div class="line">      path: &apos;./dist&apos;</div><div class="line">    &#125;    </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>编译后，我们发现dist下有bundle.js和0.bundle.js。<br>entry.js 和 a.js被编译到bundle.js。<br>b.js被编译到0.bundle.js。</p>
-<h3 id="关于require-ensure-需要注意的点"><a href="#关于require-ensure-需要注意的点" class="headerlink" title="关于require.ensure()需要注意的点"></a>关于require.ensure()需要注意的点</h3><ul>
-<li>空数组作为参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">require.ensure([], function(require)&#123;</div><div class="line">  require(&apos;./a.js&apos;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>上面的代码，webpack会创建一个模块，并且a.js被分割到这个模块中</p>
-<ul>
-<li><p>依赖作为参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">require.ensure([&apos;./a.js&apos;], function(require)&#123;</div><div class="line">  require(&apos;./b.js&apos;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>上面的代码，a.js,b.js会被编译到一个共同的模块中，并且从entry.js中分割出来。<br>但是只有b.js中的内容被执行，a.js中的内容并不会执行。如果需要执行a.js，那么我们必须通过像这样<code>require(&#39;./a.js&#39;)</code>以同步的方式来引入a.js。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-2/" data-id="cj0wn82qe0008tpo01e0emple" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-6/" data-id="cj167nxsc000eiko0t5tykpi3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -871,7 +2319,7 @@ import {someMethod} from &apos;./tools/utils&apos;
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
     </div>
   </div>
 
@@ -884,23 +2332,23 @@ import {someMethod} from &apos;./tools/utils&apos;
       <ul>
         
           <li>
+            <a href="/2017/04/06/z-index/index/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/05/variable-hoist/">JS中变量提升</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/05/z-index/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/05/z-index/">深入理解z-index</a>
+          </li>
+        
+          <li>
             <a href="/2017/03/30/shell-operation/">shell运算符</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/30/shell-params/">shell传递参数</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/30/shell-variable/">shell变量</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/29/shell-overview/">shell基本知识</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/22/webpack2-7/">webpack2学习篇（七）</a>
           </li>
         
       </ul>
