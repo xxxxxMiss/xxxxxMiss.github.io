@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+      a{
+        text-decoration: none;
+      }
+      #desc > li > a:hover,
+      #pic > div{
+        display: inline-block;
+      }
+      #pic > div:hover{
+        outline: 1px solid #ff8200;
+      }
+      /*#test:hover{
+        outline: 1px solid #ff8200;
+      }*/
+      
+      .box1{
+        position: relative;
+        z-index: 0;
+      }
+      .box1 > img{
+        position: absolute;
+        z-index: 99999;
+      }
+      
+      .box2{
+        position: relative;
+        z-index: 1;
+        margin-left: -20px;
+      }
+      .box2 > img{
+        position: absolute;
+        z-index: -1;
+      }
+      .box1:hover, .box2:hover{
+        outline: 1px solid #ff8200;
+      }
+      
+      
+      .box{
+        background-color: #FF8200;
+      }
+      .box > div{
+        z-index: 1;
+      }
+      
+      .box > div > img{
+        z-index: -1;
+        margin-left: -20px;
+      }
+      
+      #btngroup > button{
+        outline: none;
+        border: none;
+        background-color: #00CC19;
+        color: #FFFFFF;
+        padding: 10px 6px;
+        border-radius: 5px;
+        margin: 5px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+          作者：794465731@qq.com
+          时间：2016-05-08
+          描述：z-index深入理解
+          0，概念
+            1，层叠上下文stacking context
+            2, 层叠等级 stacking level
+            3, 层叠顺序 stacking order
+          1， 定位元素没有发生嵌套遵循
+            1，后来居上
+            2，哪个大，哪个上
+          2， 定位元素有嵌套
+            1，祖先优先原则，前提是z-index是数值，非auto
+          3，规则
+            1，从层叠顺序上讲，z-index=auto可以看成z-index=0，
+              但是从层叠上下文来讲，两者有着本质的区别：z-index=auto不会创建层叠上下文，
+              而z-index=0会创建层叠上下文
+            2,z-index不为auto的定位元素会创建层叠上下文
+            3,z-index层叠顺序的比较终止于父级层叠上下文
+            4,页面根元素天生具有层叠上下文，称之文“根层叠上下文”。
+            5,创建层叠上下文的2中情况
+              1，依赖z-index, 那么根据z-index具体的值来进行层叠
+              2，不依赖z-index, 那么遵循“后来居上”的原则
+        -->
+        <div style="width: 100px; height: 100px;" id="test">xxxx</div>
+        <ul id="desc">
+            <li><a>img</a></li>
+            <li><a>margin-left: -20px</a></li>
+        </ul>
+        <div id="pic">
+            <div id="first"><img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="100px"/></div>
+            <div  style="margin-left: -20px;"><img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="100px"/></div>
+        </div>
+        <br />
+        
+        
+        <div style="background-color: #EDEBEB; position: absolute; left: 150px; width: 150px; height: 150px;">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="150px" style="position: relative; z-index: -1; margin-left: -20px;"/>
+        </div>
+        <br /></br />
+        
+        
+        <div class="box1" style="width: 100px; height: 100px; display: inline-block;">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="100px">
+        </div>
+        <div class="box2" style="width: 100px; height: 100px; display: inline-block;">
+            <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="100px" />
+        </div>
+        <br />
+        <br />
+        
+        
+        <div class="box" id="box">
+            <div id="subbox">
+              <img src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" width="100px" height="100px" id="img"/>
+            </div>
+        </div>
+        <div id="btngroup">
+            <button id="btn1">改变img元素position为relative</button>
+            <button id="btn2">box元素display改为flex</button>
+            <button id="btn3">修改box元素的opacity不等于1</button>
+            <button id="btn4">将box元素旋转一定的角度</button>
+            <button id="btn5">改变box元素的混合模式</button>
+            <button id="btn6">改变box元素的filter</button>
+            <button id="btn7">将box元素设置为isolation</button>
+            <button id="btn8">将box元素设置为fixed</button>
+            <button id="btn8">改变box元素的will-change</button>
+            <button id="btn9">改变box元素的-webkit-overflow-scrolling</button>
+            <button id="btnReset">重置样式</button>
+          </div>
+  </body>
+  <script type="text/javascript">
+    var desc = document.getElementById('desc');
+    var pic = document.getElementById('pic');
+    pic.children[0].onclick = function(){
+      this.style.position = 'relative';
+      console.log(this.style.zIndex);
+    }
+    
+    var btngroup = document.getElementById('btngroup');
+    var domarr = [].slice.call(btngroup.children);
+    var box = document.getElementById('box');
+    var subbox = document.getElementById('subbox');
+    var img = document.getElementById('img');
+    domarr.forEach(function (v, i) {
+      if(i == 0){
+        domarr[0].onclick = toRelative(img);
+      }
+      
+      if(i == 1){
+        domarr[1].onclick = flex(box);
+      }
+      
+      if(i == 2){
+        domarr[2].onclick = opacity(box);
+      }
+      
+      if(i == 3){
+        domarr[3].onclick = rotate(box);
+      }
+      
+      if(i == 4){
+        domarr[4].onclick = changeMixBlendMode(box);
+      }
+      
+      if( i == 5){
+        domarr[5].onclick = filter(box);
+      }
+      
+      if( i == 6){
+        domarr[6].onclick = isolation(box);
+      }
+      
+      if( i == 7){
+        domarr[7].onclick = fixed(box);
+      }
+      
+      if( i == 8){
+        domarr[8].onclick = willChange(box);
+      }
+      
+      if(i == (domarr.length - 1)){
+        domarr[domarr.length -1].onclick = reset(box, subbox, img);
+      }
+    })  
+    
+    function toRelative (el) {
+      return function () {
+        el.style.position = 'relative';
+      }
+    }
+    
+    function flex (el) {
+      return function () {
+        el.style.display = 'flex';
+      }
+    }
+    
+    function opacity (el) {
+      return function () {
+        el.style.opacity = '.8';
+      }
+    }
+    
+    function rotate (el) {
+      return function () {
+        el.style.transform = 'rotate(15deg)';
+      }
+    }
+    
+    function changeMixBlendMode (el) {
+      return function () {
+        el.style.mixBlendMode = 'darken'
+      }
+    }
+    
+    function filter (el) {
+      return function () {
+        el.style.webkitFilter = 'blur(2px)'
+      }
+    }
+    
+    //  隔离，孤立， 分离
+    function isolation (el) {
+      return function () {
+        el.style.webkitIsolation = 'isolation';
+      }
+    }
+    
+    function fixed (el) {
+      return function () {
+        el.style.position = 'fixed';
+      }
+    }
+    
+    function willChange (el) {
+      return function () {
+        el.style.willChange = 'transform';
+      }
+    }
+    
+    function reset (el1, el2, el3) {
+      return function () {
+        el1.setAttribute('style', '');
+        el2.setAttribute('style', '');
+        el3.setAttribute('style', '');
+      }
+    }
+    
+    document.getElementById('test').onmouseenter = function () {
+      
+    }
+  </script>
+  
+</html>
