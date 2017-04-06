@@ -40,7 +40,7 @@
 
 12345678// z-index的值非auto&amp;lt;div">
 <meta property="og:image" content="https://xxxxxmiss.github.io/stacking-level.png">
-<meta property="og:updated_time" content="2017-04-06T10:14:32.000Z">
+<meta property="og:updated_time" content="2017-04-06T10:35:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解z-index">
 <meta name="twitter:description" content="z-index基本规则
@@ -214,12 +214,14 @@
 <li>依赖<code>z-index</code>的层叠上下文元素的层叠顺序取决于<code>z-index</code>的值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.a&#123;</div><div class="line">    position: absolute;</div><div class="line">    z-index: 1;</div><div class="line">    top: 10px;</div><div class="line">    left: 40px;</div><div class="line">&#125;</div><div class="line">.box&#123;</div><div class="line">    display: flex; /*普通元素*/</div><div class="line">    background-color: blue;</div><div class="line">&#125;</div><div class="line">.box &gt; img&#123;</div><div class="line">    z-index: 1;  /*flex项是层叠上下文元素*/</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;img class=&quot;a&quot; class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;</div><div class="line">&lt;div class=&quot;box&quot;&gt;</div><div class="line">    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
+<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="external">Welcome to Island Marketing</a></cite></footer></blockquote>
 <p><a href="demo.html">例子预览</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj168x78f000gldo07gt9dvss" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj169owv2000gm2o018t1v07g" class="article-share-link">Share</a>
       
       
     </footer>
