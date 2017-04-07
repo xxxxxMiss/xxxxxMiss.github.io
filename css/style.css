@@ -392,19 +392,17 @@ body {
   color: #ff8200;
   text-decoration: none;
   text-shadow: 0 1px rgba(0,0,0,0.2);
-  -webkit-transition: -webkit-transform 0.2s;
-  -moz-transition: -moz-transform 0.2s;
-  -ms-transition: -ms-transform 0.2s;
-  transition: transform 0.2s;
+  opacity: 0.8;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  transition: opacity 0.2s;
   display: block;
   padding: 20px 15px;
 }
 .nav-icon:hover,
 .main-nav-link:hover {
-  -webkit-transform: scale(2);
-  -moz-transform: scale(2);
-  -ms-transform: scale(2);
-  transform: scale(2);
+  opacity: 1;
 }
 .nav-icon {
   font-family: FontAwesome;
