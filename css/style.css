@@ -1286,30 +1286,32 @@ pre .javascript .function {
     color: #fff;
   }
 }
+.toc-article {
+  background: #eee;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  margin: 1.5em 0 0.3em 1.5em;
+  padding: 1.2em 1em 0 1em;
+  max-width: 28%;
+}
+.toc-title {
+  font-size: 120%;
+}
 #toc {
+  line-height: 1em;
+  font-size: 0.9em;
   float: right;
-  font-size: 0.8em;
-  color: #258fb8;
-  margin: 5px;
-  position: relative;
-  left: 50px;
 }
-#toc .toc {
-  background-color: #eee;
-  list-style: none;
-  padding: 10px;
+.toc {
+  padding: 0;
+  margin: 1em;
+  line-height: 1.8em;
 }
-#toc .toc-item,
-#toc .toc-link {
-  list-style: none;
+li {
+  list-style-type: none;
 }
-#toc ol {
-  margin: 0;
-}
-@media screen and (max-width: 640px) {
-  #toc {
-    display: none;
-  }
+.toc-child {
+  margin-left: 1em;
 }
 @media screen and (min-width: 768px) {
   #sidebar {
