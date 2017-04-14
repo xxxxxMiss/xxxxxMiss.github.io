@@ -66,6 +66,196 @@
         <section id="main">
   
     <!-- id="post-variable-hoist" -->
+<article id="post-sails" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/15/sails/" class="article-date">
+  <time datetime="2017-04-14T16:42:53.000Z" itemprop="datePublished">2017-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/15/sails/">sails</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="sails-v0-12-目录结构"><a href="#sails-v0-12-目录结构" class="headerlink" title="sails(v0.12) 目录结构"></a>sails(v0.12) 目录结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">├── Gruntfile.js</div><div class="line">├── README.md</div><div class="line">├── api // 核心</div><div class="line">│   ├── controllers // 充当model和view的桥梁</div><div class="line">│   ├── models</div><div class="line">│   ├── policies</div><div class="line">│   ├── responses</div><div class="line">│   └── services</div><div class="line">├── app.js</div><div class="line">├── assets</div><div class="line">│   ├── favicon.ico</div><div class="line">│   ├── images</div><div class="line">│   ├── js</div><div class="line">│   ├── robots.txt</div><div class="line">│   ├── styles</div><div class="line">│   └── templates</div><div class="line">├── config</div><div class="line">│   ├── blueprints.js</div><div class="line">│   ├── bootstrap.js</div><div class="line">│   ├── connections.js</div><div class="line">│   ├── cors.js</div><div class="line">│   ├── csrf.js</div><div class="line">│   ├── env</div><div class="line">│   ├── globals.js</div><div class="line">│   ├── http.js</div><div class="line">│   ├── i18n.js</div><div class="line">│   ├── local.js</div><div class="line">│   ├── locales</div><div class="line">│   ├── log.js</div><div class="line">│   ├── models.js</div><div class="line">│   ├── policies.js</div><div class="line">│   ├── routes.js</div><div class="line">│   ├── session.js</div><div class="line">│   ├── sockets.js</div><div class="line">│   └── views.js</div><div class="line">├── config.yaml</div><div class="line">├── package.json</div><div class="line">├── tasks // 不启用grunt,可以直接删除tasks文件夹</div><div class="line">│   ├── README.md</div><div class="line">│   ├── config</div><div class="line">│   ├── pipeline.js</div><div class="line">│   └── register</div><div class="line">└── views // 不需要服务端渲染,可以直接删除views文件夹</div><div class="line">    ├── 403.ejs</div><div class="line">    ├── 404.ejs</div><div class="line">    ├── 500.ejs</div><div class="line">    ├── homepage.ejs</div><div class="line">    └── layout.ejs</div></pre></td></tr></table></figure>
+<h2 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h2><blockquote>
+<p>由一系列被称为<code>action</code>的方法构成,<code>action</code>和<code>routes</code>绑定在一起，所以当请求某一个路由时，触发对应的对应的路由方法，并返回一个响应(这里的响应主要指路由的分发)</p>
+</blockquote>
+<h3 id="controller的定义"><a href="#controller的定义" class="headerlink" title="controller的定义"></a>controller的定义</h3><blockquote>
+<p>在<code>sails</code>中<code>controller</code>定义在<code>controller</code>文件夹下，按照约定，全部采用<a href="http://baike.baidu.com/link?url=kjvNUyU140pHXUqZO4h4_tnPfpr6OudXYBe4ArkaZEEjggrCIOY0w-XrNStkdgcPJjlWo-v2kIPvZRQ4y_T2r_RceI9rx_8jZaaQwqXs2iW" target="_blank" rel="external">pascal-case</a>写法（及每个单词的首字母都是大写），并且必须必须以<code>Controller.js</code>结尾。</p>
+<ul>
+<li>NOTE: 可以将<code>controller</code>分文件夹定义，那么此时子文件夹也会成为路由标示的一部分。</li>
+</ul>
+</blockquote>
+<h3 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h3><p><code>SayController.js</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 一个controller就是一个纯对象，对象的属性为action的名字，值为对应的action的处理函数</div><div class="line">module.exports = &#123;</div><div class="line">    // req, res跟express中的一样，不过没有第三个参数next</div><div class="line">    // 如果有next的需求，那么应该见该逻辑写到policies中</div><div class="line">    hi: function (req, res) &#123;</div><div class="line">      return res.send(&apos;Hi there!&apos;);</div><div class="line">    &#125;,</div><div class="line">    bye: function (req, res) &#123;</div><div class="line">      return res.redirect(&apos;http://www.sayonara.com&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="隐式路由（sails自动绑定）"><a href="#隐式路由（sails自动绑定）" class="headerlink" title="隐式路由（sails自动绑定）"></a>隐式路由（sails自动绑定）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/:controllerIdentity/:nameOfAction</div><div class="line">/controller标识符/action的名字</div></pre></td></tr></table></figure>
+<blockquote>
+<p>拿上面的<code>SayController.js</code>来说，那么当程序启动时，就会自动绑定到这样的路由<code>/say/hi</code>, <code>/say/bye</code>。<br>如果上面的<code>controller</code>在一个子文件夹中<code>/we</code>中，那么就会绑定到这样的路由<code>/we/say/hi</code>, <code>/we/say/bye</code></p>
+</blockquote>
+<h3 id="显式路由（自定义路由）"><a href="#显式路由（自定义路由）" class="headerlink" title="显式路由（自定义路由）"></a>显式路由（自定义路由）</h3><blockquote>
+<p>手动绑定路由，可以在<code>config/routes.js</code>中按照如下规则进行路由的配置:<br>http请求方法（POST,GET等）+ 路由地址 : <code>controller</code>的名字+<code>.</code>+<code>action</code>的名字</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&apos;POST /make/a/sandwith&apos;: &apos;SandwichController.makeIt&apos;</div><div class="line"></div><div class="line">// 当controller在子文件夹中定义时，子文件夹是controller的一部分</div><div class="line">&apos;/do/homework&apos;: &apos;stuff/things/HomeworkController.do&apos;</div></pre></td></tr></table></figure>
+<h3 id="显式路由常见定义方式"><a href="#显式路由常见定义方式" class="headerlink" title="显式路由常见定义方式"></a>显式路由常见定义方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports.routes = &#123;</div><div class="line">  &apos;get /signup&apos;: &#123; view: &apos;conversion/signup&apos; &#125;,</div><div class="line">  &apos;post /signup&apos;: &apos;AuthController.processSignup&apos;,</div><div class="line">  &apos;get /login&apos;: &#123; view: &apos;portal/login&apos; &#125;,</div><div class="line">  &apos;post /login&apos;: &apos;AuthController.processLogin&apos;,</div><div class="line">  &apos;/logout&apos;: &apos;AuthController.logout&apos;,</div><div class="line">  &apos;get /me&apos;: &apos;UserController.profile&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="自定义响应和responses文件夹"><a href="#自定义响应和responses文件夹" class="headerlink" title="自定义响应和responses文件夹"></a>自定义响应和<code>responses</code>文件夹</h2><blockquote>
+<p>一般情况下，<code>controller</code>中的响应都会定义在<code>responses</code>文件夹中.<br>任何定义在<code>/api/responses</code>中的<code>.js</code>中的脚本都是通过<code>res.[responsesName]</code>这种形式在<code>controller</code>中调用的。<br>在<code>responses</code>函数中，可以使用<code>this.req</code>, <code>this.res</code>来获取<code>Request</code>和<code>Response</code>对象。 </p>
+</blockquote>
+<h2 id="数据库适配器Adapters"><a href="#数据库适配器Adapters" class="headerlink" title="数据库适配器Adapters"></a>数据库适配器Adapters</h2><blockquote>
+<p>指”数据库适配器“（可以连接不同的数据库），主要用来和数据库之间的通信。<br>在<code>adapter</code>中，我们主要关注的是<code>CRUD</code>操作。<br>在<code>sails</code>中，主要指这个几个方法<code>create()</code>, <code>find()</code>, <code>update()</code>, <code>destroy()</code></p>
+</blockquote>
+<h3 id="可选的Adapter"><a href="#可选的Adapter" class="headerlink" title="可选的Adapter"></a>可选的Adapter</h3><ul>
+<li>官方支持的数据库器</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>数据库名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sails-disk</td>
+<td>sails默认捆绑的，不需要做任何的配置。直接将数据写入磁盘，不适合用在生成环境，一般用在开发环境或者一些小的项目中</td>
+</tr>
+<tr>
+<td>sails-memory</td>
+<td>将数据写入内存中，不会正在的持久化，所以一般适合用在开发环境或者磁盘空间不足的时候</td>
+</tr>
+<tr>
+<td>sails-mysql</td>
+<td>链接mysql（关系型数据库）</td>
+</tr>
+<tr>
+<td>sails-postgres</td>
+<td>链接postgres(关系型数据库)</td>
+</tr>
+<tr>
+<td>sails-mongo</td>
+<td>链接mongo(非关系型数据库)</td>
+</tr>
+<tr>
+<td>sails-redis</td>
+<td>链接redis</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>社区支持的数据库</li>
+</ul>
+<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><blockquote>
+<p>全局变量可以在<code>sails</code><strong>加载完毕之后</strong>全局访问，这些全局变量都可以在<code>config/globals.js</code>中禁用。</p>
+<ul>
+<li>models(文件名作为全局变量名)</li>
+<li>services(文件名作为全局变量名)</li>
+<li>sails</li>
+<li>_(Lodash实例，默认提供，无需安装)</li>
+<li>async(Async实例，默认提供，无需安装)</li>
+</ul>
+</blockquote>
+<p>NOTE: 必须等到<code>sails</code>加载完成之后，才可以访问这些全局变量。也就是说，不能再导出的函数外部使用（此时<code>sails</code>尚未加载完毕）,必须导出的函数内部使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 禁用所有</div><div class="line">module.exports.globals = false</div><div class="line"></div><div class="line">module.exports.globals = &#123;</div><div class="line">    _: false, // 禁用具体的</div><div class="line">    async: true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="日志（Logging）"><a href="#日志（Logging）" class="headerlink" title="日志（Logging）"></a>日志（Logging）</h2><blockquote>
+<p><code>sails</code>内建一个日志输出，可以在<code>/config/logs.js</code>中配置日志输出等级。<br>详情参看<a href="http://sailsjs.com/documentation/concepts/logging" target="_blank" rel="external">sails内建日志</a></p>
+</blockquote>
+<h2 id="原则（Policies）"><a href="#原则（Policies）" class="headerlink" title="原则（Policies）"></a>原则（Policies）</h2><blockquote>
+<p>该文件夹中定义的脚本主要用来处理一些<code>权限认证</code>，<code>第三方单点登录</code>等具有一些通用逻辑，有点类似于<code>spring</code>中的<code>AOP</code>。<br><code>policies</code>只应该在<code>controller</code>的<code>actions</code>中使用，不应该在<code>views</code>中使用。如果是在<code>config/routes.js</code>中直接定义的视图，那么就无法使用<code>policies</code>了。如果想要继续使用使用<code>policies</code>,因该使用<code>controller</code>+<code>.</code>+<code>action</code>的方式。<br>如下:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// routes.js</div><div class="line"></div><div class="line">module.exports.routes = &#123;</div><div class="line">    // 这种形式无法使用policies</div><div class="line">    &apos;/&apos;: &apos;homepage&apos;, </div><div class="line"></div><div class="line">    // 可以这种方式</div><div class="line">    &apos;POST /article/comment&apos;: &apos;ArticleController.comment&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Policies的定义"><a href="#Policies的定义" class="headerlink" title="Policies的定义"></a>Policies的定义</h3><blockquote>
+<p>定义在<code>api/policies</code>目录下，每个<code>policy</code>应该对应一个文件，只处理一件事情，导出为单一的函数。<br>事实上，每个<code>policies</code>都是作为<code>Connect/Express</code>中间件的函数，在<code>controller</code>之前执行。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 只处理一件事情，导出为单一函数</div><div class="line">module.exports = function canWrite(req, res, next)&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="api-policies和config-policies-js的关系"><a href="#api-policies和config-policies-js的关系" class="headerlink" title="api/policies和config/policies.js的关系"></a><code>api/policies</code>和<code>config/policies.js</code>的关系</h3><blockquote>
+<p>在<code>config/policies.js</code>中配置<code>controller</code>和<code>policies</code>之间的映射关系。就是说哪些<code>controller</code>使用哪些<code>policies</code>来做权限控制。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports.policies = &#123;</div><div class="line">    CommentController: &#123; // controller名称</div><div class="line">        &quot;*&quot;: &apos;isLoggedIn&apos;, // 对controller中所有的action生效</div><div class="line">        create: &apos;isLoggedIn&apos;,  // key: action名称， value: policies</div><div class="line">        tag: [&apos;isLoggedIn&apos;, &apos;isAdmin&apos;]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports.policies = &#123;</div><div class="line">    &quot;*&quot;: &apos;isLoggedIn&apos;, // 映射到所有的controller中的actions</div><div class="line">    CommentController: &#123;</div><div class="line">        // 如果某一个action显式的声明了policy, 那么全局的`isLoggedIn`不会映射到该action上</div><div class="line">        create: &apos;isAdmin&apos; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Services"><a href="#Services" class="headerlink" title="Services"></a>Services</h2><blockquote>
+<p>一个导出各种函数的纯对象，对象中的每个对象被称为<code>helper</code>。<br>因为是全局的，所以可以在各个地方使用：<code>controller</code>的<code>actions</code>, 其他的<code>services</code>, 自定义的<code>model</code>方法中，甚至在命令行脚本中。</p>
+</blockquote>
+<h3 id="Service的创建"><a href="#Service的创建" class="headerlink" title="Service的创建"></a>Service的创建</h3><blockquote>
+<p>在<code>api/services</code>文件夹中创建，文件名必须以<code>Service.js</code>结尾。</p>
+</blockquote>
+<h3 id="Service函数参数说明"><a href="#Service函数参数说明" class="headerlink" title="Service函数参数说明"></a>Service函数参数说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var Mailgun = require(&apos;machinepack-mailgun&apos;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  sendWelcomeEmail: function (options, done) &#123;</div><div class="line">    Mailgun.sendHtmlEmail(&#123;</div><div class="line">      toEmail: options.emailAddress,</div><div class="line">      toName: options.firstName</div><div class="line">    &#125;).exec(function (err) &#123;</div><div class="line">      if (err) &#123; return done(err); &#125;</div><div class="line">      return done();</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>sendWelcomeEmail</code>方法中<code>option</code>,<code>done</code>参数说明：</p>
+<ul>
+<li>option: 一个自定义属性的对象。</li>
+<li>done: 一个函数。这个一个可选的参数，当<code>helper</code>为一个异步方法时，那么当<code>helper</code>被调用时，必须传入<code>done</code>回调函数作为第二个参数。</li>
+<li>按照nodejs的约定，<code>done</code>中第一个参数为一个<code>error</code>对象，第二个参数为需要的数据结果。</li>
+</ul>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>在<code>sails</code>中，session主要由一下3部分要素组成：</p>
+<ul>
+<li><code>session store</code>: 保存信息</li>
+<li>管理<code>session</code>的中间件</li>
+<li>每次请求都会携带<code>cookie</code>,并且<code>session id</code>（默认的<code>sails.sid</code>）都会被存储到<code>cookie</code>中<blockquote>
+<p><code>session store</code>既可以是内存（<code>sails</code>中默认使用内存存储）,也可以是数据库。<code>sails</code>在<code>Connect</code>中间件的最顶层管理<code>session</code>，包括将<code>session id</code>保存到<code>cookie</code>中。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h2><p><code>views</code>的使用,一般有2种方法：</p>
+<ul>
+<li>res.view(), 由于可以在各个都可以使用<code>res</code>对象，所以可以用这种方式方式将<code>view</code>编译成功<code>html</code>返回给客户端</li>
+<li>在<code>/config/routes.js</code>中对路由进行配置</li>
+</ul>
+<h3 id="locals"><a href="#locals" class="headerlink" title="locals"></a>locals</h3><blockquote>
+<p>在模板引擎中使用的变量称为<code>locals</code>, <code>sails</code>默认传入一些变量作为<code>locals</code>,比如<code>lodash</code>。如果某些数据是通过硬编码的方式填充到模板中，那么可以在<code>config/routes.js</code>中配置：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">module.exports.routes = &#123;</div><div class="line">    &apos;get /profile&apos;: &#123;</div><div class="line">        view: &apos;backOffice/profile&apos;,</div><div class="line">        locals: &#123; // 硬编码的数据，可以直接通过locals配置</div><div class="line">          user: &#123;</div><div class="line">            name: &apos;Frank&apos;,</div><div class="line">            emailAddress: &apos;frank@enfurter.com&apos;</div><div class="line">          &#125;,</div><div class="line">          corndogs: [</div><div class="line">            &#123; name: &apos;beef corndog&apos; &#125;,</div><div class="line">            &#123; name: &apos;chicken corndog&apos; &#125;,</div><div class="line">            &#123; name: &apos;soy corndog&apos; &#125;</div><div class="line">          ]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="在模板中使用动态数据"><a href="#在模板中使用动态数据" class="headerlink" title="在模板中使用动态数据"></a>在模板中使用动态数据</h3><blockquote>
+<p>大多数时候，数据都是动态获取到的（通过action从model中获取），所以大多时候是按照如下方式进行渲染数据的：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// in api/controllers/UserController.js...</div><div class="line"></div><div class="line">  profile: function (req, res) &#123;</div><div class="line">    // ...</div><div class="line">    return res.view(&apos;backOffice/profile&apos;, &#123;</div><div class="line">      user: theUser,</div><div class="line">      corndogs: theUser.corndogCollection</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  // ...</div></pre></td></tr></table></figure>
+<h3 id="Partials-模板包含"><a href="#Partials-模板包含" class="headerlink" title="Partials(模板包含)"></a>Partials(模板包含)</h3><blockquote>
+<p>支持模板包含，及在一些模板中，将另外一些模板包含进来，达到模板的复用。在<code>sails</code>中使用模板包含，需要注意的就是路径都是相对于<code>view</code>文件夹的。如</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// views/partials/widget.ejs</div><div class="line"></div><div class="line">// views/pages/dashboard/user-profile.ejs</div><div class="line">&lt;%- partial(&apos;../../partials/widget.ejs&apos;) %&gt;</div></pre></td></tr></table></figure>
+<h2 id="关于EJS模板"><a href="#关于EJS模板" class="headerlink" title="关于EJS模板"></a>关于<code>EJS</code>模板</h2><blockquote>
+<p>在<code>ejs</code>中，模板的标签就以下3种：</p>
+<ul>
+<li><code>&lt;%= %&gt;</code>: 转义输出</li>
+<li><code>&lt;%- %&gt;</code>: 不转义输出</li>
+<li><code>&lt;% %&gt;</code>: 里面直接写js代码</li>
+</ul>
+</blockquote>
+<h2 id="models文件夹"><a href="#models文件夹" class="headerlink" title="models文件夹"></a>models文件夹</h2><blockquote>
+<p>全局访问</p>
+</blockquote>
+<h2 id="services文件夹"><a href="#services文件夹" class="headerlink" title="services文件夹"></a>services文件夹</h2><blockquote>
+<p>全局访问</p>
+</blockquote>
+<h2 id="responses文件夹"><a href="#responses文件夹" class="headerlink" title="responses文件夹"></a>responses文件夹</h2><blockquote>
+<p>里面的方法都会挂载到<code>controller</code>的<code>req</code>对象上</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj1i2d84w000817o08le1j2as" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sails/">sails</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
 <article id="post-variable-hoist" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/05/variable-hoist/" class="article-date">
@@ -171,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj1ad50sk000ejoo0q9gpp0af" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj1i2d85e000l17o0ufycwuyw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -294,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj1ad50t0000rjoo066j0fs1c" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj1i2d85u000y17o0udccj4oo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -439,7 +629,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj1ad50s60005joo0lii8l5dk" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj1i2d84x000a17o0qqv7coji" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -523,7 +713,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj1ad50sb0007joo0cuc8lj7f" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj1i2d857000h17o02ypgzbyd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -588,7 +778,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj1ad50sh000ajoo0yqqyvj3i" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj1i2d856000f17o0cyn8n2rl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -650,7 +840,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj1ad50s80006joo0vhf880p9" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj1i2d853000c17o0urg72ne1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -748,7 +938,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/" data-id="cj1ad50sy000pjoo0elby7dkk" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/" data-id="cj1i2d85r000w17o005qh5xbx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -837,7 +1027,7 @@ import {someMethod} from &apos;./tools/utils&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-6/" data-id="cj1ad50sw000njoo0oq5cw1ak" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-6/" data-id="cj1i2d85m000s17o011mvtpl7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -888,102 +1078,7 @@ import {someMethod} from &apos;./tools/utils&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/" data-id="cj1ad50su000ljoo0gucted74" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-webpack2-4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/webpack2-4/" class="article-date">
-  <time datetime="2017-03-22T02:59:12.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/webpack2-4/">webpack2学习篇（四）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <blockquote>
-<p>本章节主要介绍output常用配置项</p>
-</blockquote>
-<h3 id="output-filename"><a href="#output-filename" class="headerlink" title="output.filename"></a>output.filename</h3><p><code>string</code></p>
-<blockquote>
-<p>用来指定编译生成的模块的名称。</p>
-</blockquote>
-<p><strong><em>虽然官方文档说该选项的默认值是<code>[name].js</code>, 但是经过我的测试，该熟悉必须指定。如果没有指定，在编译的时候控制台会输出<code>Config did not export an object</code>。官方文档可能没及时更新</em></strong></p>
-<ul>
-<li>单入口的时候，我们可以静态的指定一个输出模块名称</li>
-</ul>
-<p><code>filename: bundle.js</code></p>
-<ul>
-<li>多入口的时候，可以通过下面的形式来指定输出模块名称</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 使用entry中指定的key</div><div class="line">filename: &apos;[name].bundle.js&apos;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 使用内部生成的id</div><div class="line">filename: &apos;[id].bundle.js&apos;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 使用每次编译自动生成的hash值</div><div class="line">filename: &apos;[name].[hash].bundle.js&apos;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 使用基于模块内容生成的chunkhash</div><div class="line">filename: &apos;[chunkhash].bundle.js&apos;</div></pre></td></tr></table></figure>
-<p><strong><em>虽然该选项叫<code>filename</code>, 但是可以指定一个输出目录, 就像这样的<code>js/[name]/bundle.js</code></em></strong></p>
-<h3 id="output-chunkFilename"><a href="#output-chunkFilename" class="headerlink" title="output.chunkFilename"></a>output.chunkFilename</h3><p><code>string</code></p>
-<blockquote>
-<p>这个选项主要用来指定动态加载生成的模块名称。</p>
-</blockquote>
-<p>我们已经知道，在<code>require.ensure(dependencies, callback, chunkName)</code>中可以指定一个<code>chunkName</code>参数</p>
-<ul>
-<li>如果指定了这个参数，那么在<code>output</code>中就可以这样来取得<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;[chunkhash].[name].js&apos;,</div><div class="line">      chunkFilename: &apos;[chunkhash].[name].js&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>上面<code>[name]</code>占位符就是你在<code>require.ensure(dependencies, callback, chunkName)</code>中指定的那个chunkName。</p>
-<ul>
-<li>如果在<code>require.ensure(dependencies, callback, chunkName)</code>中省略了这个<code>chunkName</code>参数，那么统一使用<code>output.chunkFilename</code>中指定的名称</li>
-<li>如果output中也没有指定<code>chunkFilename</code>选项，那么会使用<code>output.filename</code>中除了<code>[name]</code>占位符以外的占位符+<code>[id]</code>占位符作为模块名。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.export = function()&#123;</div><div class="line">  return &#123;</div><div class="line">    output: &#123;</div><div class="line">      filename: &apos;[chunkhash].[name].js&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>如上output配置，那么此时动态分割出来的模块名就是<code>[chunkhash].[id].js</code>。</p>
-<h3 id="output-path"><a href="#output-path" class="headerlink" title="output.path"></a>output.path</h3><blockquote>
-<p>指定编译后的模块输出目录, 既可以是相对路径，也可以是绝对路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 相对路径</div><div class="line">path: &apos;./dist&apos;</div><div class="line"></div><div class="line">// 绝对路径</div><div class="line">path: path.resolve(__dirname, &apos;dist/assets&apos;)</div></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="output-pathinfo"><a href="#output-pathinfo" class="headerlink" title="output.pathinfo"></a>output.pathinfo</h3><p>boolean</p>
-<blockquote>
-<p>Default: false<br>在编译的代码中创建一些注释信息，在开发中，当你想阅读编译后的源代码，这就显得非常的有用。<br><strong>在生产环境中不要开启该选项</strong>。</p>
-</blockquote>
-<h3 id="output-publicPath"><a href="#output-publicPath" class="headerlink" title="output.publicPath"></a>output.publicPath</h3><p>string</p>
-<blockquote>
-<p>Default: “”<br>这是一个非常重要的选项，主要用在动态加载，加载外部资源，比如加载外部资源（图片,css,js），如果指定了一个错误的值，那么将会得到404的错误。</p>
-</blockquote>
-<h3 id="output-sourceMapFilename"><a href="#output-sourceMapFilename" class="headerlink" title="output.sourceMapFilename"></a>output.sourceMapFilename</h3><p>string</p>
-<blockquote>
-<p>Default: ‘[file].map’<br>只有指定了<a href="https://webpack.js.org/configuration/devtool/" target="_blank" rel="external">devtool</a>选项，该选项才会生效。用来指定生成的sourcemap文件的名称。<br>当为一个模块生成sourcemap时，可以指定以下占位符<code>[name]</code>, <code>[id]</code>,  <code>[hash]</code>, <code>[chunkhash]</code>, <code>[file]</code>。一般情况下使用默认值即可，不需要显式地配置，因为用其他的值，当模块不存在时，就出问题了。</p>
-</blockquote>
-<h3 id="output-sourcePrefix"><a href="#output-sourcePrefix" class="headerlink" title="output.sourcePrefix"></a>output.sourcePrefix</h3><p>string<br><code>sourcePrefix: &quot;\t&quot;</code></p>
-<blockquote>
-<p>指定生成的sourcemap文件每一行开头的前缀。默认情况下使用空字符串，使用该选项的作用仅仅是使sourcemap中的代码看起来要美观一些。不要使用多行前缀，否则引起问题。<br>一般情况下完全没有必要显式的配置该选项。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-4/" data-id="cj1ad50so000hjoo0c44clhrm" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/" data-id="cj1i2d85p000t17o0qydif86p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -1011,7 +1106,7 @@ import {someMethod} from &apos;./tools/utils&apos;
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">7</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -1021,7 +1116,7 @@ import {someMethod} from &apos;./tools/utils&apos;
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 10px; color: #ff8200">css</a> <a href="/tags/js/" style="font-size: 10px; color: #ff8200">js</a> <a href="/tags/nodejs/" style="font-size: 13.33px; color: #aa574f">nodejs</a> <a href="/tags/shell/" style="font-size: 16.67px; color: #552b9f">shell</a> <a href="/tags/tools/" style="font-size: 20px; color: #00e">tools</a>
+      <a href="/tags/css/" style="font-size: 10px; color: #ff8200">css</a> <a href="/tags/js/" style="font-size: 10px; color: #ff8200">js</a> <a href="/tags/nodejs/" style="font-size: 13.33px; color: #aa574f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 16.67px; color: #552b9f">shell</a> <a href="/tags/tools/" style="font-size: 20px; color: #00e">tools</a>
     </div>
   </div>
 
@@ -1030,7 +1125,7 @@ import {someMethod} from &apos;./tools/utils&apos;
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -1041,6 +1136,10 @@ import {someMethod} from &apos;./tools/utils&apos;
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/04/15/sails/">sails</a>
+          </li>
         
           <li>
             <a href="/2017/04/05/variable-hoist/">JS中变量提升</a>
@@ -1056,10 +1155,6 @@ import {someMethod} from &apos;./tools/utils&apos;
         
           <li>
             <a href="/2017/03/30/shell-params/">shell传递参数</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/30/shell-variable/">shell变量</a>
           </li>
         
       </ul>
