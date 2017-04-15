@@ -110,10 +110,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&apos;POST /make/a/sandwith&apos;: &apos;SandwichController.makeIt&apos;</div><div class="line"></div><div class="line">// 当controller在子文件夹中定义时，子文件夹是controller的一部分</div><div class="line">&apos;/do/homework&apos;: &apos;stuff/things/HomeworkController.do&apos;</div></pre></td></tr></table></figure>
 <h3 id="显式路由常见定义方式"><a href="#显式路由常见定义方式" class="headerlink" title="显式路由常见定义方式"></a>显式路由常见定义方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports.routes = &#123;</div><div class="line">  &apos;get /signup&apos;: &#123; view: &apos;conversion/signup&apos; &#125;,</div><div class="line">  &apos;post /signup&apos;: &apos;AuthController.processSignup&apos;,</div><div class="line">  &apos;get /login&apos;: &#123; view: &apos;portal/login&apos; &#125;,</div><div class="line">  &apos;post /login&apos;: &apos;AuthController.processLogin&apos;,</div><div class="line">  &apos;/logout&apos;: &apos;AuthController.logout&apos;,</div><div class="line">  &apos;get /me&apos;: &apos;UserController.profile&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="自定义响应和responses文件夹"><a href="#自定义响应和responses文件夹" class="headerlink" title="自定义响应和responses文件夹"></a>自定义响应和<code>responses</code>文件夹</h2><blockquote>
-<p>一般情况下，<code>controller</code>中的响应都会定义在<code>responses</code>文件夹中.<br>任何定义在<code>/api/responses</code>中的<code>.js</code>中的脚本都是通过<code>res.[responsesName]</code>这种形式在<code>controller</code>中调用的。<br>在<code>responses</code>函数中，可以使用<code>this.req</code>, <code>this.res</code>来获取<code>Request</code>和<code>Response</code>对象。 </p>
+<p>一般情况下，<code>controller</code>中的响应都会定义在<code>responses</code>文件夹中.<br>任何定义在<code>/api/responses.js</code>中方法都是通过<code>res.[responsesName]</code>这种形式在<code>controller</code>中调用的。<br>在<code>responses</code>函数中，可以使用<code>this.req</code>, <code>this.res</code>来获取<code>Request</code>和<code>Response</code>对象。 </p>
 </blockquote>
 <h2 id="数据库适配器Adapters"><a href="#数据库适配器Adapters" class="headerlink" title="数据库适配器Adapters"></a>数据库适配器Adapters</h2><blockquote>
-<p>指”数据库适配器“（可以连接不同的数据库），主要用来和数据库之间的通信。<br>在<code>adapter</code>中，我们主要关注的是<code>CRUD</code>操作。<br>在<code>sails</code>中，主要指这个几个方法<code>create()</code>, <code>find()</code>, <code>update()</code>, <code>destroy()</code></p>
+<p>可以连接不同的数据库，主要用来和数据库之间的通信。<br>在<code>adapter</code>中，我们主要关注的是<code>CRUD</code>操作。<br>在<code>sails</code>中，主要指这个几个方法<code>create()</code>, <code>find()</code>, <code>update()</code>, <code>destroy()</code></p>
 </blockquote>
 <h3 id="可选的Adapter"><a href="#可选的Adapter" class="headerlink" title="可选的Adapter"></a>可选的Adapter</h3><ul>
 <li>官方支持的数据库器</li>
@@ -184,7 +184,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports.policies = &#123;</div><div class="line">    CommentController: &#123; // controller名称</div><div class="line">        &quot;*&quot;: &apos;isLoggedIn&apos;, // 对controller中所有的action生效</div><div class="line">        create: &apos;isLoggedIn&apos;,  // key: action名称， value: policies</div><div class="line">        tag: [&apos;isLoggedIn&apos;, &apos;isAdmin&apos;]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports.policies = &#123;</div><div class="line">    &quot;*&quot;: &apos;isLoggedIn&apos;, // 映射到所有的controller中的actions</div><div class="line">    CommentController: &#123;</div><div class="line">        // 如果某一个action显式的声明了policy, 那么全局的`isLoggedIn`不会映射到该action上</div><div class="line">        create: &apos;isAdmin&apos; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Services"><a href="#Services" class="headerlink" title="Services"></a>Services</h2><blockquote>
-<p>一个导出各种函数的纯对象，对象中的每个对象被称为<code>helper</code>。<br>因为是全局的，所以可以在各个地方使用：<code>controller</code>的<code>actions</code>, 其他的<code>services</code>, 自定义的<code>model</code>方法中，甚至在命令行脚本中。</p>
+<p>一个导出各种函数的纯对象，对象中的每个方法被称为<code>helper</code>。<br>因为是全局的，所以可以在各个地方使用：<code>controller</code>的<code>actions</code>, 其他的<code>services</code>, 自定义的<code>model</code>方法中，甚至在命令行脚本中。</p>
 </blockquote>
 <h3 id="Service的创建"><a href="#Service的创建" class="headerlink" title="Service的创建"></a>Service的创建</h3><blockquote>
 <p>在<code>api/services</code>文件夹中创建，文件名必须以<code>Service.js</code>结尾。</p>
@@ -243,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj1i2d84w000817o08le1j2as" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj1inm0sr0003u6o0t1wi4ajh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sails/">sails</a></li></ul>
@@ -361,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj1i2d85e000l17o0ufycwuyw" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj1inm0tc000cu6o0zmcxkl1t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -484,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj1i2d85u000y17o0udccj4oo" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj1inm0ub000ru6o0atquwrcr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -629,7 +629,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj1i2d84x000a17o0qqv7coji" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj1inm0st0004u6o0dpgzckcq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -713,7 +713,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj1i2d857000h17o02ypgzbyd" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj1inm0sy0005u6o0fx6s4u9l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -778,7 +778,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj1i2d856000f17o0cyn8n2rl" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj1inm0t50009u6o0csxce7ag" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -840,7 +840,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj1i2d853000c17o0urg72ne1" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj1inm0t30008u6o00i8zzvjk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -938,7 +938,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/" data-id="cj1i2d85r000w17o005qh5xbx" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/" data-id="cj1inm0u1000pu6o0ougkhk18" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -1027,7 +1027,7 @@ import {someMethod} from &apos;./tools/utils&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-6/" data-id="cj1i2d85m000s17o011mvtpl7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-6/" data-id="cj1inm0tz000nu6o0evqxnyck" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -1078,7 +1078,7 @@ import {someMethod} from &apos;./tools/utils&apos;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/" data-id="cj1i2d85p000t17o0qydif86p" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/" data-id="cj1inm0tv000ku6o04k1c385b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
