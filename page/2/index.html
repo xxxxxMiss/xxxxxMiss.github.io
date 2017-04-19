@@ -66,6 +66,244 @@
         <section id="main">
   
     <!-- id="post-variable-hoist" -->
+<article id="post-webpack2-7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-7/" class="article-date">
+  <time datetime="2017-03-22T03:00:47.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/webpack2-7/">webpack2学习篇（七）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="devServer"><a href="#devServer" class="headerlink" title="devServer"></a>devServer</h3><blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// webpack.server.js</div><div class="line"></div><div class="line">var config = require(&apos;./webpack.config&apos;)</div><div class="line">var webpack = require(&apos;webpack&apos;)</div><div class="line">var WebpackDevServer = require(&apos;webpack-dev-server&apos;)</div><div class="line">var compiler = webpack(config)</div><div class="line"></div><div class="line">var server = new WebpackDevServer(compiler, devServer)</div></pre></td></tr></table></figure>
+<h4 id="devServer-clientLogLevel"><a href="#devServer-clientLogLevel" class="headerlink" title="devServer.clientLogLevel"></a>devServer.clientLogLevel</h4><p>string</p>
+<blockquote>
+<p>Default: info,可选值有<code>none</code>, <code>error</code>, <code>warning</code>, <code>info</code><br>指定终端输出日志信息的等级, 设置为<code>none</code>, 表示什么日志都不输出。</p>
+</blockquote>
+<h4 id="devServer-compress"><a href="#devServer-compress" class="headerlink" title="devServer.compress"></a>devServer.compress</h4><p>boolean</p>
+<blockquote>
+<p>放到服务器上的文件全部使用<code>gzip</code>压缩</p>
+</blockquote>
+<h4 id="devServer-contentBase"><a href="#devServer-contentBase" class="headerlink" title="devServer.contentBase"></a>devServer.contentBase</h4><p>boolean string array</p>
+<blockquote>
+<p>将哪些文件放到服务器上，默认使用当前工作目录。你可以像下面这样修改文件目录</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">contentBase: path.join(__dirname, &apos;public&apos;)</div><div class="line"></div><div class="line">// 或则</div><div class="line">contentBase: [path.join(__dirname, &apos;public&apos;), path.join(__dirname, &apos;assets&apos;)]</div></pre></td></tr></table></figure>
+<h4 id="devServer-filename"><a href="#devServer-filename" class="headerlink" title="devServer.filename"></a>devServer.filename</h4><p>string</p>
+<blockquote>
+<p>模块的编译默认是处于<code>lazy</code>模式，就是每次请求的时候才会编译。<br>通过该选项，可以配置每次请求的时候编译某个具体的文件，而不是编译所有的文件。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">lazy: true,</div><div class="line">filename: &apos;bundle.js&apos;</div></pre></td></tr></table></figure>
+<p><strong><em>注意：该选项只有在<code>lazy: true</code>时才有效</em></strong></p>
+<h4 id="devServer-noInfo"><a href="#devServer-noInfo" class="headerlink" title="devServer.noInfo"></a>devServer.noInfo</h4><p>boolean</p>
+<blockquote>
+<p>除了错误信息和警告信息，其他的信息都不在输出。</p>
+</blockquote>
+<h4 id="devServer-quiet"><a href="#devServer-quiet" class="headerlink" title="devServer.quiet"></a>devServer.quiet</h4><p>boolean</p>
+<blockquote>
+<p>不在输出任何信息，包括错误信息和警告信息。</p>
+</blockquote>
+<h4 id="devServer-stats"><a href="#devServer-stats" class="headerlink" title="devServer.stats"></a>devServer.stats</h4><p>string object</p>
+<blockquote>
+<p>这个选项可以让你精确的控制在编译的过程中哪些信息应该显示在终端。就相当于可以局部的控制应该显示哪些编译信息，而不是总体的设置。<br><strong><em>如果激活了<code>quiet</code>, <code>noInfo</code>选项，那么该选项就失效了</em></strong></p>
+</blockquote>
+<p>具体有哪些选项可以使用，可以参看<a href="https://webpack.js.org/configuration/stats/" target="_blank" rel="external">这里</a></p>
+<h4 id="devServer-watchContentBase"><a href="#devServer-watchContentBase" class="headerlink" title="devServer.watchContentBase"></a>devServer.watchContentBase</h4><p>boolan</p>
+<blockquote>
+<p>监听<code>contentBase</code>下的文件变动情况，一旦有文件发生了改动，就立即重新编译并刷新页面。</p>
+</blockquote>
+<h4 id="devServer-watchOptions"><a href="#devServer-watchOptions" class="headerlink" title="devServer.watchOptions"></a>devServer.watchOptions</h4><p>object</p>
+<blockquote>
+<p>配置文件监听的相关选项。</p>
+</blockquote>
+<h5 id="watchOptions-aggregateTimeout"><a href="#watchOptions-aggregateTimeout" class="headerlink" title="watchOptions.aggregateTimeout"></a>watchOptions.aggregateTimeout</h5><p>number</p>
+<blockquote>
+<p>Default: 300（毫秒数）<br>在这个300内发生的多次改动，不会重新编译，而是汇聚到一起做一次编译。</p>
+</blockquote>
+<h5 id="watchOptions-ignored"><a href="#watchOptions-ignored" class="headerlink" title="watchOptions.ignored"></a>watchOptions.ignored</h5><blockquote>
+<p>忽略对某些文件的监听，因为监听一个很大的文件夹是很浪费内存和消耗CPU</p>
+</blockquote>
+<p>支持正则和通配符使用<br><code>ignored: /node_modules/</code></p>
+<p><code>ignored: &#39;files/**/*.js&#39;</code></p>
+<h5 id="watchOptions-poll"><a href="#watchOptions-poll" class="headerlink" title="watchOptions.poll"></a>watchOptions.poll</h5><p>boolean number</p>
+<blockquote>
+<p>在某些文件系统，比如NFS中，监听如果不能正常工作，可以开启该选项。</p>
+</blockquote>
+<p><code>poll: true</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 每隔1000ms检查一次文件是否改动</div><div class="line">poll: 1000</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-7/" data-id="cj1p90g650024vyo0w50pl3ze" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
+<article id="post-webpack2-6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-6/" class="article-date">
+  <time datetime="2017-03-22T03:00:15.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/webpack2-6/">webpack2学习篇（六）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>[TOC]</p>
+<h3 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h3><blockquote>
+<p>配置模块解析策略。<br>比如，<code>import lodash</code>, 可以通过配置<code>resolve.modules</code>来指定当解析<code>lodash</code>是，去哪个路径下去寻找<code>lodash</code>。</p>
+</blockquote>
+<h4 id="resolve-alias"><a href="#resolve-alias" class="headerlink" title="resolve.alias"></a>resolve.alias</h4><p>object</p>
+<blockquote>
+<p>配置模块的别名。<br>比如你<code>import</code>某一路径下的一个js文件:<code>import ../../src/js/index.js</code><br>如果没有配置别名，那么你每次引入<code>src/js</code>这个路径下的某个js,都需要写很长的路径,通过配置别名，你可以简化书写。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  resolve: &#123;</div><div class="line">    alias: &#123;</div><div class="line">      js: path.resolve(__dirname, &apos;src/js&apos;),</div><div class="line">      css: path.resolve(__dirname, &apos;src/css&apos;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>没有配置别名之前<br><code>import { getData } from &#39;../../src/js/fetData&#39;</code><br>配置别名后<br><code>import { getData } from &#39;js/fetData&#39;</code></p>
+<p>在配置别名，关于填写文件路径的各种写法，可以移步<a href="https://webpack.js.org/configuration/resolve/" target="_blank" rel="external">这里</a></p>
+<h4 id="resolve-aliasFields"><a href="#resolve-aliasFields" class="headerlink" title="resolve.aliasFields"></a>resolve.aliasFields</h4><p>string</p>
+<blockquote>
+<p>指定某些属性，用来配置别名所指定的js文件解析的环境。</p>
+</blockquote>
+<p><code>aliasFields: [&#39;browser&#39;]</code></p>
+<p>直接这么一句话，很难理解什么意思，详细的意思可以参阅<a href="http://www.ibm.com/developerworks/cn/web/1501_chengfu_browserify/" target="_blank" rel="external">这里</a></p>
+<h4 id="resolve-descriptionFiles"><a href="#resolve-descriptionFiles" class="headerlink" title="resolve.descriptionFiles"></a>resolve.descriptionFiles</h4><p>arry</p>
+<blockquote>
+<p>指定用哪个json文件作为描述文件。一般情况下使用默认值即可，不需要显式的配置。</p>
+</blockquote>
+<p><code>descriptionFiles: [&#39;package.json&#39;]</code></p>
+<h4 id="resolve-enforceExtensions"><a href="#resolve-enforceExtensions" class="headerlink" title="resolve.enforceExtensions"></a>resolve.enforceExtensions</h4><p>boolean</p>
+<blockquote>
+<p>指定是否必须使用扩展名。<br>比如一般情况下，我们会像这样引入某个js, <code>import &#39;lodash&#39;</code>, 但是如果你指定了<code>enforceExtensions: true</code>，那么你就必须这样引入<code>import &#39;lodash.js&#39;</code></p>
+</blockquote>
+<h4 id="resolve-modules"><a href="#resolve-modules" class="headerlink" title="resolve.modules"></a>resolve.modules</h4><p>array</p>
+<blockquote>
+<p>Default: ‘node_modules’<br>告诉webpack在解析模块的时候，去哪些目录搜索这些即将被解析的模块。<br>既可以传入一个相对路径，也可以传入一个绝对路径。但是你要知道的是，他们之间是有一些区别的。<br>相对路径：比如你传入一个<code>./node_modules</code>, webpack会在当前路径下的<code>node_modules</code>下寻找，如果没有找到，会继续搜寻当前目录的父目录下的<code>node_modules</code>,如果还没有找到，依次类推，继续向上搜寻，直至跟目录结束。<br>绝对路径：只会在传入的路径中搜索。</p>
+</blockquote>
+<p>如果你想优先搜索你指定的目录，而不是默认的<code>node_modules</code>, 那么你可以将这个路径插入到默认路径的前面，就像下面这样的<br><code>modules: [path.resolve(__dirname, &#39;src&#39;), &#39;node_modules&#39;]</code></p>
+<h4 id="resolve-unsafeCache"><a href="#resolve-unsafeCache" class="headerlink" title="resolve.unsafeCache"></a>resolve.unsafeCache</h4><p><code>regexp</code> <code>array</code> <code>boolean</code></p>
+<blockquote>
+<p>开启缓存，但不是那么的安全（现在还不太明白怎么个不安全法）</p>
+</blockquote>
+<p>如果你想缓存所有的解析模块，那么可以这样设置<br><code>unsafeCache: true</code></p>
+<p>你也可以传入正则表达式或这则表达式的数组来缓存某些解析的模块<br><code>unsafeCache: /src\/utils/</code></p>
+<h3 id="resolveLoader"><a href="#resolveLoader" class="headerlink" title="resolveLoader"></a>resolveLoader</h3><p>object</p>
+<blockquote>
+<p>这个选项的功能和上面的<code>resolve</code>是一样的，不过他只能用来解析webpack的<code>loader</code>包，默认值如下</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  modulesDirectories: [&quot;web_loaders&quot;, &quot;web_modules&quot;, &quot;node_loaders&quot;, &quot;node_modules&quot;],</div><div class="line">  extensions: [&quot;&quot;, &quot;.webpack-loader.js&quot;, &quot;.web-loader.js&quot;, &quot;.loader.js&quot;, &quot;.js&quot;],</div><div class="line">  packageMains: [&quot;webpackLoader&quot;, &quot;webLoader&quot;, &quot;loader&quot;, &quot;main&quot;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>比如一个webpack.config.js部分配置如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  module: &#123;</div><div class="line">    rules: [</div><div class="line">      &#123;</div><div class="line">        test: /\.vue$/,</div><div class="line">        use: &apos;vue-loader&apos;</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        test: /\.js$/,</div><div class="line">        use: &apos;babel&apos;,</div><div class="line">        exclude: /node_modules/</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>resolveLoader</code>就是用来处理这些loader的，比如<code>vue-loader</code>, 你可以简写为<code>vue</code>, 在寻找的时候自动去寻找<code>vue-loader</code>。</p>
+<p>而上面的<code>resolve</code>，是用来处理在导入导出时的一些策略,比如你在某个模块中使用es2015模块的导入</p>
+<pre><code>import React, {React.Component} from &apos;react&apos;
+import {someMethod} from &apos;./tools/utils&apos;
+</code></pre><p>在解析的时候得到的<code>react</code>并不是一个文件，而是一个目录，那么webpack会去这个目录下查找<code>package.json</code>,通过<code>JSON.parse()</code>解析出包描述对象，取得<code>main</code>属性指定的文件名进行定位，如果文件名缺少扩展名，那么会进入扩展名分析的步骤。如果<code>main</code>属性指定的文件名错误，或则压根没有<code>package.json</code>文件，那么<code>index</code>会被当做默认文件名，然后依次查找。</p>
+<h4 id="resolveLoader-moduleExtensions"><a href="#resolveLoader-moduleExtensions" class="headerlink" title="resolveLoader.moduleExtensions"></a>resolveLoader.moduleExtensions</h4><p>array</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-6/" data-id="cj1p90g630022vyo0x6u56hix" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
+<article id="post-webpack2-5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-5/" class="article-date">
+  <time datetime="2017-03-22T02:59:48.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/webpack2-5/">webpack2学习篇（五）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <blockquote>
+<p>本章节主要介绍module常用配置项</p>
+</blockquote>
+<h3 id="module-noParse"><a href="#module-noParse" class="headerlink" title="module.noParse"></a>module.noParse</h3><p>RegExp</p>
+<blockquote>
+<p>让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。</p>
+</blockquote>
+<p><code>noParse: /jquery|backbone/</code></p>
+<h3 id="module-rules"><a href="#module-rules" class="headerlink" title="module.rules"></a>module.rules</h3><p>array</p>
+<blockquote>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-5/" data-id="cj1p90g5x001yvyo0fgompcrq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
 <article id="post-webpack2-4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/22/webpack2-4/" class="article-date">
@@ -148,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-4/" data-id="cj1innqi7000mupo0y1gyzujx" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-4/" data-id="cj1p90g60001zvyo0tahpltln" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -222,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-3/" data-id="cj1innqi0000iupo0fm2dqnu8" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-3/" data-id="cj1p90g5s001vvyo0yxwa7ws7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -285,7 +523,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-2/" data-id="cj1innqi3000kupo03bouzvzb" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-2/" data-id="cj1p90g5p001tvyo0yocw4yex" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -354,7 +592,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-1/" data-id="cj1innqhw000fupo0ba748k3s" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-1/" data-id="cj1p90g5h001lvyo0cayooyi7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li></ul>
@@ -428,7 +666,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj1innqh70001upo0k9l35y9n" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj1p90g4v0013vyo0mpt0uzbv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -528,7 +766,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-path/" data-id="cj1innqhd0003upo05ye2no1h" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-path/" data-id="cj1p90g4x0014vyo0cfi2dhf7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -550,13 +788,20 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">7</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -566,7 +811,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 10px; color: #ff8200">css</a> <a href="/tags/js/" style="font-size: 10px; color: #ff8200">js</a> <a href="/tags/nodejs/" style="font-size: 13.33px; color: #aa574f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 16.67px; color: #552b9f">shell</a> <a href="/tags/tools/" style="font-size: 20px; color: #00e">tools</a>
+      <a href="/tags/css/" style="font-size: 10px; color: #ff8200">css</a> <a href="/tags/js/" style="font-size: 10px; color: #ff8200">js</a> <a href="/tags/linux/" style="font-size: 12.5px; color: #bf623c">linux</a> <a href="/tags/nodejs/" style="font-size: 15px; color: #804177">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 17.5px; color: #4021b3">shell</a> <a href="/tags/tools/" style="font-size: 20px; color: #00e">tools</a>
     </div>
   </div>
 
@@ -575,7 +820,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -588,23 +833,23 @@
       <ul>
         
           <li>
+            <a href="/2017/04/20/linux-config/">linux-config</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/20/linux-command/">linux-command</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/15/shell-redirect/">shell重定向</a>
+          </li>
+        
+          <li>
             <a href="/2017/04/15/sails/">sails</a>
           </li>
         
           <li>
             <a href="/2017/04/05/variable-hoist/">JS中变量提升</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/05/z-index/">深入理解z-index</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/30/shell-operation/">shell运算符</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/30/shell-params/">shell传递参数</a>
           </li>
         
       </ul>

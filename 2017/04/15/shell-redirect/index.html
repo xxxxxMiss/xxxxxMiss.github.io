@@ -3,30 +3,111 @@
 <head>
   <meta charset="utf-8">
   
-  <title>shell运算符 | 青史成灰</title>
+  <title>shell重定向 | 青史成灰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="表达式
-原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。一个完整的表达式需要用反引号(`)包裹, 在mac系统中，求值表达式也可以这样$(($a + $b))。表达式和运算符之间必须有空格，如2+2是不对的，必须写成2 + 2。乘号（*）在表达式中必须转义 expr $a \* $b,否则抛出syntax error
+  <meta name="description" content="重定向列表
 
-条件表达式
-条件表">
+
+命令
+说明
+
+
+
+
+command &amp;gt;&amp;gt; file
+将输出以追加的方式重定向到file
+
+
+n &amp;gt;&amp;gt; file
+将文件描述符为n的文件已追加的方式重定向到file
+
+
+n &amp;lt;&amp;amp; m
+将输入文件m 和 n 合并
+
+
+&amp;lt;&amp;lt; tag
+将开始标记tag和结束标记tag之间的内容作为输入
+
+
+
+3个特殊文件
+
+
+文件类型
+文件描述符
+简介">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell运算符">
-<meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/30/shell-operation/index.html">
+<meta property="og:title" content="shell重定向">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="表达式
-原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。一个完整的表达式需要用反引号(`)包裹, 在mac系统中，求值表达式也可以这样$(($a + $b))。表达式和运算符之间必须有空格，如2+2是不对的，必须写成2 + 2。乘号（*）在表达式中必须转义 expr $a \* $b,否则抛出syntax error
+<meta property="og:description" content="重定向列表
 
-条件表达式
-条件表">
-<meta property="og:updated_time" content="2017-04-09T07:23:38.000Z">
+
+命令
+说明
+
+
+
+
+command &amp;gt;&amp;gt; file
+将输出以追加的方式重定向到file
+
+
+n &amp;gt;&amp;gt; file
+将文件描述符为n的文件已追加的方式重定向到file
+
+
+n &amp;lt;&amp;amp; m
+将输入文件m 和 n 合并
+
+
+&amp;lt;&amp;lt; tag
+将开始标记tag和结束标记tag之间的内容作为输入
+
+
+
+3个特殊文件
+
+
+文件类型
+文件描述符
+简介">
+<meta property="og:updated_time" content="2017-04-15T03:41:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell运算符">
-<meta name="twitter:description" content="表达式
-原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。一个完整的表达式需要用反引号(`)包裹, 在mac系统中，求值表达式也可以这样$(($a + $b))。表达式和运算符之间必须有空格，如2+2是不对的，必须写成2 + 2。乘号（*）在表达式中必须转义 expr $a \* $b,否则抛出syntax error
+<meta name="twitter:title" content="shell重定向">
+<meta name="twitter:description" content="重定向列表
 
-条件表达式
-条件表">
+
+命令
+说明
+
+
+
+
+command &amp;gt;&amp;gt; file
+将输出以追加的方式重定向到file
+
+
+n &amp;gt;&amp;gt; file
+将文件描述符为n的文件已追加的方式重定向到file
+
+
+n &amp;lt;&amp;amp; m
+将输入文件m 和 n 合并
+
+
+&amp;lt;&amp;lt; tag
+将开始标记tag和结束标记tag之间的内容作为输入
+
+
+
+3个特殊文件
+
+
+文件类型
+文件描述符
+简介">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
@@ -80,10 +161,10 @@
 </header>
       <div class="outer">
         <section id="main"><!-- id="post-variable-hoist" -->
-<article id="post-shell-operation" class="article article-type-post" itemscope itemprop="blogPost">
+<article id="post-shell-redirect" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/30/shell-operation/" class="article-date">
-  <time datetime="2017-03-30T13:10:24.000Z" itemprop="datePublished">2017-03-30</time>
+    <a href="/2017/04/15/shell-redirect/" class="article-date">
+  <time datetime="2017-04-15T03:10:47.000Z" itemprop="datePublished">2017-04-15</time>
 </a>
     
   </div>
@@ -94,7 +175,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      shell运算符
+      shell重定向
     </h1>
   
 
@@ -103,116 +184,67 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-        <h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><blockquote>
-<p>原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。<br>一个完整的表达式需要用反引号(`)包裹, 在mac系统中，求值表达式也可以这样$(($a + $b))。<br>表达式和运算符之间必须有空格，如<code>2+2</code>是不对的，必须写成<code>2 + 2</code>。<br>乘号（*）在表达式中必须转义 <code>expr $a \* $b</code>,否则抛出<code>syntax error</code></p>
-</blockquote>
-<h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><blockquote>
-<p>条件表达式必须放在方括号内，并且之间要有空格</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 方括号的前后也必须含有空格,可以有多个空格</div><div class="line">[ $a == $b ] // right</div><div class="line">[$a==$b] // error</div></pre></td></tr></table></figure>
-<h3 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h3><table>
+        <h2 id="重定向列表"><a href="#重定向列表" class="headerlink" title="重定向列表"></a>重定向列表</h2><table>
 <thead>
 <tr>
-<th>运算符</th>
+<th>命令</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>！</td>
-<td>非运算</td>
+<td>command &gt;&gt; file</td>
+<td>将输出以<strong>追加的方式</strong>重定向到file</td>
 </tr>
 <tr>
-<td>-o</td>
-<td>或运算, 记忆：or(-o)</td>
+<td>n &gt;&gt; file</td>
+<td>将文件描述符为n的文件已追加的方式重定向到file</td>
 </tr>
 <tr>
-<td>-a</td>
-<td>与运算, 记忆：and(-a)</td>
+<td>n &lt;&amp; m</td>
+<td>将输入文件m 和 n 合并</td>
+</tr>
+<tr>
+<td>&lt;&lt; tag</td>
+<td>将开始标记tag和结束标记tag之间的内容作为输入</td>
 </tr>
 </tbody>
 </table>
-<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><blockquote>
-<p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字</p>
-</blockquote>
-<table>
+<h2 id="3个特殊文件"><a href="#3个特殊文件" class="headerlink" title="3个特殊文件"></a>3个特殊文件</h2><table>
 <thead>
 <tr>
-<th>运算符</th>
-<th>说明</th>
+<th>文件类型</th>
+<th>文件描述符</th>
+<th>简介</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>-eq</td>
-<td>equal, 是否相等</td>
+<td>标准输入(stdin)</td>
+<td>0</td>
+<td>程序默认从stdin读取数据</td>
 </tr>
 <tr>
-<td>-ne</td>
-<td>not equal, 不相等</td>
+<td>标准输出(stdout)</td>
+<td>1</td>
+<td>程序默认向stdout输出数据</td>
 </tr>
 <tr>
-<td>-gt</td>
-<td>greater than,  大于</td>
-</tr>
-<tr>
-<td>-lt</td>
-<td>less than, 小于</td>
-</tr>
-<tr>
-<td>-ge</td>
-<td>greater equal, 大于等于</td>
-</tr>
-<tr>
-<td>-le</td>
-<td>less equal, 小于等于</td>
+<td>标准错误(stderr)</td>
+<td>2</td>
+<td>程序会向stderr流中写入错误信息</td>
 </tr>
 </tbody>
 </table>
-<h3 id="字符串运算符"><a href="#字符串运算符" class="headerlink" title="字符串运算符"></a>字符串运算符</h3><blockquote>
-<p>假设a=”abc”, b=”efg”</p>
+<h2 id="dev-null-文件"><a href="#dev-null-文件" class="headerlink" title="/dev/null 文件"></a>/dev/null 文件</h2><blockquote>
+<p>如果希望执行某个命令，但是又不希望在屏幕上输出结果，那么可以将输出重定向到/dev/null。<br>/dev/null 是一个特殊的文件，写入到它的内容都会被丢弃；如果尝试从该文件读取内容，那么什么也读不到。但是 /dev/null 文件非常有用，将命令的输出重定向到它，会起到”禁止输出”的效果。</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>=</td>
-<td>检测2个字符串是否相等， 相等返回true</td>
-<td>[ $a = $b ], false</td>
-</tr>
-<tr>
-<td>!=</td>
-<td>…., 不相等返回true</td>
-<td>[ $a != $b ], true</td>
-</tr>
-<tr>
-<td>-z</td>
-<td>字符串的长度为0，返回true. 记忆: zero</td>
-<td>[ -z $a ], false</td>
-</tr>
-<tr>
-<td>-n</td>
-<td>…..不为0，返回true. 记忆: not</td>
-<td>[ -n $a ], true</td>
-</tr>
-<tr>
-<td>str</td>
-<td>字符串不为空，返回true</td>
-<td>[ $a ], true</td>
-</tr>
-</tbody>
-</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">屏蔽stdout和stderr //？？？？？？未测试成功</div><div class="line">command &gt; /dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj1p90g5g001jvyo0xg78ekqz" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/" data-id="cj1p90g5b001gvyo0eehje223" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -223,19 +255,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/04/05/z-index/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/20/linux-command/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          深入理解z-index
+          linux-command
         
       </div>
     </a>
   
   
-    <a href="/2017/03/30/shell-params/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/04/15/sails/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">shell传递参数</div>
+      <div class="article-nav-title">sails</div>
     </a>
   
 </nav>
