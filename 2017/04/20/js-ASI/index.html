@@ -3,39 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>linux常用命令 | 青史成灰</title>
+  <title>ASI(auto semicolon insertion)自动分号补齐 | 青史成灰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="创建软链接
-为某一个文件或目录在另外一个位置建立一个同步的链接，类似Windows下的快捷方式。-s选项表示创建的是软链接（符号链接）, 不加-s表示创建的是硬链接,我们常用的都是软链接。
+  <meta name="description" content="ASI
+在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：
 
-1ln -s 源文件 目标文件
-删除软连接
-Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的所有文件了。
 
-1rm -rf 目标文件或目录">
+return xxx(xxx是要返回的对象)
+throw xxx(xxx是要抛出的错误对象)
+break">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux常用命令">
-<meta property="og:url" content="https://xxxxxmiss.github.io/2017/04/20/linux-command/index.html">
+<meta property="og:title" content="ASI(auto semicolon insertion)自动分号补齐">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/04/20/js-ASI/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="创建软链接
-为某一个文件或目录在另外一个位置建立一个同步的链接，类似Windows下的快捷方式。-s选项表示创建的是软链接（符号链接）, 不加-s表示创建的是硬链接,我们常用的都是软链接。
+<meta property="og:description" content="ASI
+在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：
 
-1ln -s 源文件 目标文件
-删除软连接
-Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的所有文件了。
 
-1rm -rf 目标文件或目录">
-<meta property="og:updated_time" content="2017-04-23T05:40:04.000Z">
+return xxx(xxx是要返回的对象)
+throw xxx(xxx是要抛出的错误对象)
+break">
+<meta property="og:updated_time" content="2017-04-20T15:53:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux常用命令">
-<meta name="twitter:description" content="创建软链接
-为某一个文件或目录在另外一个位置建立一个同步的链接，类似Windows下的快捷方式。-s选项表示创建的是软链接（符号链接）, 不加-s表示创建的是硬链接,我们常用的都是软链接。
+<meta name="twitter:title" content="ASI(auto semicolon insertion)自动分号补齐">
+<meta name="twitter:description" content="ASI
+在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：
 
-1ln -s 源文件 目标文件
-删除软连接
-Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的所有文件了。
 
-1rm -rf 目标文件或目录">
+return xxx(xxx是要返回的对象)
+throw xxx(xxx是要抛出的错误对象)
+break">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
@@ -89,14 +86,14 @@ Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的�
 </header>
       <div class="outer">
         <section id="main"><!-- id="post-variable-hoist" -->
-<article id="post-linux-command" class="article article-type-post" itemscope itemprop="blogPost">
+<article id="post-js-ASI" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/20/linux-command/" class="article-date">
-  <time datetime="2017-04-19T17:21:30.000Z" itemprop="datePublished">2017-04-20</time>
+    <a href="/2017/04/20/js-ASI/" class="article-date">
+  <time datetime="2017-04-20T15:32:09.000Z" itemprop="datePublished">2017-04-20</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
+    <a class="article-category-link" href="/categories/js/">js</a>
   </div>
 
   </div>
@@ -107,7 +104,7 @@ Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的�
         
   
     <h1 class="article-title" itemprop="name">
-      linux常用命令
+      ASI(auto semicolon insertion)自动分号补齐
     </h1>
   
 
@@ -116,22 +113,38 @@ Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的�
     <div class="article-entry" itemprop="articleBody">
       
         
-        <h2 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h2><blockquote>
-<p>为某一个文件或目录在另外一个位置建立一个同步的链接，类似Windows下的快捷方式。<br><code>-s</code>选项表示创建的是软链接（符号链接）, 不加<code>-s</code>表示创建的是硬链接,我们常用的都是软链接。</p>
+        <h2 id="ASI"><a href="#ASI" class="headerlink" title="ASI"></a>ASI</h2><blockquote>
+<p>在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s 源文件 目标文件</div></pre></td></tr></table></figure>
-<h2 id="删除软连接"><a href="#删除软连接" class="headerlink" title="删除软连接"></a>删除软连接</h2><blockquote>
-<p>Note: 目标文件或目录后面不能带<code>/</code>, 否则就是删除该目录下的所有文件了。</p>
+<ul>
+<li>return xxx(xxx是要返回的对象)</li>
+<li>throw xxx(xxx是要抛出的错误对象)</li>
+<li>break / continue xxx(xxx是循环的标签)</li>
+</ul>
+<h2 id="关于ASI最需要注意的坑"><a href="#关于ASI最需要注意的坑" class="headerlink" title="关于ASI最需要注意的坑"></a>关于ASI最需要注意的坑</h2><blockquote>
+<p>ASI真正需要注意的坑只有两个，restricted productions是其一，另一个就是当下一行开头是 <code>(</code>, <code>[</code> , <code>/</code> 这三个字符之一的时候：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf 目标文件或目录</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">(function()&#123;...&#125;())</div></pre></td></tr></table></figure>
+<p>会被解析成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = b(function()&#123;...&#125;())</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>就是说<code>()</code>会被看着是在调用函数b。<br>同理，<code>[]</code>会被看着实在获取b的属性。<br>斜杠<code>/</code>则会被当成除号：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">/Error/i.test(str) &amp;&amp; doSomething()</div></pre></td></tr></table></figure>
+<p>会被解析成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = b / Error / i.test(str) &amp;&amp; doSomething()</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>要躲开这个坑，其实真的挺简单，只要尽量别用这三个字符作为一行开头就行了。事实上遇到比较多的也只有括号开头。真的避不开的话，可以在行头手动加个分号：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">;(function()&#123;...&#125;())</div></pre></td></tr></table></figure>
+<p>额外的一点是在for循环声明里面的分号是永远不能省的，ASI不会在for循环声明中插分号，但一般正常人不会把for的声明分三行写吧…</p>
+<p><a href="https://www.zhihu.com/question/21076930" target="_blank" rel="external">原文链接</a><br><a href="https://cnodejs.org/topic/56dbbd25820d3c9b3d63e369" target="_blank" rel="external">参考文章</a><br><a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="external">ECMA规范文档</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-command/" data-id="cj1uy1xny0006jco0262ox470" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/js-ASI/" data-id="cj1uy1xnh0000jco0wzcrsp2m" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
 
     </footer>
   </div>
@@ -139,19 +152,19 @@ Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的�
     
 <nav id="article-nav">
   
-    <a href="/2017/04/20/linux-config/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/23/linux-process/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          linux系统中常用的配置文件
+          linux进程
         
       </div>
     </a>
   
   
-    <a href="/2017/04/15/shell-redirect/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/04/20/linux-config/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">shell重定向</div>
+      <div class="article-nav-title">linux系统中常用的配置文件</div>
     </a>
   
 </nav>

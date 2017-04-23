@@ -66,6 +66,162 @@
         <section id="main">
   
     <!-- id="post-variable-hoist" -->
+<article id="post-linux-process" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/linux-process/" class="article-date">
+  <time datetime="2017-04-23T05:39:13.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/linux-process/">linux进程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="进程简介"><a href="#进程简介" class="headerlink" title="进程简介"></a>进程简介</h2><blockquote>
+<p>在<code>unix</code>或者<code>linux</code>系统中，每当运行一个程序，系统都会为这个程序创建一个特殊的环境，这个特殊的环境包含了运行该程序所依赖的一切东西。不论什么时候，你触发一个<code>unix</code>或者<code>linux</code>命令，都会创建或者启动一个新的进程。<br>所以可以这样理解，一个进程，就是一个运行中的程序的实例，它包含了该程序执行所需要的一切依赖。</p>
+</blockquote>
+<h2 id="进程追踪"><a href="#进程追踪" class="headerlink" title="进程追踪"></a>进程追踪</h2><blockquote>
+<p>操作系统给每个进程分配一个5位数字的<code>pid</code>来标示每个进程，每个进程都有唯一的<code>pid</code>。最终这5位数字组成的<code>pid</code>会被穷尽，那么到时候又会重头开始分配，不管怎样，同一时间不会出现<code>pid</code>相同的进程。</p>
+</blockquote>
+<h2 id="前台进程"><a href="#前台进程" class="headerlink" title="前台进程"></a>前台进程</h2><blockquote>
+<p>默认情况下，每个进程运行在前台，接受用户的键盘输入然后将结果显示在屏幕上。</p>
+</blockquote>
+<h2 id="后台进程"><a href="#后台进程" class="headerlink" title="后台进程"></a>后台进程</h2><blockquote>
+<p>一个后台进程的运行无需接受键盘的输入。后台进程的最大的好处就是无需等待当前进程处理完毕就可以执行其他的命令。如果某个后台进程需要接受一个输入，那么它会处于一个暂停状态直到它被切换到前后进程并且接受到从键盘输入的数据。</p>
+<h3 id="启动后台进程"><a href="#启动后台进程" class="headerlink" title="启动后台进程"></a>启动后台进程</h3><p>启动一个后台进程最简单的方式就是在一个命令的末尾加上<code>&amp;</code>符号。</p>
+</blockquote>
+<p>比如在终端下输入<code>ls -l &amp;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ls -l &amp;</div><div class="line">[2] 30721  // 第一行</div><div class="line">[1]   Done                    ls -l  // 第二行</div><div class="line">$ // 第三行</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>其中的第一行的<code>[2]</code>表示job number,它是用来操作前后台进程切换的。<br>第二行表示<code>ls -l</code>命令后台进程成功的执行完成<br>第三行是等待下一个命令的输入</p>
+</blockquote>
+<h2 id="列出运行中的进程"><a href="#列出运行中的进程" class="headerlink" title="列出运行中的进程"></a>列出运行中的进程</h2><blockquote>
+<p>通过<code>ps</code>(process status)命令很容易就可以列出运行中的进程。<br><code>ps</code>命令有一些常用选项，最常用的是<code>-f</code><br>具体选项如下<br>| 选项 | 描述 |<br>| — | — |<br>| -f | full, 列出详细的信息 |<br>| -a | all, 显示所有用户的信息 |<br>| -x | —- |<br>| -u | —- |<br>| -e | —- |<br>以上的这些选项，<code>-x</code>, <code>-e</code>列出了一大堆信息，包括系统进程的，具体什么东西目前不是很清楚（TODO）。<br><code>-u</code>在mac下测试不支持，或许是打开方式不对。。。</p>
+</blockquote>
+<p>通过<code>ps -f</code>会在终端下显示如下信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</div><div class="line">501 26649 26648   0 四12上午 ttys000    0:00.68 -bash</div><div class="line">501 11212 11210   0 15 417  ttys001    0:00.31 -bash</div><div class="line">501 11267 11266   0 15 417  ttys002    0:00.11 -bash</div><div class="line">501 11545 11544   0 15 417  ttys003    0:00.19 -bash</div><div class="line">501 24268 24267   0 三12下午 ttys004    0:00.39 -bash</div><div class="line">501 16770 16766   0 一11上午 ttys007    0:00.92 -bash</div></pre></td></tr></table></figure></p>
+<p>关于以上每列所代表的含义如下:<br>| 标识符 | 描述 |<br>| —– | — |<br>| UID | 该进程属于哪个用户的，也就是说该进程是哪个用户启动的，用户ID |<br>| PID | 进程ID（process id） |<br>| PPID | 该进程的父进程ID（parent process id）|<br>| C | 进程利用的CPU |<br>| STIME | 进程启动的时间 |<br>| TTY | 进程所使用的终端类型 |<br>| TIME | 进程占用的CPU时间 |<br>| CMD | 启动该进程所使用的命令 |</p>
+<h2 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h2><blockquote>
+<p>终止一个进程有很多种方式，常用的如下</p>
+<ul>
+<li>直接通过按键<code>CTRL + C</code></li>
+<li>通过<code>kill pid</code></li>
+</ul>
+</blockquote>
+<p>举例如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// ①</div><div class="line">$ps -f</div><div class="line">501 16770 16766   0 一11上午 ttys007    0:00.92 -bash</div><div class="line">// ②</div><div class="line">$kill 16770</div></pre></td></tr></table></figure></p>
+<p>但是有时候通过<code>kill pid</code>并不能终止一个进程，那么此时可以加个参数<code>-9</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$kill -9 16770</div></pre></td></tr></table></figure></p>
+<h2 id="父进程和子进程"><a href="#父进程和子进程" class="headerlink" title="父进程和子进程"></a>父进程和子进程</h2><blockquote>
+<p>在<code>unix</code>或者<code>linux</code>系统中, 每个进程会被分配2个id，<code>pid</code>(process id), <code>ppid</code>(parent process id), 每个用户进程都会有一个父进程。</p>
+</blockquote>
+<h2 id="常驻进程-Daemon-Processes"><a href="#常驻进程-Daemon-Processes" class="headerlink" title="常驻进程(Daemon Processes)"></a>常驻进程(Daemon Processes)</h2><blockquote>
+<p>常驻进程作为系统级别的进程，以<code>root</code>权限运行，为其他的进程服务。常驻进程是无法通过终端来控制的。你通过<code>ps -ef</code>来查看进程信息，可以看到所有的常驻进程的<code>tty</code>列显示的都是<code>?</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ps -ef</div><div class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</div><div class="line">0     1     0   0 18 217    ??        92:25.03 /sbin/launchd</div></pre></td></tr></table></figure>
+<h2 id="其他的一些进程"><a href="#其他的一些进程" class="headerlink" title="其他的一些进程"></a>其他的一些进程</h2><blockquote>
+<p>….(不列了)</p>
+</blockquote>
+<h2 id="top命令"><a href="#top命令" class="headerlink" title="top命令"></a><code>top</code>命令</h2><blockquote>
+<p>top命令是一个非常有用的工具命令，它列出了进程相关的一切信息，它将进程，CPU等相关的信息<strong>实时</strong>的显示在终端。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj1uy1xo2000cjco0aviiy2yg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ps/">ps</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
+<article id="post-js-ASI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/20/js-ASI/" class="article-date">
+  <time datetime="2017-04-20T15:32:09.000Z" itemprop="datePublished">2017-04-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/20/js-ASI/">ASI(auto semicolon insertion)自动分号补齐</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="ASI"><a href="#ASI" class="headerlink" title="ASI"></a>ASI</h2><blockquote>
+<p>在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：</p>
+</blockquote>
+<ul>
+<li>return xxx(xxx是要返回的对象)</li>
+<li>throw xxx(xxx是要抛出的错误对象)</li>
+<li>break / continue xxx(xxx是循环的标签)</li>
+</ul>
+<h2 id="关于ASI最需要注意的坑"><a href="#关于ASI最需要注意的坑" class="headerlink" title="关于ASI最需要注意的坑"></a>关于ASI最需要注意的坑</h2><blockquote>
+<p>ASI真正需要注意的坑只有两个，restricted productions是其一，另一个就是当下一行开头是 <code>(</code>, <code>[</code> , <code>/</code> 这三个字符之一的时候：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">(function()&#123;...&#125;())</div></pre></td></tr></table></figure>
+<p>会被解析成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = b(function()&#123;...&#125;())</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>就是说<code>()</code>会被看着是在调用函数b。<br>同理，<code>[]</code>会被看着实在获取b的属性。<br>斜杠<code>/</code>则会被当成除号：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">/Error/i.test(str) &amp;&amp; doSomething()</div></pre></td></tr></table></figure>
+<p>会被解析成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = b / Error / i.test(str) &amp;&amp; doSomething()</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>要躲开这个坑，其实真的挺简单，只要尽量别用这三个字符作为一行开头就行了。事实上遇到比较多的也只有括号开头。真的避不开的话，可以在行头手动加个分号：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">;(function()&#123;...&#125;())</div></pre></td></tr></table></figure>
+<p>额外的一点是在for循环声明里面的分号是永远不能省的，ASI不会在for循环声明中插分号，但一般正常人不会把for的声明分三行写吧…</p>
+<p><a href="https://www.zhihu.com/question/21076930" target="_blank" rel="external">原文链接</a><br><a href="https://cnodejs.org/topic/56dbbd25820d3c9b3d63e369" target="_blank" rel="external">参考文章</a><br><a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="external">ECMA规范文档</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/js-ASI/" data-id="cj1uy1xnh0000jco0wzcrsp2m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
 <article id="post-linux-config" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/20/linux-config/" class="article-date">
@@ -84,7 +240,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/20/linux-config/">linux-config</a>
+      <a class="article-title" href="/2017/04/20/linux-config/">linux系统中常用的配置文件</a>
     </h1>
   
 
@@ -119,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-config/" data-id="cj1p9aj2k000rxdo0i9vdfmlr" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-config/" data-id="cj1uy1xnv0005jco0lpoaa6yl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -150,7 +306,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/20/linux-command/">linux-command</a>
+      <a class="article-title" href="/2017/04/20/linux-command/">linux常用命令</a>
     </h1>
   
 
@@ -171,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-command/" data-id="cj1p9aj2e000nxdo0nd9wi8r4" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-command/" data-id="cj1uy1xny0006jco0262ox470" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -271,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/" data-id="cj1p9aj3i001ixdo0dud3gjl4" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/" data-id="cj1uy1xog000ojco0h1pb74l1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -465,7 +621,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj1p9aj340011xdo04466ce80" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj1uy1xnz000ajco0dcm9hz5y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sails/">sails</a></li></ul>
@@ -587,7 +743,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj1p9aj3k001lxdo0i2t8lnk8" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj1uy1xon000vjco05f2hhhac" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -714,7 +870,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj1p9aj47002cxdo0bfhxkwmm" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj1uy1xq5002mjco0dkuajdhc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -863,7 +1019,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj1p9aj370015xdo0mnexkrxu" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj1uy1xo8000fjco086923l0s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -951,142 +1107,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj1p9aj3a001cxdo02oq0au3o" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-shell-variable" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/30/shell-variable/" class="article-date">
-  <time datetime="2017-03-29T16:21:20.000Z" itemprop="datePublished">2017-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/shell-variable/">shell变量</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">your_name=&quot;rou&quot;</div></pre></td></tr></table></figure>
-<ul>
-<li>变量名只能有字母和下划线<code>_</code>组成，且不能使用<code>bash</code>里的关键字</li>
-<li>变量名和等号之间不能有空格</li>
-</ul>
-<h3 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">your_name=&quot;rou&quot;</div><div class="line">echo $your_name</div><div class="line">echo $&#123;your_name&#125; // 推荐使用这种方式</div></pre></td></tr></table></figure>
-<h3 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">readonly myUrl=&quot;www.baidu.com&quot;</div></pre></td></tr></table></figure>
-<h3 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unset varibale_name</div></pre></td></tr></table></figure>
-<blockquote>
-<p>变量被删除后不能再次使用。<code>unset</code>命令不能删除<strong><em>只读</em></strong>变量</p>
-</blockquote>
-<h3 id="Shell字符串"><a href="#Shell字符串" class="headerlink" title="Shell字符串"></a>Shell字符串</h3><blockquote>
-<p>shell中字符串即可用单引号包裹，也可以用双引号包裹</p>
-<ul>
-<li>当引号中包裹的字符中照原样输出</li>
-<li>双引号包裹的字符串可以包含变量</li>
-</ul>
-</blockquote>
-<h3 id="获取字符串的长度"><a href="#获取字符串的长度" class="headerlink" title="获取字符串的长度"></a>获取字符串的长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">my_str=&quot;this is a test string&quot;</div><div class="line">$&#123;#my_str&#125;</div></pre></td></tr></table></figure>
-<h3 id="提取字符串"><a href="#提取字符串" class="headerlink" title="提取字符串"></a>提取字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str=&quot;my name is test&quot;</div><div class="line">$&#123;str:1:4&#125; // 从第2个位置开始截取4个字符串（下标索引从0开始）</div></pre></td></tr></table></figure>
-<h3 id="Shell数组"><a href="#Shell数组" class="headerlink" title="Shell数组"></a>Shell数组</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">array_name=(value1 value2 valu3...)</div><div class="line">或者</div><div class="line">array_name=(</div><div class="line">    value1</div><div class="line">    value2</div><div class="line">    value3</div><div class="line">)</div></pre></td></tr></table></figure>
-<h3 id="获取数组中所有的元素"><a href="#获取数组中所有的元素" class="headerlink" title="获取数组中所有的元素"></a>获取数组中所有的元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">array=(a b c)</div><div class="line">$&#123;array[@]&#125; 或者 $&#123;array[*]&#125;</div></pre></td></tr></table></figure>
-<h3 id="获取数组的长度"><a href="#获取数组的长度" class="headerlink" title="获取数组的长度"></a>获取数组的长度</h3><blockquote>
-<p>和获取字符的长度语法是一致的</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 获取数组的长度</div><div class="line">$&#123;#array[@]&#125; 或者 $&#123;#array[*]&#125;</div><div class="line"></div><div class="line"># 获取数组中某个元素的长度</div><div class="line">$&#123;#array[n]&#125; // 下标n从0开始</div><div class="line">`</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj1p9aj3e001fxdo05jj6c4m2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-shell-overview" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/29/shell-overview/" class="article-date">
-  <time datetime="2017-03-29T15:54:33.000Z" itemprop="datePublished">2017-03-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/shell-overview/">shell基本知识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="常见Linux-Shell种类"><a href="#常见Linux-Shell种类" class="headerlink" title="常见Linux Shell种类"></a>常见Linux Shell种类</h3><ul>
-<li>Bourne Shell (/usr/bin/sh 或 /bin/sh)</li>
-<li>Bourne Again Shell (/bin/bash)</li>
-<li>C Shell (/usr/bin/csh)</li>
-<li>K Shell (/usr/bin/ksh)</li>
-<li>Shell for Root (/sbin/sh)</li>
-</ul>
-<h3 id="第一个Shell脚本"><a href="#第一个Shell脚本" class="headerlink" title="第一个Shell脚本"></a>第一个Shell脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line">echo &apos;Hello World !&apos;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>“#!” 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种Shell</p>
-</blockquote>
-<h3 id="运行Shell脚本的2种方法"><a href="#运行Shell脚本的2种方法" class="headerlink" title="运行Shell脚本的2种方法"></a>运行Shell脚本的2种方法</h3><ol>
-<li><p>作为可执行程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 将上面的脚本保存为test.sh</div><div class="line">chmod +x ./test.sh // 使脚本具有可执行的权限</div><div class="line">./test.sh // 执行脚本</div></pre></td></tr></table></figure>
-</li>
-<li><p>作为解释器参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/bin/sh test.sh</div><div class="line">/bin/php test.php</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>这种方式运行的脚本，不需要再第一行指定解释器的信息，即使指定了也没用</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj1p9aj390018xdo07juu6vcb" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj1uy1xob000ijco0npfqtisb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -1101,7 +1122,7 @@
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
   </nav>
 </section>
         
@@ -1111,7 +1132,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -1121,7 +1142,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">7</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -1131,7 +1152,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 10px; color: #ff8200">css</a> <a href="/tags/js/" style="font-size: 10px; color: #ff8200">js</a> <a href="/tags/linux/" style="font-size: 12.5px; color: #bf623c">linux</a> <a href="/tags/nodejs/" style="font-size: 15px; color: #804177">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 17.5px; color: #4021b3">shell</a> <a href="/tags/tools/" style="font-size: 20px; color: #00e">tools</a>
+      <a href="/tags/css/" style="font-size: 10px; color: #ff8200">css</a> <a href="/tags/js/" style="font-size: 12.5px; color: #bf623c">js</a> <a href="/tags/linux/" style="font-size: 15px; color: #804177">linux</a> <a href="/tags/nodejs/" style="font-size: 15px; color: #804177">nodejs</a> <a href="/tags/ps/" style="font-size: 10px; color: #ff8200">ps</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 17.5px; color: #4021b3">shell</a> <a href="/tags/tools/" style="font-size: 20px; color: #00e">tools</a>
     </div>
   </div>
 
@@ -1140,7 +1161,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -1153,23 +1174,23 @@
       <ul>
         
           <li>
-            <a href="/2017/04/20/linux-config/">linux-config</a>
+            <a href="/2017/04/23/linux-process/">linux进程</a>
           </li>
         
           <li>
-            <a href="/2017/04/20/linux-command/">linux-command</a>
+            <a href="/2017/04/20/js-ASI/">ASI(auto semicolon insertion)自动分号补齐</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/20/linux-config/">linux系统中常用的配置文件</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/20/linux-command/">linux常用命令</a>
           </li>
         
           <li>
             <a href="/2017/04/15/shell-redirect/">shell重定向</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/15/sails/">sails</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/05/variable-hoist/">JS中变量提升</a>
           </li>
         
       </ul>
