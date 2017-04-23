@@ -19,7 +19,7 @@
 
 进程追踪
 操作系统给每个进程分配一个5位数字的pid来标示每个进程，每个进程">
-<meta property="og:updated_time" content="2017-04-23T07:41:24.000Z">
+<meta property="og:updated_time" content="2017-04-23T17:10:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux进程">
 <meta name="twitter:description" content="进程简介
@@ -125,10 +125,85 @@
 <p>其中的第一行的<code>[2]</code>表示job number,它是用来操作前后台进程切换的。<br>第二行表示<code>ls -l</code>命令后台进程成功的执行完成<br>第三行是等待下一个命令的输入</p>
 </blockquote>
 <h2 id="列出运行中的进程"><a href="#列出运行中的进程" class="headerlink" title="列出运行中的进程"></a>列出运行中的进程</h2><blockquote>
-<p>通过<code>ps</code>(process status)命令很容易就可以列出运行中的进程。<br><code>ps</code>命令有一些常用选项，最常用的是<code>-f</code><br>具体选项如下<br>| 选项 | 描述 |<br>| — | — |<br>| -f | full, 列出详细的信息 |<br>| -a | all, 显示所有用户的信息 |<br>| -x | —- |<br>| -u | —- |<br>| -e | —- |<br>以上的这些选项，<code>-x</code>, <code>-e</code>列出了一大堆信息，包括系统进程的，具体什么东西目前不是很清楚（TODO）。<br><code>-u</code>在mac下测试不支持，或许是打开方式不对。。。</p>
+<p>通过<code>ps</code>(process status)命令很容易就可以列出运行中的进程。<br><code>ps</code>命令有一些常用选项，最常用的是<code>-f</code><br>具体选项如下</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>full, 列出详细的信息</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>all, 显示所有用户的信息</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>—-</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>—-</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>—-</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>以上的这些选项，<code>-x</code>, <code>-e</code>列出了一大堆信息，包括系统进程的，具体什么东西目前不是很清楚（TODO）。<br><code>-u</code>在mac下测试不支持，或许是打开方式不对。。。</p>
 </blockquote>
 <p>通过<code>ps -f</code>会在终端下显示如下信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</div><div class="line">501 26649 26648   0 四12上午 ttys000    0:00.68 -bash</div><div class="line">501 11212 11210   0 15 417  ttys001    0:00.31 -bash</div><div class="line">501 11267 11266   0 15 417  ttys002    0:00.11 -bash</div><div class="line">501 11545 11544   0 15 417  ttys003    0:00.19 -bash</div><div class="line">501 24268 24267   0 三12下午 ttys004    0:00.39 -bash</div><div class="line">501 16770 16766   0 一11上午 ttys007    0:00.92 -bash</div></pre></td></tr></table></figure></p>
-<p>关于以上每列所代表的含义如下:<br>| 标识符 | 描述 |<br>| —– | — |<br>| UID | 该进程属于哪个用户的，也就是说该进程是哪个用户启动的，用户ID |<br>| PID | 进程ID（process id） |<br>| PPID | 该进程的父进程ID（parent process id）|<br>| C | 进程利用的CPU |<br>| STIME | 进程启动的时间 |<br>| TTY | 进程所使用的终端类型 |<br>| TIME | 进程占用的CPU时间 |<br>| CMD | 启动该进程所使用的命令 |</p>
+<p>关于以上每列所代表的含义如下:</p>
+<table>
+<thead>
+<tr>
+<th>标识符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UID</td>
+<td>该进程属于哪个用户的，也就是说该进程是哪个用户启动的，用户ID</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>进程ID（process id）</td>
+</tr>
+<tr>
+<td>PPID</td>
+<td>该进程的父进程ID（parent process id）</td>
+</tr>
+<tr>
+<td>C</td>
+<td>进程利用的CPU</td>
+</tr>
+<tr>
+<td>STIME</td>
+<td>进程启动的时间</td>
+</tr>
+<tr>
+<td>TTY</td>
+<td>进程所使用的终端类型</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>进程占用的CPU时间</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>启动该进程所使用的命令</td>
+</tr>
+</tbody>
+</table>
 <h2 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h2><blockquote>
 <p>终止一个进程有很多种方式，常用的如下</p>
 <ul>
@@ -155,10 +230,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj1uy1xo2000cjco0aviiy2yg" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj1uyccsn000cl2o0ucxe6zwg" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ps/">ps</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
     </footer>
   </div>
@@ -196,7 +271,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">7</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -206,7 +281,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 10px; color: #ff8200">css</a> <a href="/tags/js/" style="font-size: 12.5px; color: #bf623c">js</a> <a href="/tags/linux/" style="font-size: 15px; color: #804177">linux</a> <a href="/tags/nodejs/" style="font-size: 15px; color: #804177">nodejs</a> <a href="/tags/ps/" style="font-size: 10px; color: #ff8200">ps</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 17.5px; color: #4021b3">shell</a> <a href="/tags/tools/" style="font-size: 20px; color: #00e">tools</a>
+      <a href="/tags/css/" style="font-size: 10px; color: #ff8200">css</a> <a href="/tags/js/" style="font-size: 12.5px; color: #bf623c">js</a> <a href="/tags/linux/" style="font-size: 15px; color: #804177">linux</a> <a href="/tags/nodejs/" style="font-size: 15px; color: #804177">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 17.5px; color: #4021b3">shell</a> <a href="/tags/tools/" style="font-size: 20px; color: #00e">tools</a>
     </div>
   </div>
 
