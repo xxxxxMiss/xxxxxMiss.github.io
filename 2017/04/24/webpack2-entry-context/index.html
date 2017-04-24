@@ -3,14 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: shell | 青史成灰</title>
+  <title>webpack2-entry-context | 青史成灰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="青史成灰">
-<meta property="og:url" content="https://xxxxxmiss.github.io/tags/shell/index.html">
+  <meta name="description" content="Entry anc Context
+告诉webpack哪个文件作为打包的入口点。
+
+context
+一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。
+
+1context: path.resove(__dirname, &amp;apos;ap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack2-entry-context">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/index.html">
 <meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="Entry anc Context
+告诉webpack哪个文件作为打包的入口点。
+
+context
+一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。
+
+1context: path.resove(__dirname, &amp;apos;ap">
+<meta property="og:updated_time" content="2017-04-24T09:24:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="青史成灰">
+<meta name="twitter:title" content="webpack2-entry-context">
+<meta name="twitter:description" content="Entry anc Context
+告诉webpack哪个文件作为打包的入口点。
+
+context
+一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。
+
+1context: path.resove(__dirname, &amp;apos;ap">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
@@ -63,115 +85,84 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/15/shell-redirect/" class="archive-article-date">
-  <time datetime="2017-04-15T03:10:47.000Z" itemprop="datePublished">4月 15</time>
+        <section id="main"><!-- id="post-variable-hoist" -->
+<article id="post-webpack2-entry-context" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/24/webpack2-entry-context/" class="article-date">
+  <time datetime="2017-04-24T08:32:33.000Z" itemprop="datePublished">2017-04-24</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/构建工具/">构建工具</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/15/shell-redirect/">shell重定向</a>
+    <h1 class="article-title" itemprop="name">
+      webpack2-entry-context
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/03/30/shell-operation/" class="archive-article-date">
-  <time datetime="2017-03-30T13:10:24.000Z" itemprop="datePublished">3月 30</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/shell-operation/">shell运算符</a>
-    </h1>
-  
+        
+        <h2 id="Entry-anc-Context"><a href="#Entry-anc-Context" class="headerlink" title="Entry anc Context"></a>Entry anc Context</h2><blockquote>
+<p>告诉webpack哪个文件作为打包的入口点。</p>
+</blockquote>
+<h2 id="context"><a href="#context" class="headerlink" title="context"></a>context</h2><blockquote>
+<p>一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。<br>如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。<br>推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">context: path.resove(__dirname, &apos;app&apos;)</div></pre></td></tr></table></figure>
+<h2 id="entry"><a href="#entry" class="headerlink" title="entry"></a>entry</h2><blockquote>
+<p>指定打包的入口点, 最简单的规则就是：单页应用一个入口点，多页应用多个入口点。<br>可以提供多种类型，如下</p>
+</blockquote>
+<ul>
+<li>string</li>
+<li>[string]</li>
+<li>object</li>
+<li>() =&gt; string | [string] | object</li>
+</ul>
+<h2 id="生成的chunk名称"><a href="#生成的chunk名称" class="headerlink" title="生成的chunk名称"></a>生成的chunk名称</h2><blockquote>
+<p>如果<code>entry</code>提供的是一个字符串或者字符串数组，那么生成的chunk名称是<code>main</code>。<br>如果<code>entry</code>提供的是一个对象，那么对象的key作为chunk名称，value作为chunk的打包入口。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">    entry: &apos;./index.js&apos;,</div><div class="line">    // entry: [&apos;./index.js&apos;, &apos;scroller.js&apos;]</div><div class="line">    output: &#123;</div><div class="line">        filename: &apos;[name].js&apos; // [name]会被替换为main</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">    entry: &#123;</div><div class="line">        index: &apos;./index.js&apos;,</div><div class="line">        contact: &apos;./contact.js&apos;</div><div class="line">    &#125;,</div><div class="line">    output: &#123;</div><div class="line">        filename: &apos;[name].js&apos; // [name]会被替换为index, contact</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="动态入口"><a href="#动态入口" class="headerlink" title="动态入口"></a>动态入口</h2><blockquote>
+<p>// TODO updating…</p>
+</blockquote>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/03/30/shell-params/" class="archive-article-date">
-  <time datetime="2017-03-30T12:31:56.000Z" itemprop="datePublished">3月 30</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/shell-params/">shell传递参数</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/03/30/shell-variable/" class="archive-article-date">
-  <time datetime="2017-03-29T16:21:20.000Z" itemprop="datePublished">3月 30</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/" data-id="cj1w18ker001977o0gq2rqqr7" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/shell-variable/">shell变量</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/03/29/shell-overview/" class="archive-article-date">
-  <time datetime="2017-03-29T15:54:33.000Z" itemprop="datePublished">3月 29</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/29/shell-overview/">shell基本知识</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/23/linux-process/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux进程</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
 
 </section>
         

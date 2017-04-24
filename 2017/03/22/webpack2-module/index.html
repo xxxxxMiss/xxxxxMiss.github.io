@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>webpack2学习篇（五） | 青史成灰</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本章节主要介绍module常用配置项一个工程中的各种modules应该如何被webpack处理。
+
+module.noParseRegExp
+
+让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。
+
+noParse: /jquery|backbone/
+这章讲解的内容配置起来是最简单的，但是用文字描述起来并不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack2学习篇（五）">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/22/webpack2-module/index.html">
+<meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="本章节主要介绍module常用配置项一个工程中的各种modules应该如何被webpack处理。
+
+module.noParseRegExp
+
+让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。
+
+noParse: /jquery|backbone/
+这章讲解的内容配置起来是最简单的，但是用文字描述起来并不">
+<meta property="og:updated_time" content="2017-04-24T08:34:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack2学习篇（五）">
+<meta name="twitter:description" content="本章节主要介绍module常用配置项一个工程中的各种modules应该如何被webpack处理。
+
+module.noParseRegExp
+
+让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。
+
+noParse: /jquery|backbone/
+这章讲解的内容配置起来是最简单的，但是用文字描述起来并不">
+  
+    <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">青史成灰</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Every journey begins with the first step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xxxxxmiss.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><!-- id="post-variable-hoist" -->
+<article id="post-webpack2-module" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-module/" class="article-date">
+  <time datetime="2017-03-22T02:59:48.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/构建工具/">构建工具</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack2学习篇（五）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <blockquote>
+<p>本章节主要介绍module常用配置项<br>一个工程中的各种modules应该如何被webpack处理。</p>
+</blockquote>
+<h3 id="module-noParse"><a href="#module-noParse" class="headerlink" title="module.noParse"></a>module.noParse</h3><p>RegExp</p>
+<blockquote>
+<p>让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。</p>
+</blockquote>
+<p><code>noParse: /jquery|backbone/</code></p>
+<p>这章讲解的内容配置起来是最简单的，但是用文字描述起来并不简单，直接通过配置例子来说明。</p>
+<p>webpack1.x常用配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    loaders: [</div><div class="line">        &#123;</div><div class="line">            test: /^$/,</div><div class="line">            loader: &apos;&apos;,</div><div class="line">            include: [],</div><div class="line">            exclude: [],</div><div class="line">            query: &#123;&#125;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>webpack2.x常用配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    rules: [</div><div class="line">        &#123;</div><div class="line">            test: /^$/,</div><div class="line">            // 一定要注意：当使用多个loader解析一个文件时，一定要注意loader的添加顺序，他是【从右往左】依次使用每个loader来解析文件的</div><div class="line">            use: [</div><div class="line">                &#123;</div><div class="line">                    loader: &apos;&apos;,</div><div class="line">                    options: &#123;&#125;</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    loader: &apos;&apos;</div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            include: [],</div><div class="line">            exclude: [],</div><div class="line">            and: [],</div><div class="line">            or: [],</div><div class="line">            not: &apos;&apos;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>webpack2.x常用配置（更常用）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    rules: [ // 每个对象称之为一个`rule`</div><div class="line">        &#123;</div><div class="line">            test: /^$/,</div><div class="line">            // 使用该选项，当需要几个loader解析一个文件时，可以连写：css!style!sass</div><div class="line">            // 如果替换为use, 那么就不能这么写了，必须写成[&#123;&#125;,&#123;&#125;]的形式</div><div class="line">            loader: &apos;&apos;, </div><div class="line">            include: [condition], // 包括这些</div><div class="line">            exclude: [condition], // 排condition除这些</div><div class="line">            and: [condition], // 所有的都包括</div><div class="line">            or: [condition], // 至少包括一个</div><div class="line">            not: &apos;condition&apos;, // 不包括</div><div class="line">            options: &#123;&#125;, // 传入到loader中的选项</div><div class="line">            //...</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>关于<code>rules</code>中每个对象的属性的值，也就是<code>test</code>,<code>loader</code>,<code>include</code>等，都是支持以下几种类型的：</p>
+</blockquote>
+<ul>
+<li>字符串：必须完整的匹配该字符串，比如一个文件或者文件夹的<strong>绝对路径</strong></li>
+<li>正则：正则匹配</li>
+<li>函数：必须有匹配的返回值</li>
+<li>数组：至少一个条件被匹配</li>
+<li>对象：所有的属性都应该被匹配，每个属性定义一种行为</li>
+</ul>
+<blockquote>
+<p>关于<code>rule</code>中的<code>condition</code>的说明：<code>condition</code>中会存在2中输入：</p>
+</blockquote>
+<ul>
+<li>资源(resource): 请求文件的绝对路径，依据<code>resolve</code>选项进行解析的</li>
+<li>发布者(issuer): 包含请求文件的文件的绝对路径。</li>
+</ul>
+<p>以上的2句话很难理解，直接看例子，比如在<code>app.js</code>中有一句导入css语句：<br>app.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &apos;./style.css&apos;</div></pre></td></tr></table></figure></p>
+<p>资源就是<code>/path/to/style.css</code><br>发布者就是<code>/path/to/app.js</code></p>
+<p>在一个<code>rule</code>中，<code>test</code>,<code>include</code>,<code>resource</code>等都是用来处理资源的，而<code>issuer</code>是用来处理发布者的。</p>
+<blockquote>
+<p>考虑到兼容性，很多属性都是可以相互替换的。如<code>rules</code>|<code>loaders</code>, <code>query</code>|<code>options</code>等。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-module/" data-id="cj1w18keg001277o0cbrnnwie" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/22/webpack2-resolve/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          webpack2学习篇（六）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/22/webpack2-output/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">webpack2学习篇（四）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/">tools</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css/" style="font-size: 10px; color: #ff8200">css</a> <a href="/tags/js/" style="font-size: 12.5px; color: #bf623c">js</a> <a href="/tags/linux/" style="font-size: 15px; color: #804177">linux</a> <a href="/tags/nodejs/" style="font-size: 15px; color: #804177">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 17.5px; color: #4021b3">shell</a> <a href="/tags/tools/" style="font-size: 10px; color: #ff8200">tools</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/24/webpack2-entry-context/">webpack2-entry-context</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/23/linux-process/">linux进程</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/20/js-ASI/">ASI(auto semicolon insertion)自动分号补齐</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/20/linux-config/">linux系统中常用的配置文件</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/20/linux-command/">linux常用命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014-2017 xxxxxMiss<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
