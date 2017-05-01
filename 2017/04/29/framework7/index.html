@@ -21,7 +21,7 @@
 12345// 在工程的根路径下安装依赖npm/yarn install // 启动服务gulp server
 视图布局单视图布局
 使用最广泛的布局，使用单一视图 + 路由 + 头部导航(navbar) + 底部导">
-<meta property="og:updated_time" content="2017-05-01T12:00:35.000Z">
+<meta property="og:updated_time" content="2017-05-01T12:08:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="framework7">
 <meta name="twitter:description" content="启动
@@ -129,17 +129,17 @@
 <h3 id="内建的模板引擎加载视图"><a href="#内建的模板引擎加载视图" class="headerlink" title="内建的模板引擎加载视图"></a>内建的模板引擎加载视图</h3><blockquote>
 <p>使用f7内置的模板引擎来加载指定的视图</p>
 </blockquote>
-<h2 id="View"><a href="#View" class="headerlink" title="View()"></a>View(<div class="view">)</div></h2><blockquote>
-<p>视图是app独立的可视化部分，每个view都可以有自己的设置,导航，不同的样式，布局等。这种功能可以让你很容易的在app中插入各种各样的视图。</p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><blockquote>
+<p><code>&lt;div class=&quot;view&quot;&gt;</code>, 视图是app独立的可视化部分，每个view都可以有自己的设置,导航，不同的样式，布局等。这种功能可以让你很容易的在app中插入各种各样的视图。</p>
 </blockquote>
-<h2 id="Views"><a href="#Views" class="headerlink" title="Views()"></a>Views(<div class="views"></div>)</h2><blockquote>
-<p>是所有<code>view</code>的容器，也就是app容器，在任何时候该容器都是可见的。<br>一个app当然只能有一个容器，即只允许有一个<code>views</code>。</p>
+<h2 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h2><blockquote>
+<p><code>&lt;div class=&quot;views&quot;&gt;&lt;/div&gt;</code>, 是所有<code>view</code>的容器，也就是app容器，在任何时候该容器都是可见的。<br>一个app当然只能有一个容器，即只允许有一个<code>views</code>。</p>
 </blockquote>
-<h2 id="page"><a href="#page" class="headerlink" title="page()"></a>page(<div class="page"></div>)</h2><blockquote>
-<p><code>page</code>跟<code>view</code>不同，<code>page</code>没有<code>navbar</code>,<code>tabbar</code>等导航，它主要用来显示页面的内容部分。</p>
+<h2 id="page"><a href="#page" class="headerlink" title="page"></a>page</h2><blockquote>
+<p><code>&lt;div class=&quot;page&quot;&gt;&lt;/div&gt;</code>, <code>page</code>跟<code>view</code>不同，<code>page</code>没有<code>navbar</code>,<code>tabbar</code>等导航，它主要用来显示页面的内容部分。</p>
 </blockquote>
-<h2 id="Pages"><a href="#Pages" class="headerlink" title="Pages()"></a>Pages(<div class="pages">)</div></h2><blockquote>
-<p>是<code>page</code>的容器，一个<code>pages</code>可以包含多个<code>page</code>,就相当于一个页面中的内容可以被分成多个部分的内容来显示。<br>所有<code>page</code>的过渡动画都是在<code>pages</code>上实现的。<br>Note: 在主<code>views</code>中，总是应该包含一个<code>view</code>，在这个<code>view</code>中总是应该包含一个<code>pages</code>。</p>
+<h2 id="Pages"><a href="#Pages" class="headerlink" title="Pages"></a>Pages</h2><blockquote>
+<p><code>&lt;div class=&quot;pages&quot;&gt;</code>, 是<code>page</code>的容器，一个<code>pages</code>可以包含多个<code>page</code>,就相当于一个页面中的内容可以被分成多个部分的内容来显示。<br>所有<code>page</code>的过渡动画都是在<code>pages</code>上实现的。<br>Note: 在主<code>views</code>中，总是应该包含一个<code>view</code>，在这个<code>view</code>中总是应该包含一个<code>pages</code>。</p>
 </blockquote>
 <h3 id="data-page"><a href="#data-page" class="headerlink" title="data-page"></a>data-page</h3><blockquote>
 <p>在每个<code>page</code>上，你都应该指定一个<code>data-page</code>属性，虽然这不是必须的，但是极其推荐都加上他。<br>因为在<code>page events</code>和<code>page callbacks</code>中非常有用，他帮助我们操作去加载指定的页面和操作指定的页面。</p>
@@ -277,8 +277,11 @@
 <p>F7已经内置了Template7模板引擎，所以你需要额外安装，当然你可以单独的安装Template7。<br>Template7模板引擎的语法类似<code>handlebars</code>模板引擎的语法。<br>Template7模板引擎轻量高效，最慢的地方就是使用<code>Template7.compile()</code>将字符串模板解析为原生的js函数，所以一定要记得缓存编译后的js函数，不要对一个相同的模板多次编译。</p>
 </blockquote>
 <h2 id="F7自动编译Template7模板"><a href="#F7自动编译Template7模板" class="headerlink" title="F7自动编译Template7模板"></a>F7自动编译Template7模板</h2><blockquote>
-<p>在F7中，可以自动编译Template7模板，只需要做如下4件事：<br>1,将模板字符串放在<code>script</code>标签中<br>2,设置<code>type=&quot;text/template7&quot;</code><br>3,给<code>script</code>标签一个唯一的<code>id</code></p>
-<h2 id="4-初始化app的时候配置选项precompileTemplates-true"><a href="#4-初始化app的时候配置选项precompileTemplates-true" class="headerlink" title="4,初始化app的时候配置选项precompileTemplates: true"></a>4,初始化app的时候配置选项<code>precompileTemplates: true</code></h2><p>编译后的模板函数都会挂载到<code>Template7.templates</code>和<code>myApp.templates</code>对象上，所以你可以将所需数据传入编译后的函数，调用函数获取html字符串。</p>
+<p>在F7中，可以自动编译Template7模板，只需要做如下4件事：<br>1,将模板字符串放在<code>script</code>标签中<br>2,设置<code>type=&quot;text/template7&quot;</code><br>3,给<code>script</code>标签一个唯一的<code>id</code><br>4,初始化app的时候配置选项<code>precompileTemplates: true</code></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>编译后的模板函数都会挂载到<code>Template7.templates</code>和<code>myApp.templates</code>对象上，所以你可以将所需数据传入编译后的函数，调用函数获取html字符串。</p>
 </blockquote>
 <p>实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 模板</div><div class="line">&lt;script type=&quot;text/template7&quot; id=&quot;personTemplate&quot;&gt;</div><div class="line">    &lt;div&gt;hello, my name is &#123;&#123;name&#125;&#125;, i am &#123;&#123;age&#125;&#125; years old&lt;/div&gt;</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">// 初始化app</div><div class="line">var myApp = new Framework7(&#123;</div><div class="line">    precompileTemplates: true</div><div class="line">&#125;)</div><div class="line"></div><div class="line">// 获取编译函数并调用</div><div class="line">// Template7.templates[id], id为script标签中指定的id</div><div class="line">var personHtml = Tempate7.templates.personTemplate(&#123;</div><div class="line">    name: &apos;f7&apos;,</div><div class="line">    age: 10</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <h2 id="Template7-pages"><a href="#Template7-pages" class="headerlink" title="Template7 pages"></a>Template7 pages</h2><blockquote>
@@ -294,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj262s2200000qdo0scofsnun" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj2630tgl000fr8o0zt2vfyne" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework7/">framework7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hybrid/">hybrid</a></li></ul>
