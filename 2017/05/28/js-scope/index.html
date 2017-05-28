@@ -17,7 +17,7 @@ js中有2种作用域，词法作用域和动态作用域。下面用例子来�
 js中有2种作用域，词法作用域和动态作用域。下面用例子来解释这2种作用域的概念。
 
 1234567891011121314151617181920212223var outerFunction  = function()&amp;#123;   if(true)&amp;#123;      var x = 5;      //console.log(y); //li">
-<meta property="og:updated_time" content="2017-05-28T18:27:38.000Z">
+<meta property="og:updated_time" content="2017-05-28T18:58:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="词法作用域VS动态作用">
 <meta name="twitter:description" content="词法作用域(lexical scoping)
@@ -112,6 +112,10 @@ js中有2种作用域，词法作用域和动态作用域。下面用例子来�
 <blockquote>
 <p>词法作用域：变量的作用域是由他们被定义时处在源代码中的位置决定。为了去解析这些变量，js从最内层作用域向外层作用域查找，直到查找到该变量为止。</p>
 </blockquote>
+<p>再来看一个典型的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">  console.log(a) // 2</div><div class="line">&#125;</div><div class="line"></div><div class="line">function bar()&#123;</div><div class="line">  var a = 3</div><div class="line">  foo()</div><div class="line">&#125;</div><div class="line">var a = 2</div><div class="line">bar()</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这个例子中，会输出2。我们按照词法作用来分析下：首先foo在自己的作用域中寻找变量a, 没有找到，那么到父级作用域中查找，本例子中foo的父级作用域就是全局作用域。因为foo函数定义时处在全局环境中有个变量a，所以在bar函数中调用foo时，会输出2。如果寻找到顶级作用域都没有找到变量a, 那么就抛出一个<code>Uncaught ReferenceError: a is not defined</code><br>如果按照动态作用域来分析：foo执行时所在的作用域是bar函数的作用域，那么此时输出的就是3了。</p>
+</blockquote>
 <p>词法作用域很清晰明了，但是动态作用域就不是这么清晰明了了，动态作用域是由运行时的环境决定的。为了说明说明什么叫动态作用域，先来看什么叫闭包。</p>
 <h2 id="闭包-closures"><a href="#闭包-closures" class="headerlink" title="闭包(closures)"></a>闭包(closures)</h2><p>我们看上面的例子，事实上对于为什么在<code>nestedFunction</code>中可以访问变量<code>x</code>依然是模糊的。因为我们知道：通常一个函数中的本地变量，会随着函数的执行完毕而销毁。那么我们调用函数<code>outerFunction</code>并将它的返回值赋值给<code>myFunction</code>, 为什么<code>outerFunction</code>函数已经执行完毕而变量<code>x</code>依然存在？</p>
 <p>MDN上对闭包的定义如下:</p>
@@ -119,7 +123,7 @@ js中有2种作用域，词法作用域和动态作用域。下面用例子来�
 <p>A closure is a special kind of object that combines two things: a function, and the environment in which that function was created. The environment consists of any local variables that were in-scope at the time that the closure was created.<br>意思就是：<br>闭包是一种特殊的函数，该函数可以记住当时创建时的环境。</p>
 </blockquote>
 <p>那上面的例子来解释就是：<code>nestedFunction</code>被创建时，是在<code>outerFunction</code>作用域中，该作用域中有变量<code>x</code>, 那么当<code>outerFunction</code>函数执行完毕时，返回的<code>nestedFunction</code>是可以记住变量<code>x</code>的。换句话说，就是原本随函数执行完毕而销毁的变量，因为有别人对他的引用，因此当函数执行完毕时该变量并不会被销毁。</p>
-<h2 id="函数的执行上下文-this"><a href="#函数的执行上下文-this" class="headerlink" title="函数的执行上下文(this)"></a>函数的执行上下文(this)</h2><blockquote>
+<h2 id="函数的执行上下文-this，动态作用域"><a href="#函数的执行上下文-this，动态作用域" class="headerlink" title="函数的执行上下文(this，动态作用域)"></a>函数的执行上下文(this，动态作用域)</h2><blockquote>
 <p>上面对于闭包的解释，一种可以记住当时被创建时的环境，这个环境主要是指各种本地变量。但是一种特殊的变量<code>this</code>，他的行为和普通变量完全不同，看下面的例子：</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var cat = &#123;</div><div class="line"> </div><div class="line">   name: &quot;Gus&quot;,</div><div class="line">   color: &quot;gray&quot;,</div><div class="line">   age: 15,</div><div class="line"> </div><div class="line">   printInfo: function() &#123;</div><div class="line">      console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age); //line 1, prints correctly</div><div class="line"> </div><div class="line">      nestedFunction = function() &#123;</div><div class="line">          console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age); //line 2, loses cat scope</div><div class="line">      &#125;</div><div class="line"> </div><div class="line">      nestedFunction();</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line">cat.printInfo(); //prints Name: &apos;&apos; Color: undefined Age: undefined</div></pre></td></tr></table></figure>
@@ -161,7 +165,7 @@ js中有2种作用域，词法作用域和动态作用域。下面用例子来�
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj391fv2t00096zo014l5x836" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj392kb8u00098zo0pjvci8so" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lexical-scope/">lexical scope</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/">this</a></li></ul>
