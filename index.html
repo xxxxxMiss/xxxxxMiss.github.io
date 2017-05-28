@@ -66,6 +66,142 @@
         <section id="main">
   
     <!-- id="post-variable-hoist" -->
+<article id="post-js-scope" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/28/js-scope/" class="article-date">
+  <time datetime="2017-05-28T15:54:27.000Z" itemprop="datePublished">2017-05-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/28/js-scope/">词法作用域VS动态作用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="词法作用域-lexical-scoping"><a href="#词法作用域-lexical-scoping" class="headerlink" title="词法作用域(lexical scoping)"></a>词法作用域(lexical scoping)</h2><blockquote>
+<p>js中有2种作用域，词法作用域和动态作用域。下面用例子来解释这2种作用域的概念。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">var outerFunction  = function()&#123;</div><div class="line"></div><div class="line">   if(true)&#123;</div><div class="line">      var x = 5;</div><div class="line">      //console.log(y); //line 1, ReferenceError: y not defined</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   var nestedFunction = function() &#123;</div><div class="line"></div><div class="line">      if(true)&#123;</div><div class="line">         var y = 7;</div><div class="line">         console.log(x); //line 2, x will still be known prints 5</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      if(true)&#123;</div><div class="line">         console.log(y); //line 3, prints 7</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   return nestedFunction;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var myFunction = outerFunction();</div><div class="line">myFunction();</div></pre></td></tr></table></figure>
+<p>在上面的例子中，变量<code>x</code>可以在<code>outerFunction</code>中各个地方访问，变量<code>y</code>可以在<code>nestedFunction</code>中各个地方访问，但是变量<code>x</code>,<code>y</code>不能在他们所在的函数的外部访问。这种行为可以通过<strong>词法作用域</strong>来解释：</p>
+<blockquote>
+<p>词法作用域：变量的作用域是由他们被定义时处在源代码中的位置决定。为了去解析这些变量，js从最内层作用域向外层作用域查找，直到查找到该变量为止。</p>
+</blockquote>
+<p>词法作用域很清晰明了，但是动态作用域就不是这么清晰明了了，动态作用域是由运行时的环境决定的。为了说明说明什么叫动态作用域，先来看什么叫闭包。</p>
+<h2 id="闭包-closures"><a href="#闭包-closures" class="headerlink" title="闭包(closures)"></a>闭包(closures)</h2><p>我们看上面的例子，事实上对于为什么在<code>nestedFunction</code>中可以访问变量<code>x</code>依然是模糊的。因为我们知道：通常一个函数中的本地变量，会随着函数的执行完毕而销毁。那么我们调用函数<code>outerFunction</code>并将它的返回值赋值给<code>myFunction</code>, 为什么<code>outerFunction</code>函数已经执行完毕而变量<code>x</code>依然存在？</p>
+<p>MDN上对闭包的定义如下:</p>
+<blockquote>
+<p>A closure is a special kind of object that combines two things: a function, and the environment in which that function was created. The environment consists of any local variables that were in-scope at the time that the closure was created.<br>意思就是：<br>闭包是一种特殊的函数，该函数可以记住当时创建时的环境。</p>
+</blockquote>
+<p>那上面的例子来解释就是：<code>nestedFunction</code>被创建时，是在<code>outerFunction</code>作用域中，该作用域中有变量<code>x</code>, 那么当<code>outerFunction</code>函数执行完毕时，返回的<code>nestedFunction</code>是可以记住变量<code>x</code>的。换句话说，就是原本随函数执行完毕而销毁的变量，因为有别人对他的引用，因此当函数执行完毕时该变量并不会被销毁。</p>
+<h2 id="函数的执行上下文-this"><a href="#函数的执行上下文-this" class="headerlink" title="函数的执行上下文(this)"></a>函数的执行上下文(this)</h2><blockquote>
+<p>上面对于闭包的解释，一种可以记住当时被创建时的环境，这个环境主要是指各种本地变量。但是一种特殊的变量<code>this</code>，他的行为和普通变量完全不同，看下面的例子：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var cat = &#123;</div><div class="line"> </div><div class="line">   name: &quot;Gus&quot;,</div><div class="line">   color: &quot;gray&quot;,</div><div class="line">   age: 15,</div><div class="line"> </div><div class="line">   printInfo: function() &#123;</div><div class="line">      console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age); //line 1, prints correctly</div><div class="line"> </div><div class="line">      nestedFunction = function() &#123;</div><div class="line">          console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age); //line 2, loses cat scope</div><div class="line">      &#125;</div><div class="line"> </div><div class="line">      nestedFunction();</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line">cat.printInfo(); //prints Name: &apos;&apos; Color: undefined Age: undefined</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的例子，第一处的<code>console</code>语句能正常的输出,但是对于<code>nestedFunction</code>中的输出语句，却未能按照预期输出。</p>
+</blockquote>
+<p>对于第二个<code>console</code>输出，当一个函数处在另一个函数的内部时，js会丢失<code>this</code>作用域，一旦丢失，默认情况下<code>this</code>会指向全局的<code>window</code>对象。所以上面的例子，<code>nestedFunction</code>中的<code>this.color</code>和<code>this.age</code>输出<code>undefined</code>, 而<code>this.name</code>会输出空字符串, 是因为<code>window</code>对象默认有个<code>name</code>属性，默认值就是空。</p>
+<p>关于window对象的<code>name</code>属性，可以参看<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/name" target="_blank" rel="external">这里</a></p>
+<h2 id="控制上下文-context"><a href="#控制上下文-context" class="headerlink" title="控制上下文(context)"></a>控制上下文(context)</h2><blockquote>
+<p>我们无法改变词法作用域在js中的工作机制，但是我们可以改变一个函数的执行问下文。<br><strong>js中的上下文是由函数运行时决定的，并且他总是被绑定到调用该函数的对象上</strong>,但是唯一不适用这条规则的就是上面出现的函数嵌套的情况。</p>
+</blockquote>
+<p>换句话说，改变上下文就是改变<code>this</code>的指向。看个简单的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123;</div><div class="line">   printThis: function() &#123;</div><div class="line">      console.log(this);</div><div class="line">   &#125;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">var func1 = obj1.printThis;</div><div class="line">obj1.printThis(); //line 1</div><div class="line">func1(); //line 2</div></pre></td></tr></table></figure></p>
+<p>line1会输出<code>ojb1</code>, line2会输出<code>window</code>。</p>
+<h2 id="Call-Bind-Apply"><a href="#Call-Bind-Apply" class="headerlink" title="Call, Bind, Apply"></a>Call, Bind, Apply</h2><blockquote>
+<p>我们可以有多种方式来控制<code>this</code>的指向，常见的有以下几种：</p>
+</blockquote>
+<ul>
+<li>存储<code>this</code>的引用到另外一个变量</li>
+<li>call()</li>
+<li>apply()</li>
+<li>bind()</li>
+</ul>
+<p>存储<code>this</code>的引用到另外一个变量:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var cat = &#123;</div><div class="line">   name: &quot;Gus&quot;,</div><div class="line">   color: &quot;gray&quot;,</div><div class="line">   age: 15,</div><div class="line"> </div><div class="line">   printInfo: function() &#123;</div><div class="line">      var that = this;</div><div class="line">      console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age); //prints correctly</div><div class="line"> </div><div class="line">      nestedFunction = function() &#123;</div><div class="line">         console.log(&quot;Name:&quot;, that.name, &quot;Color:&quot;, that.color, &quot;Age:&quot;, that.age); //prints correctly</div><div class="line">      &#125;</div><div class="line">   nestedFunction();</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line">cat.printInfo();</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var cat = &#123;</div><div class="line">   name: &quot;Gus&quot;,</div><div class="line">   color: &quot;gray&quot;,</div><div class="line">   age: 15,</div><div class="line"></div><div class="line">   printInfo: function() &#123;</div><div class="line">      console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age);</div><div class="line">      nestedFunction = function() &#123;</div><div class="line">         console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age);</div><div class="line">      &#125;</div><div class="line">      nestedFunction.call(this);</div><div class="line">      nestedFunction.apply(this);</div><div class="line"></div><div class="line">      var storeFunction = nestedFunction.bind(this);</div><div class="line">      storeFunction();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">cat.printInfo();</div></pre></td></tr></table></figure>
+<p>关于<code>call</code>, <code>apply</code>, <code>bind</code>详细使用方法，这里不讲解了。<br>这里说下他们三者的区别：</p>
+<ul>
+<li>call, apply, 主要的不同就是传递额外参数的方式不同。call传递一个以逗号分割的列表，bind也是用这样的方式传递额外参数。apply需要传递的是一个数组。</li>
+<li>相当于call, apply，bind的使用要更加的灵巧一些：因为bind不但可以改变<code>this</code>的指向，而且他会返回一个新的函数，那么我们可以将这个新函数保存到另外一个变量中，在需要使用的地方再调用。<br>但是bind和apply会立即调用函数，返回函数的结果。</li>
+</ul>
+<h2 id="关于setTimeout中的this"><a href="#关于setTimeout中的this" class="headerlink" title="关于setTimeout中的this"></a>关于setTimeout中的this</h2><blockquote>
+<p>我们知道，可以使用call, apply, bind来改变函数的执行上下文，那么他们是否也适用于setTimeout呢？</p>
+</blockquote>
+<p>看例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">myArray = [&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;];</div><div class="line">myArray.myMethod = function (sProperty) &#123;</div><div class="line">    alert(arguments.length &gt; 0 ? this[sProperty] : this);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">myArray.myMethod(); // prints &quot;zero,one,two&quot;</div><div class="line">myArray.myMethod(1); // prints &quot;one&quot;</div><div class="line">setTimeout(myArray.myMethod, 1000); // prints &quot;[object Window]&quot; after 1 second</div><div class="line">setTimeout(myArray.myMethod, 1500, &quot;1&quot;); // prints &quot;undefined&quot; after 1,5 seconds</div><div class="line"></div><div class="line">// let&apos;s try to pass the &apos;this&apos; object</div><div class="line">setTimeout.call(myArray, myArray.myMethod, 2000); // Uncaught TypeError: Illegal invocation</div><div class="line">setTimeout.call(myArray, myArray.myMethod, 2500, 2); // same error</div></pre></td></tr></table></figure></p>
+<p>我们知道，正常情况下setTimeout/setInterval中的<code>this</code>是指向<code>window</code>对象的，我们还知道<code>call</code>方法可以改变<code>this</code>的指向，但是上面的例子中，使用setTimeout.call抛出错误。至于为什么这样，目前还不知道。。。？</p>
+<p>一种解决setTimeout中<code>this</code>指向不正确的方案就是重写原生的setTimeout,如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var __nativeST__ = window.setTimeout</div><div class="line">window.setTimeout = function(callback, delay)&#123;</div><div class="line">    var self = this, args = [].slice.call(arguments, 2)</div><div class="line">    return __nativeST__(callback instanceof Function ?</div><div class="line">            callback.apply(self, args) : callback, delay)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>经过上面的处理之后，此时再来调用发现就正确了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">myArray = [&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;];</div><div class="line">myArray.myMethod = function (sProperty) &#123;</div><div class="line">    alert(arguments.length &gt; 0 ? this[sProperty] : this);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">setTimeout(alert, 1500, &quot;Hello world!&quot;); // the standard use of setTimeout and setInterval is preserved, but...</div><div class="line">setTimeout.call(myArray, myArray.myMethod, 2000); // prints &quot;zero,one,two&quot; after 2 seconds</div><div class="line">setTimeout.call(myArray, myArray.myMethod, 2500, 2); // prints &quot;two&quot; after 2,5 seconds</div></pre></td></tr></table></figure></p>
+<p><a href="https://spin.atomicobject.com/2014/10/20/javascript-scope-closures/" target="_blank" rel="external">参考文章链接</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setTimeout" target="_blank" rel="external">参考文章链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj391ab6q000f5fo020p95ot0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lexical-scope/">lexical scope</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/">this</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
+<article id="post-vue-src-overview" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/28/vue-src-overview/" class="article-date">
+  <time datetime="2017-05-28T11:12:10.000Z" itemprop="datePublished">2017-05-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/28/vue-src-overview/">vue-src-overview</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="源码目录总览"><a href="#源码目录总览" class="headerlink" title="源码目录总览"></a>源码目录总览</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div></pre></td><td class="code"><pre><div class="line">├── src</div><div class="line">│   ├── compiler</div><div class="line">│   │   ├── codegen</div><div class="line">│   │   │   ├── events.js</div><div class="line">│   │   │   └── index.js</div><div class="line">│   │   ├── directives</div><div class="line">│   │   │   ├── bind.js</div><div class="line">│   │   │   ├── index.js</div><div class="line">│   │   │   └── model.js</div><div class="line">│   │   ├── error-detector.js</div><div class="line">│   │   ├── helpers.js</div><div class="line">│   │   ├── index.js</div><div class="line">│   │   ├── optimizer.js</div><div class="line">│   │   └── parser</div><div class="line">│   │       ├── entity-decoder.js</div><div class="line">│   │       ├── filter-parser.js</div><div class="line">│   │       ├── html-parser.js</div><div class="line">│   │       ├── index.js</div><div class="line">│   │       └── text-parser.js</div><div class="line">│   ├── core</div><div class="line">│   │   ├── components</div><div class="line">│   │   │   ├── index.js</div><div class="line">│   │   │   └── keep-alive.js</div><div class="line">│   │   ├── config.js</div><div class="line">│   │   ├── global-api</div><div class="line">│   │   │   ├── assets.js</div><div class="line">│   │   │   ├── extend.js</div><div class="line">│   │   │   ├── index.js</div><div class="line">│   │   │   ├── mixin.js</div><div class="line">│   │   │   └── use.js</div><div class="line">│   │   ├── index.js</div><div class="line">│   │   ├── instance</div><div class="line">│   │   │   ├── events.js</div><div class="line">│   │   │   ├── index.js</div><div class="line">│   │   │   ├── init.js</div><div class="line">│   │   │   ├── inject.js</div><div class="line">│   │   │   ├── lifecycle.js</div><div class="line">│   │   │   ├── proxy.js</div><div class="line">│   │   │   ├── render-helpers</div><div class="line">│   │   │   │   ├── bind-object-props.js</div><div class="line">│   │   │   │   ├── check-keycodes.js</div><div class="line">│   │   │   │   ├── render-list.js</div><div class="line">│   │   │   │   ├── render-slot.js</div><div class="line">│   │   │   │   ├── render-static.js</div><div class="line">│   │   │   │   ├── resolve-filter.js</div><div class="line">│   │   │   │   └── resolve-slots.js</div><div class="line">│   │   │   ├── render.js</div><div class="line">│   │   │   └── state.js</div><div class="line">│   │   ├── observer</div><div class="line">│   │   │   ├── array.js</div><div class="line">│   │   │   ├── dep.js</div><div class="line">│   │   │   ├── index.js</div><div class="line">│   │   │   ├── scheduler.js</div><div class="line">│   │   │   └── watcher.js</div><div class="line">│   │   ├── util</div><div class="line">│   │   │   ├── debug.js</div><div class="line">│   │   │   ├── env.js</div><div class="line">│   │   │   ├── error.js</div><div class="line">│   │   │   ├── index.js</div><div class="line">│   │   │   ├── lang.js</div><div class="line">│   │   │   ├── options.js</div><div class="line">│   │   │   ├── perf.js</div><div class="line">│   │   │   └── props.js</div><div class="line">│   │   └── vdom</div><div class="line">│   │       ├── create-component.js</div><div class="line">│   │       ├── create-element.js</div><div class="line">│   │       ├── helpers</div><div class="line">│   │       │   ├── index.js</div><div class="line">│   │       │   ├── merge-hook.js</div><div class="line">│   │       │   ├── normalize-children.js</div><div class="line">│   │       │   └── update-listeners.js</div><div class="line">│   │       ├── modules</div><div class="line">│   │       │   ├── directives.js</div><div class="line">│   │       │   ├── index.js</div><div class="line">│   │       │   └── ref.js</div><div class="line">│   │       ├── patch.js</div><div class="line">│   │       └── vnode.js</div><div class="line">│   ├── entries</div><div class="line">│   │   ├── web-compiler.js</div><div class="line">│   │   ├── web-runtime-with-compiler.js</div><div class="line">│   │   ├── web-runtime.js</div><div class="line">│   │   ├── web-server-renderer.js</div><div class="line">│   │   ├── weex-compiler.js</div><div class="line">│   │   ├── weex-factory.js</div><div class="line">│   │   └── weex-framework.js</div><div class="line">│   ├── platforms</div><div class="line">│   │   ├── web</div><div class="line">│   │   │   ├── compiler</div><div class="line">│   │   │   │   ├── directives</div><div class="line">│   │   │   │   │   ├── html.js</div><div class="line">│   │   │   │   │   ├── index.js</div><div class="line">│   │   │   │   │   ├── model.js</div><div class="line">│   │   │   │   │   └── text.js</div><div class="line">│   │   │   │   ├── index.js</div><div class="line">│   │   │   │   ├── modules</div><div class="line">│   │   │   │   │   ├── class.js</div><div class="line">│   │   │   │   │   ├── index.js</div><div class="line">│   │   │   │   │   └── style.js</div><div class="line">│   │   │   │   └── util.js</div><div class="line">│   │   │   ├── runtime</div><div class="line">│   │   │   │   ├── class-util.js</div><div class="line">│   │   │   │   ├── components</div><div class="line">│   │   │   │   │   ├── index.js</div><div class="line">│   │   │   │   │   ├── transition-group.js</div><div class="line">│   │   │   │   │   └── transition.js</div><div class="line">│   │   │   │   ├── directives</div><div class="line">│   │   │   │   │   ├── index.js</div><div class="line">│   │   │   │   │   ├── model.js</div><div class="line">│   │   │   │   │   └── show.js</div><div class="line">│   │   │   │   ├── modules</div><div class="line">│   │   │   │   │   ├── attrs.js</div><div class="line">│   │   │   │   │   ├── class.js</div><div class="line">│   │   │   │   │   ├── dom-props.js</div><div class="line">│   │   │   │   │   ├── events.js</div><div class="line">│   │   │   │   │   ├── index.js</div><div class="line">│   │   │   │   │   ├── style.js</div><div class="line">│   │   │   │   │   └── transition.js</div><div class="line">│   │   │   │   ├── node-ops.js</div><div class="line">│   │   │   │   ├── patch.js</div><div class="line">│   │   │   │   └── transition-util.js</div><div class="line">│   │   │   ├── server</div><div class="line">│   │   │   │   ├── directives</div><div class="line">│   │   │   │   │   ├── index.js</div><div class="line">│   │   │   │   │   └── show.js</div><div class="line">│   │   │   │   ├── modules</div><div class="line">│   │   │   │   │   ├── attrs.js</div><div class="line">│   │   │   │   │   ├── class.js</div><div class="line">│   │   │   │   │   ├── dom-props.js</div><div class="line">│   │   │   │   │   ├── index.js</div><div class="line">│   │   │   │   │   └── style.js</div><div class="line">│   │   │   │   └── util.js</div><div class="line">│   │   │   └── util</div><div class="line">│   │   │       ├── attrs.js</div><div class="line">│   │   │       ├── class.js</div><div class="line">│   │   │       ├── compat.js</div><div class="line">│   │   │       ├── element.js</div><div class="line">│   │   │       ├── index.js</div><div class="line">│   │   │       └── style.js</div><div class="line">│   │   └── weex</div><div class="line">│   │       ├── compiler</div><div class="line">│   │       │   ├── directives</div><div class="line">│   │       │   │   ├── index.js</div><div class="line">│   │       │   │   └── model.js</div><div class="line">│   │       │   ├── index.js</div><div class="line">│   │       │   └── modules</div><div class="line">│   │       │       ├── append.js</div><div class="line">│   │       │       ├── class.js</div><div class="line">│   │       │       ├── index.js</div><div class="line">│   │       │       ├── props.js</div><div class="line">│   │       │       └── style.js</div><div class="line">│   │       ├── framework.js</div><div class="line">│   │       ├── runtime</div><div class="line">│   │       │   ├── components</div><div class="line">│   │       │   │   ├── index.js</div><div class="line">│   │       │   │   ├── transition-group.js</div><div class="line">│   │       │   │   └── transition.js</div><div class="line">│   │       │   ├── directives</div><div class="line">│   │       │   │   └── index.js</div><div class="line">│   │       │   ├── index.js</div><div class="line">│   │       │   ├── modules</div><div class="line">│   │       │   │   ├── attrs.js</div><div class="line">│   │       │   │   ├── class.js</div><div class="line">│   │       │   │   ├── events.js</div><div class="line">│   │       │   │   ├── index.js</div><div class="line">│   │       │   │   ├── style.js</div><div class="line">│   │       │   │   └── transition.js</div><div class="line">│   │       │   ├── node-ops.js</div><div class="line">│   │       │   ├── patch.js</div><div class="line">│   │       │   └── text-node.js</div><div class="line">│   │       └── util</div><div class="line">│   │           └── index.js</div><div class="line">│   ├── server</div><div class="line">│   │   ├── create-bundle-renderer.js</div><div class="line">│   │   ├── create-bundle-runner.js</div><div class="line">│   │   ├── create-renderer.js</div><div class="line">│   │   ├── render-context.js</div><div class="line">│   │   ├── render-stream.js</div><div class="line">│   │   ├── render.js</div><div class="line">│   │   ├── source-map-support.js</div><div class="line">│   │   └── write.js</div><div class="line">│   ├── sfc</div><div class="line">│   │   └── parser.js</div><div class="line">│   └── shared</div><div class="line">│       └── util.js</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj391ab7s001f5fo0n449p82p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
 <article id="post-Object-keys" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/05/20/Object-keys/" class="article-date">
@@ -146,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj2y46sjd00011vo08s59ebeb" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj391ab5z00005fo00vxpjzn9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -348,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj2y46sj800001vo058lr8652" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj391ab6400015fo05bw3dvxn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解码/">解码</a></li></ul>
@@ -398,7 +534,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj2y46sjk00041vo0k27qlm6u" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj391ab6900045fo0ttk61gon" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
@@ -625,7 +761,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj2y46sjo00061vo03pj68m2k" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj391ab6g00065fo0bp364tlp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework7/">framework7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hybrid/">hybrid</a></li></ul>
@@ -669,7 +805,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/webpack-optimize/" data-id="cj2y46sl3001c1vo02328jj4c" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/webpack-optimize/" data-id="cj391ab7p001d5fo000vr4f50" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -737,7 +873,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/" data-id="cj2y46sl7001i1vo0zw5r4l3c" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/" data-id="cj391ab80001q5fo0043zvc9h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -900,7 +1036,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj2y46sk2000e1vo0w82j62hp" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj391ab6t000h5fo0nwhrfho2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -968,128 +1104,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/js-ASI/" data-id="cj2y46sjl00051vo098bgn2iq" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/js-ASI/" data-id="cj391ab6c00055fo0lrzwkfqk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-linux-config" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/20/linux-config/" class="article-date">
-  <time datetime="2017-04-19T17:23:39.000Z" itemprop="datePublished">2017-04-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/20/linux-config/">linux系统中常用的配置文件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h2 id=""><a href="#" class="headerlink" title="~, /"></a><code>~</code>, <code>/</code></h2><blockquote>
-<p>以下讲解的都是针对用户级别的<code>~</code>, 不讲解系统级别的<code>/</code>。一些用户级别的配置，在系统级别也有相同的配置，就类似于<strong>全局变量</strong>和<strong>局部变量</strong>的关系。</p>
-</blockquote>
-<h2 id="bash-profile"><a href="#bash-profile" class="headerlink" title="~/.bash_profile"></a>~/.bash_profile</h2><blockquote>
-<p>每个用户都可使用该文件配置自己使用的shell信息,当用户登录时,该<br>文件仅仅执行一次!默认情况下,他设置一些环境变量,<strong>并且执行用户的<code>~/.bashrc</code>文件</strong>。</p>
-</blockquote>
-<h2 id="bash-logout"><a href="#bash-logout" class="headerlink" title="~/.bash_logout"></a>~/.bash_logout</h2><blockquote>
-<p>每次退出<code>bash shell</code>时，执行该文件。(测试并未生效，难道是测试姿势不对？？)</p>
-</blockquote>
-<h2 id="bashrc"><a href="#bashrc" class="headerlink" title="~/.bashrc"></a>~/.bashrc</h2><blockquote>
-<p>可以在其中配置一些别名等信息，但是配置不会立即生效，必须登录后才会生效。如果要使其立即生效，那么可以执行以下命令：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source ~/.bashrc</div><div class="line">或者</div><div class="line">. ~/.bashrc</div></pre></td></tr></table></figure>
-<h2 id="source-x-sh-x-sh-和-sh-x-sh-x-sh的区别"><a href="#source-x-sh-x-sh-和-sh-x-sh-x-sh的区别" class="headerlink" title="source x.sh, . x.sh 和 sh x.sh, ./x.sh的区别"></a><code>source x.sh</code>, <code>. x.sh</code> 和 <code>sh x.sh</code>, <code>./x.sh</code>的区别</h2><blockquote>
-<p>用source执行脚本文件，执行过程不另开进程，脚本文件中设定的变量在当前shell中可以看到；<br>用sh执行脚本文件，是在当前进程另开子进程来执行脚本命令，脚本文件中设定的变量在当前shell中不能看到。<br><code>source</code>也经常用<code>.</code>来代替，所以以上四种执行脚本的关系就是:<br>前面两种是相同的效果<br>用脚本文件名本身执行(如果shell脚本具有可执行权限)和用sh命令执行脚本的作用完全相同(后面2种是相同的效果)</p>
-</blockquote>
-<h2 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h2><blockquote>
-<p>类似于<code>~/.bash_profile</code>, 不过是系统级别的。</p>
-</blockquote>
-<h2 id="etc-hosts"><a href="#etc-hosts" class="headerlink" title="/etc/hosts"></a>/etc/hosts</h2><blockquote>
-<p>配置<code>host</code>相关信息</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-config/" data-id="cj2y46sjs00091vo066jrq1tf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-linux-command" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/20/linux-command/" class="article-date">
-  <time datetime="2017-04-19T17:21:30.000Z" itemprop="datePublished">2017-04-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/20/linux-command/">linux常用命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h2 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h2><blockquote>
-<p>为某一个文件或目录在另外一个位置建立一个同步的链接，类似Windows下的快捷方式。<br><code>-s</code>选项表示创建的是软链接（符号链接）, 不加<code>-s</code>表示创建的是硬链接,我们常用的都是软链接。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln -s 源文件 目标文件</div></pre></td></tr></table></figure>
-<h2 id="删除软连接"><a href="#删除软连接" class="headerlink" title="删除软连接"></a>删除软连接</h2><blockquote>
-<p>Note: 目标文件或目录后面不能带<code>/</code>, 否则就是删除该目录下的所有文件了。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf 目标文件或目录</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-command/" data-id="cj2y46sjw000b1vo0nivcupwa" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
     </footer>
   </div>
@@ -1111,7 +1129,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -1121,7 +1139,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解码/">解码</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lexical-scope/">lexical scope</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解码/">解码</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1131,7 +1149,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px; color: #ff8200">JS</a> <a href="/tags/css/" style="font-size: 12.5px; color: #bf623c">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 12.5px; color: #bf623c">js</a> <a href="/tags/linux/" style="font-size: 15px; color: #804177">linux</a> <a href="/tags/nodejs/" style="font-size: 15px; color: #804177">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 17.5px; color: #4021b3">shell</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a> <a href="/tags/编码/" style="font-size: 10px; color: #ff8200">编码</a> <a href="/tags/解码/" style="font-size: 10px; color: #ff8200">解码</a>
+      <a href="/tags/JS/" style="font-size: 10px; color: #ff8200">JS</a> <a href="/tags/css/" style="font-size: 12.5px; color: #bf623c">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 12.5px; color: #bf623c">js</a> <a href="/tags/lexical-scope/" style="font-size: 10px; color: #ff8200">lexical scope</a> <a href="/tags/linux/" style="font-size: 15px; color: #804177">linux</a> <a href="/tags/nodejs/" style="font-size: 15px; color: #804177">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 17.5px; color: #4021b3">shell</a> <a href="/tags/this/" style="font-size: 10px; color: #ff8200">this</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a> <a href="/tags/编码/" style="font-size: 10px; color: #ff8200">编码</a> <a href="/tags/解码/" style="font-size: 10px; color: #ff8200">解码</a>
     </div>
   </div>
 
@@ -1140,7 +1158,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -1153,6 +1171,14 @@
       <ul>
         
           <li>
+            <a href="/2017/05/28/js-scope/">词法作用域VS动态作用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/28/vue-src-overview/">vue-src-overview</a>
+          </li>
+        
+          <li>
             <a href="/2017/05/20/Object-keys/">Object类方法之keys()</a>
           </li>
         
@@ -1162,14 +1188,6 @@
         
           <li>
             <a href="/2017/05/14/flex/">flex布局</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/29/framework7/">Framework7</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/29/webpack-optimize/">webpack性能优化</a>
           </li>
         
       </ul>
