@@ -18,6 +18,9 @@
     <link rel="icon" href="/favicon.png">
   
   
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
+  
   <link rel="stylesheet" href="/css/style.css">
   
 
@@ -103,10 +106,8 @@
 <h2 id="bashrc"><a href="#bashrc" class="headerlink" title="~/.bashrc"></a>~/.bashrc</h2><blockquote>
 <p>可以在其中配置一些别名等信息，但是配置不会立即生效，必须登录后才会生效。如果要使其立即生效，那么可以执行以下命令：</p>
 </blockquote>
-<pre><code>source ~/.bashrc
-或者
-. ~/.bashrc
-</code></pre><h2 id="source-x-sh-x-sh-和-sh-x-sh-x-sh的区别"><a href="#source-x-sh-x-sh-和-sh-x-sh-x-sh的区别" class="headerlink" title="source x.sh, . x.sh 和 sh x.sh, ./x.sh的区别"></a><code>source x.sh</code>, <code>. x.sh</code> 和 <code>sh x.sh</code>, <code>./x.sh</code>的区别</h2><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source ~/<span class="selector-class">.bashrc</span></div><div class="line">或者</div><div class="line">. ~/.bashrc</div></pre></td></tr></table></figure>
+<h2 id="source-x-sh-x-sh-和-sh-x-sh-x-sh的区别"><a href="#source-x-sh-x-sh-和-sh-x-sh-x-sh的区别" class="headerlink" title="source x.sh, . x.sh 和 sh x.sh, ./x.sh的区别"></a><code>source x.sh</code>, <code>. x.sh</code> 和 <code>sh x.sh</code>, <code>./x.sh</code>的区别</h2><blockquote>
 <p>用source执行脚本文件，执行过程不另开进程，脚本文件中设定的变量在当前shell中可以看到；<br>用sh执行脚本文件，是在当前进程另开子进程来执行脚本命令，脚本文件中设定的变量在当前shell中不能看到。<br><code>source</code>也经常用<code>.</code>来代替，所以以上四种执行脚本的关系就是:<br>前面两种是相同的效果<br>用脚本文件名本身执行(如果shell脚本具有可执行权限)和用sh命令执行脚本的作用完全相同(后面2种是相同的效果)</p>
 </blockquote>
 <h2 id="etc-profile"><a href="#etc-profile" class="headerlink" title="/etc/profile"></a>/etc/profile</h2><blockquote>
@@ -119,7 +120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-config/" data-id="cj39rely8000vhxo0xlkxtbf9" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-config/" data-id="cj39rfla9000eijo0xg97ju5s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -162,16 +163,16 @@
         <h2 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h2><blockquote>
 <p>为某一个文件或目录在另外一个位置建立一个同步的链接，类似Windows下的快捷方式。<br><code>-s</code>选项表示创建的是软链接（符号链接）, 不加<code>-s</code>表示创建的是硬链接,我们常用的都是软链接。</p>
 </blockquote>
-<pre><code>ln -s 源文件 目标文件
-</code></pre><h2 id="删除软连接"><a href="#删除软连接" class="headerlink" title="删除软连接"></a>删除软连接</h2><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ln <span class="_">-s</span> 源文件 目标文件</div></pre></td></tr></table></figure>
+<h2 id="删除软连接"><a href="#删除软连接" class="headerlink" title="删除软连接"></a>删除软连接</h2><blockquote>
 <p>Note: 目标文件或目录后面不能带<code>/</code>, 否则就是删除该目录下的所有文件了。</p>
 </blockquote>
-<pre><code>rm -rf 目标文件或目录
-</code></pre>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">rm</span> -rf 目标文件或目录</div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-command/" data-id="cj39rely3000rhxo02ltfkk4b" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-command/" data-id="cj39rfla5000bijo0sulx6vn1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -266,13 +267,12 @@
 <h2 id="dev-null-文件"><a href="#dev-null-文件" class="headerlink" title="/dev/null 文件"></a>/dev/null 文件</h2><blockquote>
 <p>如果希望执行某个命令，但是又不希望在屏幕上输出结果，那么可以将输出重定向到/dev/null。<br>/dev/null 是一个特殊的文件，写入到它的内容都会被丢弃；如果尝试从该文件读取内容，那么什么也读不到。但是 /dev/null 文件非常有用，将命令的输出重定向到它，会起到”禁止输出”的效果。</p>
 </blockquote>
-<pre><code>屏蔽stdout和stderr //？？？？？？未测试成功
-command &gt; /dev/null 2&gt;&amp;1
-</code></pre>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">屏蔽<span class="keyword">stdout</span>和<span class="keyword">stderr</span><span class="comment"> //？？？？？？未测试成功</span></div><div class="line"><span class="keyword">command</span> &gt; /<span class="title">dev</span>/<span class="title">null</span> <span class="title">2</span>&gt;&amp;<span class="title">1</span></div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/" data-id="cj39relz8001mhxo0n1q9byxs" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/" data-id="cj39rflb50010ijo01z2j8zch" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -312,55 +312,8 @@ command &gt; /dev/null 2&gt;&amp;1
     <div class="article-entry" itemprop="articleBody">
       
         
-        <h2 id="sails-v0-12-目录结构"><a href="#sails-v0-12-目录结构" class="headerlink" title="sails(v0.12) 目录结构"></a>sails(v0.12) 目录结构</h2><pre><code>├── Gruntfile.js
-├── README.md
-├── api // 核心
-│   ├── controllers // 充当model和view的桥梁
-│   ├── models
-│   ├── policies
-│   ├── responses
-│   └── services
-├── app.js
-├── assets
-│   ├── favicon.ico
-│   ├── images
-│   ├── js
-│   ├── robots.txt
-│   ├── styles
-│   └── templates
-├── config
-│   ├── blueprints.js
-│   ├── bootstrap.js
-│   ├── connections.js
-│   ├── cors.js
-│   ├── csrf.js
-│   ├── env
-│   ├── globals.js
-│   ├── http.js
-│   ├── i18n.js
-│   ├── local.js
-│   ├── locales
-│   ├── log.js
-│   ├── models.js
-│   ├── policies.js
-│   ├── routes.js
-│   ├── session.js
-│   ├── sockets.js
-│   └── views.js
-├── config.yaml
-├── package.json
-├── tasks // 不启用grunt,可以直接删除tasks文件夹
-│   ├── README.md
-│   ├── config
-│   ├── pipeline.js
-│   └── register
-└── views // 不需要服务端渲染,可以直接删除views文件夹
-    ├── 403.ejs
-    ├── 404.ejs
-    ├── 500.ejs
-    ├── homepage.ejs
-    └── layout.ejs
-</code></pre><h2 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h2><blockquote>
+        <h2 id="sails-v0-12-目录结构"><a href="#sails-v0-12-目录结构" class="headerlink" title="sails(v0.12) 目录结构"></a>sails(v0.12) 目录结构</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">├── Gruntfile<span class="selector-class">.js</span></div><div class="line">├── README<span class="selector-class">.md</span></div><div class="line">├── api <span class="comment">// 核心</span></div><div class="line">│   ├── controllers <span class="comment">// 充当model和view的桥梁</span></div><div class="line">│   ├── models</div><div class="line">│   ├── policies</div><div class="line">│   ├── responses</div><div class="line">│   └── services</div><div class="line">├── app<span class="selector-class">.js</span></div><div class="line">├── assets</div><div class="line">│   ├── favicon<span class="selector-class">.ico</span></div><div class="line">│   ├── images</div><div class="line">│   ├── js</div><div class="line">│   ├── robots<span class="selector-class">.txt</span></div><div class="line">│   ├── styles</div><div class="line">│   └── templates</div><div class="line">├── config</div><div class="line">│   ├── blueprints<span class="selector-class">.js</span></div><div class="line">│   ├── bootstrap<span class="selector-class">.js</span></div><div class="line">│   ├── connections<span class="selector-class">.js</span></div><div class="line">│   ├── cors<span class="selector-class">.js</span></div><div class="line">│   ├── csrf<span class="selector-class">.js</span></div><div class="line">│   ├── env</div><div class="line">│   ├── globals<span class="selector-class">.js</span></div><div class="line">│   ├── http<span class="selector-class">.js</span></div><div class="line">│   ├── i18n<span class="selector-class">.js</span></div><div class="line">│   ├── local<span class="selector-class">.js</span></div><div class="line">│   ├── locales</div><div class="line">│   ├── log<span class="selector-class">.js</span></div><div class="line">│   ├── models<span class="selector-class">.js</span></div><div class="line">│   ├── policies<span class="selector-class">.js</span></div><div class="line">│   ├── routes<span class="selector-class">.js</span></div><div class="line">│   ├── session<span class="selector-class">.js</span></div><div class="line">│   ├── sockets<span class="selector-class">.js</span></div><div class="line">│   └── views<span class="selector-class">.js</span></div><div class="line">├── config<span class="selector-class">.yaml</span></div><div class="line">├── package<span class="selector-class">.json</span></div><div class="line">├── tasks <span class="comment">// 不启用grunt,可以直接删除tasks文件夹</span></div><div class="line">│   ├── README<span class="selector-class">.md</span></div><div class="line">│   ├── config</div><div class="line">│   ├── pipeline<span class="selector-class">.js</span></div><div class="line">│   └── register</div><div class="line">└── views <span class="comment">// 不需要服务端渲染,可以直接删除views文件夹</span></div><div class="line">    ├── <span class="number">403</span><span class="selector-class">.ejs</span></div><div class="line">    ├── <span class="number">404</span><span class="selector-class">.ejs</span></div><div class="line">    ├── <span class="number">500</span><span class="selector-class">.ejs</span></div><div class="line">    ├── homepage<span class="selector-class">.ejs</span></div><div class="line">    └── layout.ejs</div></pre></td></tr></table></figure>
+<h2 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h2><blockquote>
 <p>由一系列被称为<code>action</code>的方法构成,<code>action</code>和<code>routes</code>绑定在一起，所以当请求某一个路由时，触发对应的对应的路由方法，并返回一个响应(这里的响应主要指路由的分发)</p>
 </blockquote>
 <h3 id="controller的定义"><a href="#controller的定义" class="headerlink" title="controller的定义"></a>controller的定义</h3><blockquote>
@@ -369,39 +322,17 @@ command &gt; /dev/null 2&gt;&amp;1
 <li>NOTE: 可以将<code>controller</code>分文件夹定义，那么此时子文件夹也会成为路由标示的一部分。</li>
 </ul>
 </blockquote>
-<h3 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h3><p><code>SayController.js</code></p>
-<pre><code>// 一个controller就是一个纯对象，对象的属性为action的名字，值为对应的action的处理函数
-module.exports = {
-    // req, res跟express中的一样，不过没有第三个参数next
-    // 如果有next的需求，那么应该见该逻辑写到policies中
-    hi: function (req, res) {
-      return res.send(&#39;Hi there!&#39;);
-    },
-    bye: function (req, res) {
-      return res.redirect(&#39;http://www.sayonara.com&#39;);
-    }
-}
-</code></pre><h3 id="隐式路由（sails自动绑定）"><a href="#隐式路由（sails自动绑定）" class="headerlink" title="隐式路由（sails自动绑定）"></a>隐式路由（sails自动绑定）</h3><pre><code> /:controllerIdentity/:nameOfAction
- /controller标识符/action的名字
-</code></pre><blockquote>
+<h3 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h3><p><code>SayController.js</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 一个controller就是一个纯对象，对象的属性为action的名字，值为对应的action的处理函数</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    <span class="comment">// req, res跟express中的一样，不过没有第三个参数next</span></div><div class="line">    <span class="comment">// 如果有next的需求，那么应该见该逻辑写到policies中</span></div><div class="line">    hi: <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> res.send(<span class="string">'Hi there!'</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">bye</span>: <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> res.redirect(<span class="string">'http://www.sayonara.com'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="隐式路由（sails自动绑定）"><a href="#隐式路由（sails自动绑定）" class="headerlink" title="隐式路由（sails自动绑定）"></a>隐式路由（sails自动绑定）</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/<span class="symbol">:controllerIdentity/</span><span class="symbol">:nameOfAction</span></div><div class="line">/controller标识符/action的名字</div></pre></td></tr></table></figure>
+<blockquote>
 <p>拿上面的<code>SayController.js</code>来说，那么当程序启动时，就会自动绑定到这样的路由<code>/say/hi</code>, <code>/say/bye</code>。<br>如果上面的<code>controller</code>在一个子文件夹中<code>/we</code>中，那么就会绑定到这样的路由<code>/we/say/hi</code>, <code>/we/say/bye</code></p>
 </blockquote>
 <h3 id="显式路由（自定义路由）"><a href="#显式路由（自定义路由）" class="headerlink" title="显式路由（自定义路由）"></a>显式路由（自定义路由）</h3><blockquote>
 <p>手动绑定路由，可以在<code>config/routes.js</code>中按照如下规则进行路由的配置:<br>http请求方法（POST,GET等）+ 路由地址 : <code>controller</code>的名字+<code>.</code>+<code>action</code>的名字</p>
 </blockquote>
-<pre><code>&#39;POST /make/a/sandwith&#39;: &#39;SandwichController.makeIt&#39;
-
-// 当controller在子文件夹中定义时，子文件夹是controller的一部分
-&#39;/do/homework&#39;: &#39;stuff/things/HomeworkController.do&#39;
-</code></pre><h3 id="显式路由常见定义方式"><a href="#显式路由常见定义方式" class="headerlink" title="显式路由常见定义方式"></a>显式路由常见定义方式</h3><pre><code>module.exports.routes = {
-  &#39;get /signup&#39;: { view: &#39;conversion/signup&#39; },
-  &#39;post /signup&#39;: &#39;AuthController.processSignup&#39;,
-  &#39;get /login&#39;: { view: &#39;portal/login&#39; },
-  &#39;post /login&#39;: &#39;AuthController.processLogin&#39;,
-  &#39;/logout&#39;: &#39;AuthController.logout&#39;,
-  &#39;get /me&#39;: &#39;UserController.profile&#39;
-}
-</code></pre><h2 id="自定义响应和responses文件夹"><a href="#自定义响应和responses文件夹" class="headerlink" title="自定义响应和responses文件夹"></a>自定义响应和<code>responses</code>文件夹</h2><blockquote>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">'POST</span> /make/a/sandwith': <span class="symbol">'SandwichController</span>.makeIt'</div><div class="line"></div><div class="line"><span class="comment">// 当controller在子文件夹中定义时，子文件夹是controller的一部分</span></div><div class="line">'/<span class="keyword">do</span>/homework': <span class="symbol">'stuff</span>/things/HomeworkController.<span class="keyword">do</span>'</div></pre></td></tr></table></figure>
+<h3 id="显式路由常见定义方式"><a href="#显式路由常见定义方式" class="headerlink" title="显式路由常见定义方式"></a>显式路由常见定义方式</h3><figure class="highlight sml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports.routes = &#123;</div><div class="line">  <span class="symbol">'get</span> /signup': &#123; view: <span class="symbol">'conversion</span>/signup' &#125;,</div><div class="line">  <span class="symbol">'post</span> /signup': <span class="symbol">'AuthController</span>.processSignup',</div><div class="line">  <span class="symbol">'get</span> /login': &#123; view: <span class="symbol">'portal</span>/login' &#125;,</div><div class="line">  <span class="symbol">'post</span> /login': <span class="symbol">'AuthController</span>.processLogin',</div><div class="line">  <span class="string">'/logout'</span>: <span class="symbol">'AuthController</span>.logout',</div><div class="line">  <span class="symbol">'get</span> /me': <span class="symbol">'UserController</span>.profile'</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="自定义响应和responses文件夹"><a href="#自定义响应和responses文件夹" class="headerlink" title="自定义响应和responses文件夹"></a>自定义响应和<code>responses</code>文件夹</h2><blockquote>
 <p>一般情况下，<code>controller</code>中的响应都会定义在<code>responses</code>文件夹中.<br>任何定义在<code>/api/responses.js</code>中方法都是通过<code>res.[responsesName]</code>这种形式在<code>controller</code>中调用的。<br>在<code>responses</code>函数中，可以使用<code>this.req</code>, <code>this.res</code>来获取<code>Request</code>和<code>Response</code>对象。 </p>
 </blockquote>
 <h2 id="数据库适配器Adapters"><a href="#数据库适配器Adapters" class="headerlink" title="数据库适配器Adapters"></a>数据库适配器Adapters</h2><blockquote>
@@ -458,72 +389,31 @@ module.exports = {
 </ul>
 </blockquote>
 <p>NOTE: 必须等到<code>sails</code>加载完成之后，才可以访问这些全局变量。也就是说，不能再导出的函数外部使用（此时<code>sails</code>尚未加载完毕）,必须导出的函数内部使用</p>
-<pre><code>// 禁用所有
-module.exports.globals = false
-
-module.exports.globals = {
-    _: false, // 禁用具体的
-    async: true
-}
-</code></pre><h2 id="日志（Logging）"><a href="#日志（Logging）" class="headerlink" title="日志（Logging）"></a>日志（Logging）</h2><blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 禁用所有</span></div><div class="line"><span class="keyword">module</span>.<span class="keyword">exports</span>.globals = <span class="keyword">false</span></div><div class="line"></div><div class="line"><span class="keyword">module</span>.<span class="keyword">exports</span>.globals = &#123;</div><div class="line">    _: <span class="keyword">false</span>, <span class="comment">// 禁用具体的</span></div><div class="line">    async: <span class="keyword">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="日志（Logging）"><a href="#日志（Logging）" class="headerlink" title="日志（Logging）"></a>日志（Logging）</h2><blockquote>
 <p><code>sails</code>内建一个日志输出，可以在<code>/config/logs.js</code>中配置日志输出等级。<br>详情参看<a href="http://sailsjs.com/documentation/concepts/logging" target="_blank" rel="external">sails内建日志</a></p>
 </blockquote>
 <h2 id="原则（Policies）"><a href="#原则（Policies）" class="headerlink" title="原则（Policies）"></a>原则（Policies）</h2><blockquote>
 <p>该文件夹中定义的脚本主要用来处理一些<code>权限认证</code>，<code>第三方单点登录</code>等具有一些通用逻辑，有点类似于<code>spring</code>中的<code>AOP</code>。<br><code>policies</code>只应该在<code>controller</code>的<code>actions</code>中使用，不应该在<code>views</code>中使用。如果是在<code>config/routes.js</code>中直接定义的视图，那么就无法使用<code>policies</code>了。如果想要继续使用使用<code>policies</code>,因该使用<code>controller</code>+<code>.</code>+<code>action</code>的方式。<br>如下:</p>
 </blockquote>
-<pre><code>// routes.js
-
-module.exports.routes = {
-    // 这种形式无法使用policies
-    &#39;/&#39;: &#39;homepage&#39;, 
-
-    // 可以这种方式
-    &#39;POST /article/comment&#39;: &#39;ArticleController.comment&#39;
-}
-</code></pre><h3 id="Policies的定义"><a href="#Policies的定义" class="headerlink" title="Policies的定义"></a>Policies的定义</h3><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// routes.js</span></div><div class="line"></div><div class="line">module<span class="selector-class">.exports</span><span class="selector-class">.routes</span> = &#123;</div><div class="line">    <span class="comment">// 这种形式无法使用policies</span></div><div class="line">    <span class="string">'/'</span>: <span class="string">'homepage'</span>, </div><div class="line"></div><div class="line">    <span class="comment">// 可以这种方式</span></div><div class="line">    <span class="string">'POST /article/comment'</span>: <span class="string">'ArticleController.comment'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Policies的定义"><a href="#Policies的定义" class="headerlink" title="Policies的定义"></a>Policies的定义</h3><blockquote>
 <p>定义在<code>api/policies</code>目录下，每个<code>policy</code>应该对应一个文件，只处理一件事情，导出为单一的函数。<br>事实上，每个<code>policies</code>都是作为<code>Connect/Express</code>中间件的函数，在<code>controller</code>之前执行。</p>
 </blockquote>
-<pre><code>// 只处理一件事情，导出为单一函数
-module.exports = function canWrite(req, res, next){
-
-}
-</code></pre><h3 id="api-policies和config-policies-js的关系"><a href="#api-policies和config-policies-js的关系" class="headerlink" title="api/policies和config/policies.js的关系"></a><code>api/policies</code>和<code>config/policies.js</code>的关系</h3><blockquote>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 只处理一件事情，导出为单一函数</span></div><div class="line"><span class="function"><span class="keyword">module</span>.<span class="title">exports</span> =</span> <span class="function"><span class="keyword">function</span> <span class="title">canWrite</span><span class="params">(req, res, next)</span>&#123;</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="api-policies和config-policies-js的关系"><a href="#api-policies和config-policies-js的关系" class="headerlink" title="api/policies和config/policies.js的关系"></a><code>api/policies</code>和<code>config/policies.js</code>的关系</h3><blockquote>
 <p>在<code>config/policies.js</code>中配置<code>controller</code>和<code>policies</code>之间的映射关系。就是说哪些<code>controller</code>使用哪些<code>policies</code>来做权限控制。</p>
 </blockquote>
-<pre><code>module.exports.policies = {
-    CommentController: { // controller名称
-        &quot;*&quot;: &#39;isLoggedIn&#39;, // 对controller中所有的action生效
-        create: &#39;isLoggedIn&#39;,  // key: action名称， value: policies
-        tag: [&#39;isLoggedIn&#39;, &#39;isAdmin&#39;]
-    }
-}
-</code></pre><pre><code>module.exports.policies = {
-    &quot;*&quot;: &#39;isLoggedIn&#39;, // 映射到所有的controller中的actions
-    CommentController: {
-        // 如果某一个action显式的声明了policy, 那么全局的`isLoggedIn`不会映射到该action上
-        create: &#39;isAdmin&#39; 
-    }
-}
-</code></pre><h2 id="Services"><a href="#Services" class="headerlink" title="Services"></a>Services</h2><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module<span class="selector-class">.exports</span><span class="selector-class">.policies</span> = &#123;</div><div class="line">    CommentController: &#123; <span class="comment">// controller名称</span></div><div class="line">        <span class="string">"*"</span>: <span class="string">'isLoggedIn'</span>, <span class="comment">// 对controller中所有的action生效</span></div><div class="line">        create: <span class="string">'isLoggedIn'</span>,  <span class="comment">// key: action名称， value: policies</span></div><div class="line">        tag: [<span class="string">'isLoggedIn'</span>, <span class="string">'isAdmin'</span>]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module<span class="selector-class">.exports</span><span class="selector-class">.policies</span> = &#123;</div><div class="line">    <span class="string">"*"</span>: <span class="string">'isLoggedIn'</span>, <span class="comment">// 映射到所有的controller中的actions</span></div><div class="line">    CommentController: &#123;</div><div class="line">        <span class="comment">// 如果某一个action显式的声明了policy, 那么全局的`isLoggedIn`不会映射到该action上</span></div><div class="line">        create: <span class="string">'isAdmin'</span> </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Services"><a href="#Services" class="headerlink" title="Services"></a>Services</h2><blockquote>
 <p>一个导出各种函数的纯对象，对象中的每个方法被称为<code>helper</code>。<br>因为是全局的，所以可以在各个地方使用：<code>controller</code>的<code>actions</code>, 其他的<code>services</code>, 自定义的<code>model</code>方法中，甚至在命令行脚本中。</p>
 </blockquote>
 <h3 id="Service的创建"><a href="#Service的创建" class="headerlink" title="Service的创建"></a>Service的创建</h3><blockquote>
 <p>在<code>api/services</code>文件夹中创建，文件名必须以<code>Service.js</code>结尾。</p>
 </blockquote>
-<h3 id="Service函数参数说明"><a href="#Service函数参数说明" class="headerlink" title="Service函数参数说明"></a>Service函数参数说明</h3><pre><code>var Mailgun = require(&#39;machinepack-mailgun&#39;);
-
-module.exports = {
-  sendWelcomeEmail: function (options, done) {
-    Mailgun.sendHtmlEmail({
-      toEmail: options.emailAddress,
-      toName: options.firstName
-    }).exec(function (err) {
-      if (err) { return done(err); }
-      return done();
-    });
-  }
-}
-</code></pre><p><code>sendWelcomeEmail</code>方法中<code>option</code>,<code>done</code>参数说明：</p>
+<h3 id="Service函数参数说明"><a href="#Service函数参数说明" class="headerlink" title="Service函数参数说明"></a>Service函数参数说明</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Mailgun = <span class="built_in">require</span>(<span class="string">'machinepack-mailgun'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">sendWelcomeEmail</span>: <span class="function"><span class="keyword">function</span> (<span class="params">options, done</span>) </span>&#123;</div><div class="line">    Mailgun.sendHtmlEmail(&#123;</div><div class="line">      <span class="attr">toEmail</span>: options.emailAddress,</div><div class="line">      <span class="attr">toName</span>: options.firstName</div><div class="line">    &#125;).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> done(err); &#125;</div><div class="line">      <span class="keyword">return</span> done();</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>sendWelcomeEmail</code>方法中<code>option</code>,<code>done</code>参数说明：</p>
 <ul>
 <li>option: 一个自定义属性的对象。</li>
 <li>done: 一个函数。这个一个可选的参数，当<code>helper</code>为一个异步方法时，那么当<code>helper</code>被调用时，必须传入<code>done</code>回调函数作为第二个参数。</li>
@@ -546,43 +436,16 @@ module.exports = {
 <h3 id="locals"><a href="#locals" class="headerlink" title="locals"></a>locals</h3><blockquote>
 <p>在模板引擎中使用的变量称为<code>locals</code>, <code>sails</code>默认传入一些变量作为<code>locals</code>,比如<code>lodash</code>。如果某些数据是通过硬编码的方式填充到模板中，那么可以在<code>config/routes.js</code>中配置：</p>
 </blockquote>
-<pre><code>module.exports.routes = {
-    &#39;get /profile&#39;: {
-        view: &#39;backOffice/profile&#39;,
-        locals: { // 硬编码的数据，可以直接通过locals配置
-          user: {
-            name: &#39;Frank&#39;,
-            emailAddress: &#39;frank@enfurter.com&#39;
-          },
-          corndogs: [
-            { name: &#39;beef corndog&#39; },
-            { name: &#39;chicken corndog&#39; },
-            { name: &#39;soy corndog&#39; }
-          ]
-        }
-      }
-}
-</code></pre><h3 id="在模板中使用动态数据"><a href="#在模板中使用动态数据" class="headerlink" title="在模板中使用动态数据"></a>在模板中使用动态数据</h3><blockquote>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">module.exports.routes = &#123;</div><div class="line">    <span class="string">'get /profile'</span>: &#123;</div><div class="line">        view: <span class="string">'backOffice/profile'</span>,</div><div class="line">        locals: &#123; // 硬编码的数据，可以直接通过locals配置</div><div class="line">          user: &#123;</div><div class="line">            name: <span class="string">'Frank'</span>,</div><div class="line">            emailAddress: <span class="string">'frank@enfurter.com'</span></div><div class="line">          &#125;,</div><div class="line">          corndogs: [</div><div class="line">            &#123; name: <span class="string">'beef corndog'</span> &#125;,</div><div class="line">            &#123; name: <span class="string">'chicken corndog'</span> &#125;,</div><div class="line">            &#123; name: <span class="string">'soy corndog'</span> &#125;</div><div class="line">          ]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="在模板中使用动态数据"><a href="#在模板中使用动态数据" class="headerlink" title="在模板中使用动态数据"></a>在模板中使用动态数据</h3><blockquote>
 <p>大多数时候，数据都是动态获取到的（通过action从model中获取），所以大多时候是按照如下方式进行渲染数据的：</p>
 </blockquote>
-<pre><code>// in api/controllers/UserController.js...
-
-  profile: function (req, res) {
-    // ...
-    return res.view(&#39;backOffice/profile&#39;, {
-      user: theUser,
-      corndogs: theUser.corndogCollection
-    });
-  },
-  // ...
-</code></pre><h3 id="Partials-模板包含"><a href="#Partials-模板包含" class="headerlink" title="Partials(模板包含)"></a>Partials(模板包含)</h3><blockquote>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// in api/controllers/UserController.js...</span></div><div class="line"></div><div class="line">  profile: <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">return</span> res.view(<span class="string">'backOffice/profile'</span>, &#123;</div><div class="line">      user: theUser,</div><div class="line">      corndogs: theUser.corndogCollection</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// ...</span></div></pre></td></tr></table></figure>
+<h3 id="Partials-模板包含"><a href="#Partials-模板包含" class="headerlink" title="Partials(模板包含)"></a>Partials(模板包含)</h3><blockquote>
 <p>支持模板包含，及在一些模板中，将另外一些模板包含进来，达到模板的复用。在<code>sails</code>中使用模板包含，需要注意的就是路径都是相对于<code>view</code>文件夹的。如</p>
 </blockquote>
-<pre><code>// views/partials/widget.ejs
-
-// views/pages/dashboard/user-profile.ejs
-&lt;%- partial(&#39;../../partials/widget.ejs&#39;) %&gt;
-</code></pre><h2 id="关于EJS模板"><a href="#关于EJS模板" class="headerlink" title="关于EJS模板"></a>关于<code>EJS</code>模板</h2><blockquote>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// views/partials/widget.ejs</span></div><div class="line"></div><div class="line"><span class="comment">// views/pages/dashboard/user-profile.ejs</span></div><div class="line">&lt;<span class="meta">%</span>- partial<span class="comment">('../../partials/widget.ejs')</span> <span class="meta">%</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="关于EJS模板"><a href="#关于EJS模板" class="headerlink" title="关于EJS模板"></a>关于<code>EJS</code>模板</h2><blockquote>
 <p>在<code>ejs</code>中，模板的标签就以下3种：</p>
 <ul>
 <li><code>&lt;%= %&gt;</code>: 转义输出</li>
@@ -603,7 +466,7 @@ module.exports = {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj39relys0018hxo0v7815yx7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj39rflac000hijo0acnup8je" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sails/">sails</a></li></ul>
@@ -656,24 +519,13 @@ module.exports = {
 <p>在声明和初始化阶段之后，赋值阶段之前，变量的值便是 <code>undefined</code> 并已经可以被使用了。</p>
 <p>在赋值阶段 <code>variable = &#39;value&#39;</code> 语句使变量接受了它的初始化值（步骤二）。</p>
 <p>这里的变量提升严格的说是指变量在函数作用域的开始位置就完成了声明和初始化阶段。在这里这两个阶段之间并没有任何的间隙。</p>
-<pre><code>(function(){
-    // 在这之前，就已经完成了变量的提升（经过了声明和初始化阶段，此时变量已经可以使用了，并且值为undefined）
-    console.log(a) // undefined
-    var a
-    a = 10 // 赋值
-    console.log(a) // 10
-})()
-</code></pre><h3 id="函数声明的生命周期"><a href="#函数声明的生命周期" class="headerlink" title="函数声明的生命周期"></a>函数声明的生命周期</h3><img src="/2017/04/05/variable-hoist/fun-lifecycle.png" alt="函数声明的生命周期" title="函数声明的生命周期">
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>()&#123;</span></div><div class="line">   <span class="comment"> // 在这之前，就已经完成了变量的提升（经过了声明和初始化阶段，此时变量已经可以使用了，并且值为undefined）</span></div><div class="line">    console.<span class="built_in">log</span>(<span class="keyword">a</span>)<span class="comment"> // undefined</span></div><div class="line">    var <span class="keyword">a</span></div><div class="line">    <span class="keyword">a</span> = <span class="number">10</span><span class="comment"> // 赋值</span></div><div class="line">    console.<span class="built_in">log</span>(<span class="keyword">a</span>)<span class="comment"> // 10</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<h3 id="函数声明的生命周期"><a href="#函数声明的生命周期" class="headerlink" title="函数声明的生命周期"></a>函数声明的生命周期</h3><img src="/2017/04/05/variable-hoist/fun-lifecycle.png" alt="函数声明的生命周期" title="函数声明的生命周期">
 <blockquote>
 <p>声明、初始化和赋值阶段在封闭的函数作用域的开头便立刻进行（只有一步）。 <code>funName()</code>可以在作用域中的任意位置被调用，这与其声明语句所在的位置无关（它甚至可以被放在程序的最底部）。</p>
 </blockquote>
-<pre><code>(function sumArray(array) {
-  return array.reduce(sum) //9
-  function sum(a, b) {
-    return a + b
-  }
-})([1, 3, 5])
-</code></pre><h3 id="let变量的生命周期"><a href="#let变量的生命周期" class="headerlink" title="let变量的生命周期"></a><code>let</code>变量的生命周期</h3><blockquote>
+<figure class="highlight hy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="name">function</span> sumArray(<span class="name">array</span>) &#123;</div><div class="line">  return array.reduce(<span class="name"><span class="builtin-name">sum</span></span>) //<span class="number">9</span></div><div class="line">  function sum(<span class="name">a</span>, b) &#123;</div><div class="line">    return a + b</div><div class="line">  &#125;</div><div class="line">&#125;)([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>])</div></pre></td></tr></table></figure>
+<h3 id="let变量的生命周期"><a href="#let变量的生命周期" class="headerlink" title="let变量的生命周期"></a><code>let</code>变量的生命周期</h3><blockquote>
 <p><code>let</code> 变量的处理方式不同于 <code>var</code>, 它的主要区分点在于<strong><em>声明</em></strong>和<strong><em>初始化</em></strong>阶段是分开的。<br><img src="/2017/04/05/variable-hoist/let-lifecycle.png" alt="let变量生命周期" title="let变量生命周期"><br>当解释器进入了一个包含 <code>let variable</code>语句的块级作用域中。这个变量立即通过了声明阶段，并在作用域内注册了它的名称（步骤一）。</p>
 </blockquote>
 <p>然后解释器继续逐行解析块语句。</p>
@@ -682,24 +534,9 @@ module.exports = {
 <p>当解释器到达语句 <code>let variable</code>时，此时变量通过了初始化阶段（步骤二）。现在变量状态是初始化的并且访问它的值是 <code>undefined</code>。</p>
 <p>同时变量在此时也离开了<strong><em>临时死区</em></strong>。</p>
 <p>之后当到达赋值语句 <code>variable = &#39;value&#39;</code> 时，变量通过了赋值阶段（步骤三）。</p>
-<p>如果 JavaScript 遇到这样的语句 <code>let variable = &#39;value&#39;</code> ，那么变量会在这一条语句中同时经过初始化和赋值阶段。</p>
-<pre><code>let condition = true;
-if (condition) {
-    // 一但进入if块作用域中，number变量立即通过了声明阶段，此时number变量处于暂存死区中
-    // 此时试图访问该变量会抛出 ReferenceError: number is not defined.
-  // console.log(number); // =&gt; Throws ReferenceError
-  let number;
-  console.log(number); // =&gt; undefined
-  number = 5;
-  console.log(number); // =&gt; 5
-}
-</code></pre><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><pre><code>(function(){
-    const a = 5
-    console.log(a)
-    let a 
-    console.log(a)
-})()
-</code></pre><blockquote>
+<p>如果 JavaScript 遇到这样的语句 <code>let variable = &#39;value&#39;</code> ，那么变量会在这一条语句中同时经过初始化和赋值阶段。<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let condition = <span class="literal">true</span><span class="comment">;</span></div><div class="line"><span class="keyword">if</span> (condition) &#123;</div><div class="line">    // 一但进入<span class="keyword">if</span>块作用域中，<span class="built_in">number</span>变量立即通过了声明阶段，此时<span class="built_in">number</span>变量处于暂存死区中</div><div class="line">    // 此时试图访问该变量会抛出 ReferenceError: <span class="built_in">number</span> is <span class="literal">not</span> defined.</div><div class="line">  // console.<span class="built_in">log</span>(<span class="built_in">number</span>)<span class="comment">; // =&gt; Throws ReferenceError</span></div><div class="line">  let <span class="built_in">number</span><span class="comment">;</span></div><div class="line">  console.<span class="built_in">log</span>(<span class="built_in">number</span>)<span class="comment">; // =&gt; undefined</span></div><div class="line">  <span class="built_in">number</span> = <span class="number">5</span><span class="comment">;</span></div><div class="line">  console.<span class="built_in">log</span>(<span class="built_in">number</span>)<span class="comment">; // =&gt; 5</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="name">function</span>()&#123;</div><div class="line">    const a = <span class="number">5</span></div><div class="line">    console.log(<span class="name">a</span>)</div><div class="line">    let a </div><div class="line">    console.log(<span class="name">a</span>)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子不会有任何的输出，会抛出<code>Identifier &#39;a&#39; has already been declared</code>。抛出了这个错误是由于已经用<code>const</code>定义了一个变量<code>a</code>, 再次用<code>let</code>声明变量<code>a</code>抛出的错误。但是这个错误也说明了使用<code>let</code>声明的变量会存在<strong><em>变量提升</em></strong></p>
 </blockquote>
 <h3 id="let-var比较"><a href="#let-var比较" class="headerlink" title="let,var比较"></a><code>let</code>,<code>var</code>比较</h3><table>
@@ -738,34 +575,20 @@ if (condition) {
 </tr>
 </tbody>
 </table>
-<pre><code>(function(){
-    var i = 1
-    console.log(i)
-    // 会提升到var语句下面，但是由于已经声明了变量i
-    // 所以抛出Identifier &#39;i&#39; has already been declared
-    let i = 1
-    console.log(i)
-})()
-</code></pre><h3 id="循环定义中的let作用域"><a href="#循环定义中的let作用域" class="headerlink" title="循环定义中的let作用域"></a>循环定义中的let作用域</h3><blockquote>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="name">function</span>()&#123;</div><div class="line">    var i = <span class="number">1</span></div><div class="line">    console.log(<span class="name">i</span>)</div><div class="line">    // 会提升到var语句下面，但是由于已经声明了变量i</div><div class="line">    // 所以抛出Identifier <span class="symbol">'i</span>' has already been declared</div><div class="line">    let i = <span class="number">1</span></div><div class="line">    console.log(<span class="name">i</span>)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<h3 id="循环定义中的let作用域"><a href="#循环定义中的let作用域" class="headerlink" title="循环定义中的let作用域"></a>循环定义中的let作用域</h3><blockquote>
 <p>循环体中是可以引用在for声明时用let定义的变量，尽管let不是出现在大括号之间.</p>
 </blockquote>
-<pre><code>var i = 0;
-for (let i = i; i &lt; 10; i++) {
-  console.log(i);  // 抛出`ReferenceError: i is not defined`。
-}
-</code></pre><h4 id="域作用规则"><a href="#域作用规则" class="headerlink" title="域作用规则"></a>域作用规则</h4><pre><code>for (let expr1; expr2; expr3) statement
-</code></pre><blockquote>
-<p>在for循环中，<code>expr1, expr2, expr3, statement</code>都被包含在一个隐藏的块作用域中。<br>所以上面的例子推荐写成如下：</p>
-<pre><code>var i = 0; 
-for (let l = i; l &lt; 10; l++) {  
-　console.log(l); 
-}
-</code></pre></blockquote>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var <span class="built_in">i</span> = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (let <span class="built_in">i</span> = <span class="built_in">i</span>; <span class="built_in">i</span> &lt; <span class="number">10</span>; <span class="built_in">i</span>++) &#123;</div><div class="line">  console.log(i);  // 抛出`ReferenceError: i is not defined`。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="域作用规则"><a href="#域作用规则" class="headerlink" title="域作用规则"></a>域作用规则</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="built_in">let</span> expr1; expr2; expr3) statement</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在for循环中，<code>expr1, expr2, expr3, statement</code>都被包含在一个隐藏的块作用域中。<br>所以上面的例子推荐写成如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>; </div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> l = i; l &lt; <span class="number">10</span>; l++) &#123;  </div><div class="line">　<span class="built_in">console</span>.log(l); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj39relzd001thxo0plqpvm8u" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj39rflbf0016ijo0whbe83xj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -819,26 +642,12 @@ for (let l = i; l &lt; 10; l++) {
 </ul>
 </li>
 </ol>
-<pre><code>// z-index的值非auto
-&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;
-    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; z-index: 2&quot;&gt; // z-index: 2
-&lt;/div&gt;
-
-&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;
-    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; left: 100px; z-index: 1&quot;&gt; // z-index: 1
-&lt;/div&gt;
-</code></pre><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// z-index的值非auto</span></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: 1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; z-index: 2"</span>&gt; <span class="comment">// z-index: 2</span></div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: 1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; left: 100px; z-index: 1"</span>&gt; <span class="comment">// z-index: 1</span></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子，虽然第一个图片的<code>z-index:2</code>，第二个图片的<code>z-index: 1</code>，但是由于发生了嵌套，祖先元素都是<code>z-index: 1</code>，所以第二个图片覆盖在第一个图片上面。</p>
 </blockquote>
-<pre><code>// z-index的值为auto
-&lt;div style=&quot;position: relative; z-index: auto&quot;&gt;
-    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; z-index: 2&quot;&gt; // z-index: 2
-&lt;/div&gt;
-
-&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;
-    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; left: 100px; z-index: 1&quot;&gt; // z-index: 1
-&lt;/div&gt;
-</code></pre><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// z-index的值为auto</span></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: auto"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; z-index: 2"</span>&gt; <span class="comment">// z-index: 2</span></div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: 1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; left: 100px; z-index: 1"</span>&gt; <span class="comment">// z-index: 1</span></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子，同第一个例子一样，唯一不同的地方就是第一个图片祖先元素的<code>z-index:auto</code>, 那么此时第一个图片在覆盖第二个图片。<br>解释：<code>z-index: auto</code>当前层叠上下文生成的盒子层叠水平是<strong><em>0</em></strong>。盒子（除非是根元素）不会创建一个新的层叠上下文。</p>
 </blockquote>
 <h3 id="z-index中涉及到的重要概念"><a href="#z-index中涉及到的重要概念" class="headerlink" title="z-index中涉及到的重要概念"></a>z-index中涉及到的重要概念</h3><ul>
@@ -864,28 +673,8 @@ for (let l = i; l &lt; 10; l++) {
 <blockquote>
 <p>可以这样理解：<code>background,border</code>等主要用来装饰元素，<code>block</code>盒子<code>float</code>元素主要用来布局，而<code>inline, inline-block</code>主要用来展示内容，而内容是页面中最重要的实体，所以应该让其层叠水平更高。</p>
 </blockquote>
-<pre><code>.block, .inline-block{
-    height: 200px;
-}
-.block{
-    width: 300px;
-    background-color: rgba(37,148,233, .4);
-    margin-top: -13px;
-}
-
-.inline-block{
-    display: inline-block;
-    width: 200px;
-    background-color: #ff8200;
-}
-
-&lt;div class=&quot;inline-block&quot;&gt;
-    display: inline-block
-&lt;/div&gt;
-&lt;div class=&quot;block&quot;&gt;
-    display: block
-&lt;/div&gt;
-</code></pre><blockquote>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">.<span class="built_in">block</span>, .inline-<span class="built_in">block</span>&#123;</div><div class="line">    <span class="built_in">height</span>: 200px;</div><div class="line">&#125;</div><div class="line">.<span class="built_in">block</span>&#123;</div><div class="line">    <span class="built_in">width</span>: 300px;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>: rgba(<span class="number">37</span>,<span class="number">148</span>,<span class="number">233</span>, .<span class="number">4</span>);</div><div class="line">    margin-top: -13px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.inline-<span class="built_in">block</span>&#123;</div><div class="line">    <span class="built_in">display</span>: inline-<span class="built_in">block</span>;</div><div class="line">    <span class="built_in">width</span>: 200px;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>: #ff8200;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=<span class="string">"inline-block"</span>&gt;</div><div class="line">    <span class="built_in">display</span>: inline-<span class="built_in">block</span></div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=<span class="string">"block"</span>&gt;</div><div class="line">    <span class="built_in">display</span>: <span class="built_in">block</span></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子: <code>inline-block</code>的元素会覆盖在<code>block</code>元素的上面，但是<code>block</code>元素中的文字并没有被覆盖。因为文字是属于<code>inline</code>元素，对照7阶层叠上下文可以知道<code>inline</code>的堆叠顺序和<code>inline-block</code>是一个等级的，并且<code>block</code>元素出现在<code>inline-block</code>元素的后面，按照<strong><em>后来居上</em></strong>的规则，<code>inline-block</code>元素并不会覆盖<code>block</code>元素中的文字。</p>
 </blockquote>
 <h3 id="z-index元层叠上下文的关系"><a href="#z-index元层叠上下文的关系" class="headerlink" title="z-index元层叠上下文的关系"></a>z-index元层叠上下文的关系</h3><ul>
@@ -893,80 +682,40 @@ for (let l = i; l &lt; 10; l++) {
 <li><code>z-index</code>不为<code>auto</code>的定位元素创建层叠上下文。</li>
 <li><code>z-index</code>层叠顺序的比较止步于父级层叠上下文。</li>
 </ul>
-<pre><code>.box{
-    position: absolute;
-    background-color: blue;
-    /*z-index: 0;*/
-    width: 200px;
-    height: 100px;
-    display: inline-block;
-}
-.img{
-    position: relative;
-    margin-left: -100px;
-    z-index: -1;
-    width: 200px;
-}
-
-&lt;div class=&quot;box&quot;&gt;
-    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;    
-&lt;/div&gt;
-</code></pre><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">    <span class="comment">/*z-index: 0;*/</span></div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">display</span>: inline-block;</div><div class="line">&#125;</div><div class="line">.img&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">margin-left</span>: -<span class="number">100px</span>;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;    </div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子，如果<code>box</code>不加上<code>z-index:0</code>,那么此时的层叠上下文就是<code>body</code>元素，那么<code>z-index:-1</code>的元素会处于<code>body</code>元素的下面，所以<code>box</code>元素覆盖图片。<br>但是如果<code>box</code>元素加上<code>z-index:0</code>, 那么此次层叠上下文就变成了<code>box</code>元素，那么按照<strong><em>7阶层叠水平</em></strong>, <code>background</code>是处于最底层的，所以<code>z-index:-1</code>的图片会覆盖背景。</p>
 </blockquote>
-<pre><code>.box1{
-    position: relative;
-    z-index: 0;
-}
-.box1 img{
-    position: absolute;
-    z-index: 99999;
-}
-
-.box2{
-    position: relative;
-    z-index: 1;
-}
-.box2 img{
-    position: absolute;
-    left: 250px;
-    z-index: -1;
-}
-
-&lt;div class=&quot;box1&quot;&gt;
-    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;
-&lt;/div&gt;
-&lt;div class=&quot;box2&quot;&gt;
-    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;
-&lt;/div&gt;
-</code></pre><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">.box1&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box1</span> img&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">99999</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.box2&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box2</span> img&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">left</span>: <span class="number">250px</span>;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box2"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子，虽然<code>box1</code>中的<code>img</code>图片的<code>z-index:99999</code>很大，但是其父元素的<code>z-index: 0</code>没有第二个图片的父元素<code>box2</code>的<code>z-index:1</code>大，所以依然是第二个图片覆盖第一个图片。</p>
 </blockquote>
 <h3 id="其他参与层叠上下文的属性"><a href="#其他参与层叠上下文的属性" class="headerlink" title="其他参与层叠上下文的属性"></a>其他参与层叠上下文的属性</h3><ul>
-<li><code>z-index</code>值不为<code>auto</code>的flex项（父元素display:flex|inline-flex）<br>```<br>// 设置为flex的父元素，可以改变子元素z-index不为auto的元素参数参与堆叠上下文<br>.box{<br>  /<em>display: flex;</em>/<br>  background-color: blue;<br>}<br>.box &gt; div {<br>  z-index: 1;<br>}<br>.box &gt; div &gt; img{<br>  position: relative;<br>  z-index: -1;<br>}</li>
+<li><code>z-index</code>值不为<code>auto</code>的flex项（父元素display:flex|inline-flex）<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置为flex的父元素，可以改变子元素z-index不为auto的元素参数参与堆叠上下文</span></div><div class="line">.box&#123;</div><div class="line">    <span class="comment">/*display: flex;*/</span></div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; <span class="selector-tag">div</span> &#123;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; <span class="selector-tag">div</span> &gt; img&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p><div class="box"><br>    <div><br>        <img class="img" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" alt=""><br>    </div><br></div></p>
-<pre><code>&gt;当没有为`box`设置`display: flex`时，此时层叠上下文为根元素（html或者body），所以`img`设置为`z-index:-1`会堆叠在根元素下面，也就是背景会覆盖图片。但如果设置`box`为`display: flex`,那么此时`display:flex`的***子元素***`z-index`不为`auto`的元素参与堆叠顺序，那么按照***7阶堆叠顺序***，`z-index`为负值的会堆叠在`background`上面。
-
-- `opacity != 1`
-</code></pre><p>.box{<br>    background-color: blue;<br>    /<em>opacity: .9;</em>/<br>}<br>.box &gt; img{<br>    position: relative;<br>    z-index: -1;<br>}</p>
-<p><div class="box"><br>    <img class="img" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" alt=""><br></div></p>
-<pre><code>
-&gt;当没有给`box`元素设置`opacity:.9`时，那么此时`box`为非层叠上下文元素，那么`img`会层叠到根层叠上下文元素的下面，所以`box`会覆盖`img`。一旦设置了`box`的`opacity: .9`是，此时层叠上下文为`box`元素，那么按照***7阶堆叠顺序***, 负的`z-index`会覆盖在`background`的上面。
-
-- 剩下的`transform != none`, `mix-blend-mode != normal`, `filter != none`, `isolation: isolation`, `position: fixed`, `will-change: 任意支持过渡的元素`, `-webkit-overflow-scrolling: touch`同理。
-
-### 非定位元素层叠上下文和`z-index`的关系
-- 不依赖`z-index`的层叠上下文元素的层叠顺序均是`z-index:auto`级别。（可以查看上面的”其他属性创建层叠上下文的图“, 需要注意的是`flex`, 他是依赖`z-index`的）
-- 依赖`z-index`的层叠上下文元素的层叠顺序取决于`z-index`的值。
-</code></pre><p>.a{<br>    position: absolute;<br>    z-index: 1;<br>    top: 10px;<br>    left: 40px;<br>}<br>.box{<br>    display: flex; /<em>普通元素</em>/<br>    background-color: blue;<br>}<br>.box &gt; img{<br>    z-index: 1;  /<em>flex项是层叠上下文元素</em>/<br>}</p>
-<p><img class="a" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" alt=""></p>
-<p><div class="box"><br>    <img class="img" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" alt=""><br></div><br>```</p>
+<blockquote>
+<p>当没有为<code>box</code>设置<code>display: flex</code>时，此时层叠上下文为根元素（html或者body），所以<code>img</code>设置为<code>z-index:-1</code>会堆叠在根元素下面，也就是背景会覆盖图片。但如果设置<code>box</code>为<code>display: flex</code>,那么此时<code>display:flex</code>的<strong><em>子元素</em></strong><code>z-index</code>不为<code>auto</code>的元素参与堆叠顺序，那么按照<strong><em>7阶堆叠顺序</em></strong>，<code>z-index</code>为负值的会堆叠在<code>background</code>上面。</p>
+</blockquote>
+<ul>
+<li><code>opacity != 1</code><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">    <span class="comment">/*opacity: .9;*/</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; img&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>当没有给<code>box</code>元素设置<code>opacity:.9</code>时，那么此时<code>box</code>为非层叠上下文元素，那么<code>img</code>会层叠到根层叠上下文元素的下面，所以<code>box</code>会覆盖<code>img</code>。一旦设置了<code>box</code>的<code>opacity: .9</code>是，此时层叠上下文为<code>box</code>元素，那么按照<strong><em>7阶堆叠顺序</em></strong>, 负的<code>z-index</code>会覆盖在<code>background</code>的上面。</p>
+</blockquote>
+<ul>
+<li>剩下的<code>transform != none</code>, <code>mix-blend-mode != normal</code>, <code>filter != none</code>, <code>isolation: isolation</code>, <code>position: fixed</code>, <code>will-change: 任意支持过渡的元素</code>, <code>-webkit-overflow-scrolling: touch</code>同理。</li>
+</ul>
+<h3 id="非定位元素层叠上下文和z-index的关系"><a href="#非定位元素层叠上下文和z-index的关系" class="headerlink" title="非定位元素层叠上下文和z-index的关系"></a>非定位元素层叠上下文和<code>z-index</code>的关系</h3><ul>
+<li>不依赖<code>z-index</code>的层叠上下文元素的层叠顺序均是<code>z-index:auto</code>级别。（可以查看上面的”其他属性创建层叠上下文的图“, 需要注意的是<code>flex</code>, 他是依赖<code>z-index</code>的）</li>
+<li>依赖<code>z-index</code>的层叠上下文元素的层叠顺序取决于<code>z-index</code>的值。<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.a&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div><div class="line">.box&#123;</div><div class="line">    <span class="attribute">display</span>: flex; <span class="comment">/*普通元素*/</span></div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; img&#123;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;  <span class="comment">/*flex项是层叠上下文元素*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">img</span> class=<span class="string">"a"</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj39rem04002rhxo0vsnlploc" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj39rflcg0026ijo0z0llxhbi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -1012,10 +761,8 @@ for (let l = i; l &lt; 10; l++) {
 <h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><blockquote>
 <p>条件表达式必须放在方括号内，并且之间要有空格</p>
 </blockquote>
-<pre><code># 方括号的前后也必须含有空格,可以有多个空格
-[ $a == $b ] // right
-[$a==$b] // error
-</code></pre><h3 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h3><table>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 方括号的前后也必须含有空格,可以有多个空格</span></div><div class="line">[ <span class="variable">$a</span> == <span class="variable">$b</span> ] <span class="regexp">//</span> right</div><div class="line">[<span class="variable">$a</span>==<span class="variable">$b</span>] <span class="regexp">//</span> error</div></pre></td></tr></table></figure>
+<h3 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h3><table>
 <thead>
 <tr>
 <th>运算符</th>
@@ -1117,7 +864,7 @@ for (let l = i; l &lt; 10; l++) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj39relyw001chxo051oupmb7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj39rflao000rijo0t3uyjhux" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -1205,7 +952,7 @@ for (let l = i; l &lt; 10; l++) {
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj39relz1001fhxo0i3d5r5e9" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj39rflar000tijo0w50ljb14" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -1245,17 +992,15 @@ for (let l = i; l &lt; 10; l++) {
     <div class="article-entry" itemprop="articleBody">
       
         
-        <h3 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h3><pre><code>your_name=&quot;rou&quot;
-</code></pre><ul>
+        <h3 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">your_name</span>=<span class="string">"rou"</span></div></pre></td></tr></table></figure>
+<ul>
 <li>变量名只能有字母和下划线<code>_</code>组成，且不能使用<code>bash</code>里的关键字</li>
 <li>变量名和等号之间不能有空格</li>
 </ul>
-<h3 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h3><pre><code>your_name=&quot;rou&quot;
-echo $your_name
-echo ${your_name} // 推荐使用这种方式
-</code></pre><h3 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h3><pre><code>readonly myUrl=&quot;www.baidu.com&quot;
-</code></pre><h3 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h3><pre><code>unset varibale_name
-</code></pre><blockquote>
+<h3 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">your_name=<span class="string">"rou"</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$your_name</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;your_name&#125;</span> // 推荐使用这种方式</div></pre></td></tr></table></figure>
+<h3 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">readonly</span> myUrl=<span class="string">"www.baidu.com"</span></div></pre></td></tr></table></figure>
+<h3 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">unset</span> varibale_name</div></pre></td></tr></table></figure>
+<blockquote>
 <p>变量被删除后不能再次使用。<code>unset</code>命令不能删除<strong><em>只读</em></strong>变量</p>
 </blockquote>
 <h3 id="Shell字符串"><a href="#Shell字符串" class="headerlink" title="Shell字符串"></a>Shell字符串</h3><blockquote>
@@ -1265,33 +1010,18 @@ echo ${your_name} // 推荐使用这种方式
 <li>双引号包裹的字符串可以包含变量</li>
 </ul>
 </blockquote>
-<h3 id="获取字符串的长度"><a href="#获取字符串的长度" class="headerlink" title="获取字符串的长度"></a>获取字符串的长度</h3><pre><code>my_str=&quot;this is a test string&quot;
-${#my_str}
-</code></pre><h3 id="提取字符串"><a href="#提取字符串" class="headerlink" title="提取字符串"></a>提取字符串</h3><pre><code>str=&quot;my name is test&quot;
-${str:1:4} // 从第2个位置开始截取4个字符串（下标索引从0开始）
-</code></pre><h3 id="Shell数组"><a href="#Shell数组" class="headerlink" title="Shell数组"></a>Shell数组</h3><pre><code>array_name=(value1 value2 valu3...)
-或者
-array_name=(
-    value1
-    value2
-    value3
-)
-</code></pre><h3 id="获取数组中所有的元素"><a href="#获取数组中所有的元素" class="headerlink" title="获取数组中所有的元素"></a>获取数组中所有的元素</h3><pre><code>array=(a b c)
-${array[@]} 或者 ${array[*]}
-</code></pre><h3 id="获取数组的长度"><a href="#获取数组的长度" class="headerlink" title="获取数组的长度"></a>获取数组的长度</h3><blockquote>
+<h3 id="获取字符串的长度"><a href="#获取字符串的长度" class="headerlink" title="获取字符串的长度"></a>获取字符串的长度</h3><figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">my_str=<span class="comment">"this is a test string"</span></div><div class="line"><span class="string">$&#123;</span><span class="symbol">#my_str</span>&#125;</div></pre></td></tr></table></figure>
+<h3 id="提取字符串"><a href="#提取字符串" class="headerlink" title="提取字符串"></a>提取字符串</h3><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">str</span>=<span class="string">"my name is test"</span></div><div class="line">$&#123;<span class="keyword">str</span>:<span class="number">1</span>:<span class="number">4</span>&#125; <span class="comment">// 从第2个位置开始截取4个字符串（下标索引从0开始）</span></div></pre></td></tr></table></figure>
+<h3 id="Shell数组"><a href="#Shell数组" class="headerlink" title="Shell数组"></a>Shell数组</h3><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">array<span class="number">_n</span>ame=(<span class="keyword">value</span><span class="number">1</span> <span class="keyword">value</span><span class="number">2</span> valu<span class="number">3</span>...)</div><div class="line">或者</div><div class="line">array<span class="number">_n</span>ame=(</div><div class="line">    <span class="keyword">value</span><span class="number">1</span></div><div class="line">    <span class="keyword">value</span><span class="number">2</span></div><div class="line">    <span class="keyword">value</span><span class="number">3</span></div><div class="line">)</div></pre></td></tr></table></figure>
+<h3 id="获取数组中所有的元素"><a href="#获取数组中所有的元素" class="headerlink" title="获取数组中所有的元素"></a>获取数组中所有的元素</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">array=(<span class="selector-tag">a</span> <span class="selector-tag">b</span> c)</div><div class="line">$&#123;array[@]&#125; 或者 $&#123;array[*]&#125;</div></pre></td></tr></table></figure>
+<h3 id="获取数组的长度"><a href="#获取数组的长度" class="headerlink" title="获取数组的长度"></a>获取数组的长度</h3><blockquote>
 <p>和获取字符的长度语法是一致的</p>
 </blockquote>
-<pre><code># 获取数组的长度
-${#array[@]} 或者 ${#array[*]}
-
-# 获取数组中某个元素的长度
-${#array[n]} // 下标n从0开始
-`
-</code></pre>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 获取数组的长度</div><div class="line">$&#123;#array[@]&#125; 或者 $&#123;#array[*]&#125;</div><div class="line"></div><div class="line"># 获取数组中某个元素的长度</div><div class="line">$&#123;#array[n]&#125; <span class="comment">// 下标n从0开始</span></div><div class="line">`</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj39relzb001qhxo0kyzcwi3e" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj39rflbh0019ijo082zx9lvu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -1338,21 +1068,17 @@ ${#array[n]} // 下标n从0开始
 <li>K Shell (/usr/bin/ksh)</li>
 <li>Shell for Root (/sbin/sh)</li>
 </ul>
-<h3 id="第一个Shell脚本"><a href="#第一个Shell脚本" class="headerlink" title="第一个Shell脚本"></a>第一个Shell脚本</h3><pre><code>#!/bin/sh
-echo &#39;Hello World !&#39;
-</code></pre><blockquote>
+<h3 id="第一个Shell脚本"><a href="#第一个Shell脚本" class="headerlink" title="第一个Shell脚本"></a>第一个Shell脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'Hello World !'</span></div></pre></td></tr></table></figure>
+<blockquote>
 <p>“#!” 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种Shell</p>
 </blockquote>
 <h3 id="运行Shell脚本的2种方法"><a href="#运行Shell脚本的2种方法" class="headerlink" title="运行Shell脚本的2种方法"></a>运行Shell脚本的2种方法</h3><ol>
-<li>作为可执行程序<pre><code>// 将上面的脚本保存为test.sh
-chmod +x ./test.sh // 使脚本具有可执行的权限
-./test.sh // 执行脚本
-</code></pre></li>
-</ol>
-<ol>
-<li>作为解释器参数<pre><code>/bin/sh test.sh
-/bin/php test.php
-</code></pre></li>
+<li><p>作为可执行程序</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将上面的脚本保存为test.sh</span></div><div class="line">chmod +x ./<span class="keyword">test</span>.<span class="keyword">sh</span> <span class="comment">// 使脚本具有可执行的权限</span></div><div class="line">./<span class="keyword">test</span>.<span class="keyword">sh</span> <span class="comment">// 执行脚本</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>作为解释器参数</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/bin/<span class="keyword">sh</span> <span class="keyword">test</span>.<span class="keyword">sh</span></div><div class="line">/bin/php <span class="keyword">test</span>.php</div></pre></td></tr></table></figure>
+</li>
 </ol>
 <blockquote>
 <p>这种方式运行的脚本，不需要再第一行指定解释器的信息，即使指定了也没用</p>
@@ -1361,7 +1087,7 @@ chmod +x ./test.sh // 使脚本具有可执行的权限
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj39relz6001khxo09lcu5zt7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj39rflb0000xijo0mah6oodl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>

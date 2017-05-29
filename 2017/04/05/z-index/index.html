@@ -19,8 +19,7 @@
 
 
 
-// z-index的值非auto
-&amp;lt;div style=">
+12345678// z-index的值非auto&amp;lt;div">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解z-index">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/04/05/z-index/index.html">
@@ -39,14 +38,9 @@
 
 
 
-// z-index的值非auto
-&amp;lt;div style=">
+12345678// z-index的值非auto&amp;lt;div">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/04/05/z-index/stacking-props.png">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/04/05/z-index/stacking-level.png">
-<meta property="og:image" content="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png">
-<meta property="og:image" content="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png">
-<meta property="og:image" content="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png">
-<meta property="og:image" content="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png">
 <meta property="og:updated_time" content="2017-05-14T04:01:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解z-index">
@@ -64,8 +58,7 @@
 
 
 
-// z-index的值非auto
-&amp;lt;div style=">
+12345678// z-index的值非auto&amp;lt;div">
 <meta name="twitter:image" content="https://xxxxxmiss.github.io/2017/04/05/z-index/stacking-props.png">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
@@ -73,6 +66,9 @@
   
     <link rel="icon" href="/favicon.png">
   
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -147,7 +143,7 @@
         
   <div id="toc" class="toc-article">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#z-index基本规则"><span class="toc-number">1.</span> <span class="toc-text">z-index基本规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#z-index中涉及到的重要概念"><span class="toc-number">2.</span> <span class="toc-text">z-index中涉及到的重要概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#层叠上下文的几个特性"><span class="toc-number">3.</span> <span class="toc-text">层叠上下文的几个特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7阶层叠水平-stacking-level"><span class="toc-number">4.</span> <span class="toc-text">7阶层叠水平(stacking level)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#z-index元层叠上下文的关系"><span class="toc-number">5.</span> <span class="toc-text">z-index元层叠上下文的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他参与层叠上下文的属性"><span class="toc-number">6.</span> <span class="toc-text">其他参与层叠上下文的属性</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#z-index基本规则"><span class="toc-number">1.</span> <span class="toc-text">z-index基本规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#z-index中涉及到的重要概念"><span class="toc-number">2.</span> <span class="toc-text">z-index中涉及到的重要概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#层叠上下文的几个特性"><span class="toc-number">3.</span> <span class="toc-text">层叠上下文的几个特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7阶层叠水平-stacking-level"><span class="toc-number">4.</span> <span class="toc-text">7阶层叠水平(stacking level)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#z-index元层叠上下文的关系"><span class="toc-number">5.</span> <span class="toc-text">z-index元层叠上下文的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他参与层叠上下文的属性"><span class="toc-number">6.</span> <span class="toc-text">其他参与层叠上下文的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非定位元素层叠上下文和z-index的关系"><span class="toc-number">7.</span> <span class="toc-text">非定位元素层叠上下文和z-index的关系</span></a></li></ol>
   </div>
 
         <h3 id="z-index基本规则"><a href="#z-index基本规则" class="headerlink" title="z-index基本规则"></a>z-index基本规则</h3><ol>
@@ -164,26 +160,12 @@
 </ul>
 </li>
 </ol>
-<pre><code>// z-index的值非auto
-&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;
-    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; z-index: 2&quot;&gt; // z-index: 2
-&lt;/div&gt;
-
-&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;
-    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; left: 100px; z-index: 1&quot;&gt; // z-index: 1
-&lt;/div&gt;
-</code></pre><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// z-index的值非auto</span></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: 1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; z-index: 2"</span>&gt; <span class="comment">// z-index: 2</span></div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: 1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; left: 100px; z-index: 1"</span>&gt; <span class="comment">// z-index: 1</span></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子，虽然第一个图片的<code>z-index:2</code>，第二个图片的<code>z-index: 1</code>，但是由于发生了嵌套，祖先元素都是<code>z-index: 1</code>，所以第二个图片覆盖在第一个图片上面。</p>
 </blockquote>
-<pre><code>// z-index的值为auto
-&lt;div style=&quot;position: relative; z-index: auto&quot;&gt;
-    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; z-index: 2&quot;&gt; // z-index: 2
-&lt;/div&gt;
-
-&lt;div style=&quot;position: relative; z-index: 1&quot;&gt;
-    &lt;img src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; style=&quot;position: absolute; left: 100px; z-index: 1&quot;&gt; // z-index: 1
-&lt;/div&gt;
-</code></pre><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// z-index的值为auto</span></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: auto"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; z-index: 2"</span>&gt; <span class="comment">// z-index: 2</span></div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: 1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; left: 100px; z-index: 1"</span>&gt; <span class="comment">// z-index: 1</span></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子，同第一个例子一样，唯一不同的地方就是第一个图片祖先元素的<code>z-index:auto</code>, 那么此时第一个图片在覆盖第二个图片。<br>解释：<code>z-index: auto</code>当前层叠上下文生成的盒子层叠水平是<strong><em>0</em></strong>。盒子（除非是根元素）不会创建一个新的层叠上下文。</p>
 </blockquote>
 <h3 id="z-index中涉及到的重要概念"><a href="#z-index中涉及到的重要概念" class="headerlink" title="z-index中涉及到的重要概念"></a>z-index中涉及到的重要概念</h3><ul>
@@ -209,28 +191,8 @@
 <blockquote>
 <p>可以这样理解：<code>background,border</code>等主要用来装饰元素，<code>block</code>盒子<code>float</code>元素主要用来布局，而<code>inline, inline-block</code>主要用来展示内容，而内容是页面中最重要的实体，所以应该让其层叠水平更高。</p>
 </blockquote>
-<pre><code>.block, .inline-block{
-    height: 200px;
-}
-.block{
-    width: 300px;
-    background-color: rgba(37,148,233, .4);
-    margin-top: -13px;
-}
-
-.inline-block{
-    display: inline-block;
-    width: 200px;
-    background-color: #ff8200;
-}
-
-&lt;div class=&quot;inline-block&quot;&gt;
-    display: inline-block
-&lt;/div&gt;
-&lt;div class=&quot;block&quot;&gt;
-    display: block
-&lt;/div&gt;
-</code></pre><blockquote>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">.<span class="built_in">block</span>, .inline-<span class="built_in">block</span>&#123;</div><div class="line">    <span class="built_in">height</span>: 200px;</div><div class="line">&#125;</div><div class="line">.<span class="built_in">block</span>&#123;</div><div class="line">    <span class="built_in">width</span>: 300px;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>: rgba(<span class="number">37</span>,<span class="number">148</span>,<span class="number">233</span>, .<span class="number">4</span>);</div><div class="line">    margin-top: -13px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.inline-<span class="built_in">block</span>&#123;</div><div class="line">    <span class="built_in">display</span>: inline-<span class="built_in">block</span>;</div><div class="line">    <span class="built_in">width</span>: 200px;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>: #ff8200;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=<span class="string">"inline-block"</span>&gt;</div><div class="line">    <span class="built_in">display</span>: inline-<span class="built_in">block</span></div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=<span class="string">"block"</span>&gt;</div><div class="line">    <span class="built_in">display</span>: <span class="built_in">block</span></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子: <code>inline-block</code>的元素会覆盖在<code>block</code>元素的上面，但是<code>block</code>元素中的文字并没有被覆盖。因为文字是属于<code>inline</code>元素，对照7阶层叠上下文可以知道<code>inline</code>的堆叠顺序和<code>inline-block</code>是一个等级的，并且<code>block</code>元素出现在<code>inline-block</code>元素的后面，按照<strong><em>后来居上</em></strong>的规则，<code>inline-block</code>元素并不会覆盖<code>block</code>元素中的文字。</p>
 </blockquote>
 <h3 id="z-index元层叠上下文的关系"><a href="#z-index元层叠上下文的关系" class="headerlink" title="z-index元层叠上下文的关系"></a>z-index元层叠上下文的关系</h3><ul>
@@ -238,80 +200,40 @@
 <li><code>z-index</code>不为<code>auto</code>的定位元素创建层叠上下文。</li>
 <li><code>z-index</code>层叠顺序的比较止步于父级层叠上下文。</li>
 </ul>
-<pre><code>.box{
-    position: absolute;
-    background-color: blue;
-    /*z-index: 0;*/
-    width: 200px;
-    height: 100px;
-    display: inline-block;
-}
-.img{
-    position: relative;
-    margin-left: -100px;
-    z-index: -1;
-    width: 200px;
-}
-
-&lt;div class=&quot;box&quot;&gt;
-    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;    
-&lt;/div&gt;
-</code></pre><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">    <span class="comment">/*z-index: 0;*/</span></div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">display</span>: inline-block;</div><div class="line">&#125;</div><div class="line">.img&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">margin-left</span>: -<span class="number">100px</span>;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;    </div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子，如果<code>box</code>不加上<code>z-index:0</code>,那么此时的层叠上下文就是<code>body</code>元素，那么<code>z-index:-1</code>的元素会处于<code>body</code>元素的下面，所以<code>box</code>元素覆盖图片。<br>但是如果<code>box</code>元素加上<code>z-index:0</code>, 那么此次层叠上下文就变成了<code>box</code>元素，那么按照<strong><em>7阶层叠水平</em></strong>, <code>background</code>是处于最底层的，所以<code>z-index:-1</code>的图片会覆盖背景。</p>
 </blockquote>
-<pre><code>.box1{
-    position: relative;
-    z-index: 0;
-}
-.box1 img{
-    position: absolute;
-    z-index: 99999;
-}
-
-.box2{
-    position: relative;
-    z-index: 1;
-}
-.box2 img{
-    position: absolute;
-    left: 250px;
-    z-index: -1;
-}
-
-&lt;div class=&quot;box1&quot;&gt;
-    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;
-&lt;/div&gt;
-&lt;div class=&quot;box2&quot;&gt;
-    &lt;img class=&quot;img&quot; src=&quot;https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png&quot; alt=&quot;&quot;&gt;
-&lt;/div&gt;
-</code></pre><blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">.box1&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box1</span> img&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">99999</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.box2&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box2</span> img&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">left</span>: <span class="number">250px</span>;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box2"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子，虽然<code>box1</code>中的<code>img</code>图片的<code>z-index:99999</code>很大，但是其父元素的<code>z-index: 0</code>没有第二个图片的父元素<code>box2</code>的<code>z-index:1</code>大，所以依然是第二个图片覆盖第一个图片。</p>
 </blockquote>
 <h3 id="其他参与层叠上下文的属性"><a href="#其他参与层叠上下文的属性" class="headerlink" title="其他参与层叠上下文的属性"></a>其他参与层叠上下文的属性</h3><ul>
-<li><code>z-index</code>值不为<code>auto</code>的flex项（父元素display:flex|inline-flex）<br>```<br>// 设置为flex的父元素，可以改变子元素z-index不为auto的元素参数参与堆叠上下文<br>.box{<br>  /<em>display: flex;</em>/<br>  background-color: blue;<br>}<br>.box &gt; div {<br>  z-index: 1;<br>}<br>.box &gt; div &gt; img{<br>  position: relative;<br>  z-index: -1;<br>}</li>
+<li><code>z-index</code>值不为<code>auto</code>的flex项（父元素display:flex|inline-flex）<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置为flex的父元素，可以改变子元素z-index不为auto的元素参数参与堆叠上下文</span></div><div class="line">.box&#123;</div><div class="line">    <span class="comment">/*display: flex;*/</span></div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; <span class="selector-tag">div</span> &#123;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; <span class="selector-tag">div</span> &gt; img&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p><div class="box"><br>    <div><br>        <img class="img" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" alt=""><br>    </div><br></div></p>
-<pre><code>&gt;当没有为`box`设置`display: flex`时，此时层叠上下文为根元素（html或者body），所以`img`设置为`z-index:-1`会堆叠在根元素下面，也就是背景会覆盖图片。但如果设置`box`为`display: flex`,那么此时`display:flex`的***子元素***`z-index`不为`auto`的元素参与堆叠顺序，那么按照***7阶堆叠顺序***，`z-index`为负值的会堆叠在`background`上面。
-
-- `opacity != 1`
-</code></pre><p>.box{<br>    background-color: blue;<br>    /<em>opacity: .9;</em>/<br>}<br>.box &gt; img{<br>    position: relative;<br>    z-index: -1;<br>}</p>
-<p><div class="box"><br>    <img class="img" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" alt=""><br></div></p>
-<pre><code>
-&gt;当没有给`box`元素设置`opacity:.9`时，那么此时`box`为非层叠上下文元素，那么`img`会层叠到根层叠上下文元素的下面，所以`box`会覆盖`img`。一旦设置了`box`的`opacity: .9`是，此时层叠上下文为`box`元素，那么按照***7阶堆叠顺序***, 负的`z-index`会覆盖在`background`的上面。
-
-- 剩下的`transform != none`, `mix-blend-mode != normal`, `filter != none`, `isolation: isolation`, `position: fixed`, `will-change: 任意支持过渡的元素`, `-webkit-overflow-scrolling: touch`同理。
-
-### 非定位元素层叠上下文和`z-index`的关系
-- 不依赖`z-index`的层叠上下文元素的层叠顺序均是`z-index:auto`级别。（可以查看上面的”其他属性创建层叠上下文的图“, 需要注意的是`flex`, 他是依赖`z-index`的）
-- 依赖`z-index`的层叠上下文元素的层叠顺序取决于`z-index`的值。
-</code></pre><p>.a{<br>    position: absolute;<br>    z-index: 1;<br>    top: 10px;<br>    left: 40px;<br>}<br>.box{<br>    display: flex; /<em>普通元素</em>/<br>    background-color: blue;<br>}<br>.box &gt; img{<br>    z-index: 1;  /<em>flex项是层叠上下文元素</em>/<br>}</p>
-<p><img class="a" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" alt=""></p>
-<p><div class="box"><br>    <img class="img" src="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png" alt=""><br></div><br>```</p>
+<blockquote>
+<p>当没有为<code>box</code>设置<code>display: flex</code>时，此时层叠上下文为根元素（html或者body），所以<code>img</code>设置为<code>z-index:-1</code>会堆叠在根元素下面，也就是背景会覆盖图片。但如果设置<code>box</code>为<code>display: flex</code>,那么此时<code>display:flex</code>的<strong><em>子元素</em></strong><code>z-index</code>不为<code>auto</code>的元素参与堆叠顺序，那么按照<strong><em>7阶堆叠顺序</em></strong>，<code>z-index</code>为负值的会堆叠在<code>background</code>上面。</p>
+</blockquote>
+<ul>
+<li><code>opacity != 1</code><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">    <span class="comment">/*opacity: .9;*/</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; img&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>当没有给<code>box</code>元素设置<code>opacity:.9</code>时，那么此时<code>box</code>为非层叠上下文元素，那么<code>img</code>会层叠到根层叠上下文元素的下面，所以<code>box</code>会覆盖<code>img</code>。一旦设置了<code>box</code>的<code>opacity: .9</code>是，此时层叠上下文为<code>box</code>元素，那么按照<strong><em>7阶堆叠顺序</em></strong>, 负的<code>z-index</code>会覆盖在<code>background</code>的上面。</p>
+</blockquote>
+<ul>
+<li>剩下的<code>transform != none</code>, <code>mix-blend-mode != normal</code>, <code>filter != none</code>, <code>isolation: isolation</code>, <code>position: fixed</code>, <code>will-change: 任意支持过渡的元素</code>, <code>-webkit-overflow-scrolling: touch</code>同理。</li>
+</ul>
+<h3 id="非定位元素层叠上下文和z-index的关系"><a href="#非定位元素层叠上下文和z-index的关系" class="headerlink" title="非定位元素层叠上下文和z-index的关系"></a>非定位元素层叠上下文和<code>z-index</code>的关系</h3><ul>
+<li>不依赖<code>z-index</code>的层叠上下文元素的层叠顺序均是<code>z-index:auto</code>级别。（可以查看上面的”其他属性创建层叠上下文的图“, 需要注意的是<code>flex</code>, 他是依赖<code>z-index</code>的）</li>
+<li>依赖<code>z-index</code>的层叠上下文元素的层叠顺序取决于<code>z-index</code>的值。<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.a&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div><div class="line">.box&#123;</div><div class="line">    <span class="attribute">display</span>: flex; <span class="comment">/*普通元素*/</span></div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; img&#123;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;  <span class="comment">/*flex项是层叠上下文元素*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">img</span> class=<span class="string">"a"</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj39rem04002rhxo0vsnlploc" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj39rflcg0026ijo0z0llxhbi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>

@@ -43,6 +43,9 @@ noParse: /jquery|backbone/
     <link rel="icon" href="/favicon.png">
   
   
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
+  
   <link rel="stylesheet" href="/css/style.css">
   
 
@@ -123,60 +126,10 @@ noParse: /jquery|backbone/
 </blockquote>
 <p><code>noParse: /jquery|backbone/</code></p>
 <p>这章讲解的内容配置起来是最简单的，但是用文字描述起来并不简单，直接通过配置例子来说明。</p>
-<p>webpack1.x常用配置</p>
-<pre><code>module: {
-    loaders: [
-        {
-            test: /^$/,
-            loader: &#39;&#39;,
-            include: [],
-            exclude: [],
-            query: {}
-        }
-    ]
-}
-</code></pre><p>webpack2.x常用配置</p>
-<pre><code>module: {
-    rules: [
-        {
-            test: /^$/,
-            // 一定要注意：当使用多个loader解析一个文件时，一定要注意loader的添加顺序，他是【从右往左】依次使用每个loader来解析文件的
-            use: [
-                {
-                    loader: &#39;&#39;,
-                    options: {}
-                },
-                {
-                    loader: &#39;&#39;
-                }
-            ],
-            include: [],
-            exclude: [],
-            and: [],
-            or: [],
-            not: &#39;&#39;
-        }
-    ]
-}
-</code></pre><p>webpack2.x常用配置（更常用）</p>
-<pre><code>module: {
-    rules: [ // 每个对象称之为一个`rule`
-        {
-            test: /^$/,
-            // 使用该选项，当需要几个loader解析一个文件时，可以连写：css!style!sass
-            // 如果替换为use, 那么就不能这么写了，必须写成[{},{}]的形式
-            loader: &#39;&#39;, 
-            include: [condition], // 包括这些
-            exclude: [condition], // 排condition除这些
-            and: [condition], // 所有的都包括
-            or: [condition], // 至少包括一个
-            not: &#39;condition&#39;, // 不包括
-            options: {}, // 传入到loader中的选项
-            //...
-        }
-    ]
-}
-</code></pre><blockquote>
+<p>webpack1.x常用配置<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attr">module:</span> <span class="string">&#123;</span></div><div class="line"><span class="attr">    loaders:</span> <span class="string">[</span></div><div class="line">        <span class="string">&#123;</span></div><div class="line"><span class="attr">            test:</span> <span class="string">/^$/,</span></div><div class="line"><span class="attr">            loader:</span> <span class="string">''</span><span class="string">,</span></div><div class="line"><span class="attr">            include:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            exclude:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            query:</span> <span class="string">&#123;&#125;</span></div><div class="line">        <span class="string">&#125;</span></div><div class="line">    <span class="string">]</span></div><div class="line"><span class="string">&#125;</span></div></pre></td></tr></table></figure></p>
+<p>webpack2.x常用配置<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="attr">module:</span> <span class="string">&#123;</span></div><div class="line"><span class="attr">    rules:</span> <span class="string">[</span></div><div class="line">        <span class="string">&#123;</span></div><div class="line"><span class="attr">            test:</span> <span class="string">/^$/,</span></div><div class="line">            <span class="string">//</span> <span class="string">一定要注意：当使用多个loader解析一个文件时，一定要注意loader的添加顺序，他是【从右往左】依次使用每个loader来解析文件的</span></div><div class="line"><span class="attr">            use:</span> <span class="string">[</span></div><div class="line">                <span class="string">&#123;</span></div><div class="line"><span class="attr">                    loader:</span> <span class="string">''</span><span class="string">,</span></div><div class="line"><span class="attr">                    options:</span> <span class="string">&#123;&#125;</span></div><div class="line">                <span class="string">&#125;,</span></div><div class="line">                <span class="string">&#123;</span></div><div class="line"><span class="attr">                    loader:</span> <span class="string">''</span></div><div class="line">                <span class="string">&#125;</span></div><div class="line">            <span class="string">],</span></div><div class="line"><span class="attr">            include:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            exclude:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            and:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            or:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            not:</span> <span class="string">''</span></div><div class="line">        <span class="string">&#125;</span></div><div class="line">    <span class="string">]</span></div><div class="line"><span class="string">&#125;</span></div></pre></td></tr></table></figure></p>
+<p>webpack2.x常用配置（更常用）<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    rules: [ <span class="comment">// 每个对象称之为一个`rule`</span></div><div class="line">        &#123;</div><div class="line">            test: /^<span class="symbol">$</span>/,</div><div class="line">            <span class="comment">// 使用该选项，当需要几个loader解析一个文件时，可以连写：css!style!sass</span></div><div class="line">            <span class="comment">// 如果替换为use, 那么就不能这么写了，必须写成[&#123;&#125;,&#123;&#125;]的形式</span></div><div class="line">            loader: <span class="string">''</span>, </div><div class="line">            include: [condition], <span class="comment">// 包括这些</span></div><div class="line">            exclude: [condition], <span class="comment">// 排condition除这些</span></div><div class="line">            <span class="keyword">and</span>: [condition], <span class="comment">// 所有的都包括</span></div><div class="line">            <span class="keyword">or</span>: [condition], <span class="comment">// 至少包括一个</span></div><div class="line">            <span class="keyword">not</span>: <span class="string">'condition'</span>, <span class="comment">// 不包括</span></div><div class="line">            <span class="keyword">options</span>: &#123;&#125;, <span class="comment">// 传入到loader中的选项</span></div><div class="line">            <span class="comment">//...</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
 <p>关于<code>rules</code>中每个对象的属性的值，也就是<code>test</code>,<code>loader</code>,<code>include</code>等，都是支持以下几种类型的：</p>
 </blockquote>
 <ul>
@@ -193,9 +146,8 @@ noParse: /jquery|backbone/
 <li>资源(resource): 请求文件的绝对路径，依据<code>resolve</code>选项进行解析的</li>
 <li>发布者(issuer): 包含请求文件的文件的绝对路径。</li>
 </ul>
-<p>以上的2句话很难理解，直接看例子，比如在<code>app.js</code>中有一句导入css语句：<br>app.js</p>
-<pre><code>import &#39;./style.css&#39;
-</code></pre><p>资源就是<code>/path/to/style.css</code><br>发布者就是<code>/path/to/app.js</code></p>
+<p>以上的2句话很难理解，直接看例子，比如在<code>app.js</code>中有一句导入css语句：<br>app.js<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'./style.css'</span></div></pre></td></tr></table></figure></p>
+<p>资源就是<code>/path/to/style.css</code><br>发布者就是<code>/path/to/app.js</code></p>
 <p>在一个<code>rule</code>中，<code>test</code>,<code>include</code>,<code>resource</code>等都是用来处理资源的，而<code>issuer</code>是用来处理发布者的。</p>
 <blockquote>
 <p>考虑到兼容性，很多属性都是可以相互替换的。如<code>rules</code>|<code>loaders</code>, <code>query</code>|<code>options</code>等。</p>
@@ -204,7 +156,7 @@ noParse: /jquery|backbone/
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-module/" data-id="cj39relzs002ahxo0cx4qbfvc" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-module/" data-id="cj39rflc3001uijo0byw7aolq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>

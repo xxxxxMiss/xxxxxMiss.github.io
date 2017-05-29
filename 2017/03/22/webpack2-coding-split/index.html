@@ -8,7 +8,7 @@
   <meta name="description" content="[TOC]
 代码分割
 一个应用有第三方库和程序代码组成，第三方库和程序代码最大的不同就是一般第三方库是不会轻易改动的。
-在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。实现假如在index.js中引用第三方库moment.jsindex.jsvar moment = requi">
+在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。实现假如在index.js中引用第三方库moment.jsindex.js12var moment = req">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack2-conding-split">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/22/webpack2-coding-split/index.html">
@@ -16,20 +16,23 @@
 <meta property="og:description" content="[TOC]
 代码分割
 一个应用有第三方库和程序代码组成，第三方库和程序代码最大的不同就是一般第三方库是不会轻易改动的。
-在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。实现假如在index.js中引用第三方库moment.jsindex.jsvar moment = requi">
+在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。实现假如在index.js中引用第三方库moment.jsindex.js12var moment = req">
 <meta property="og:updated_time" content="2017-04-24T11:32:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack2-conding-split">
 <meta name="twitter:description" content="[TOC]
 代码分割
 一个应用有第三方库和程序代码组成，第三方库和程序代码最大的不同就是一般第三方库是不会轻易改动的。
-在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。实现假如在index.js中引用第三方库moment.jsindex.jsvar moment = requi">
+在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。实现假如在index.js中引用第三方库moment.jsindex.js12var moment = req">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -105,21 +108,11 @@
         <p>[TOC]</p>
 <h3 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h3><ul>
 <li>一个应用有第三方库和程序代码组成，第三方库和程序代码最大的不同就是一般第三方库是不会轻易改动的。</li>
-<li>在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3>假如在index.js中引用第三方库moment.js<br>index.js<pre><code>var moment = require(&#39;monent&#39;)
-console.log(moment().format())
-</code></pre></li>
+<li>在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3>假如在index.js中引用第三方库moment.js<br>index.js<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var <span class="built_in">moment</span> = require('monent')</div><div class="line">console.<span class="built_in">log</span>(<span class="built_in">moment</span>().<span class="keyword">format</span>())</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>我们的webapck.config.js配置如下</p>
-<pre><code>  module.exports = function(){
-    return {
-      entry: &#39;./index.js&#39;,
-      output: {
-        filename: &#39;[chunkhash].[name].js&#39;,
-        path: &#39;./dist&#39;
-      }
-    }
-  }
-</code></pre><p>经过编译之后，你会发现在第三方库moment.js和你的程序代码被打包到一个文件中了。<br>这样做的问题是：</p>
+<p>我们的webapck.config.js配置如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: <span class="string">'./index.js'</span>,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>经过编译之后，你会发现在第三方库moment.js和你的程序代码被打包到一个文件中了。<br>这样做的问题是：</p>
 <ul>
 <li><p>编译后的文件很大，现在的webpack2.x对于编译后的文件很大，会在控制台输出如下的警告信息</p>
 <blockquote>
@@ -129,68 +122,23 @@ console.log(moment().format())
 <li><p>每当程序代码只要改动一点点，都会重新编译整个文件，浪费时间</p>
 </li>
 </ul>
-<h3 id="多入口"><a href="#多入口" class="headerlink" title="多入口"></a>多入口</h3><p>对于上面单一entry出现的问题，我们可以通过多入口来缓解这个问题。将webpack.config.js配置文件改成如下配置：</p>
-<pre><code>  module.exports = function(){
-    return {
-      entry: {
-        index: &#39;./index.js&#39;,
-        moment: &#39;moment&#39;
-      },
-      output: {
-        filename: &#39;[chunkhash].[name].js&#39;,
-        path: &#39;./dist&#39;
-      }
-    }
-  }
-</code></pre><p>编译之后，dist文件夹下会出现2个文件，我们查看这两个编译后文件后会发现moment.js也会被编译到[chunkhash].index.js中，这也不是我们想要的结果。为了解决这个问题，可以使用<code>CommonsChunkPlugin</code>插件来解决这个问题。</p>
+<h3 id="多入口"><a href="#多入口" class="headerlink" title="多入口"></a>多入口</h3><p>对于上面单一entry出现的问题，我们可以通过多入口来缓解这个问题。将webpack.config.js配置文件改成如下配置：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: &#123;</div><div class="line">      <span class="built_in">index</span>: <span class="string">'./index.js'</span>,</div><div class="line">      momen<span class="variable">t:</span> <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    outpu<span class="variable">t:</span> &#123;</div><div class="line">      filename: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      path: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>编译之后，dist文件夹下会出现2个文件，我们查看这两个编译后文件后会发现moment.js也会被编译到[chunkhash].index.js中，这也不是我们想要的结果。为了解决这个问题，可以使用<code>CommonsChunkPlugin</code>插件来解决这个问题。</p>
 <h3 id="CommonsChunkPlugin"><a href="#CommonsChunkPlugin" class="headerlink" title="CommonsChunkPlugin"></a>CommonsChunkPlugin</h3><blockquote>
 <p>CommonsChunkPlugin是一个相当复杂的插件，他可以将不同模块中相同的代码抽取到一个指定的公共的模块中，如果这个公共的模块不存在，那么它将自动为我们创建一个。</p>
 </blockquote>
-<p>将上面的webpack.config.js修改为如下</p>
-<pre><code>  module.exports = function(){
-    return {
-      entry: {
-        index: &#39;./index.js&#39;,
-        vendor: &#39;moment&#39;
-      },
-      output: {
-        filename: &#39;[chunkhash].[name].js&#39;,
-        path: &#39;./dist&#39;
-      },
-      plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-          name: &#39;vendor&#39; // 指定抽取到哪个公共模块,必不可少的
-        })
-      ]
-    }
-  }
-</code></pre><h3 id="清单文件-Manifest-File"><a href="#清单文件-Manifest-File" class="headerlink" title="清单文件 Manifest File"></a>清单文件 Manifest File</h3><ul>
+<p>将上面的webpack.config.js修改为如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: &#123;</div><div class="line">      <span class="attr">index</span>: <span class="string">'./index.js'</span>,</div><div class="line">      <span class="attr">vendor</span>: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">plugins</span>: [</div><div class="line">      <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'vendor'</span> <span class="comment">// 指定抽取到哪个公共模块,必不可少的</span></div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="清单文件-Manifest-File"><a href="#清单文件-Manifest-File" class="headerlink" title="清单文件 Manifest File"></a>清单文件 Manifest File</h3><ul>
 <li>当我们修改了程序代码后编译，会发现第三库模块也会被编译，即使我们现在已经将程序代码和第三方库文件分离开了。这样，我们依然不能享受浏览器缓存带来的好处。</li>
 <li>问题原因在于：当webpack每次编译时，会自动生成一些运行时代码，这些代码可以可以帮助webpack更好的做他的工作。这意味着这些运行时的代码代码也会被编译到公共模块，比如这个地方的vendor.js。</li>
-<li>为了解决这个问题，我们应该将这些webpack自动生成的代码提取到单独的一个文件中（清单文件），这样每次修改程序代码时重新编译的只会是程序代码和清单文件，第三方库文件不会重新编译。<br>webpack.config.js配置文件修改如下<pre><code>module.exports = function(){
-  return {
-    entry: {
-      index: &#39;./index.js&#39;,
-      vendor: &#39;moment&#39;
-    },
-    output: {
-      filename: &#39;[chunkhash].[name].js&#39;,
-      path: &#39;.dist&#39;
-    },
-    plugins: [
-      new webpack.optimize.CommonsChunkPlugin({
-        name: [&#39;vendor&#39;, &#39;manifest&#39;]
-      })
-    ]
-  }
-}
-</code></pre></li>
+<li>为了解决这个问题，我们应该将这些webpack自动生成的代码提取到单独的一个文件中（清单文件），这样每次修改程序代码时重新编译的只会是程序代码和清单文件，第三方库文件不会重新编译。<br>webpack.config.js配置文件修改如下<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: &#123;</div><div class="line">      <span class="built_in">index</span>: <span class="string">'./index.js'</span>,</div><div class="line">      vendor: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    outpu<span class="variable">t:</span> &#123;</div><div class="line">      filename: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      path: <span class="string">'.dist'</span></div><div class="line">    &#125;,</div><div class="line">    plugin<span class="variable">s:</span> [</div><div class="line">      <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        name: [<span class="string">'vendor'</span>, <span class="string">'manifest'</span>]</div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-coding-split/" data-id="cj39relzn0023hxo0x0li4ecs" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-coding-split/" data-id="cj39rflbn001gijo0ftxvhmx1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>

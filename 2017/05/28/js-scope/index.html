@@ -8,12 +8,7 @@
   <meta name="description" content="词法作用域(lexical scoping)
 js中有2种作用域，词法作用域和动态作用域。下面用例子来解释这2种作用域的概念。
 
-var outerFunction  = function(){
-
-   if(true){
-      var x = 5;
-      //console.log(y); //line 1, ReferenceError: y not defined
-   }">
+1234567891011121314151617181920212223var outerFunction  = function()&amp;#123;   if(true)&amp;#123;      var x = 5;      //console.log(y); //li">
 <meta property="og:type" content="article">
 <meta property="og:title" content="词法作用域VS动态作用">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/05/28/js-scope/index.html">
@@ -21,30 +16,23 @@ var outerFunction  = function(){
 <meta property="og:description" content="词法作用域(lexical scoping)
 js中有2种作用域，词法作用域和动态作用域。下面用例子来解释这2种作用域的概念。
 
-var outerFunction  = function(){
-
-   if(true){
-      var x = 5;
-      //console.log(y); //line 1, ReferenceError: y not defined
-   }">
+1234567891011121314151617181920212223var outerFunction  = function()&amp;#123;   if(true)&amp;#123;      var x = 5;      //console.log(y); //li">
 <meta property="og:updated_time" content="2017-05-28T18:58:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="词法作用域VS动态作用">
 <meta name="twitter:description" content="词法作用域(lexical scoping)
 js中有2种作用域，词法作用域和动态作用域。下面用例子来解释这2种作用域的概念。
 
-var outerFunction  = function(){
-
-   if(true){
-      var x = 5;
-      //console.log(y); //line 1, ReferenceError: y not defined
-   }">
+1234567891011121314151617181920212223var outerFunction  = function()&amp;#123;   if(true)&amp;#123;      var x = 5;      //console.log(y); //li">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -120,45 +108,13 @@ var outerFunction  = function(){
         <h2 id="词法作用域-lexical-scoping"><a href="#词法作用域-lexical-scoping" class="headerlink" title="词法作用域(lexical scoping)"></a>词法作用域(lexical scoping)</h2><blockquote>
 <p>js中有2种作用域，词法作用域和动态作用域。下面用例子来解释这2种作用域的概念。</p>
 </blockquote>
-<pre><code>var outerFunction  = function(){
-
-   if(true){
-      var x = 5;
-      //console.log(y); //line 1, ReferenceError: y not defined
-   }
-
-   var nestedFunction = function() {
-
-      if(true){
-         var y = 7;
-         console.log(x); //line 2, x will still be known prints 5
-      }
-
-      if(true){
-         console.log(y); //line 3, prints 7
-       }
-   }
-   return nestedFunction;
-}
-
-var myFunction = outerFunction();
-myFunction();
-</code></pre><p>在上面的例子中，变量<code>x</code>可以在<code>outerFunction</code>中各个地方访问，变量<code>y</code>可以在<code>nestedFunction</code>中各个地方访问，但是变量<code>x</code>,<code>y</code>不能在他们所在的函数的外部访问。这种行为可以通过<strong>词法作用域</strong>来解释：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> outerFunction  = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">   <span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">      <span class="keyword">var</span> x = <span class="number">5</span>;</div><div class="line">      <span class="comment">//console.log(y); //line 1, ReferenceError: y not defined</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">var</span> nestedFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">      <span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">         <span class="keyword">var</span> y = <span class="number">7</span>;</div><div class="line">         <span class="built_in">console</span>.log(x); <span class="comment">//line 2, x will still be known prints 5</span></div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">         <span class="built_in">console</span>.log(y); <span class="comment">//line 3, prints 7</span></div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> nestedFunction;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> myFunction = outerFunction();</div><div class="line">myFunction();</div></pre></td></tr></table></figure>
+<p>在上面的例子中，变量<code>x</code>可以在<code>outerFunction</code>中各个地方访问，变量<code>y</code>可以在<code>nestedFunction</code>中各个地方访问，但是变量<code>x</code>,<code>y</code>不能在他们所在的函数的外部访问。这种行为可以通过<strong>词法作用域</strong>来解释：</p>
 <blockquote>
 <p>词法作用域：变量的作用域是由他们被定义时处在源代码中的位置决定。为了去解析这些变量，js从最内层作用域向外层作用域查找，直到查找到该变量为止。</p>
 </blockquote>
-<p>再来看一个典型的例子：</p>
-<pre><code>function foo(){
-  console.log(a) // 2
-}
-
-function bar(){
-  var a = 3
-  foo()
-}
-var a = 2
-bar()
-</code></pre><blockquote>
+<p>再来看一个典型的例子：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">  console.log(a) <span class="comment">// 2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">function bar()&#123;</div><div class="line">  <span class="selector-tag">var</span> <span class="selector-tag">a</span> = <span class="number">3</span></div><div class="line">  foo()</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">var</span> <span class="selector-tag">a</span> = <span class="number">2</span></div><div class="line"><span class="function"><span class="title">bar</span><span class="params">()</span></span></div></pre></td></tr></table></figure></p>
+<blockquote>
 <p>这个例子中，会输出2。我们按照词法作用来分析下：首先foo在自己的作用域中寻找变量a, 没有找到，那么到父级作用域中查找，本例子中foo的父级作用域就是全局作用域。因为foo函数定义时处在全局环境中有个变量a，所以在bar函数中调用foo时，会输出2。如果寻找到顶级作用域都没有找到变量a, 那么就抛出一个<code>Uncaught ReferenceError: a is not defined</code><br>如果按照动态作用域来分析：foo执行时所在的作用域是bar函数的作用域，那么此时输出的就是3了。</p>
 </blockquote>
 <p>词法作用域很清晰明了，但是动态作用域就不是这么清晰明了了，动态作用域是由运行时的环境决定的。为了说明说明什么叫动态作用域，先来看什么叫闭包。</p>
@@ -171,24 +127,8 @@ bar()
 <h2 id="函数的执行上下文-this，动态作用域"><a href="#函数的执行上下文-this，动态作用域" class="headerlink" title="函数的执行上下文(this，动态作用域)"></a>函数的执行上下文(this，动态作用域)</h2><blockquote>
 <p>上面对于闭包的解释，一种可以记住当时被创建时的环境，这个环境主要是指各种本地变量。但是一种特殊的变量<code>this</code>，他的行为和普通变量完全不同，看下面的例子：</p>
 </blockquote>
-<pre><code>var cat = {
-
-   name: &quot;Gus&quot;,
-   color: &quot;gray&quot;,
-   age: 15,
-
-   printInfo: function() {
-      console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age); //line 1, prints correctly
-
-      nestedFunction = function() {
-          console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age); //line 2, loses cat scope
-      }
-
-      nestedFunction();
-   }
-}
-cat.printInfo(); //prints Name: &#39;&#39; Color: undefined Age: undefined
-</code></pre><blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cat = &#123;</div><div class="line"> </div><div class="line">   <span class="attr">name</span>: <span class="string">"Gus"</span>,</div><div class="line">   <span class="attr">color</span>: <span class="string">"gray"</span>,</div><div class="line">   <span class="attr">age</span>: <span class="number">15</span>,</div><div class="line"> </div><div class="line">   <span class="attr">printInfo</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">"Name:"</span>, <span class="keyword">this</span>.name, <span class="string">"Color:"</span>, <span class="keyword">this</span>.color, <span class="string">"Age:"</span>, <span class="keyword">this</span>.age); <span class="comment">//line 1, prints correctly</span></div><div class="line"> </div><div class="line">      nestedFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="built_in">console</span>.log(<span class="string">"Name:"</span>, <span class="keyword">this</span>.name, <span class="string">"Color:"</span>, <span class="keyword">this</span>.color, <span class="string">"Age:"</span>, <span class="keyword">this</span>.age); <span class="comment">//line 2, loses cat scope</span></div><div class="line">      &#125;</div><div class="line"> </div><div class="line">      nestedFunction();</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line">cat.printInfo(); <span class="comment">//prints Name: '' Color: undefined Age: undefined</span></div></pre></td></tr></table></figure>
+<blockquote>
 <p>上面的例子，第一处的<code>console</code>语句能正常的输出,但是对于<code>nestedFunction</code>中的输出语句，却未能按照预期输出。</p>
 </blockquote>
 <p>对于第二个<code>console</code>输出，当一个函数处在另一个函数的内部时，js会丢失<code>this</code>作用域，一旦丢失，默认情况下<code>this</code>会指向全局的<code>window</code>对象。所以上面的例子，<code>nestedFunction</code>中的<code>this.color</code>和<code>this.age</code>输出<code>undefined</code>, 而<code>this.name</code>会输出空字符串, 是因为<code>window</code>对象默认有个<code>name</code>属性，默认值就是空。</p>
@@ -196,17 +136,8 @@ cat.printInfo(); //prints Name: &#39;&#39; Color: undefined Age: undefined
 <h2 id="控制上下文-context"><a href="#控制上下文-context" class="headerlink" title="控制上下文(context)"></a>控制上下文(context)</h2><blockquote>
 <p>我们无法改变词法作用域在js中的工作机制，但是我们可以改变一个函数的执行问下文。<br><strong>js中的上下文是由函数运行时决定的，并且他总是被绑定到调用该函数的对象上</strong>,但是唯一不适用这条规则的就是上面出现的函数嵌套的情况。</p>
 </blockquote>
-<p>换句话说，改变上下文就是改变<code>this</code>的指向。看个简单的例子：</p>
-<pre><code>var obj1 = {
-   printThis: function() {
-      console.log(this);
-   }
-};
-
-var func1 = obj1.printThis;
-obj1.printThis(); //line 1
-func1(); //line 2
-</code></pre><p>line1会输出<code>ojb1</code>, line2会输出<code>window</code>。</p>
+<p>换句话说，改变上下文就是改变<code>this</code>的指向。看个简单的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">   <span class="attr">printThis</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">   &#125;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line"><span class="keyword">var</span> func1 = obj1.printThis;</div><div class="line">obj1.printThis(); <span class="comment">//line 1</span></div><div class="line">func1(); <span class="comment">//line 2</span></div></pre></td></tr></table></figure></p>
+<p>line1会输出<code>ojb1</code>, line2会输出<code>window</code>。</p>
 <h2 id="Call-Bind-Apply"><a href="#Call-Bind-Apply" class="headerlink" title="Call, Bind, Apply"></a>Call, Bind, Apply</h2><blockquote>
 <p>我们可以有多种方式来控制<code>this</code>的指向，常见的有以下几种：</p>
 </blockquote>
@@ -216,42 +147,9 @@ func1(); //line 2
 <li>apply()</li>
 <li>bind()</li>
 </ul>
-<p>存储<code>this</code>的引用到另外一个变量:</p>
-<pre><code>var cat = {
-   name: &quot;Gus&quot;,
-   color: &quot;gray&quot;,
-   age: 15,
-
-   printInfo: function() {
-      var that = this;
-      console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age); //prints correctly
-
-      nestedFunction = function() {
-         console.log(&quot;Name:&quot;, that.name, &quot;Color:&quot;, that.color, &quot;Age:&quot;, that.age); //prints correctly
-      }
-   nestedFunction();
-   }
-}
-cat.printInfo();
-</code></pre><pre><code>var cat = {
-   name: &quot;Gus&quot;,
-   color: &quot;gray&quot;,
-   age: 15,
-
-   printInfo: function() {
-      console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age);
-      nestedFunction = function() {
-         console.log(&quot;Name:&quot;, this.name, &quot;Color:&quot;, this.color, &quot;Age:&quot;, this.age);
-      }
-      nestedFunction.call(this);
-      nestedFunction.apply(this);
-
-      var storeFunction = nestedFunction.bind(this);
-      storeFunction();
-    }
-}
-cat.printInfo();
-</code></pre><p>关于<code>call</code>, <code>apply</code>, <code>bind</code>详细使用方法，这里不讲解了。<br>这里说下他们三者的区别：</p>
+<p>存储<code>this</code>的引用到另外一个变量:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cat = &#123;</div><div class="line">   <span class="attr">name</span>: <span class="string">"Gus"</span>,</div><div class="line">   <span class="attr">color</span>: <span class="string">"gray"</span>,</div><div class="line">   <span class="attr">age</span>: <span class="number">15</span>,</div><div class="line"> </div><div class="line">   <span class="attr">printInfo</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">"Name:"</span>, <span class="keyword">this</span>.name, <span class="string">"Color:"</span>, <span class="keyword">this</span>.color, <span class="string">"Age:"</span>, <span class="keyword">this</span>.age); <span class="comment">//prints correctly</span></div><div class="line"> </div><div class="line">      nestedFunction = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="built_in">console</span>.log(<span class="string">"Name:"</span>, that.name, <span class="string">"Color:"</span>, that.color, <span class="string">"Age:"</span>, that.age); <span class="comment">//prints correctly</span></div><div class="line">      &#125;</div><div class="line">   nestedFunction();</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line">cat.printInfo();</div></pre></td></tr></table></figure></p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cat = &#123;</div><div class="line">   name: <span class="string">"Gus"</span>,</div><div class="line">   color: <span class="string">"gray"</span>,</div><div class="line">   age: <span class="number">15</span>,</div><div class="line"></div><div class="line">   printInfo: function() &#123;</div><div class="line">      console.log(<span class="string">"Name:"</span>, <span class="keyword">this</span>.name, <span class="string">"Color:"</span>, <span class="keyword">this</span>.color, <span class="string">"Age:"</span>, <span class="keyword">this</span>.age);</div><div class="line">      nestedFunction = function() &#123;</div><div class="line">         console.log(<span class="string">"Name:"</span>, <span class="keyword">this</span>.name, <span class="string">"Color:"</span>, <span class="keyword">this</span>.color, <span class="string">"Age:"</span>, <span class="keyword">this</span>.age);</div><div class="line">      &#125;</div><div class="line">      nestedFunction.call(<span class="keyword">this</span>);</div><div class="line">      nestedFunction.apply(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">      <span class="keyword">var</span> storeFunction = nestedFunction.bind(<span class="keyword">this</span>);</div><div class="line">      storeFunction();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">cat.printInfo();</div></pre></td></tr></table></figure>
+<p>关于<code>call</code>, <code>apply</code>, <code>bind</code>详细使用方法，这里不讲解了。<br>这里说下他们三者的区别：</p>
 <ul>
 <li>call, apply, 主要的不同就是传递额外参数的方式不同。call传递一个以逗号分割的列表，bind也是用这样的方式传递额外参数。apply需要传递的是一个数组。</li>
 <li>相当于call, apply，bind的使用要更加的灵巧一些：因为bind不但可以改变<code>this</code>的指向，而且他会返回一个新的函数，那么我们可以将这个新函数保存到另外一个变量中，在需要使用的地方再调用。<br>但是bind和apply会立即调用函数，返回函数的结果。</li>
@@ -259,44 +157,16 @@ cat.printInfo();
 <h2 id="关于setTimeout中的this"><a href="#关于setTimeout中的this" class="headerlink" title="关于setTimeout中的this"></a>关于setTimeout中的this</h2><blockquote>
 <p>我们知道，可以使用call, apply, bind来改变函数的执行上下文，那么他们是否也适用于setTimeout呢？</p>
 </blockquote>
-<p>看例子：</p>
-<pre><code>myArray = [&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;];
-myArray.myMethod = function (sProperty) {
-    alert(arguments.length &gt; 0 ? this[sProperty] : this);
-};
-
-myArray.myMethod(); // prints &quot;zero,one,two&quot;
-myArray.myMethod(1); // prints &quot;one&quot;
-setTimeout(myArray.myMethod, 1000); // prints &quot;[object Window]&quot; after 1 second
-setTimeout(myArray.myMethod, 1500, &quot;1&quot;); // prints &quot;undefined&quot; after 1,5 seconds
-
-// let&#39;s try to pass the &#39;this&#39; object
-setTimeout.call(myArray, myArray.myMethod, 2000); // Uncaught TypeError: Illegal invocation
-setTimeout.call(myArray, myArray.myMethod, 2500, 2); // same error
-</code></pre><p>我们知道，正常情况下setTimeout/setInterval中的<code>this</code>是指向<code>window</code>对象的，我们还知道<code>call</code>方法可以改变<code>this</code>的指向，但是上面的例子中，使用setTimeout.call抛出错误。至于为什么这样，目前还不知道。。。？</p>
-<p>一种解决setTimeout中<code>this</code>指向不正确的方案就是重写原生的setTimeout,如下</p>
-<pre><code>var __nativeST__ = window.setTimeout
-window.setTimeout = function(callback, delay){
-    var self = this, args = [].slice.call(arguments, 2)
-    return __nativeST__(callback instanceof Function ? function(){
-            callback.apply(self, args)
-        } : callback, delay)
-}
-</code></pre><p>经过上面的处理之后，此时再来调用发现就正确了：</p>
-<pre><code>myArray = [&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;];
-myArray.myMethod = function (sProperty) {
-    alert(arguments.length &gt; 0 ? this[sProperty] : this);
-};
-
-setTimeout(alert, 1500, &quot;Hello world!&quot;); // the standard use of setTimeout and setInterval is preserved, but...
-setTimeout.call(myArray, myArray.myMethod, 2000); // prints &quot;zero,one,two&quot; after 2 seconds
-setTimeout.call(myArray, myArray.myMethod, 2500, 2); // prints &quot;two&quot; after 2,5 seconds
-</code></pre><p><a href="https://spin.atomicobject.com/2014/10/20/javascript-scope-closures/" target="_blank" rel="external">参考文章链接</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setTimeout" target="_blank" rel="external">参考文章链接</a></p>
+<p>看例子：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">myArray = [<span class="string">"zero"</span>, <span class="string">"one"</span>, <span class="string">"two"</span>];</div><div class="line">myArray.myMethod = function (sProperty) &#123;</div><div class="line">    alert(arguments.length &gt; <span class="number">0</span> ? <span class="keyword">this</span>[sProperty] : <span class="keyword">this</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">myArray.myMethod(); <span class="comment">// prints "zero,one,two"</span></div><div class="line">myArray.myMethod(<span class="number">1</span>); <span class="comment">// prints "one"</span></div><div class="line"><span class="built_in">setTimeout</span>(myArray.myMethod, <span class="number">1000</span>); <span class="comment">// prints "[object Window]" after 1 second</span></div><div class="line"><span class="built_in">setTimeout</span>(myArray.myMethod, <span class="number">1500</span>, <span class="string">"1"</span>); <span class="comment">// prints "undefined" after 1,5 seconds</span></div><div class="line"></div><div class="line"><span class="comment">// let's try to pass the 'this' object</span></div><div class="line"><span class="built_in">setTimeout</span>.call(myArray, myArray.myMethod, <span class="number">2000</span>); <span class="comment">// Uncaught TypeError: Illegal invocation</span></div><div class="line"><span class="built_in">setTimeout</span>.call(myArray, myArray.myMethod, <span class="number">2500</span>, <span class="number">2</span>); <span class="comment">// same error</span></div></pre></td></tr></table></figure></p>
+<p>我们知道，正常情况下setTimeout/setInterval中的<code>this</code>是指向<code>window</code>对象的，我们还知道<code>call</code>方法可以改变<code>this</code>的指向，但是上面的例子中，使用setTimeout.call抛出错误。至于为什么这样，目前还不知道。。。？</p>
+<p>一种解决setTimeout中<code>this</code>指向不正确的方案就是重写原生的setTimeout,如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> __nativeST__ = <span class="built_in">window</span>.setTimeout</div><div class="line"><span class="built_in">window</span>.setTimeout = <span class="function"><span class="keyword">function</span>(<span class="params">callback, delay</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span>, args = [].slice.call(<span class="built_in">arguments</span>, <span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> __nativeST__(callback <span class="keyword">instanceof</span> <span class="built_in">Function</span> ? <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            callback.apply(self, args)</div><div class="line">        &#125; : callback, delay)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>经过上面的处理之后，此时再来调用发现就正确了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">myArray = [<span class="string">"zero"</span>, <span class="string">"one"</span>, <span class="string">"two"</span>];</div><div class="line">myArray.myMethod = <span class="function"><span class="keyword">function</span> (<span class="params">sProperty</span>) </span>&#123;</div><div class="line">    alert(<span class="built_in">arguments</span>.length &gt; <span class="number">0</span> ? <span class="keyword">this</span>[sProperty] : <span class="keyword">this</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">setTimeout(alert, <span class="number">1500</span>, <span class="string">"Hello world!"</span>); <span class="comment">// the standard use of setTimeout and setInterval is preserved, but...</span></div><div class="line">setTimeout.call(myArray, myArray.myMethod, <span class="number">2000</span>); <span class="comment">// prints "zero,one,two" after 2 seconds</span></div><div class="line">setTimeout.call(myArray, myArray.myMethod, <span class="number">2500</span>, <span class="number">2</span>); <span class="comment">// prints "two" after 2,5 seconds</span></div></pre></td></tr></table></figure></p>
+<p><a href="https://spin.atomicobject.com/2014/10/20/javascript-scope-closures/" target="_blank" rel="external">参考文章链接</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setTimeout" target="_blank" rel="external">参考文章链接</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj39rem1j004chxo06ktvhg9l" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj39rfla30009ijo09qsigehb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lexical-scope/">lexical scope</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/">this</a></li></ul>

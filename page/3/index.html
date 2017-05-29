@@ -18,6 +18,9 @@
     <link rel="icon" href="/favicon.png">
   
   
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
+  
   <link rel="stylesheet" href="/css/style.css">
   
 
@@ -93,15 +96,8 @@
         
         <h3 id="devServer"><a href="#devServer" class="headerlink" title="devServer"></a>devServer</h3><blockquote>
 </blockquote>
-<pre><code>// webpack.server.js
-
-var config = require(&#39;./webpack.config&#39;)
-var webpack = require(&#39;webpack&#39;)
-var WebpackDevServer = require(&#39;webpack-dev-server&#39;)
-var compiler = webpack(config)
-
-var server = new WebpackDevServer(compiler, devServer)
-</code></pre><h4 id="devServer-clientLogLevel"><a href="#devServer-clientLogLevel" class="headerlink" title="devServer.clientLogLevel"></a>devServer.clientLogLevel</h4><p>string</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.server.js</span></div><div class="line"></div><div class="line"><span class="selector-tag">var</span> config = require(<span class="string">'./webpack.config'</span>)</div><div class="line"><span class="selector-tag">var</span> webpack = require(<span class="string">'webpack'</span>)</div><div class="line"><span class="selector-tag">var</span> WebpackDevServer = require(<span class="string">'webpack-dev-server'</span>)</div><div class="line"><span class="selector-tag">var</span> compiler = webpack(config)</div><div class="line"></div><div class="line"><span class="selector-tag">var</span> server = new WebpackDevServer(compiler, devServer)</div></pre></td></tr></table></figure>
+<h4 id="devServer-clientLogLevel"><a href="#devServer-clientLogLevel" class="headerlink" title="devServer.clientLogLevel"></a>devServer.clientLogLevel</h4><p>string</p>
 <blockquote>
 <p>Default: info,可选值有<code>none</code>, <code>error</code>, <code>warning</code>, <code>info</code><br>指定终端输出日志信息的等级, 设置为<code>none</code>, 表示什么日志都不输出。</p>
 </blockquote>
@@ -113,17 +109,13 @@ var server = new WebpackDevServer(compiler, devServer)
 <blockquote>
 <p>将哪些文件放到服务器上，默认使用当前工作目录。你可以像下面这样修改文件目录</p>
 </blockquote>
-<pre><code>contentBase: path.join(__dirname, &#39;public&#39;)
-
-// 或则
-contentBase: [path.join(__dirname, &#39;public&#39;), path.join(__dirname, &#39;assets&#39;)]
-</code></pre><h4 id="devServer-filename"><a href="#devServer-filename" class="headerlink" title="devServer.filename"></a>devServer.filename</h4><p>string</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">contentBase: path.<span class="built_in">join</span>(<span class="variable">__dirname</span>, <span class="string">'public'</span>)</div><div class="line"></div><div class="line"><span class="comment">// 或则</span></div><div class="line">contentBase: [path.<span class="built_in">join</span>(<span class="variable">__dirname</span>, <span class="string">'public'</span>), path.<span class="built_in">join</span>(<span class="variable">__dirname</span>, <span class="string">'assets'</span>)]</div></pre></td></tr></table></figure>
+<h4 id="devServer-filename"><a href="#devServer-filename" class="headerlink" title="devServer.filename"></a>devServer.filename</h4><p>string</p>
 <blockquote>
 <p>模块的编译默认是处于<code>lazy</code>模式，就是每次请求的时候才会编译。<br>通过该选项，可以配置每次请求的时候编译某个具体的文件，而不是编译所有的文件。</p>
 </blockquote>
-<pre><code>lazy: true,
-filename: &#39;bundle.js&#39;
-</code></pre><p><strong><em>注意：该选项只有在<code>lazy: true</code>时才有效</em></strong></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">lazy:</span> <span class="literal">true</span>,</div><div class="line"><span class="string">filename:</span> <span class="string">'bundle.js'</span></div></pre></td></tr></table></figure>
+<p><strong><em>注意：该选项只有在<code>lazy: true</code>时才有效</em></strong></p>
 <h4 id="devServer-noInfo"><a href="#devServer-noInfo" class="headerlink" title="devServer.noInfo"></a>devServer.noInfo</h4><p>boolean</p>
 <blockquote>
 <p>除了错误信息和警告信息，其他的信息都不在输出。</p>
@@ -159,13 +151,12 @@ filename: &#39;bundle.js&#39;
 <p>在某些文件系统，比如NFS中，监听如果不能正常工作，可以开启该选项。</p>
 </blockquote>
 <p><code>poll: true</code></p>
-<pre><code>// 每隔1000ms检查一次文件是否改动
-poll: 1000
-</code></pre>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 每隔1000ms检查一次文件是否改动</span></div><div class="line"><span class="symbol">poll:</span> <span class="number">1000</span></div></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-server/" data-id="cj39relzx002jhxo098tsk37n" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-server/" data-id="cj39rflca0020ijo09bnaso3j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -213,15 +204,8 @@ poll: 1000
 <blockquote>
 <p>配置模块的别名,这样当使用<code>import</code>或者<code>require</code>就可以使用别名来代替冗长的相对路径。<br>比如你<code>import</code>某一路径下的一个js文件:<code>import ../../src/js/index.js</code><br>如果没有配置别名，那么你每次引入<code>src/js</code>这个路径下的某个js,都需要写很长的路径,通过配置别名，你可以简化书写。</p>
 </blockquote>
-<pre><code>module.exports = {
-  resolve: {
-    alias: {
-      js: path.resolve(__dirname, &#39;src/js&#39;),
-      css: path.resolve(__dirname, &#39;src/css&#39;)
-    }
-  }
-}
-</code></pre><p>没有配置别名之前<br><code>import { getData } from &#39;../../src/js/fetData&#39;</code><br>配置别名后<br><code>import { getData } from &#39;js/fetData&#39;</code></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  <span class="built_in">resolve</span>: &#123;</div><div class="line">    alia<span class="variable">s:</span> &#123;</div><div class="line">      <span class="keyword">j</span><span class="variable">s:</span> path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src/js'</span>),</div><div class="line">      <span class="keyword">cs</span><span class="variable">s:</span> path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src/css'</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>没有配置别名之前<br><code>import { getData } from &#39;../../src/js/fetData&#39;</code><br>配置别名后<br><code>import { getData } from &#39;js/fetData&#39;</code></p>
 <p>在配置别名，关于填写文件路径的各种写法，可以移步<a href="https://webpack.js.org/configuration/resolve/" target="_blank" rel="external">这里</a></p>
 <h4 id="resolve-aliasFields"><a href="#resolve-aliasFields" class="headerlink" title="resolve.aliasFields"></a>resolve.aliasFields</h4><p>string</p>
 <blockquote>
@@ -244,24 +228,17 @@ poll: 1000
 <h4 id="resolve-mainFields"><a href="#resolve-mainFields" class="headerlink" title="resolve.mainFields"></a>resolve.mainFields</h4><blockquote>
 <p>当你引入某一个包时，使用包下面的哪一个文件。<br>配置: <code>mainFields: [&#39;module&#39;, &#39;browser&#39;, &#39;main&#39;]</code>，具体看例子解释。</p>
 </blockquote>
-<pre><code>import * as D3 from &#39;d3&#39;
-</code></pre><p>在<code>d3</code>这个<code>package.json</code>中，有这几个选项</p>
-<pre><code>&quot;main&quot;: &quot;build/d3.node.js&quot;, // 适用node环境
-&quot;browser&quot;: &quot;build/d3.js&quot;, // 适用浏览器环境
-&quot;module&quot;: &quot;index&quot; // 都支持
-</code></pre><blockquote>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> D3 <span class="keyword">from</span> <span class="string">'d3'</span></div></pre></td></tr></table></figure>
+<p>在<code>d3</code>这个<code>package.json</code>中，有这几个选项<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"main"</span>: <span class="string">"build/d3.node.js"</span>, <span class="comment">// 适用node环境</span></div><div class="line"><span class="string">"browser"</span>: <span class="string">"build/d3.js"</span>, <span class="comment">// 适用浏览器环境</span></div><div class="line"><span class="string">"module"</span>: <span class="string">"index"</span> <span class="comment">// 都支持</span></div></pre></td></tr></table></figure></p>
+<blockquote>
 <p>以上的几个选项可以分别支持不同的环境，你应该选择你需要的环境选项，通过该选项的配置，可以满足你的需求。</p>
 </blockquote>
 <h4 id="resolve-mainFiles"><a href="#resolve-mainFiles" class="headerlink" title="resolve.mainFiles"></a>resolve.mainFiles</h4><blockquote>
 <p>当解析到的文件是一个目录是，如何处理该目录。<br>默认：<code>mainFiles: [&#39;index&#39;]</code>。<br>关于该选项的具体含义，只要理解了node中包的寻找机制，就能明白该选项的含义。<br><a href="https://nodejs.org/dist/latest-v7.x/docs/api/modules.html" target="_blank" rel="external">node包寻找机制</a></p>
 </blockquote>
-<p>这里举例简单说明：<br>index.js</p>
-<pre><code>import * as fns from &#39;./js&#39; //js是一个文件夹
-</code></pre><p>webpack.config.js</p>
-<pre><code>resolve: {
-  mainFields: [&#39;canvas&#39;, &#39;utils&#39;]
-}
-</code></pre><blockquote>
+<p>这里举例简单说明：<br>index.js<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fns <span class="keyword">from</span> <span class="string">'./js'</span> <span class="comment">//js是一个文件夹</span></div></pre></td></tr></table></figure></p>
+<p>webpack.config.js<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolve</span>: &#123;</div><div class="line">  <span class="attribute">mainFields</span>: [<span class="string">'canvas'</span>, <span class="string">'utils'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
 <p>当webpack解析到<code>js</code>是一个文件夹时，如果你的<code>mainFields</code>配置如上，那么webpack会去<code>js</code>文件夹下寻找<code>canvas.js</code>，如果没有找到,那么继续寻找<code>js</code>文件夹下的<code>utils.js</code>，如果还没有找到，抛出错误<code>Module not found: Error: &#39;xx&#39; in &#39;xx&#39;</code></p>
 </blockquote>
 <h4 id="resolve-modules"><a href="#resolve-modules" class="headerlink" title="resolve.modules"></a>resolve.modules</h4><p>array</p>
@@ -278,25 +255,21 @@ poll: 1000
 <h3 id="resolve-plugins"><a href="#resolve-plugins" class="headerlink" title="resolve.plugins"></a>resolve.plugins</h3><blockquote>
 <p>添加目录命名的一些额外的插件列表。</p>
 </blockquote>
-<pre><code>resolve: {
-  plugins: [new DirectoryNamedWebpackPlugin()]
-}
-</code></pre><h3 id="resolveLoader-prop"><a href="#resolveLoader-prop" class="headerlink" title="resolveLoader[prop]"></a>resolveLoader[prop]</h3><p>object</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolve</span>: &#123;</div><div class="line">  <span class="attribute">plugins</span>: [new <span class="built_in">DirectoryNamedWebpackPlugin</span>()]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="resolveLoader-prop"><a href="#resolveLoader-prop" class="headerlink" title="resolveLoader[prop]"></a>resolveLoader[prop]</h3><p>object</p>
 <blockquote>
 <p>这个选项拥有的属性配置和上面的<code>resolve</code>是一样的，不过他<strong>只能用来</strong>配置webpack的<code>loader</code>包，默认值如下</p>
 </blockquote>
 <h3 id="resolveLoader-moduleExtensions"><a href="#resolveLoader-moduleExtensions" class="headerlink" title="resolveLoader.moduleExtensions"></a>resolveLoader.moduleExtensions</h3><blockquote>
 <p>用来配置<code>loader</code>的扩展名，默认是一个空数组。比如你使用<code>loader</code>的时候，想省去后缀<code>-loader</code>,那么你可以如下配置</p>
 </blockquote>
-<pre><code>resolveLoader: {
-  moduleExtensions: [&#39;-loader&#39;]
-}
-</code></pre><p>NOTE: 在<code>webpack1.x</code>，可以省去<code>-loader</code>后缀，webpack默认会加上。但是在<code>webpack2.x</code>，必须通过上面的这个配置才可以省去。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolveLoader</span>: &#123;</div><div class="line">  <span class="attribute">moduleExtensions</span>: [<span class="string">'-loader'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>NOTE: 在<code>webpack1.x</code>，可以省去<code>-loader</code>后缀，webpack默认会加上。但是在<code>webpack2.x</code>，必须通过上面的这个配置才可以省去。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-resolve/" data-id="cj39relzz002lhxo0x4s7b0yf" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-resolve/" data-id="cj39rflcc0023ijo0kkvjtmky" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -345,60 +318,10 @@ poll: 1000
 </blockquote>
 <p><code>noParse: /jquery|backbone/</code></p>
 <p>这章讲解的内容配置起来是最简单的，但是用文字描述起来并不简单，直接通过配置例子来说明。</p>
-<p>webpack1.x常用配置</p>
-<pre><code>module: {
-    loaders: [
-        {
-            test: /^$/,
-            loader: &#39;&#39;,
-            include: [],
-            exclude: [],
-            query: {}
-        }
-    ]
-}
-</code></pre><p>webpack2.x常用配置</p>
-<pre><code>module: {
-    rules: [
-        {
-            test: /^$/,
-            // 一定要注意：当使用多个loader解析一个文件时，一定要注意loader的添加顺序，他是【从右往左】依次使用每个loader来解析文件的
-            use: [
-                {
-                    loader: &#39;&#39;,
-                    options: {}
-                },
-                {
-                    loader: &#39;&#39;
-                }
-            ],
-            include: [],
-            exclude: [],
-            and: [],
-            or: [],
-            not: &#39;&#39;
-        }
-    ]
-}
-</code></pre><p>webpack2.x常用配置（更常用）</p>
-<pre><code>module: {
-    rules: [ // 每个对象称之为一个`rule`
-        {
-            test: /^$/,
-            // 使用该选项，当需要几个loader解析一个文件时，可以连写：css!style!sass
-            // 如果替换为use, 那么就不能这么写了，必须写成[{},{}]的形式
-            loader: &#39;&#39;, 
-            include: [condition], // 包括这些
-            exclude: [condition], // 排condition除这些
-            and: [condition], // 所有的都包括
-            or: [condition], // 至少包括一个
-            not: &#39;condition&#39;, // 不包括
-            options: {}, // 传入到loader中的选项
-            //...
-        }
-    ]
-}
-</code></pre><blockquote>
+<p>webpack1.x常用配置<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attr">module:</span> <span class="string">&#123;</span></div><div class="line"><span class="attr">    loaders:</span> <span class="string">[</span></div><div class="line">        <span class="string">&#123;</span></div><div class="line"><span class="attr">            test:</span> <span class="string">/^$/,</span></div><div class="line"><span class="attr">            loader:</span> <span class="string">''</span><span class="string">,</span></div><div class="line"><span class="attr">            include:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            exclude:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            query:</span> <span class="string">&#123;&#125;</span></div><div class="line">        <span class="string">&#125;</span></div><div class="line">    <span class="string">]</span></div><div class="line"><span class="string">&#125;</span></div></pre></td></tr></table></figure></p>
+<p>webpack2.x常用配置<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="attr">module:</span> <span class="string">&#123;</span></div><div class="line"><span class="attr">    rules:</span> <span class="string">[</span></div><div class="line">        <span class="string">&#123;</span></div><div class="line"><span class="attr">            test:</span> <span class="string">/^$/,</span></div><div class="line">            <span class="string">//</span> <span class="string">一定要注意：当使用多个loader解析一个文件时，一定要注意loader的添加顺序，他是【从右往左】依次使用每个loader来解析文件的</span></div><div class="line"><span class="attr">            use:</span> <span class="string">[</span></div><div class="line">                <span class="string">&#123;</span></div><div class="line"><span class="attr">                    loader:</span> <span class="string">''</span><span class="string">,</span></div><div class="line"><span class="attr">                    options:</span> <span class="string">&#123;&#125;</span></div><div class="line">                <span class="string">&#125;,</span></div><div class="line">                <span class="string">&#123;</span></div><div class="line"><span class="attr">                    loader:</span> <span class="string">''</span></div><div class="line">                <span class="string">&#125;</span></div><div class="line">            <span class="string">],</span></div><div class="line"><span class="attr">            include:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            exclude:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            and:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            or:</span> <span class="string">[],</span></div><div class="line"><span class="attr">            not:</span> <span class="string">''</span></div><div class="line">        <span class="string">&#125;</span></div><div class="line">    <span class="string">]</span></div><div class="line"><span class="string">&#125;</span></div></pre></td></tr></table></figure></p>
+<p>webpack2.x常用配置（更常用）<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    rules: [ <span class="comment">// 每个对象称之为一个`rule`</span></div><div class="line">        &#123;</div><div class="line">            test: /^<span class="symbol">$</span>/,</div><div class="line">            <span class="comment">// 使用该选项，当需要几个loader解析一个文件时，可以连写：css!style!sass</span></div><div class="line">            <span class="comment">// 如果替换为use, 那么就不能这么写了，必须写成[&#123;&#125;,&#123;&#125;]的形式</span></div><div class="line">            loader: <span class="string">''</span>, </div><div class="line">            include: [condition], <span class="comment">// 包括这些</span></div><div class="line">            exclude: [condition], <span class="comment">// 排condition除这些</span></div><div class="line">            <span class="keyword">and</span>: [condition], <span class="comment">// 所有的都包括</span></div><div class="line">            <span class="keyword">or</span>: [condition], <span class="comment">// 至少包括一个</span></div><div class="line">            <span class="keyword">not</span>: <span class="string">'condition'</span>, <span class="comment">// 不包括</span></div><div class="line">            <span class="keyword">options</span>: &#123;&#125;, <span class="comment">// 传入到loader中的选项</span></div><div class="line">            <span class="comment">//...</span></div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
 <p>关于<code>rules</code>中每个对象的属性的值，也就是<code>test</code>,<code>loader</code>,<code>include</code>等，都是支持以下几种类型的：</p>
 </blockquote>
 <ul>
@@ -415,9 +338,8 @@ poll: 1000
 <li>资源(resource): 请求文件的绝对路径，依据<code>resolve</code>选项进行解析的</li>
 <li>发布者(issuer): 包含请求文件的文件的绝对路径。</li>
 </ul>
-<p>以上的2句话很难理解，直接看例子，比如在<code>app.js</code>中有一句导入css语句：<br>app.js</p>
-<pre><code>import &#39;./style.css&#39;
-</code></pre><p>资源就是<code>/path/to/style.css</code><br>发布者就是<code>/path/to/app.js</code></p>
+<p>以上的2句话很难理解，直接看例子，比如在<code>app.js</code>中有一句导入css语句：<br>app.js<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'./style.css'</span></div></pre></td></tr></table></figure></p>
+<p>资源就是<code>/path/to/style.css</code><br>发布者就是<code>/path/to/app.js</code></p>
 <p>在一个<code>rule</code>中，<code>test</code>,<code>include</code>,<code>resource</code>等都是用来处理资源的，而<code>issuer</code>是用来处理发布者的。</p>
 <blockquote>
 <p>考虑到兼容性，很多属性都是可以相互替换的。如<code>rules</code>|<code>loaders</code>, <code>query</code>|<code>options</code>等。</p>
@@ -426,7 +348,7 @@ poll: 1000
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-module/" data-id="cj39relzs002ahxo0cx4qbfvc" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-module/" data-id="cj39rflc3001uijo0byw7aolq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -480,26 +402,15 @@ poll: 1000
 <ul>
 <li>多入口的时候，可以通过下面的形式来指定输出模块名称</li>
 </ul>
-<pre><code>// 使用entry中指定的key
-filename: &#39;[name].bundle.js&#39;
-</code></pre><pre><code>// 使用内部生成的id
-filename: &#39;[id].bundle.js&#39;
-</code></pre><pre><code># 使用每次编译自动生成的hash值
-filename: &#39;[name].[hash].bundle.js&#39;
-</code></pre><pre><code>// 使用基于模块内容生成的chunkhash
-filename: &#39;[chunkhash].bundle.js&#39;
-</code></pre><blockquote>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用entry中指定的key</span></div><div class="line"><span class="string">filename:</span> <span class="string">'[name].bundle.js'</span></div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用内部生成的id</span></div><div class="line"><span class="string">filename:</span> <span class="string">'[id].bundle.js'</span></div></pre></td></tr></table></figure>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用每次编译自动生成的hash值</span></div><div class="line"><span class="keyword">filename</span>: <span class="string">'[name].[hash].bundle.js'</span></div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用基于模块内容生成的chunkhash</span></div><div class="line"><span class="string">filename:</span> <span class="string">'[chunkhash].bundle.js'</span></div></pre></td></tr></table></figure>
+<blockquote>
 <p>虽然该选项叫<code>filename</code>, 但是可以指定一个输出目录, 就像这样的<code>js/[name]/bundle.js</code>。<br>当使用了<code>[hash]</code>或者<code>[chunkhash]</code>占位符时，可以指定占位符的长度，默认是<code>20</code>位。</p>
 </blockquote>
-<pre><code>output: {
-  filename: &#39;[hash:10]&#39; //局部指定hash的长度 
-}
-
-或者
-output: {
-  hashDigestLength: 15 // 全局指定hash的长度
-}
-</code></pre><table>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">output</span>: &#123;</div><div class="line">  <span class="attribute">filename</span>: <span class="string">'[hash:10]'</span> //局部指定hash的长度 </div><div class="line">&#125;</div><div class="line"></div><div class="line">或者</div><div class="line"><span class="selector-tag">output</span>: &#123;</div><div class="line">  <span class="attribute">hashDigestLength</span>: <span class="number">15</span> // 全局指定hash的长度</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<table>
 <thead>
 <tr>
 <th>占位符</th>
@@ -523,32 +434,21 @@ output: {
 </blockquote>
 <p>我们已经知道，在<code>require.ensure(dependencies, callback, chunkName)</code>中可以指定一个<code>chunkName</code>参数</p>
 <ul>
-<li>如果指定了这个参数，那么在<code>output</code>中就可以这样来取得<pre><code>module.exports = {
-output: {
-  filename: &#39;[chunkhash].[name].js&#39;,
-  chunkFilename: &#39;[chunkhash].[name].js&#39;
-}
-}
-</code></pre>上面<code>[name]</code>占位符就是你在<code>require.ensure(dependencies, callback, chunkName)</code>中指定的那个chunkName。</li>
-<li>如果在<code>require.ensure(dependencies, callback, chunkName)</code>中省略了这个<code>chunkName</code>参数，那么统一使用<code>output.chunkFilename</code>中指定的名称</li>
-<li>如果output中也没有指定<code>chunkFilename</code>选项，那么会使用<code>output.filename</code>中除了<code>[name]</code>占位符以外的占位符+<code>[id]</code>占位符作为模块名。<pre><code>module.export = function(){
-return {
-  output: {
-    filename: &#39;[chunkhash].[name].js&#39;
-  }
-}
-}
-</code></pre>如上output配置，那么此时动态分割出来的模块名就是<code>[chunkhash].[id].js</code>。</li>
+<li>如果指定了这个参数，那么在<code>output</code>中就可以这样来取得<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  output: &#123;</div><div class="line">    filename: '<span class="string">[chunkhash]</span>.<span class="string">[name]</span>.js',</div><div class="line">    chunkFilename: '<span class="string">[chunkhash]</span>.<span class="string">[name]</span>.js'</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>上面<code>[name]</code>占位符就是你在<code>require.ensure(dependencies, callback, chunkName)</code>中指定的那个chunkName。</p>
+<ul>
+<li>如果在<code>require.ensure(dependencies, callback, chunkName)</code>中省略了这个<code>chunkName</code>参数，那么统一使用<code>output.chunkFilename</code>中指定的名称</li>
+<li>如果output中也没有指定<code>chunkFilename</code>选项，那么会使用<code>output.filename</code>中除了<code>[name]</code>占位符以外的占位符+<code>[id]</code>占位符作为模块名。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.export = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如上output配置，那么此时动态分割出来的模块名就是<code>[chunkhash].[id].js</code>。</p>
 <h3 id="output-path"><a href="#output-path" class="headerlink" title="output.path"></a>output.path</h3><blockquote>
 <p>指定编译后的模块输出目录, 既可以是相对路径，也可以是绝对路径</p>
 </blockquote>
-<pre><code>// 相对路径
-path: &#39;./dist&#39;
-
-// 绝对路径
-path: path.resolve(__dirname, &#39;dist/assets&#39;)
-</code></pre><h3 id="output-hashDigest"><a href="#output-hashDigest" class="headerlink" title="output.hashDigest"></a>output.hashDigest</h3><blockquote>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 相对路径</span></div><div class="line"><span class="built_in">path</span>: <span class="string">'./dist'</span></div><div class="line"></div><div class="line"><span class="comment">// 绝对路径</span></div><div class="line"><span class="built_in">path</span>: <span class="built_in">path</span>.resolve(__dirname, <span class="string">'dist/assets'</span>)</div></pre></td></tr></table></figure>
+<h3 id="output-hashDigest"><a href="#output-hashDigest" class="headerlink" title="output.hashDigest"></a>output.hashDigest</h3><blockquote>
 <p>指定hash算法返回的字符编码。默认<code>hex</code>。<br>nodejs中的<code>hash.digest([enconding])</code>支持的编码，此处都支持。<br><code>enconding</code>支持的有<code>hex</code>,<code>latin1</code>,<code>base64</code>。</p>
 </blockquote>
 <h3 id="output-pathinfo"><a href="#output-pathinfo" class="headerlink" title="output.pathinfo"></a>output.pathinfo</h3><p>boolean</p>
@@ -576,7 +476,7 @@ path: path.resolve(__dirname, &#39;dist/assets&#39;)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-output/" data-id="cj39rem02002ohxo04s265enr" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-output/" data-id="cj39rflc5001wijo06a5onquv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -620,85 +520,11 @@ path: path.resolve(__dirname, &#39;dist/assets&#39;)
 <blockquote>
 <p>本章节主要介绍如何利用webpack来构建自己编写的js库，原文链接可以点击<a href="https://webpack.js.org/guides/author-libraries/" target="_blank" rel="external">这里</a></p>
 </blockquote>
-<p>假如我们要实现的一个数字和单词之间的互转(1 &lt;=&gt; one)</p>
-<pre><code>\\ src/index.js
-import _ from &#39;lodash&#39;
-import numRef from &#39;./ref.json&#39;
-
-export function numToWord(num) {
-    return _.reduce(numRef, (accum, ref) =&gt; {
-        return ref.num === num ? ref.word : accum
-    }, &#39;&#39;)
-};
-
-export function wordToNum(word) {
-    return _.reduce(numRef, (accum, ref) =&gt; {
-        return ref.word === word &amp;&amp; word.toLowerCase() ? ref.num : accum
-    }, -1);
-}
-</code></pre><p>然后我们可能用下面的这几种方式来使用这个库</p>
-<pre><code>// ES2015 modules
-
-import * as webpackNumbers from &#39;webpack-numbers&#39;;
-
-...
-webpackNumbers.wordToNum(&#39;Two&#39;) // output is 2
-...
-
-// CommonJS modules
-
-var webpackNumbers = require(&#39;webpack-numbers&#39;);
-
-...
-webpackNumbers.numToWord(3); // output is Three
-...
-
-// As a script tag
-
-&lt;html&gt;
-...
-&lt;script src=&quot;https://unpkg.com/webpack-numbers&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-    ...
-    /* webpackNumbers is available as a global variable */
-    webpackNumbers.wordToNum(&#39;Five&#39;) //output is 5
-    ...
-&lt;/script&gt;
-&lt;/html&gt;
-</code></pre><p>下面来编写webpack配置文件</p>
-<pre><code>module.exports = function(){
-  return {
-    entry: &#39;./src/index.js&#39;,
-    output: {
-      filename: &#39;webpack-numbers.js&#39;,
-      path: &#39;./dist&#39;
-    },
-    module: {
-      rules: [
-        {
-          test: /.json$/,
-          use: &#39;json-loader&#39;
-        }
-      ]
-    }
-  }
-}
-</code></pre><p>如果利用上面的配置进行编译，我们会发现lodash.js也会被编译到webpack-numbers.js中。<br>我们自己编写的这个webpack-numbers.js库依赖lodash.js，但是我们不希望lodash的源代码被编译到我们这个库中，而是希望他们分开，在用户下载我们的这个webpack-numbers.js库的同时也将依赖的库lodash.js下载下来。<br>要实现这个需求，我们可以按如下修改配置文件</p>
-<pre><code>module.exports = function(){
-  return {
-    ...
-    externals: {
-      &#39;lodash&#39;: {
-        commonjs: &#39;lodash&#39;,
-        commonjs2: &#39;lodash&#39;,
-        amd: &#39;lodash&#39;,
-        root: &#39;_&#39;
-      }
-    }
-    ...
-  }
-}
-</code></pre><h3 id="output-library-output-libraryTarget"><a href="#output-library-output-libraryTarget" class="headerlink" title="output.library, output.libraryTarget"></a>output.library, output.libraryTarget</h3><blockquote>
+<p>假如我们要实现的一个数字和单词之间的互转(1 &lt;=&gt; one)<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">\\ src/index.js</div><div class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span></div><div class="line"><span class="keyword">import</span> numRef <span class="keyword">from</span> <span class="string">'./ref.json'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">numToWord</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> _.reduce(numRef, <span class="function">(<span class="params">accum, ref</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">return</span> ref.num === num ? ref.word : accum</div><div class="line">    &#125;, <span class="string">''</span>)</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">wordToNum</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> _.reduce(numRef, <span class="function">(<span class="params">accum, ref</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">return</span> ref.word === word &amp;&amp; word.toLowerCase() ? ref.num : accum</div><div class="line">    &#125;, <span class="number">-1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后我们可能用下面的这几种方式来使用这个库<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES2015 modules</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> webpackNumbers <span class="keyword">from</span> <span class="string">'webpack-numbers'</span>;</div><div class="line"></div><div class="line">...</div><div class="line">webpackNumbers.wordToNum(<span class="string">'Two'</span>) <span class="comment">// output is 2</span></div><div class="line">...</div><div class="line"></div><div class="line"><span class="comment">// CommonJS modules</span></div><div class="line"></div><div class="line">var webpackNumbers = require(<span class="string">'webpack-numbers'</span>);</div><div class="line"></div><div class="line">...</div><div class="line">webpackNumbers.numToWord(<span class="number">3</span>); <span class="comment">// output is Three</span></div><div class="line">...</div><div class="line"></div><div class="line"><span class="comment">// As a script tag</span></div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">...</div><div class="line">&lt;script src=<span class="string">"https://unpkg.com/webpack-numbers"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    ...</div><div class="line">    <span class="comment">/* webpackNumbers is available as a global variable */</span></div><div class="line">    webpackNumbers.wordToNum(<span class="string">'Five'</span>) <span class="comment">//output is 5</span></div><div class="line">    ...</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>下面来编写webpack配置文件<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: <span class="string">'./src/index.js'</span>,</div><div class="line">    output: &#123;</div><div class="line">      filename: <span class="string">'webpack-numbers.js'</span>,</div><div class="line">      path: <span class="string">'./dist'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="keyword">module</span>: &#123;</div><div class="line">      rules: [</div><div class="line">        &#123;</div><div class="line">          test: <span class="regexp">/.json$/</span>,</div><div class="line">          use: <span class="string">'json-loader'</span></div><div class="line">        &#125;</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果利用上面的配置进行编译，我们会发现lodash.js也会被编译到webpack-numbers.js中。<br>我们自己编写的这个webpack-numbers.js库依赖lodash.js，但是我们不希望lodash的源代码被编译到我们这个库中，而是希望他们分开，在用户下载我们的这个webpack-numbers.js库的同时也将依赖的库lodash.js下载下来。<br>要实现这个需求，我们可以按如下修改配置文件<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    ...</div><div class="line">    external<span class="variable">s:</span> &#123;</div><div class="line">      <span class="string">'lodash'</span>: &#123;</div><div class="line">        commonj<span class="variable">s:</span> <span class="string">'lodash'</span>,</div><div class="line">        commonjs2: <span class="string">'lodash'</span>,</div><div class="line">        amd: <span class="string">'lodash'</span>,</div><div class="line">        roo<span class="variable">t:</span> <span class="string">'_'</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="output-library-output-libraryTarget"><a href="#output-library-output-libraryTarget" class="headerlink" title="output.library, output.libraryTarget"></a>output.library, output.libraryTarget</h3><blockquote>
 <p>因为我们的库可能需要运行在不同的环境下，如CommonJS, AMD, Node.js ,作为一个全局变量，为了让我们编写的库可以运行在不同的环境下，那么我们就需要做相应的配置。</p>
 </blockquote>
 <p>output.library</p>
@@ -710,79 +536,25 @@ webpackNumbers.numToWord(3); // output is Three
 <p>Default: ‘var’，可选的值有<code>umd</code>, <code>amd</code>, <code>commonjs</code>, <code>commonjs2</code>, <code>commonjs-module</code>, <code>this</code>, <code>var</code><br>这些值指明了导出的环境, 下面我们依次来看看在各种环境下导出的代码是什么样的</p>
 </blockquote>
 <p>假如我们的配置文件是这样的</p>
-<pre><code>module.exports = function(){
-  return {
-    entry: &#39;./ab.js&#39;,
-    output: {
-      filename: &#39;webpack-lib&#39;,
-      path: &#39;./dist&#39;,
-      library: &#39;abConvert&#39;,
-      libraryTarget: &#39;var&#39; // 当为默认值的时候，可以不指定该属性
-    },
-    externals: {
-      &#39;zepto&#39;: {
-        commonjs: &#39;zepto&#39;,
-        commonjs2: &#39;zepto&#39;,
-        amd: &#39;zepto&#39;,
-        root: &#39;$&#39;
-      }
-    }
-  }
-}
-</code></pre><p>那么各种取值下导出的代码会是这个样子的</p>
-<pre><code>\\var
-
-var abConvert = (function(modules){
-    return ...
-  })()
-</code></pre><pre><code>\\umd
-
-(function webpackUniversalModuleDefinition(root, factory) {
-  if(typeof exports === &#39;object&#39; &amp;&amp; typeof module === &#39;object&#39;)
-    module.exports = factory(require(&quot;zepto&quot;));
-  else if(typeof define === &#39;function&#39; &amp;&amp; define.amd)
-    define([&quot;zepto&quot;], factory);
-  else if(typeof exports === &#39;object&#39;)
-    exports[&quot;abConvert&quot;] = factory(require(&quot;zepto&quot;));
-  else
-    root[&quot;abConvert&quot;] = factory(root[&quot;$&quot;]);
-})()
-</code></pre><pre><code>\\ amd
-
-define(&#39;abConvert&#39;, [&#39;zepto&#39;], function(){})
-</code></pre><pre><code>\\ commonjs
-
-exports[&#39;abConvert&#39;] = (function(modules){
-  return ...
-})()
-</code></pre><pre><code>\\ commonjs2
-
-module.exports = (function(modules){
-  return ...
-})()
-</code></pre><pre><code>\\ commonjs-module
-
-module.exports = (function(modules){
-  return ...
-})()
-
-Object.defineProperty(module.exports, &quot;__esModule&quot;, { value: true })
-</code></pre><blockquote>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: <span class="string">'./ab.js'</span>,</div><div class="line">    outpu<span class="variable">t:</span> &#123;</div><div class="line">      filename: <span class="string">'webpack-lib'</span>,</div><div class="line">      path: <span class="string">'./dist'</span>,</div><div class="line">      library: <span class="string">'abConvert'</span>,</div><div class="line">      libraryTarge<span class="variable">t:</span> <span class="string">'var'</span> // 当为默认值的时候，可以不指定该属性</div><div class="line">    &#125;,</div><div class="line">    external<span class="variable">s:</span> &#123;</div><div class="line">      <span class="string">'zepto'</span>: &#123;</div><div class="line">        commonj<span class="variable">s:</span> <span class="string">'zepto'</span>,</div><div class="line">        commonjs2: <span class="string">'zepto'</span>,</div><div class="line">        amd: <span class="string">'zepto'</span>,</div><div class="line">        roo<span class="variable">t:</span> <span class="string">'$'</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么各种取值下导出的代码会是这个样子的<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\<span class="keyword">var</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> abConvert = (<span class="function"><span class="keyword">function</span><span class="params">(modules)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> ...</div><div class="line">  &#125;)()</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\umd</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">webpackUniversalModuleDefinition</span>(<span class="params">root, factory</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> exports === <span class="string">'object'</span> &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">module</span> === <span class="string">'object'</span>)</div><div class="line">    <span class="built_in">module</span>.exports = factory(<span class="built_in">require</span>(<span class="string">"zepto"</span>));</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd)</div><div class="line">    define([<span class="string">"zepto"</span>], factory);</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> exports === <span class="string">'object'</span>)</div><div class="line">    exports[<span class="string">"abConvert"</span>] = factory(<span class="built_in">require</span>(<span class="string">"zepto"</span>));</div><div class="line">  <span class="keyword">else</span></div><div class="line">    root[<span class="string">"abConvert"</span>] = factory(root[<span class="string">"$"</span>]);</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\\ amd</div><div class="line"></div><div class="line">define(<span class="string">'abConvert'</span>, [<span class="string">'zepto'</span>], <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ commonjs</div><div class="line"></div><div class="line">exports[<span class="string">'abConvert'</span>] = (<span class="function"><span class="keyword">function</span><span class="params">(modules)</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> ...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ commonjs2</div><div class="line"></div><div class="line"><span class="keyword">module</span>.exports = (<span class="function"><span class="keyword">function</span><span class="params">(modules)</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> ...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">\\ commonjs-<span class="built_in">module</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = (<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> ...</div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">module</span>.exports, <span class="string">"__esModule"</span>, &#123; <span class="attr">value</span>: <span class="literal">true</span> &#125;)</div></pre></td></tr></table></figure>
+<blockquote>
 <p>如果libraryTarget指定为<code>commonjs-module</code>, 那么此时<code>module.exports</code>上会被定义一个<code>__esModule</code>, 表明此时采用的是es2015模块化方式定义的，并且此时的<code>library</code>属性会被忽略。</p>
 </blockquote>
-<pre><code>\\ this
-
-this[&#39;abConvert&#39;] = (function(modules){
-
-})()
-</code></pre><blockquote>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ <span class="keyword">this</span></div><div class="line"></div><div class="line"><span class="keyword">this</span>[<span class="string">'abConvert'</span>] = (<span class="function"><span class="keyword">function</span><span class="params">(modules)</span></span>&#123;</div><div class="line">  </div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<blockquote>
 <p>当指定为<code>this</code>时，代表的是由运行环境决定。比如运行在浏览器中，此时<code>this</code>代表<code>window</code>，如果运行在nodejs环境，那么此时<code>this</code>代表<code>global</code>。</p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-library/" data-id="cj39relzt002ehxo0tc4f23z2" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-library/" data-id="cj39rflc0001sijo0dhzs42ua" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -830,58 +602,26 @@ this[&#39;abConvert&#39;] = (function(modules){
 <li>callback: 当dependencies中的模块全部加载完毕之后，执行callback中的代码。callback中会传入一个require函数，我们可以在callback中使用这个require()函数引入其他的依赖模块</li>
 <li>chunkName（可选）: 通过require.ensure()生成的模块的名称。在不同的require.ensure()中传入相同的chunkName,可以保证依赖模块按正确的顺序引入到require.ensure()生成的模块中</li>
 </ul>
-<p>假如我们有如下的目录结构</p>
-<pre><code>file structure
-|
-js --|
-|    |-- entry.js
-|    |-- a.js
-|    |-- b.js
-webpack.config.js
-|
-dist
-</code></pre><pre><code>\\entry.js
-require(&#39;./a&#39;)
-require.ensure([], function(require){
-  require(&#39;./b&#39;)
-})
-
-
-\\a.js
-console.log(&#39;I AM A&#39;)
-
-\\b.js
-console.log(&#39;I AM B&#39;)
-</code></pre><pre><code>\\webpack.config.js
-module.exports = function(){
-  return {
-    entry: &#39;./js/entry.js&#39;,
-    output: {
-      filename: &#39;bundle.js&#39;,
-      path: &#39;./dist&#39;
-    }    
-  }
-}
-</code></pre><p>编译后，我们发现dist下有bundle.js和0.bundle.js。<br>entry.js 和 a.js被编译到bundle.js。<br>b.js被编译到0.bundle.js。</p>
+<p>假如我们有如下的目录结构<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">file structure</div><div class="line">|<span class="string"></span></div><div class="line">js --|</div><div class="line">|<span class="string">    </span>|<span class="string">-- entry.js</span></div><div class="line">|<span class="string">    </span>|<span class="string">-- a.js</span></div><div class="line">|<span class="string">    </span>|<span class="string">-- b.js</span></div><div class="line">webpack.config.js</div><div class="line">|</div><div class="line">dist</div></pre></td></tr></table></figure></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\entry<span class="selector-class">.js</span></div><div class="line"><span class="function"><span class="title">require</span><span class="params">(<span class="string">'./a'</span>)</span></span></div><div class="line">require.ensure([], function(require)&#123;</div><div class="line">  require(<span class="string">'./b'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"></div><div class="line">\\<span class="selector-tag">a</span><span class="selector-class">.js</span></div><div class="line">console.log(<span class="string">'I AM A'</span>)</div><div class="line"></div><div class="line">\\<span class="selector-tag">b</span><span class="selector-class">.js</span></div><div class="line">console.log(<span class="string">'I AM B'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">\\webpack.<span class="built_in">config</span>.js</div><div class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: <span class="string">'./js/entry.js'</span>,</div><div class="line">    <span class="built_in">output</span>: &#123;</div><div class="line">      filename: <span class="string">'bundle.js'</span>,</div><div class="line">      path: <span class="string">'./dist'</span></div><div class="line">    &#125;    </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>编译后，我们发现dist下有bundle.js和0.bundle.js。<br>entry.js 和 a.js被编译到bundle.js。<br>b.js被编译到0.bundle.js。</p>
 <h3 id="关于require-ensure-需要注意的点"><a href="#关于require-ensure-需要注意的点" class="headerlink" title="关于require.ensure()需要注意的点"></a>关于require.ensure()需要注意的点</h3><ul>
-<li><p>空数组作为参数</p>
-<pre><code>require.ensure([], function(require){
-require(&#39;./a.js&#39;)
-})
-</code></pre><p>上面的代码，webpack会创建一个模块，并且a.js被分割到这个模块中</p>
+<li>空数组作为参数<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>.ensure([], <span class="function"><span class="keyword">function</span>(<span class="params">require</span>)</span>&#123;</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./a.js'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<p>上面的代码，webpack会创建一个模块，并且a.js被分割到这个模块中</p>
+<ul>
 <li><p>依赖作为参数</p>
-<pre><code>require.ensure([&#39;./a.js&#39;], function(require){
-require(&#39;./b.js&#39;)
-})
-</code></pre><p>上面的代码，a.js,b.js会被编译到一个共同的模块中，并且从entry.js中分割出来。<br>但是只有b.js中的内容被执行，a.js中的内容并不会执行。如果需要执行a.js，那么我们必须通过像这样<code>require(&#39;./a.js&#39;)</code>以同步的方式来引入a.js。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>.ensure([<span class="string">'./a.js'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">require</span>)</span>&#123;</div><div class="line">  <span class="built_in">require</span>(<span class="string">'./b.js'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>上面的代码，a.js,b.js会被编译到一个共同的模块中，并且从entry.js中分割出来。<br>但是只有b.js中的内容被执行，a.js中的内容并不会执行。如果需要执行a.js，那么我们必须通过像这样<code>require(&#39;./a.js&#39;)</code>以同步的方式来引入a.js。</p>
 </li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-ensure/" data-id="cj39relzv002ghxo0avejr4ge" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-ensure/" data-id="cj39rflbw001oijo0dkp3cxcj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -924,21 +664,11 @@ require(&#39;./b.js&#39;)
         <p>[TOC]</p>
 <h3 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h3><ul>
 <li>一个应用有第三方库和程序代码组成，第三方库和程序代码最大的不同就是一般第三方库是不会轻易改动的。</li>
-<li>在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3>假如在index.js中引用第三方库moment.js<br>index.js<pre><code>var moment = require(&#39;monent&#39;)
-console.log(moment().format())
-</code></pre></li>
+<li>在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3>假如在index.js中引用第三方库moment.js<br>index.js<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var <span class="built_in">moment</span> = require('monent')</div><div class="line">console.<span class="built_in">log</span>(<span class="built_in">moment</span>().<span class="keyword">format</span>())</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>我们的webapck.config.js配置如下</p>
-<pre><code>  module.exports = function(){
-    return {
-      entry: &#39;./index.js&#39;,
-      output: {
-        filename: &#39;[chunkhash].[name].js&#39;,
-        path: &#39;./dist&#39;
-      }
-    }
-  }
-</code></pre><p>经过编译之后，你会发现在第三方库moment.js和你的程序代码被打包到一个文件中了。<br>这样做的问题是：</p>
+<p>我们的webapck.config.js配置如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: <span class="string">'./index.js'</span>,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>经过编译之后，你会发现在第三方库moment.js和你的程序代码被打包到一个文件中了。<br>这样做的问题是：</p>
 <ul>
 <li><p>编译后的文件很大，现在的webpack2.x对于编译后的文件很大，会在控制台输出如下的警告信息</p>
 <blockquote>
@@ -948,68 +678,23 @@ console.log(moment().format())
 <li><p>每当程序代码只要改动一点点，都会重新编译整个文件，浪费时间</p>
 </li>
 </ul>
-<h3 id="多入口"><a href="#多入口" class="headerlink" title="多入口"></a>多入口</h3><p>对于上面单一entry出现的问题，我们可以通过多入口来缓解这个问题。将webpack.config.js配置文件改成如下配置：</p>
-<pre><code>  module.exports = function(){
-    return {
-      entry: {
-        index: &#39;./index.js&#39;,
-        moment: &#39;moment&#39;
-      },
-      output: {
-        filename: &#39;[chunkhash].[name].js&#39;,
-        path: &#39;./dist&#39;
-      }
-    }
-  }
-</code></pre><p>编译之后，dist文件夹下会出现2个文件，我们查看这两个编译后文件后会发现moment.js也会被编译到[chunkhash].index.js中，这也不是我们想要的结果。为了解决这个问题，可以使用<code>CommonsChunkPlugin</code>插件来解决这个问题。</p>
+<h3 id="多入口"><a href="#多入口" class="headerlink" title="多入口"></a>多入口</h3><p>对于上面单一entry出现的问题，我们可以通过多入口来缓解这个问题。将webpack.config.js配置文件改成如下配置：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: &#123;</div><div class="line">      <span class="built_in">index</span>: <span class="string">'./index.js'</span>,</div><div class="line">      momen<span class="variable">t:</span> <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    outpu<span class="variable">t:</span> &#123;</div><div class="line">      filename: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      path: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>编译之后，dist文件夹下会出现2个文件，我们查看这两个编译后文件后会发现moment.js也会被编译到[chunkhash].index.js中，这也不是我们想要的结果。为了解决这个问题，可以使用<code>CommonsChunkPlugin</code>插件来解决这个问题。</p>
 <h3 id="CommonsChunkPlugin"><a href="#CommonsChunkPlugin" class="headerlink" title="CommonsChunkPlugin"></a>CommonsChunkPlugin</h3><blockquote>
 <p>CommonsChunkPlugin是一个相当复杂的插件，他可以将不同模块中相同的代码抽取到一个指定的公共的模块中，如果这个公共的模块不存在，那么它将自动为我们创建一个。</p>
 </blockquote>
-<p>将上面的webpack.config.js修改为如下</p>
-<pre><code>  module.exports = function(){
-    return {
-      entry: {
-        index: &#39;./index.js&#39;,
-        vendor: &#39;moment&#39;
-      },
-      output: {
-        filename: &#39;[chunkhash].[name].js&#39;,
-        path: &#39;./dist&#39;
-      },
-      plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-          name: &#39;vendor&#39; // 指定抽取到哪个公共模块,必不可少的
-        })
-      ]
-    }
-  }
-</code></pre><h3 id="清单文件-Manifest-File"><a href="#清单文件-Manifest-File" class="headerlink" title="清单文件 Manifest File"></a>清单文件 Manifest File</h3><ul>
+<p>将上面的webpack.config.js修改为如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: &#123;</div><div class="line">      <span class="attr">index</span>: <span class="string">'./index.js'</span>,</div><div class="line">      <span class="attr">vendor</span>: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">plugins</span>: [</div><div class="line">      <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'vendor'</span> <span class="comment">// 指定抽取到哪个公共模块,必不可少的</span></div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="清单文件-Manifest-File"><a href="#清单文件-Manifest-File" class="headerlink" title="清单文件 Manifest File"></a>清单文件 Manifest File</h3><ul>
 <li>当我们修改了程序代码后编译，会发现第三库模块也会被编译，即使我们现在已经将程序代码和第三方库文件分离开了。这样，我们依然不能享受浏览器缓存带来的好处。</li>
 <li>问题原因在于：当webpack每次编译时，会自动生成一些运行时代码，这些代码可以可以帮助webpack更好的做他的工作。这意味着这些运行时的代码代码也会被编译到公共模块，比如这个地方的vendor.js。</li>
-<li>为了解决这个问题，我们应该将这些webpack自动生成的代码提取到单独的一个文件中（清单文件），这样每次修改程序代码时重新编译的只会是程序代码和清单文件，第三方库文件不会重新编译。<br>webpack.config.js配置文件修改如下<pre><code>module.exports = function(){
-  return {
-    entry: {
-      index: &#39;./index.js&#39;,
-      vendor: &#39;moment&#39;
-    },
-    output: {
-      filename: &#39;[chunkhash].[name].js&#39;,
-      path: &#39;.dist&#39;
-    },
-    plugins: [
-      new webpack.optimize.CommonsChunkPlugin({
-        name: [&#39;vendor&#39;, &#39;manifest&#39;]
-      })
-    ]
-  }
-}
-</code></pre></li>
+<li>为了解决这个问题，我们应该将这些webpack自动生成的代码提取到单独的一个文件中（清单文件），这样每次修改程序代码时重新编译的只会是程序代码和清单文件，第三方库文件不会重新编译。<br>webpack.config.js配置文件修改如下<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: &#123;</div><div class="line">      <span class="built_in">index</span>: <span class="string">'./index.js'</span>,</div><div class="line">      vendor: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    outpu<span class="variable">t:</span> &#123;</div><div class="line">      filename: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      path: <span class="string">'.dist'</span></div><div class="line">    &#125;,</div><div class="line">    plugin<span class="variable">s:</span> [</div><div class="line">      <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        name: [<span class="string">'vendor'</span>, <span class="string">'manifest'</span>]</div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-coding-split/" data-id="cj39relzn0023hxo0x0li4ecs" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-coding-split/" data-id="cj39rflbn001gijo0ftxvhmx1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -1053,106 +738,28 @@ console.log(moment().format())
 <p>nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）</p>
 </blockquote>
 <p>[TOC]</p>
-<p>先看一个例子<br>foo.js</p>
-<pre><code>const circle = require(&#39;./circle.js&#39;)
-console.log(`The area of a circle of radius 4 is ${circle.area(4)`}
-</code></pre><p>circle.js</p>
-<pre><code>const PI = Math.PI
-
-exports.area = (r) =&gt; PI * r * r
-
-exports.circumference = (r) =&gt; 2 * PI * r
-</code></pre><p>说明：</p>
+<p>先看一个例子<br>foo.js<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> circle = <span class="built_in">require</span>(<span class="string">'./circle.js'</span>)</div><div class="line"><span class="built_in">console</span>.log(`The area <span class="keyword">of</span> a circle <span class="keyword">of</span> radius <span class="number">4</span> <span class="keyword">is</span> $&#123;circle.area(<span class="number">4</span>)`&#125;</div></pre></td></tr></table></figure></p>
+<p>circle.js<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const PI = Math.PI</div><div class="line"></div><div class="line">exports.area = <span class="function"><span class="params">(r)</span> =&gt;</span> PI * r * r</div><div class="line"></div><div class="line">exports.circumference = <span class="function"><span class="params">(r)</span> =&gt;</span> <span class="number">2</span> * PI * r</div></pre></td></tr></table></figure></p>
+<p>说明：</p>
 <ul>
 <li>circle.js导出了2个方法<code>area()</code>, <code>circumference()</code>, 导出一个模块中的方法或者对象，你可以将他们挂载到<code>exports</code>对象上</li>
 <li>如果没有导出一个模块中的方法或则对象，那么他么都是私有的，因为在解析的时候，这些模块都会被一个函数包裹起来。在上面的例子中，<code>PI</code>变量就是私有的，因为他没有挂载到<code>exports</code>对象上。</li>
 <li>如果你想导出的就是一个函数，那么重写<code>module.exports</code>即可。因为默认导出的是<code>module.exports</code>, <code>module.exports</code>是一个对象。</li>
 </ul>
-<p>看下面的例子<br>bar.js</p>
-<pre><code>const square = require(&#39;./square.js&#39;);
-// 因为square.js导出的就是一个函数，所以直接调用。
-var mySquare = square(2);  // 如果导出的是一个对象，那么此处应该这样调用square.square(2)
-console.log(`The area of my square is ${mySquare.area()}`);
-</code></pre><p>square.js</p>
-<pre><code>// assigning to exports will not modify module, must use module.exports
-module.exports = (width) =&gt; {
-  return {
-    area: () =&gt; width * width
-  };
-}
-</code></pre><h2 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h2><blockquote>
+<p>看下面的例子<br>bar.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> square = <span class="built_in">require</span>(<span class="string">'./square.js'</span>);</div><div class="line"><span class="comment">// 因为square.js导出的就是一个函数，所以直接调用。</span></div><div class="line"><span class="keyword">var</span> mySquare = square(<span class="number">2</span>);  <span class="comment">// 如果导出的是一个对象，那么此处应该这样调用square.square(2)</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">`The area of my square is <span class="subst">$&#123;mySquare.area()&#125;</span>`</span>);</div></pre></td></tr></table></figure></p>
+<p>square.js<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span> assigning to exports will <span class="keyword">not</span> modify <span class="built_in">module</span>, must use <span class="built_in">module</span>.exports</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">(width)</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    area: <span class="function"><span class="params">()</span> =&gt;</span> width * width</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h2><blockquote>
 <p>如果一个模块中引入了核心模块，那么核心模块总是被优先加载。<br>例如，<code>require(http)</code>, 总是会加载nodejs的<code>http</code>模块，即使你有一个模块也叫<code>http</code></p>
 </blockquote>
-<p>// 始终返回核心模块的实现</p>
-<pre><code>exports.builtinLibs = [
-  &#39;assert&#39;, &#39;buffer&#39;, &#39;child_process&#39;, &#39;cluster&#39;, &#39;crypto&#39;, &#39;dgram&#39;, &#39;dns&#39;,
-  &#39;domain&#39;, &#39;events&#39;, &#39;fs&#39;, &#39;http&#39;, &#39;https&#39;, &#39;net&#39;, &#39;os&#39;, &#39;path&#39;, &#39;punycode&#39;,
-  &#39;querystring&#39;, &#39;readline&#39;, &#39;repl&#39;, &#39;stream&#39;, &#39;string_decoder&#39;, &#39;tls&#39;, &#39;tty&#39;,
-  &#39;url&#39;, &#39;util&#39;, &#39;v8&#39;, &#39;vm&#39;, &#39;zlib&#39;
-];
-
-function addBuiltinLibsToObject(object) {
-  // Make built-in modules available directly (loaded lazily).
-  exports.builtinLibs.forEach((name) =&gt; {
-    // Goals of this mechanism are:
-    // - Lazy loading of built-in modules
-    // - Having all built-in modules available as non-enumerable properties
-    // - Allowing the user to re-assign these variables as if there were no
-    //   pre-existing globals with the same name.
-
-    const setReal = (val) =&gt; {
-      // Deleting the property before re-assigning it disables the
-      // getter/setter mechanism.
-      delete object[name];
-      object[name] = val;
-    };
-
-    Object.defineProperty(object, name, {
-      get: () =&gt; {
-        const lib = require(name);
-
-        // Disable the current getter/setter and set up a new
-        // non-enumerable property.
-        delete object[name];
-        Object.defineProperty(object, name, {
-          get: () =&gt; lib,
-          set: setReal,
-          configurable: true,
-          enumerable: false
-        });
-
-        return lib;
-      },
-      set: setReal,
-      configurable: true,
-      enumerable: false
-    });
-  });
-}
-</code></pre><h2 id="循环加载"><a href="#循环加载" class="headerlink" title="循环加载"></a>循环加载</h2><blockquote>
+<p>// 始终返回核心模块的实现<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">exports.builtinLibs = [</div><div class="line">  <span class="string">'assert'</span>, <span class="string">'buffer'</span>, <span class="string">'child_process'</span>, <span class="string">'cluster'</span>, <span class="string">'crypto'</span>, <span class="string">'dgram'</span>, <span class="string">'dns'</span>,</div><div class="line">  <span class="string">'domain'</span>, <span class="string">'events'</span>, <span class="string">'fs'</span>, <span class="string">'http'</span>, <span class="string">'https'</span>, <span class="string">'net'</span>, <span class="string">'os'</span>, <span class="string">'path'</span>, <span class="string">'punycode'</span>,</div><div class="line">  <span class="string">'querystring'</span>, <span class="string">'readline'</span>, <span class="string">'repl'</span>, <span class="string">'stream'</span>, <span class="string">'string_decoder'</span>, <span class="string">'tls'</span>, <span class="string">'tty'</span>,</div><div class="line">  <span class="string">'url'</span>, <span class="string">'util'</span>, <span class="string">'v8'</span>, <span class="string">'vm'</span>, <span class="string">'zlib'</span></div><div class="line">];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addBuiltinLibsToObject</span>(<span class="params">object</span>) </span>&#123;</div><div class="line">  <span class="comment">// Make built-in modules available directly (loaded lazily).</span></div><div class="line">  exports.builtinLibs.forEach(<span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</div><div class="line">    <span class="comment">// Goals of this mechanism are:</span></div><div class="line">    <span class="comment">// - Lazy loading of built-in modules</span></div><div class="line">    <span class="comment">// - Having all built-in modules available as non-enumerable properties</span></div><div class="line">    <span class="comment">// - Allowing the user to re-assign these variables as if there were no</span></div><div class="line">    <span class="comment">//   pre-existing globals with the same name.</span></div><div class="line"></div><div class="line">    <span class="keyword">const</span> setReal = <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</div><div class="line">      <span class="comment">// Deleting the property before re-assigning it disables the</span></div><div class="line">      <span class="comment">// getter/setter mechanism.</span></div><div class="line">      <span class="keyword">delete</span> object[name];</div><div class="line">      object[name] = val;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="built_in">Object</span>.defineProperty(object, name, &#123;</div><div class="line">      <span class="keyword">get</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">const</span> lib = <span class="built_in">require</span>(name);</div><div class="line"></div><div class="line">        <span class="comment">// Disable the current getter/setter and set up a new</span></div><div class="line">        <span class="comment">// non-enumerable property.</span></div><div class="line">        <span class="keyword">delete</span> object[name];</div><div class="line">        <span class="built_in">Object</span>.defineProperty(object, name, &#123;</div><div class="line">          <span class="keyword">get</span>: <span class="function"><span class="params">()</span> =&gt;</span> lib,</div><div class="line">          <span class="keyword">set</span>: setReal,</div><div class="line">          configurable: <span class="literal">true</span>,</div><div class="line">          enumerable: <span class="literal">false</span></div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> lib;</div><div class="line">      &#125;,</div><div class="line">      <span class="keyword">set</span>: setReal,</div><div class="line">      configurable: <span class="literal">true</span>,</div><div class="line">      enumerable: <span class="literal">false</span></div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="循环加载"><a href="#循环加载" class="headerlink" title="循环加载"></a>循环加载</h2><blockquote>
 <p>指的是一个模块a依赖模块b,而模块b又依赖模块a。</p>
 </blockquote>
 <p>下面通过nodejs官方文档的例子来说明nodejs是如何处理模块的循环加载</p>
-<p>a.js</p>
-<pre><code>console.log(&#39;a starting&#39;);
-exports.done = false;
-const b = require(&#39;./b.js&#39;);  // ①
-console.log(&#39;in a, b.done = %j&#39;, b.done);
-exports.done = true;
-console.log(&#39;a done&#39;);
-</code></pre><p>b.js</p>
-<pre><code>console.log(&#39;b starting&#39;);
-exports.done = false;
-const a = require(&#39;./a.js&#39;);  // ②
-console.log(&#39;in b, a.done = %j&#39;, a.done);
-exports.done = true;
-console.log(&#39;b done&#39;);
-</code></pre><p>main.js</p>
-<pre><code>console.log(&#39;main starting&#39;);
-const a = require(&#39;./a.js&#39;);
-const b = require(&#39;./b.js&#39;);
-console.log(&#39;in main, a.done=%j, b.done=%j&#39;, a.done, b.done);
-</code></pre><p>说明：</p>
+<p>a.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</div><div class="line">exports.done = <span class="literal">false</span>;</div><div class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);  <span class="comment">// ①</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</div><div class="line">exports.done = <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</div></pre></td></tr></table></figure></p>
+<p>b.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</div><div class="line">exports.done = <span class="literal">false</span>;</div><div class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);  <span class="comment">// ②</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</div><div class="line">exports.done = <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</div></pre></td></tr></table></figure></p>
+<p>main.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</div><div class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</div><div class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</div></pre></td></tr></table></figure></p>
+<p>说明：</p>
 <ul>
 <li>main.js加载a.js, 进入a.js, 执行到<code>require(&#39;./b.js&#39;)</code>，进入b.js, 执行到<code>require(&#39;./a.js&#39;)</code></li>
 <li>此时发生了循环加载，为了阻止这种无限的循环，nodejs会将a.js中执行过的部分生成一个副本模块返回给b.js</li>
@@ -1160,20 +767,12 @@ console.log(&#39;in main, a.done=%j, b.done=%j&#39;, a.done, b.done);
 <li>等到b.js全部执行完毕，在从①暂停的地方继续执行a.js, 此时b.js中<code>exports.done = true</code></li>
 <li>最后执行main.js中为执行的部分</li>
 </ul>
-<p>所以最终输出的结果如下</p>
-<pre><code>index starting
-a starting
-b starting
-in b, a.done = false
-b done
-in a, b.done = true
-a done
-in main, a.done = true, b.done = true
-</code></pre><h2 id="nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载"><a href="#nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载" class="headerlink" title="nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载"></a>nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载</h2>
+<p>所以最终输出的结果如下<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">index starting</div><div class="line"><span class="selector-tag">a</span> starting</div><div class="line"><span class="selector-tag">b</span> starting</div><div class="line"><span class="keyword">in</span> <span class="selector-tag">b</span>, <span class="selector-tag">a</span><span class="selector-class">.done</span> = false</div><div class="line"><span class="selector-tag">b</span> done</div><div class="line"><span class="keyword">in</span> <span class="selector-tag">a</span>, <span class="selector-tag">b</span><span class="selector-class">.done</span> = true</div><div class="line"><span class="selector-tag">a</span> done</div><div class="line"><span class="keyword">in</span> main, <span class="selector-tag">a</span><span class="selector-class">.done</span> = true, <span class="selector-tag">b</span><span class="selector-class">.done</span> = true</div></pre></td></tr></table></figure></p>
+<h2 id="nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载"><a href="#nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载" class="headerlink" title="nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载"></a>nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj39relyo0014hxo0ntl9b6l7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj39rflcj0029ijo0868nowfw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -1226,144 +825,58 @@ in main, a.done = true, b.done = true
 <li>ext: String 可选的文件扩展名</li>
 <li>Returns: String</li>
 </ul>
-<p>For example</p>
-<pre><code>path.basename(&#39;/foo/bar/baz/afs/quux.h
-tml&#39;)
-// Returns: &#39;quux.html&#39;
-
-path.basename(&#39;/foo/bar/baz/afs/quux.html&#39;, &#39;.html&#39;)
-// Returns: &#39;quux&#39;
-</code></pre><h2 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a>path.delimiter</h2><blockquote>
+<p>For example<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">path</span><span class="selector-class">.basename</span>('/foo/bar/baz/afs/quux.h</div><div class="line">tml')</div><div class="line"><span class="comment">// Returns: 'quux.html'</span></div><div class="line"></div><div class="line"><span class="selector-tag">path</span><span class="selector-class">.basename</span>(<span class="string">'/foo/bar/baz/afs/quux.html'</span>, <span class="string">'.html'</span>)</div><div class="line"><span class="comment">// Returns: 'quux'</span></div></pre></td></tr></table></figure></p>
+<h2 id="path-delimiter"><a href="#path-delimiter" class="headerlink" title="path.delimiter"></a>path.delimiter</h2><blockquote>
 <p>根据系统类型，返回系统的路径分隔符</p>
 </blockquote>
 <ul>
 <li><code>:</code> POSIX系统</li>
 <li><code>;</code> Windows系统</li>
 </ul>
-<p>For example, on POSIX:</p>
-<pre><code>console.log(process.env.PATH)
-// Prints: &#39;/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin&#39;
-
-process.env.PATH.split(path.delimiter)
-// Returns: [&#39;/usr/bin&#39;, &#39;/bin&#39;, &#39;/usr/sbin&#39;, &#39;/sbin&#39;, &#39;/usr/local/bin&#39;]
-</code></pre><p>On Windows:</p>
-<pre><code>console.log(process.env.PATH)
-// Prints: &#39;C:\Windows\system32;C:\Windows;C:\Program Files\node\&#39;
-
-process.env.PATH.split(path.delimiter)
-// Returns: [&#39;C:\\Windows\\system32&#39;, &#39;C:\\Windows&#39;, &#39;C:\\Program Files\\node\\&#39;]
-</code></pre><h2 id="path-dirname-path"><a href="#path-dirname-path" class="headerlink" title="path.dirname(path)"></a>path.dirname(path)</h2><blockquote>
+<p>For example, on POSIX:<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">console.log(process.env.PATH)</div><div class="line">/<span class="regexp">/ Prints: '/usr</span><span class="regexp">/bin:/bin</span><span class="symbol">:/usr/sbin</span><span class="symbol">:/sbin</span><span class="symbol">:/usr/local/bin<span class="string">'</span></span></div><div class="line"></div><div class="line">process.env.PATH.split(path.delimiter)</div><div class="line">// Returns: ['/usr/bin<span class="string">', '</span>/bin<span class="string">', '</span>/usr/sbin<span class="string">', '</span>/sbin<span class="string">', '</span>/usr/local/bin<span class="string">']</span></div></pre></td></tr></table></figure></p>
+<p>On Windows:<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">console.log(process.env.PATH)</div><div class="line">// Prints: 'C:<span class="symbol">\W</span>indows<span class="symbol">\s</span>ystem32;C:<span class="symbol">\W</span>indows;C:<span class="symbol">\P</span>rogram Files<span class="symbol">\n</span>ode<span class="symbol">\'</span></div><div class="line"></div><div class="line">process.env.PATH.split(path.delimiter)</div><div class="line">// Returns: ['C:<span class="symbol">\\</span>Windows<span class="symbol">\\</span>system32', 'C:<span class="symbol">\\</span>Windows', 'C:<span class="symbol">\\</span>Program Files<span class="symbol">\\</span>node<span class="symbol">\\</span>']</div></pre></td></tr></table></figure></p>
+<h2 id="path-dirname-path"><a href="#path-dirname-path" class="headerlink" title="path.dirname(path)"></a>path.dirname(path)</h2><blockquote>
 <p>返回一个路径的文件夹部分，类似于Unix中的dirname命令</p>
 </blockquote>
-<p>For example</p>
-<pre><code>path.dirname(&#39;/foo/bar/baz/asdf/quux&#39;)
-// Returns: &#39;foo/bar/baz/asdf&#39;
-
-// 路径中的最后一个/会被忽略
-path.dirname(&#39;/foo/bar/baz/asdf/quux/&#39;)
-// Returns: &#39;foo/bar/baz/asdf&#39;
-</code></pre><h2 id="path-extname-path"><a href="#path-extname-path" class="headerlink" title="path.extname(path)"></a>path.extname(path)</h2><blockquote>
+<p>For example<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">path</span><span class="selector-class">.dirname</span>(<span class="string">'/foo/bar/baz/asdf/quux'</span>)</div><div class="line"><span class="comment">// Returns: 'foo/bar/baz/asdf'</span></div><div class="line"></div><div class="line"><span class="comment">// 路径中的最后一个/会被忽略</span></div><div class="line"><span class="selector-tag">path</span><span class="selector-class">.dirname</span>(<span class="string">'/foo/bar/baz/asdf/quux/'</span>)</div><div class="line"><span class="comment">// Returns: 'foo/bar/baz/asdf'</span></div></pre></td></tr></table></figure></p>
+<h2 id="path-extname-path"><a href="#path-extname-path" class="headerlink" title="path.extname(path)"></a>path.extname(path)</h2><blockquote>
 <p>返回一个路径中的文件扩展名。如果一个路径字符串的最后部分都不包含该<code>.</code>, 或者basename的首个字符是<code>.</code>,那么返回一个空字符串。</p>
 </blockquote>
-<p>For example</p>
-<pre><code>path.extname(&#39;index.html&#39;)
-// Returns: &#39;.html&#39;
-
-path.extname(&#39;index.coffee.md&#39;)
-// Returns: &#39;.md&#39;
-
-path.extname(&#39;index.&#39;)
-// Returns: &#39;.&#39;
-
-path.extname(&#39;index&#39;)
-// Returns: &#39;&#39;
-
-path.extname(&#39;.index&#39;)
-// Returns: &#39;&#39;
-</code></pre><p>path.join([…paths])</p>
+<p>For example<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">path.extname(<span class="string">'index.html'</span>)</div><div class="line"><span class="regexp">//</span> Returns: <span class="string">'.html'</span></div><div class="line"></div><div class="line">path.extname(<span class="string">'index.coffee.md'</span>)</div><div class="line"><span class="regexp">//</span> Returns: <span class="string">'.md'</span></div><div class="line"></div><div class="line">path.extname(<span class="string">'index.'</span>)</div><div class="line"><span class="regexp">//</span> Returns: <span class="string">'.'</span></div><div class="line"></div><div class="line">path.extname(<span class="string">'index'</span>)</div><div class="line"><span class="regexp">//</span> Returns: <span class="string">''</span></div><div class="line"></div><div class="line">path.extname(<span class="string">'.index'</span>)</div><div class="line"><span class="regexp">//</span> Returns: <span class="string">''</span></div></pre></td></tr></table></figure></p>
+<p>path.join([…paths])</p>
 <blockquote>
 <p>使用指定平台的路径分隔符将参数中的路径的各个部分连接起来，并规范化连接的结果，使之是一个合法的路径。<br>参数中长度为0的字符串会被忽略。<br>如果连接的结果也是一个长度为0的字符串，那么会返回一个<code>.</code>， 代表当前的工作目录。</p>
 </blockquote>
-<p><strong><em>需要注意的是，这里多次提到长度为0的字符串</em></strong><br><code>&#39;&#39;.length // 0, 空字符串</code><br><code>&#39; &#39;.length // 2, 2个空白字符串</code><br>For example</p>
-<pre><code>// .. 代表它的上一级目录
-path.join(&#39;/foo&#39;, &#39;bar&#39;, &#39;baz/asdf&#39;, &#39;quux&#39;, &#39;..&#39;)
-// Returns: &#39;/foo/bar/baz/asdf&#39;
-
-// ../..代表它的上一级目录的上一级
-path.join(&#39;/foo&#39;, &#39;bar&#39;, &#39;  &#39;, &#39;baz/asdf&#39;, &#39;quux&#39;, &#39;../..&#39;)
-// Returns: &#39;/foo/bar/  /baz&#39;
-
-path.join(&#39;foo&#39;, {}, &#39;bar&#39;)
-// throws TypeError: Arguments to path.join must be strings
-
-path.join(&#39;/foo&#39;, &#39;bar&#39;, &#39;  &#39;, &#39;baz/asdf&#39;, &#39;quux&#39;)
-// Returns: &#39;/foo/bar/  /baz/asdf/quux&#39;
-</code></pre><h2 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a>path.normalize(path)</h2><blockquote>
+<p><strong><em>需要注意的是，这里多次提到长度为0的字符串</em></strong><br><code>&#39;&#39;.length // 0, 空字符串</code><br><code>&#39; &#39;.length // 2, 2个空白字符串</code><br>For example<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// .. 代表它的上一级目录</div><div class="line">path.<span class="keyword">join</span>(<span class="string">'/foo'</span>, <span class="string">'bar'</span>, <span class="string">'baz/asdf'</span>, <span class="string">'quux'</span>, <span class="string">'..'</span>)</div><div class="line">// Return<span class="variable">s:</span> <span class="string">'/foo/bar/baz/asdf'</span></div><div class="line"></div><div class="line">// ../..代表它的上一级目录的上一级</div><div class="line">path.<span class="keyword">join</span>(<span class="string">'/foo'</span>, <span class="string">'bar'</span>, <span class="string">'  '</span>, <span class="string">'baz/asdf'</span>, <span class="string">'quux'</span>, <span class="string">'../..'</span>)</div><div class="line">// Return<span class="variable">s:</span> <span class="string">'/foo/bar/  /baz'</span></div><div class="line"></div><div class="line">path.<span class="keyword">join</span>(<span class="string">'foo'</span>, &#123;&#125;, <span class="string">'bar'</span>)</div><div class="line">// throws TypeError: Arguments <span class="keyword">to</span> path.<span class="keyword">join</span> must <span class="keyword">be</span> strings</div><div class="line"></div><div class="line">path.<span class="keyword">join</span>(<span class="string">'/foo'</span>, <span class="string">'bar'</span>, <span class="string">'  '</span>, <span class="string">'baz/asdf'</span>, <span class="string">'quux'</span>)</div><div class="line">// Return<span class="variable">s:</span> <span class="string">'/foo/bar/  /baz/asdf/quux'</span></div></pre></td></tr></table></figure></p>
+<h2 id="path-normalize-path"><a href="#path-normalize-path" class="headerlink" title="path.normalize(path)"></a>path.normalize(path)</h2><blockquote>
 <p>返回一个规范化的路径，会解析<code>..</code>, <code>.</code>这些特殊字符。<br>当路径中出现多个平台分隔符(/on POSIX, \ on windows), 那么会用当个平台分隔符替换。<br><strong><em>这个方法会保留路径结尾部分的<code>/</code>, 如果被解析路径的尾部包含<code>.</code>, <code>..</code>，那么解析出来的路径最后的<code>/</code>会被忽略</em></strong></p>
 </blockquote>
-<p>For example<br>on POSIX</p>
-<pre><code>path.normalize(&#39;/foo/bar//baz/asdf/quux/..&#39;)
-// Returns: &#39;/foo/bar/baz/asdf&#39;
-
-path.normalize(&#39;/foo/bar//baz/asdf/quux/.&#39;)
-// Returns: &#39;/foo/bar/baz/asdf/quux&#39;
-
-path.normalize(&#39;/foo/bar//baz/../asdf/quux/.&#39;)
-// Returns: &#39;/foo/bar/asdf/quux&#39;
-
-path.normalize(&#39;/foo/bar//baz/asdf/quux/&#39;)
-// Returns: &#39;/foo/bar/baz/asdf/quux/&#39;
-</code></pre><p>on Windows</p>
-<pre><code>path.normalize(&#39;C:\\temp\\\\foo\\bar\\..\\&#39;);
-// Returns: &#39;C:\\temp\\foo\\&#39;
-</code></pre><p>path.resolve([…paths])</p>
+<p>For example<br>on POSIX<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">path.normalize(<span class="string">'/foo/bar//baz/asdf/quux/..'</span>)</div><div class="line"><span class="regexp">// Returns: '/foo/bar/baz/asdf'</span></div><div class="line"></div><div class="line">path.normalize('/foo/bar//baz<span class="regexp">/asdf/quux/</span>.<span class="string">')</span></div><div class="line">// Returns: '/foo/bar/baz/asdf/quux<span class="string">'</span></div><div class="line"></div><div class="line">path.normalize('<span class="regexp">/foo/bar/</span><span class="regexp">/baz/</span>..<span class="regexp">/asdf/quux/</span>.<span class="string">')</span></div><div class="line">// Returns: '/foo/bar/asdf/quux<span class="string">'</span></div><div class="line"></div><div class="line">path.normalize('<span class="regexp">/foo/bar/</span><span class="regexp">/baz/asdf/quux/</span><span class="string">')</span></div><div class="line">// Returns: '<span class="regexp">/foo/bar/baz/asdf/quux/</span><span class="string">'</span></div></pre></td></tr></table></figure></p>
+<p>on Windows<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path.normalize('C:<span class="symbol">\\</span>temp<span class="symbol">\\</span><span class="symbol">\\</span>foo<span class="symbol">\\</span>bar<span class="symbol">\\</span>..<span class="symbol">\\</span>');</div><div class="line">// Returns: 'C:<span class="symbol">\\</span>temp<span class="symbol">\\</span>foo<span class="symbol">\\</span>'</div></pre></td></tr></table></figure></p>
+<p>path.resolve([…paths])</p>
 <blockquote>
 <p>该方法将路径序列或者一个路径序列的各个部分解析到一个绝对路径。<br><strong><em>该方法解析路径序列是从右往左解析的，直到解析到一个绝对路径。解析到一个绝对路径后就停止解析，并返回这个绝对路径</em></strong><br>如果所有部分都解析完毕了，依然没有得到一个绝对路径，那么返回就返回当前的工作路径。<br>这个返回的结果路径是被规范化的，<strong><em>并且结尾的/会被移除，除非它是一个跟路径</em></strong><br>在解析的过程中，长度为0的部分会被忽略<br>如果没有传入任何参数，那么该方法会返回一个代表当前工作目录的绝对路径</p>
 </blockquote>
-<p>For example</p>
-<pre><code>path.resolve(&#39;/foo/bar&#39;, &#39;./baz&#39;)
-// Returns: &#39;/foo/bar/baz&#39;
-
-path.resolve(&#39;/foo/bar&#39;, &#39;/tmp/file/&#39;)
-// Returns: &#39;/tmp/file&#39;
-
-path.resolve(&#39;wwwroot&#39;, &#39;static_files/png/&#39;, &#39;../gif/image.gif&#39;)
-// if the current working directory is /home/myself/node,
-// this returns &#39;/home/myself/node/wwwroot/static_files/gif/image.gif&#39;
-</code></pre><h2 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a>path.relative(from, to)</h2><blockquote>
+<p>For example<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">path.<span class="built_in">resolve</span>(<span class="string">'/foo/bar'</span>, <span class="string">'./baz'</span>)</div><div class="line">// Return<span class="variable">s:</span> <span class="string">'/foo/bar/baz'</span></div><div class="line"></div><div class="line">path.<span class="built_in">resolve</span>(<span class="string">'/foo/bar'</span>, <span class="string">'/tmp/file/'</span>)</div><div class="line">// Return<span class="variable">s:</span> <span class="string">'/tmp/file'</span></div><div class="line"></div><div class="line">path.<span class="built_in">resolve</span>(<span class="string">'wwwroot'</span>, <span class="string">'static_files/png/'</span>, <span class="string">'../gif/image.gif'</span>)</div><div class="line">// <span class="keyword">if</span> the current working directory <span class="keyword">is</span> /home/myself/node,</div><div class="line">// this returns <span class="string">'/home/myself/node/wwwroot/static_files/gif/image.gif'</span></div></pre></td></tr></table></figure></p>
+<h2 id="path-relative-from-to"><a href="#path-relative-from-to" class="headerlink" title="path.relative(from, to)"></a>path.relative(from, to)</h2><blockquote>
 <p>该方法返回一个从<code>from</code>到<code>to</code>的相对路径，如果<code>from</code>, <code>to</code>分别通过<code>path.resolve</code>解析后得到相同的结果，那么返回一个长度为0的字符串<br>如果<code>from</code>, <code>to</code>中的任何一个传入了一个长度为0的字符串，那么在解析的过程中会使用当前的工作路径取代这个长度为0的字符串<br><strong><em>需要注意的是，如果<code>from</code>, <code>to</code>任何一部分传入一个相对路径，那么都会被<code>path.resolve</code>解析为一个绝对路径</em></strong></p>
 </blockquote>
-<p>For example<br>on POSIX:</p>
-<pre><code>path.relative(&#39;/data/orandea/test/aaa&#39;, &#39;/data/orandea/impl/bbb&#39;)
-// Returns: &#39;../../impl/bbb&#39;
-
-path.relative(&#39;/data/orandea/test/aaa&#39;, &#39;../foo/bar/quux&#39;)
-// if the current working directory is /home/myself/node,
-// Returns: &#39;../../../../home/myself/foo/bar/quux&#39;
-
-path.relative(&#39;/foo/bar&#39;, &#39;/foo/bar&#39;)
-// Returns: &#39;&#39;
-</code></pre><p>On Windows:</p>
-<pre><code>path.relative(&#39;C:\\orandea\\test\\aaa&#39;, &#39;C:\\orandea\\impl\\bbb&#39;)
-// Returns: &#39;..\\..\\impl\\bbb&#39;
-</code></pre><h2 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a>path.sep</h2><blockquote>
+<p>For example<br>on POSIX:<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">path</span><span class="selector-class">.relative</span>(<span class="string">'/data/orandea/test/aaa'</span>, <span class="string">'/data/orandea/impl/bbb'</span>)</div><div class="line"><span class="comment">// Returns: '../../impl/bbb'</span></div><div class="line"></div><div class="line"><span class="selector-tag">path</span><span class="selector-class">.relative</span>(<span class="string">'/data/orandea/test/aaa'</span>, <span class="string">'../foo/bar/quux'</span>)</div><div class="line"><span class="comment">// if the current working directory is /home/myself/node,</span></div><div class="line"><span class="comment">// Returns: '../../../../home/myself/foo/bar/quux'</span></div><div class="line"></div><div class="line"><span class="selector-tag">path</span><span class="selector-class">.relative</span>(<span class="string">'/foo/bar'</span>, <span class="string">'/foo/bar'</span>)</div><div class="line"><span class="comment">// Returns: ''</span></div></pre></td></tr></table></figure></p>
+<p>On Windows:<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path.relative('C:<span class="symbol">\\</span>orandea<span class="symbol">\\</span>test<span class="symbol">\\</span>aaa', 'C:<span class="symbol">\\</span>orandea<span class="symbol">\\</span>impl<span class="symbol">\\</span>bbb')</div><div class="line">// Returns: '..<span class="symbol">\\</span>..<span class="symbol">\\</span>impl<span class="symbol">\\</span>bbb'</div></pre></td></tr></table></figure></p>
+<h2 id="path-sep"><a href="#path-sep" class="headerlink" title="path.sep"></a>path.sep</h2><blockquote>
 <p>根据不同的平台返回指定平台的路径分隔符</p>
 </blockquote>
 <ul>
 <li><code>\</code>on Windows</li>
 <li><code>/</code>on POSIX</li>
 </ul>
-<p>For example<br>on POSIX:</p>
-<pre><code>&#39;foo/bar/baz&#39;.split(path.sep)
-// Returns: [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]
-</code></pre><p>On Windows:</p>
-<pre><code>&#39;foo\\bar\\baz&#39;.split(path.sep)
-// Returns: [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]
-</code></pre>
+<p>For example<br>on POSIX:<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'foo/bar/baz'</span>.<span class="keyword">split</span>(path.sep)</div><div class="line">// Return<span class="variable">s:</span> [<span class="string">'foo'</span>, <span class="string">'bar'</span>, <span class="string">'baz'</span>]</div></pre></td></tr></table></figure></p>
+<p>On Windows:<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'foo\\bar\\baz'</span>.<span class="keyword">split</span>(path.sep)</div><div class="line">// Return<span class="variable">s:</span> [<span class="string">'foo'</span>, <span class="string">'bar'</span>, <span class="string">'baz'</span>]</div></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-path/" data-id="cj39relyl0012hxo0gllvvg59" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-path/" data-id="cj39rflaf000mijo09oiaz95t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
