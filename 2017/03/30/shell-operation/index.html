@@ -34,9 +34,6 @@
     <link rel="icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
-  
   <link rel="stylesheet" href="/css/style.css">
   
 
@@ -114,8 +111,10 @@
 <h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><blockquote>
 <p>条件表达式必须放在方括号内，并且之间要有空格</p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 方括号的前后也必须含有空格,可以有多个空格</span></div><div class="line">[ <span class="variable">$a</span> == <span class="variable">$b</span> ] <span class="regexp">//</span> right</div><div class="line">[<span class="variable">$a</span>==<span class="variable">$b</span>] <span class="regexp">//</span> error</div></pre></td></tr></table></figure>
-<h3 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h3><table>
+<pre><code># 方括号的前后也必须含有空格,可以有多个空格
+[ $a == $b ] // right
+[$a==$b] // error
+</code></pre><h3 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h3><table>
 <thead>
 <tr>
 <th>运算符</th>
@@ -217,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj39r8s77001fg7o03rw0j62o" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj39rbbef000vh5o063uiymbn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>

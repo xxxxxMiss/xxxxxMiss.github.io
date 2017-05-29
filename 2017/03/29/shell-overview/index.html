@@ -12,7 +12,8 @@ C Shell (/usr/bin/csh)
 K Shell (/usr/bin/ksh)
 Shell for Root (/sbin/sh)
 
-第一个Shell脚本12#!/bin/shecho &apos;Hello World !&apos;">
+第一个Shell脚本#!/bin/sh
+echo &amp;#39;Hello World !">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell基本知识">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/29/shell-overview/index.html">
@@ -24,7 +25,8 @@ C Shell (/usr/bin/csh)
 K Shell (/usr/bin/ksh)
 Shell for Root (/sbin/sh)
 
-第一个Shell脚本12#!/bin/shecho &apos;Hello World !&apos;">
+第一个Shell脚本#!/bin/sh
+echo &amp;#39;Hello World !">
 <meta property="og:updated_time" content="2017-04-19T17:31:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell基本知识">
@@ -35,16 +37,14 @@ C Shell (/usr/bin/csh)
 K Shell (/usr/bin/ksh)
 Shell for Root (/sbin/sh)
 
-第一个Shell脚本12#!/bin/shecho &apos;Hello World !&apos;">
+第一个Shell脚本#!/bin/sh
+echo &amp;#39;Hello World !">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -124,17 +124,21 @@ Shell for Root (/sbin/sh)
 <li>K Shell (/usr/bin/ksh)</li>
 <li>Shell for Root (/sbin/sh)</li>
 </ul>
-<h3 id="第一个Shell脚本"><a href="#第一个Shell脚本" class="headerlink" title="第一个Shell脚本"></a>第一个Shell脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'Hello World !'</span></div></pre></td></tr></table></figure>
-<blockquote>
+<h3 id="第一个Shell脚本"><a href="#第一个Shell脚本" class="headerlink" title="第一个Shell脚本"></a>第一个Shell脚本</h3><pre><code>#!/bin/sh
+echo &#39;Hello World !&#39;
+</code></pre><blockquote>
 <p>“#!” 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种Shell</p>
 </blockquote>
 <h3 id="运行Shell脚本的2种方法"><a href="#运行Shell脚本的2种方法" class="headerlink" title="运行Shell脚本的2种方法"></a>运行Shell脚本的2种方法</h3><ol>
-<li><p>作为可执行程序</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将上面的脚本保存为test.sh</span></div><div class="line">chmod +x ./<span class="keyword">test</span>.<span class="keyword">sh</span> <span class="comment">// 使脚本具有可执行的权限</span></div><div class="line">./<span class="keyword">test</span>.<span class="keyword">sh</span> <span class="comment">// 执行脚本</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>作为解释器参数</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/bin/<span class="keyword">sh</span> <span class="keyword">test</span>.<span class="keyword">sh</span></div><div class="line">/bin/php <span class="keyword">test</span>.php</div></pre></td></tr></table></figure>
-</li>
+<li>作为可执行程序<pre><code>// 将上面的脚本保存为test.sh
+chmod +x ./test.sh // 使脚本具有可执行的权限
+./test.sh // 执行脚本
+</code></pre></li>
+</ol>
+<ol>
+<li>作为解释器参数<pre><code>/bin/sh test.sh
+/bin/php test.php
+</code></pre></li>
 </ol>
 <blockquote>
 <p>这种方式运行的脚本，不需要再第一行指定解释器的信息，即使指定了也没用</p>
@@ -143,7 +147,7 @@ Shell for Root (/sbin/sh)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj39r8s7a001mg7o0l5cnlyi4" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj39rbbej000yh5o07gzz6dul" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>

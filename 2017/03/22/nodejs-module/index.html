@@ -8,8 +8,10 @@
   <meta name="description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）
 
 [TOC]
-先看一个例子foo.js12const circle = require(&apos;./circle.js&apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125;
-circle.j">
+先看一个例子foo.js
+const circle = require(&amp;#39;./circle.js&amp;#39;)
+console.log(`The area of a circle of radius 4 is ${circle.area(4)`}
+circle.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nodejs学习之module模块">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/index.html">
@@ -17,25 +19,26 @@ circle.j">
 <meta property="og:description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）
 
 [TOC]
-先看一个例子foo.js12const circle = require(&apos;./circle.js&apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125;
-circle.j">
+先看一个例子foo.js
+const circle = require(&amp;#39;./circle.js&amp;#39;)
+console.log(`The area of a circle of radius 4 is ${circle.area(4)`}
+circle.js">
 <meta property="og:updated_time" content="2017-04-19T17:32:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs学习之module模块">
 <meta name="twitter:description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）
 
 [TOC]
-先看一个例子foo.js12const circle = require(&apos;./circle.js&apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125;
-circle.j">
+先看一个例子foo.js
+const circle = require(&amp;#39;./circle.js&amp;#39;)
+console.log(`The area of a circle of radius 4 is ${circle.area(4)`}
+circle.js">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -112,28 +115,106 @@ circle.j">
 <p>nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）</p>
 </blockquote>
 <p>[TOC]</p>
-<p>先看一个例子<br>foo.js<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> circle = <span class="built_in">require</span>(<span class="string">'./circle.js'</span>)</div><div class="line"><span class="built_in">console</span>.log(`The area <span class="keyword">of</span> a circle <span class="keyword">of</span> radius <span class="number">4</span> <span class="keyword">is</span> $&#123;circle.area(<span class="number">4</span>)`&#125;</div></pre></td></tr></table></figure></p>
-<p>circle.js<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const PI = Math.PI</div><div class="line"></div><div class="line">exports.area = <span class="function"><span class="params">(r)</span> =&gt;</span> PI * r * r</div><div class="line"></div><div class="line">exports.circumference = <span class="function"><span class="params">(r)</span> =&gt;</span> <span class="number">2</span> * PI * r</div></pre></td></tr></table></figure></p>
-<p>说明：</p>
+<p>先看一个例子<br>foo.js</p>
+<pre><code>const circle = require(&#39;./circle.js&#39;)
+console.log(`The area of a circle of radius 4 is ${circle.area(4)`}
+</code></pre><p>circle.js</p>
+<pre><code>const PI = Math.PI
+
+exports.area = (r) =&gt; PI * r * r
+
+exports.circumference = (r) =&gt; 2 * PI * r
+</code></pre><p>说明：</p>
 <ul>
 <li>circle.js导出了2个方法<code>area()</code>, <code>circumference()</code>, 导出一个模块中的方法或者对象，你可以将他们挂载到<code>exports</code>对象上</li>
 <li>如果没有导出一个模块中的方法或则对象，那么他么都是私有的，因为在解析的时候，这些模块都会被一个函数包裹起来。在上面的例子中，<code>PI</code>变量就是私有的，因为他没有挂载到<code>exports</code>对象上。</li>
 <li>如果你想导出的就是一个函数，那么重写<code>module.exports</code>即可。因为默认导出的是<code>module.exports</code>, <code>module.exports</code>是一个对象。</li>
 </ul>
-<p>看下面的例子<br>bar.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> square = <span class="built_in">require</span>(<span class="string">'./square.js'</span>);</div><div class="line"><span class="comment">// 因为square.js导出的就是一个函数，所以直接调用。</span></div><div class="line"><span class="keyword">var</span> mySquare = square(<span class="number">2</span>);  <span class="comment">// 如果导出的是一个对象，那么此处应该这样调用square.square(2)</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">`The area of my square is <span class="subst">$&#123;mySquare.area()&#125;</span>`</span>);</div></pre></td></tr></table></figure></p>
-<p>square.js<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span> assigning to exports will <span class="keyword">not</span> modify <span class="built_in">module</span>, must use <span class="built_in">module</span>.exports</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">(width)</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    area: <span class="function"><span class="params">()</span> =&gt;</span> width * width</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h2><blockquote>
+<p>看下面的例子<br>bar.js</p>
+<pre><code>const square = require(&#39;./square.js&#39;);
+// 因为square.js导出的就是一个函数，所以直接调用。
+var mySquare = square(2);  // 如果导出的是一个对象，那么此处应该这样调用square.square(2)
+console.log(`The area of my square is ${mySquare.area()}`);
+</code></pre><p>square.js</p>
+<pre><code>// assigning to exports will not modify module, must use module.exports
+module.exports = (width) =&gt; {
+  return {
+    area: () =&gt; width * width
+  };
+}
+</code></pre><h2 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h2><blockquote>
 <p>如果一个模块中引入了核心模块，那么核心模块总是被优先加载。<br>例如，<code>require(http)</code>, 总是会加载nodejs的<code>http</code>模块，即使你有一个模块也叫<code>http</code></p>
 </blockquote>
-<p>// 始终返回核心模块的实现<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">exports.builtinLibs = [</div><div class="line">  <span class="string">'assert'</span>, <span class="string">'buffer'</span>, <span class="string">'child_process'</span>, <span class="string">'cluster'</span>, <span class="string">'crypto'</span>, <span class="string">'dgram'</span>, <span class="string">'dns'</span>,</div><div class="line">  <span class="string">'domain'</span>, <span class="string">'events'</span>, <span class="string">'fs'</span>, <span class="string">'http'</span>, <span class="string">'https'</span>, <span class="string">'net'</span>, <span class="string">'os'</span>, <span class="string">'path'</span>, <span class="string">'punycode'</span>,</div><div class="line">  <span class="string">'querystring'</span>, <span class="string">'readline'</span>, <span class="string">'repl'</span>, <span class="string">'stream'</span>, <span class="string">'string_decoder'</span>, <span class="string">'tls'</span>, <span class="string">'tty'</span>,</div><div class="line">  <span class="string">'url'</span>, <span class="string">'util'</span>, <span class="string">'v8'</span>, <span class="string">'vm'</span>, <span class="string">'zlib'</span></div><div class="line">];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addBuiltinLibsToObject</span>(<span class="params">object</span>) </span>&#123;</div><div class="line">  <span class="comment">// Make built-in modules available directly (loaded lazily).</span></div><div class="line">  exports.builtinLibs.forEach(<span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</div><div class="line">    <span class="comment">// Goals of this mechanism are:</span></div><div class="line">    <span class="comment">// - Lazy loading of built-in modules</span></div><div class="line">    <span class="comment">// - Having all built-in modules available as non-enumerable properties</span></div><div class="line">    <span class="comment">// - Allowing the user to re-assign these variables as if there were no</span></div><div class="line">    <span class="comment">//   pre-existing globals with the same name.</span></div><div class="line"></div><div class="line">    <span class="keyword">const</span> setReal = <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</div><div class="line">      <span class="comment">// Deleting the property before re-assigning it disables the</span></div><div class="line">      <span class="comment">// getter/setter mechanism.</span></div><div class="line">      <span class="keyword">delete</span> object[name];</div><div class="line">      object[name] = val;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="built_in">Object</span>.defineProperty(object, name, &#123;</div><div class="line">      <span class="keyword">get</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">const</span> lib = <span class="built_in">require</span>(name);</div><div class="line"></div><div class="line">        <span class="comment">// Disable the current getter/setter and set up a new</span></div><div class="line">        <span class="comment">// non-enumerable property.</span></div><div class="line">        <span class="keyword">delete</span> object[name];</div><div class="line">        <span class="built_in">Object</span>.defineProperty(object, name, &#123;</div><div class="line">          <span class="keyword">get</span>: <span class="function"><span class="params">()</span> =&gt;</span> lib,</div><div class="line">          <span class="keyword">set</span>: setReal,</div><div class="line">          configurable: <span class="literal">true</span>,</div><div class="line">          enumerable: <span class="literal">false</span></div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> lib;</div><div class="line">      &#125;,</div><div class="line">      <span class="keyword">set</span>: setReal,</div><div class="line">      configurable: <span class="literal">true</span>,</div><div class="line">      enumerable: <span class="literal">false</span></div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="循环加载"><a href="#循环加载" class="headerlink" title="循环加载"></a>循环加载</h2><blockquote>
+<p>// 始终返回核心模块的实现</p>
+<pre><code>exports.builtinLibs = [
+  &#39;assert&#39;, &#39;buffer&#39;, &#39;child_process&#39;, &#39;cluster&#39;, &#39;crypto&#39;, &#39;dgram&#39;, &#39;dns&#39;,
+  &#39;domain&#39;, &#39;events&#39;, &#39;fs&#39;, &#39;http&#39;, &#39;https&#39;, &#39;net&#39;, &#39;os&#39;, &#39;path&#39;, &#39;punycode&#39;,
+  &#39;querystring&#39;, &#39;readline&#39;, &#39;repl&#39;, &#39;stream&#39;, &#39;string_decoder&#39;, &#39;tls&#39;, &#39;tty&#39;,
+  &#39;url&#39;, &#39;util&#39;, &#39;v8&#39;, &#39;vm&#39;, &#39;zlib&#39;
+];
+
+function addBuiltinLibsToObject(object) {
+  // Make built-in modules available directly (loaded lazily).
+  exports.builtinLibs.forEach((name) =&gt; {
+    // Goals of this mechanism are:
+    // - Lazy loading of built-in modules
+    // - Having all built-in modules available as non-enumerable properties
+    // - Allowing the user to re-assign these variables as if there were no
+    //   pre-existing globals with the same name.
+
+    const setReal = (val) =&gt; {
+      // Deleting the property before re-assigning it disables the
+      // getter/setter mechanism.
+      delete object[name];
+      object[name] = val;
+    };
+
+    Object.defineProperty(object, name, {
+      get: () =&gt; {
+        const lib = require(name);
+
+        // Disable the current getter/setter and set up a new
+        // non-enumerable property.
+        delete object[name];
+        Object.defineProperty(object, name, {
+          get: () =&gt; lib,
+          set: setReal,
+          configurable: true,
+          enumerable: false
+        });
+
+        return lib;
+      },
+      set: setReal,
+      configurable: true,
+      enumerable: false
+    });
+  });
+}
+</code></pre><h2 id="循环加载"><a href="#循环加载" class="headerlink" title="循环加载"></a>循环加载</h2><blockquote>
 <p>指的是一个模块a依赖模块b,而模块b又依赖模块a。</p>
 </blockquote>
 <p>下面通过nodejs官方文档的例子来说明nodejs是如何处理模块的循环加载</p>
-<p>a.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</div><div class="line">exports.done = <span class="literal">false</span>;</div><div class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);  <span class="comment">// ①</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</div><div class="line">exports.done = <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</div></pre></td></tr></table></figure></p>
-<p>b.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</div><div class="line">exports.done = <span class="literal">false</span>;</div><div class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);  <span class="comment">// ②</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</div><div class="line">exports.done = <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</div></pre></td></tr></table></figure></p>
-<p>main.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</div><div class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</div><div class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</div></pre></td></tr></table></figure></p>
-<p>说明：</p>
+<p>a.js</p>
+<pre><code>console.log(&#39;a starting&#39;);
+exports.done = false;
+const b = require(&#39;./b.js&#39;);  // ①
+console.log(&#39;in a, b.done = %j&#39;, b.done);
+exports.done = true;
+console.log(&#39;a done&#39;);
+</code></pre><p>b.js</p>
+<pre><code>console.log(&#39;b starting&#39;);
+exports.done = false;
+const a = require(&#39;./a.js&#39;);  // ②
+console.log(&#39;in b, a.done = %j&#39;, a.done);
+exports.done = true;
+console.log(&#39;b done&#39;);
+</code></pre><p>main.js</p>
+<pre><code>console.log(&#39;main starting&#39;);
+const a = require(&#39;./a.js&#39;);
+const b = require(&#39;./b.js&#39;);
+console.log(&#39;in main, a.done=%j, b.done=%j&#39;, a.done, b.done);
+</code></pre><p>说明：</p>
 <ul>
 <li>main.js加载a.js, 进入a.js, 执行到<code>require(&#39;./b.js&#39;)</code>，进入b.js, 执行到<code>require(&#39;./a.js&#39;)</code></li>
 <li>此时发生了循环加载，为了阻止这种无限的循环，nodejs会将a.js中执行过的部分生成一个副本模块返回给b.js</li>
@@ -141,12 +222,20 @@ circle.j">
 <li>等到b.js全部执行完毕，在从①暂停的地方继续执行a.js, 此时b.js中<code>exports.done = true</code></li>
 <li>最后执行main.js中为执行的部分</li>
 </ul>
-<p>所以最终输出的结果如下<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">index starting</div><div class="line"><span class="selector-tag">a</span> starting</div><div class="line"><span class="selector-tag">b</span> starting</div><div class="line"><span class="keyword">in</span> <span class="selector-tag">b</span>, <span class="selector-tag">a</span><span class="selector-class">.done</span> = false</div><div class="line"><span class="selector-tag">b</span> done</div><div class="line"><span class="keyword">in</span> <span class="selector-tag">a</span>, <span class="selector-tag">b</span><span class="selector-class">.done</span> = true</div><div class="line"><span class="selector-tag">a</span> done</div><div class="line"><span class="keyword">in</span> main, <span class="selector-tag">a</span><span class="selector-class">.done</span> = true, <span class="selector-tag">b</span><span class="selector-class">.done</span> = true</div></pre></td></tr></table></figure></p>
-<h2 id="nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载"><a href="#nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载" class="headerlink" title="nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载"></a>nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载</h2>
+<p>所以最终输出的结果如下</p>
+<pre><code>index starting
+a starting
+b starting
+in b, a.done = false
+b done
+in a, b.done = true
+a done
+in main, a.done = true, b.done = true
+</code></pre><h2 id="nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载"><a href="#nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载" class="headerlink" title="nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载"></a>nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj39r8s740017g7o0mt16cfxx" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj39rbbe2000jh5o0g1b3x4v8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>

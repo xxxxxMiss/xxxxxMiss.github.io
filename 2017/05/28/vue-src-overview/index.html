@@ -5,25 +5,49 @@
   
   <title>vue-src-overview | 青史成灰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="源码目录总览12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010">
+  <meta name="description" content="源码目录总览├── src
+│   ├── compiler
+│   │   ├── codegen
+│   │   │   ├── events.js
+│   │   │   └── index.js
+│   │   ├── directives
+│   │   │   ├── bind.js
+│   │   │   ├── index.js
+│   │   │   └── model.js
+│">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-src-overview">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="源码目录总览12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010">
+<meta property="og:description" content="源码目录总览├── src
+│   ├── compiler
+│   │   ├── codegen
+│   │   │   ├── events.js
+│   │   │   └── index.js
+│   │   ├── directives
+│   │   │   ├── bind.js
+│   │   │   ├── index.js
+│   │   │   └── model.js
+│">
 <meta property="og:updated_time" content="2017-05-28T11:14:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-src-overview">
-<meta name="twitter:description" content="源码目录总览12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010">
+<meta name="twitter:description" content="源码目录总览├── src
+│   ├── compiler
+│   │   ├── codegen
+│   │   │   ├── events.js
+│   │   │   └── index.js
+│   │   ├── directives
+│   │   │   ├── bind.js
+│   │   │   ├── index.js
+│   │   │   └── model.js
+│">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -92,12 +116,195 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-        <h2 id="源码目录总览"><a href="#源码目录总览" class="headerlink" title="源码目录总览"></a>源码目录总览</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div></pre></td><td class="code"><pre><div class="line">├── src</div><div class="line">│   ├── compiler</div><div class="line">│   │   ├── codegen</div><div class="line">│   │   │   ├── events.<span class="keyword">js</span></div><div class="line">│   │   │   └── index.<span class="keyword">js</span></div><div class="line">│   │   ├── <span class="keyword">directives</span></div><div class="line">│   │   │   ├── <span class="keyword">bind.js</span></div><div class="line">│   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   └── model.<span class="keyword">js</span></div><div class="line">│   │   ├── error-detector.<span class="keyword">js</span></div><div class="line">│   │   ├── helpers.<span class="keyword">js</span></div><div class="line">│   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   ├── optimizer.<span class="keyword">js</span></div><div class="line">│   │   └── parser</div><div class="line">│   │       ├── entity-decoder.<span class="keyword">js</span></div><div class="line">│   │       ├── filter-parser.<span class="keyword">js</span></div><div class="line">│   │       ├── html-parser.<span class="keyword">js</span></div><div class="line">│   │       ├── index.<span class="keyword">js</span></div><div class="line">│   │       └── text-parser.<span class="keyword">js</span></div><div class="line">│   ├── core</div><div class="line">│   │   ├── components</div><div class="line">│   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   └── keep-alive.<span class="keyword">js</span></div><div class="line">│   │   ├── <span class="built_in">config</span>.<span class="keyword">js</span></div><div class="line">│   │   ├── global-api</div><div class="line">│   │   │   ├── assets.<span class="keyword">js</span></div><div class="line">│   │   │   ├── <span class="keyword">extend.js</span></div><div class="line">│   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   ├── mixin.<span class="keyword">js</span></div><div class="line">│   │   │   └── use.<span class="keyword">js</span></div><div class="line">│   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   ├── <span class="keyword">instance</span></div><div class="line">│   │   │   ├── events.<span class="keyword">js</span></div><div class="line">│   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   ├── init.<span class="keyword">js</span></div><div class="line">│   │   │   ├── inject.<span class="keyword">js</span></div><div class="line">│   │   │   ├── lifecycle.<span class="keyword">js</span></div><div class="line">│   │   │   ├── proxy.<span class="keyword">js</span></div><div class="line">│   │   │   ├── render-helpers</div><div class="line">│   │   │   │   ├── <span class="keyword">bind-object-props.js</span></div><div class="line">│   │   │   │   ├── check-keycodes.<span class="keyword">js</span></div><div class="line">│   │   │   │   ├── render-list.<span class="keyword">js</span></div><div class="line">│   │   │   │   ├── render-slot.<span class="keyword">js</span></div><div class="line">│   │   │   │   ├── render-static.<span class="keyword">js</span></div><div class="line">│   │   │   │   ├── resolve-filter.<span class="keyword">js</span></div><div class="line">│   │   │   │   └── resolve-slots.<span class="keyword">js</span></div><div class="line">│   │   │   ├── render.<span class="keyword">js</span></div><div class="line">│   │   │   └── state.<span class="keyword">js</span></div><div class="line">│   │   ├── observer</div><div class="line">│   │   │   ├── array.<span class="keyword">js</span></div><div class="line">│   │   │   ├── dep.<span class="keyword">js</span></div><div class="line">│   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   ├── <span class="keyword">scheduler.js</span></div><div class="line">│   │   │   └── watcher.<span class="keyword">js</span></div><div class="line">│   │   ├── util</div><div class="line">│   │   │   ├── <span class="built_in">debug</span>.<span class="keyword">js</span></div><div class="line">│   │   │   ├── env.<span class="keyword">js</span></div><div class="line">│   │   │   ├── error.<span class="keyword">js</span></div><div class="line">│   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   ├── lang.<span class="keyword">js</span></div><div class="line">│   │   │   ├── options.<span class="keyword">js</span></div><div class="line">│   │   │   ├── perf.<span class="keyword">js</span></div><div class="line">│   │   │   └── props.<span class="keyword">js</span></div><div class="line">│   │   └── vdom</div><div class="line">│   │       ├── create-component.<span class="keyword">js</span></div><div class="line">│   │       ├── create-element.<span class="keyword">js</span></div><div class="line">│   │       ├── helpers</div><div class="line">│   │       │   ├── index.<span class="keyword">js</span></div><div class="line">│   │       │   ├── merge-hook.<span class="keyword">js</span></div><div class="line">│   │       │   ├── <span class="keyword">normalize-children.js</span></div><div class="line">│   │       │   └── update-listeners.<span class="keyword">js</span></div><div class="line">│   │       ├── modules</div><div class="line">│   │       │   ├── <span class="keyword">directives.js</span></div><div class="line">│   │       │   ├── index.<span class="keyword">js</span></div><div class="line">│   │       │   └── ref.<span class="keyword">js</span></div><div class="line">│   │       ├── patch.<span class="keyword">js</span></div><div class="line">│   │       └── vnode.<span class="keyword">js</span></div><div class="line">│   ├── entries</div><div class="line">│   │   ├── web-compiler.<span class="keyword">js</span></div><div class="line">│   │   ├── web-runtime-with-compiler.<span class="keyword">js</span></div><div class="line">│   │   ├── web-runtime.<span class="keyword">js</span></div><div class="line">│   │   ├── web-server-renderer.<span class="keyword">js</span></div><div class="line">│   │   ├── weex-compiler.<span class="keyword">js</span></div><div class="line">│   │   ├── weex-factory.<span class="keyword">js</span></div><div class="line">│   │   └── weex-framework.<span class="keyword">js</span></div><div class="line">│   ├── platforms</div><div class="line">│   │   ├── web</div><div class="line">│   │   │   ├── compiler</div><div class="line">│   │   │   │   ├── <span class="keyword">directives</span></div><div class="line">│   │   │   │   │   ├── html.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── model.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   └── text.<span class="keyword">js</span></div><div class="line">│   │   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   │   ├── modules</div><div class="line">│   │   │   │   │   ├── class.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   └── style.<span class="keyword">js</span></div><div class="line">│   │   │   │   └── util.<span class="keyword">js</span></div><div class="line">│   │   │   ├── runtime</div><div class="line">│   │   │   │   ├── class-util.<span class="keyword">js</span></div><div class="line">│   │   │   │   ├── components</div><div class="line">│   │   │   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── transition-group.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   └── transition.<span class="keyword">js</span></div><div class="line">│   │   │   │   ├── <span class="keyword">directives</span></div><div class="line">│   │   │   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── model.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   └── <span class="keyword">show.js</span></div><div class="line">│   │   │   │   ├── modules</div><div class="line">│   │   │   │   │   ├── attrs.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── class.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── dom-props.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── events.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── style.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   └── transition.<span class="keyword">js</span></div><div class="line">│   │   │   │   ├── node-ops.<span class="keyword">js</span></div><div class="line">│   │   │   │   ├── patch.<span class="keyword">js</span></div><div class="line">│   │   │   │   └── transition-util.<span class="keyword">js</span></div><div class="line">│   │   │   ├── server</div><div class="line">│   │   │   │   ├── <span class="keyword">directives</span></div><div class="line">│   │   │   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   └── <span class="keyword">show.js</span></div><div class="line">│   │   │   │   ├── modules</div><div class="line">│   │   │   │   │   ├── attrs.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── class.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── dom-props.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │   │   │   │   └── style.<span class="keyword">js</span></div><div class="line">│   │   │   │   └── util.<span class="keyword">js</span></div><div class="line">│   │   │   └── util</div><div class="line">│   │   │       ├── attrs.<span class="keyword">js</span></div><div class="line">│   │   │       ├── class.<span class="keyword">js</span></div><div class="line">│   │   │       ├── compat.<span class="keyword">js</span></div><div class="line">│   │   │       ├── element.<span class="keyword">js</span></div><div class="line">│   │   │       ├── index.<span class="keyword">js</span></div><div class="line">│   │   │       └── style.<span class="keyword">js</span></div><div class="line">│   │   └── weex</div><div class="line">│   │       ├── compiler</div><div class="line">│   │       │   ├── <span class="keyword">directives</span></div><div class="line">│   │       │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │       │   │   └── model.<span class="keyword">js</span></div><div class="line">│   │       │   ├── index.<span class="keyword">js</span></div><div class="line">│   │       │   └── modules</div><div class="line">│   │       │       ├── append.<span class="keyword">js</span></div><div class="line">│   │       │       ├── class.<span class="keyword">js</span></div><div class="line">│   │       │       ├── index.<span class="keyword">js</span></div><div class="line">│   │       │       ├── props.<span class="keyword">js</span></div><div class="line">│   │       │       └── style.<span class="keyword">js</span></div><div class="line">│   │       ├── framework.<span class="keyword">js</span></div><div class="line">│   │       ├── runtime</div><div class="line">│   │       │   ├── components</div><div class="line">│   │       │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │       │   │   ├── transition-group.<span class="keyword">js</span></div><div class="line">│   │       │   │   └── transition.<span class="keyword">js</span></div><div class="line">│   │       │   ├── <span class="keyword">directives</span></div><div class="line">│   │       │   │   └── index.<span class="keyword">js</span></div><div class="line">│   │       │   ├── index.<span class="keyword">js</span></div><div class="line">│   │       │   ├── modules</div><div class="line">│   │       │   │   ├── attrs.<span class="keyword">js</span></div><div class="line">│   │       │   │   ├── class.<span class="keyword">js</span></div><div class="line">│   │       │   │   ├── events.<span class="keyword">js</span></div><div class="line">│   │       │   │   ├── index.<span class="keyword">js</span></div><div class="line">│   │       │   │   ├── style.<span class="keyword">js</span></div><div class="line">│   │       │   │   └── transition.<span class="keyword">js</span></div><div class="line">│   │       │   ├── node-ops.<span class="keyword">js</span></div><div class="line">│   │       │   ├── patch.<span class="keyword">js</span></div><div class="line">│   │       │   └── text-node.<span class="keyword">js</span></div><div class="line">│   │       └── util</div><div class="line">│   │           └── index.<span class="keyword">js</span></div><div class="line">│   ├── server</div><div class="line">│   │   ├── create-<span class="keyword">bundle-renderer.js</span></div><div class="line">│   │   ├── create-<span class="keyword">bundle-runner.js</span></div><div class="line">│   │   ├── create-renderer.<span class="keyword">js</span></div><div class="line">│   │   ├── render-<span class="built_in">context</span>.<span class="keyword">js</span></div><div class="line">│   │   ├── render-stream.<span class="keyword">js</span></div><div class="line">│   │   ├── render.<span class="keyword">js</span></div><div class="line">│   │   ├── source-map-support.<span class="keyword">js</span></div><div class="line">│   │   └── write.<span class="keyword">js</span></div><div class="line">│   ├── sfc</div><div class="line">│   │   └── parser.<span class="keyword">js</span></div><div class="line">│   └── <span class="keyword">shared</span></div><div class="line">│       └── util.<span class="keyword">js</span></div></pre></td></tr></table></figure>
-
+        <h2 id="源码目录总览"><a href="#源码目录总览" class="headerlink" title="源码目录总览"></a>源码目录总览</h2><pre><code>├── src
+│   ├── compiler
+│   │   ├── codegen
+│   │   │   ├── events.js
+│   │   │   └── index.js
+│   │   ├── directives
+│   │   │   ├── bind.js
+│   │   │   ├── index.js
+│   │   │   └── model.js
+│   │   ├── error-detector.js
+│   │   ├── helpers.js
+│   │   ├── index.js
+│   │   ├── optimizer.js
+│   │   └── parser
+│   │       ├── entity-decoder.js
+│   │       ├── filter-parser.js
+│   │       ├── html-parser.js
+│   │       ├── index.js
+│   │       └── text-parser.js
+│   ├── core
+│   │   ├── components
+│   │   │   ├── index.js
+│   │   │   └── keep-alive.js
+│   │   ├── config.js
+│   │   ├── global-api
+│   │   │   ├── assets.js
+│   │   │   ├── extend.js
+│   │   │   ├── index.js
+│   │   │   ├── mixin.js
+│   │   │   └── use.js
+│   │   ├── index.js
+│   │   ├── instance
+│   │   │   ├── events.js
+│   │   │   ├── index.js
+│   │   │   ├── init.js
+│   │   │   ├── inject.js
+│   │   │   ├── lifecycle.js
+│   │   │   ├── proxy.js
+│   │   │   ├── render-helpers
+│   │   │   │   ├── bind-object-props.js
+│   │   │   │   ├── check-keycodes.js
+│   │   │   │   ├── render-list.js
+│   │   │   │   ├── render-slot.js
+│   │   │   │   ├── render-static.js
+│   │   │   │   ├── resolve-filter.js
+│   │   │   │   └── resolve-slots.js
+│   │   │   ├── render.js
+│   │   │   └── state.js
+│   │   ├── observer
+│   │   │   ├── array.js
+│   │   │   ├── dep.js
+│   │   │   ├── index.js
+│   │   │   ├── scheduler.js
+│   │   │   └── watcher.js
+│   │   ├── util
+│   │   │   ├── debug.js
+│   │   │   ├── env.js
+│   │   │   ├── error.js
+│   │   │   ├── index.js
+│   │   │   ├── lang.js
+│   │   │   ├── options.js
+│   │   │   ├── perf.js
+│   │   │   └── props.js
+│   │   └── vdom
+│   │       ├── create-component.js
+│   │       ├── create-element.js
+│   │       ├── helpers
+│   │       │   ├── index.js
+│   │       │   ├── merge-hook.js
+│   │       │   ├── normalize-children.js
+│   │       │   └── update-listeners.js
+│   │       ├── modules
+│   │       │   ├── directives.js
+│   │       │   ├── index.js
+│   │       │   └── ref.js
+│   │       ├── patch.js
+│   │       └── vnode.js
+│   ├── entries
+│   │   ├── web-compiler.js
+│   │   ├── web-runtime-with-compiler.js
+│   │   ├── web-runtime.js
+│   │   ├── web-server-renderer.js
+│   │   ├── weex-compiler.js
+│   │   ├── weex-factory.js
+│   │   └── weex-framework.js
+│   ├── platforms
+│   │   ├── web
+│   │   │   ├── compiler
+│   │   │   │   ├── directives
+│   │   │   │   │   ├── html.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── model.js
+│   │   │   │   │   └── text.js
+│   │   │   │   ├── index.js
+│   │   │   │   ├── modules
+│   │   │   │   │   ├── class.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── style.js
+│   │   │   │   └── util.js
+│   │   │   ├── runtime
+│   │   │   │   ├── class-util.js
+│   │   │   │   ├── components
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── transition-group.js
+│   │   │   │   │   └── transition.js
+│   │   │   │   ├── directives
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── model.js
+│   │   │   │   │   └── show.js
+│   │   │   │   ├── modules
+│   │   │   │   │   ├── attrs.js
+│   │   │   │   │   ├── class.js
+│   │   │   │   │   ├── dom-props.js
+│   │   │   │   │   ├── events.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── style.js
+│   │   │   │   │   └── transition.js
+│   │   │   │   ├── node-ops.js
+│   │   │   │   ├── patch.js
+│   │   │   │   └── transition-util.js
+│   │   │   ├── server
+│   │   │   │   ├── directives
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── show.js
+│   │   │   │   ├── modules
+│   │   │   │   │   ├── attrs.js
+│   │   │   │   │   ├── class.js
+│   │   │   │   │   ├── dom-props.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── style.js
+│   │   │   │   └── util.js
+│   │   │   └── util
+│   │   │       ├── attrs.js
+│   │   │       ├── class.js
+│   │   │       ├── compat.js
+│   │   │       ├── element.js
+│   │   │       ├── index.js
+│   │   │       └── style.js
+│   │   └── weex
+│   │       ├── compiler
+│   │       │   ├── directives
+│   │       │   │   ├── index.js
+│   │       │   │   └── model.js
+│   │       │   ├── index.js
+│   │       │   └── modules
+│   │       │       ├── append.js
+│   │       │       ├── class.js
+│   │       │       ├── index.js
+│   │       │       ├── props.js
+│   │       │       └── style.js
+│   │       ├── framework.js
+│   │       ├── runtime
+│   │       │   ├── components
+│   │       │   │   ├── index.js
+│   │       │   │   ├── transition-group.js
+│   │       │   │   └── transition.js
+│   │       │   ├── directives
+│   │       │   │   └── index.js
+│   │       │   ├── index.js
+│   │       │   ├── modules
+│   │       │   │   ├── attrs.js
+│   │       │   │   ├── class.js
+│   │       │   │   ├── events.js
+│   │       │   │   ├── index.js
+│   │       │   │   ├── style.js
+│   │       │   │   └── transition.js
+│   │       │   ├── node-ops.js
+│   │       │   ├── patch.js
+│   │       │   └── text-node.js
+│   │       └── util
+│   │           └── index.js
+│   ├── server
+│   │   ├── create-bundle-renderer.js
+│   │   ├── create-bundle-runner.js
+│   │   ├── create-renderer.js
+│   │   ├── render-context.js
+│   │   ├── render-stream.js
+│   │   ├── render.js
+│   │   ├── source-map-support.js
+│   │   └── write.js
+│   ├── sfc
+│   │   └── parser.js
+│   └── shared
+│       └── util.js
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj39r8s7s0024g7o0io103wjz" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj39rbbf0001nh5o0fe302h7q" class="article-share-link">Share</a>
       
       
     </footer>

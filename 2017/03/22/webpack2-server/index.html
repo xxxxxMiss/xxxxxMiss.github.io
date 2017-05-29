@@ -7,29 +7,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="devServer
 
-12345678// webpack.server.jsvar config = require(&apos;./webpack.config&apos;)var webpack = require(&apos;webpack&apos;)var WebpackDevServer = require(&apos;webpack-dev-server&apos;)var compiler = webpack(config)var ser">
+// webpack.server.js
+
+var config = require(&amp;#39;./webpack.config&amp;#39;)
+var webpack = require(&amp;#39;webpack&amp;#39;)
+var WebpackDevServer = require(&amp;#39;webpack-dev-server&amp;#39;)
+var compiler = w">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack2-server">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/22/webpack2-server/index.html">
 <meta property="og:site_name" content="青史成灰">
 <meta property="og:description" content="devServer
 
-12345678// webpack.server.jsvar config = require(&apos;./webpack.config&apos;)var webpack = require(&apos;webpack&apos;)var WebpackDevServer = require(&apos;webpack-dev-server&apos;)var compiler = webpack(config)var ser">
+// webpack.server.js
+
+var config = require(&amp;#39;./webpack.config&amp;#39;)
+var webpack = require(&amp;#39;webpack&amp;#39;)
+var WebpackDevServer = require(&amp;#39;webpack-dev-server&amp;#39;)
+var compiler = w">
 <meta property="og:updated_time" content="2017-04-24T11:31:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack2-server">
 <meta name="twitter:description" content="devServer
 
-12345678// webpack.server.jsvar config = require(&apos;./webpack.config&apos;)var webpack = require(&apos;webpack&apos;)var WebpackDevServer = require(&apos;webpack-dev-server&apos;)var compiler = webpack(config)var ser">
+// webpack.server.js
+
+var config = require(&amp;#39;./webpack.config&amp;#39;)
+var webpack = require(&amp;#39;webpack&amp;#39;)
+var WebpackDevServer = require(&amp;#39;webpack-dev-server&amp;#39;)
+var compiler = w">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -104,8 +116,15 @@
         
         <h3 id="devServer"><a href="#devServer" class="headerlink" title="devServer"></a>devServer</h3><blockquote>
 </blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.server.js</span></div><div class="line"></div><div class="line"><span class="selector-tag">var</span> config = require(<span class="string">'./webpack.config'</span>)</div><div class="line"><span class="selector-tag">var</span> webpack = require(<span class="string">'webpack'</span>)</div><div class="line"><span class="selector-tag">var</span> WebpackDevServer = require(<span class="string">'webpack-dev-server'</span>)</div><div class="line"><span class="selector-tag">var</span> compiler = webpack(config)</div><div class="line"></div><div class="line"><span class="selector-tag">var</span> server = new WebpackDevServer(compiler, devServer)</div></pre></td></tr></table></figure>
-<h4 id="devServer-clientLogLevel"><a href="#devServer-clientLogLevel" class="headerlink" title="devServer.clientLogLevel"></a>devServer.clientLogLevel</h4><p>string</p>
+<pre><code>// webpack.server.js
+
+var config = require(&#39;./webpack.config&#39;)
+var webpack = require(&#39;webpack&#39;)
+var WebpackDevServer = require(&#39;webpack-dev-server&#39;)
+var compiler = webpack(config)
+
+var server = new WebpackDevServer(compiler, devServer)
+</code></pre><h4 id="devServer-clientLogLevel"><a href="#devServer-clientLogLevel" class="headerlink" title="devServer.clientLogLevel"></a>devServer.clientLogLevel</h4><p>string</p>
 <blockquote>
 <p>Default: info,可选值有<code>none</code>, <code>error</code>, <code>warning</code>, <code>info</code><br>指定终端输出日志信息的等级, 设置为<code>none</code>, 表示什么日志都不输出。</p>
 </blockquote>
@@ -117,13 +136,17 @@
 <blockquote>
 <p>将哪些文件放到服务器上，默认使用当前工作目录。你可以像下面这样修改文件目录</p>
 </blockquote>
-<figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">contentBase: path.<span class="built_in">join</span>(<span class="variable">__dirname</span>, <span class="string">'public'</span>)</div><div class="line"></div><div class="line"><span class="comment">// 或则</span></div><div class="line">contentBase: [path.<span class="built_in">join</span>(<span class="variable">__dirname</span>, <span class="string">'public'</span>), path.<span class="built_in">join</span>(<span class="variable">__dirname</span>, <span class="string">'assets'</span>)]</div></pre></td></tr></table></figure>
-<h4 id="devServer-filename"><a href="#devServer-filename" class="headerlink" title="devServer.filename"></a>devServer.filename</h4><p>string</p>
+<pre><code>contentBase: path.join(__dirname, &#39;public&#39;)
+
+// 或则
+contentBase: [path.join(__dirname, &#39;public&#39;), path.join(__dirname, &#39;assets&#39;)]
+</code></pre><h4 id="devServer-filename"><a href="#devServer-filename" class="headerlink" title="devServer.filename"></a>devServer.filename</h4><p>string</p>
 <blockquote>
 <p>模块的编译默认是处于<code>lazy</code>模式，就是每次请求的时候才会编译。<br>通过该选项，可以配置每次请求的时候编译某个具体的文件，而不是编译所有的文件。</p>
 </blockquote>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">lazy:</span> <span class="literal">true</span>,</div><div class="line"><span class="string">filename:</span> <span class="string">'bundle.js'</span></div></pre></td></tr></table></figure>
-<p><strong><em>注意：该选项只有在<code>lazy: true</code>时才有效</em></strong></p>
+<pre><code>lazy: true,
+filename: &#39;bundle.js&#39;
+</code></pre><p><strong><em>注意：该选项只有在<code>lazy: true</code>时才有效</em></strong></p>
 <h4 id="devServer-noInfo"><a href="#devServer-noInfo" class="headerlink" title="devServer.noInfo"></a>devServer.noInfo</h4><p>boolean</p>
 <blockquote>
 <p>除了错误信息和警告信息，其他的信息都不在输出。</p>
@@ -159,12 +182,13 @@
 <p>在某些文件系统，比如NFS中，监听如果不能正常工作，可以开启该选项。</p>
 </blockquote>
 <p><code>poll: true</code></p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 每隔1000ms检查一次文件是否改动</span></div><div class="line"><span class="symbol">poll:</span> <span class="number">1000</span></div></pre></td></tr></table></figure>
-
+<pre><code>// 每隔1000ms检查一次文件是否改动
+poll: 1000
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-server/" data-id="cj39r8s8b002ug7o0svfptwxj" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-server/" data-id="cj39rbbfk002bh5o00r66n8t3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>

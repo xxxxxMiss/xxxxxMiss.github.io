@@ -43,9 +43,6 @@ output.filenamestring
     <link rel="icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
-  
   <link rel="stylesheet" href="/css/style.css">
   
 
@@ -131,15 +128,26 @@ output.filenamestring
 <ul>
 <li>多入口的时候，可以通过下面的形式来指定输出模块名称</li>
 </ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用entry中指定的key</span></div><div class="line"><span class="string">filename:</span> <span class="string">'[name].bundle.js'</span></div></pre></td></tr></table></figure>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用内部生成的id</span></div><div class="line"><span class="string">filename:</span> <span class="string">'[id].bundle.js'</span></div></pre></td></tr></table></figure>
-<figure class="highlight tcl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 使用每次编译自动生成的hash值</span></div><div class="line"><span class="keyword">filename</span>: <span class="string">'[name].[hash].bundle.js'</span></div></pre></td></tr></table></figure>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用基于模块内容生成的chunkhash</span></div><div class="line"><span class="string">filename:</span> <span class="string">'[chunkhash].bundle.js'</span></div></pre></td></tr></table></figure>
-<blockquote>
+<pre><code>// 使用entry中指定的key
+filename: &#39;[name].bundle.js&#39;
+</code></pre><pre><code>// 使用内部生成的id
+filename: &#39;[id].bundle.js&#39;
+</code></pre><pre><code># 使用每次编译自动生成的hash值
+filename: &#39;[name].[hash].bundle.js&#39;
+</code></pre><pre><code>// 使用基于模块内容生成的chunkhash
+filename: &#39;[chunkhash].bundle.js&#39;
+</code></pre><blockquote>
 <p>虽然该选项叫<code>filename</code>, 但是可以指定一个输出目录, 就像这样的<code>js/[name]/bundle.js</code>。<br>当使用了<code>[hash]</code>或者<code>[chunkhash]</code>占位符时，可以指定占位符的长度，默认是<code>20</code>位。</p>
 </blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">output</span>: &#123;</div><div class="line">  <span class="attribute">filename</span>: <span class="string">'[hash:10]'</span> //局部指定hash的长度 </div><div class="line">&#125;</div><div class="line"></div><div class="line">或者</div><div class="line"><span class="selector-tag">output</span>: &#123;</div><div class="line">  <span class="attribute">hashDigestLength</span>: <span class="number">15</span> // 全局指定hash的长度</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<table>
+<pre><code>output: {
+  filename: &#39;[hash:10]&#39; //局部指定hash的长度 
+}
+
+或者
+output: {
+  hashDigestLength: 15 // 全局指定hash的长度
+}
+</code></pre><table>
 <thead>
 <tr>
 <th>占位符</th>
@@ -163,21 +171,32 @@ output.filenamestring
 </blockquote>
 <p>我们已经知道，在<code>require.ensure(dependencies, callback, chunkName)</code>中可以指定一个<code>chunkName</code>参数</p>
 <ul>
-<li>如果指定了这个参数，那么在<code>output</code>中就可以这样来取得<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  output: &#123;</div><div class="line">    filename: '<span class="string">[chunkhash]</span>.<span class="string">[name]</span>.js',</div><div class="line">    chunkFilename: '<span class="string">[chunkhash]</span>.<span class="string">[name]</span>.js'</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>上面<code>[name]</code>占位符就是你在<code>require.ensure(dependencies, callback, chunkName)</code>中指定的那个chunkName。</p>
-<ul>
+<li>如果指定了这个参数，那么在<code>output</code>中就可以这样来取得<pre><code>module.exports = {
+output: {
+  filename: &#39;[chunkhash].[name].js&#39;,
+  chunkFilename: &#39;[chunkhash].[name].js&#39;
+}
+}
+</code></pre>上面<code>[name]</code>占位符就是你在<code>require.ensure(dependencies, callback, chunkName)</code>中指定的那个chunkName。</li>
 <li>如果在<code>require.ensure(dependencies, callback, chunkName)</code>中省略了这个<code>chunkName</code>参数，那么统一使用<code>output.chunkFilename</code>中指定的名称</li>
-<li>如果output中也没有指定<code>chunkFilename</code>选项，那么会使用<code>output.filename</code>中除了<code>[name]</code>占位符以外的占位符+<code>[id]</code>占位符作为模块名。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.export = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>如果output中也没有指定<code>chunkFilename</code>选项，那么会使用<code>output.filename</code>中除了<code>[name]</code>占位符以外的占位符+<code>[id]</code>占位符作为模块名。<pre><code>module.export = function(){
+return {
+  output: {
+    filename: &#39;[chunkhash].[name].js&#39;
+  }
+}
+}
+</code></pre>如上output配置，那么此时动态分割出来的模块名就是<code>[chunkhash].[id].js</code>。</li>
 </ul>
-<p>如上output配置，那么此时动态分割出来的模块名就是<code>[chunkhash].[id].js</code>。</p>
 <h3 id="output-path"><a href="#output-path" class="headerlink" title="output.path"></a>output.path</h3><blockquote>
 <p>指定编译后的模块输出目录, 既可以是相对路径，也可以是绝对路径</p>
 </blockquote>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 相对路径</span></div><div class="line"><span class="built_in">path</span>: <span class="string">'./dist'</span></div><div class="line"></div><div class="line"><span class="comment">// 绝对路径</span></div><div class="line"><span class="built_in">path</span>: <span class="built_in">path</span>.resolve(__dirname, <span class="string">'dist/assets'</span>)</div></pre></td></tr></table></figure>
-<h3 id="output-hashDigest"><a href="#output-hashDigest" class="headerlink" title="output.hashDigest"></a>output.hashDigest</h3><blockquote>
+<pre><code>// 相对路径
+path: &#39;./dist&#39;
+
+// 绝对路径
+path: path.resolve(__dirname, &#39;dist/assets&#39;)
+</code></pre><h3 id="output-hashDigest"><a href="#output-hashDigest" class="headerlink" title="output.hashDigest"></a>output.hashDigest</h3><blockquote>
 <p>指定hash算法返回的字符编码。默认<code>hex</code>。<br>nodejs中的<code>hash.digest([enconding])</code>支持的编码，此处都支持。<br><code>enconding</code>支持的有<code>hex</code>,<code>latin1</code>,<code>base64</code>。</p>
 </blockquote>
 <h3 id="output-pathinfo"><a href="#output-pathinfo" class="headerlink" title="output.pathinfo"></a>output.pathinfo</h3><p>boolean</p>
@@ -205,7 +224,7 @@ output.filenamestring
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-output/" data-id="cj39r8s87002rg7o06qjaea7y" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-output/" data-id="cj39rbbfb0020h5o06mou1kqt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>

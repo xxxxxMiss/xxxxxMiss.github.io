@@ -47,9 +47,6 @@ var变量生命周期
     <link rel="icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
-  
   <link rel="stylesheet" href="/css/style.css">
   
 
@@ -134,13 +131,24 @@ var变量生命周期
 <p>在声明和初始化阶段之后，赋值阶段之前，变量的值便是 <code>undefined</code> 并已经可以被使用了。</p>
 <p>在赋值阶段 <code>variable = &#39;value&#39;</code> 语句使变量接受了它的初始化值（步骤二）。</p>
 <p>这里的变量提升严格的说是指变量在函数作用域的开始位置就完成了声明和初始化阶段。在这里这两个阶段之间并没有任何的间隙。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>()&#123;</span></div><div class="line">   <span class="comment"> // 在这之前，就已经完成了变量的提升（经过了声明和初始化阶段，此时变量已经可以使用了，并且值为undefined）</span></div><div class="line">    console.<span class="built_in">log</span>(<span class="keyword">a</span>)<span class="comment"> // undefined</span></div><div class="line">    var <span class="keyword">a</span></div><div class="line">    <span class="keyword">a</span> = <span class="number">10</span><span class="comment"> // 赋值</span></div><div class="line">    console.<span class="built_in">log</span>(<span class="keyword">a</span>)<span class="comment"> // 10</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<h3 id="函数声明的生命周期"><a href="#函数声明的生命周期" class="headerlink" title="函数声明的生命周期"></a>函数声明的生命周期</h3><img src="/2017/04/05/variable-hoist/fun-lifecycle.png" alt="函数声明的生命周期" title="函数声明的生命周期">
+<pre><code>(function(){
+    // 在这之前，就已经完成了变量的提升（经过了声明和初始化阶段，此时变量已经可以使用了，并且值为undefined）
+    console.log(a) // undefined
+    var a
+    a = 10 // 赋值
+    console.log(a) // 10
+})()
+</code></pre><h3 id="函数声明的生命周期"><a href="#函数声明的生命周期" class="headerlink" title="函数声明的生命周期"></a>函数声明的生命周期</h3><img src="/2017/04/05/variable-hoist/fun-lifecycle.png" alt="函数声明的生命周期" title="函数声明的生命周期">
 <blockquote>
 <p>声明、初始化和赋值阶段在封闭的函数作用域的开头便立刻进行（只有一步）。 <code>funName()</code>可以在作用域中的任意位置被调用，这与其声明语句所在的位置无关（它甚至可以被放在程序的最底部）。</p>
 </blockquote>
-<figure class="highlight hy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="name">function</span> sumArray(<span class="name">array</span>) &#123;</div><div class="line">  return array.reduce(<span class="name"><span class="builtin-name">sum</span></span>) //<span class="number">9</span></div><div class="line">  function sum(<span class="name">a</span>, b) &#123;</div><div class="line">    return a + b</div><div class="line">  &#125;</div><div class="line">&#125;)([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>])</div></pre></td></tr></table></figure>
-<h3 id="let变量的生命周期"><a href="#let变量的生命周期" class="headerlink" title="let变量的生命周期"></a><code>let</code>变量的生命周期</h3><blockquote>
+<pre><code>(function sumArray(array) {
+  return array.reduce(sum) //9
+  function sum(a, b) {
+    return a + b
+  }
+})([1, 3, 5])
+</code></pre><h3 id="let变量的生命周期"><a href="#let变量的生命周期" class="headerlink" title="let变量的生命周期"></a><code>let</code>变量的生命周期</h3><blockquote>
 <p><code>let</code> 变量的处理方式不同于 <code>var</code>, 它的主要区分点在于<strong><em>声明</em></strong>和<strong><em>初始化</em></strong>阶段是分开的。<br><img src="/2017/04/05/variable-hoist/let-lifecycle.png" alt="let变量生命周期" title="let变量生命周期"><br>当解释器进入了一个包含 <code>let variable</code>语句的块级作用域中。这个变量立即通过了声明阶段，并在作用域内注册了它的名称（步骤一）。</p>
 </blockquote>
 <p>然后解释器继续逐行解析块语句。</p>
@@ -149,9 +157,24 @@ var变量生命周期
 <p>当解释器到达语句 <code>let variable</code>时，此时变量通过了初始化阶段（步骤二）。现在变量状态是初始化的并且访问它的值是 <code>undefined</code>。</p>
 <p>同时变量在此时也离开了<strong><em>临时死区</em></strong>。</p>
 <p>之后当到达赋值语句 <code>variable = &#39;value&#39;</code> 时，变量通过了赋值阶段（步骤三）。</p>
-<p>如果 JavaScript 遇到这样的语句 <code>let variable = &#39;value&#39;</code> ，那么变量会在这一条语句中同时经过初始化和赋值阶段。<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">let condition = <span class="literal">true</span><span class="comment">;</span></div><div class="line"><span class="keyword">if</span> (condition) &#123;</div><div class="line">    // 一但进入<span class="keyword">if</span>块作用域中，<span class="built_in">number</span>变量立即通过了声明阶段，此时<span class="built_in">number</span>变量处于暂存死区中</div><div class="line">    // 此时试图访问该变量会抛出 ReferenceError: <span class="built_in">number</span> is <span class="literal">not</span> defined.</div><div class="line">  // console.<span class="built_in">log</span>(<span class="built_in">number</span>)<span class="comment">; // =&gt; Throws ReferenceError</span></div><div class="line">  let <span class="built_in">number</span><span class="comment">;</span></div><div class="line">  console.<span class="built_in">log</span>(<span class="built_in">number</span>)<span class="comment">; // =&gt; undefined</span></div><div class="line">  <span class="built_in">number</span> = <span class="number">5</span><span class="comment">;</span></div><div class="line">  console.<span class="built_in">log</span>(<span class="built_in">number</span>)<span class="comment">; // =&gt; 5</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="name">function</span>()&#123;</div><div class="line">    const a = <span class="number">5</span></div><div class="line">    console.log(<span class="name">a</span>)</div><div class="line">    let a </div><div class="line">    console.log(<span class="name">a</span>)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<blockquote>
+<p>如果 JavaScript 遇到这样的语句 <code>let variable = &#39;value&#39;</code> ，那么变量会在这一条语句中同时经过初始化和赋值阶段。</p>
+<pre><code>let condition = true;
+if (condition) {
+    // 一但进入if块作用域中，number变量立即通过了声明阶段，此时number变量处于暂存死区中
+    // 此时试图访问该变量会抛出 ReferenceError: number is not defined.
+  // console.log(number); // =&gt; Throws ReferenceError
+  let number;
+  console.log(number); // =&gt; undefined
+  number = 5;
+  console.log(number); // =&gt; 5
+}
+</code></pre><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><pre><code>(function(){
+    const a = 5
+    console.log(a)
+    let a 
+    console.log(a)
+})()
+</code></pre><blockquote>
 <p>上面的例子不会有任何的输出，会抛出<code>Identifier &#39;a&#39; has already been declared</code>。抛出了这个错误是由于已经用<code>const</code>定义了一个变量<code>a</code>, 再次用<code>let</code>声明变量<code>a</code>抛出的错误。但是这个错误也说明了使用<code>let</code>声明的变量会存在<strong><em>变量提升</em></strong></p>
 </blockquote>
 <h3 id="let-var比较"><a href="#let-var比较" class="headerlink" title="let,var比较"></a><code>let</code>,<code>var</code>比较</h3><table>
@@ -190,20 +213,34 @@ var变量生命周期
 </tr>
 </tbody>
 </table>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="name">function</span>()&#123;</div><div class="line">    var i = <span class="number">1</span></div><div class="line">    console.log(<span class="name">i</span>)</div><div class="line">    // 会提升到var语句下面，但是由于已经声明了变量i</div><div class="line">    // 所以抛出Identifier <span class="symbol">'i</span>' has already been declared</div><div class="line">    let i = <span class="number">1</span></div><div class="line">    console.log(<span class="name">i</span>)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<h3 id="循环定义中的let作用域"><a href="#循环定义中的let作用域" class="headerlink" title="循环定义中的let作用域"></a>循环定义中的let作用域</h3><blockquote>
+<pre><code>(function(){
+    var i = 1
+    console.log(i)
+    // 会提升到var语句下面，但是由于已经声明了变量i
+    // 所以抛出Identifier &#39;i&#39; has already been declared
+    let i = 1
+    console.log(i)
+})()
+</code></pre><h3 id="循环定义中的let作用域"><a href="#循环定义中的let作用域" class="headerlink" title="循环定义中的let作用域"></a>循环定义中的let作用域</h3><blockquote>
 <p>循环体中是可以引用在for声明时用let定义的变量，尽管let不是出现在大括号之间.</p>
 </blockquote>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var <span class="built_in">i</span> = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (let <span class="built_in">i</span> = <span class="built_in">i</span>; <span class="built_in">i</span> &lt; <span class="number">10</span>; <span class="built_in">i</span>++) &#123;</div><div class="line">  console.log(i);  // 抛出`ReferenceError: i is not defined`。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="域作用规则"><a href="#域作用规则" class="headerlink" title="域作用规则"></a>域作用规则</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="built_in">let</span> expr1; expr2; expr3) statement</div></pre></td></tr></table></figure>
-<blockquote>
-<p>在for循环中，<code>expr1, expr2, expr3, statement</code>都被包含在一个隐藏的块作用域中。<br>所以上面的例子推荐写成如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>; </div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> l = i; l &lt; <span class="number">10</span>; l++) &#123;  </div><div class="line">　<span class="built_in">console</span>.log(l); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</blockquote>
+<pre><code>var i = 0;
+for (let i = i; i &lt; 10; i++) {
+  console.log(i);  // 抛出`ReferenceError: i is not defined`。
+}
+</code></pre><h4 id="域作用规则"><a href="#域作用规则" class="headerlink" title="域作用规则"></a>域作用规则</h4><pre><code>for (let expr1; expr2; expr3) statement
+</code></pre><blockquote>
+<p>在for循环中，<code>expr1, expr2, expr3, statement</code>都被包含在一个隐藏的块作用域中。<br>所以上面的例子推荐写成如下：</p>
+<pre><code>var i = 0; 
+for (let l = i; l &lt; 10; l++) {  
+　console.log(l); 
+}
+</code></pre></blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj39r8s7n0020g7o0kayed7xu" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj39rbbeo0015h5o0yfr582hi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>

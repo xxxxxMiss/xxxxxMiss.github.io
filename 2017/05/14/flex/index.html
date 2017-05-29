@@ -8,7 +8,19 @@
   <meta name="description" content="伸缩性flex
 用来控制伸缩容器额外空间如何沿着伸缩容器的布局轴成比例的分配给各个伸缩项目。
 
-123456789101112131415flex: none;等价于flex-grow: 0;flex-shrink: 0;flex-basis: auto;flex: 0 auto;或者flex: 0 1 auto;或者flex: initail;等价于(也就是说他们单属性的默认值值分别是)flex">
+flex: none;
+等价于
+flex-grow: 0;
+flex-shrink: 0;
+flex-basis: auto;
+
+flex: 0 auto;
+或者
+flex: 0 1 auto;
+或者
+flex: initail;
+等价于(也就是说他们单属性的默认值值分别是)
+flex-grow: 0;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flex布局">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/05/14/flex/index.html">
@@ -16,23 +28,44 @@
 <meta property="og:description" content="伸缩性flex
 用来控制伸缩容器额外空间如何沿着伸缩容器的布局轴成比例的分配给各个伸缩项目。
 
-123456789101112131415flex: none;等价于flex-grow: 0;flex-shrink: 0;flex-basis: auto;flex: 0 auto;或者flex: 0 1 auto;或者flex: initail;等价于(也就是说他们单属性的默认值值分别是)flex">
+flex: none;
+等价于
+flex-grow: 0;
+flex-shrink: 0;
+flex-basis: auto;
+
+flex: 0 auto;
+或者
+flex: 0 1 auto;
+或者
+flex: initail;
+等价于(也就是说他们单属性的默认值值分别是)
+flex-grow: 0;">
 <meta property="og:updated_time" content="2017-05-14T05:10:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flex布局">
 <meta name="twitter:description" content="伸缩性flex
 用来控制伸缩容器额外空间如何沿着伸缩容器的布局轴成比例的分配给各个伸缩项目。
 
-123456789101112131415flex: none;等价于flex-grow: 0;flex-shrink: 0;flex-basis: auto;flex: 0 auto;或者flex: 0 1 auto;或者flex: initail;等价于(也就是说他们单属性的默认值值分别是)flex">
+flex: none;
+等价于
+flex-grow: 0;
+flex-shrink: 0;
+flex-basis: auto;
+
+flex: 0 auto;
+或者
+flex: 0 1 auto;
+或者
+flex: initail;
+等价于(也就是说他们单属性的默认值值分别是)
+flex-grow: 0;">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -108,14 +141,42 @@
         <h2 id="伸缩性flex"><a href="#伸缩性flex" class="headerlink" title="伸缩性flex"></a>伸缩性flex</h2><blockquote>
 <p>用来控制伸缩容器额外空间如何沿着伸缩容器的布局轴成比例的分配给各个伸缩项目。</p>
 </blockquote>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: none;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">0</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">0</span>;</div><div class="line"><span class="attribute">flex-basis</span>: auto;</div><div class="line"></div><div class="line"><span class="attribute">flex</span>: <span class="number">0</span> auto;</div><div class="line">或者</div><div class="line"><span class="attribute">flex</span>: <span class="number">0</span> <span class="number">1</span> auto;</div><div class="line">或者</div><div class="line"><span class="attribute">flex</span>: initail;</div><div class="line">等价于(也就是说他们单属性的默认值值分别是)</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">0</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: auto;</div></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: auto;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: auto;</div></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: <span class="number">0%</span>;</div></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: <span class="number">2</span> <span class="number">100px</span>;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">2</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: <span class="number">100px</span>;</div><div class="line">`</div></pre></td></tr></table></figure>
+<pre><code>flex: none;
+等价于
+flex-grow: 0;
+flex-shrink: 0;
+flex-basis: auto;
+
+flex: 0 auto;
+或者
+flex: 0 1 auto;
+或者
+flex: initail;
+等价于(也就是说他们单属性的默认值值分别是)
+flex-grow: 0;
+flex-shrink: 1;
+flex-basis: auto;
+</code></pre><pre><code>flex: auto;
+等价于
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: auto;
+</code></pre><pre><code>flex: 1;
+等价于
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 0%;
+</code></pre><pre><code>flex: 2 100px;
+等价于
+flex-grow: 2;
+flex-shrink: 1;
+flex-basis: 100px;
+`
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj39r8s6e000kg7o02v0grcqg" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj39rbbdk0004h5o0i3j3rzg4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
