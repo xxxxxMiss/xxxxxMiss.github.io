@@ -124,24 +124,24 @@ break">
 <h2 id="关于ASI最需要注意的坑"><a href="#关于ASI最需要注意的坑" class="headerlink" title="关于ASI最需要注意的坑"></a>关于ASI最需要注意的坑</h2><blockquote>
 <p>ASI真正需要注意的坑只有两个，restricted productions是其一，另一个就是当下一行开头是 <code>(</code>, <code>[</code> , <code>/</code> 这三个字符之一的时候：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">(function()&#123;...&#125;())</div></pre></td></tr></table></figure>
-<p>会被解析成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = b(function()&#123;...&#125;())</div></pre></td></tr></table></figure></p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">(function()<span class="meta">&#123;...&#125;</span>())</div></pre></td></tr></table></figure>
+<p>会被解析成<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = b(function()<span class="meta">&#123;...&#125;</span>())</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>就是说<code>()</code>会被看着是在调用函数b。<br>同理，<code>[]</code>会被看着实在获取b的属性。<br>斜杠<code>/</code>则会被当成除号：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">/Error/i.test(str) &amp;&amp; doSomething()</div></pre></td></tr></table></figure>
-<p>会被解析成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = b / Error / i.test(str) &amp;&amp; doSomething()</div></pre></td></tr></table></figure></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">a</span> = <span class="selector-tag">b</span></div><div class="line">/Error/<span class="selector-tag">i</span>.test(str) &amp;&amp; doSomething()</div></pre></td></tr></table></figure>
+<p>会被解析成<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">a</span> = <span class="selector-tag">b</span> / Error / <span class="selector-tag">i</span>.test(str) &amp;&amp; doSomething()</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>要躲开这个坑，其实真的挺简单，只要尽量别用这三个字符作为一行开头就行了。事实上遇到比较多的也只有括号开头。真的避不开的话，可以在行头手动加个分号：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">;(function()&#123;...&#125;())</div></pre></td></tr></table></figure>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">;(function()<span class="meta">&#123;...&#125;</span>())</div></pre></td></tr></table></figure>
 <p>额外的一点是在for循环声明里面的分号是永远不能省的，ASI不会在for循环声明中插分号，但一般正常人不会把for的声明分三行写吧…</p>
 <p><a href="https://www.zhihu.com/question/21076930" target="_blank" rel="external">原文链接</a><br><a href="https://cnodejs.org/topic/56dbbd25820d3c9b3d63e369" target="_blank" rel="external">参考文章</a><br><a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="external">ECMA规范文档</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/js-ASI/" data-id="cj392kb8s00068zo0vr8hfnr7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/js-ASI/" data-id="cj39q3pga0006f1o048wwtk1z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>

@@ -121,7 +121,7 @@ resolve.aliasobject
 <blockquote>
 <p>配置模块的别名,这样当使用<code>import</code>或者<code>require</code>就可以使用别名来代替冗长的相对路径。<br>比如你<code>import</code>某一路径下的一个js文件:<code>import ../../src/js/index.js</code><br>如果没有配置别名，那么你每次引入<code>src/js</code>这个路径下的某个js,都需要写很长的路径,通过配置别名，你可以简化书写。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  resolve: &#123;</div><div class="line">    alias: &#123;</div><div class="line">      js: path.resolve(__dirname, &apos;src/js&apos;),</div><div class="line">      css: path.resolve(__dirname, &apos;src/css&apos;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  <span class="built_in">resolve</span>: &#123;</div><div class="line">    alia<span class="variable">s:</span> &#123;</div><div class="line">      <span class="keyword">j</span><span class="variable">s:</span> path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src/js'</span>),</div><div class="line">      <span class="keyword">cs</span><span class="variable">s:</span> path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src/css'</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>没有配置别名之前<br><code>import { getData } from &#39;../../src/js/fetData&#39;</code><br>配置别名后<br><code>import { getData } from &#39;js/fetData&#39;</code></p>
 <p>在配置别名，关于填写文件路径的各种写法，可以移步<a href="https://webpack.js.org/configuration/resolve/" target="_blank" rel="external">这里</a></p>
 <h4 id="resolve-aliasFields"><a href="#resolve-aliasFields" class="headerlink" title="resolve.aliasFields"></a>resolve.aliasFields</h4><p>string</p>
@@ -145,16 +145,16 @@ resolve.aliasobject
 <h4 id="resolve-mainFields"><a href="#resolve-mainFields" class="headerlink" title="resolve.mainFields"></a>resolve.mainFields</h4><blockquote>
 <p>当你引入某一个包时，使用包下面的哪一个文件。<br>配置: <code>mainFields: [&#39;module&#39;, &#39;browser&#39;, &#39;main&#39;]</code>，具体看例子解释。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import * as D3 from &apos;d3&apos;</div></pre></td></tr></table></figure>
-<p>在<code>d3</code>这个<code>package.json</code>中，有这几个选项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&quot;main&quot;: &quot;build/d3.node.js&quot;, // 适用node环境</div><div class="line">&quot;browser&quot;: &quot;build/d3.js&quot;, // 适用浏览器环境</div><div class="line">&quot;module&quot;: &quot;index&quot; // 都支持</div></pre></td></tr></table></figure></p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> D3 <span class="keyword">from</span> <span class="string">'d3'</span></div></pre></td></tr></table></figure>
+<p>在<code>d3</code>这个<code>package.json</code>中，有这几个选项<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"main"</span>: <span class="string">"build/d3.node.js"</span>, <span class="comment">// 适用node环境</span></div><div class="line"><span class="string">"browser"</span>: <span class="string">"build/d3.js"</span>, <span class="comment">// 适用浏览器环境</span></div><div class="line"><span class="string">"module"</span>: <span class="string">"index"</span> <span class="comment">// 都支持</span></div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>以上的几个选项可以分别支持不同的环境，你应该选择你需要的环境选项，通过该选项的配置，可以满足你的需求。</p>
 </blockquote>
 <h4 id="resolve-mainFiles"><a href="#resolve-mainFiles" class="headerlink" title="resolve.mainFiles"></a>resolve.mainFiles</h4><blockquote>
 <p>当解析到的文件是一个目录是，如何处理该目录。<br>默认：<code>mainFiles: [&#39;index&#39;]</code>。<br>关于该选项的具体含义，只要理解了node中包的寻找机制，就能明白该选项的含义。<br><a href="https://nodejs.org/dist/latest-v7.x/docs/api/modules.html" target="_blank" rel="external">node包寻找机制</a></p>
 </blockquote>
-<p>这里举例简单说明：<br>index.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import * as fns from &apos;./js&apos; //js是一个文件夹</div></pre></td></tr></table></figure></p>
-<p>webpack.config.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">  mainFields: [&apos;canvas&apos;, &apos;utils&apos;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里举例简单说明：<br>index.js<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fns <span class="keyword">from</span> <span class="string">'./js'</span> <span class="comment">//js是一个文件夹</span></div></pre></td></tr></table></figure></p>
+<p>webpack.config.js<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolve</span>: &#123;</div><div class="line">  <span class="attribute">mainFields</span>: [<span class="string">'canvas'</span>, <span class="string">'utils'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>当webpack解析到<code>js</code>是一个文件夹时，如果你的<code>mainFields</code>配置如上，那么webpack会去<code>js</code>文件夹下寻找<code>canvas.js</code>，如果没有找到,那么继续寻找<code>js</code>文件夹下的<code>utils.js</code>，如果还没有找到，抛出错误<code>Module not found: Error: &#39;xx&#39; in &#39;xx&#39;</code></p>
 </blockquote>
@@ -172,7 +172,7 @@ resolve.aliasobject
 <h3 id="resolve-plugins"><a href="#resolve-plugins" class="headerlink" title="resolve.plugins"></a>resolve.plugins</h3><blockquote>
 <p>添加目录命名的一些额外的插件列表。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">  plugins: [new DirectoryNamedWebpackPlugin()]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolve</span>: &#123;</div><div class="line">  <span class="attribute">plugins</span>: [new <span class="built_in">DirectoryNamedWebpackPlugin</span>()]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="resolveLoader-prop"><a href="#resolveLoader-prop" class="headerlink" title="resolveLoader[prop]"></a>resolveLoader[prop]</h3><p>object</p>
 <blockquote>
 <p>这个选项拥有的属性配置和上面的<code>resolve</code>是一样的，不过他<strong>只能用来</strong>配置webpack的<code>loader</code>包，默认值如下</p>
@@ -180,13 +180,13 @@ resolve.aliasobject
 <h3 id="resolveLoader-moduleExtensions"><a href="#resolveLoader-moduleExtensions" class="headerlink" title="resolveLoader.moduleExtensions"></a>resolveLoader.moduleExtensions</h3><blockquote>
 <p>用来配置<code>loader</code>的扩展名，默认是一个空数组。比如你使用<code>loader</code>的时候，想省去后缀<code>-loader</code>,那么你可以如下配置</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">resolveLoader: &#123;</div><div class="line">  moduleExtensions: [&apos;-loader&apos;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolveLoader</span>: &#123;</div><div class="line">  <span class="attribute">moduleExtensions</span>: [<span class="string">'-loader'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>NOTE: 在<code>webpack1.x</code>，可以省去<code>-loader</code>后缀，webpack默认会加上。但是在<code>webpack2.x</code>，必须通过上面的这个配置才可以省去。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-resolve/" data-id="cj392kbad00278zo0sds9mmhd" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-resolve/" data-id="cj39q3phx0025f1o0lv0xj1fj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>

@@ -120,7 +120,7 @@
 <p>一个后台进程的运行无需接受键盘的输入。后台进程的最大的好处就是无需等待当前进程处理完毕就可以执行其他的命令。如果某个后台进程需要接受一个输入，那么它会处于一个暂停状态直到它被切换到前后进程并且接受到从键盘输入的数据。</p>
 <h3 id="启动后台进程"><a href="#启动后台进程" class="headerlink" title="启动后台进程"></a>启动后台进程</h3><p>启动一个后台进程最简单的方式就是在一个命令的末尾加上<code>&amp;</code>符号。</p>
 </blockquote>
-<p>比如在终端下输入<code>ls -l &amp;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ls -l &amp;</div><div class="line">[2] 30721  // 第一行</div><div class="line">[1]   Done                    ls -l  // 第二行</div><div class="line">$ // 第三行</div></pre></td></tr></table></figure></p>
+<p>比如在终端下输入<code>ls -l &amp;</code><br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ls -l &amp;</div><div class="line">[<span class="number">2</span>] <span class="number">30721</span>  <span class="comment">// 第一行</span></div><div class="line">[<span class="number">1</span>]   Done                    ls -l  <span class="comment">// 第二行</span></div><div class="line">$ <span class="comment">// 第三行</span></div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>其中的第一行的<code>[2]</code>表示job number,它是用来操作前后台进程切换的。<br>第二行表示<code>ls -l</code>命令后台进程成功的执行完成<br>第三行是等待下一个命令的输入</p>
 </blockquote>
@@ -160,7 +160,7 @@
 <blockquote>
 <p>以上的这些选项，<code>-x</code>, <code>-e</code>列出了一大堆信息，包括系统进程的，具体什么东西目前不是很清楚（TODO）。<br><code>-u</code>在mac下测试不支持，或许是打开方式不对。。。</p>
 </blockquote>
-<p>通过<code>ps -f</code>会在终端下显示如下信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</div><div class="line">501 26649 26648   0 四12上午 ttys000    0:00.68 -bash</div><div class="line">501 11212 11210   0 15 417  ttys001    0:00.31 -bash</div><div class="line">501 11267 11266   0 15 417  ttys002    0:00.11 -bash</div><div class="line">501 11545 11544   0 15 417  ttys003    0:00.19 -bash</div><div class="line">501 24268 24267   0 三12下午 ttys004    0:00.39 -bash</div><div class="line">501 16770 16766   0 一11上午 ttys007    0:00.92 -bash</div></pre></td></tr></table></figure></p>
+<p>通过<code>ps -f</code>会在终端下显示如下信息<br><figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</div><div class="line">501<span class="number"> 26649 </span>26648  <span class="number"> 0 </span>四12上午 ttys000    0:00.68 -bash</div><div class="line">501<span class="number"> 11212 </span>11210  <span class="number"> 0 </span>15<span class="number"> 417 </span> ttys001    0:00.31 -bash</div><div class="line">501<span class="number"> 11267 </span>11266  <span class="number"> 0 </span>15<span class="number"> 417 </span> ttys002    0:00.11 -bash</div><div class="line">501<span class="number"> 11545 </span>11544  <span class="number"> 0 </span>15<span class="number"> 417 </span> ttys003    0:00.19 -bash</div><div class="line">501<span class="number"> 24268 </span>24267  <span class="number"> 0 </span>三12下午 ttys004    0:00.39 -bash</div><div class="line">501<span class="number"> 16770 </span>16766  <span class="number"> 0 </span>一11上午 ttys007    0:00.92 -bash</div></pre></td></tr></table></figure></p>
 <p>关于以上每列所代表的含义如下:</p>
 <table>
 <thead>
@@ -211,15 +211,15 @@
 <li>通过<code>kill pid</code></li>
 </ul>
 </blockquote>
-<p>举例如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// ①</div><div class="line">$ps -f</div><div class="line">501 16770 16766   0 一11上午 ttys007    0:00.92 -bash</div><div class="line">// ②</div><div class="line">$kill 16770</div></pre></td></tr></table></figure></p>
-<p>但是有时候通过<code>kill pid</code>并不能终止一个进程，那么此时可以加个参数<code>-9</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$kill -9 16770</div></pre></td></tr></table></figure></p>
+<p>举例如下<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ①</span></div><div class="line"><span class="meta"><span class="meta-keyword">$ps</span> -f</span></div><div class="line"><span class="number">501</span> <span class="number">16770</span> <span class="number">16766</span>   <span class="number">0</span> 一<span class="number">11</span>上午 ttys007    <span class="number">0</span>:<span class="number">00.92</span> -bash</div><div class="line"><span class="comment">// ②</span></div><div class="line"><span class="meta"><span class="meta-keyword">$kill</span> 16770</span></div></pre></td></tr></table></figure></p>
+<p>但是有时候通过<code>kill pid</code>并不能终止一个进程，那么此时可以加个参数<code>-9</code>:<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">$kill</span> -9 16770</span></div></pre></td></tr></table></figure></p>
 <h2 id="父进程和子进程"><a href="#父进程和子进程" class="headerlink" title="父进程和子进程"></a>父进程和子进程</h2><blockquote>
 <p>在<code>unix</code>或者<code>linux</code>系统中, 每个进程会被分配2个id，<code>pid</code>(process id), <code>ppid</code>(parent process id), 每个用户进程都会有一个父进程。</p>
 </blockquote>
 <h2 id="常驻进程-Daemon-Processes"><a href="#常驻进程-Daemon-Processes" class="headerlink" title="常驻进程(Daemon Processes)"></a>常驻进程(Daemon Processes)</h2><blockquote>
 <p>常驻进程作为系统级别的进程，以<code>root</code>权限运行，为其他的进程服务。常驻进程是无法通过终端来控制的。你通过<code>ps -ef</code>来查看进程信息，可以看到所有的常驻进程的<code>tty</code>列显示的都是<code>?</code></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ps -ef</div><div class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</div><div class="line">0     1     0   0 18 217    ??        92:25.03 /sbin/launchd</div></pre></td></tr></table></figure>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ps -ef</div><div class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</div><div class="line">0    <span class="number"> 1 </span>   <span class="number"> 0 </span> <span class="number"> 0 </span>18<span class="number"> 217 </span>   ??        92:25.03 /sbin/launchd</div></pre></td></tr></table></figure>
 <h2 id="其他的一些进程"><a href="#其他的一些进程" class="headerlink" title="其他的一些进程"></a>其他的一些进程</h2><blockquote>
 <p>….(不列了)</p>
 </blockquote>
@@ -230,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj392kb9b000t8zo0cir4yjz9" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj39q3pgr000hf1o0150x2zg0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>

@@ -243,12 +243,12 @@ n &amp;lt;&amp;amp; m
 <h2 id="dev-null-文件"><a href="#dev-null-文件" class="headerlink" title="/dev/null 文件"></a>/dev/null 文件</h2><blockquote>
 <p>如果希望执行某个命令，但是又不希望在屏幕上输出结果，那么可以将输出重定向到/dev/null。<br>/dev/null 是一个特殊的文件，写入到它的内容都会被丢弃；如果尝试从该文件读取内容，那么什么也读不到。但是 /dev/null 文件非常有用，将命令的输出重定向到它，会起到”禁止输出”的效果。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">屏蔽stdout和stderr //？？？？？？未测试成功</div><div class="line">command &gt; /dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">屏蔽<span class="keyword">stdout</span>和<span class="keyword">stderr</span><span class="comment"> //？？？？？？未测试成功</span></div><div class="line"><span class="keyword">command</span> &gt; /<span class="title">dev</span>/<span class="title">null</span> <span class="title">2</span>&gt;&amp;<span class="title">1</span></div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/" data-id="cj392kb9j00128zo0fysz2lp1" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/" data-id="cj39q3phd0014f1o0bet2mtin" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
