@@ -17,7 +17,7 @@
 返回一个由给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for…in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 一个 for-in 循环还会枚举其原型链上的属性）。
 
 通过例子来看下什么叫“和for…in”顺序一致：123456789// 注意，这并不是类数组var obj = &amp;#123;    100: &apos;a&apos;,    2: &apos;b&apos;,">
-<meta property="og:updated_time" content="2017-05-21T02:59:09.000Z">
+<meta property="og:updated_time" content="2017-05-29T18:20:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Object类方法之keys()">
 <meta name="twitter:description" content="Object.keys()
@@ -154,11 +154,29 @@
 <li>通过<code>Object(str)</code>将一个字符串转化为类数组对象了，其实这也就是为什么平时我们可以对一个原始类型的字符串使用<code>length</code>属性，其实真正的是将该字符串转化为对应的引用类型，再去使用该引用类型上的<code>length</code>属性。</li>
 <li>一般情况下，我们取字符串某个位置上的字符，可能会这样<code>str.charAt(index)</code>。通过上面的例子可以看出还可以按照数组取值的方式来。比如<code>hello[0]</code>。</li>
 </ul>
+<h2 id="symbol作为对象的属性"><a href="#symbol作为对象的属性" class="headerlink" title="symbol作为对象的属性"></a>symbol作为对象的属性</h2><blockquote>
+<p>js中对象的定义就是：一些属性的集合。这个属性，包括2种，一种是普通的字符串（包括空字符串），另一种就是symbol。这里需要注意的就是：当使用symbol作为对象的属性时，那么<code>for in</code>循环和<code>Object.keys</code>是不会列出这些symbol属性的。如果要获取symbol属性的值，那么可以通过以下2种方法：</p>
+</blockquote>
+<ul>
+<li>Object.getOwnPropertySymbols()</li>
+<li>Reflect.ownKeys()</li>
+</ul>
+<h3 id="Object-getOwnPropertySymbols"><a href="#Object-getOwnPropertySymbols" class="headerlink" title="Object.getOwnPropertySymbols"></a>Object.getOwnPropertySymbols</h3><blockquote>
+<p>返回一个对象自有的symbol属性组成的数组。因为所有的对象都没有初始化的symbol属性，所以默认情况下它会返回一个空数组。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertySymbols(obj)) <span class="comment">// []</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> symbol = <span class="built_in">Symbol</span>(<span class="string">'s'</span>)</div><div class="line">obj[symbol] = <span class="string">'ss'</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertySymbols(obj)) <span class="comment">// [Symbol(s)]</span></div></pre></td></tr></table></figure>
+<h3 id="Reflect-ownKeys"><a href="#Reflect-ownKeys" class="headerlink" title="Reflect.ownKeys"></a>Reflect.ownKeys</h3><blockquote>
+<p>返回一个对象所有的自有属性组成的数组。<br>其实就相当于Object.getOwnPropertyNames(target).cancat(Object.getOwnPropertySymbols())</p>
+</blockquote>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Reflect.ownKeys(&#123;z: <span class="number">3</span>, y: <span class="number">2</span>, x: <span class="number">1</span>&#125;); <span class="regexp">//</span> [ <span class="string">"z"</span>, <span class="string">"y"</span>, <span class="string">"x"</span> ]</div><div class="line">Reflect.ownKeys([]); <span class="regexp">//</span> [<span class="string">"length"</span>]</div><div class="line"></div><div class="line">var sym = Symbol.<span class="keyword">for</span>(<span class="string">'comet'</span>);</div><div class="line">var sym2 = Symbol.<span class="keyword">for</span>(<span class="string">'meteor'</span>);</div><div class="line">var obj = &#123;[sym]: <span class="number">0</span>, <span class="string">'str'</span>: <span class="number">0</span>, <span class="string">'773'</span>: <span class="number">0</span>, <span class="string">'0'</span>: <span class="number">0</span>,</div><div class="line">           [sym2]: <span class="number">0</span>, <span class="string">'-1'</span>: <span class="number">0</span>, <span class="string">'8'</span>: <span class="number">0</span>, <span class="string">'second str'</span>: <span class="number">0</span>&#125;;</div><div class="line">Reflect.ownKeys(obj);</div><div class="line"><span class="regexp">//</span> [ <span class="string">"0"</span>, <span class="string">"8"</span>, <span class="string">"773"</span>, <span class="string">"str"</span>, <span class="string">"-1"</span>, <span class="string">"second str"</span>, Symbol(comet), Symbol(meteor) ]</div><div class="line"><span class="regexp">//</span> Indexes <span class="keyword">in</span> numeric order, </div><div class="line"><span class="regexp">//</span> strings <span class="keyword">in</span> insertion order, </div><div class="line"><span class="regexp">//</span> symbols <span class="keyword">in</span> insertion order</div></pre></td></tr></table></figure>
+<blockquote>
+<p>观察上面的例子，需要注意的是：当一个对象的属性由各种类型的字符串和symbol组成时，返回的数组元素按照这样的顺序来排列：索引字符串（从0开始，-1被列入字符串属性）属性按照从小到大，其次是字符串属性按照最初插入的顺序，最后才是symbol属性按照最初插入的顺序。</p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj39rfl9q0004ijo0f3xnnh33" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj3agm0ju0001vko0108ybicg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
