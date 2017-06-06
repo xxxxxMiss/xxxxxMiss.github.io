@@ -10,8 +10,7 @@
 
 
 一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
-
-在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA">
+在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RegExp">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/index.html">
@@ -21,9 +20,8 @@
 
 
 一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
-
-在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA">
-<meta property="og:updated_time" content="2017-06-06T17:49:57.000Z">
+在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
+<meta property="og:updated_time" content="2017-06-06T17:51:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RegExp">
 <meta name="twitter:description" content="Character Classes or Character Sets (字符类, 字符集合)
@@ -31,8 +29,7 @@
 
 
 一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
-
-在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA">
+在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
@@ -118,16 +115,11 @@
 <p>在正则表达式中，字符类就是用一对方括号<code>[]</code>包裹你要匹配的字符。需要注意以下几点：</p>
 </blockquote>
 <ul>
-<li><p>一个字符类仅仅匹配一个单字符。如<code>/gr[ae]/y</code>, 只会匹配<code>gray</code>, <code>grey</code>, 不会匹配<code>graey</code>。</p>
-</li>
-<li><p>在字符类中，可以使用连接符<code>-</code>来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如<code>/[0-9a-fA-F]/</code>,并且字符的顺序是无关紧要的。也就是说，你可以用<code>/[0-9a-fA-F]/</code>, <code>/[a-f0-9A-F]/</code>等都可以用来表示一个16进制的单字符。</p>
-</li>
-<li><p>在字符类中除了 <code>\</code>, <code>^</code>, <code>-</code>外，所有的元字符都是普通的字符，不需要转义。当然了，你非要对这些元字符转义，也是没问题的，只是减少了可读性。就是说，原本一些有特殊意义的字符，用方括号包裹之后，就失去了它原本特殊的含义而变成了一个普通的字符。</p>
-</li>
-<li><p>还有一个比较特别的就是闭合方括号<code>]</code>。如<code>[]x]</code>, <code>[^]x]</code>等这些含有未转义的<code>]</code>正则，在不同的语言中可能会有不同的情况。以上列举的这2种情况，在javascript中是不能正常工作的。例如在ruby中，空的字符类<code>[]</code>被视为一个错误。 还有就是方括号中嵌套方括号，这时也需要注意的,如<code>/[-.*+?^${}()|[\]\/\\]/g</code>。</p>
-</li>
-<li><p>所以综上所述，对于字符类中的<code>]</code>, <code>\</code>, <code>^</code>, <code>-</code>，如果要把他们当做普通字符使用，最好都转义。</p>
-</li>
+<li>一个字符类仅仅匹配一个单字符。如<code>/gr[ae]/y</code>, 只会匹配<code>gray</code>, <code>grey</code>, 不会匹配<code>graey</code>。<br><br></li>
+<li>在字符类中，可以使用连接符<code>-</code>来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如<code>/[0-9a-fA-F]/</code>,并且字符的顺序是无关紧要的。也就是说，你可以用<code>/[0-9a-fA-F]/</code>, <code>/[a-f0-9A-F]/</code>等都可以用来表示一个16进制的单字符。<br><br></li>
+<li>在字符类中除了 <code>\</code>, <code>^</code>, <code>-</code>外，所有的元字符都是普通的字符，不需要转义。当然了，你非要对这些元字符转义，也是没问题的，只是减少了可读性。就是说，原本一些有特殊意义的字符，用方括号包裹之后，就失去了它原本特殊的含义而变成了一个普通的字符。<br><br></li>
+<li>还有一个比较特别的就是闭合方括号<code>]</code>。如<code>[]x]</code>, <code>[^]x]</code>等这些含有未转义的<code>]</code>正则，在不同的语言中可能会有不同的情况。以上列举的这2种情况，在javascript中是不能正常工作的。例如在ruby中，空的字符类<code>[]</code>被视为一个错误。 还有就是方括号中嵌套方括号，这时也需要注意的,如<code>/[-.*+?^${}()|[\]\/\\]/g</code>。<br><br></li>
+<li>所以综上所述，对于字符类中的<code>]</code>, <code>\</code>, <code>^</code>, <code>-</code>，如果要把他们当做普通字符使用，最好都转义。</li>
 </ul>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/[.*?+]/</span>.test(<span class="string">'.'</span>) <span class="regexp">//</span> true</div><div class="line"></div><div class="line"><span class="regexp">/[.*?+]/</span>.test(<span class="string">'a'</span>) <span class="regexp">//</span> false</div></pre></td></tr></table></figure>
 <h2 id="Negated-Character-Classes-（否定的字符类）"><a href="#Negated-Character-Classes-（否定的字符类）" class="headerlink" title="Negated Character Classes （否定的字符类）"></a>Negated Character Classes （否定的字符类）</h2><blockquote>
@@ -173,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3lv2anf0000ivo01cap9fnu" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3lv3m1a000gjqo044agyvyq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
