@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>RegExp | 青史成灰</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Character Classes or Character Sets (字符类, 字符集合)
+在正则表达式中，字符类就是用一对方括号[]包裹你要匹配的字符。需要注意以下几点：
+
+
+一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
+在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RegExp">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/index.html">
+<meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="Character Classes or Character Sets (字符类, 字符集合)
+在正则表达式中，字符类就是用一对方括号[]包裹你要匹配的字符。需要注意以下几点：
+
+
+一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
+在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
+<meta property="og:updated_time" content="2017-06-06T06:56:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RegExp">
+<meta name="twitter:description" content="Character Classes or Character Sets (字符类, 字符集合)
+在正则表达式中，字符类就是用一对方括号[]包裹你要匹配的字符。需要注意以下几点：
+
+
+一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
+在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
+  
+    <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">青史成灰</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Every journey begins with the first step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xxxxxmiss.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><!-- id="post-variable-hoist" -->
+<article id="post-RegExp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/05/RegExp/" class="article-date">
+  <time datetime="2017-06-05T03:35:04.000Z" itemprop="datePublished">2017-06-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RegExp
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="Character-Classes-or-Character-Sets-字符类-字符集合"><a href="#Character-Classes-or-Character-Sets-字符类-字符集合" class="headerlink" title="Character Classes or Character Sets (字符类, 字符集合)"></a>Character Classes or Character Sets (字符类, 字符集合)</h2><blockquote>
+<p>在正则表达式中，字符类就是用一对方括号<code>[]</code>包裹你要匹配的字符。需要注意以下几点：</p>
+</blockquote>
+<ul>
+<li>一个字符类仅仅匹配一个单字符。如<code>/gr[ae]/y</code>, 只会匹配<code>gray</code>, <code>grey</code>, 不会匹配<code>graey</code>。</li>
+<li>在字符类中，可以使用连接符<code>-</code>来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如<code>/[0-9a-fA-F]/</code>,并且字符的顺序是无关紧要的。也就是说，你可以用<code>/[0-9a-fA-F]/</code>, <code>/[a-f0-9A-F]/</code>等都可以用来表示一个16进制的单字符。</li>
+<li>在字符类中除了 <code>\</code>, <code>^</code>, <code>-</code>外，所有的元字符都是普通的字符，不需要转义。当然了，你非要对这些元字符转义，也是没问题的，只是减少了可读性。就是说，原本一些有特殊意义的字符，用方括号包裹之后，就失去了它原本特殊的含义而变成了一个普通的字符。</li>
+<li>还有一个比较特别的就是闭合方括号<code>]</code>。如<code>[]x]</code>, <code>[^]x]</code>等这些含有未转义的<code>]</code>正则，在不同的语言中可能会有不同的情况。以上列举的这2种情况，在javascript中是不能正常工作的。例如在ruby中，空的字符类<code>[]</code>被视为一个错误。 还有就是方括号中嵌套方括号，这时也需要注意的,如<code>/[-.*+?^${}()|[\]\/\\]/g</code>。</li>
+<li>所以综上所述，对于字符类中的<code>]</code>, <code>\</code>, <code>^</code>, <code>-</code>，如果要把他们当做普通字符使用，最好都转义。</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/[.*?+]/</span>.test(<span class="string">'.'</span>) <span class="regexp">//</span> true</div><div class="line"></div><div class="line"><span class="regexp">/[.*?+]/</span>.test(<span class="string">'a'</span>) <span class="regexp">//</span> false</div></pre></td></tr></table></figure>
+<h2 id="Negated-Character-Classes-（否定的字符类）"><a href="#Negated-Character-Classes-（否定的字符类）" class="headerlink" title="Negated Character Classes （否定的字符类）"></a>Negated Character Classes （否定的字符类）</h2><blockquote>
+<p>表示的意思就是匹配任何不包含在这个字符类中的字符。需要注意以下几点：</p>
+</blockquote>
+<ul>
+<li>我们知道，<code>/./</code>表示的是除换行符以外的任何字符（当然这里有范围的限制，此处暂不讨论），否定字符类恰好能匹配换行符，所以<code>/[^]/</code>表示的就是匹配任何字符（包括换行符）。所以如果你不想否定字符类匹配换行符，你需要在否定字符类中显示的包含换行符，如<code>/[^0-9\r\n]/</code>,匹配任何不是数字或者换行符的字符。</li>
+</ul>
+<p>举例验证<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span> \u000A 为换行符所对应的unicode</div><div class="line"></div><div class="line"><span class="regexp">/./</span>.test(<span class="string">'\u000A'</span>)  <span class="regexp">//</span> fasle</div><div class="line"><span class="regexp">/[^]/</span>.test(<span class="string">'\u000A'</span>) <span class="regexp">//</span> true</div></pre></td></tr></table></figure></p>
+<h2 id="Repeating-Character-Classes（重复字符类）"><a href="#Repeating-Character-Classes（重复字符类）" class="headerlink" title="Repeating Character Classes（重复字符类）"></a>Repeating Character Classes（重复字符类）</h2><blockquote>
+<p>当你在字符类上使用<code>*</code>, <code>?</code>, <code>+</code>进行重复时，需要知道的是，你重复的是这些字符类，而不是重复字符类匹配的字符。</p>
+</blockquote>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/[0-9]+/</span> <span class="regexp">//</span> match <span class="number">837</span> <span class="keyword">as</span> well <span class="keyword">as</span> <span class="number">222</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你想重复字符类匹配的字符，可以使用<strong>反向引用</strong></p>
+</blockquote>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/([<span class="number">0</span><span class="number">-9</span>])\<span class="number">1</span>+/ <span class="comment">// match 222 but not 837</span></div></pre></td></tr></table></figure>
+<h2 id="Shorthand-Character-Classes-字符类简写"><a href="#Shorthand-Character-Classes-字符类简写" class="headerlink" title="Shorthand Character Classes(字符类简写)"></a>Shorthand Character Classes(字符类简写)</h2><blockquote>
+<p>因为一些特定的字符类经常被使用，所以就制定了一些特定的字符代表字符类。在不同的语言中，这些特定的字符所代表的字符不一定是完全一样的。</p>
+</blockquote>
+<ul>
+<li>\w: [0-9a-zA-Z_]</li>
+<li>\s: [ \t\r\n\f],在某些语言中还包括垂直制表符<code>\v</code></li>
+<li>\d: [0-9]</li>
+</ul>
+<h2 id="Dot-or-Period-点"><a href="#Dot-or-Period-点" class="headerlink" title="Dot or Period(点)"></a>Dot or Period(点)</h2><blockquote>
+<p>元字符<code>.</code>匹配除了换行符以外的任意一个单字符。<br>至于为什么不包含换行符是由于历史原因造成的：第一代工具使用正则表达式是基于行的。他们一行一行的读取文件，使用正则表达式分割行。由于这些工具的影响，导致了<code>.</code>元字符不包括换行符。</p>
+</blockquote>
+<p>NOTE: 虽然元字符<code>.</code>不包括换行符，但是在不同的语言中，实现并不相同，有些语言是可以通过一些选项来控制是否包含换行符的。但是在javascript和vbscript中，是没有任何选项来控制的。</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 在js中，可以使用[<span class="symbol">\s</span><span class="symbol">\S</span>]来匹配任何字符</div><div class="line">/[<span class="symbol">\s</span><span class="symbol">\S</span>]/  // match any character, include line breaks</div></pre></td></tr></table></figure>
+<h2 id="Line-Breaks-Character-换行符"><a href="#Line-Breaks-Character-换行符" class="headerlink" title="Line Breaks Character(换行符)"></a>Line Breaks Character(换行符)</h2><blockquote>
+<p>换行符在不同的操作系统以及不同的语言中实现也有所不同，尽管如此，但是我们依然可以认为<code>\n</code>就是我们所说的换行符。因为在我们熟悉的脚本语言中，都只会将<code>\n</code>作为换行符，而不会将其他字符作为换行符。<br>尽管window系统中的换行符是<code>\r\n</code>,但是我们说换行符就是<code>\n</code>依然没有问题。这是因为这些脚本语言默认是处于<strong>文本模式</strong>下读写文件的。<br>当脚本运行在window系统中，在读取文件时，<code>\r\n</code>自动转换为<code>\n</code>;写文件时，<code>\n</code>自动转换为<code>\r\n</code>。</p>
+</blockquote>
+<h2 id="Word-Boundaries（单词边界）"><a href="#Word-Boundaries（单词边界）" class="headerlink" title="Word Boundaries（单词边界）"></a>Word Boundaries（单词边界）</h2><blockquote>
+<p>元字符<code>\b</code>和<code>^</code>,<code>$</code>都属于锚点字符，用来匹配叫做<strong>单词边界</strong>的位置。他匹配的长度为0。<br>有3种不同的位置可以作为单词的边界：</p>
+</blockquote>
+<ul>
+<li>字符串中的第一个字符的前面（第一个字符必须是单词）</li>
+<li>字符串中的最后一个字符的后面（最后一个字符必须是单词）</li>
+<li>字符串中两个字符之间的位置，这个两个字符必须一个是单词，一个非单词</li>
+</ul>
+<h2 id="Use-Parentheses-for-Grouping-and-Capturing（分组和捕获）"><a href="#Use-Parentheses-for-Grouping-and-Capturing（分组和捕获）" class="headerlink" title="Use Parentheses for Grouping and Capturing（分组和捕获）"></a>Use Parentheses for Grouping and Capturing（分组和捕获）</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3lafmxx0001clo0kvfe16cf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/28/js-scope/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">词法作用域VS动态作用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lexical-scope/">lexical scope</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解码/">解码</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css/" style="font-size: 12px; color: #cc6830">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 16px; color: #66348f">js</a> <a href="/tags/lexical-scope/" style="font-size: 10px; color: #ff8200">lexical scope</a> <a href="/tags/linux/" style="font-size: 14px; color: #994e5f">linux</a> <a href="/tags/nodejs/" style="font-size: 14px; color: #994e5f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 18px; color: #331abe">shell</a> <a href="/tags/this/" style="font-size: 10px; color: #ff8200">this</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a> <a href="/tags/编码/" style="font-size: 10px; color: #ff8200">编码</a> <a href="/tags/解码/" style="font-size: 10px; color: #ff8200">解码</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/RegExp/">RegExp</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/28/js-scope/">词法作用域VS动态作用</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/28/vue-src-overview/">vue-src-overview</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/20/Object-keys/">Object类方法之keys()</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/20/encodeURIComponent/">encodeURIComponent</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014-2017 xxxxxMiss<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+  <script src="//cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+</body>
+</html>
