@@ -21,7 +21,10 @@
 
 一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
 在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
-<meta property="og:updated_time" content="2017-06-06T17:51:22.000Z">
+<meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_pigchickens.svg">
+<meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_number.svg">
+<meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_slow.svg">
+<meta property="og:updated_time" content="2017-06-07T15:30:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RegExp">
 <meta name="twitter:description" content="Character Classes or Character Sets (字符类, 字符集合)
@@ -30,6 +33,7 @@
 
 一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
 在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
+<meta name="twitter:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_pigchickens.svg">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
@@ -161,11 +165,23 @@
 <li>字符串中的最后一个字符的后面（最后一个字符必须是单词）</li>
 <li>字符串中两个字符之间的位置，这个两个字符必须一个是单词，一个非单词</li>
 </ul>
-<h2 id="Use-Parentheses-for-Grouping-and-Capturing（分组和捕获）"><a href="#Use-Parentheses-for-Grouping-and-Capturing（分组和捕获）" class="headerlink" title="Use Parentheses for Grouping and Capturing（分组和捕获）"></a>Use Parentheses for Grouping and Capturing（分组和捕获）</h2>
+<h2 id="Use-Parentheses-for-Grouping-and-Capturing（分组和捕获）"><a href="#Use-Parentheses-for-Grouping-and-Capturing（分组和捕获）" class="headerlink" title="Use Parentheses for Grouping and Capturing（分组和捕获）"></a>Use Parentheses for Grouping and Capturing（分组和捕获）</h2><blockquote>
+</blockquote>
+<h2 id="Alternation（选择）"><a href="#Alternation（选择）" class="headerlink" title="Alternation（选择）"></a>Alternation（选择）</h2><blockquote>
+<p>正则表达式中使用管道符（pipe character）<code>|</code>来对匹配模式进行选择匹配。<br>需要注意的是<strong>选择操作</strong>在正则表达式中的<strong>优先级是最低</strong>的。</p>
+</blockquote>
+<p>如：假设我们要匹配的是一个单词及其左右边界，正则如下<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/\bcat|dog\b/</span>  <span class="regexp">//</span> 能匹配catxx或者xxdog等</div></pre></td></tr></table></figure></p>
+<p>解释：按照上面的写法只会匹配cat及其左边界或者dog及其右边界，如果要匹配cat或则dog及其左右边界，必须使用分组来改变其优先级。如下<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/<span class="symbol">\b</span>(cat|dog)<span class="symbol">\b</span>/</div></pre></td></tr></table></figure></p>
+<p>关于正则表达式中的“选择”，下面我们来通过例子详细的说明他们是如何工作的。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> animalCount = /\b\<span class="keyword">d</span>+ (pig|cow|chicken)s?\b/</div><div class="line">console.<span class="built_in">log</span>(animalCount.<span class="keyword">test</span>(<span class="string">"15 pigs"</span>))</div><div class="line"><span class="comment">// → true</span></div><div class="line">console.<span class="built_in">log</span>(animalCount.<span class="keyword">test</span>(<span class="string">"15 pigchickens"</span>))</div><div class="line"><span class="comment">// → false</span></div></pre></td></tr></table></figure></p>
+<img src="/2017/06/05/RegExp/re_pigchickens.svg" alt="re_pigchickens.svg" title="">
+<img src="/2017/06/05/RegExp/re_number.svg" alt="re_number.svg" title="">
+<img src="/2017/06/05/RegExp/re_slow.svg" alt="re_slow.svg" title="">
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^<span class="comment">(h|hello)</span><span class="comment">(.*)</span>$/.exec<span class="comment">("hello")</span></div></pre></td></tr></table></figure>
+<h2 id="Greedy-and-non-greedy-贪婪匹配和非贪婪匹配"><a href="#Greedy-and-non-greedy-贪婪匹配和非贪婪匹配" class="headerlink" title="Greedy and non-greedy(贪婪匹配和非贪婪匹配)"></a>Greedy and non-greedy(贪婪匹配和非贪婪匹配)</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^(.+) ((?<span class="symbol">:BBB</span> )?CCC)<span class="variable">$/</span>.exec(<span class="string">'AAA BBB CCC'</span>)</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3lv3m1a000gjqo044agyvyq" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3n5ij9e0001xqo0w5t7mgnw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -206,7 +222,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lexical-scope/">lexical scope</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解码/">解码</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lexical-scope/">lexical scope</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -216,7 +232,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 12px; color: #cc6830">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 16px; color: #66348f">js</a> <a href="/tags/lexical-scope/" style="font-size: 10px; color: #ff8200">lexical scope</a> <a href="/tags/linux/" style="font-size: 14px; color: #994e5f">linux</a> <a href="/tags/nodejs/" style="font-size: 14px; color: #994e5f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 18px; color: #331abe">shell</a> <a href="/tags/this/" style="font-size: 10px; color: #ff8200">this</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a> <a href="/tags/编码/" style="font-size: 10px; color: #ff8200">编码</a> <a href="/tags/解码/" style="font-size: 10px; color: #ff8200">解码</a>
+      <a href="/tags/css/" style="font-size: 12px; color: #cc6830">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 18px; color: #331abe">js</a> <a href="/tags/lexical-scope/" style="font-size: 10px; color: #ff8200">lexical scope</a> <a href="/tags/linux/" style="font-size: 14px; color: #994e5f">linux</a> <a href="/tags/nodejs/" style="font-size: 14px; color: #994e5f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 16px; color: #66348f">shell</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a>
     </div>
   </div>
 
