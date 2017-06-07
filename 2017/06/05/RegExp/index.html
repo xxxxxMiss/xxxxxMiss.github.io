@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_pigchickens.svg">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_number.svg">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_slow.svg">
-<meta property="og:updated_time" content="2017-06-07T15:30:24.000Z">
+<meta property="og:updated_time" content="2017-06-07T17:23:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RegExp">
 <meta name="twitter:description" content="Character Classes or Character Sets (字符类, 字符集合)
@@ -173,15 +173,37 @@
 <p>如：假设我们要匹配的是一个单词及其左右边界，正则如下<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/\bcat|dog\b/</span>  <span class="regexp">//</span> 能匹配catxx或者xxdog等</div></pre></td></tr></table></figure></p>
 <p>解释：按照上面的写法只会匹配cat及其左边界或者dog及其右边界，如果要匹配cat或则dog及其左右边界，必须使用分组来改变其优先级。如下<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/<span class="symbol">\b</span>(cat|dog)<span class="symbol">\b</span>/</div></pre></td></tr></table></figure></p>
 <p>关于正则表达式中的“选择”，下面我们来通过例子详细的说明他们是如何工作的。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> animalCount = /\b\<span class="keyword">d</span>+ (pig|cow|chicken)s?\b/</div><div class="line">console.<span class="built_in">log</span>(animalCount.<span class="keyword">test</span>(<span class="string">"15 pigs"</span>))</div><div class="line"><span class="comment">// → true</span></div><div class="line">console.<span class="built_in">log</span>(animalCount.<span class="keyword">test</span>(<span class="string">"15 pigchickens"</span>))</div><div class="line"><span class="comment">// → false</span></div></pre></td></tr></table></figure></p>
-<img src="/2017/06/05/RegExp/re_pigchickens.svg" alt="re_pigchickens.svg" title="">
-<img src="/2017/06/05/RegExp/re_number.svg" alt="re_number.svg" title="">
-<img src="/2017/06/05/RegExp/re_slow.svg" alt="re_slow.svg" title="">
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^<span class="comment">(h|hello)</span><span class="comment">(.*)</span>$/.exec<span class="comment">("hello")</span></div></pre></td></tr></table></figure>
+<img src="/2017/06/05/RegExp/re_pigchickens.svg" alt="/bd+ (pig|cow|chicken)s?b/" title="/bd+ (pig|cow|chicken)s?b/">
+<p>假设我们的正则表达式已经实例化成上面的图表，图表中的每个正则<code>token</code>看成一个盒子。要匹配的字符串为<code>the 3 pigs</code>。那么匹配的流程会像下面的步骤进行：</p>
+<ul>
+<li>在第4个位置（从0开始），有一个单词边界，因此通过了第一个盒子。<br><br></li>
+<li>此次仍然在第4个位置（因为单词边界是不占据长度的），找到了一个数字，因此通过了第二个盒子。<br><br></li>
+<li>在进入第5个位置时，有2个条路径，一条回到第二个盒子形成一个环路，一条直接进入第5个位置。我们要匹配的字符串的第5个位置是一个空白字符，因此直接进入第5个位置。<br><br></li>
+<li>在进入第6个位置时(<code>pigs</code>的第一个字符)，有三条路径。但我们要匹配的字符串中并没有<code>cow</code>或者<code>chicken</code>, 有的是<code>pig</code>，因此进入<code>pig</code>这条路径。<br><br></li>
+<li>在进入第9个位置时，又出现了2条路径，一条跳过了<code>s</code>这个盒子直接进入最终的单词边界的盒子，一条进入<code>s</code>这个盒子。要匹配的字符中含有字符<code>s</code>，因此进入到<code>s</code>这个盒子。<br><br></li>
+<li>在第10个位置（末尾单词边界的位置），要匹配的字符串已经到达末尾（字符串的末尾算着一个单词边界）。因此通过了最后单词边界这个盒子，完成了整个的匹配。<br><br></li>
+</ul>
+<hr>
+<p>综上所述, 在一个字符串中搜寻匹配的字符时，正则表达式引擎会进行如下的查找了流程：<br>从一个字符串的起始位置，一个一个字符进行匹配，直到找到了一个匹配或者达到字符串的末尾才能决定最终的匹配情况。</p>
+<h3 id="Backtracking-回溯"><a href="#Backtracking-回溯" class="headerlink" title="Backtracking(回溯)"></a>Backtracking(回溯)</h3><blockquote>
+<p>在正则表达式中，有一种叫做<strong>回溯查找</strong>，就是沿着某一条路径匹配多次。回溯通常出现在数量匹配中，如<code>*</code>, <code>+</code>, <code>{m, n}</code>。<br>下面以具体的图表和例子来说明匹配情况。</p>
+</blockquote>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/<span class="symbol">\b</span>([01]+b|<span class="symbol">\d</span>+|[<span class="symbol">\d</span>a-f]+h)<span class="symbol">\b</span>/.test('103')</div></pre></td></tr></table></figure>
+<img src="/2017/06/05/RegExp/re_number.svg" alt="/b([01]+b|d+|[da-f]+h)b/" title="/b([01]+b|d+|[da-f]+h)b/">
+<ul>
+<li>上面的例子中，匹配器会一直在最上面的那条路径进行匹配，只有达到字符<code>3</code>，才知道进错了路径。</li>
+<li>此时匹配器进行回溯。其实在选择匹配的时候，匹配器首先会记录当前的位置（也就是每条路径中第一个字符的位置）以便于当进入到错误的路径时可以快速返回到这个位置。</li>
+<li>此时进入到第二条路径（从上往下），发现可以完整匹配，匹配结束。</li>
+</ul>
+<p>NOTE: 一旦找到一个完整匹配，匹配器会立马停止匹配。这就意味着如果多个分支可以匹配这个正则，那么返回的匹配是第一个（每个分支按在正则表达式中出现的先后顺序来排序）<br>举例如下：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/^(h|hello)(.*)$/</span>.exec(<span class="string">"hello"</span>) <span class="regexp">//</span> [<span class="string">'hello'</span>, <span class="string">'h'</span>, <span class="string">'ello'</span>]</div></pre></td></tr></table></figure></p>
+<p>下面来看一个正则表达式中类似于多次循环的例子：<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/(<span class="string">[01]</span>+)+b/</div></pre></td></tr></table></figure></p>
+<img src="/2017/06/05/RegExp/re_slow.svg" alt="/([01]+)+b/" title="/([01]+)+b/">
+<p>关于上面的例子中的正则表达式有什么问题，此处先不做说明。</p>
 <h2 id="Greedy-and-non-greedy-贪婪匹配和非贪婪匹配"><a href="#Greedy-and-non-greedy-贪婪匹配和非贪婪匹配" class="headerlink" title="Greedy and non-greedy(贪婪匹配和非贪婪匹配)"></a>Greedy and non-greedy(贪婪匹配和非贪婪匹配)</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^(.+) ((?<span class="symbol">:BBB</span> )?CCC)<span class="variable">$/</span>.exec(<span class="string">'AAA BBB CCC'</span>)</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3n5ij9e0001xqo0w5t7mgnw" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3n9nik5000118o0lo3xm7ab" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>

@@ -152,15 +152,37 @@
 <p>如：假设我们要匹配的是一个单词及其左右边界，正则如下<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/\bcat|dog\b/</span>  <span class="regexp">//</span> 能匹配catxx或者xxdog等</div></pre></td></tr></table></figure></p>
 <p>解释：按照上面的写法只会匹配cat及其左边界或者dog及其右边界，如果要匹配cat或则dog及其左右边界，必须使用分组来改变其优先级。如下<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/<span class="symbol">\b</span>(cat|dog)<span class="symbol">\b</span>/</div></pre></td></tr></table></figure></p>
 <p>关于正则表达式中的“选择”，下面我们来通过例子详细的说明他们是如何工作的。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> animalCount = /\b\<span class="keyword">d</span>+ (pig|cow|chicken)s?\b/</div><div class="line">console.<span class="built_in">log</span>(animalCount.<span class="keyword">test</span>(<span class="string">"15 pigs"</span>))</div><div class="line"><span class="comment">// → true</span></div><div class="line">console.<span class="built_in">log</span>(animalCount.<span class="keyword">test</span>(<span class="string">"15 pigchickens"</span>))</div><div class="line"><span class="comment">// → false</span></div></pre></td></tr></table></figure></p>
-<img src="/2017/06/05/RegExp/re_pigchickens.svg" alt="re_pigchickens.svg" title="">
-<img src="/2017/06/05/RegExp/re_number.svg" alt="re_number.svg" title="">
-<img src="/2017/06/05/RegExp/re_slow.svg" alt="re_slow.svg" title="">
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^<span class="comment">(h|hello)</span><span class="comment">(.*)</span>$/.exec<span class="comment">("hello")</span></div></pre></td></tr></table></figure>
+<img src="/2017/06/05/RegExp/re_pigchickens.svg" alt="/bd+ (pig|cow|chicken)s?b/" title="/bd+ (pig|cow|chicken)s?b/">
+<p>假设我们的正则表达式已经实例化成上面的图表，图表中的每个正则<code>token</code>看成一个盒子。要匹配的字符串为<code>the 3 pigs</code>。那么匹配的流程会像下面的步骤进行：</p>
+<ul>
+<li>在第4个位置（从0开始），有一个单词边界，因此通过了第一个盒子。<br><br></li>
+<li>此次仍然在第4个位置（因为单词边界是不占据长度的），找到了一个数字，因此通过了第二个盒子。<br><br></li>
+<li>在进入第5个位置时，有2个条路径，一条回到第二个盒子形成一个环路，一条直接进入第5个位置。我们要匹配的字符串的第5个位置是一个空白字符，因此直接进入第5个位置。<br><br></li>
+<li>在进入第6个位置时(<code>pigs</code>的第一个字符)，有三条路径。但我们要匹配的字符串中并没有<code>cow</code>或者<code>chicken</code>, 有的是<code>pig</code>，因此进入<code>pig</code>这条路径。<br><br></li>
+<li>在进入第9个位置时，又出现了2条路径，一条跳过了<code>s</code>这个盒子直接进入最终的单词边界的盒子，一条进入<code>s</code>这个盒子。要匹配的字符中含有字符<code>s</code>，因此进入到<code>s</code>这个盒子。<br><br></li>
+<li>在第10个位置（末尾单词边界的位置），要匹配的字符串已经到达末尾（字符串的末尾算着一个单词边界）。因此通过了最后单词边界这个盒子，完成了整个的匹配。<br><br></li>
+</ul>
+<hr>
+<p>综上所述, 在一个字符串中搜寻匹配的字符时，正则表达式引擎会进行如下的查找了流程：<br>从一个字符串的起始位置，一个一个字符进行匹配，直到找到了一个匹配或者达到字符串的末尾才能决定最终的匹配情况。</p>
+<h3 id="Backtracking-回溯"><a href="#Backtracking-回溯" class="headerlink" title="Backtracking(回溯)"></a>Backtracking(回溯)</h3><blockquote>
+<p>在正则表达式中，有一种叫做<strong>回溯查找</strong>，就是沿着某一条路径匹配多次。回溯通常出现在数量匹配中，如<code>*</code>, <code>+</code>, <code>{m, n}</code>。<br>下面以具体的图表和例子来说明匹配情况。</p>
+</blockquote>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/<span class="symbol">\b</span>([01]+b|<span class="symbol">\d</span>+|[<span class="symbol">\d</span>a-f]+h)<span class="symbol">\b</span>/.test('103')</div></pre></td></tr></table></figure>
+<img src="/2017/06/05/RegExp/re_number.svg" alt="/b([01]+b|d+|[da-f]+h)b/" title="/b([01]+b|d+|[da-f]+h)b/">
+<ul>
+<li>上面的例子中，匹配器会一直在最上面的那条路径进行匹配，只有达到字符<code>3</code>，才知道进错了路径。</li>
+<li>此时匹配器进行回溯。其实在选择匹配的时候，匹配器首先会记录当前的位置（也就是每条路径中第一个字符的位置）以便于当进入到错误的路径时可以快速返回到这个位置。</li>
+<li>此时进入到第二条路径（从上往下），发现可以完整匹配，匹配结束。</li>
+</ul>
+<p>NOTE: 一旦找到一个完整匹配，匹配器会立马停止匹配。这就意味着如果多个分支可以匹配这个正则，那么返回的匹配是第一个（每个分支按在正则表达式中出现的先后顺序来排序）<br>举例如下：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/^(h|hello)(.*)$/</span>.exec(<span class="string">"hello"</span>) <span class="regexp">//</span> [<span class="string">'hello'</span>, <span class="string">'h'</span>, <span class="string">'ello'</span>]</div></pre></td></tr></table></figure></p>
+<p>下面来看一个正则表达式中类似于多次循环的例子：<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/(<span class="string">[01]</span>+)+b/</div></pre></td></tr></table></figure></p>
+<img src="/2017/06/05/RegExp/re_slow.svg" alt="/([01]+)+b/" title="/([01]+)+b/">
+<p>关于上面的例子中的正则表达式有什么问题，此处先不做说明。</p>
 <h2 id="Greedy-and-non-greedy-贪婪匹配和非贪婪匹配"><a href="#Greedy-and-non-greedy-贪婪匹配和非贪婪匹配" class="headerlink" title="Greedy and non-greedy(贪婪匹配和非贪婪匹配)"></a>Greedy and non-greedy(贪婪匹配和非贪婪匹配)</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^(.+) ((?<span class="symbol">:BBB</span> )?CCC)<span class="variable">$/</span>.exec(<span class="string">'AAA BBB CCC'</span>)</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3n5ij9e0001xqo0w5t7mgnw" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3n9nik5000118o0lo3xm7ab" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -208,7 +230,7 @@
 <blockquote>
 <p>词法作用域：变量的作用域是由他们被定义时处在源代码中的位置决定。为了去解析这些变量，js从最内层作用域向外层作用域查找，直到查找到该变量为止。</p>
 </blockquote>
-<p>再来看一个典型的例子：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">  console.log(a) <span class="comment">// 2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">function bar()&#123;</div><div class="line">  <span class="selector-tag">var</span> <span class="selector-tag">a</span> = <span class="number">3</span></div><div class="line">  foo()</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">var</span> <span class="selector-tag">a</span> = <span class="number">2</span></div><div class="line"><span class="function"><span class="title">bar</span><span class="params">()</span></span></div></pre></td></tr></table></figure></p>
+<p>再来看一个典型的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(a) <span class="comment">// 2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">3</span></div><div class="line">  foo()</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">2</span></div><div class="line">bar()</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>这个例子中，会输出2。我们按照词法作用来分析下：首先foo在自己的作用域中寻找变量a, 没有找到，那么到父级作用域中查找，本例子中foo的父级作用域就是全局作用域。因为foo函数定义时处在全局环境中有个变量a，所以在bar函数中调用foo时，会输出2。如果寻找到顶级作用域都没有找到变量a, 那么就抛出一个<code>Uncaught ReferenceError: a is not defined</code><br>如果按照动态作用域来分析：foo执行时所在的作用域是bar函数的作用域，那么此时输出的就是3了。</p>
 </blockquote>
@@ -261,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj3n5ija0000cxqo0er2p9yjb" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj3n9niks000i18o0sobp2kg7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lexical-scope/">lexical scope</a></li></ul>
@@ -302,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj3n5ijbb001nxqo0b84oa8wz" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj3n9nili001j18o0dedhoxiv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -411,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj3n5ij990000xqo0fn1nfguw" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj3n9nik1000018o0nkb4ysfg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -617,7 +639,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj3n5ij9n0004xqo0bzwhz3o7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj3n9nikb000418o0nfytoxp5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -667,7 +689,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj3n5ij9p0005xqo0rj2x97mk" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj3n9nikd000518o06ag712vm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
@@ -894,7 +916,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj3n5ij9r0006xqo0vr0ox7bb" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj3n9nikl000a18o0io644qdx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework7/">framework7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hybrid/">hybrid</a></li></ul>
@@ -938,7 +960,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/webpack-optimize/" data-id="cj3n5ijb7001ixqo0j5j7jt6a" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/webpack-optimize/" data-id="cj3n9nill001n18o08ggae6wk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -1006,7 +1028,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/" data-id="cj3n5ijbm001vxqo0h3dudq1b" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/" data-id="cj3n9nilt001u18o001n5n4tr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -1169,7 +1191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj3n5ijam000uxqo0566j9uhz" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj3n9nikw000o18o0y6wxeeyk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>

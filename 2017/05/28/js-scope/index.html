@@ -17,7 +17,7 @@ js中有2种作用域，词法作用域和动态作用域。下面用例子来�
 js中有2种作用域，词法作用域和动态作用域。下面用例子来解释这2种作用域的概念。
 
 1234567891011121314151617181920212223var outerFunction  = function()&amp;#123;   if(true)&amp;#123;      var x = 5;      //console.log(y); //li">
-<meta property="og:updated_time" content="2017-06-07T01:52:43.000Z">
+<meta property="og:updated_time" content="2017-06-07T17:26:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="词法作用域VS动态作用">
 <meta name="twitter:description" content="词法作用域(lexical scoping)
@@ -113,7 +113,7 @@ js中有2种作用域，词法作用域和动态作用域。下面用例子来�
 <blockquote>
 <p>词法作用域：变量的作用域是由他们被定义时处在源代码中的位置决定。为了去解析这些变量，js从最内层作用域向外层作用域查找，直到查找到该变量为止。</p>
 </blockquote>
-<p>再来看一个典型的例子：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;</div><div class="line">  console.log(a) <span class="comment">// 2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">function bar()&#123;</div><div class="line">  <span class="selector-tag">var</span> <span class="selector-tag">a</span> = <span class="number">3</span></div><div class="line">  foo()</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">var</span> <span class="selector-tag">a</span> = <span class="number">2</span></div><div class="line"><span class="function"><span class="title">bar</span><span class="params">()</span></span></div></pre></td></tr></table></figure></p>
+<p>再来看一个典型的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(a) <span class="comment">// 2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">3</span></div><div class="line">  foo()</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">2</span></div><div class="line">bar()</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>这个例子中，会输出2。我们按照词法作用来分析下：首先foo在自己的作用域中寻找变量a, 没有找到，那么到父级作用域中查找，本例子中foo的父级作用域就是全局作用域。因为foo函数定义时处在全局环境中有个变量a，所以在bar函数中调用foo时，会输出2。如果寻找到顶级作用域都没有找到变量a, 那么就抛出一个<code>Uncaught ReferenceError: a is not defined</code><br>如果按照动态作用域来分析：foo执行时所在的作用域是bar函数的作用域，那么此时输出的就是3了。</p>
 </blockquote>
@@ -166,7 +166,7 @@ js中有2种作用域，词法作用域和动态作用域。下面用例子来�
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj3n5ija0000cxqo0er2p9yjb" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj3n9niks000i18o0sobp2kg7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lexical-scope/">lexical scope</a></li></ul>
