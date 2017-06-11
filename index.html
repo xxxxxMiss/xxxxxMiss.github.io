@@ -195,7 +195,37 @@
 <p>操作字符串的一些常用方法，如replace, split, match, search等，这些方法的第一个参数都可以是一个正则表达式对象，也可以是一个子字符串，此处主要讲解第一个参数是正则表达式的情况。<br>RegExp的一些实例方法，如test, exec等</p>
 </blockquote>
 <h3 id="str-replace-regexp-substr-newSubstr-function"><a href="#str-replace-regexp-substr-newSubstr-function" class="headerlink" title="str.replace(regexp|substr, newSubstr|function)"></a>str.replace(regexp|substr, newSubstr|function)</h3><p>先来看一个例子：假设我们要匹配动态的匹配一个人的姓名，在匹配到姓名前后插入下划线，但是这个人的姓名很特殊（含有一些特殊的符号）。所以我们可以按照下面的做法来处理：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'dea+hl[]rd'</span></div><div class="line"><span class="keyword">var</span> text = <span class="string">'This dea+hl[]rd guy is super annoying.'</span></div><div class="line"><span class="comment">// 匹配除了单词和空白以外的任何字符</span></div><div class="line"><span class="comment">// 不能对任何字符进行转义，以为\n,\b这些字符也是有特殊意义的</span></div><div class="line"><span class="keyword">var</span> escaped = name.replace(<span class="regexp">/[^\w\s]/g</span>, <span class="string">"\\$&amp;"</span>)</div><div class="line"><span class="keyword">var</span> regexp = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\b("</span> + escaped + <span class="string">")\\b"</span>, <span class="string">"gi"</span>);</div><div class="line"><span class="built_in">console</span>.log(text.replace(regexp, <span class="string">"_$1_"</span>));</div><div class="line"><span class="comment">// → This _dea+hl[]rd_ guy is super annoying.</span></div></pre></td></tr></table></figure></p>
-<p>第二个参数<code>newSubstr</code>可以使用下面的这些特殊的变量名。<br>| 变量名 | 代表的值 |<br>| — | — |<br>| $$ | 插入一个$ |<br>| $&amp; | 插入匹配的子串 |<br>| $` | 插入当前匹配的子串的左边的内容 |<br>| $’ | 插入当前匹配的子串的右边的内容 |<br>| $n | 假如repalce方法的第一个参数是一个RegExp对象，并且n是小于100的从1开始的整数，那么插入第n个捕获性分组 |</p>
+<p>第二个参数<code>newSubstr</code>可以使用下面的这些特殊的变量名。</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>代表的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$$</td>
+<td>插入一个$</td>
+</tr>
+<tr>
+<td>$&amp;</td>
+<td>插入匹配的子串</td>
+</tr>
+<tr>
+<td>$`</td>
+<td>插入当前匹配的子串的左边的内容</td>
+</tr>
+<tr>
+<td>$’</td>
+<td>插入当前匹配的子串的右边的内容</td>
+</tr>
+<tr>
+<td>$n</td>
+<td>假如repalce方法的第一个参数是一个RegExp对象，并且n是小于100的从1开始的整数，那么插入第n个捕获性分组</td>
+</tr>
+</tbody>
+</table>
 <p>例子：<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">"dea+hl[]rd".replace(/[^<span class="symbol">\w</span><span class="symbol">\s</span>]/g, "<span class="symbol">\\</span>$`")</div><div class="line">// prints: "dea<span class="symbol">\d</span>eahl<span class="symbol">\d</span>ea+hl<span class="symbol">\d</span>ea+hl[rd"</div></pre></td></tr></table></figure></p>
 <p>第二个参数可以是一个函数，在这种情况下，当匹配执行后， 该函数就会执行。 函数的返回值作为替换字符串。 (注意:  上面提到的特殊替换参数在这里不能被使用。) 另外要注意的是， 如果第一个参数是正则表达式， 并且其为全局匹配模式， 那么这个方法将被多次调用， 每次匹配都会被调用。</p>
 <table>
@@ -250,12 +280,11 @@
 <p>我们知道，字符串的indexOf方法提供了起始搜索偏移量这个参数，可以更加高效的执行字符串查找。但是字符串的一些有关正则方法并没有直接提供这样的方式。正则对象虽然也没有直接提供这样的快捷方式，但是正则对象的exec方法提供了一种”不是很方便”的方式来让我们做这样一个操作, 那就是通过<code>lastIndex</code>这个正则属性。</p>
 </blockquote>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var re = /quick\s(brown).+?(<span class="keyword">jumps</span>)/ig</div><div class="line">var result = re.exec(<span class="string">'The Quick Brown Fox Jumps Over The Lazy Dog'</span>)</div><div class="line">// <span class="keyword">print</span><span class="variable">s:</span> [<span class="string">"Quick Brown Fox Jumps"</span>, <span class="string">"Brown"</span>, <span class="string">"Jumps"</span>, <span class="built_in">index</span>: <span class="number">4</span>, inpu<span class="variable">t:</span> <span class="string">"The Quick Brown Fox Jumps Over The Lazy Dog"</span>]</div></pre></td></tr></table></figure>
-<p>关于这段脚本中的<code>re</code>, <code>result</code>对象所包含的属性如下表：</p>
-<table><br>    <thead><br>        <tr><br>            <th>对象</th><br>            <th>属性/索引</th><br>            <th>描述</th><br>            <th>例子</th><br>        </tr><br>    </thead><br>    <tbody><br>        <tr><br>            <td rowspan="4">result</td><br>            <td>[0]</td><br>            <td>完全匹配</td><br>            <td>Quick Brown Fox Jumps</td><br>        </tr><br>        <tr><br>            <td>[1], …[n]</td><br>            <td>捕获性分组</td><br>            <td>[1] = Brown<br>[2] = Jumps</td><br>        </tr><br>        <tr><br>            <td>index</td><br>            <td>完整的匹配在整个字符串中的索引</td><br>            <td>4</td><br>        </tr><br>        <tr><br>            <td>input</td><br>            <td>要匹配的原始字符串</td><br>            <td>The Quick Brown Fox Jumps Over The Lazy Dog</td><br>        </tr><br>        <tr><br>            <td rowspan="5">re</td><br>            <td>lastIndex</td><br>            <td>执行下一次搜索时起始的位置</td><br>            <td>25</td><br>        </tr><br>        <tr><br>            <td>ignoreCase</td><br>            <td>表示是否使用了i标记</td><br>            <td>true</td><br>        </tr><br>        <tr><br>            <td>global</td><br>            <td>表示是否使用了g标记</td><br>            <td>true</td><br>        </tr><br>        <tr><br>            <td>multiline</td><br>            <td>表示是否使用了m标记</td><br>            <td>false</td><br>        </tr><br>        <tr><br>            <td>source</td><br>            <td>匹配模式的字符串文本</td><br>            <td>quick\s(brown).+?(jumps)</td><br>        </tr><br>    </tbody><br></table>
+<h2 id="关于这段脚本中的re-result对象所包含的属性如下表"><a href="#关于这段脚本中的re-result对象所包含的属性如下表" class="headerlink" title="关于这段脚本中的re, result对象所包含的属性如下表"></a>关于这段脚本中的<code>re</code>, <code>result</code>对象所包含的属性如下表</h2><table><br>    <thead><br>        <tr><br>            <th>对象</th><br>            <th>属性/索引</th><br>            <th>描述</th><br>            <th>例子</th><br>        </tr><br>    </thead><br>    <tbody><br>        <tr><br>            <td rowspan="4">result</td><br>            <td>[0]</td><br>            <td>完全匹配</td><br>            <td>Quick Brown Fox Jumps</td><br>        </tr><br>        <tr><br>            <td>[1], …[n]</td><br>            <td>捕获性分组</td><br>            <td>[1] = Brown<br>[2] = Jumps</td><br>        </tr><br>        <tr><br>            <td>index</td><br>            <td>完整的匹配在整个字符串中的索引</td><br>            <td>4</td><br>        </tr><br>        <tr><br>            <td>input</td><br>            <td>要匹配的原始字符串</td><br>            <td>The Quick Brown Fox Jumps Over The Lazy Dog</td><br>        </tr><br>        <tr><br>            <td rowspan="5">re</td><br>            <td>lastIndex</td><br>            <td>执行下一次搜索时起始的位置</td><br>            <td>25</td><br>        </tr><br>        <tr><br>            <td>ignoreCase</td><br>            <td>表示是否使用了i标记</td><br>            <td>true</td><br>        </tr><br>        <tr><br>            <td>global</td><br>            <td>表示是否使用了g标记</td><br>            <td>true</td><br>        </tr><br>        <tr><br>            <td>multiline</td><br>            <td>表示是否使用了m标记</td><br>            <td>false</td><br>        </tr><br>        <tr><br>            <td>source</td><br>            <td>匹配模式的字符串文本</td><br>            <td>quick\s(brown).+?(jumps)</td><br>        </tr><br>    </tbody><br></table>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3snv2t9000pp8o0th05dwc0" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3so1bia0000q4o0q7inxzpn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -356,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj3snv2ti000zp8o01lrqwzqz" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj3so1bj3000dq4o0qwb5bmya" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lexical-scope/">lexical scope</a></li></ul>
@@ -397,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj3snv2ug002bp8o0f4rbtxvx" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj3so1bk8001uq4o0ocupp2yq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -506,7 +535,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj3snv2t3000jp8o0db103spf" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj3so1bif0001q4o0w5tecfhj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -712,7 +741,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj3snv2t6000np8o0zggv5err" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj3so1bim0004q4o0o2gkmdr5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -762,7 +791,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj3snv2tp001ap8o0dlxc1yok" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj3so1bin0005q4o066vvwp21" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
@@ -989,7 +1018,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj3snv2tc000sp8o0qq6nw03f" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj3so1bix000aq4o00zsbyhme" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework7/">framework7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hybrid/">hybrid</a></li></ul>
@@ -1033,7 +1062,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/webpack-optimize/" data-id="cj3snv2ui002ep8o036t5o0ac" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/webpack-optimize/" data-id="cj3so1bk1001iq4o09o5f4c86" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -1101,7 +1130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/" data-id="cj3snv2uo002qp8o06rj9p0il" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/" data-id="cj3so1bke0024q4o0v1punu4j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -1264,7 +1293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj3snv2u70020p8o0od6wfs4i" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj3so1bjb000pq4o04z7f0snk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
