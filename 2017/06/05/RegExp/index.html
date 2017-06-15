@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_pigchickens.svg">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_number.svg">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_slow.svg">
-<meta property="og:updated_time" content="2017-06-11T17:51:42.000Z">
+<meta property="og:updated_time" content="2017-06-15T04:00:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RegExp">
 <meta name="twitter:description" content="Character Classes or Character Sets (字符类, 字符集合)
@@ -206,7 +206,7 @@
 <li><code>+</code> &lt;=&gt; <code>{1,}</code></li>
 <li><code>{m, n}</code></li>
 </ul>
-<p>下面以一个具体的例子来说明贪婪匹配，<br>假设我们要匹配一个字符串中不带任何属性的html标签，你的正则可能会像下面这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/<span class="xml"><span class="tag">&lt;<span class="name">.+</span>&gt;</span>/.exec('This is a <span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span> test')</span></div><div class="line">// prints: ['<span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span>']</div></pre></td></tr></table></figure></p>
+<p>下面以一个具体的例子来说明贪婪匹配，<br>假设我们要匹配一个字符串中不带任何属性的html标签，你的正则可能会像下面这样：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/<span class="tag">&lt;<span class="name">.+</span>&gt;</span>/.exec('This is a <span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span> test')</div><div class="line">// prints: ['<span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span>']</div></pre></td></tr></table></figure></p>
 <p>你会看到匹配的结果和我们所期盼的<code>&lt;EM&gt;</code>,<code>&lt;/EM&gt;</code>并不一样。究其原因就是因为量词<code>+</code>是贪婪的，它会让正则引擎尽可能多的匹配。其实这个匹配过程可以用上面的图表来解释更加的清楚：<br>匹配完第一个<code>.</code>所代表的字符后，进入到下一个字符会有2条路径：一条是<code>.</code>形成的环路，一条直接进入<code>&gt;</code>, 但是<code>+</code>是贪婪的，那么正则引擎会一直进入这条环路，直接匹配失败了才会退出这条路径。<br><br><br>下面是更加详细的关于正则引擎是如何匹配<code>&lt;EM&gt;first&lt;/EM&gt;</code>的：</p>
 <blockquote>
 <p>The first token in the regex is <code>&lt;</code>. As we already know, the first place where it will match is the first <code>&lt;</code> in the string. The next token is dot, which matches any character except newlines. The dot is repeated by the plus. The plus is greedy. Therefore, the engine will repeat the dot as many times as it can. The dot matches <code>E</code>, so the regex continues to try to match the dot with the next character. <code>M</code> is matched, and the dot is repeated once more. The next character is <code>&gt;</code>. You should see the problem by now. The dot matches the <code>&gt;</code>, and the engine continues repeating the dot. The dot will match all characters in the string. The dot fails when the engine has reached the void after the end of the string. Only at this point does the regex engine continue with next token <code>&gt;</code>.<br><br><br>So far, <code>&lt;.+</code> has matched <code>&lt;EM&gt;first&lt;/EM&gt; test</code> and the regex engine has arrived at the end of the string. <code>&gt;</code> cannot match here. The engine remembers that the plus has repeated the dot more often than is required. (Remember that the plus requires the dot to match only once.) Rather than admitting failure, the engine will backtrack. It will reduce the repetition of the plus by one, and then continue trying the remainder of the regex.<br><br><br>So the match of <code>.+</code> is reduced to <code>EM&gt;first&lt;/EM&gt;</code> tes. The next token in the regex is still <code>&gt;</code>. But now the next character in the string is the last <code>t</code>. Again, these cannot match, causing the engine to backtrack further. The total match so far is reduced to <code>&lt;EM&gt;first&lt;/EM&gt; te</code>. But <code>&gt;</code> still cannot match. So the engine continues backtracking until the match of <code>.+</code> is reduced to <code>EM&gt;first&lt;/EM. Now</code>, <code>&gt;</code> can match the next character in the string. The last token in the regex has been matched. The engine reports that <code>&lt;EM&gt;first&lt;/EM&gt;</code> has been successfully matched.</p>
@@ -283,6 +283,20 @@
 </blockquote>
 <p>NOTE: indexOf方法可以传入第二个参数作为搜索的起始偏移量，而search却不能。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"  word"</span>.search(<span class="regexp">/\S/</span>));</div><div class="line"><span class="comment">// → 2</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"    "</span>.search(<span class="regexp">/\S/</span>));</div><div class="line"><span class="comment">// → -1</span></div></pre></td></tr></table></figure>
+<h3 id="str-split-separator-limit"><a href="#str-split-separator-limit" class="headerlink" title="str.split([separator, [limit]])"></a>str.split([separator, [limit]])</h3><blockquote>
+<p>分割一个字符串，返回分割后的字符串组成的数组。</p>
+</blockquote>
+<ul>
+<li>如果忽略了separator或者在str中没有找到separator, 那么返回的是整个字符串组成的一个元素的数组。</li>
+<li>如果separator是长度为0的字符串，那么返回的是str中每个字符组成的数组。</li>
+<li>只有在str长度为0, separator长度也为0的时候，才会返回一个空数组。</li>
+<li>支持第二个参数limit, 代表切割后返回的数组的长度。如<code>limit=3</code>，表示需要切割3次（形成4个子串），返回前3个元素组成的数组。</li>
+</ul>
+<p>当separator是一个正则时，需要注意：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">'abc2d3f'</span>.split(<span class="regexp">/\d/</span>) <span class="comment">// ["abc", "d", "f"]</span></div><div class="line"></div><div class="line"><span class="string">'abc2d3f'</span>.split(<span class="regexp">/(\d)/</span>) <span class="comment">// ["abc", "2", "d", "3", "f"]</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>由上面的例子可以看出，当split方法第一个参数为正则时，如果这个正则包含捕获性分组时，这个分组匹配的子串是不会被移除的，而是会被包含到返回的数组中。</p>
+</blockquote>
 <h3 id="str-match-regexp"><a href="#str-match-regexp" class="headerlink" title="str.match(regexp)"></a>str.match(regexp)</h3><blockquote>
 <p>一个正则表达式对象。如果传入一个非正则表达式对象，则会隐式地使用 new RegExp(obj) 将其转换为一个 RegExp 。如果你未提供任何参数，直接使用 match() ，那么你会得到一个包含空字符串的 Array ：[“”]</p>
 </blockquote>
@@ -305,7 +319,7 @@
 <table><br>    <thead><br>        <tr><br>            <th width="10%" align="center">对象</th><br>            <th width="10%" align="center">属性/索引</th><br>            <th width="40%" align="center">描述</th><br>            <th width="40%" align="center">例子</th><br>        </tr><br>    </thead><br>    <tbody><br>        <tr><br>            <td rowspan="4">result</td><br>            <td>[0]</td><br>            <td>完全匹配</td><br>            <td>Quick Brown Fox Jumps</td><br>        </tr><br>        <tr><br>            <td>[1], …[n]</td><br>            <td>捕获性分组</td><br>            <td>[1] = Brown<br>[2] = Jumps</td><br>        </tr><br>        <tr><br>            <td>index</td><br>            <td>完整的匹配在整个字符串中的索引</td><br>            <td>4</td><br>        </tr><br>        <tr><br>            <td>input</td><br>            <td>要匹配的原始字符串</td><br>            <td>The Quick Brown Fox Jumps Over The Lazy Dog</td><br>        </tr><br>        <tr><br>            <td rowspan="5">re</td><br>            <td>lastIndex</td><br>            <td>执行下一次搜索时起始的位置</td><br>            <td>25</td><br>        </tr><br>        <tr><br>            <td>ignoreCase</td><br>            <td>表示是否使用了i标记</td><br>            <td>true</td><br>        </tr><br>        <tr><br>            <td>global</td><br>            <td>表示是否使用了g标记</td><br>            <td>true</td><br>        </tr><br>        <tr><br>            <td>multiline</td><br>            <td>表示是否使用了m标记</td><br>            <td>false</td><br>        </tr><br>        <tr><br>            <td>source</td><br>            <td>匹配模式的字符串文本</td><br>            <td>quick\s(brown).+?(jumps)</td><br>        </tr><br>    </tbody><br></table>
 
 <blockquote>
-<p>下面就关于上表中的相关注意事项做下说明： 我们知道，正则引擎是eager(急切的，渴望的)的，也就是说当从整个字符串中找到一个匹配时，会立马停止继续查找，并返回找到的子串。<br><br><br>像字符串的<code>match</code>, <code>replace</code>方法，当第一个参数为正则对象时，可以传入修饰符<code>g</code>来进行全局的查找，也就说找到从一行字符中找到所有的匹配，直到查找到这行字符串的尽头。<br><br><br>但是正则对象的exec方法却并不是这样的，即使你传入全局标记<code>g</code>,依然只是返回第一个匹配。我们测试下：</p>
+<p>下面就关于上表中的相关注意事项做下说明： 我们知道，正则引擎是eager(急切的，渴望的)的，也就是说当从整个字符串中找到一个匹配时，会立马停止继续查找，并返回找到的子串。<br>像字符串的<code>match</code>, <code>replace</code>方法，当第一个参数为正则对象时，可以传入修饰符<code>g</code>来进行全局的查找，也就说找到从一行字符中找到所有的匹配，直到查找到这行字符串的尽头。<br>但是正则对象的exec方法却并不是这样的，即使你传入全局标记<code>g</code>,依然只是返回第一个匹配。我们测试下：</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(\d)/g.exec(<span class="string">'ab12c45'</span>)</div><div class="line"><span class="comment">// prints: ["1", "1", index: 2, input: "ab12c45"]</span></div></pre></td></tr></table></figure>
 <p>经过上面例子的验证，我们看到确实如我们所言：尽管是全局匹配，但是依然只是返回了第一个匹配。<br>还有就是需要注意exec方法和match方法的对比：</p>
@@ -319,7 +333,7 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span></div><div class="line"><span class="built_in">console</span>.log(reg.lastIndex) <span class="comment">// 0</span></div><div class="line"><span class="built_in">console</span>.log(reg.exec(<span class="string">'abc12d3bb4'</span>)) <span class="comment">// ["12", index: 3, input: "abc12d3bb4"]</span></div><div class="line"><span class="built_in">console</span>.log(reg.lastIndex) <span class="comment">// 5</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>默认情况下正则对象的<code>lastIndex</code>值是0，表示起始偏移量。<br><br><br>一旦成功的找到一个匹配后，正则引擎会自动更新<code>lastIndex</code>的值，表示下一次匹配时默认从这个地方开始。<br><br><br>什么从一开始就没有找到任何匹配，那么<code>lastIndex</code>的值还是0。</p>
+<p>默认情况下正则对象的<code>lastIndex</code>值是0，表示起始偏移量。<br>一旦成功的找到一个匹配后，正则引擎会自动更新<code>lastIndex</code>的值，表示下一次匹配时默认从这个地方开始。<br>什么从一开始就没有找到任何匹配，那么<code>lastIndex</code>的值还是0。</p>
 </blockquote>
 <p>当然了，你可以设置<code>lastIndex</code>的值，表示一开始就从你设置的这个位置开始查找：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span></div><div class="line">reg.lastIndex = <span class="number">5</span></div><div class="line"><span class="built_in">console</span>.log(reg.exec(<span class="string">'abc12d3bb4'</span>)) <span class="comment">// ["3", index: 6, input: "abc12d3bb4"]</span></div><div class="line"><span class="built_in">console</span>.log(reg.lastIndex) <span class="comment">// 7</span></div></pre></td></tr></table></figure>
@@ -331,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3t0bdpl000155o0seokp12b" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj3xwee06000g55o0jf7wn3v2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
