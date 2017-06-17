@@ -17,7 +17,7 @@
 返回一个由给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for…in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 一个 for-in 循环还会枚举其原型链上的属性）。
 
 通过例子来看下什么叫“和for…in”顺序一致：123456789// 注意，这并不是类数组var obj = &amp;#123;    100: &apos;a&apos;,    2: &apos;b&apos;,">
-<meta property="og:updated_time" content="2017-06-11T12:19:20.000Z">
+<meta property="og:updated_time" content="2017-06-17T16:18:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Object类方法之keys()">
 <meta name="twitter:description" content="Object.keys()
@@ -172,11 +172,19 @@
 <blockquote>
 <p>观察上面的例子，需要注意的是：当一个对象的属性由各种类型的字符串和symbol组成时，返回的数组元素按照这样的顺序来排列：索引字符串（从0开始，-1被列入字符串属性）属性按照从小到大，其次是字符串属性按照最初插入的顺序，最后才是symbol属性按照最初插入的顺序。</p>
 </blockquote>
-
+<h2 id="Object-getOwnPropertyNames-obj"><a href="#Object-getOwnPropertyNames-obj" class="headerlink" title="Object.getOwnPropertyNames(obj)"></a>Object.getOwnPropertyNames(obj)</h2><blockquote>
+<p>该方法会返回obj自身（不包括原型链上的属性）所有的属性（包括不可枚举的属性）组成的字符串数组。<br>返回的数组的元素的顺序和for…in遍历时的顺序一致。</p>
+</blockquote>
+<p>包括不可枚举的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>, &#123;</div><div class="line">  <span class="attr">getFoo</span>: &#123;</div><div class="line">    <span class="attr">value</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.foo</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">enumerable</span>: <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">obj.foo = <span class="number">1</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(obj))</div><div class="line"><span class="comment">// prints: ["getFoo", "foo"]</span></div></pre></td></tr></table></figure></p>
+<p>不包括原型链上的属性<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.foo = <span class="string">'foo'</span></div><div class="line">&#125;</div><div class="line">Foo.prototype.getFoo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.foo</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(<span class="keyword">new</span> Foo()))</div><div class="line"><span class="comment">// prints: ['foo']</span></div></pre></td></tr></table></figure></p>
+<p><input type="text" name="" placeholder="请输入关键字"></p>
+<script>
+  console.log('xxxxx')
+</script>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj3xwedze000155o0hi60ldbr" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj41hoys10000ldo0iia8xh0y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>

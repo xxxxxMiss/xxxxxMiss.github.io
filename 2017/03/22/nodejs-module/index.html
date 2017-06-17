@@ -113,7 +113,7 @@ circle.j">
 </blockquote>
 <p>[TOC]</p>
 <p>先看一个例子<br>foo.js<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> circle = <span class="built_in">require</span>(<span class="string">'./circle.js'</span>)</div><div class="line"><span class="built_in">console</span>.log(`The area <span class="keyword">of</span> a circle <span class="keyword">of</span> radius <span class="number">4</span> <span class="keyword">is</span> $&#123;circle.area(<span class="number">4</span>)`&#125;</div></pre></td></tr></table></figure></p>
-<p>circle.js<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const PI = Math.PI</div><div class="line"></div><div class="line">exports.area = <span class="function"><span class="params">(r)</span> =&gt;</span> PI * r * r</div><div class="line"></div><div class="line">exports.circumference = <span class="function"><span class="params">(r)</span> =&gt;</span> <span class="number">2</span> * PI * r</div></pre></td></tr></table></figure></p>
+<p>circle.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> PI = <span class="built_in">Math</span>.PI</div><div class="line"></div><div class="line">exports.area = <span class="function">(<span class="params">r</span>) =&gt;</span> PI * r * r</div><div class="line"></div><div class="line">exports.circumference = <span class="function">(<span class="params">r</span>) =&gt;</span> <span class="number">2</span> * PI * r</div></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <ul>
 <li>circle.js导出了2个方法<code>area()</code>, <code>circumference()</code>, 导出一个模块中的方法或者对象，你可以将他们挂载到<code>exports</code>对象上</li>
@@ -146,7 +146,7 @@ circle.j">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj3xwee08000l55o0bugoakvf" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj41hoyt3000qldo0ytbyn7zv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
