@@ -95,7 +95,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj55g5atn000t9bo0bmvh0des" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj55gmfse000rago08r5fzplk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,15 +183,15 @@
 </blockquote>
 <p>以下有很重要的几点需要牢记：</p>
 <ul>
-<li><code>SIGUSR1</code>是Node用来启动debugger程序的。你有可能需要监听这个事件，如果给该信号添加了监听器，那么就不能终止它的启动。<br></li>
-<li><code>SIGTERM</code>和<code>SIGINT</code>在非windows平台上，有默认的监听器，在携带<code>128 + signal number</code>退出码退出之前，重置终端模式。如果给他们添加了自己的监听器，那么默认行为就会被移除。<br></li>
-<li><code>SIGPIPE</code>默认是被忽略的，但是你也可以给它添加监听程序。<br></li>
-<li><code>SIGHUP</code>,在windows平台上，当终端窗口被关闭时，触发该信号。在其他平台上有着不同的行为，可以参看<a href="http://man7.org/linux/man-pages/man7/signal.7.html" target="_blank" rel="external">这里</a>。可以对该信号添加监听器，及时添加了监听器，在windows平台上，大约10秒之后Node会无条件的终止。在非windows平台上个，<code>SIGHUP</code>信号默认行为是终止Node,如果添加了自己的监听器，那么默认行为就会被移除。<br></li>
-<li><code>SIGTERM</code>,windows平台不支持，可以对其添加监听器。<br></li>
-<li><code>SIGINT</code>,所有的平台都支持。一般情况下按下<code>Ctrl+C</code>（当然你可以配置成其他快捷方式是）就会发出该信号。但是如果终端的raw模式被激活，那么就不会发出该信号。<br></li>
-<li><code>SIGBREAK</code>,在windows平台上按下<code>Ctrl+Break</code>就会传递该信号。在非windows平台上，可以对其添加监听器，但是无法发送他，也无法创建他。<br></li>
-<li><code>SIGWINCH</code>,但终端窗口发生改变的时候，就会触发该信号。在windows平台上，仅仅发生在当在终端写入并且光标发生移动的时候才会触发该信号，或者一个可读tty被用在raw模式。<br></li>
-<li><code>SIGKILL</code>，无法对其添加监听器，在所有的平台上，他都会无条件终止Node。<br></li>
+<li><code>SIGUSR1</code>是Node用来启动debugger程序的。你有可能需要监听这个事件，如果给该信号添加了监听器，那么就不能终止它的启动。<br><br></li>
+<li><code>SIGTERM</code>和<code>SIGINT</code>在非windows平台上，有默认的监听器，在携带<code>128 + signal number</code>退出码退出之前，重置终端模式。如果给他们添加了自己的监听器，那么默认行为就会被移除。<br><br></li>
+<li><code>SIGPIPE</code>默认是被忽略的，但是你也可以给它添加监听程序。<br><br></li>
+<li><code>SIGHUP</code>,在windows平台上，当终端窗口被关闭时，触发该信号。在其他平台上有着不同的行为，可以参看<a href="http://man7.org/linux/man-pages/man7/signal.7.html" target="_blank" rel="external">这里</a>。可以对该信号添加监听器，及时添加了监听器，在windows平台上，大约10秒之后Node会无条件的终止。在非windows平台上个，<code>SIGHUP</code>信号默认行为是终止Node,如果添加了自己的监听器，那么默认行为就会被移除。<br><br></li>
+<li><code>SIGTERM</code>,windows平台不支持，可以对其添加监听器。<br><br></li>
+<li><code>SIGINT</code>,所有的平台都支持。一般情况下按下<code>Ctrl+C</code>（当然你可以配置成其他快捷方式是）就会发出该信号。但是如果终端的raw模式被激活，那么就不会发出该信号。<br><br></li>
+<li><code>SIGBREAK</code>,在windows平台上按下<code>Ctrl+Break</code>就会传递该信号。在非windows平台上，可以对其添加监听器，但是无法发送他，也无法创建他。<br><br></li>
+<li><code>SIGWINCH</code>,但终端窗口发生改变的时候，就会触发该信号。在windows平台上，仅仅发生在当在终端写入并且光标发生移动的时候才会触发该信号，或者一个可读tty被用在raw模式。<br><br></li>
+<li><code>SIGKILL</code>，无法对其添加监听器，在所有的平台上，他都会无条件终止Node。<br><br></li>
 <li><code>SIGTOP</code>，无法对其添加监听器。<br></li>
 </ul>
 <p>Note:<br>windows平台不支持发射信号，但是Node提供了<code>process.kill()</code>,<code>ChildProcess.kill()</code>方法来发射信号。</p>
@@ -202,11 +202,11 @@
 <h2 id="process-abort"><a href="#process-abort" class="headerlink" title="process.abort()"></a>process.abort()</h2><blockquote>
 <p>该方法可以迅速的终止Node进程，并且产生一个core file</p>
 </blockquote>
-<h2 id="prcess-arch-architecture"><a href="#prcess-arch-architecture" class="headerlink" title="prcess.arch(architecture)"></a>prcess.arch(architecture)</h2><p>return: <string></string></p>
+<h2 id="prcess-arch-architecture"><a href="#prcess-arch-architecture" class="headerlink" title="prcess.arch(architecture)"></a>prcess.arch(architecture)</h2><p>return: &lt;string&gt;</p>
 <blockquote>
 <p>该属性返回当前正在运行的Node进程的处理器结构标识，如<code>arm</code>,<code>ia32</code>,<code>x64</code></p>
 </blockquote>
-<h2 id="process-argv"><a href="#process-argv" class="headerlink" title="process.argv"></a>process.argv</h2><p>return: <array></array></p>
+<h2 id="process-argv"><a href="#process-argv" class="headerlink" title="process.argv"></a>process.argv</h2><p>return: &lt;Array&gt;</p>
 <blockquote>
 <p>返回当Node进程启动的时候在命令行传入的参数的数组。<br>数组的第一个元素就是<code>process.execPath</code>的值。<br>数组的第二个元素是被执行的文件的绝对路径。<br>余下的参数就是传入命令的其他的参数。</p>
 </blockquote>
@@ -216,29 +216,31 @@
 <h2 id="process-execPath"><a href="#process-execPath" class="headerlink" title="process.execPath"></a>process.execPath</h2><blockquote>
 <p>返回启动Node进程的可执行程序的绝对路径, <code>&#39;/usr/local/bin/node&#39;</code></p>
 </blockquote>
-<h2 id="process-argv0"><a href="#process-argv0" class="headerlink" title="process.argv0"></a>process.argv0</h2><p>return: <string></string></p>
+<h2 id="process-argv0"><a href="#process-argv0" class="headerlink" title="process.argv0"></a>process.argv0</h2><p>return: &lt;string&gt;</p>
 <h2 id="process-channel"><a href="#process-channel" class="headerlink" title="process.channel"></a>process.channel</h2><blockquote>
 <p>如果一个进程是通过<code>IPC</code>spawned出来的，那么<code>process.channel</code>属性返回IPC信道的引用。如果没有IPC信道存在，那么返回undefined。</p>
 </blockquote>
-<h2 id="process-chdir-directory"><a href="#process-chdir-directory" class="headerlink" title="process.chdir(directory)"></a>process.chdir(directory)</h2><p>directory: <string></string></p>
+<h2 id="process-chdir-directory"><a href="#process-chdir-directory" class="headerlink" title="process.chdir(directory)"></a>process.chdir(directory)</h2><p>directory: &lt;string&gt;</p>
 <blockquote>
 <p><code>process.chdir()</code>方法改变当前Node进程所在的工作目录。<br>如果操作失败（如指定的<code>directory</code>不存在），那么抛出一个异常。</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">`Starting directory: <span class="subst">$&#123;process.cwd()&#125;</span>`</span>);</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  process.chdir(<span class="string">'/tmp'</span>);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`New directory: <span class="subst">$&#123;process.cwd()&#125;</span>`</span>);</div><div class="line">&#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">  <span class="built_in">console</span>.error(<span class="string">`chdir: <span class="subst">$&#123;err&#125;</span>`</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="process-connected"><a href="#process-connected" class="headerlink" title="process.connected"></a>process.connected</h2><p>return: <boolean></boolean></p>
+<h2 id="process-connected"><a href="#process-connected" class="headerlink" title="process.connected"></a>process.connected</h2><p>return: &lt;boolean&gt;</p>
 <blockquote>
 <p>如果一个Node进程是通过IPC信道spawned出来的，那么只要主进程和spawned出来的进程的IPC信道是链接的，那么返回true。如果调用<code>process.disconnect()</code>那么该属性就返回false.<br>一旦<code>process.connected</code>返回false，那么就不能再通过<code>process.send()</code>基于IPC信道发送消息。</p>
 </blockquote>
-<h2 id="process-cupUsage-previousValue"><a href="#process-cupUsage-previousValue" class="headerlink" title="process.cupUsage([previousValue])"></a>process.cupUsage([previousValue])</h2><p>previousValue:<br>return: <object></object></p>
-<pre><code>- user: &lt;integer&gt;
-- system: &lt;integer&gt;
-</code></pre><h2 id="process-cwd"><a href="#process-cwd" class="headerlink" title="process.cwd()"></a>process.cwd()</h2><blockquote>
+<h2 id="process-cupUsage-previousValue"><a href="#process-cupUsage-previousValue" class="headerlink" title="process.cupUsage([previousValue])"></a>process.cupUsage([previousValue])</h2><p>previousValue:<br>return: &lt;Object&gt;</p>
+<ul>
+<li>user: &lt;integer&gt;</li>
+<li>system: &lt;integer&gt;</li>
+</ul>
+<h2 id="process-cwd"><a href="#process-cwd" class="headerlink" title="process.cwd()"></a>process.cwd()</h2><blockquote>
 <p>返回当前Node进程所在的工作目录。</p>
 </blockquote>
 <h2 id="prcess-disconnect"><a href="#prcess-disconnect" class="headerlink" title="prcess.disconnect()"></a>prcess.disconnect()</h2><blockquote>
 <p>如果一个Node进程是通过IPC信道spawned出来的，那么该方法会关闭该进程和父进程之间的IPC信道。当没有更多的链接时，当前子进程就会优雅的退出。<br>调用当前进程的<code>process.disconnect()</code>方法和调用父进程的<code>ChildProcess.disconnect()</code>起到的想过是一样的。<br><br><br>如果某个进程不是通过IPC信道spawned出来的，那么<code>process.disconnect</code>属性是undefined。</p>
 </blockquote>
-<h2 id="process-env"><a href="#process-env" class="headerlink" title="process.env"></a>process.env</h2><p>return: <object></object></p>
+<h2 id="process-env"><a href="#process-env" class="headerlink" title="process.env"></a>process.env</h2><p>return: &lt;Object&gt;</p>
 <blockquote>
 <p>返回一个包含当前用户环境的对象</p>
 </blockquote>
@@ -247,14 +249,14 @@
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">process<span class="selector-class">.env</span><span class="selector-class">.test</span> = null</div><div class="line">console.log(process<span class="selector-class">.env</span><span class="selector-class">.test</span>) <span class="comment">// 'null'</span></div><div class="line"></div><div class="line">process<span class="selector-class">.env</span><span class="selector-class">.test</span> = undefined</div><div class="line">console.log(typeof process<span class="selector-class">.env</span><span class="selector-class">.test</span>) <span class="comment">// 'string'</span></div></pre></td></tr></table></figure>
 <p>可以通过<code>delete</code>操作符来删除<code>process.env</code>上的属性：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">process<span class="selector-class">.env</span><span class="selector-class">.TEST</span> = <span class="number">1</span></div><div class="line">delete process<span class="selector-class">.env</span><span class="selector-class">.TEST</span></div><div class="line">console.log(process<span class="selector-class">.env</span><span class="selector-class">.TEST</span>) <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
 <p>在windows平台上，环境变量大小写不敏感：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">process<span class="selector-class">.env</span><span class="selector-class">.TEST</span> = <span class="number">1</span></div><div class="line">console.log(process<span class="selector-class">.env</span><span class="selector-class">.test</span>) <span class="comment">// '1'</span></div></pre></td></tr></table></figure></p>
-<h2 id="process-execArgv"><a href="#process-execArgv" class="headerlink" title="process.execArgv"></a>process.execArgv</h2><p>return: <object></object></p>
+<h2 id="process-execArgv"><a href="#process-execArgv" class="headerlink" title="process.execArgv"></a>process.execArgv</h2><p>return: &lt;Object&gt;</p>
 <blockquote>
 <p>返回当Node进程启动的时候传入到命令行中的选项。这些选项不会出现在<code>process.argv</code>属性返回的数组中。<code>process.execArgv</code>返回的数组不包括Node可执行程序，执行当前脚本的名称和跟随在脚本名称后面的选项。<br>这些选项非常的有用，当spawned一个进程的时候，可以通过它保证spawned出来的子进程和父进程保持一致的环境。</p>
 </blockquote>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">node</span> <span class="title">--harmony</span> script.js --<span class="keyword">version</span></div></pre></td></tr></table></figure>
 <p>那么process.execArgv返回：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="symbol">'--harmony</span>']</div></pre></td></tr></table></figure></p>
 <p>而process.argv返回：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="symbol">'/usr/local/bin/node</span>', <span class="symbol">'script.js</span>', <span class="symbol">'--version</span>']</div></pre></td></tr></table></figure></p>
-<h2 id="process-exit-code"><a href="#process-exit-code" class="headerlink" title="process.exit([code])"></a>process.exit([code])</h2><p>code: <integer> ,退出码，默认为0</integer></p>
+<h2 id="process-exit-code"><a href="#process-exit-code" class="headerlink" title="process.exit([code])"></a>process.exit([code])</h2><p>code: &lt;integer&gt; ,退出码，默认为0</p>
 <blockquote>
 <p>该方法告诉Node同步的终止进程并且携带一个退出码。如果没有传入code参数，那么默认使用代表成功的code<code>0</code>，或者使用<code>process.exitCode</code>(如果你曾经设置过)。当<code>exit</code>上的监听器全部执行完毕后，Node终止。</p>
 </blockquote>
@@ -265,11 +267,11 @@
 <p>不应该直接调用<code>process.exit()</code>方法，正确的做法应该是设置<code>process.exitCode</code>,这样就可以进程自然的退出，避免在安排一些额外的工作进入到事件循环中。</p>
 <p>正确的做法：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">if</span> (someConditionNotMet()) &#123;</div><div class="line">  printUsageToStdout();</div><div class="line">  <span class="built_in">process</span>.exitCode = <span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>如果因为发生了错误，抛出一个未捕获的错误，需要退出进程，通过设置<code>process.exitCode</code>要比直接调用<code>process.exit()</code>安全的多。</p>
-<h2 id="process-exitCode"><a href="#process-exitCode" class="headerlink" title="process.exitCode"></a>process.exitCode</h2><p>return: <integer></integer></p>
+<h2 id="process-exitCode"><a href="#process-exitCode" class="headerlink" title="process.exitCode"></a>process.exitCode</h2><p>return: &lt;integer&gt;</p>
 <blockquote>
 <p>进程退出的时携带的状态码。<br>调用<code>process.exit()</code>时指定了退出码，那么该退出码会覆盖之前通过<code>process.exitCode</code>设置的值。那么此时通过<code>process.exitCode</code>获取到的值就是<code>process.exit(code)</code>中指定的code。</p>
 </blockquote>
-<h2 id="process-kill-pid-signal"><a href="#process-kill-pid-signal" class="headerlink" title="process.kill(pid[,signal])"></a>process.kill(pid[,signal])</h2><p>pid: <number>,进程ID<br>signal: <string>|<number>,发射的信号，既可以是字符串，也可以是数字值，默认值是<code>SIGTERM</code>。</number></string></number></p>
+<h2 id="process-kill-pid-signal"><a href="#process-kill-pid-signal" class="headerlink" title="process.kill(pid[,signal])"></a>process.kill(pid[,signal])</h2><p>pid: &lt;number&gt;,进程ID<br>signal: &lt;string&gt;|&lt;number&gt;,发射的信号，既可以是字符串，也可以是数字值，默认值是<code>SIGTERM</code>。</p>
 <blockquote>
 <p>该方法发送一个为<code>signal</code>的信号到<code>pid</code>的进程。</p>
 </blockquote>
@@ -277,18 +279,18 @@
 <p>Note: 尽管该方法的名字叫<code>kill</code>,但事实上它仅仅是一个信号发射器。发射信号的目的是去做一些事情，而不是杀死目标进程。</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">process.on(<span class="string">'SIGHUP'</span>, () =&gt; &#123;</div><div class="line">    console.log(<span class="string">'Got SIGHUP signal'</span>)    </div><div class="line">&#125;)</div><div class="line"></div><div class="line">setTimeout(() =&gt; &#123;</div><div class="line">    console.log(<span class="string">'Exiting'</span>)    </div><div class="line">    process.<span class="keyword">exit</span>(<span class="number">0</span>)</div><div class="line">&#125;, <span class="number">100</span>)</div><div class="line"></div><div class="line">process.kill(process.pid, <span class="string">'SIGHUP'</span>)</div></pre></td></tr></table></figure>
 <p>Note: 当Node进程接收到一个<code>SIGUSR1</code>信号时，Node就会启动调试程序。</p>
-<h2 id="process-memoryUsage"><a href="#process-memoryUsage" class="headerlink" title="process.memoryUsage()"></a>process.memoryUsage()</h2><p>return: <object></object></p>
-<pre><code>- rss: &lt;integer&gt;
-- heapTotal: &lt;integer&gt;
-- heapUsed: &lt;integer&gt;
-- external: &lt;integer&gt;
+<h2 id="process-memoryUsage"><a href="#process-memoryUsage" class="headerlink" title="process.memoryUsage()"></a>process.memoryUsage()</h2><p>return: &lt;Object&gt;</p>
+<pre><code>- rss: &amp;lt;integer&amp;gt;
+- heapTotal: &amp;lt;integer&amp;gt;
+- heapUsed: &amp;lt;integer&amp;gt;
+- external: &amp;lt;integer&amp;gt;
 </code></pre><blockquote>
 <p>方法返回一个对象，描述了Node使用内存的情况。</p>
 </blockquote>
 <p>如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">console</span><span class="selector-class">.log</span>(<span class="selector-tag">process</span><span class="selector-class">.memoryUsage</span>())</div></pre></td></tr></table></figure></p>
 <p>输出如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attribute">rss</span>: <span class="number">4935680</span>,</div><div class="line">  heapTotal: <span class="number">1826816</span>,</div><div class="line">  heapUsed: <span class="number">650472</span>,</div><div class="line">  external: <span class="number">49879</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><code>heapTotal</code>,<code>heapUsed</code>指向V8的内存的使用情况。<br><code>external</code>指向被V8管理的绑定到JS对象上的C++对象的内存使用情况。</p>
-<h2 id="process-nextTick-callback-…args"><a href="#process-nextTick-callback-…args" class="headerlink" title="process.nextTick(callback[,…args])"></a>process.nextTick(callback[,…args])</h2><p>callback: <function><br>..args: 当调用callback时传入的额外参数。</function></p>
+<h2 id="process-nextTick-callback-…args"><a href="#process-nextTick-callback-…args" class="headerlink" title="process.nextTick(callback[,…args])"></a>process.nextTick(callback[,…args])</h2><p>callback: &lt;Function&gt;<br>..args: 当调用callback时传入的额外参数。</p>
 <blockquote>
 <p>该方法将<code>callback</code>添加到当前<code>microtask</code>循环的下一个轮次，一旦本轮的<code>microtask</code>循环结束，立马执行下一轮<code>microtask</code>中所有<code>callback</code>。<br><code>process.nextTick</code>不是<code>setTimeout(fn, 0)</code>的别名，它更加的高效，他在一下轮<code>macrotask</code>之前执行。</p>
 </blockquote>
@@ -303,29 +305,29 @@
 <p>如果改写为如下写法，那么就可以明确知道谁先执行了：</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">definitelyAsync</span><span class="params">(arg, cb)</span></span> &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="built_in">arg</span>) &#123;</div><div class="line">    process.nextTick(cb);</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  fs.stat(<span class="string">'file'</span>, cb);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>此时，一定是<code>bar()</code>先执行，因为<code>process.nextTick</code>会将<code>cb</code>放到当前<code>microtask</code>的下一个轮次。</p>
-<h2 id="process-pid"><a href="#process-pid" class="headerlink" title="process.pid"></a>process.pid</h2><p>return: <integer></integer></p>
+<h2 id="process-pid"><a href="#process-pid" class="headerlink" title="process.pid"></a>process.pid</h2><p>return: &lt;integer&gt;</p>
 <blockquote>
 <p>返回当前进程的pid</p>
 </blockquote>
-<h2 id="process-platform"><a href="#process-platform" class="headerlink" title="process.platform"></a>process.platform</h2><p>return: <string></string></p>
+<h2 id="process-platform"><a href="#process-platform" class="headerlink" title="process.platform"></a>process.platform</h2><p>return: &lt;string&gt;</p>
 <blockquote>
 <p>返回当前Node进程运行在那个操作系统的平台上。<br>如： <code>&#39;darwin&#39;</code>, <code>&#39;freebsd&#39;</code>, <code>&#39;linux&#39;</code>, <code>&#39;sunos&#39;</code> or <code>&#39;win32&#39;</code></p>
 </blockquote>
-<h2 id="prcess-send-message-sendHandle-options-callback"><a href="#prcess-send-message-sendHandle-options-callback" class="headerlink" title="prcess.send(message[, sendHandle[, options]][,callback])"></a>prcess.send(message[, sendHandle[, options]][,callback])</h2><p>message: <object><br>sendHandle: <handle object=""><br>options: <object><br>callback: <function><br>return: <boolean></boolean></function></object></handle></object></p>
+<h2 id="prcess-send-message-sendHandle-options-callback"><a href="#prcess-send-message-sendHandle-options-callback" class="headerlink" title="prcess.send(message[, sendHandle[, options]][,callback])"></a>prcess.send(message[, sendHandle[, options]][,callback])</h2><p>message: &lt;Object&gt;<br>sendHandle: &lt;Handle object&gt;<br>options: &lt;Object&gt;<br>callback: &lt;Function&gt;<br>return: &lt;boolean&gt;</p>
 <blockquote>
 <p>如果一个进程是通过IPC信道spawned出来的，那么该进程可以通过<code>prcess.send()</code>方法发送信息到父进程。父进程可以通过<code>ChildProcess</code>来监听<code>message</code>事从而接收来自子进程的消息。<br>如果某个进程不是通过IPC信道spawned出来的，那么<code>process.send</code>属性为undefined。</p>
 </blockquote>
 <p>Note: 该方法内部使用<code>JSON.stringify()</code>来序列化<code>message</code>。</p>
-<h2 id="process-stderr"><a href="#process-stderr" class="headerlink" title="process.stderr"></a>process.stderr</h2><p>return: <stream></stream></p>
+<h2 id="process-stderr"><a href="#process-stderr" class="headerlink" title="process.stderr"></a>process.stderr</h2><p>return: &lg;Stream&gt;</p>
 <blockquote>
 <p>该方法返回一个连接到标准错误<code>stderr</code>(文件描述符为2)的流对象。<br>该流是一个<code>net.Socket</code>（这是一个双工流），当文件描述符<code>2</code>指向一个文件时，此时他是一个可写流。</p>
 </blockquote>
-<h2 id="process-stdin"><a href="#process-stdin" class="headerlink" title="process.stdin"></a>process.stdin</h2><p>return: <stream></stream></p>
+<h2 id="process-stdin"><a href="#process-stdin" class="headerlink" title="process.stdin"></a>process.stdin</h2><p>return: &lg;Stream&gt;</p>
 <blockquote>
 <p>该方法返回一个连接到标注输入<code>stdin</code>(文件描述符为0)的流对象。<br>该流是一个<code>net.Socket</code>（这是一个双工流），当文件描述符<code>0</code>指向一个文件时，此时他是一个可读流。</p>
 </blockquote>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">process<span class="selector-class">.stdin</span><span class="selector-class">.setEncoding</span>(<span class="string">'utf8'</span>)</div><div class="line"></div><div class="line">process<span class="selector-class">.stdin</span><span class="selector-class">.on</span>(<span class="string">'readable'</span>, () =&gt; &#123;</div><div class="line">    const chunk = process<span class="selector-class">.stdin</span><span class="selector-class">.read</span>()    </div><div class="line"></div><div class="line">    <span class="keyword">if</span>(chunk !== null)&#123;</div><div class="line">        process<span class="selector-class">.stdout</span><span class="selector-class">.write</span>(`data: $&#123;chunk&#125;`)</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">process<span class="selector-class">.stdin</span><span class="selector-class">.on</span>(<span class="string">'end'</span>, () =&gt; &#123;</div><div class="line">    process<span class="selector-class">.stdout</span><span class="selector-class">.write</span>(<span class="string">'end'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h2 id="process-stdout"><a href="#process-stdout" class="headerlink" title="process.stdout"></a>process.stdout</h2><p>return: <stream></stream></p>
+<h2 id="process-stdout"><a href="#process-stdout" class="headerlink" title="process.stdout"></a>process.stdout</h2><p>return: &lt;Stream&gt;</p>
 <blockquote>
 <p>该方法返回一个连接到标注输出<code>stdout</code>(文件描述符为1)的流对象。<br>该流是一个<code>net.Socket</code>（这是一个双工流），当文件描述符<code>1</code>指向一个文件时，此时他是一个可写流。</p>
 </blockquote>
@@ -334,17 +336,19 @@
 <p><code>process.stdout</code>和<code>process.stderr</code>区别于Node中其他的流有以下几点：</p>
 </blockquote>
 <p>1, 他们分别被用于<code>console.log()</code>和<code>console.error()</code><br>2, 他们不能被关闭<br>3, 他们不会触发<code>finish</code>事件<br>4, 写入有可能是同步的，取决于他们链接到哪里以及在哪个平台上：</p>
-<pre><code>- Files: 在windows和Linux平台上都是同步的
-- TTYs(Terminals): 在windows上异步，在Unix上同步
-- Pipes以及sockets: 在windows上同步，在Unix上异步
-</code></pre><p>之所以有这些因为，都是因为一些历史原因，但是又不能轻易的改变他们。<br><br></p>
+<ul>
+<li>Files: 在windows和Linux平台上都是同步的</li>
+<li>TTYs(Terminals): 在windows上异步，在Unix上同步</li>
+<li>Pipes以及sockets: 在windows上同步，在Unix上异步</li>
+</ul>
+<p>之所以有这些因为，都是因为一些历史原因，但是又不能轻易的改变他们。<br><br></p>
 <p>同步的写入可以避免一些问题，比如<code>console.log()</code>,<code>console.error()</code>, 我们知道当使用<code>process.exit()</code>会立马终止进程，如果是异步写入，那么就可能导致还没写完进程就终止了，导致数据写入不全。</p>
 <p>Warning: ….</p>
-<h2 id="process-uptime"><a href="#process-uptime" class="headerlink" title="process.uptime()"></a>process.uptime()</h2><p>return: <number></number></p>
+<h2 id="process-uptime"><a href="#process-uptime" class="headerlink" title="process.uptime()"></a>process.uptime()</h2><p>return: &lt;number&gt;</p>
 <blockquote>
 <p>返回当前Node进程运行的秒数。<br>需要注意的是，这个秒数包括小数部分。</p>
 </blockquote>
-<h2 id="process-version"><a href="#process-version" class="headerlink" title="process.version"></a>process.version</h2><p>return: <string></string></p>
+<h2 id="process-version"><a href="#process-version" class="headerlink" title="process.version"></a>process.version</h2><p>return: &lt;string&gt;</p>
 <blockquote>
 <p>返回当前Node的版本</p>
 </blockquote>
@@ -354,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj55g5aui001y9bo04wpqsgud" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj55gmfsu001mago00czc770k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -624,7 +628,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj55g5ath000n9bo0an18rszn" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj55gmfs7000kago00or55i4f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -725,7 +729,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj55g5au400159bo0182835fh" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj55gmfsm0012ago0ez61pwa1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lexical-scope/">lexical scope</a></li></ul>
@@ -766,7 +770,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj55g5auw002n9bo0w5bva318" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj55gmftg002jago0378wem5w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -880,7 +884,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj55g5atc000h9bo0oeavgk16" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj55gmfs6000hago06lqrh4rs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1086,7 +1090,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj55g5atl000q9bo0kwe7va08" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj55gmfs9000oago0ybuy5exd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1136,7 +1140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj55g5atv000w9bo0al90gfde" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj55gmfsp0016ago00w8xlnid" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
@@ -1363,7 +1367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj55g5aty00109bo0brasvm97" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj55gmfsg000vago00hj7qmxp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework7/">framework7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hybrid/">hybrid</a></li></ul>
@@ -1407,7 +1411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/webpack-optimize/" data-id="cj55g5auw002r9bo0btzg19ln" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/webpack-optimize/" data-id="cj55gmftk002nago0cyrbhsrg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
