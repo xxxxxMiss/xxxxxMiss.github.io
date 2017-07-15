@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: sails | 青史成灰</title>
+  <title>event-loop | 青史成灰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="青史成灰">
-<meta property="og:url" content="https://xxxxxmiss.github.io/tags/sails/index.html">
+  <meta name="description" content="microtask and macrotaskevent loop12345678910111213141516171819202122232425262728293031323334353637383940414243444546console.log(&apos;script start&apos;)const interval = setInterval(() =&amp;gt; &amp;#123;  console.log">
+<meta property="og:type" content="article">
+<meta property="og:title" content="event-loop">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/07/14/event-loop/index.html">
 <meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="microtask and macrotaskevent loop12345678910111213141516171819202122232425262728293031323334353637383940414243444546console.log(&apos;script start&apos;)const interval = setInterval(() =&amp;gt; &amp;#123;  console.log">
+<meta property="og:updated_time" content="2017-07-14T03:24:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="青史成灰">
+<meta name="twitter:title" content="event-loop">
+<meta name="twitter:description" content="microtask and macrotaskevent loop12345678910111213141516171819202122232425262728293031323334353637383940414243444546console.log(&apos;script start&apos;)const interval = setInterval(() =&amp;gt; &amp;#123;  console.log">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
@@ -64,39 +68,55 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/15/sails/" class="archive-article-date">
-  <time datetime="2017-04-14T16:42:53.000Z" itemprop="datePublished">4月 15</time>
+        <section id="main"><!-- id="post-variable-hoist" -->
+<article id="post-event-loop" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/14/event-loop/" class="article-date">
+  <time datetime="2017-07-14T02:58:29.000Z" itemprop="datePublished">2017-07-14</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/15/sails/">sails</a>
+    <h1 class="article-title" itemprop="name">
+      event-loop
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p><a href="https://stackoverflow.com/questions/25915634/difference-between-microtask-and-macrotask-within-an-event-loop-context" target="_blank" rel="external">microtask and macrotask</a><br><a href="https://blog.risingstack.com/node-js-at-scale-understanding-node-js-event-loop/" target="_blank" rel="external">event loop</a><br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</div><div class="line"></div><div class="line">const interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setInterval'</span>)</div><div class="line">&#125;, <span class="number">0</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout1'</span>)</div><div class="line"></div><div class="line">  Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise3'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise4'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'setTimeout2'</span>)</div><div class="line"></div><div class="line">      Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise5'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise6'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        clearInterval(interval)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">&#125;)</div><div class="line"></div><div class="line">Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="regexp">//</span> script start</div><div class="line"><span class="regexp">//</span> promise1</div><div class="line"><span class="regexp">//</span> promise2</div><div class="line"><span class="regexp">//</span> setInterval</div><div class="line"><span class="regexp">//</span> setTimeout1</div><div class="line"><span class="regexp">//</span> promise3</div><div class="line"><span class="regexp">//</span> promise4</div><div class="line"><span class="regexp">//</span> interval</div><div class="line"><span class="regexp">//</span> setTimout2</div><div class="line"><span class="regexp">//</span> promise5</div><div class="line"><span class="regexp">//</span> pormise6</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj55g5atn000t9bo0bmvh0des" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/12/nodejs-process/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodejs-process</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
 
 </section>
         
