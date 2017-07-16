@@ -105,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj56o3gnn000rvro0ubw5qoxx" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj56odfi5002dwzo01ux8rylb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -152,51 +152,16 @@
 <h2 id="事件循环模型"><a href="#事件循环模型" class="headerlink" title="事件循环模型"></a>事件循环模型</h2><blockquote>
 <p>当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：</p>
 </blockquote>
-<ol>
-<li>从macrotask队列中选择最老一个任务taskA</li>
-<li>如果taskA不存在，即macrotask队列是空的，那么进行步骤6</li>
-<li>设置当前运行的任务为taskA</li>
-<li>运行taskA(即执行taskA它的回调函数)</li>
-<li>设置当前运行的任务为空，并从macrotask中移除taskA</li>
-<li><p>开始处理microtask</p>
-<ul>
-<li>(a)从microtask中选择最老的任务taskX</li>
-<li>(b)如果taskX不存在，即microtask是空的，那么跳到步骤(g)</li>
-<li>(c)设置当前运行的任务为taskX</li>
-<li>(d)运行taskX(即执行taskX的回调函数)</li>
-<li>(e)设置当前运行的任务为空，并从microtask中移除taskX</li>
-<li>(f)从microtask选择下一个最老的任务，步骤(b)</li>
-<li>(g)重复以上步骤，直到microtask中的任务全部执行完毕</li>
-</ul>
-</li>
-<li><p>继续回到步骤1</p>
-</li>
-</ol>
+<ol><br>  <li>从macrotask队列中选择最老一个任务taskA</li><br>  <li>如果taskA不存在，即macrotask队列是空的，那么进行步骤6</li><br>  <li>设置当前运行的任务为taskA</li><br>  <li>运行taskA(即执行taskA它的回调函数)</li><br>  <li>设置当前运行的任务为空，并从macrotask中移除taskA</li><br>  <li>开始处理microtask<br>    <ul><br>      <li>(a)从microtask中选择最老的任务taskX</li><br>      <li>(b)如果taskX不存在，即microtask是空的，那么跳到步骤(g)</li><br>      <li>(c)设置当前运行的任务为taskX</li><br>      <li>(d)运行taskX(即执行taskX的回调函数)</li><br>      <li>(e)设置当前运行的任务为空，并从microtask中移除taskX</li><br>      <li>(f)从microtask选择下一个最老的任务，步骤(b)</li><br>      <li>(g)重复以上步骤，直到microtask中的任务全部执行完毕</li><br>    </ul><br>  </li><br>  <li>继续回到步骤1</li><br></ol>
+
 <p>精简的概括就是：</p>
 <ul>
 <li>先从macrotask队列中选择最老的一个任务开始执行，然后移除这个最老的任务</li>
 <li>再执行microtask队列中所有的任务，然后移除他们</li>
 <li>继续下一轮，重复以上2步</li>
 </ul>
-<h2 id="需要知道的一些事情："><a href="#需要知道的一些事情：" class="headerlink" title="需要知道的一些事情："></a>需要知道的一些事情：</h2><ol>
-<li><p>当一个macrotask任务正在运行的时候，新的事件可以被注册，也即创建新的任务。例如：</p>
-<ul>
-<li><p>promiseA.then()的回调是一个任务</p>
-<ul>
-<li>promiseA如果处于resolve/reject状态时，那么该任务被推到事件循环的当前轮次的microtask中</li>
-<li>promiseA处于pending状态时，那么该任务将会被推到事件循环的下一个轮次的microtask中。</li>
-</ul>
-</li>
-<li><p>setTimeout(callback, n)的回调是一个任务，将会被推到macrotask中，及时n=0。</p>
-</li>
-</ul>
-</li>
-<li><p>如果事件循环正在执行microtask中的任务，那么你可以继续往microtask中添加任务，这些任务都会在本轮次的循环中执行。</p>
-</li>
-<li>只有等到本轮次的microtask中的所有任务执行完毕，才会执行下一轮的macrotask任务。</li>
-<li>常见的microtask任务：<code>process.nextTick</code>,<code>Promise</code>, <code>Object.observe</code>, <code>MutationObserver</code></li>
-<li>常见的macrotask任务：<code>setTimeout</code>,<code>setInterval</code>, <code>setImmediate</code>,Dom事件（click, scroll, mouseup等）， <code>ajax</code>，I/O, UI rendering等。还需要注意的是，整个的脚本也是一个macrotask任务。</li>
-</ol>
+<h2 id="需要知道的一些事情："><a href="#需要知道的一些事情：" class="headerlink" title="需要知道的一些事情："></a>需要知道的一些事情：</h2><ol><br>  <li>当一个macrotask任务正在运行的时候，新的事件可以被注册，也即创建新的任务。例如：<br>    <ul><br>      <li>promiseA.then()的回调是一个任务<br>        <ul><br>          <li>promiseA如果处于resolve/reject状态时，那么该任务被推到事件循环的当前轮次的microtask中</li><br>          <li>promiseA处于pending状态时，那么该任务将会被推到事件循环的下一个轮次的microtask中。</li><br>        </ul><br>      </li><br>      <li>setTimeout(callback, n)的回调是一个任务，将会被推到macrotask中，及时n=0。</li><br>    </ul><br>  </li><br>  <li>如果事件循环正在执行microtask中的任务，那么你可以继续往microtask中添加任务，这些任务都会在本轮次的循环中执行。</li><br>  <li>只有等到本轮次的microtask中的所有任务执行完毕，才会执行下一轮的macrotask任务。</li><br>  <li>常见的microtask任务：<code>process.nextTick</code>,<code>Promise</code>, <code>Object.observe</code>, <code>MutationObserver</code></li><br>  <li>常见的macrotask任务：<code>setTimeout</code>,<code>setInterval</code>, <code>setImmediate</code>,Dom事件（click, scroll, mouseup等）， <code>ajax</code>，I/O, UI rendering等。还需要注意的是，整个的脚本也是一个macrotask任务。</li><br></ol>
+
 <p>经过上面的分析，可以看如下例子输出：<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</div><div class="line"></div><div class="line">const interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setInterval'</span>)</div><div class="line">&#125;, <span class="number">0</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout1'</span>)</div><div class="line"></div><div class="line">  Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise3'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise4'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'setTimeout2'</span>)</div><div class="line"></div><div class="line">      Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise5'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise6'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        clearInterval(interval)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">&#125;)</div><div class="line"></div><div class="line">Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="regexp">//</span> script start</div><div class="line"><span class="regexp">//</span> promise1</div><div class="line"><span class="regexp">//</span> promise2</div><div class="line"><span class="regexp">//</span> setInterval</div><div class="line"><span class="regexp">//</span> setTimeout1</div><div class="line"><span class="regexp">//</span> promise3</div><div class="line"><span class="regexp">//</span> promise4</div><div class="line"><span class="regexp">//</span> interval</div><div class="line"><span class="regexp">//</span> setTimout2</div><div class="line"><span class="regexp">//</span> promise5</div><div class="line"><span class="regexp">//</span> pormise6</div></pre></td></tr></table></figure></p>
 <h2 id="call-stack-执行栈-与event-loop-事件循环-之间的关系"><a href="#call-stack-执行栈-与event-loop-事件循环-之间的关系" class="headerlink" title="call stack(执行栈)与event loop(事件循环)之间的关系"></a>call stack(执行栈)与event loop(事件循环)之间的关系</h2><blockquote>
 <p>为了形象的表示，可以参看下图：</p>
@@ -208,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj56o3gmt0001vro0i2jx80df" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj56odfhq001fwzo0i13ronnx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -484,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj56o3go40015vro0gapmp4jl" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj56odfi30028wzo027xjghqt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -615,7 +580,7 @@
 <li><code>+</code> &lt;=&gt; <code>{1,}</code></li>
 <li><code>{m, n}</code></li>
 </ul>
-<p>下面以一个具体的例子来说明贪婪匹配，<br>假设我们要匹配一个字符串中不带任何属性的html标签，你的正则可能会像下面这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/<span class="xml"><span class="tag">&lt;<span class="name">.+</span>&gt;</span>/.exec('This is a <span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span> test')</span></div><div class="line">// prints: ['<span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span>']</div></pre></td></tr></table></figure></p>
+<p>下面以一个具体的例子来说明贪婪匹配，<br>假设我们要匹配一个字符串中不带任何属性的html标签，你的正则可能会像下面这样：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/<span class="tag">&lt;<span class="name">.+</span>&gt;</span>/.exec('This is a <span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span> test')</div><div class="line">// prints: ['<span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span>']</div></pre></td></tr></table></figure></p>
 <p>你会看到匹配的结果和我们所期盼的<code>&lt;EM&gt;</code>,<code>&lt;/EM&gt;</code>并不一样。究其原因就是因为量词<code>+</code>是贪婪的，它会让正则引擎尽可能多的匹配。其实这个匹配过程可以用上面的图表来解释更加的清楚：<br>匹配完第一个<code>.</code>所代表的字符后，进入到下一个字符会有2条路径：一条是<code>.</code>形成的环路，一条直接进入<code>&gt;</code>, 但是<code>+</code>是贪婪的，那么正则引擎会一直进入这条环路，直接匹配失败了才会退出这条路径。<br><br><br>下面是更加详细的关于正则引擎是如何匹配<code>&lt;EM&gt;first&lt;/EM&gt;</code>的：</p>
 <blockquote>
 <p>The first token in the regex is <code>&lt;</code>. As we already know, the first place where it will match is the first <code>&lt;</code> in the string. The next token is dot, which matches any character except newlines. The dot is repeated by the plus. The plus is greedy. Therefore, the engine will repeat the dot as many times as it can. The dot matches <code>E</code>, so the regex continues to try to match the dot with the next character. <code>M</code> is matched, and the dot is repeated once more. The next character is <code>&gt;</code>. You should see the problem by now. The dot matches the <code>&gt;</code>, and the engine continues repeating the dot. The dot will match all characters in the string. The dot fails when the engine has reached the void after the end of the string. Only at this point does the regex engine continue with next token <code>&gt;</code>.<br><br><br>So far, <code>&lt;.+</code> has matched <code>&lt;EM&gt;first&lt;/EM&gt; test</code> and the regex engine has arrived at the end of the string. <code>&gt;</code> cannot match here. The engine remembers that the plus has repeated the dot more often than is required. (Remember that the plus requires the dot to match only once.) Rather than admitting failure, the engine will backtrack. It will reduce the repetition of the plus by one, and then continue trying the remainder of the regex.<br><br><br>So the match of <code>.+</code> is reduced to <code>EM&gt;first&lt;/EM&gt;</code> tes. The next token in the regex is still <code>&gt;</code>. But now the next character in the string is the last <code>t</code>. Again, these cannot match, causing the engine to backtrack further. The total match so far is reduced to <code>&lt;EM&gt;first&lt;/EM&gt; te</code>. But <code>&gt;</code> still cannot match. So the engine continues backtracking until the match of <code>.+</code> is reduced to <code>EM&gt;first&lt;/EM. Now</code>, <code>&gt;</code> can match the next character in the string. The last token in the regex has been matched. The engine reports that <code>&lt;EM&gt;first&lt;/EM&gt;</code> has been successfully matched.</p>
@@ -754,7 +719,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj56o3gn10006vro0uw2v9axc" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj56odfhm0017wzo02heh74ws" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -855,7 +820,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj56o3gnk000kvro0eyb0v11t" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj56odfi10020wzo0sd5o2c0v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -896,7 +861,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj56o3goj001tvro01ptft076" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj56odfig0031wzo0och7j5q4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1010,7 +975,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj56o3gmp0000vro0c0h3yyxc" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj56odfhm0016wzo0btqrrwq7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1216,7 +1181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj56o3gmy0004vro0moxt3hqg" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj56odfhn0019wzo0t86i460d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1266,7 +1231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj56o3gmz0005vro0y7l09wx2" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj56odfhp001cwzo04yg03hmo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
@@ -1435,7 +1400,7 @@
 <h2 id="F7中使用ajax加载页面"><a href="#F7中使用ajax加载页面" class="headerlink" title="F7中使用ajax加载页面"></a>F7中使用ajax加载页面</h2><blockquote>
 <p>在F7中，默认情况下所有的链接都使用ajax加载，除了指定了<code>external</code>的链接或则没有正确的href属性的链接（href=”#”或则为空）。<br>这种行为当然是可以改变的，可以通过在初始化app的时候指定<code>ajaxLinks</code>选项来改变这种行为。<br>例子：</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Framework7(&#123;</div><div class="line">    <span class="comment">// 这个属性的值是一个css选择器</span></div><div class="line">    ajaxLinks: <span class="string">'a.ajax'</span> <span class="comment">//含有ajax类名的a链接才会使用ajax加载</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Framework7(&#123;</div><div class="line">    <span class="comment">// 这个属性的值是一个css选择器</span></div><div class="line">    ajaxLinks: <span class="string">'a.ajax'</span> <span class="comment">//含有ajax类名的a链接才会使用ajax加载</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 <h2 id="返回上一步"><a href="#返回上一步" class="headerlink" title="返回上一步"></a>返回上一步</h2><blockquote>
 <p>在F7中，返回上一步只要在指定的a链接上增加一个<code>back</code>类名就可以了。但是关于返回链接有几点需要注意的：</p>
 </blockquote>
@@ -1488,12 +1453,12 @@
 </blockquote>
 <p>index.html<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pages"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 首页 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"page"</span> <span class="attr">data-page</span>=<span class="string">"index"</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- about页面 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-template</span>=<span class="string">"about"</span> <span class="attr">data-context-name</span>=<span class="string">"about"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- services页面 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"services.html"</span> <span class="attr">data-context-name</span>=<span class="string">"services"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- cars页面 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"cars.html"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/template7"</span> <span class="attr">id</span>=<span class="string">"about"</span>&gt;</span><span class="handlebars"><span class="xml"></span></span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-inner"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span> about page <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pages"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"page"</span> <span class="attr">data-page</span>=<span class="string">"about"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span>&gt;</span>My name is <span class="template-variable">&#123;&#123;name&#125;&#125;</span><span class="xml">, i am </span><span class="template-variable">&#123;&#123;age&#125;&#125;</span><span class="xml"> years old!<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>cars.html(services.html结构一样，不再列出)<br><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar"</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-inner"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"back link"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"icon icon-back"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>返回<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span>services page<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pages"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"page"</span> <span class="attr">data-page</span>=<span class="string">"services"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="template-tag">&#123;&#123;#<span class="name"><span class="builtin-name">each</span></span> this&#125;&#125;</span><span class="xml"></span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="template-variable">&#123;&#123;this&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">        <span class="template-tag">&#123;&#123;/<span class="name"><span class="builtin-name">each</span></span>&#125;&#125;</span><span class="xml"></span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>JS代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myApp = <span class="keyword">new</span> Framework7(&#123;</div><div class="line">    <span class="attr">animateNavBackIcon</span>: <span class="literal">true</span>, <span class="comment">// 开启返回按钮的icon动画效果</span></div><div class="line">    precompileTemplates: <span class="literal">true</span>, <span class="comment">// 开启自动编译模板    </span></div><div class="line">    template7Pages: <span class="literal">true</span>, <span class="comment">// 开启使用ajax，动态页面作为template7模板</span></div><div class="line">    template7Data: &#123; <span class="comment">// 模板数据</span></div><div class="line">        <span class="string">'url: services.html'</span>: &#123; <span class="comment">// 通过url匹配页面</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        <span class="string">'page:cars'</span>: [<span class="string">''</span>, <span class="string">''</span>, <span class="string">''</span>], <span class="comment">// 通过data-page匹配页面</span></div><div class="line">        about: &#123; <span class="comment">// 简单的数据，页面中需提供data-context-name来指定模板的上下文</span></div><div class="line">            name: <span class="string">'F7'</span>,</div><div class="line">            <span class="attr">age</span>: <span class="number">2</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//.... 其他的配置项</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>JS代码：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myApp = <span class="keyword">new</span> Framework7(&#123;</div><div class="line">    animateNavBackIcon: <span class="literal">true</span>, <span class="comment">// 开启返回按钮的icon动画效果</span></div><div class="line">    precompileTemplates: <span class="literal">true</span>, <span class="comment">// 开启自动编译模板    </span></div><div class="line">    template7Pages: <span class="literal">true</span>, <span class="comment">// 开启使用ajax，动态页面作为template7模板</span></div><div class="line">    template7Data: &#123; <span class="comment">// 模板数据</span></div><div class="line">        <span class="string">'url: services.html'</span>: &#123; <span class="comment">// 通过url匹配页面</span></div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        <span class="string">'page:cars'</span>: [<span class="string">''</span>, <span class="string">''</span>, <span class="string">''</span>], <span class="comment">// 通过data-page匹配页面</span></div><div class="line">        about: &#123; <span class="comment">// 简单的数据，页面中需提供data-context-name来指定模板的上下文</span></div><div class="line">            name: <span class="string">'F7'</span>,</div><div class="line">            age: <span class="number">2</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//.... 其他的配置项</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj56o3gn8000avro0ci0qzbbc" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj56odfhr001jwzo0c62m8zvu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework7/">framework7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hybrid/">hybrid</a></li></ul>
