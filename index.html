@@ -105,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj56odfi5002dwzo01ux8rylb" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj56olnhx001ixto07ha3idvf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -145,14 +145,20 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-        <h2 id="2个名词"><a href="#2个名词" class="headerlink" title="2个名词"></a>2个名词</h2><ul>
+        <style type="text/css" media="screen">
+  .list li{
+    list-style-type: initial;
+  }
+</style>
+
+<h2 id="2个名词"><a href="#2个名词" class="headerlink" title="2个名词"></a>2个名词</h2><ul>
 <li>microtask: 称之为小型任务</li>
 <li>macrotask（task queue）: 称之为大型任务</li>
 </ul>
 <h2 id="事件循环模型"><a href="#事件循环模型" class="headerlink" title="事件循环模型"></a>事件循环模型</h2><blockquote>
 <p>当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：</p>
 </blockquote>
-<ol><br>  <li>从macrotask队列中选择最老一个任务taskA</li><br>  <li>如果taskA不存在，即macrotask队列是空的，那么进行步骤6</li><br>  <li>设置当前运行的任务为taskA</li><br>  <li>运行taskA(即执行taskA它的回调函数)</li><br>  <li>设置当前运行的任务为空，并从macrotask中移除taskA</li><br>  <li>开始处理microtask<br>    <ul><br>      <li>(a)从microtask中选择最老的任务taskX</li><br>      <li>(b)如果taskX不存在，即microtask是空的，那么跳到步骤(g)</li><br>      <li>(c)设置当前运行的任务为taskX</li><br>      <li>(d)运行taskX(即执行taskX的回调函数)</li><br>      <li>(e)设置当前运行的任务为空，并从microtask中移除taskX</li><br>      <li>(f)从microtask选择下一个最老的任务，步骤(b)</li><br>      <li>(g)重复以上步骤，直到microtask中的任务全部执行完毕</li><br>    </ul><br>  </li><br>  <li>继续回到步骤1</li><br></ol>
+<ol class="list"><br>  <li>从macrotask队列中选择最老一个任务taskA</li><br>  <li>如果taskA不存在，即macrotask队列是空的，那么进行步骤6</li><br>  <li>设置当前运行的任务为taskA</li><br>  <li>运行taskA(即执行taskA它的回调函数)</li><br>  <li>设置当前运行的任务为空，并从macrotask中移除taskA</li><br>  <li>开始处理microtask<br>    <ul><br>      <li>(a)从microtask中选择最老的任务taskX</li><br>      <li>(b)如果taskX不存在，即microtask是空的，那么跳到步骤(g)</li><br>      <li>(c)设置当前运行的任务为taskX</li><br>      <li>(d)运行taskX(即执行taskX的回调函数)</li><br>      <li>(e)设置当前运行的任务为空，并从microtask中移除taskX</li><br>      <li>(f)从microtask选择下一个最老的任务，步骤(b)</li><br>      <li>(g)重复以上步骤，直到microtask中的任务全部执行完毕</li><br>    </ul><br>  </li><br>  <li>继续回到步骤1</li><br></ol>
 
 <p>精简的概括就是：</p>
 <ul>
@@ -160,7 +166,7 @@
 <li>再执行microtask队列中所有的任务，然后移除他们</li>
 <li>继续下一轮，重复以上2步</li>
 </ul>
-<h2 id="需要知道的一些事情："><a href="#需要知道的一些事情：" class="headerlink" title="需要知道的一些事情："></a>需要知道的一些事情：</h2><ol><br>  <li>当一个macrotask任务正在运行的时候，新的事件可以被注册，也即创建新的任务。例如：<br>    <ul><br>      <li>promiseA.then()的回调是一个任务<br>        <ul><br>          <li>promiseA如果处于resolve/reject状态时，那么该任务被推到事件循环的当前轮次的microtask中</li><br>          <li>promiseA处于pending状态时，那么该任务将会被推到事件循环的下一个轮次的microtask中。</li><br>        </ul><br>      </li><br>      <li>setTimeout(callback, n)的回调是一个任务，将会被推到macrotask中，及时n=0。</li><br>    </ul><br>  </li><br>  <li>如果事件循环正在执行microtask中的任务，那么你可以继续往microtask中添加任务，这些任务都会在本轮次的循环中执行。</li><br>  <li>只有等到本轮次的microtask中的所有任务执行完毕，才会执行下一轮的macrotask任务。</li><br>  <li>常见的microtask任务：<code>process.nextTick</code>,<code>Promise</code>, <code>Object.observe</code>, <code>MutationObserver</code></li><br>  <li>常见的macrotask任务：<code>setTimeout</code>,<code>setInterval</code>, <code>setImmediate</code>,Dom事件（click, scroll, mouseup等）， <code>ajax</code>，I/O, UI rendering等。还需要注意的是，整个的脚本也是一个macrotask任务。</li><br></ol>
+<h2 id="需要知道的一些事情："><a href="#需要知道的一些事情：" class="headerlink" title="需要知道的一些事情："></a>需要知道的一些事情：</h2><ol class="list"><br>  <li>当一个macrotask任务正在运行的时候，新的事件可以被注册，也即创建新的任务。例如：<br>    <ul><br>      <li>promiseA.then()的回调是一个任务<br>        <ul><br>          <li>promiseA如果处于resolve/reject状态时，那么该任务被推到事件循环的当前轮次的microtask中</li><br>          <li>promiseA处于pending状态时，那么该任务将会被推到事件循环的下一个轮次的microtask中。</li><br>        </ul><br>      </li><br>      <li>setTimeout(callback, n)的回调是一个任务，将会被推到macrotask中，及时n=0。</li><br>    </ul><br>  </li><br>  <li>如果事件循环正在执行microtask中的任务，那么你可以继续往microtask中添加任务，这些任务都会在本轮次的循环中执行。</li><br>  <li>只有等到本轮次的microtask中的所有任务执行完毕，才会执行下一轮的macrotask任务。</li><br>  <li>常见的microtask任务：<code>process.nextTick</code>,<code>Promise</code>, <code>Object.observe</code>, <code>MutationObserver</code></li><br>  <li>常见的macrotask任务：<code>setTimeout</code>,<code>setInterval</code>, <code>setImmediate</code>,Dom事件（click, scroll, mouseup等）， <code>ajax</code>，I/O, UI rendering等。还需要注意的是，整个的脚本也是一个macrotask任务。</li><br></ol>
 
 <p>经过上面的分析，可以看如下例子输出：<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</div><div class="line"></div><div class="line">const interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setInterval'</span>)</div><div class="line">&#125;, <span class="number">0</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout1'</span>)</div><div class="line"></div><div class="line">  Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise3'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise4'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'setTimeout2'</span>)</div><div class="line"></div><div class="line">      Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise5'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise6'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        clearInterval(interval)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">&#125;)</div><div class="line"></div><div class="line">Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="regexp">//</span> script start</div><div class="line"><span class="regexp">//</span> promise1</div><div class="line"><span class="regexp">//</span> promise2</div><div class="line"><span class="regexp">//</span> setInterval</div><div class="line"><span class="regexp">//</span> setTimeout1</div><div class="line"><span class="regexp">//</span> promise3</div><div class="line"><span class="regexp">//</span> promise4</div><div class="line"><span class="regexp">//</span> interval</div><div class="line"><span class="regexp">//</span> setTimout2</div><div class="line"><span class="regexp">//</span> promise5</div><div class="line"><span class="regexp">//</span> pormise6</div></pre></td></tr></table></figure></p>
 <h2 id="call-stack-执行栈-与event-loop-事件循环-之间的关系"><a href="#call-stack-执行栈-与event-loop-事件循环-之间的关系" class="headerlink" title="call stack(执行栈)与event loop(事件循环)之间的关系"></a>call stack(执行栈)与event loop(事件循环)之间的关系</h2><blockquote>
@@ -173,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj56odfhq001fwzo0i13ronnx" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj56olnh6000qxto0yf7dzs4j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -449,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj56odfi30028wzo027xjghqt" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj56olni0001qxto04lb8naam" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -719,7 +725,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj56odfhm0017wzo02heh74ws" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj56olnh3000kxto0nexuxvnd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -820,7 +826,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj56odfi10020wzo0sd5o2c0v" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj56olnhj0014xto0f4swsldr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -861,7 +867,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj56odfig0031wzo0och7j5q4" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj56olnj4003exto08nukxskq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -975,7 +981,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj56odfhm0016wzo0btqrrwq7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj56olnh0000hxto0vo6d9spf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1181,7 +1187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj56odfhn0019wzo0t86i460d" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj56olnh4000oxto040n0s7lm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1231,7 +1237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj56odfhp001cwzo04yg03hmo" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj56olnh8000txto0zcp66wyb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
@@ -1458,7 +1464,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj56odfhr001jwzo0c62m8zvu" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj56olnhf000wxto09ypi2lwj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework7/">framework7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hybrid/">hybrid</a></li></ul>
