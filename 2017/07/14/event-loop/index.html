@@ -3,18 +3,53 @@
 <head>
   <meta charset="utf-8">
   
-  <title>event-loop | 青史成灰</title>
+  <title>event-loop(事件循环) | 青史成灰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="microtask and macrotaskevent loop12345678910111213141516171819202122232425262728293031323334353637383940414243444546console.log(&apos;script start&apos;)const interval = setInterval(() =&amp;gt; &amp;#123;  console.log">
+  <meta name="description" content="2个名词
+microtask: 称之为小型任务队列
+macrotask（task queue）: 称之为大型任务队列
+
+事件循环模型
+当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
+
+
+从macrotask中选择最老一个任务taskA
+如果taskA不存在，即macrotask是空的，那么进行步骤6
+设置当前运行的任务为taskA
+运行taskA(即执行taskA它的回">
 <meta property="og:type" content="article">
-<meta property="og:title" content="event-loop">
+<meta property="og:title" content="event-loop(事件循环)">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/07/14/event-loop/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="microtask and macrotaskevent loop12345678910111213141516171819202122232425262728293031323334353637383940414243444546console.log(&apos;script start&apos;)const interval = setInterval(() =&amp;gt; &amp;#123;  console.log">
-<meta property="og:updated_time" content="2017-07-14T03:24:46.000Z">
+<meta property="og:description" content="2个名词
+microtask: 称之为小型任务队列
+macrotask（task queue）: 称之为大型任务队列
+
+事件循环模型
+当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
+
+
+从macrotask中选择最老一个任务taskA
+如果taskA不存在，即macrotask是空的，那么进行步骤6
+设置当前运行的任务为taskA
+运行taskA(即执行taskA它的回">
+<meta property="og:image" content="https://xxxxxmiss.github.io/2017/07/14/event-loop/event-loop.png">
+<meta property="og:updated_time" content="2017-07-16T07:49:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="event-loop">
-<meta name="twitter:description" content="microtask and macrotaskevent loop12345678910111213141516171819202122232425262728293031323334353637383940414243444546console.log(&apos;script start&apos;)const interval = setInterval(() =&amp;gt; &amp;#123;  console.log">
+<meta name="twitter:title" content="event-loop(事件循环)">
+<meta name="twitter:description" content="2个名词
+microtask: 称之为小型任务队列
+macrotask（task queue）: 称之为大型任务队列
+
+事件循环模型
+当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
+
+
+从macrotask中选择最老一个任务taskA
+如果taskA不存在，即macrotask是空的，那么进行步骤6
+设置当前运行的任务为taskA
+运行taskA(即执行taskA它的回">
+<meta name="twitter:image" content="https://xxxxxmiss.github.io/2017/07/14/event-loop/event-loop.png">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
@@ -75,6 +110,10 @@
   <time datetime="2017-07-14T02:58:29.000Z" itemprop="datePublished">2017-07-14</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -83,7 +122,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      event-loop
+      event-loop(事件循环)
     </h1>
   
 
@@ -92,14 +131,67 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-        <p><a href="https://stackoverflow.com/questions/25915634/difference-between-microtask-and-macrotask-within-an-event-loop-context" target="_blank" rel="external">microtask and macrotask</a><br><a href="https://blog.risingstack.com/node-js-at-scale-understanding-node-js-event-loop/" target="_blank" rel="external">event loop</a><br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</div><div class="line"></div><div class="line">const interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setInterval'</span>)</div><div class="line">&#125;, <span class="number">0</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout1'</span>)</div><div class="line"></div><div class="line">  Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise3'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise4'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'setTimeout2'</span>)</div><div class="line"></div><div class="line">      Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise5'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise6'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        clearInterval(interval)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">&#125;)</div><div class="line"></div><div class="line">Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="regexp">//</span> script start</div><div class="line"><span class="regexp">//</span> promise1</div><div class="line"><span class="regexp">//</span> promise2</div><div class="line"><span class="regexp">//</span> setInterval</div><div class="line"><span class="regexp">//</span> setTimeout1</div><div class="line"><span class="regexp">//</span> promise3</div><div class="line"><span class="regexp">//</span> promise4</div><div class="line"><span class="regexp">//</span> interval</div><div class="line"><span class="regexp">//</span> setTimout2</div><div class="line"><span class="regexp">//</span> promise5</div><div class="line"><span class="regexp">//</span> pormise6</div></pre></td></tr></table></figure></p>
+        <h2 id="2个名词"><a href="#2个名词" class="headerlink" title="2个名词"></a>2个名词</h2><ul>
+<li>microtask: 称之为小型任务队列</li>
+<li>macrotask（task queue）: 称之为大型任务队列</li>
+</ul>
+<h2 id="事件循环模型"><a href="#事件循环模型" class="headerlink" title="事件循环模型"></a>事件循环模型</h2><blockquote>
+<p>当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：</p>
+</blockquote>
+<ol>
+<li>从macrotask中选择最老一个任务taskA</li>
+<li>如果taskA不存在，即macrotask是空的，那么进行步骤6</li>
+<li>设置当前运行的任务为taskA</li>
+<li>运行taskA(即执行taskA它的回调函数)</li>
+<li>设置当前运行的任务为空，并从macrotask中移除taskA</li>
+<li>开始处理microtask<ul>
+<li>(a)从microtask中选择最老的任务taskX</li>
+<li>(b)如果taskX不存在，即microtask是空的，那么跳到步骤(g)</li>
+<li>(c)设置当前运行的任务为taskX</li>
+<li>(d)运行taskX(即执行taskX的回调函数)</li>
+<li>(e)设置当前运行的任务为空，并从microtask中移除taskX</li>
+<li>(f)从microtask选择下一个最老的任务，步骤(b)</li>
+<li>(g)重复以上步骤，直到microtask中的任务全部执行完毕</li>
+</ul>
+</li>
+<li>继续回到步骤1</li>
+</ol>
+<p>精简的概括就是：</p>
+<ul>
+<li>先从macrotask队列中选择最老的一个任务开始执行，然后移除这个最老的任务</li>
+<li>再执行microtask队列中所有的任务，然后移除他们</li>
+<li>继续下一轮，重复以上2步</li>
+</ul>
+<h2 id="需要知道的一些事情："><a href="#需要知道的一些事情：" class="headerlink" title="需要知道的一些事情："></a>需要知道的一些事情：</h2><ol>
+<li>当一个macrotask任务正在运行的时候，新的事件可以被注册，也即创建新的任务。例如：<ul>
+<li>promiseA.then()的回调是一个任务<ul>
+<li>promiseA如果处于resolve/reject状态时，那么该任务被推到事件循环的当前轮次的microtask中</li>
+<li>promiseA处于pending状态时，那么该任务将会被推到事件循环的下一个轮次的microtask中。</li>
+</ul>
+</li>
+<li>setTimeout(callback, n)的回调是一个任务，将会被推到macrotask中，及时n=0。</li>
+</ul>
+</li>
+<li>如果事件循环正在执行microtask中的任务，那么你可以继续往microtask中添加任务，这些任务都会在本轮次的循环中执行。</li>
+<li>只有等到本轮次的microtask中的所有任务执行完毕，才会执行下一轮的macrotask任务。</li>
+<li>常见的microtask任务：<code>process.nextTick</code>,<code>Promise</code>, <code>Object.observe</code>, <code>MutationObserver</code></li>
+<li>常见的macrotask任务：<code>setTimeout</code>,<code>setInterval</code>, <code>setImmediate</code>,Dom事件（click, scroll, mouseup等）， <code>ajax</code>等。还需要注意的是，整个的脚本也是一个macrotask任务。</li>
+</ol>
+<p>经过上面的分析，可以看如下例子输出：<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</div><div class="line"></div><div class="line">const interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setInterval'</span>)</div><div class="line">&#125;, <span class="number">0</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout1'</span>)</div><div class="line"></div><div class="line">  Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise3'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise4'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'setTimeout2'</span>)</div><div class="line"></div><div class="line">      Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise5'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise6'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        clearInterval(interval)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">&#125;)</div><div class="line"></div><div class="line">Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="regexp">//</span> script start</div><div class="line"><span class="regexp">//</span> promise1</div><div class="line"><span class="regexp">//</span> promise2</div><div class="line"><span class="regexp">//</span> setInterval</div><div class="line"><span class="regexp">//</span> setTimeout1</div><div class="line"><span class="regexp">//</span> promise3</div><div class="line"><span class="regexp">//</span> promise4</div><div class="line"><span class="regexp">//</span> interval</div><div class="line"><span class="regexp">//</span> setTimout2</div><div class="line"><span class="regexp">//</span> promise5</div><div class="line"><span class="regexp">//</span> pormise6</div></pre></td></tr></table></figure></p>
+<h2 id="call-stack-执行栈-与event-loop-事件循环-之间的关系"><a href="#call-stack-执行栈-与event-loop-事件循环-之间的关系" class="headerlink" title="call stack(执行栈)与event loop(事件循环)之间的关系"></a>call stack(执行栈)与event loop(事件循环)之间的关系</h2><blockquote>
+<p>为了形象的表示，可以参看下图：</p>
+</blockquote>
+<img src="/2017/07/14/event-loop/event-loop.png" alt="事件循环与函数调用栈的关系" title="事件循环与函数调用栈的关系">
+<p>原文如下：<br><a href="https://stackoverflow.com/questions/25915634/difference-between-microtask-and-macrotask-within-an-event-loop-context" target="_blank" rel="external">microtask and macrotask</a><br><a href="https://blog.risingstack.com/node-js-at-scale-understanding-node-js-event-loop/" target="_blank" rel="external">event loop</a><br><a href="https://html.spec.whatwg.org/multipage/webappapis.html#task-queue" target="_blank" rel="external">task-queue spec</a><br><a href="https://vimeo.com/96425312" target="_blank" rel="external">call stack</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj568lghz000anbo0ef1kx1q7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj56f7ybg0005spo0fqdklino" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
     </footer>
   </div>
   
@@ -135,7 +227,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -145,7 +237,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lexical-scope/">lexical scope</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -155,7 +247,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 12px; color: #cc6830">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 18px; color: #331abe">js</a> <a href="/tags/lexical-scope/" style="font-size: 10px; color: #ff8200">lexical scope</a> <a href="/tags/linux/" style="font-size: 14px; color: #994e5f">linux</a> <a href="/tags/nodejs/" style="font-size: 16px; color: #66348f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 16px; color: #66348f">shell</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a>
+      <a href="/tags/css/" style="font-size: 11.67px; color: #d56c28">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 18.33px; color: #2b16c6">js</a> <a href="/tags/linux/" style="font-size: 13.33px; color: #aa574f">linux</a> <a href="/tags/nodejs/" style="font-size: 16.67px; color: #552b9f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 15px; color: #804177">shell</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a>
     </div>
   </div>
 
@@ -181,7 +273,7 @@
           </li>
         
           <li>
-            <a href="/2017/07/14/event-loop/">event-loop</a>
+            <a href="/2017/07/14/event-loop/">event-loop(事件循环)</a>
           </li>
         
           <li>
