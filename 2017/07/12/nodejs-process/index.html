@@ -21,7 +21,7 @@ process对象是EventEmitter的一个实例
 beforeExit
 当Node清空事件队列并且没有额外的任务加入到事件队列中，触发该事件。通常情况下，当没有额外的任务加入到事件队列中时，Node进程会自动退出。但是如果’beforeExit’事件绑定的监听器的回调函数中，含有一个可以进行异步调用的操作，那么Node.js进程会继续运行。
 pro">
-<meta property="og:updated_time" content="2017-07-16T04:43:35.000Z">
+<meta property="og:updated_time" content="2017-07-16T12:19:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs-process">
 <meta name="twitter:description" content="Process Events(进程事件)
@@ -283,7 +283,7 @@ pro">
 <blockquote>
 <p>该方法将<code>callback</code>添加到当前<code>microtask</code>循环的下一个轮次，一旦本轮的<code>microtask</code>循环结束，立马执行下一轮<code>microtask</code>中所有<code>callback</code>。<br><code>process.nextTick</code>不是<code>setTimeout(fn, 0)</code>的别名，它更加的高效，他在一下轮<code>macrotask</code>之前执行。</p>
 </blockquote>
-<p>关于<code>microtask</code>和<code>macrotask</code>，请参看<a href="">这里</a></p>
+<p>关于<code>microtask</code>和<code>macrotask</code>，请参看<a href="https://xxxxxmiss.github.io/2017/07/14/event-loop/">这里</a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'start'</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>)    </div><div class="line">&#125;, <span class="number">0</span>)</div><div class="line"></div><div class="line">process.nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'nextTick callback'</span>)    </div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'scheduled'</span>)</div><div class="line"></div><div class="line"><span class="comment">// start</span></div><div class="line"><span class="comment">// scheduled</span></div><div class="line"><span class="comment">// nextTick callback</span></div><div class="line"><span class="comment">// setTimeout</span></div></pre></td></tr></table></figure>
 <p>当你在开发API时，你想给用户一个机会去添加事件处理器在对象被构造以后，在任何的I/O发生以前，这个方法就显得尤为重要。如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyThing</span>(<span class="params">options</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.setupOptions(options)</div><div class="line"></div><div class="line">    process.nextTick(<span class="function"><span class="params">()</span> =&gt;</span>f &#123;</div><div class="line">        <span class="keyword">this</span>.startDoingStuff()    </div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> thing = <span class="keyword">new</span> MyThing()</div><div class="line">thing.getReadyForStuff()</div><div class="line"></div><div class="line"><span class="comment">// thing.startDoingStuff() gets called now, not before.</span></div><div class="line"><span class="comment">// thing.startDoingStuff()在thing.getReadyForStuff()之后才执行。</span></div></pre></td></tr></table></figure>
@@ -347,7 +347,7 @@ pro">
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj56olni0001qxto04lb8naam" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj56ouwgc0024yqo0pm6qzzk0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
