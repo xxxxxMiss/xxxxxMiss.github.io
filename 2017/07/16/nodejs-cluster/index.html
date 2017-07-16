@@ -3,36 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>ASI(auto semicolon insertion)自动分号补齐 | 青史成灰</title>
+  <title>nodejs-cluster | 青史成灰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ASI
-在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：
+  <meta name="description" content="Cluster
+一个Node实例运行在一个单线程中。为了高效的利用多核系统，用户有时候需要启动一个Node进程的集群去处理负载。通过cluster模块很容易的创建一些共享服务端口的子进程。
 
-
-return xxx(xxx是要返回的对象)
-throw xxx(xxx是要抛出的错误对象)
-break">
+How It Works(它是如何工作的)
+work进程通过child_process.fork()方法复制而来，因此它可以和父进程之间通过IPC信道交流，并且在他们之间来来回回的传递服务句柄。cluster">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ASI(auto semicolon insertion)自动分号补齐">
-<meta property="og:url" content="https://xxxxxmiss.github.io/2017/04/20/js-ASI/index.html">
+<meta property="og:title" content="nodejs-cluster">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="ASI
-在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：
+<meta property="og:description" content="Cluster
+一个Node实例运行在一个单线程中。为了高效的利用多核系统，用户有时候需要启动一个Node进程的集群去处理负载。通过cluster模块很容易的创建一些共享服务端口的子进程。
 
-
-return xxx(xxx是要返回的对象)
-throw xxx(xxx是要抛出的错误对象)
-break">
-<meta property="og:updated_time" content="2017-06-11T12:17:42.000Z">
+How It Works(它是如何工作的)
+work进程通过child_process.fork()方法复制而来，因此它可以和父进程之间通过IPC信道交流，并且在他们之间来来回回的传递服务句柄。cluster">
+<meta property="og:updated_time" content="2017-07-16T03:28:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ASI(auto semicolon insertion)自动分号补齐">
-<meta name="twitter:description" content="ASI
-在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：
+<meta name="twitter:title" content="nodejs-cluster">
+<meta name="twitter:description" content="Cluster
+一个Node实例运行在一个单线程中。为了高效的利用多核系统，用户有时候需要启动一个Node进程的集群去处理负载。通过cluster模块很容易的创建一些共享服务端口的子进程。
 
-
-return xxx(xxx是要返回的对象)
-throw xxx(xxx是要抛出的错误对象)
-break">
+How It Works(它是如何工作的)
+work进程通过child_process.fork()方法复制而来，因此它可以和父进程之间通过IPC信道交流，并且在他们之间来来回回的传递服务句柄。cluster">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
@@ -87,14 +81,14 @@ break">
 </header>
       <div class="outer">
         <section id="main"><!-- id="post-variable-hoist" -->
-<article id="post-js-ASI" class="article article-type-post" itemscope itemprop="blogPost">
+<article id="post-nodejs-cluster" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/20/js-ASI/" class="article-date">
-  <time datetime="2017-04-20T15:32:09.000Z" itemprop="datePublished">2017-04-20</time>
+    <a href="/2017/07/16/nodejs-cluster/" class="article-date">
+  <time datetime="2017-07-15T16:44:48.000Z" itemprop="datePublished">2017-07-16</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/js/">js</a>
+    <a class="article-category-link" href="/categories/nodejs/">nodejs</a>
   </div>
 
   </div>
@@ -105,7 +99,7 @@ break">
         
   
     <h1 class="article-title" itemprop="name">
-      ASI(auto semicolon insertion)自动分号补齐
+      nodejs-cluster
     </h1>
   
 
@@ -114,38 +108,21 @@ break">
     <div class="article-entry" itemprop="articleBody">
       
         
-        <h2 id="ASI"><a href="#ASI" class="headerlink" title="ASI"></a>ASI</h2><blockquote>
-<p>在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：</p>
+        <h1 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h1><blockquote>
+<p>一个Node实例运行在一个单线程中。为了高效的利用多核系统，用户有时候需要启动一个Node进程的集群去处理负载。<br>通过cluster模块很容易的创建一些共享服务端口的子进程。</p>
 </blockquote>
-<ul>
-<li>return xxx(xxx是要返回的对象)</li>
-<li>throw xxx(xxx是要抛出的错误对象)</li>
-<li>break / continue xxx(xxx是循环的标签)</li>
-</ul>
-<h2 id="关于ASI最需要注意的坑"><a href="#关于ASI最需要注意的坑" class="headerlink" title="关于ASI最需要注意的坑"></a>关于ASI最需要注意的坑</h2><blockquote>
-<p>ASI真正需要注意的坑只有两个，restricted productions是其一，另一个就是当下一行开头是 <code>(</code>, <code>[</code> , <code>/</code> 这三个字符之一的时候：</p>
+<h1 id="How-It-Works-它是如何工作的"><a href="#How-It-Works-它是如何工作的" class="headerlink" title="How It Works(它是如何工作的)"></a>How It Works(它是如何工作的)</h1><blockquote>
+<p>work进程通过<code>child_process.fork()</code>方法复制而来，因此它可以和父进程之间通过IPC信道交流，并且在他们之间来来回回的传递服务句柄。<br>cluster模块支持2种方法分发到来的连接。<br>第一种方法（默认的方法，支持所有的平台，除了windows平台），轮询法，由master进程监听一个端口，接受新的连接，然后将这些连接分发到work进程。在分发中使用了一些内置的技巧防止work进程人任务过载。<br>第二种方法就是master进程创建监听的socket，然后发送到感兴趣的work进程，work进程直接接收到来的连接。<br>理论上，第二种方法有着更好的性能。但是在实践中，由于操作系统的调度机制的变化莫测，分发极度的不平衡。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;...&#125;())</div></pre></td></tr></table></figure>
-<p>会被解析成<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = b(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;...&#125;())</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>就是说<code>()</code>会被看着是在调用函数b。<br>同理，<code>[]</code>会被看着实在获取b的属性。<br>斜杠<code>/</code>则会被当成除号：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">/<span class="built_in">Error</span>/i.test(str) &amp;&amp; doSomething()</div></pre></td></tr></table></figure>
-<p>会被解析成<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = b / <span class="built_in">Error</span> / i.test(str) &amp;&amp; doSomething()</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>要躲开这个坑，其实真的挺简单，只要尽量别用这三个字符作为一行开头就行了。事实上遇到比较多的也只有括号开头。真的避不开的话，可以在行头手动加个分号：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = b</div><div class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;...&#125;())</div></pre></td></tr></table></figure>
-<p>额外的一点是在for循环声明里面的分号是永远不能省的，ASI不会在for循环声明中插分号，但一般正常人不会把for的声明分三行写吧…</p>
-<p><a href="https://www.zhihu.com/question/21076930" target="_blank" rel="external">原文链接</a><br><a href="https://cnodejs.org/topic/56dbbd25820d3c9b3d63e369" target="_blank" rel="external">参考文章</a><br><a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="external">ECMA规范文档</a></p>
+<p>由于已经发布了<a href="http://nodejs.cn/api/cluster.html" target="_blank" rel="external">官方的中文文档</a>，接下来的文档不在翻译了…</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/js-ASI/" data-id="cj568lghq0006nbo04hsyw4sm" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj568lgig000unbo03108kjcb" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
 
     </footer>
   </div>
@@ -153,19 +130,10 @@ break">
     
 <nav id="article-nav">
   
-    <a href="/2017/04/23/linux-process/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          linux进程
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/04/20/linux-config/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/07/14/event-loop/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">linux系统中常用的配置文件</div>
+      <div class="article-nav-title">event-loop</div>
     </a>
   
 </nav>

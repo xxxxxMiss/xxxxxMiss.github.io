@@ -67,6 +67,79 @@
         <section id="main">
   
     <!-- id="post-variable-hoist" -->
+<article id="post-webpack2-coding-split" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/22/webpack2-coding-split/" class="article-date">
+  <time datetime="2017-03-22T02:57:18.000Z" itemprop="datePublished">2017-03-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/构建工具/">构建工具</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/webpack2-coding-split/">webpack2-conding-split</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>[TOC]</p>
+<h3 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h3><ul>
+<li>一个应用有第三方库和程序代码组成，第三方库和程序代码最大的不同就是一般第三方库是不会轻易改动的。</li>
+<li>在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3>假如在index.js中引用第三方库moment.js<br>index.js<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var <span class="built_in">moment</span> = require('monent')</div><div class="line">console.<span class="built_in">log</span>(<span class="built_in">moment</span>().<span class="keyword">format</span>())</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>我们的webapck.config.js配置如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: <span class="string">'./index.js'</span>,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>经过编译之后，你会发现在第三方库moment.js和你的程序代码被打包到一个文件中了。<br>这样做的问题是：</p>
+<ul>
+<li><p>编译后的文件很大，现在的webpack2.x对于编译后的文件很大，会在控制台输出如下的警告信息</p>
+<blockquote>
+<p>WARNING in asset size limit: The following asset(s) exceed the recommended size limit (250 kB).<br>This can impact web performance.<br>Assets:<br>  2f22b134462399733764.main.js (443 kB)</p>
+</blockquote>
+</li>
+<li><p>每当程序代码只要改动一点点，都会重新编译整个文件，浪费时间</p>
+</li>
+</ul>
+<h3 id="多入口"><a href="#多入口" class="headerlink" title="多入口"></a>多入口</h3><p>对于上面单一entry出现的问题，我们可以通过多入口来缓解这个问题。将webpack.config.js配置文件改成如下配置：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: &#123;</div><div class="line">      <span class="built_in">index</span>: <span class="string">'./index.js'</span>,</div><div class="line">      momen<span class="variable">t:</span> <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    outpu<span class="variable">t:</span> &#123;</div><div class="line">      filename: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      path: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>编译之后，dist文件夹下会出现2个文件，我们查看这两个编译后文件后会发现moment.js也会被编译到[chunkhash].index.js中，这也不是我们想要的结果。为了解决这个问题，可以使用<code>CommonsChunkPlugin</code>插件来解决这个问题。</p>
+<h3 id="CommonsChunkPlugin"><a href="#CommonsChunkPlugin" class="headerlink" title="CommonsChunkPlugin"></a>CommonsChunkPlugin</h3><blockquote>
+<p>CommonsChunkPlugin是一个相当复杂的插件，他可以将不同模块中相同的代码抽取到一个指定的公共的模块中，如果这个公共的模块不存在，那么它将自动为我们创建一个。</p>
+</blockquote>
+<p>将上面的webpack.config.js修改为如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: &#123;</div><div class="line">      <span class="attr">index</span>: <span class="string">'./index.js'</span>,</div><div class="line">      <span class="attr">vendor</span>: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">plugins</span>: [</div><div class="line">      <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'vendor'</span> <span class="comment">// 指定抽取到哪个公共模块,必不可少的</span></div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="清单文件-Manifest-File"><a href="#清单文件-Manifest-File" class="headerlink" title="清单文件 Manifest File"></a>清单文件 Manifest File</h3><ul>
+<li>当我们修改了程序代码后编译，会发现第三库模块也会被编译，即使我们现在已经将程序代码和第三方库文件分离开了。这样，我们依然不能享受浏览器缓存带来的好处。</li>
+<li>问题原因在于：当webpack每次编译时，会自动生成一些运行时代码，这些代码可以可以帮助webpack更好的做他的工作。这意味着这些运行时的代码代码也会被编译到公共模块，比如这个地方的vendor.js。</li>
+<li>为了解决这个问题，我们应该将这些webpack自动生成的代码提取到单独的一个文件中（清单文件），这样每次修改程序代码时重新编译的只会是程序代码和清单文件，第三方库文件不会重新编译。<br>webpack.config.js配置文件修改如下<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: &#123;</div><div class="line">      <span class="built_in">index</span>: <span class="string">'./index.js'</span>,</div><div class="line">      vendor: <span class="string">'moment'</span></div><div class="line">    &#125;,</div><div class="line">    outpu<span class="variable">t:</span> &#123;</div><div class="line">      filename: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      path: <span class="string">'.dist'</span></div><div class="line">    &#125;,</div><div class="line">    plugin<span class="variable">s:</span> [</div><div class="line">      <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">        name: [<span class="string">'vendor'</span>, <span class="string">'manifest'</span>]</div><div class="line">      &#125;)</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-coding-split/" data-id="cj568lgj90021nbo0ygskwhuv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
 <article id="post-nodejs-module" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/22/nodejs-module/" class="article-date">
@@ -132,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj55gmfsy001uago06jdxiahi" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj568lgic000qnbo0yli063mt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -236,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-path/" data-id="cj55gmfst001jago03qd21gt8" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-path/" data-id="cj568lgil000vnbo0k3ayt2ki" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -261,7 +334,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -271,7 +344,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lexical-scope/">lexical scope</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lexical-scope/">lexical scope</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -281,7 +354,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 11.67px; color: #d56c28">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 18.33px; color: #2b16c6">js</a> <a href="/tags/lexical-scope/" style="font-size: 10px; color: #ff8200">lexical scope</a> <a href="/tags/linux/" style="font-size: 13.33px; color: #aa574f">linux</a> <a href="/tags/nodejs/" style="font-size: 15px; color: #804177">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 16.67px; color: #552b9f">shell</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a>
+      <a href="/tags/css/" style="font-size: 12px; color: #cc6830">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 18px; color: #331abe">js</a> <a href="/tags/lexical-scope/" style="font-size: 10px; color: #ff8200">lexical scope</a> <a href="/tags/linux/" style="font-size: 14px; color: #994e5f">linux</a> <a href="/tags/nodejs/" style="font-size: 16px; color: #66348f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 16px; color: #66348f">shell</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a>
     </div>
   </div>
 
@@ -290,7 +363,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 
@@ -301,6 +374,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/07/16/nodejs-cluster/">nodejs-cluster</a>
+          </li>
         
           <li>
             <a href="/2017/07/14/event-loop/">event-loop</a>
@@ -316,10 +393,6 @@
         
           <li>
             <a href="/2017/05/28/js-scope/">词法作用域VS动态作用</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/28/vue-src-overview/">vue-src-overview</a>
           </li>
         
       </ul>
