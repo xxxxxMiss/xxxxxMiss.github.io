@@ -5,7 +5,7 @@
   
   <title>zeroclipboard | 青史成灰</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="h2{
+  <meta name="description" content=".label{
         border-bottom: 1px solid #AECDE9;
     }
     .one-half{
@@ -14,13 +14,12 @@
         padding-left: 10px;
         padding-right: 10px;
     }
-    button{
-        back">
+    button{">
 <meta property="og:type" content="article">
 <meta property="og:title" content="zeroclipboard">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="h2{
+<meta property="og:description" content=".label{
         border-bottom: 1px solid #AECDE9;
     }
     .one-half{
@@ -29,12 +28,11 @@
         padding-left: 10px;
         padding-right: 10px;
     }
-    button{
-        back">
-<meta property="og:updated_time" content="2017-07-30T07:36:13.000Z">
+    button{">
+<meta property="og:updated_time" content="2017-07-30T07:47:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zeroclipboard">
-<meta name="twitter:description" content="h2{
+<meta name="twitter:description" content=".label{
         border-bottom: 1px solid #AECDE9;
     }
     .one-half{
@@ -43,8 +41,7 @@
         padding-left: 10px;
         padding-right: 10px;
     }
-    button{
-        back">
+    button{">
   
     <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
   
@@ -127,7 +124,7 @@
       
         
         <style type="text/css" media="screen">
-    h2{
+    .label{
         border-bottom: 1px solid #AECDE9;
     }
     .one-half{
@@ -140,8 +137,8 @@
         background-color: #fff;
         color: #5D9CD4;
         border: 1px solid #979797;
-        border-radius: 10px;
-        padding: 5px 20px;
+        border-radius: 8px;
+        padding: 8px 20px;
         font-weight: 400;
     }
     textarea{
@@ -150,6 +147,10 @@
         color: #4A4A4A;
         padding: 10px;
         border: 1px solid #979797;
+        outline: none;
+    }
+    textarea:hover, textarea:focus{
+        border: 1px solid #20a0ff;
     }
 
     .btn-clipboard{
@@ -171,19 +172,19 @@
 
 <script src="/2017/07/30/zeroclipboard/ZeroClipboard.js"></script>
 
-<h2 id="ZeroClipboard-js"><a href="#ZeroClipboard-js" class="headerlink" title="ZeroClipboard.js"></a>ZeroClipboard.js</h2><blockquote>
+<h2 id="ZeroClipboard-js简介"><a href="#ZeroClipboard-js简介" class="headerlink" title="ZeroClipboard.js简介"></a>ZeroClipboard.js简介</h2><blockquote>
 <p>是一个非常好用的用于复制文本到剪切板的，它的工作原理就是在你要点击的按钮上覆盖一个透明的flash。<br>所以你点击复制按钮，其实点击的是透明的flash，先将要拷贝的文本复制到flash，在将flash中的文本复制到剪切板。</p>
 </blockquote>
 <p>注意：</p>
 <ul>
-<li>由于考虑到安全性问题，<code>ZeroClipboard</code>需要工作在服务器上，也就是说你必须启动一个服务器（不管是本地服务，还是远程服务）。</li>
-<li>引入<code>ZeroClipboard.js</code>的同时，需要在相同的文件夹下放置<code>ZeroClipboard.swf</code>。如果<code>ZeroClipboard.swf</code>没有放在和<code>ZeroClipboard.js</code>相同的文件夹下，需要手动配置。</li>
-<li>当你hover要点击的按钮时，<code>ZeroClipboard</code>默认会在按钮上添加<code>zeroclipboard-is-hover</code>样式</li>
-<li>当你激活按钮时，<code>ZeroClipboard</code>默认会在按钮上添加<code>zeroclipboard-is-active</code>样</li>
+<li>由于考虑到安全性问题，<code>ZeroClipboard</code>需要工作在服务器上，也就是说你必须启动一个服务器（不管是本地服务，还是远程服务）。<br><br></li>
+<li>引入<code>ZeroClipboard.js</code>的同时，需要在相同的文件夹下放置<code>ZeroClipboard.swf</code>。如果<code>ZeroClipboard.swf</code>没有放在和<code>ZeroClipboard.js</code>相同的文件夹下，需要手动配置。<br><br></li>
+<li>当你hover要点击的按钮时，<code>ZeroClipboard</code>默认会在按钮上添加<code>zeroclipboard-is-hover</code>样式<br><br></li>
+<li>当你激活按钮时，<code>ZeroClipboard</code>默认会在按钮上添加<code>zeroclipboard-is-active</code>样<br><br></li>
 <li>所以当你需要为按钮添加hover或者active样式时，可以重写这两个样式。</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ZeroClipboard</span><span class="selector-class">.config</span>(&#123;</div><div class="line">    <span class="attribute">swfPath</span>: <span class="string">"../path/new/"</span>    </div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<div class="one-half"><br>    <h2><label for="input">Text to copy</label></h2><br>    <textarea type="text" id="input" rows="3">copy me</textarea><br>    <p><br>        <button class="btn-clipboard" type="button" data-clipboard-target="input" id="btn-clipboard">copy to clipboard</button><br>    </p><br></div><br><div class="one-half"><br>    <h2><label for="textarea"></label></h2><br>    <textarea id="textarea" rows="3"></textarea><br>    <p><br>        <button type="text" id="btn-clear">clear textarea</button><br>    </p><br></div>
+<div><br>    <div class="one-half"><br>        <h2 class="label"><label for="input">要拷贝的文本</label></h2><br>        <textarea type="text" id="input" rows="3">copy me</textarea><br>        <p><br>            <button class="btn-clipboard" type="button" data-clipboard-target="input" id="btn-clipboard">拷贝文本</button><br>        </p><br>    </div><br>    <div class="one-half"><br>        <h2 class="label"><label for="textarea">黏贴到这里</label></h2><br>        <textarea id="textarea" rows="3"></textarea><br>        <p><br>            <button type="text" id="btn-clear">清空</button><br>        </p><br>    </div><br></div>
 
 <script>
     var client = new ZeroClipboard(document.getElementById('btn-clipboard'))
@@ -197,12 +198,11 @@
 </script>
 
 
-<p><a href="https://github.com/zeroclipboard/zeroclipboard/blob/master/docs/instructions.md" target="_blank" rel="external">详细用法参考这里</a></p>
-
+<p><br><a href="https://github.com/zeroclipboard/zeroclipboard/blob/master/docs/instructions.md" target="_blank" rel="external">详细用法参考这里</a><br></p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj5qewlsj002riao0i3g9id67" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj5qfb5cm004vjgo03ardy9kx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
