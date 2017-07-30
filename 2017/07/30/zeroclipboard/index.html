@@ -29,7 +29,7 @@
         flex: 1;
         display: inline-block;
         padding-left: 10px;">
-<meta property="og:updated_time" content="2017-07-30T08:01:17.000Z">
+<meta property="og:updated_time" content="2017-07-30T08:06:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zeroclipboard">
 <meta name="twitter:description" content=".main-view{
@@ -156,6 +156,8 @@
         border-radius: 8px;
         padding: 8px 20px;
         font-weight: 400;
+        outline: none;
+        cursor: pointer;
     }
     .btn-clipboard.zeroclipboard-is-hover
     {
@@ -163,6 +165,9 @@
         border: 1px solid #3077B5;
         color: #fff;
         text-decoration: none;
+    }
+    .btn-container{
+        text-align: right;
     }
 </style>
 
@@ -180,7 +185,7 @@
 <li>所以当你需要为按钮添加hover或者active样式时，可以重写这两个样式。</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ZeroClipboard</span><span class="selector-class">.config</span>(&#123;</div><div class="line">    <span class="attribute">swfPath</span>: <span class="string">"../path/new/"</span>    </div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<div class="main-view"><br>    <div class="one-half"><br>        <h2 class="label"><label for="input">要拷贝的文本</label></h2><br>        <textarea type="text" id="input" rows="6">copy me</textarea><br>        <p><br>            <button class="btn-clipboard" type="button" data-clipboard-target="input" id="btn-clipboard">拷贝文本</button><br>        </p><br>    </div><br>    <div class="one-half"><br>        <h2 class="label"><label for="textarea">黏贴到这里</label></h2><br>        <textarea id="textarea" rows="6"></textarea><br>        <p><br>            <button class="btn-clipboard" type="text" id="btn-clear">清空</button><br>        </p><br>    </div><br></div>
+<div class="main-view"><br>    <div class="one-half"><br>        <h2 class="label"><label for="input">要拷贝的文本</label></h2><br>        <textarea type="text" id="input" rows="6">copy me</textarea><br>        <p class="btn-container"><br>            <button class="btn-clipboard" type="button" data-clipboard-target="input" id="btn-clipboard">拷贝文本</button><br>        </p><br>    </div><br>    <div class="one-half"><br>        <h2 class="label"><label for="textarea">黏贴到这里</label></h2><br>        <textarea id="textarea" rows="6"></textarea><br>        <p class="btn-container"><br>            <button class="btn-clipboard" type="text" id="btn-clear">清空</button><br>        </p><br>    </div><br></div>
 
 <script>
     var client = new ZeroClipboard(document.getElementById('btn-clipboard'))
@@ -198,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj5qfsrf60031kho0crjuis1x" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj5qfzu10003ql4o0tzb3e25e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>

@@ -127,6 +127,8 @@
         border-radius: 8px;
         padding: 8px 20px;
         font-weight: 400;
+        outline: none;
+        cursor: pointer;
     }
     .btn-clipboard.zeroclipboard-is-hover
     {
@@ -134,6 +136,9 @@
         border: 1px solid #3077B5;
         color: #fff;
         text-decoration: none;
+    }
+    .btn-container{
+        text-align: right;
     }
 </style>
 
@@ -151,7 +156,7 @@
 <li>所以当你需要为按钮添加hover或者active样式时，可以重写这两个样式。</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ZeroClipboard</span><span class="selector-class">.config</span>(&#123;</div><div class="line">    <span class="attribute">swfPath</span>: <span class="string">"../path/new/"</span>    </div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<div class="main-view"><br>    <div class="one-half"><br>        <h2 class="label"><label for="input">要拷贝的文本</label></h2><br>        <textarea type="text" id="input" rows="6">copy me</textarea><br>        <p><br>            <button class="btn-clipboard" type="button" data-clipboard-target="input" id="btn-clipboard">拷贝文本</button><br>        </p><br>    </div><br>    <div class="one-half"><br>        <h2 class="label"><label for="textarea">黏贴到这里</label></h2><br>        <textarea id="textarea" rows="6"></textarea><br>        <p><br>            <button class="btn-clipboard" type="text" id="btn-clear">清空</button><br>        </p><br>    </div><br></div>
+<div class="main-view"><br>    <div class="one-half"><br>        <h2 class="label"><label for="input">要拷贝的文本</label></h2><br>        <textarea type="text" id="input" rows="6">copy me</textarea><br>        <p class="btn-container"><br>            <button class="btn-clipboard" type="button" data-clipboard-target="input" id="btn-clipboard">拷贝文本</button><br>        </p><br>    </div><br>    <div class="one-half"><br>        <h2 class="label"><label for="textarea">黏贴到这里</label></h2><br>        <textarea id="textarea" rows="6"></textarea><br>        <p class="btn-container"><br>            <button class="btn-clipboard" type="text" id="btn-clear">清空</button><br>        </p><br>    </div><br></div>
 
 <script>
     var client = new ZeroClipboard(document.getElementById('btn-clipboard'))
@@ -169,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj5qfsrf60031kho0crjuis1x" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj5qfzu10003ql4o0tzb3e25e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -220,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj5qfsrdo000kkho0tl87wy5f" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj5qfztzl001gl4o0j2s1pgny" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -294,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj5qfsrd80005kho0nxeom1g9" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj5qfztyj000ql4o02o3ebf83" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -570,7 +575,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj5qfsre70016kho0a82mom8d" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj5qfztzt001tl4o0higtzwlu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -701,7 +706,7 @@
 <li><code>+</code> &lt;=&gt; <code>{1,}</code></li>
 <li><code>{m, n}</code></li>
 </ul>
-<p>下面以一个具体的例子来说明贪婪匹配，<br>假设我们要匹配一个字符串中不带任何属性的html标签，你的正则可能会像下面这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/<span class="xml"><span class="tag">&lt;<span class="name">.+</span>&gt;</span>/.exec('This is a <span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span> test')</span></div><div class="line">// prints: ['<span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span>']</div></pre></td></tr></table></figure></p>
+<p>下面以一个具体的例子来说明贪婪匹配，<br>假设我们要匹配一个字符串中不带任何属性的html标签，你的正则可能会像下面这样：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/<span class="tag">&lt;<span class="name">.+</span>&gt;</span>/.exec('This is a <span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span> test')</div><div class="line">// prints: ['<span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span>']</div></pre></td></tr></table></figure></p>
 <p>你会看到匹配的结果和我们所期盼的<code>&lt;EM&gt;</code>,<code>&lt;/EM&gt;</code>并不一样。究其原因就是因为量词<code>+</code>是贪婪的，它会让正则引擎尽可能多的匹配。其实这个匹配过程可以用上面的图表来解释更加的清楚：<br>匹配完第一个<code>.</code>所代表的字符后，进入到下一个字符会有2条路径：一条是<code>.</code>形成的环路，一条直接进入<code>&gt;</code>, 但是<code>+</code>是贪婪的，那么正则引擎会一直进入这条环路，直接匹配失败了才会退出这条路径。<br><br><br>下面是更加详细的关于正则引擎是如何匹配<code>&lt;EM&gt;first&lt;/EM&gt;</code>的：</p>
 <blockquote>
 <p>The first token in the regex is <code>&lt;</code>. As we already know, the first place where it will match is the first <code>&lt;</code> in the string. The next token is dot, which matches any character except newlines. The dot is repeated by the plus. The plus is greedy. Therefore, the engine will repeat the dot as many times as it can. The dot matches <code>E</code>, so the regex continues to try to match the dot with the next character. <code>M</code> is matched, and the dot is repeated once more. The next character is <code>&gt;</code>. You should see the problem by now. The dot matches the <code>&gt;</code>, and the engine continues repeating the dot. The dot will match all characters in the string. The dot fails when the engine has reached the void after the end of the string. Only at this point does the regex engine continue with next token <code>&gt;</code>.<br><br><br>So far, <code>&lt;.+</code> has matched <code>&lt;EM&gt;first&lt;/EM&gt; test</code> and the regex engine has arrived at the end of the string. <code>&gt;</code> cannot match here. The engine remembers that the plus has repeated the dot more often than is required. (Remember that the plus requires the dot to match only once.) Rather than admitting failure, the engine will backtrack. It will reduce the repetition of the plus by one, and then continue trying the remainder of the regex.<br><br><br>So the match of <code>.+</code> is reduced to <code>EM&gt;first&lt;/EM&gt;</code> tes. The next token in the regex is still <code>&gt;</code>. But now the next character in the string is the last <code>t</code>. Again, these cannot match, causing the engine to backtrack further. The total match so far is reduced to <code>&lt;EM&gt;first&lt;/EM&gt; te</code>. But <code>&gt;</code> still cannot match. So the engine continues backtracking until the match of <code>.+</code> is reduced to <code>EM&gt;first&lt;/EM. Now</code>, <code>&gt;</code> can match the next character in the string. The last token in the regex has been matched. The engine reports that <code>&lt;EM&gt;first&lt;/EM&gt;</code> has been successfully matched.</p>
@@ -840,7 +845,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj5qfsrcw0001kho0r85nzpcw" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj5qfztyt000tl4o06222yrw2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -941,7 +946,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj5qfsrdf000akho0at6i5k4a" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj5qfztz80012l4o0jp2v9x46" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -982,7 +987,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj5qfsren001wkho0vm8ctbrb" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj5qfzu0d002ml4o0h3h26o5c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1096,7 +1101,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj5qfsrcs0000kho02s0cwkyr" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj5qfztyd000ll4o0qsbn7nx8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1302,7 +1307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj5qfsrd60004kho0kariram0" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj5qfztyh000nl4o0g5278mgt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1352,7 +1357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj5qfsrdq000pkho0vdh7kxas" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj5qfztyz000xl4o0ab17kjdw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
