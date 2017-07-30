@@ -94,21 +94,83 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-        <script src="/2017/07/30/zeroclipboard/ZeroClipboard.js"></script>
+        <style type="text/css" media="screen">
+    h2{
+        border-bottom: 1px solid #AECDE9;
+    }
+    .one-half{
+        width: 50%;
+        float: left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    button{
+        background-color: #fff;
+        color: #5D9CD4;
+        border: 1px solid #979797;
+        border-radius: 10px;
+        padding: 5px 20px;
+        font-weight: 400;
+    }
+    textarea{
+        width: 100%;
+        border-radius: 8px;
+        color: #4A4A4A;
+        padding: 10px;
+        border: 1px solid #979797;
+    }
 
-<p><input type="text" id="input" value="copy me!"></p>
-<button type="button" data-clipboard-target="input" id="btn-clipboard">copy to clipboard</button>
+    .btn-clipboard{
+        background-color: #fff;
+        color: #5D9CD4;
+        border: 1px solid #979797;
+        border-radius: 10px;
+        padding: 5px 20px;
+        font-weight: 400;
+    }
+    .btn-clipboard.zeroclipboard-is-hover
+    {
+        background: #3077B5;
+        border: 1px solid #3077B5;
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+
+<script src="/2017/07/30/zeroclipboard/ZeroClipboard.js"></script>
+
+<h2 id="ZeroClipboard-js"><a href="#ZeroClipboard-js" class="headerlink" title="ZeroClipboard.js"></a>ZeroClipboard.js</h2><blockquote>
+<p>是一个非常好用的用于复制文本到剪切板的，它的工作原理就是在你要点击的按钮上覆盖一个透明的flash。<br>所以你点击复制按钮，其实点击的是透明的flash，先将要拷贝的文本复制到flash，在将flash中的文本复制到剪切板。</p>
+</blockquote>
+<p>注意：</p>
+<ul>
+<li>由于考虑到安全性问题，<code>ZeroClipboard</code>需要工作在服务器上，也就是说你必须启动一个服务器（不管是本地服务，还是远程服务）。</li>
+<li>引入<code>ZeroClipboard.js</code>的同时，需要在相同的文件夹下放置<code>ZeroClipboard.swf</code>。如果<code>ZeroClipboard.swf</code>没有放在和<code>ZeroClipboard.js</code>相同的文件夹下，需要手动配置。</li>
+<li>当你hover要点击的按钮时，<code>ZeroClipboard</code>默认会在按钮上添加<code>zeroclipboard-is-hover</code>样式</li>
+<li>当你激活按钮时，<code>ZeroClipboard</code>默认会在按钮上添加<code>zeroclipboard-is-active</code>样</li>
+<li>所以当你需要为按钮添加hover或者active样式时，可以重写这两个样式。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ZeroClipboard</span><span class="selector-class">.config</span>(&#123;</div><div class="line">    <span class="attribute">swfPath</span>: <span class="string">"../path/new/"</span>    </div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<div class="one-half"><br>    <h2><label for="input">Text to copy</label></h2><br>    <textarea type="text" id="input" rows="3">copy me</textarea><br>    <p><br>        <button class="btn-clipboard" type="button" data-clipboard-target="input" id="btn-clipboard">copy to clipboard</button><br>    </p><br></div><br><div class="one-half"><br>    <h2><label for="textarea"></label></h2><br>    <textarea id="textarea" rows="3"></textarea><br>    <p><br>        <button type="text" id="btn-clear">clear textarea</button><br>    </p><br></div>
 
 <script>
     var client = new ZeroClipboard(document.getElementById('btn-clipboard'))
     client.on('ready', function(readyEvent){
         alert('ZeroClipboard SWF is ready!')
     })
+
+    document.getElementById('btn-clear').addEventListener('click', function(){
+        document.getElementById('textarea').value = ''
+    })
 </script>
+
+
+<p><a href="https://github.com/zeroclipboard/zeroclipboard/blob/master/docs/instructions.md" target="_blank" rel="external">详细用法参考这里</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj5qcbr76003mg6o0v3h7rxkz" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj5qewlsj002riao0i3g9id67" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -159,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj5qcbr62001eg6o0vc7ib27g" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj5qewlqq000riao0dmhn8omm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -233,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj5qcbr5m000qg6o0kbcpqnhr" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj5qewlpy0004iao0qu0f6k9p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -509,7 +571,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj5qcbr68001tg6o02vy5ltgh" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj5qewlr70015iao0skoqbmts" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -779,7 +841,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj5qcbr5k000kg6o0yfqqa3g9" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj5qewlpu0001iao08btwy3fl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -880,7 +942,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj5qcbr5x0014g6o0xec352wh" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj5qewlqh000jiao093wwtp26" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -921,7 +983,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj5qcbr6s002lg6o06351wl5p" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj5qewlrz001yiao0296p1plf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1035,7 +1097,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj5qcbr5g000hg6o0ba4g5kui" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj5qewlqb000ciao0ee2cj1vr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1241,7 +1303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj5qcbr5m000og6o0rdmvesrf" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj5qewlpo0000iao0d242dzdg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1291,7 +1353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj5qcbr5p000tg6o03zcuh838" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj5qewlpz0005iao0naqtfvpk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
