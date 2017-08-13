@@ -67,6 +67,262 @@
         <section id="main">
   
     <!-- id="post-variable-hoist" -->
+<article id="post-encodeURIComponent" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/20/encodeURIComponent/" class="article-date">
+  <time datetime="2017-05-20T06:36:29.000Z" itemprop="datePublished">2017-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/20/encodeURIComponent/">encodeURIComponent</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="encodeURIComponent概述"><a href="#encodeURIComponent概述" class="headerlink" title="encodeURIComponent概述"></a>encodeURIComponent概述</h2><blockquote>
+<p>是对统一资源标识符（URI）的组成部分进行编码的方法。它使用一到四个转义序列来表示字符串中的每个字符的UTF-8编码（只有由两个Unicode代理区字符组成的字符才用四个转义字符编码）</p>
+</blockquote>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">encodeURIComponent</span><span class="params">(str)</span></span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>NOTE: encodeURIComponent不转义以下字符：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>字母</td>
+<td>—</td>
+</tr>
+<tr>
+<td>数字</td>
+<td>—</td>
+</tr>
+<tr>
+<td>(</td>
+<td>%28</td>
+</tr>
+<tr>
+<td>)</td>
+<td>%29</td>
+</tr>
+<tr>
+<td>.</td>
+<td>%2e</td>
+</tr>
+<tr>
+<td>!</td>
+<td>%21</td>
+</tr>
+<tr>
+<td>~</td>
+<td>%7e</td>
+</tr>
+<tr>
+<td>*</td>
+<td>%2a</td>
+</tr>
+<tr>
+<td>‘</td>
+<td>%27</td>
+</tr>
+<tr>
+<td>-</td>
+<td>%2d</td>
+</tr>
+<tr>
+<td>_</td>
+<td>%5f</td>
+</tr>
+</tbody>
+</table>
+<h2 id="手动转义encodeURIComponent未转义的字符"><a href="#手动转义encodeURIComponent未转义的字符" class="headerlink" title="手动转义encodeURIComponent未转义的字符"></a>手动转义encodeURIComponent未转义的字符</h2><blockquote>
+<p>因为encodeURIComponent并不对<code>!</code>, <code>~</code>, <code>*</code>, <code>(</code>, <code>)</code>, <code>&#39;</code>等这些字符转义，而已这些字符也没有被正式划定URI的用途，所以当你需要对这些字符转义的时候，可以按照下面的方法：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fixedEncodeURIComponent</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">encodeURIComponent</span>(str)</div><div class="line">        .replace(<span class="regexp">/[!\(\)\*~']/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">c</span>)</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">'%'</span> + c.charCodeAt(<span class="number">0</span>).toString(<span class="number">16</span>)</div><div class="line">        &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="手动解码encodeURIComponent编码的字符"><a href="#手动解码encodeURIComponent编码的字符" class="headerlink" title="手动解码encodeURIComponent编码的字符"></a>手动解码encodeURIComponent编码的字符</h2><blockquote>
+<p>URI中常见的一些字符，如<code>?</code>, <code>&amp;</code>, ‘#’等，如果使用encodeURIComponent转义，那么uri就变得不是那么直观了，为了使uri直观易读，我们可以手动反转这些字符：</p>
+</blockquote>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function fixedEncodeURIComponent(str)&#123;</div><div class="line">    <span class="keyword">return</span> encodeURIComponent(str)</div><div class="line">        .<span class="built_in">replace</span>(/%(<span class="number">23</span>|<span class="type">24</span>|<span class="type">26</span>|<span class="type">2B</span>|<span class="type">3A</span>|<span class="type">3C</span>|<span class="type">3E</span>|<span class="type">3D</span>|<span class="type">2F</span>|<span class="type">3F</span>|<span class="type">40</span>|<span class="type">5B</span>|<span class="type">5D</span>|<span class="type">5E</span>|<span class="type">60</span>|<span class="type">7B</span>|<span class="type">7D</span>|<span class="type">7C</span>)/g, decodeURIComponent)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="常见字符在encodeURIComponent中编码的字符对照表"><a href="#常见字符在encodeURIComponent中编码的字符对照表" class="headerlink" title="常见字符在encodeURIComponent中编码的字符对照表"></a>常见字符在encodeURIComponent中编码的字符对照表</h2><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#</td>
+<td>%23</td>
+</tr>
+<tr>
+<td>$</td>
+<td>%24</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>%26</td>
+</tr>
+<tr>
+<td>+</td>
+<td>%2B</td>
+</tr>
+<tr>
+<td>:</td>
+<td>%3A</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>%3C</td>
+</tr>
+<tr>
+<td>=</td>
+<td>%3D</td>
+</tr>
+<tr>
+<td>/</td>
+<td>%2F</td>
+</tr>
+<tr>
+<td>?</td>
+<td>%3F</td>
+</tr>
+<tr>
+<td>@</td>
+<td>%40</td>
+</tr>
+<tr>
+<td>[</td>
+<td>%5B</td>
+</tr>
+<tr>
+<td>]</td>
+<td>%5D</td>
+</tr>
+<tr>
+<td>^</td>
+<td>%5E</td>
+</tr>
+<tr>
+<td>`</td>
+<td>%60</td>
+</tr>
+<tr>
+<td>{</td>
+<td>%7B</td>
+</tr>
+<tr>
+<td>}</td>
+<td>%7D</td>
+</tr>
+<tr>
+<td>&#124;</td>
+<td>%7C</td>
+</tr>
+</tbody>
+</table>
+<h2 id="关于charCodeAt-方法"><a href="#关于charCodeAt-方法" class="headerlink" title="关于charCodeAt()方法"></a>关于charCodeAt()方法</h2><blockquote>
+<p>charCodeAt() 方法返回0到65535(0xffff)之间的整数，表示给定索引处的UTF-16代码单元 (在 Unicode 编码单元表示一个单一的 UTF-16 编码单元的情况下，UTF-16 编码单元匹配 Unicode 编码单元。但在——例如 Unicode 编码单元 &gt; 0x10000 的这种——不能被一个 UTF-16 编码单元单独表示的情况下，只能匹配 Unicode 代理对的第一个编码单元) 。如果你想要整个代码点的值，使用 codePointAt()。<br>Unicode 编码单元（code points）的范围从 0 到 1,114,111（0x10FFFF）。<br>开头的 128(0-127) 个 Unicode 编码单元和 ASCII 字符编码一样。</p>
+</blockquote>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">str</span>.charCodeAt(<span class="keyword">index</span>)</div></pre></td></tr></table></figure>
+<p>参数index解释：</p>
+<ul>
+<li>index: &gt;=0 &amp;&amp; &lt; st.length</li>
+<li>如果不是一个数值，则默认为0。</li>
+<li>如果是一个超出范围的数值，那么返回NaN。</li>
+</ul>
+<p>返回值：给定索引处字符的 UTF-16 代码单元值的数字</p>
+<h2 id="关于字符编码的相关问题"><a href="#关于字符编码的相关问题" class="headerlink" title="关于字符编码的相关问题"></a>关于字符编码的相关问题</h2><blockquote>
+<p>这是一个很大的话题，可以参考以下几个链接。</p>
+</blockquote>
+<p><a href="https://www.zhihu.com/question/24572900" target="_blank" rel="external">为什么 UTF-8 编码比 UTF-16 编码应用更广泛?</a><br><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="external">字符编码笔记：ASCII，Unicode和UTF-8</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj6b0yob9000oc3o0ioby0i63" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
+<article id="post-flex" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/14/flex/" class="article-date">
+  <time datetime="2017-05-14T03:59:30.000Z" itemprop="datePublished">2017-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/css/">css</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/14/flex/">flex布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="伸缩性flex"><a href="#伸缩性flex" class="headerlink" title="伸缩性flex"></a>伸缩性flex</h2><blockquote>
+<p>用来控制伸缩容器额外空间如何沿着伸缩容器的布局轴成比例的分配给各个伸缩项目。</p>
+</blockquote>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: none;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">0</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">0</span>;</div><div class="line"><span class="attribute">flex-basis</span>: auto;</div><div class="line"></div><div class="line"><span class="attribute">flex</span>: <span class="number">0</span> auto;</div><div class="line">或者</div><div class="line"><span class="attribute">flex</span>: <span class="number">0</span> <span class="number">1</span> auto;</div><div class="line">或者</div><div class="line"><span class="attribute">flex</span>: initail;</div><div class="line">等价于(也就是说他们单属性的默认值值分别是)</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">0</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: auto;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: auto;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: auto;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: <span class="number">0%</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: <span class="number">2</span> <span class="number">100px</span>;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">2</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: <span class="number">100px</span>;</div><div class="line">`</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj6b0yobb000tc3o0gbkmlyz8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
 <article id="post-framework7" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/29/framework7/" class="article-date">
@@ -281,7 +537,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj6b0wxy0000xb8o0d6ied5m9" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/framework7/" data-id="cj6b0yobf0010c3o0onmhbxoh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/framework7/">framework7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hybrid/">hybrid</a></li></ul>
@@ -325,7 +581,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/29/webpack-optimize/" data-id="cj6b0wxzc002pb8o0qjjnjn9b" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/29/webpack-optimize/" data-id="cj6b0yoc8002oc3o0g5j7ebl5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -393,7 +649,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/" data-id="cj6b0wxzh0036b8o0q9m44gt6" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/" data-id="cj6b0yocd0030c3o0tr1q0cqo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -556,7 +812,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj6b0wxy9001fb8o0s9s3yite" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/23/linux-process/" data-id="cj6b0yobl001ec3o0799wm4j9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -624,7 +880,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/js-ASI/" data-id="cj6b0wxy10010b8o06pdlmjqs" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/js-ASI/" data-id="cj6b0yobe000wc3o0q2v51wgc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -690,7 +946,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-config/" data-id="cj6b0wxyb001jb8o0yi2u6wbf" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-config/" data-id="cj6b0yobk001cc3o05hqzogy7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -742,7 +998,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-command/" data-id="cj6b0wxy50018b8o0jj7kc03m" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/20/linux-command/" data-id="cj6b0yobi0017c3o0fqj5sxz8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -842,326 +1098,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/" data-id="cj6b0wxyx002bb8o0o03wb02d" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/" data-id="cj6b0yoc5002kc3o0zgcds68k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-sails" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/15/sails/" class="article-date">
-  <time datetime="2017-04-14T16:42:53.000Z" itemprop="datePublished">2017-04-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/nodejs/">nodejs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/15/sails/">sails</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h2 id="sails-v0-12-目录结构"><a href="#sails-v0-12-目录结构" class="headerlink" title="sails(v0.12) 目录结构"></a>sails(v0.12) 目录结构</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">├── Gruntfile<span class="selector-class">.js</span></div><div class="line">├── README<span class="selector-class">.md</span></div><div class="line">├── api <span class="comment">// 核心</span></div><div class="line">│   ├── controllers <span class="comment">// 充当model和view的桥梁</span></div><div class="line">│   ├── models</div><div class="line">│   ├── policies</div><div class="line">│   ├── responses</div><div class="line">│   └── services</div><div class="line">├── app<span class="selector-class">.js</span></div><div class="line">├── assets</div><div class="line">│   ├── favicon<span class="selector-class">.ico</span></div><div class="line">│   ├── images</div><div class="line">│   ├── js</div><div class="line">│   ├── robots<span class="selector-class">.txt</span></div><div class="line">│   ├── styles</div><div class="line">│   └── templates</div><div class="line">├── config</div><div class="line">│   ├── blueprints<span class="selector-class">.js</span></div><div class="line">│   ├── bootstrap<span class="selector-class">.js</span></div><div class="line">│   ├── connections<span class="selector-class">.js</span></div><div class="line">│   ├── cors<span class="selector-class">.js</span></div><div class="line">│   ├── csrf<span class="selector-class">.js</span></div><div class="line">│   ├── env</div><div class="line">│   ├── globals<span class="selector-class">.js</span></div><div class="line">│   ├── http<span class="selector-class">.js</span></div><div class="line">│   ├── i18n<span class="selector-class">.js</span></div><div class="line">│   ├── local<span class="selector-class">.js</span></div><div class="line">│   ├── locales</div><div class="line">│   ├── log<span class="selector-class">.js</span></div><div class="line">│   ├── models<span class="selector-class">.js</span></div><div class="line">│   ├── policies<span class="selector-class">.js</span></div><div class="line">│   ├── routes<span class="selector-class">.js</span></div><div class="line">│   ├── session<span class="selector-class">.js</span></div><div class="line">│   ├── sockets<span class="selector-class">.js</span></div><div class="line">│   └── views<span class="selector-class">.js</span></div><div class="line">├── config<span class="selector-class">.yaml</span></div><div class="line">├── package<span class="selector-class">.json</span></div><div class="line">├── tasks <span class="comment">// 不启用grunt,可以直接删除tasks文件夹</span></div><div class="line">│   ├── README<span class="selector-class">.md</span></div><div class="line">│   ├── config</div><div class="line">│   ├── pipeline<span class="selector-class">.js</span></div><div class="line">│   └── register</div><div class="line">└── views <span class="comment">// 不需要服务端渲染,可以直接删除views文件夹</span></div><div class="line">    ├── <span class="number">403</span><span class="selector-class">.ejs</span></div><div class="line">    ├── <span class="number">404</span><span class="selector-class">.ejs</span></div><div class="line">    ├── <span class="number">500</span><span class="selector-class">.ejs</span></div><div class="line">    ├── homepage<span class="selector-class">.ejs</span></div><div class="line">    └── layout.ejs</div></pre></td></tr></table></figure>
-<h2 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h2><blockquote>
-<p>由一系列被称为<code>action</code>的方法构成,<code>action</code>和<code>routes</code>绑定在一起，所以当请求某一个路由时，触发对应的对应的路由方法，并返回一个响应(这里的响应主要指路由的分发)</p>
-</blockquote>
-<h3 id="controller的定义"><a href="#controller的定义" class="headerlink" title="controller的定义"></a>controller的定义</h3><blockquote>
-<p>在<code>sails</code>中<code>controller</code>定义在<code>controller</code>文件夹下，按照约定，全部采用<a href="http://baike.baidu.com/link?url=kjvNUyU140pHXUqZO4h4_tnPfpr6OudXYBe4ArkaZEEjggrCIOY0w-XrNStkdgcPJjlWo-v2kIPvZRQ4y_T2r_RceI9rx_8jZaaQwqXs2iW" target="_blank" rel="external">pascal-case</a>写法（及每个单词的首字母都是大写），并且必须必须以<code>Controller.js</code>结尾。</p>
-<ul>
-<li>NOTE: 可以将<code>controller</code>分文件夹定义，那么此时子文件夹也会成为路由标示的一部分。</li>
-</ul>
-</blockquote>
-<h3 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h3><p><code>SayController.js</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 一个controller就是一个纯对象，对象的属性为action的名字，值为对应的action的处理函数</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    <span class="comment">// req, res跟express中的一样，不过没有第三个参数next</span></div><div class="line">    <span class="comment">// 如果有next的需求，那么应该见该逻辑写到policies中</span></div><div class="line">    hi: <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> res.send(<span class="string">'Hi there!'</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">bye</span>: <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> res.redirect(<span class="string">'http://www.sayonara.com'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="隐式路由（sails自动绑定）"><a href="#隐式路由（sails自动绑定）" class="headerlink" title="隐式路由（sails自动绑定）"></a>隐式路由（sails自动绑定）</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/<span class="symbol">:controllerIdentity/</span><span class="symbol">:nameOfAction</span></div><div class="line">/controller标识符/action的名字</div></pre></td></tr></table></figure>
-<blockquote>
-<p>拿上面的<code>SayController.js</code>来说，那么当程序启动时，就会自动绑定到这样的路由<code>/say/hi</code>, <code>/say/bye</code>。<br>如果上面的<code>controller</code>在一个子文件夹中<code>/we</code>中，那么就会绑定到这样的路由<code>/we/say/hi</code>, <code>/we/say/bye</code></p>
-</blockquote>
-<h3 id="显式路由（自定义路由）"><a href="#显式路由（自定义路由）" class="headerlink" title="显式路由（自定义路由）"></a>显式路由（自定义路由）</h3><blockquote>
-<p>手动绑定路由，可以在<code>config/routes.js</code>中按照如下规则进行路由的配置:<br>http请求方法（POST,GET等）+ 路由地址 : <code>controller</code>的名字+<code>.</code>+<code>action</code>的名字</p>
-</blockquote>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">'POST</span> /make/a/sandwith': <span class="symbol">'SandwichController</span>.makeIt'</div><div class="line"></div><div class="line"><span class="comment">// 当controller在子文件夹中定义时，子文件夹是controller的一部分</span></div><div class="line">'/<span class="keyword">do</span>/homework': <span class="symbol">'stuff</span>/things/HomeworkController.<span class="keyword">do</span>'</div></pre></td></tr></table></figure>
-<h3 id="显式路由常见定义方式"><a href="#显式路由常见定义方式" class="headerlink" title="显式路由常见定义方式"></a>显式路由常见定义方式</h3><figure class="highlight sml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports.routes = &#123;</div><div class="line">  <span class="symbol">'get</span> /signup': &#123; view: <span class="symbol">'conversion</span>/signup' &#125;,</div><div class="line">  <span class="symbol">'post</span> /signup': <span class="symbol">'AuthController</span>.processSignup',</div><div class="line">  <span class="symbol">'get</span> /login': &#123; view: <span class="symbol">'portal</span>/login' &#125;,</div><div class="line">  <span class="symbol">'post</span> /login': <span class="symbol">'AuthController</span>.processLogin',</div><div class="line">  <span class="string">'/logout'</span>: <span class="symbol">'AuthController</span>.logout',</div><div class="line">  <span class="symbol">'get</span> /me': <span class="symbol">'UserController</span>.profile'</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="自定义响应和responses文件夹"><a href="#自定义响应和responses文件夹" class="headerlink" title="自定义响应和responses文件夹"></a>自定义响应和<code>responses</code>文件夹</h2><blockquote>
-<p>一般情况下，<code>controller</code>中的响应都会定义在<code>responses</code>文件夹中.<br>任何定义在<code>/api/responses.js</code>中方法都是通过<code>res.[responsesName]</code>这种形式在<code>controller</code>中调用的。<br>在<code>responses</code>函数中，可以使用<code>this.req</code>, <code>this.res</code>来获取<code>Request</code>和<code>Response</code>对象。 </p>
-</blockquote>
-<h2 id="数据库适配器Adapters"><a href="#数据库适配器Adapters" class="headerlink" title="数据库适配器Adapters"></a>数据库适配器Adapters</h2><blockquote>
-<p>可以连接不同的数据库，主要用来和数据库之间的通信。<br>在<code>adapter</code>中，我们主要关注的是<code>CRUD</code>操作。<br>在<code>sails</code>中，主要指这个几个方法<code>create()</code>, <code>find()</code>, <code>update()</code>, <code>destroy()</code></p>
-</blockquote>
-<h3 id="可选的Adapter"><a href="#可选的Adapter" class="headerlink" title="可选的Adapter"></a>可选的Adapter</h3><ul>
-<li>官方支持的数据库器</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>数据库名称</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sails-disk</td>
-<td>sails默认捆绑的，不需要做任何的配置。直接将数据写入磁盘，不适合用在生成环境，一般用在开发环境或者一些小的项目中</td>
-</tr>
-<tr>
-<td>sails-memory</td>
-<td>将数据写入内存中，不会正在的持久化，所以一般适合用在开发环境或者磁盘空间不足的时候</td>
-</tr>
-<tr>
-<td>sails-mysql</td>
-<td>链接mysql（关系型数据库）</td>
-</tr>
-<tr>
-<td>sails-postgres</td>
-<td>链接postgres(关系型数据库)</td>
-</tr>
-<tr>
-<td>sails-mongo</td>
-<td>链接mongo(非关系型数据库)</td>
-</tr>
-<tr>
-<td>sails-redis</td>
-<td>链接redis</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>社区支持的数据库</li>
-</ul>
-<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><blockquote>
-<p>全局变量可以在<code>sails</code><strong>加载完毕之后</strong>全局访问，这些全局变量都可以在<code>config/globals.js</code>中禁用。</p>
-<ul>
-<li>models(文件名作为全局变量名)</li>
-<li>services(文件名作为全局变量名)</li>
-<li>sails</li>
-<li>_(Lodash实例，默认提供，无需安装)</li>
-<li>async(Async实例，默认提供，无需安装)</li>
-</ul>
-</blockquote>
-<p>NOTE: 必须等到<code>sails</code>加载完成之后，才可以访问这些全局变量。也就是说，不能再导出的函数外部使用（此时<code>sails</code>尚未加载完毕）,必须导出的函数内部使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 禁用所有</span></div><div class="line"><span class="keyword">module</span>.<span class="keyword">exports</span>.globals = <span class="keyword">false</span></div><div class="line"></div><div class="line"><span class="keyword">module</span>.<span class="keyword">exports</span>.globals = &#123;</div><div class="line">    _: <span class="keyword">false</span>, <span class="comment">// 禁用具体的</span></div><div class="line">    async: <span class="keyword">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="日志（Logging）"><a href="#日志（Logging）" class="headerlink" title="日志（Logging）"></a>日志（Logging）</h2><blockquote>
-<p><code>sails</code>内建一个日志输出，可以在<code>/config/logs.js</code>中配置日志输出等级。<br>详情参看<a href="http://sailsjs.com/documentation/concepts/logging" target="_blank" rel="external">sails内建日志</a></p>
-</blockquote>
-<h2 id="原则（Policies）"><a href="#原则（Policies）" class="headerlink" title="原则（Policies）"></a>原则（Policies）</h2><blockquote>
-<p>该文件夹中定义的脚本主要用来处理一些<code>权限认证</code>，<code>第三方单点登录</code>等具有一些通用逻辑，有点类似于<code>spring</code>中的<code>AOP</code>。<br><code>policies</code>只应该在<code>controller</code>的<code>actions</code>中使用，不应该在<code>views</code>中使用。如果是在<code>config/routes.js</code>中直接定义的视图，那么就无法使用<code>policies</code>了。如果想要继续使用使用<code>policies</code>,因该使用<code>controller</code>+<code>.</code>+<code>action</code>的方式。<br>如下:</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// routes.js</span></div><div class="line"></div><div class="line">module<span class="selector-class">.exports</span><span class="selector-class">.routes</span> = &#123;</div><div class="line">    <span class="comment">// 这种形式无法使用policies</span></div><div class="line">    <span class="string">'/'</span>: <span class="string">'homepage'</span>, </div><div class="line"></div><div class="line">    <span class="comment">// 可以这种方式</span></div><div class="line">    <span class="string">'POST /article/comment'</span>: <span class="string">'ArticleController.comment'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Policies的定义"><a href="#Policies的定义" class="headerlink" title="Policies的定义"></a>Policies的定义</h3><blockquote>
-<p>定义在<code>api/policies</code>目录下，每个<code>policy</code>应该对应一个文件，只处理一件事情，导出为单一的函数。<br>事实上，每个<code>policies</code>都是作为<code>Connect/Express</code>中间件的函数，在<code>controller</code>之前执行。</p>
-</blockquote>
-<figure class="highlight openscad"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 只处理一件事情，导出为单一函数</span></div><div class="line"><span class="function"><span class="keyword">module</span>.<span class="title">exports</span> =</span> <span class="function"><span class="keyword">function</span> <span class="title">canWrite</span><span class="params">(req, res, next)</span>&#123;</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="api-policies和config-policies-js的关系"><a href="#api-policies和config-policies-js的关系" class="headerlink" title="api/policies和config/policies.js的关系"></a><code>api/policies</code>和<code>config/policies.js</code>的关系</h3><blockquote>
-<p>在<code>config/policies.js</code>中配置<code>controller</code>和<code>policies</code>之间的映射关系。就是说哪些<code>controller</code>使用哪些<code>policies</code>来做权限控制。</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module<span class="selector-class">.exports</span><span class="selector-class">.policies</span> = &#123;</div><div class="line">    CommentController: &#123; <span class="comment">// controller名称</span></div><div class="line">        <span class="string">"*"</span>: <span class="string">'isLoggedIn'</span>, <span class="comment">// 对controller中所有的action生效</span></div><div class="line">        create: <span class="string">'isLoggedIn'</span>,  <span class="comment">// key: action名称， value: policies</span></div><div class="line">        tag: [<span class="string">'isLoggedIn'</span>, <span class="string">'isAdmin'</span>]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module<span class="selector-class">.exports</span><span class="selector-class">.policies</span> = &#123;</div><div class="line">    <span class="string">"*"</span>: <span class="string">'isLoggedIn'</span>, <span class="comment">// 映射到所有的controller中的actions</span></div><div class="line">    CommentController: &#123;</div><div class="line">        <span class="comment">// 如果某一个action显式的声明了policy, 那么全局的`isLoggedIn`不会映射到该action上</span></div><div class="line">        create: <span class="string">'isAdmin'</span> </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Services"><a href="#Services" class="headerlink" title="Services"></a>Services</h2><blockquote>
-<p>一个导出各种函数的纯对象，对象中的每个方法被称为<code>helper</code>。<br>因为是全局的，所以可以在各个地方使用：<code>controller</code>的<code>actions</code>, 其他的<code>services</code>, 自定义的<code>model</code>方法中，甚至在命令行脚本中。</p>
-</blockquote>
-<h3 id="Service的创建"><a href="#Service的创建" class="headerlink" title="Service的创建"></a>Service的创建</h3><blockquote>
-<p>在<code>api/services</code>文件夹中创建，文件名必须以<code>Service.js</code>结尾。</p>
-</blockquote>
-<h3 id="Service函数参数说明"><a href="#Service函数参数说明" class="headerlink" title="Service函数参数说明"></a>Service函数参数说明</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Mailgun = <span class="built_in">require</span>(<span class="string">'machinepack-mailgun'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">sendWelcomeEmail</span>: <span class="function"><span class="keyword">function</span> (<span class="params">options, done</span>) </span>&#123;</div><div class="line">    Mailgun.sendHtmlEmail(&#123;</div><div class="line">      <span class="attr">toEmail</span>: options.emailAddress,</div><div class="line">      <span class="attr">toName</span>: options.firstName</div><div class="line">    &#125;).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> done(err); &#125;</div><div class="line">      <span class="keyword">return</span> done();</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>sendWelcomeEmail</code>方法中<code>option</code>,<code>done</code>参数说明：</p>
-<ul>
-<li>option: 一个自定义属性的对象。</li>
-<li>done: 一个函数。这个一个可选的参数，当<code>helper</code>为一个异步方法时，那么当<code>helper</code>被调用时，必须传入<code>done</code>回调函数作为第二个参数。</li>
-<li>按照nodejs的约定，<code>done</code>中第一个参数为一个<code>error</code>对象，第二个参数为需要的数据结果。</li>
-</ul>
-<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>在<code>sails</code>中，session主要由一下3部分要素组成：</p>
-<ul>
-<li><code>session store</code>: 保存信息</li>
-<li>管理<code>session</code>的中间件</li>
-<li>每次请求都会携带<code>cookie</code>,并且<code>session id</code>（默认的<code>sails.sid</code>）都会被存储到<code>cookie</code>中<blockquote>
-<p><code>session store</code>既可以是内存（<code>sails</code>中默认使用内存存储）,也可以是数据库。<code>sails</code>在<code>Connect</code>中间件的最顶层管理<code>session</code>，包括将<code>session id</code>保存到<code>cookie</code>中。</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h2><p><code>views</code>的使用,一般有2种方法：</p>
-<ul>
-<li>res.view(), 由于可以在各个都可以使用<code>res</code>对象，所以可以用这种方式方式将<code>view</code>编译成功<code>html</code>返回给客户端</li>
-<li>在<code>/config/routes.js</code>中对路由进行配置</li>
-</ul>
-<h3 id="locals"><a href="#locals" class="headerlink" title="locals"></a>locals</h3><blockquote>
-<p>在模板引擎中使用的变量称为<code>locals</code>, <code>sails</code>默认传入一些变量作为<code>locals</code>,比如<code>lodash</code>。如果某些数据是通过硬编码的方式填充到模板中，那么可以在<code>config/routes.js</code>中配置：</p>
-</blockquote>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">module.exports.routes = &#123;</div><div class="line">    <span class="string">'get /profile'</span>: &#123;</div><div class="line">        view: <span class="string">'backOffice/profile'</span>,</div><div class="line">        locals: &#123; // 硬编码的数据，可以直接通过locals配置</div><div class="line">          user: &#123;</div><div class="line">            name: <span class="string">'Frank'</span>,</div><div class="line">            emailAddress: <span class="string">'frank@enfurter.com'</span></div><div class="line">          &#125;,</div><div class="line">          corndogs: [</div><div class="line">            &#123; name: <span class="string">'beef corndog'</span> &#125;,</div><div class="line">            &#123; name: <span class="string">'chicken corndog'</span> &#125;,</div><div class="line">            &#123; name: <span class="string">'soy corndog'</span> &#125;</div><div class="line">          ]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="在模板中使用动态数据"><a href="#在模板中使用动态数据" class="headerlink" title="在模板中使用动态数据"></a>在模板中使用动态数据</h3><blockquote>
-<p>大多数时候，数据都是动态获取到的（通过action从model中获取），所以大多时候是按照如下方式进行渲染数据的：</p>
-</blockquote>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// in api/controllers/UserController.js...</span></div><div class="line"></div><div class="line">  profile: <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">return</span> res.view(<span class="string">'backOffice/profile'</span>, &#123;</div><div class="line">      user: theUser,</div><div class="line">      corndogs: theUser.corndogCollection</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// ...</span></div></pre></td></tr></table></figure>
-<h3 id="Partials-模板包含"><a href="#Partials-模板包含" class="headerlink" title="Partials(模板包含)"></a>Partials(模板包含)</h3><blockquote>
-<p>支持模板包含，及在一些模板中，将另外一些模板包含进来，达到模板的复用。在<code>sails</code>中使用模板包含，需要注意的就是路径都是相对于<code>view</code>文件夹的。如</p>
-</blockquote>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// views/partials/widget.ejs</span></div><div class="line"></div><div class="line"><span class="comment">// views/pages/dashboard/user-profile.ejs</span></div><div class="line">&lt;<span class="meta">%</span>- partial<span class="comment">('../../partials/widget.ejs')</span> <span class="meta">%</span>&gt;</div></pre></td></tr></table></figure>
-<h2 id="关于EJS模板"><a href="#关于EJS模板" class="headerlink" title="关于EJS模板"></a>关于<code>EJS</code>模板</h2><blockquote>
-<p>在<code>ejs</code>中，模板的标签就以下3种：</p>
-<ul>
-<li><code>&lt;%= %&gt;</code>: 转义输出</li>
-<li><code>&lt;%- %&gt;</code>: 不转义输出</li>
-<li><code>&lt;% %&gt;</code>: 里面直接写js代码</li>
-</ul>
-</blockquote>
-<h2 id="models文件夹"><a href="#models文件夹" class="headerlink" title="models文件夹"></a>models文件夹</h2><blockquote>
-<p>全局访问</p>
-</blockquote>
-<h2 id="services文件夹"><a href="#services文件夹" class="headerlink" title="services文件夹"></a>services文件夹</h2><blockquote>
-<p>全局访问</p>
-</blockquote>
-<h2 id="responses文件夹"><a href="#responses文件夹" class="headerlink" title="responses文件夹"></a>responses文件夹</h2><blockquote>
-<p>里面的方法都会挂载到<code>controller</code>的<code>req</code>对象上</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj6b0wxyo001yb8o0ibonlndv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sails/">sails</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-variable-hoist" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/05/variable-hoist/" class="article-date">
-  <time datetime="2017-04-05T15:05:04.000Z" itemprop="datePublished">2017-04-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/js/">js</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/05/variable-hoist/">JS中变量提升</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="变量的生命周期"><a href="#变量的生命周期" class="headerlink" title="变量的生命周期"></a>变量的生命周期</h3><ul>
-<li>声明阶段：这一阶段在作用域中注册一个变量。</li>
-<li>初始化阶段：这一阶段分配了内存并在作用域中让内存与变量建立了一个绑定。这一步变量自动被初始化为<code>undefined</code>。</li>
-<li>赋值阶段：这一阶段为初始化的变量分配一个具体的值。</li>
-</ul>
-<h3 id="var变量生命周期"><a href="#var变量生命周期" class="headerlink" title="var变量生命周期"></a><code>var</code>变量生命周期</h3><img src="/2017/04/05/variable-hoist/var-lifecycle.png" alt="var变量生命周期" title="var变量生命周期">
-<blockquote>
-<p>当 <code>JavaScript</code> 遇到了一个函数作用域，其中包含了 <code>var variable</code> 的语句。则在任何语句执行之前，这个变量在作用域的开头就通过了声明阶段并马上来到了初始化阶段（步骤一）。</p>
-</blockquote>
-<p>同时 <code>var variable</code> 在函数作用域中的位置并不会影响它的声明和初始化阶段的进行。</p>
-<p>在声明和初始化阶段之后，赋值阶段之前，变量的值便是 <code>undefined</code> 并已经可以被使用了。</p>
-<p>在赋值阶段 <code>variable = &#39;value&#39;</code> 语句使变量接受了它的初始化值（步骤二）。</p>
-<p>这里的变量提升严格的说是指变量在函数作用域的开始位置就完成了声明和初始化阶段。在这里这两个阶段之间并没有任何的间隙。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// 在这之前，就已经完成了变量的提升（经过了声明和初始化阶段，此时变量已经可以使用了，并且值为undefined）</span></div><div class="line">    <span class="built_in">console</span>.log(a) <span class="comment">// undefined</span></div><div class="line">    <span class="keyword">var</span> a</div><div class="line">    a = <span class="number">10</span> <span class="comment">// 赋值</span></div><div class="line">    <span class="built_in">console</span>.log(a) <span class="comment">// 10</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<h3 id="函数声明的生命周期"><a href="#函数声明的生命周期" class="headerlink" title="函数声明的生命周期"></a>函数声明的生命周期</h3><img src="/2017/04/05/variable-hoist/fun-lifecycle.png" alt="函数声明的生命周期" title="函数声明的生命周期">
-<blockquote>
-<p>声明、初始化和赋值阶段在封闭的函数作用域的开头便立刻进行（只有一步）。 <code>funName()</code>可以在作用域中的任意位置被调用，这与其声明语句所在的位置无关（它甚至可以被放在程序的最底部）。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">sumArray</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> array.reduce(sum) <span class="comment">//9</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a + b</div><div class="line">  &#125;</div><div class="line">&#125;)([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>])</div></pre></td></tr></table></figure>
-<h3 id="let变量的生命周期"><a href="#let变量的生命周期" class="headerlink" title="let变量的生命周期"></a><code>let</code>变量的生命周期</h3><blockquote>
-<p><code>let</code> 变量的处理方式不同于 <code>var</code>, 它的主要区分点在于<strong><em>声明</em></strong>和<strong><em>初始化</em></strong>阶段是分开的。<br><img src="/2017/04/05/variable-hoist/let-lifecycle.png" alt="let变量生命周期" title="let变量生命周期"><br>当解释器进入了一个包含 <code>let variable</code>语句的块级作用域中。这个变量立即通过了声明阶段，并在作用域内注册了它的名称（步骤一）。</p>
-</blockquote>
-<p>然后解释器继续逐行解析块语句。</p>
-<p>在这个阶段尝试访问 <code>variable</code>，JavaScript 将会抛出 <code>ReferenceError: variable is not defined</code>。因为这个变量的状态依然是未初始化的。</p>
-<p>此时 <code>variable</code> 处于<strong><em>临时死区</em></strong>(从块的开始到声明这段)中。</p>
-<p>当解释器到达语句 <code>let variable</code>时，此时变量通过了初始化阶段（步骤二）。现在变量状态是初始化的并且访问它的值是 <code>undefined</code>。</p>
-<p>同时变量在此时也离开了<strong><em>临时死区</em></strong>。</p>
-<p>之后当到达赋值语句 <code>variable = &#39;value&#39;</code> 时，变量通过了赋值阶段（步骤三）。</p>
-<p>如果 JavaScript 遇到这样的语句 <code>let variable = &#39;value&#39;</code> ，那么变量会在这一条语句中同时经过初始化和赋值阶段。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> condition = <span class="literal">true</span>;</div><div class="line"><span class="keyword">if</span> (condition) &#123;</div><div class="line">    <span class="comment">// 一但进入if块作用域中，number变量立即通过了声明阶段，此时number变量处于暂存死区中</span></div><div class="line">    <span class="comment">// 此时试图访问该变量会抛出 ReferenceError: number is not defined.</span></div><div class="line">  <span class="comment">// console.log(number); // =&gt; Throws ReferenceError</span></div><div class="line">  <span class="keyword">let</span> number;</div><div class="line">  <span class="built_in">console</span>.log(number); <span class="comment">// =&gt; undefined</span></div><div class="line">  number = <span class="number">5</span>;</div><div class="line">  <span class="built_in">console</span>.log(number); <span class="comment">// =&gt; 5</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">const</span> a = <span class="number">5</span></div><div class="line">    <span class="built_in">console</span>.log(a)</div><div class="line">    <span class="keyword">let</span> a </div><div class="line">    <span class="built_in">console</span>.log(a)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的例子不会有任何的输出，会抛出<code>Identifier &#39;a&#39; has already been declared</code>。抛出了这个错误是由于已经用<code>const</code>定义了一个变量<code>a</code>, 再次用<code>let</code>声明变量<code>a</code>抛出的错误。但是这个错误也说明了使用<code>let</code>声明的变量会存在<strong><em>变量提升</em></strong></p>
-</blockquote>
-<h3 id="let-var比较"><a href="#let-var比较" class="headerlink" title="let,var比较"></a><code>let</code>,<code>var</code>比较</h3><table>
-<thead>
-<tr>
-<th></th>
-<th>let</th>
-<th>var</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>定义变量</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>可被释放</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>可被提升(hoist)</td>
-<td>✅(注意暂存死区)</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>重复定义检查</td>
-<td>✅</td>
-<td>❎</td>
-</tr>
-<tr>
-<td>可被用于块状作用域</td>
-<td>✅</td>
-<td>❎</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> i = <span class="number">1</span></div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">    <span class="comment">// 会提升到var语句下面，但是由于已经声明了变量i</span></div><div class="line">    <span class="comment">// 所以抛出Identifier 'i' has already been declared</span></div><div class="line">    <span class="keyword">let</span> i = <span class="number">1</span></div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<h3 id="循环定义中的let作用域"><a href="#循环定义中的let作用域" class="headerlink" title="循环定义中的let作用域"></a>循环定义中的let作用域</h3><blockquote>
-<p>循环体中是可以引用在for声明时用let定义的变量，尽管let不是出现在大括号之间.</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = i; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);  <span class="comment">// 抛出`ReferenceError: i is not defined`。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="域作用规则"><a href="#域作用规则" class="headerlink" title="域作用规则"></a>域作用规则</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> expr1; expr2; expr3) statement</div></pre></td></tr></table></figure>
-<blockquote>
-<p>在for循环中，<code>expr1, expr2, expr3, statement</code>都被包含在一个隐藏的块作用域中。<br>所以上面的例子推荐写成如下：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>; </div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> l = i; l &lt; <span class="number">10</span>; l++) &#123;  </div><div class="line">　<span class="built_in">console</span>.log(l); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj6b0wxz6002ib8o0wh0dg42b" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
 
     </footer>
   </div>
@@ -1183,7 +1123,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -1193,7 +1133,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frontend-framework/">frontend-framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -1203,7 +1143,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 11.67px; color: #d56c28">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 18.33px; color: #2b16c6">js</a> <a href="/tags/linux/" style="font-size: 13.33px; color: #aa574f">linux</a> <a href="/tags/nodejs/" style="font-size: 16.67px; color: #552b9f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 15px; color: #804177">shell</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a>
+      <a href="/tags/css/" style="font-size: 11.67px; color: #d56c28">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/frontend-framework/" style="font-size: 10px; color: #ff8200">frontend-framework</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 20px; color: #00e">js</a> <a href="/tags/linux/" style="font-size: 13.33px; color: #aa574f">linux</a> <a href="/tags/nodejs/" style="font-size: 16.67px; color: #552b9f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 15px; color: #804177">shell</a> <a href="/tags/webpack/" style="font-size: 18.33px; color: #2b16c6">webpack</a>
     </div>
   </div>
 
@@ -1212,7 +1152,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1225,6 +1165,14 @@
       <ul>
         
           <li>
+            <a href="/2017/08/13/web-components/">web-components</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/12/share-vue/">share-vue</a>
+          </li>
+        
+          <li>
             <a href="/2017/07/30/zeroclipboard/">zeroclipboard</a>
           </li>
         
@@ -1234,14 +1182,6 @@
         
           <li>
             <a href="/2017/07/14/event-loop/">event-loop(事件循环)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/12/nodejs-process/">nodejs-process</a>
-          </li>
-        
-          <li>
-            <a href="/2017/06/05/RegExp/">RegExp</a>
           </li>
         
       </ul>

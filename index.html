@@ -67,6 +67,278 @@
         <section id="main">
   
     <!-- id="post-variable-hoist" -->
+<article id="post-web-components" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/13/web-components/" class="article-date">
+  <time datetime="2017-08-12T16:07:36.000Z" itemprop="datePublished">2017-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/13/web-components/">web-components</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="Web-Components-web组件"><a href="#Web-Components-web组件" class="headerlink" title="Web Components(web组件)"></a>Web Components(web组件)</h2><blockquote>
+<p>web组件是一种可以复用的html单元，他是浏览器的一部分，所以不需要引入额外的库来使用他。<br>Web Components技术主要由以下4部分组成，但是每一部分都可以单独使用</p>
+</blockquote>
+<ul>
+<li>Custom Elments(自定义元素)</li>
+<li>HTML Templates(html模板)</li>
+<li>Shadow DOM</li>
+<li>HTML Imports<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"import"</span> <span class="attr">href</span>=<span class="string">"myfile.html"</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Custom-Elements"><a href="#Custom-Elements" class="headerlink" title="Custom Elements"></a>Custom Elements</h2><blockquote>
+<p>自定义元素提供了一种可以让你创建自定义html元素的能力。它也是web componnets技术的组成部分，但是你也可以独立使用它们。<br>自定义元素有着自己的生命周期，这就意味着你可以在不同的生命周期阶段通过脚本绑定不同的行为。<br>例如，当它们被插入到dom中（connected），当它们从dom中移除时（disconnected），又或者它们的特性发生改变的时候（attributeChanged），你都可以在相应的时期做你想做的事情。</p>
+</blockquote>
+<h3 id="自定义元素的方法"><a href="#自定义元素的方法" class="headerlink" title="自定义元素的方法"></a>自定义元素的方法</h3><p>constructor()</p>
+<blockquote>
+<p>当元素被创建或者更新的时候调用</p>
+</blockquote>
+<p>connectedCallback()</p>
+<blockquote>
+<p>当元素被插入到文档流中或者被插入到shadow dom中的时候调用</p>
+</blockquote>
+<p>disconnectedCallback()</p>
+<blockquote>
+<p>当元素从文档流中移除的时候调用</p>
+</blockquote>
+<p>attributeChangedCallback(attributeName, oldValue, newValue, namespace)</p>
+<blockquote>
+<p>当元素<strong>被观察的特性</strong>被改变，被追加，被移除，被取代的时候调用</p>
+</blockquote>
+<p>adoptedCallback(oldDocument, newDocument)</p>
+<blockquote>
+<p>当元素被插入到一个新的文档流中的时候调用</p>
+</blockquote>
+<p>自定义元素更多的时候我们采用es6类语法来进行创建：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"custom"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>第一行<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>第二行<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">my-element</span> <span class="attr">name</span>=<span class="string">"test"</span> <span class="attr">id</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">my-element</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyElement</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>()&#123;</div><div class="line">        <span class="comment">// 一定要记得先调用父类构造器,因为我们在子类的构造器中使用了this</span></div><div class="line">        <span class="comment">// 否则就报错</span></div><div class="line">        <span class="keyword">super</span>()</div><div class="line">        </div><div class="line">        <span class="keyword">var</span> tplContent = <span class="built_in">document</span>.getElementById(<span class="string">'custom'</span>).content</div><div class="line">        <span class="keyword">var</span> shadowRoot = <span class="keyword">this</span>.attachShadow(&#123; <span class="attr">mode</span>: <span class="string">'open'</span> &#125;)</div><div class="line">        shadowRoot.appendChild(tplContent)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    connectedCallback()&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'自定义元素被插入到shadow dom中'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">customElements.define(<span class="string">'my-element'</span>, MyElement)</div></pre></td></tr></table></figure>
+<h3 id="Observed-attributes"><a href="#Observed-attributes" class="headerlink" title="Observed attributes"></a>Observed attributes</h3><blockquote>
+<p>如果要使用自定义元素的attributeChangedCallback来观察自定义元素特性的变化，那么必须在初始化自定义元素的构造器中列出需要观察的特性–在类中使用静态的get存取器列出需要观察的特性。</p>
+</blockquote>
+<p>改造上面的例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyElement</span> <span class="keyword">extends</span> <span class="title">HTMLElement</span></span>&#123;</div><div class="line">    <span class="keyword">constructor</span>()&#123;</div><div class="line">        <span class="comment">// 一定要记得先调用父类构造器,因为我们在子类的构造器中使用了this</span></div><div class="line">        <span class="comment">// 否则就报错</span></div><div class="line">        <span class="keyword">super</span>()</div><div class="line">        </div><div class="line">        <span class="keyword">var</span> tplContent = <span class="built_in">document</span>.getElementById(<span class="string">'custom'</span>).content</div><div class="line">        <span class="keyword">var</span> shadowRoot = <span class="keyword">this</span>.attachShadow(&#123; <span class="attr">mode</span>: <span class="string">'open'</span> &#125;)</div><div class="line">        shadowRoot.appendChild(tplContent)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">static</span> get observedAttributes()&#123; <span class="keyword">return</span> [<span class="string">'name'</span>] &#125;</div><div class="line"></div><div class="line">    attributeChangedCallback(attr, oldValue, newValue)&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'oldValue: '</span>, oldValue)</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'newValue: '</span>, newValue)</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(<span class="string">'name'</span> === attr)&#123;</div><div class="line">            <span class="keyword">this</span>.textContent = <span class="string">`Hello, <span class="subst">$&#123;newValue&#125;</span>`</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    connectedCallback()&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'自定义元素被插入到shadow dom中'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">customElements.define(<span class="string">'my-element'</span>, MyElement)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'test'</span>).setAttribute(<span class="string">'name'</span>, <span class="string">'ggsmd'</span>)</div><div class="line">&#125;, <span class="number">5000</span>)</div></pre></td></tr></table></figure></p>
+<p>控制台输出如下：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 初始化的时候输出</span></div><div class="line"><span class="string">oldValue:</span> test</div><div class="line"><span class="string">newValue:</span> <span class="literal">null</span></div><div class="line"></div><div class="line"><span class="comment">// 5s之后输出</span></div><div class="line"><span class="string">oldValue:</span> test</div><div class="line"><span class="string">newValue:</span> ggsmd</div></pre></td></tr></table></figure></p>
+<h2 id="HTML-Templates"><a href="#HTML-Templates" class="headerlink" title="HTML Templates"></a>HTML Templates</h2><blockquote>
+<p><template>元素中的内容在页面加载的时候并不会渲染，但是你可以通过js来操作其中的内容。<br>你可以认为<template>元素中保存了你接下来要使用的内容片段，在页面加载的时候，解析引擎并不处理<template>中内容，也不做任何渲染，引擎只确保<template>中的内容是否有效。</template></template></template></template></p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"producttable"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">thead</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>UPC_Code<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>Product_Name<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- existing data could optionally be included here --&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"productrow"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"record"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 检查浏览器是否支持template元素</span></div><div class="line"><span class="keyword">if</span>(<span class="string">'content'</span> <span class="keyword">in</span> <span class="built_in">document</span>.createElement(<span class="string">'template'</span>))&#123;</div><div class="line">    <span class="keyword">var</span> t = <span class="built_in">document</span>.querySelector(<span class="string">'#productrow'</span>)</div><div class="line">    , td = t.content.querySelectorAll(<span class="string">'td'</span>)</div><div class="line">    td[<span class="number">0</span>].textContent = <span class="string">'AAAA'</span></div><div class="line">    td[<span class="number">1</span>].textContent = <span class="string">'BBBB'</span></div><div class="line"></div><div class="line">    <span class="keyword">var</span> tbody = <span class="built_in">document</span>.querySelector(<span class="string">'tbody'</span>)</div><div class="line">    , clone = <span class="built_in">document</span>.importNode(t.content, <span class="literal">true</span>)</div><div class="line">    tbody.appendChild(clone)</div><div class="line"></div><div class="line">    <span class="comment">// 复用template元素中的内容</span></div><div class="line">    td[<span class="number">0</span>].textContent = <span class="string">'1111'</span></div><div class="line">    td[<span class="number">1</span>].textContent = <span class="string">'2222'</span></div><div class="line">    <span class="keyword">var</span> clone2 = <span class="built_in">document</span>.importNode(t.content, <span class="literal">true</span>)</div><div class="line">    tbody.appendChild(clone2)</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="comment">// 不支持的浏览器可以引入polyfill</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="HTMLTemplateElement接口"><a href="#HTMLTemplateElement接口" class="headerlink" title="HTMLTemplateElement接口"></a>HTMLTemplateElement接口</h3><blockquote>
+<p>通过HTMLTemplateElement接口，我们可以操作<template>元素中的内容</template></p>
+</blockquote>
+<img src="/2017/08/13/web-components/element-template.png" alt="HTMLTemplateElement接口" title="HTMLTemplateElement接口">
+<blockquote>
+<p>上图是HTMLTemplateElement接口的继承图，也就是说HTMLTemplateElement继承了HTMLElement上所有的属性和方法。</p>
+</blockquote>
+<h4 id="HTMLTemplateElement特有的一个属性"><a href="#HTMLTemplateElement特有的一个属性" class="headerlink" title="HTMLTemplateElement特有的一个属性"></a>HTMLTemplateElement特有的一个属性</h4><p>HTMLTemplateElement.content：只读的属性<br>返回值：返回<template>元素中的内容，是一个DocumentFragment</template></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"test"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#test'</span>).content.nodeType === <span class="number">11</span></div><div class="line"><span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="Shadow-DOM"><a href="#Shadow-DOM" class="headerlink" title="Shadow DOM"></a>Shadow DOM</h2><blockquote>
+<p>Shadow DOM为Web Components中的DOM, CSS提供了一个包装。<br>Shadow DOM将Web Components中的DOM, CSS和文档流中的dom进行了一个隔离。因为一个大型网页，如果前期css组织的不合理，就会导致css各种覆盖，从而使网页样式变得难以把控。通过shadow dom，可以进行一个隔离。<br>它是Web Components技术的一部分，但是你也可以单独使用它们。</p>
+</blockquote>
+<h3 id="基本的使用"><a href="#基本的使用" class="headerlink" title="基本的使用"></a>基本的使用</h3><blockquote>
+<p>shadow dom必须被绑定到某一个存在的元素上，这个元素可以是html文档流中已经存在的元素，也可以是通过js创建的元素(包括自定义元素)。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"hostElement"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="comment">// 此时shadow dom还是空的，没有内容</span></div><div class="line">        <span class="keyword">var</span> shadow = <span class="built_in">document</span>.querySelector(<span class="string">'#hostElement'</span>)</div><div class="line">            .attachShadow(&#123; <span class="attr">mode</span>: <span class="string">'open'</span> &#125;)</div><div class="line">        <span class="comment">// 往shadow dom中添加内容</span></div><div class="line">        shadow.innerHTML = <span class="string">'&lt;span&gt;Here is some new text&lt;/span&gt;'</span></div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="shadow-dom的样式"><a href="#shadow-dom的样式" class="headerlink" title="shadow dom的样式"></a>shadow dom的样式</h3><blockquote>
+<p>继续接着上面的例子，如果我们需要给shadow dom添加样式。就跟我们平时使用内联样式一样，只不过将style标签极其里面的样式全部作为shadow dom的innerHTML。如下： </p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">shadow.innerHTML = '<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-tag">span</span> &#123; <span class="attribute">color</span>: red; &#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>'</div></pre></td></tr></table></figure>
+<h3 id="shadow-dom相关API"><a href="#shadow-dom相关API" class="headerlink" title="shadow dom相关API"></a>shadow dom相关API</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> shadowRoot = element.attachShadow(shadowRootInit)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>绑定一个shadow dom树到一个指定的元素上，并且返回ShadowRoot的引用。<br>shadowRoot也是一个文档片段。 <code>shadowRoot.nodeType === 11</code></p>
+</blockquote>
+<p>shadowRootInit是一个如下的对象：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attribute">mode</span>: <span class="string">'open'</span></div><div class="line">    // mode: <span class="string">'closed'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>open: 指定开放的包裹模式，这就意味着在外面可以使用<code>element.shadowRoot</code>来访问shadow dom中的内容。</li>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">element</span>.shadowRoot === shadowRoot(通过attachShadow返回的shadowRoot的引用)<span class="comment"></span></div><div class="line">// true</div></pre></td></tr></table></figure>
+<ul>
+<li>closed: 指定为闭合的包裹模式，这就意味着在外面无法使用任何方法来访问shadow dom中的内容。</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">element.shadowRoot</span> <span class="string">===</span> <span class="string">shadowRoot(通过attachShadow返回的shadowRoot的引用)</span></div><div class="line"><span class="string">//</span> <span class="literal">false</span></div><div class="line"><span class="string">element.shadowRoot</span> <span class="string">===</span> <span class="literal">null</span></div><div class="line"><span class="string">//</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<h3 id="ShadowRoot接口"><a href="#ShadowRoot接口" class="headerlink" title="ShadowRoot接口"></a>ShadowRoot接口</h3><p>ShadowRoot.mode</p>
+<blockquote>
+<p>只读，返回值为’open’或者’closed’</p>
+</blockquote>
+<p>ShadowRoot.host</p>
+<blockquote>
+<p>只读，返回shadow dom的宿主元素</p>
+</blockquote>
+<p>ShadowRoot.innerHTML</p>
+<blockquote>
+<p>返回ShadowRoot内部的dom树</p>
+</blockquote>
+<h3 id="slot元素"><a href="#slot元素" class="headerlink" title="slot元素"></a>slot元素</h3><blockquote>
+<p>slot, 翻译为“插槽”。slot元素也是web components技术的一个组成单元：他是web components内的一个占位符，通过这个占位符，你可以在接下来使用的web组件内插入自己想要的标签。<br>slot元素一般情况下和template元素组合使用。</p>
+</blockquote>
+<h3 id="Attributes（特性）"><a href="#Attributes（特性）" class="headerlink" title="Attributes（特性）"></a>Attributes（特性）</h3><blockquote>
+<p>slot元素和其他的html元素一样，有着一些通用的属性，比如<code>style</code>,<code>class</code>等，具体有哪些，可以<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes" target="_blank" rel="external">参看这里</a></p>
+</blockquote>
+<h4 id="Attributes之name特性"><a href="#Attributes之name特性" class="headerlink" title="Attributes之name特性"></a>Attributes之name特性</h4><blockquote>
+<p>给slot元素添加一个名字，因为一个web组件内部可能有多个slot,可以用name特性加以区分。没有添加name特性的slot元素，可以理解为<code>name=&quot;&quot;</code>。<br>在Vue框架中，也有内置的slot组件，它实现的功能和标准web components中的slot元素是一样的。但在Vue中，没有添加name特性的slot组件，相当于<code>name=&quot;default&quot;</code>。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"slot-template"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>这是一段文本<span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"another"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span>这是另外一段文本<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> slots = <span class="built_in">document</span>.querySelector(<span class="string">'#slot-template'</span>)</div><div class="line">    .content.querySelectorAll(<span class="string">'slot'</span>)</div><div class="line"><span class="built_in">Array</span>.from(slots).forEach(<span class="function"><span class="params">s</span> =&gt;</span> <span class="built_in">console</span>.log(s.name))</div><div class="line"><span class="comment">// ""</span></div><div class="line"><span class="comment">// another</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/08/13/web-components/" data-id="cj6b0yoc9002sc3o0kto6k07s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
+<article id="post-share-vue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/12/share-vue/" class="article-date">
+  <time datetime="2017-08-12T04:30:54.000Z" itemprop="datePublished">2017-08-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue/">vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/12/share-vue/">share-vue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line">├── README<span class="selector-class">.md</span></div><div class="line">├── build</div><div class="line">│   ├── build<span class="selector-class">.js</span></div><div class="line">│   ├── check-versions<span class="selector-class">.js</span></div><div class="line">│   ├── dev-client<span class="selector-class">.js</span></div><div class="line">│   ├── dev-server<span class="selector-class">.js</span></div><div class="line">│   ├── utils<span class="selector-class">.js</span></div><div class="line">│   ├── vue-loader<span class="selector-class">.conf</span><span class="selector-class">.js</span></div><div class="line">│   ├── webpack<span class="selector-class">.base</span><span class="selector-class">.conf</span><span class="selector-class">.js</span></div><div class="line">│   ├── webpack<span class="selector-class">.dev</span><span class="selector-class">.conf</span><span class="selector-class">.js</span></div><div class="line">│   ├── webpack<span class="selector-class">.prod</span><span class="selector-class">.conf</span><span class="selector-class">.js</span></div><div class="line">│   └── webpack<span class="selector-class">.test</span><span class="selector-class">.conf</span><span class="selector-class">.js</span></div><div class="line">├── config</div><div class="line">│   ├── dev<span class="selector-class">.env</span><span class="selector-class">.js</span></div><div class="line">│   ├── index<span class="selector-class">.js</span></div><div class="line">│   ├── prod<span class="selector-class">.env</span><span class="selector-class">.js</span></div><div class="line">│   └── test<span class="selector-class">.env</span><span class="selector-class">.js</span></div><div class="line">├── deploy<span class="selector-class">.sh</span></div><div class="line">├── dist</div><div class="line">│   ├── email_tpl</div><div class="line">│   │   ├── template<span class="selector-class">.html</span></div><div class="line">│   │   ├── template_h5<span class="selector-class">.html</span></div><div class="line">│   │   └── template_h5_2<span class="selector-class">.html</span></div><div class="line">│   ├── index<span class="selector-class">.html</span></div><div class="line">│   └── static</div><div class="line">│       ├── css</div><div class="line">│       ├── fonts</div><div class="line">│       ├── <span class="selector-tag">img</span></div><div class="line">│       └── js</div><div class="line">├── index<span class="selector-class">.html</span></div><div class="line">├── npm-debug<span class="selector-class">.log</span></div><div class="line">├── package-lock<span class="selector-class">.json</span></div><div class="line">├── package<span class="selector-class">.json</span></div><div class="line">├── src</div><div class="line">│   ├── App<span class="selector-class">.vue</span></div><div class="line">│   ├── assets</div><div class="line">│   │   └── js</div><div class="line">│   ├── components</div><div class="line">│   │   └── modal</div><div class="line">│   ├── config<span class="selector-class">.js</span></div><div class="line">│   ├── filters</div><div class="line">│   │   └── index<span class="selector-class">.js</span></div><div class="line">│   ├── main<span class="selector-class">.js</span></div><div class="line">│   ├── router</div><div class="line">│   │   └── index<span class="selector-class">.js</span></div><div class="line">│   ├── views</div><div class="line">│   │   ├── Edm-Item<span class="selector-class">.styl</span></div><div class="line">│   │   ├── Edm-Item<span class="selector-class">.vue</span></div><div class="line">│   │   ├── EdmProgress-Item<span class="selector-class">.styl</span></div><div class="line">│   │   ├── EdmProgress-Item<span class="selector-class">.vue</span></div><div class="line">│   │   ├── EdmProgress<span class="selector-class">.styl</span></div><div class="line">│   │   ├── EdmProgress<span class="selector-class">.vue</span></div><div class="line">│   │   ├── H5Progress-Item<span class="selector-class">.styl</span></div><div class="line">│   │   ├── H5Progress-Item<span class="selector-class">.vue</span></div><div class="line">│   │   ├── Index<span class="selector-class">.styl</span></div><div class="line">│   │   ├── Index<span class="selector-class">.vue</span></div><div class="line">│   │   ├── Share-Item<span class="selector-class">.styl</span></div><div class="line">│   │   ├── Share-Item<span class="selector-class">.vue</span></div><div class="line">│   │   ├── Signin<span class="selector-class">.styl</span></div><div class="line">│   │   ├── Signin<span class="selector-class">.vue</span></div><div class="line">│   │   ├── Tags-Item<span class="selector-class">.styl</span></div><div class="line">│   │   ├── Tags-Item<span class="selector-class">.vue</span></div><div class="line">│   │   ├── Task-H5<span class="selector-class">.styl</span></div><div class="line">│   │   ├── Task-H5<span class="selector-class">.vue</span></div><div class="line">│   │   ├── Task-Send<span class="selector-class">.styl</span></div><div class="line">│   │   ├── Task-Send<span class="selector-class">.vue</span></div><div class="line">│   │   ├── Task<span class="selector-class">.styl</span></div><div class="line">│   │   ├── Task<span class="selector-class">.vue</span></div><div class="line">│   │   ├── Tpl-H5<span class="selector-class">.styl</span></div><div class="line">│   │   ├── Tpl-H5<span class="selector-class">.vue</span></div><div class="line">│   │   ├── Uploadlogo-Item<span class="selector-class">.styl</span></div><div class="line">│   │   └── Uploadlogo-Item<span class="selector-class">.vue</span></div><div class="line">│   └── vuex</div><div class="line">│       ├── getters<span class="selector-class">.js</span></div><div class="line">│       ├── mutations<span class="selector-class">.js</span></div><div class="line">│       └── store<span class="selector-class">.js</span></div><div class="line">├── static</div><div class="line">│   ├── css</div><div class="line">│   │   └── base<span class="selector-class">.css</span></div><div class="line">│   ├── email_tpl</div><div class="line">│   │   ├── template<span class="selector-class">.html</span></div><div class="line">│   │   ├── template_h5<span class="selector-class">.css</span></div><div class="line">│   │   ├── template_h5<span class="selector-class">.html</span></div><div class="line">│   │   ├── template_h5_2<span class="selector-class">.css</span></div><div class="line">│   │   └── template_h5_2<span class="selector-class">.html</span></div><div class="line">│   └── <span class="selector-tag">img</span></div><div class="line">│       </div><div class="line">├── test</div><div class="line">│   ├── e2e</div><div class="line">│   │   ├── custom-assertions</div><div class="line">│   │   ├── nightwatch<span class="selector-class">.conf</span><span class="selector-class">.js</span></div><div class="line">│   │   ├── runner<span class="selector-class">.js</span></div><div class="line">│   │   └── specs</div><div class="line">│   └── unit</div><div class="line">│       ├── index<span class="selector-class">.js</span></div><div class="line">│       ├── karma<span class="selector-class">.conf</span><span class="selector-class">.js</span></div><div class="line">│       └── specs</div><div class="line">├── test<span class="selector-class">.txt</span></div><div class="line">├── yarn-error<span class="selector-class">.log</span></div><div class="line">└── yarn.lock</div></pre></td></tr></table></figure>
+<h3 id="一个快速查看文档的npm命令"><a href="#一个快速查看文档的npm命令" class="headerlink" title="一个快速查看文档的npm命令"></a>一个快速查看文档的npm命令</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm docs &lt;<span class="class"><span class="keyword">package</span>-<span class="title">name</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><ul>
+<li><p>开发环境</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">process.env.NODE_ENV === <span class="string">'development'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>测试环境</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">process.env.NODE_ENV === <span class="string">'test'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>生产环境</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">process.env.NODE_ENV === <span class="string">'production'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="跨域处理"><a href="#跨域处理" class="headerlink" title="跨域处理"></a>跨域处理</h3><ul>
+<li>浏览器同源策略：同源策略限制从一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的关键的安全机制。</li>
+<li>一个<em>源</em>的定义：如果协议，端口（如果指定了一个）和域名对于两个页面是相同的，则两个页面具有相同的源</li>
+<li><a href="https://nodejs.org/dist/latest-v8.x/docs/api/url.html" target="_blank" rel="external">一个URL的组成部分</a><img src="/2017/08/12/share-vue/url-part.png" alt="url组成部分" title="url组成部分">
+</li>
+</ul>
+<h4 id="使用jsonp跨域"><a href="#使用jsonp跨域" class="headerlink" title="使用jsonp跨域"></a>使用jsonp跨域</h4><blockquote>
+<p>只能发送GET请求，但是支持老的浏览器</p>
+</blockquote>
+<h4 id="使用html5-CORS跨域"><a href="#使用html5-CORS跨域" class="headerlink" title="使用html5 CORS跨域"></a>使用html5 CORS跨域</h4><ul>
+<li>Access-Control-Allow-Origin: ‘*’(required)</li>
+</ul>
+<blockquote>
+<p>可设置为origin或者origin下具体的某一个path</p>
+</blockquote>
+<ul>
+<li>Access-Control-Allow-Credentials: true(optional)</li>
+</ul>
+<blockquote>
+<p>表示是否允许发送cookie</p>
+</blockquote>
+<ul>
+<li>Access-Control-Expose-Headers: X-Field(optional)</li>
+</ul>
+<blockquote>
+<p>CORS请求时，XMLHttpRequest对象的getResponseHeader()方法只能拿到6个基本字段：Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma。如果想拿到其他字段，就必须在Access-Control-Expose-Headers里面指定。上面的例子指定，getResponseHeader(‘X-Field’)可以返回X-Field字段的值。</p>
+</blockquote>
+<p>client:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myRequest = <span class="keyword">new</span> Request(<span class="string">'http:127.0.0.1:8080/get-list'</span>, &#123;</div><div class="line">    <span class="attr">method</span>: <span class="string">'GET'</span>,</div><div class="line">    <span class="comment">// no-cors, cors, same-origin, navigate</span></div><div class="line">    mode: <span class="string">'same-origin'</span> <span class="comment">// 默认值，所以不是同源策略就会出现跨域</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line">fetch(myRequest).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> res.json()</div><div class="line">&#125;).then(<span class="function"><span class="params">json</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(json)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>server:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">   <span class="comment">// res.setHeader('Access-Control-Allow-Origin', '*')    </span></div><div class="line">   res.end(<span class="built_in">JSON</span>.stringify(&#123;</div><div class="line">        <span class="attr">name</span>: <span class="string">'javascript'</span>,</div><div class="line">        <span class="attr">price</span>: <span class="number">50</span></div><div class="line">    &#125;))</div><div class="line">&#125;)</div><div class="line">server.listen(<span class="number">8080</span>, _ =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'server has setup, listening at port: 8080'</span>)    </div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">proxyTable:</span> &#123;</div><div class="line">    <span class="string">'/api'</span>: <span class="string">'http://edmserver.cheng95.com'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="js设计模式之publish-subscribe"><a href="#js设计模式之publish-subscribe" class="headerlink" title="js设计模式之publish/subscribe"></a>js设计模式之publish/subscribe</h3><blockquote>
+<p>解耦具体的业务代码和组件/插件内部的代码。<br>一个弹出层，有确定，取消2个按钮，组件内部帮我们实现好的效果是：点击确定，取消2个按钮，弹出层都会消失，但是点击确定按钮的时候，我们要实现一些自己的业务逻辑。比如点击确定的时候，发送一个请求到后台。通过publish/subscribe就可以很好的实现这种组件/插件内部的代码和我们自己具体的业务代码相分离。</p>
+</blockquote>
+<p>vue源码位置：src/core/instance/events.js</p>
+<h3 id="vue组件通信"><a href="#vue组件通信" class="headerlink" title="vue组件通信"></a>vue组件通信</h3><h4 id="父子组件通信"><a href="#父子组件通信" class="headerlink" title="父子组件通信"></a>父子组件通信</h4><blockquote>
+<p>因为vue使用的单向数据流（数据只能从父组件流向子组件），所以子组件不能直接修改从父组件传递过来的props，如果要修改，必须通过事件的形式。</p>
+<ul>
+<li><code>vm.$on</code></li>
+<li><code>vm.$once</code></li>
+<li><code>vm.$emit</code></li>
+<li><code>vm.$off</code></li>
+</ul>
+</blockquote>
+<h4 id="兄弟组件通信"><a href="#兄弟组件通信" class="headerlink" title="兄弟组件通信"></a>兄弟组件通信</h4><blockquote>
+<p>组件之间没有父子关系，常用解决方案：Event Bus(事件总线)，就是通过一座桥梁将没有关系的组件联系起来。<br>其实根组件就是他们之间的这座桥梁，但是根组件上默认已经挂载了很多东西，所以一般情况下会使用一个空的Vue实例来充当这个事件总线。</p>
+</blockquote>
+<p>例如2个兄弟组件，一个按钮，一个段落，通过点击按钮来修改段落中的文字<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">x-button</span>&gt;</span><span class="tag">&lt;/<span class="name">x-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">c</span>&gt;</span><span class="tag">&lt;/<span class="name">c</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> vm = <span class="keyword">new</span> Vue()</div><div class="line">Vue.component(<span class="string">'x-button'</span>, &#123;</div><div class="line">    data()&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">count</span>: <span class="number">1</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;button @click="setMsg"&gt;测试按钮&lt;/button&gt;'</span>,</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">        setMsg()&#123;</div><div class="line">            vm.$emit(<span class="string">'set-msg'</span>, <span class="string">`count is: <span class="subst">$&#123;<span class="keyword">this</span>.count++&#125;</span>`</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">Vue.component(<span class="string">'c'</span>, &#123;</div><div class="line">    data()&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">msg</span>: <span class="string">'这是默认值'</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;/p&gt;'</span>,</div><div class="line">    created()&#123;</div><div class="line">        vm.$on(<span class="string">'set-msg'</span>, msg =&gt; &#123;</div><div class="line">            <span class="keyword">this</span>.msg = msg    </div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">el</span>: <span class="string">'#app'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="使用vuex来管理app数据"><a href="#使用vuex来管理app数据" class="headerlink" title="使用vuex来管理app数据"></a>使用vuex来管理app数据</h4><blockquote>
+<p>vuex是用来管理整个应用的数据，vuex中的数据可以被任何组件访问。所以vuex也是组件之间通讯的一种方案，至于到底用不用vuex，哪些数据要放到vuex中管理，取决于具体情况。</p>
+</blockquote>
+<h3 id="native修饰符"><a href="#native修饰符" class="headerlink" title=".native修饰符"></a>.native修饰符</h3><blockquote>
+<p>vue组件之间的通信，可以通过事件系统，但这些事件并不是原生的事件。dom操作离不开原生事件，vue提供了<code>.native</code>修饰符来绑定原生事件（内部使用addEventListener）。对于刚刚接触vue的人来说，可能思想难以转变，喜欢直接操作dom。通过<code>.native</code>修饰符，我们可以像<code>vm.$on</code>一样来绑定原生事件。</p>
+</blockquote>
+<p>假如在登录的时候，既可以通过点击登录按钮进行登录，也可以通过敲击<code>enter</code>键进行登录, html代码如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">el-form-item</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">"password"</span></span></div><div class="line">    <span class="attr">ref</span>=<span class="string">"password"</span></div><div class="line">    <span class="attr">v-model</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span>&gt;<span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">el-form-item</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">size</span>=<span class="string">"large"</span></span></div><div class="line">    @<span class="attr">click.prevent</span>=<span class="string">"signin"</span></div><div class="line">    <span class="attr">:disabled</span>=<span class="string">"!signinBtnActive"</span>&gt;登录<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>很多时候，你可能会这样来绑定事件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.$refs.password.$el.addEventListener(<span class="string">'keyup'</span>, e =&gt; &#123;</div><div class="line">    <span class="keyword">if</span>(e.keyCode === <span class="number">13</span>)&#123;</div><div class="line">        <span class="keyword">this</span>.signin() <span class="comment">// 登录操作</span></div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>其实vue提供了<code>.native</code>修饰符来绑定原生事件，提供了<code>.enter</code>修饰符来表示按的键是<code>enter</code>键，所以我们可以用更加优雅的方式来书写：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">"passowd"</span> <span class="attr">v-model</span>=<span class="string">"password"</span></span></div><div class="line">    @<span class="attr">keyup.native.enter</span>=<span class="string">"signin"</span>&gt;<span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><h3 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h3><p><a href="https://docs.npmjs.com/misc/coding-style" target="_blank" rel="external">npm推荐的代码风格</a></p>
+<h3 id="documents"><a href="#documents" class="headerlink" title="documents"></a>documents</h3><ul>
+<li><a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="external">vue</a></li>
+<li><a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="external">vue-router</a></li>
+<li><a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="external">vuex</a></li>
+<li><a href="http://stylus-lang.com/" target="_blank" rel="external">stylus</a></li>
+<li><a href="https://github.com/mzabriskie/axios" target="_blank" rel="external">axios</a></li>
+<li><a href="https://webpack.js.org/concepts/" target="_blank" rel="external">webpack2</a></li>
+<li><a href="http://element.eleme.io/#/zh-CN/component/installation" target="_blank" rel="external">ElementUI</a></li>
+<li><a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="external">http-proxy-middleware</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="external">CORS跨域</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xxxxxmiss.github.io/2017/08/12/share-vue/" data-id="cj6b0yoby0025c3o0z4ycpivk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend-framework/">frontend-framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <!-- id="post-variable-hoist" -->
 <article id="post-zeroclipboard" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/30/zeroclipboard/" class="article-date">
@@ -174,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj6b0wxzk003cb8o021kl4ew4" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj6b0yoco003qc3o0ods6q8ag" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -225,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj6b0wxy8001cb8o03vd2h75p" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj6b0yobm001ic3o06qad0rzr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -299,7 +571,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj6b0wxxx000tb8o0dvilkmbn" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj6b0yoba000qc3o04mmez4uk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -575,7 +847,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj6b0wxyj001ub8o0bz5cpsnn" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj6b0yobs001tc3o03klfkq73" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -845,7 +1117,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj6b0wxxu000ob8o03bs22nnv" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj6b0yob7000kc3o0bf8ihut2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -946,7 +1218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj6b0wxy40014b8o0o78pwkuk" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj6b0yobh0014c3o0hjlcgad5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -987,7 +1259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj6b0wxz1002fb8o00m2vxu7y" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj6b0yocb002wc3o05nrat3bz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1101,266 +1373,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj6b0wxxr000hb8o0pszzca6o" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/20/Object-keys/" data-id="cj6b0yob5000hc3o02358idaz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-encodeURIComponent" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/20/encodeURIComponent/" class="article-date">
-  <time datetime="2017-05-20T06:36:29.000Z" itemprop="datePublished">2017-05-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/js/">js</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/20/encodeURIComponent/">encodeURIComponent</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h2 id="encodeURIComponent概述"><a href="#encodeURIComponent概述" class="headerlink" title="encodeURIComponent概述"></a>encodeURIComponent概述</h2><blockquote>
-<p>是对统一资源标识符（URI）的组成部分进行编码的方法。它使用一到四个转义序列来表示字符串中的每个字符的UTF-8编码（只有由两个Unicode代理区字符组成的字符才用四个转义字符编码）</p>
-</blockquote>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">encodeURIComponent</span><span class="params">(str)</span></span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>NOTE: encodeURIComponent不转义以下字符：</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>编码</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>字母</td>
-<td>—</td>
-</tr>
-<tr>
-<td>数字</td>
-<td>—</td>
-</tr>
-<tr>
-<td>(</td>
-<td>%28</td>
-</tr>
-<tr>
-<td>)</td>
-<td>%29</td>
-</tr>
-<tr>
-<td>.</td>
-<td>%2e</td>
-</tr>
-<tr>
-<td>!</td>
-<td>%21</td>
-</tr>
-<tr>
-<td>~</td>
-<td>%7e</td>
-</tr>
-<tr>
-<td>*</td>
-<td>%2a</td>
-</tr>
-<tr>
-<td>‘</td>
-<td>%27</td>
-</tr>
-<tr>
-<td>-</td>
-<td>%2d</td>
-</tr>
-<tr>
-<td>_</td>
-<td>%5f</td>
-</tr>
-</tbody>
-</table>
-<h2 id="手动转义encodeURIComponent未转义的字符"><a href="#手动转义encodeURIComponent未转义的字符" class="headerlink" title="手动转义encodeURIComponent未转义的字符"></a>手动转义encodeURIComponent未转义的字符</h2><blockquote>
-<p>因为encodeURIComponent并不对<code>!</code>, <code>~</code>, <code>*</code>, <code>(</code>, <code>)</code>, <code>&#39;</code>等这些字符转义，而已这些字符也没有被正式划定URI的用途，所以当你需要对这些字符转义的时候，可以按照下面的方法：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fixedEncodeURIComponent</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">encodeURIComponent</span>(str)</div><div class="line">        .replace(<span class="regexp">/[!\(\)\*~']/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">c</span>)</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">'%'</span> + c.charCodeAt(<span class="number">0</span>).toString(<span class="number">16</span>)</div><div class="line">        &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="手动解码encodeURIComponent编码的字符"><a href="#手动解码encodeURIComponent编码的字符" class="headerlink" title="手动解码encodeURIComponent编码的字符"></a>手动解码encodeURIComponent编码的字符</h2><blockquote>
-<p>URI中常见的一些字符，如<code>?</code>, <code>&amp;</code>, ‘#’等，如果使用encodeURIComponent转义，那么uri就变得不是那么直观了，为了使uri直观易读，我们可以手动反转这些字符：</p>
-</blockquote>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function fixedEncodeURIComponent(str)&#123;</div><div class="line">    <span class="keyword">return</span> encodeURIComponent(str)</div><div class="line">        .<span class="built_in">replace</span>(/%(<span class="number">23</span>|<span class="type">24</span>|<span class="type">26</span>|<span class="type">2B</span>|<span class="type">3A</span>|<span class="type">3C</span>|<span class="type">3E</span>|<span class="type">3D</span>|<span class="type">2F</span>|<span class="type">3F</span>|<span class="type">40</span>|<span class="type">5B</span>|<span class="type">5D</span>|<span class="type">5E</span>|<span class="type">60</span>|<span class="type">7B</span>|<span class="type">7D</span>|<span class="type">7C</span>)/g, decodeURIComponent)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="常见字符在encodeURIComponent中编码的字符对照表"><a href="#常见字符在encodeURIComponent中编码的字符对照表" class="headerlink" title="常见字符在encodeURIComponent中编码的字符对照表"></a>常见字符在encodeURIComponent中编码的字符对照表</h2><table>
-<thead>
-<tr>
-<th>字符</th>
-<th>编码</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>#</td>
-<td>%23</td>
-</tr>
-<tr>
-<td>$</td>
-<td>%24</td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td>%26</td>
-</tr>
-<tr>
-<td>+</td>
-<td>%2B</td>
-</tr>
-<tr>
-<td>:</td>
-<td>%3A</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>%3C</td>
-</tr>
-<tr>
-<td>=</td>
-<td>%3D</td>
-</tr>
-<tr>
-<td>/</td>
-<td>%2F</td>
-</tr>
-<tr>
-<td>?</td>
-<td>%3F</td>
-</tr>
-<tr>
-<td>@</td>
-<td>%40</td>
-</tr>
-<tr>
-<td>[</td>
-<td>%5B</td>
-</tr>
-<tr>
-<td>]</td>
-<td>%5D</td>
-</tr>
-<tr>
-<td>^</td>
-<td>%5E</td>
-</tr>
-<tr>
-<td>`</td>
-<td>%60</td>
-</tr>
-<tr>
-<td>{</td>
-<td>%7B</td>
-</tr>
-<tr>
-<td>}</td>
-<td>%7D</td>
-</tr>
-<tr>
-<td>&#124;</td>
-<td>%7C</td>
-</tr>
-</tbody>
-</table>
-<h2 id="关于charCodeAt-方法"><a href="#关于charCodeAt-方法" class="headerlink" title="关于charCodeAt()方法"></a>关于charCodeAt()方法</h2><blockquote>
-<p>charCodeAt() 方法返回0到65535(0xffff)之间的整数，表示给定索引处的UTF-16代码单元 (在 Unicode 编码单元表示一个单一的 UTF-16 编码单元的情况下，UTF-16 编码单元匹配 Unicode 编码单元。但在——例如 Unicode 编码单元 &gt; 0x10000 的这种——不能被一个 UTF-16 编码单元单独表示的情况下，只能匹配 Unicode 代理对的第一个编码单元) 。如果你想要整个代码点的值，使用 codePointAt()。<br>Unicode 编码单元（code points）的范围从 0 到 1,114,111（0x10FFFF）。<br>开头的 128(0-127) 个 Unicode 编码单元和 ASCII 字符编码一样。</p>
-</blockquote>
-<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">str</span>.charCodeAt(<span class="keyword">index</span>)</div></pre></td></tr></table></figure>
-<p>参数index解释：</p>
-<ul>
-<li>index: &gt;=0 &amp;&amp; &lt; st.length</li>
-<li>如果不是一个数值，则默认为0。</li>
-<li>如果是一个超出范围的数值，那么返回NaN。</li>
-</ul>
-<p>返回值：给定索引处字符的 UTF-16 代码单元值的数字</p>
-<h2 id="关于字符编码的相关问题"><a href="#关于字符编码的相关问题" class="headerlink" title="关于字符编码的相关问题"></a>关于字符编码的相关问题</h2><blockquote>
-<p>这是一个很大的话题，可以参考以下几个链接。</p>
-</blockquote>
-<p><a href="https://www.zhihu.com/question/24572900" target="_blank" rel="external">为什么 UTF-8 编码比 UTF-16 编码应用更广泛?</a><br><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="external">字符编码笔记：ASCII，Unicode和UTF-8</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/20/encodeURIComponent/" data-id="cj6b0wxxs000kb8o0rp0vchh2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-flex" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/14/flex/" class="article-date">
-  <time datetime="2017-05-14T03:59:30.000Z" itemprop="datePublished">2017-05-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/css/">css</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/14/flex/">flex布局</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h2 id="伸缩性flex"><a href="#伸缩性flex" class="headerlink" title="伸缩性flex"></a>伸缩性flex</h2><blockquote>
-<p>用来控制伸缩容器额外空间如何沿着伸缩容器的布局轴成比例的分配给各个伸缩项目。</p>
-</blockquote>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: none;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">0</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">0</span>;</div><div class="line"><span class="attribute">flex-basis</span>: auto;</div><div class="line"></div><div class="line"><span class="attribute">flex</span>: <span class="number">0</span> auto;</div><div class="line">或者</div><div class="line"><span class="attribute">flex</span>: <span class="number">0</span> <span class="number">1</span> auto;</div><div class="line">或者</div><div class="line"><span class="attribute">flex</span>: initail;</div><div class="line">等价于(也就是说他们单属性的默认值值分别是)</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">0</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: auto;</div></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: auto;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: auto;</div></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: <span class="number">0%</span>;</div></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">flex</span>: <span class="number">2</span> <span class="number">100px</span>;</div><div class="line">等价于</div><div class="line"><span class="attribute">flex-grow</span>: <span class="number">2</span>;</div><div class="line"><span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line"><span class="attribute">flex-basis</span>: <span class="number">100px</span>;</div><div class="line">`</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/14/flex/" data-id="cj6b0wxxu000qb8o0ytswocf9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
 
     </footer>
   </div>
@@ -1382,7 +1398,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -1392,7 +1408,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frontend-framework/">frontend-framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -1402,7 +1418,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 11.67px; color: #d56c28">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 18.33px; color: #2b16c6">js</a> <a href="/tags/linux/" style="font-size: 13.33px; color: #aa574f">linux</a> <a href="/tags/nodejs/" style="font-size: 16.67px; color: #552b9f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 15px; color: #804177">shell</a> <a href="/tags/webpack/" style="font-size: 20px; color: #00e">webpack</a>
+      <a href="/tags/css/" style="font-size: 11.67px; color: #d56c28">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/frontend-framework/" style="font-size: 10px; color: #ff8200">frontend-framework</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 20px; color: #00e">js</a> <a href="/tags/linux/" style="font-size: 13.33px; color: #aa574f">linux</a> <a href="/tags/nodejs/" style="font-size: 16.67px; color: #552b9f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 15px; color: #804177">shell</a> <a href="/tags/webpack/" style="font-size: 18.33px; color: #2b16c6">webpack</a>
     </div>
   </div>
 
@@ -1411,7 +1427,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1424,6 +1440,14 @@
       <ul>
         
           <li>
+            <a href="/2017/08/13/web-components/">web-components</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/12/share-vue/">share-vue</a>
+          </li>
+        
+          <li>
             <a href="/2017/07/30/zeroclipboard/">zeroclipboard</a>
           </li>
         
@@ -1433,14 +1457,6 @@
         
           <li>
             <a href="/2017/07/14/event-loop/">event-loop(事件循环)</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/12/nodejs-process/">nodejs-process</a>
-          </li>
-        
-          <li>
-            <a href="/2017/06/05/RegExp/">RegExp</a>
           </li>
         
       </ul>
