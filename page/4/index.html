@@ -182,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-output/" data-id="cj6b0yocl003kc3o0gb7f6323" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-output/" data-id="cj6nvyl1s002mzbo0jya1a8j0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -243,16 +243,16 @@
 </blockquote>
 <p>假如我们的配置文件是这样的</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">module.exports = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    entry: <span class="string">'./ab.js'</span>,</div><div class="line">    outpu<span class="variable">t:</span> &#123;</div><div class="line">      filename: <span class="string">'webpack-lib'</span>,</div><div class="line">      path: <span class="string">'./dist'</span>,</div><div class="line">      library: <span class="string">'abConvert'</span>,</div><div class="line">      libraryTarge<span class="variable">t:</span> <span class="string">'var'</span> // 当为默认值的时候，可以不指定该属性</div><div class="line">    &#125;,</div><div class="line">    external<span class="variable">s:</span> &#123;</div><div class="line">      <span class="string">'zepto'</span>: &#123;</div><div class="line">        commonj<span class="variable">s:</span> <span class="string">'zepto'</span>,</div><div class="line">        commonjs2: <span class="string">'zepto'</span>,</div><div class="line">        amd: <span class="string">'zepto'</span>,</div><div class="line">        roo<span class="variable">t:</span> <span class="string">'$'</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>那么各种取值下导出的代码会是这个样子的<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\<span class="keyword">var</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> abConvert = (<span class="function"><span class="keyword">function</span><span class="params">(modules)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> ...</div><div class="line">  &#125;)()</div></pre></td></tr></table></figure></p>
+<p>那么各种取值下导出的代码会是这个样子的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\<span class="keyword">var</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> abConvert = (<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> ...</div><div class="line">  &#125;)()</div></pre></td></tr></table></figure></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">\\umd</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">webpackUniversalModuleDefinition</span>(<span class="params">root, factory</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> exports === <span class="string">'object'</span> &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">module</span> === <span class="string">'object'</span>)</div><div class="line">    <span class="built_in">module</span>.exports = factory(<span class="built_in">require</span>(<span class="string">"zepto"</span>));</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd)</div><div class="line">    define([<span class="string">"zepto"</span>], factory);</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> exports === <span class="string">'object'</span>)</div><div class="line">    exports[<span class="string">"abConvert"</span>] = factory(<span class="built_in">require</span>(<span class="string">"zepto"</span>));</div><div class="line">  <span class="keyword">else</span></div><div class="line">    root[<span class="string">"abConvert"</span>] = factory(root[<span class="string">"$"</span>]);</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\\ amd</div><div class="line"></div><div class="line">define(<span class="string">'abConvert'</span>, [<span class="string">'zepto'</span>], <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;&#125;)</div></pre></td></tr></table></figure>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ commonjs</div><div class="line"></div><div class="line">exports[<span class="string">'abConvert'</span>] = (<span class="function"><span class="keyword">function</span><span class="params">(modules)</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> ...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ commonjs2</div><div class="line"></div><div class="line"><span class="keyword">module</span>.exports = (<span class="function"><span class="keyword">function</span><span class="params">(modules)</span></span>&#123;</div><div class="line">  <span class="keyword">return</span> ...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\\ amd</div><div class="line"></div><div class="line">define(<span class="string">'abConvert'</span>, [<span class="string">'zepto'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ commonjs</div><div class="line"></div><div class="line">exports[<span class="string">'abConvert'</span>] = (<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> ...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ commonjs2</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = (<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> ...</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">\\ commonjs-<span class="built_in">module</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = (<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> ...</div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">module</span>.exports, <span class="string">"__esModule"</span>, &#123; <span class="attr">value</span>: <span class="literal">true</span> &#125;)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>如果libraryTarget指定为<code>commonjs-module</code>, 那么此时<code>module.exports</code>上会被定义一个<code>__esModule</code>, 表明此时采用的是es2015模块化方式定义的，并且此时的<code>library</code>属性会被忽略。</p>
 </blockquote>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ <span class="keyword">this</span></div><div class="line"></div><div class="line"><span class="keyword">this</span>[<span class="string">'abConvert'</span>] = (<span class="function"><span class="keyword">function</span><span class="params">(modules)</span></span>&#123;</div><div class="line">  </div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\\ <span class="keyword">this</span></div><div class="line"></div><div class="line"><span class="keyword">this</span>[<span class="string">'abConvert'</span>] = (<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>)</span>&#123;</div><div class="line">  </div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
 <blockquote>
 <p>当指定为<code>this</code>时，代表的是由运行环境决定。比如运行在浏览器中，此时<code>this</code>代表<code>window</code>，如果运行在nodejs环境，那么此时<code>this</code>代表<code>global</code>。</p>
 </blockquote>
@@ -260,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-library/" data-id="cj6b0yocf0037c3o0u5dydkke" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-library/" data-id="cj6nvyl1y002tzbo0zuisj5g6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -327,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-ensure/" data-id="cj6b0yocd0033c3o0a1e0gnzq" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-ensure/" data-id="cj6nvyl1n002bzbo0mrjfo0xn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -370,7 +370,7 @@
         <p>[TOC]</p>
 <h3 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h3><ul>
 <li>一个应用有第三方库和程序代码组成，第三方库和程序代码最大的不同就是一般第三方库是不会轻易改动的。</li>
-<li>在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3>假如在index.js中引用第三方库moment.js<br>index.js<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var <span class="built_in">moment</span> = require('monent')</div><div class="line">console.<span class="built_in">log</span>(<span class="built_in">moment</span>().<span class="keyword">format</span>())</div></pre></td></tr></table></figure>
+<li>在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3>假如在index.js中引用第三方库moment.js<br>index.js<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> moment = <span class="built_in">require</span>(<span class="string">'monent'</span>)</div><div class="line"><span class="built_in">console</span>.log(moment().format())</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>我们的webapck.config.js配置如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">entry</span>: <span class="string">'./index.js'</span>,</div><div class="line">    <span class="attr">output</span>: &#123;</div><div class="line">      <span class="attr">filename</span>: <span class="string">'[chunkhash].[name].js'</span>,</div><div class="line">      <span class="attr">path</span>: <span class="string">'./dist'</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -400,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-coding-split/" data-id="cj6b0yocg003ac3o0f2a12w64" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-coding-split/" data-id="cj6nvyl1k0024zbo0r19qbz7f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -445,7 +445,7 @@
 </blockquote>
 <p>[TOC]</p>
 <p>先看一个例子<br>foo.js<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> circle = <span class="built_in">require</span>(<span class="string">'./circle.js'</span>)</div><div class="line"><span class="built_in">console</span>.log(`The area <span class="keyword">of</span> a circle <span class="keyword">of</span> radius <span class="number">4</span> <span class="keyword">is</span> $&#123;circle.area(<span class="number">4</span>)`&#125;</div></pre></td></tr></table></figure></p>
-<p>circle.js<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const PI = Math.PI</div><div class="line"></div><div class="line">exports.area = <span class="function"><span class="params">(r)</span> =&gt;</span> PI * r * r</div><div class="line"></div><div class="line">exports.circumference = <span class="function"><span class="params">(r)</span> =&gt;</span> <span class="number">2</span> * PI * r</div></pre></td></tr></table></figure></p>
+<p>circle.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> PI = <span class="built_in">Math</span>.PI</div><div class="line"></div><div class="line">exports.area = <span class="function">(<span class="params">r</span>) =&gt;</span> PI * r * r</div><div class="line"></div><div class="line">exports.circumference = <span class="function">(<span class="params">r</span>) =&gt;</span> <span class="number">2</span> * PI * r</div></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <ul>
 <li>circle.js导出了2个方法<code>area()</code>, <code>circumference()</code>, 导出一个模块中的方法或者对象，你可以将他们挂载到<code>exports</code>对象上</li>
@@ -478,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj6b0yobp001lc3o0p1swrxw3" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/" data-id="cj6nvyl0o000xzbo0aa1rs5x6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -582,7 +582,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-path/" data-id="cj6b0yobr001qc3o0b4ig9eh0" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/nodejs-path/" data-id="cj6nvyl0v0011zbo0rmxf6cxw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -3192,7 +3192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2014/12/29/zeroclipboard/ZeroClipboard/" data-id="cj6b0yoeb005ac3o0zlayifah" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2014/12/29/zeroclipboard/ZeroClipboard/" data-id="cj6nvyl3z005dzbo0jvzu08an" class="article-share-link">Share</a>
       
       
     </footer>

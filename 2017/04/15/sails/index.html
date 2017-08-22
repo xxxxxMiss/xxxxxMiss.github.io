@@ -224,7 +224,7 @@
 <h3 id="在模板中使用动态数据"><a href="#在模板中使用动态数据" class="headerlink" title="在模板中使用动态数据"></a>在模板中使用动态数据</h3><blockquote>
 <p>大多数时候，数据都是动态获取到的（通过action从model中获取），所以大多时候是按照如下方式进行渲染数据的：</p>
 </blockquote>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// in api/controllers/UserController.js...</span></div><div class="line"></div><div class="line">  profile: <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">return</span> res.view(<span class="string">'backOffice/profile'</span>, &#123;</div><div class="line">      user: theUser,</div><div class="line">      corndogs: theUser.corndogCollection</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// ...</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// in api/controllers/UserController.js...</span></div><div class="line"></div><div class="line">  profile: <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">return</span> res.view(<span class="string">'backOffice/profile'</span>, &#123;</div><div class="line">      <span class="attr">user</span>: theUser,</div><div class="line">      <span class="attr">corndogs</span>: theUser.corndogCollection</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// ...</span></div></pre></td></tr></table></figure>
 <h3 id="Partials-模板包含"><a href="#Partials-模板包含" class="headerlink" title="Partials(模板包含)"></a>Partials(模板包含)</h3><blockquote>
 <p>支持模板包含，及在一些模板中，将另外一些模板包含进来，达到模板的复用。在<code>sails</code>中使用模板包含，需要注意的就是路径都是相对于<code>view</code>文件夹的。如</p>
 </blockquote>
@@ -250,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj6b0yobu001yc3o01v937tal" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj6nvyl17001azbo0ysfcogut" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sails/">sails</a></li></ul>

@@ -222,7 +222,7 @@
 <h3 id="在模板中使用动态数据"><a href="#在模板中使用动态数据" class="headerlink" title="在模板中使用动态数据"></a>在模板中使用动态数据</h3><blockquote>
 <p>大多数时候，数据都是动态获取到的（通过action从model中获取），所以大多时候是按照如下方式进行渲染数据的：</p>
 </blockquote>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// in api/controllers/UserController.js...</span></div><div class="line"></div><div class="line">  profile: <span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">return</span> res.view(<span class="string">'backOffice/profile'</span>, &#123;</div><div class="line">      user: theUser,</div><div class="line">      corndogs: theUser.corndogCollection</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// ...</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// in api/controllers/UserController.js...</span></div><div class="line"></div><div class="line">  profile: <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">return</span> res.view(<span class="string">'backOffice/profile'</span>, &#123;</div><div class="line">      <span class="attr">user</span>: theUser,</div><div class="line">      <span class="attr">corndogs</span>: theUser.corndogCollection</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// ...</span></div></pre></td></tr></table></figure>
 <h3 id="Partials-模板包含"><a href="#Partials-模板包含" class="headerlink" title="Partials(模板包含)"></a>Partials(模板包含)</h3><blockquote>
 <p>支持模板包含，及在一些模板中，将另外一些模板包含进来，达到模板的复用。在<code>sails</code>中使用模板包含，需要注意的就是路径都是相对于<code>view</code>文件夹的。如</p>
 </blockquote>
@@ -248,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj6b0yobu001yc3o01v937tal" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj6nvyl17001azbo0ysfcogut" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sails/">sails</a></li></ul>
@@ -370,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj6b0yoc7002mc3o0cpha8nyt" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj6nvyl1h001wzbo0w0q073qm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -497,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj6b0yoco003sc3o0e5vz5o2y" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj6nvyl210034zbo08i2ehiaa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -646,7 +646,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj6b0yobx0021c3o03sx3hopr" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj6nvyl18001dzbo0ejeev3m6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -734,7 +734,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj6b0yoc4002gc3o04iep28of" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj6nvyl1c001kzbo0ahnkbpl2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -803,7 +803,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj6b0yoc2002dc3o0wqn3rfhw" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj6nvyl1e001ozbo00f864oya" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -869,7 +869,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj6b0yoc00028c3o0aclghnk5" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj6nvyl1a001hzbo0suo525tr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
@@ -971,7 +971,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-server/" data-id="cj6b0yocm003nc3o0ye91i3v3" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-server/" data-id="cj6nvyl1z002xzbo05bwlaabv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -1043,15 +1043,15 @@
 <h4 id="resolve-mainFields"><a href="#resolve-mainFields" class="headerlink" title="resolve.mainFields"></a>resolve.mainFields</h4><blockquote>
 <p>当你引入某一个包时，使用包下面的哪一个文件。<br>配置: <code>mainFields: [&#39;module&#39;, &#39;browser&#39;, &#39;main&#39;]</code>，具体看例子解释。</p>
 </blockquote>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> D3 <span class="keyword">from</span> <span class="string">'d3'</span></div></pre></td></tr></table></figure>
-<p>在<code>d3</code>这个<code>package.json</code>中，有这几个选项<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"main"</span>: <span class="string">"build/d3.node.js"</span>, <span class="comment">// 适用node环境</span></div><div class="line"><span class="string">"browser"</span>: <span class="string">"build/d3.js"</span>, <span class="comment">// 适用浏览器环境</span></div><div class="line"><span class="string">"module"</span>: <span class="string">"index"</span> <span class="comment">// 都支持</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> D3 <span class="keyword">from</span> <span class="string">'d3'</span></div></pre></td></tr></table></figure>
+<p>在<code>d3</code>这个<code>package.json</code>中，有这几个选项<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"main"</span>: <span class="string">"build/d3.node.js"</span>, <span class="comment">// 适用node环境</span></div><div class="line"><span class="string">"browser"</span>: <span class="string">"build/d3.js"</span>, <span class="comment">// 适用浏览器环境</span></div><div class="line"><span class="string">"module"</span>: <span class="string">"index"</span> <span class="comment">// 都支持</span></div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>以上的几个选项可以分别支持不同的环境，你应该选择你需要的环境选项，通过该选项的配置，可以满足你的需求。</p>
 </blockquote>
 <h4 id="resolve-mainFiles"><a href="#resolve-mainFiles" class="headerlink" title="resolve.mainFiles"></a>resolve.mainFiles</h4><blockquote>
 <p>当解析到的文件是一个目录是，如何处理该目录。<br>默认：<code>mainFiles: [&#39;index&#39;]</code>。<br>关于该选项的具体含义，只要理解了node中包的寻找机制，就能明白该选项的含义。<br><a href="https://nodejs.org/dist/latest-v7.x/docs/api/modules.html" target="_blank" rel="external">node包寻找机制</a></p>
 </blockquote>
-<p>这里举例简单说明：<br>index.js<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fns <span class="keyword">from</span> <span class="string">'./js'</span> <span class="comment">//js是一个文件夹</span></div></pre></td></tr></table></figure></p>
+<p>这里举例简单说明：<br>index.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fns <span class="keyword">from</span> <span class="string">'./js'</span> <span class="comment">//js是一个文件夹</span></div></pre></td></tr></table></figure></p>
 <p>webpack.config.js<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolve</span>: &#123;</div><div class="line">  <span class="attribute">mainFields</span>: [<span class="string">'canvas'</span>, <span class="string">'utils'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>当webpack解析到<code>js</code>是一个文件夹时，如果你的<code>mainFields</code>配置如上，那么webpack会去<code>js</code>文件夹下寻找<code>canvas.js</code>，如果没有找到,那么继续寻找<code>js</code>文件夹下的<code>utils.js</code>，如果还没有找到，抛出错误<code>Module not found: Error: &#39;xx&#39; in &#39;xx&#39;</code></p>
@@ -1084,7 +1084,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-resolve/" data-id="cj6b0yocj003gc3o0uvozonrn" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-resolve/" data-id="cj6nvyl200030zbo0whnb4lvc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -1153,7 +1153,7 @@
 <li>资源(resource): 请求文件的绝对路径，依据<code>resolve</code>选项进行解析的</li>
 <li>发布者(issuer): 包含请求文件的文件的绝对路径。</li>
 </ul>
-<p>以上的2句话很难理解，直接看例子，比如在<code>app.js</code>中有一句导入css语句：<br>app.js<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'./style.css'</span></div></pre></td></tr></table></figure></p>
+<p>以上的2句话很难理解，直接看例子，比如在<code>app.js</code>中有一句导入css语句：<br>app.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">'./style.css'</span></div></pre></td></tr></table></figure></p>
 <p>资源就是<code>/path/to/style.css</code><br>发布者就是<code>/path/to/app.js</code></p>
 <p>在一个<code>rule</code>中，<code>test</code>,<code>include</code>,<code>resource</code>等都是用来处理资源的，而<code>issuer</code>是用来处理发布者的。</p>
 <blockquote>
@@ -1163,7 +1163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-module/" data-id="cj6b0yoci003ec3o05q5gf3yx" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-module/" data-id="cj6nvyl1x002qzbo0teo6qnhe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
