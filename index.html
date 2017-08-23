@@ -165,10 +165,38 @@
 </ol>
 <p>再来解析下上面1,2中括号中说明的含义</p>
 <p>加入我们要修改前3次的提交<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 移动HEAD中的指针指向倒数第四次提交，此时修改的文件处于暂存区</div><div class="line">// 也就是说加了<span class="comment">--soft，会回退到git commit之前</span></div><div class="line">git <span class="keyword">reset</span> <span class="comment">--soft HEAD~3</span></div><div class="line"></div><div class="line">// 移动<span class="keyword">HEAD</span>中的指针指向倒数第四次提交，此时修改的文件处于暂存区</div><div class="line">// 更新暂存区，使工作区和暂存区看起来是一样的</div><div class="line">// 也就是说不加<span class="comment">--soft选项，回会退到git add之前</span></div><div class="line">git <span class="keyword">reset</span> <span class="keyword">HEAD</span>~<span class="number">3</span></div><div class="line"></div><div class="line">// <span class="comment">--hard是个危险选项，会让你撤销所有的修改</span></div><div class="line">git <span class="keyword">reset</span> <span class="comment">--hard HEAD~3</span></div></pre></td></tr></table></figure></p>
-<h3 id="reset重置路径"><a href="#reset重置路径" class="headerlink" title="reset重置路径"></a>reset重置路径</h3><blockquote>
+<h2 id="reset重置路径"><a href="#reset重置路径" class="headerlink" title="reset重置路径"></a>reset重置路径</h2><blockquote>
 <p>上面说的reset是针对提交历史的，我们也可以使用reset针对某个具体路径。<br>比如我们在使用<code>git add .</code>添加了所有的东西到暂存区，但是在提交的时候，发送有个文件或者文件夹中的东西不是当前功能的，那么可以通过reset来让文件或者文件集合回到工作区，只提交本次要提交的功能。<br>实际上，<code>git add</code>和<code>git reset</code>所做的事情是相反的，<code>git reset</code>本质是将HEAD区的中的文件拷贝到暂存区，并且不会移动HEAD中的分支指针。</p>
 </blockquote>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">On branch test</div><div class="line">Your branch <span class="keyword">and</span> <span class="string">'origin/test'</span> have diverged,</div><div class="line"><span class="keyword">and</span> have <span class="number">4</span> <span class="keyword">and</span> <span class="number">15</span> different commits <span class="keyword">each</span>, respectively.</div><div class="line">  (use <span class="string">"git pull"</span> <span class="built_in">to</span> <span class="built_in">merge</span> <span class="keyword">the</span> remote branch <span class="keyword">into</span> yours)</div><div class="line">Changes <span class="built_in">to</span> be committed:</div><div class="line">  (use <span class="string">"git reset HEAD &lt;file&gt;..."</span> <span class="built_in">to</span> unstage)</div><div class="line"></div><div class="line">    modified:   test.txt</div><div class="line"></div><div class="line">Changes <span class="keyword">not</span> staged <span class="keyword">for</span> commit:</div><div class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> <span class="built_in">to</span> update what will be committed)</div><div class="line">  (use <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="built_in">to</span> discard changes <span class="keyword">in</span> working <span class="built_in">directory</span>)</div><div class="line"></div><div class="line">    modified:   test.txt</div></pre></td></tr></table></figure>
+<h2 id="撤销合并之reset修改引用，revert还原"><a href="#撤销合并之reset修改引用，revert还原" class="headerlink" title="撤销合并之reset修改引用，revert还原"></a>撤销合并之reset修改引用，revert还原</h2><p>假设现在在一个特性分支上工作，不小心将其合并到 master 中，现在提交历史看起来是这样：<br><img src="/2017/08/20/git-plumbing/three-part-merge.png" alt="three-part-merge.png" title=""></p>
+<p>对于上面的问题，有2种修复方法：</p>
+<blockquote>
+<p>修改引用</p>
+</blockquote>
+<p>如果这个不想要的合并提交只存在于你的本地仓库中，最简单且最好的解决方案是移动分支到你想要它指向的地方。 大多数情况下，如果你在错误的 <code>git merge</code> 后运行 <code>git reset --hard HEAD~</code>，这会重置分支指向所以它们看起来像这样：</p>
+<img src="/2017/08/20/git-plumbing/reset-hard.png" alt="reset-hard.png" title="">
+<p>这个方法的缺点是它会重写历史，在一个共享的仓库中这会造成问题的。 用简单的话说就是如果其他人已经有你将要重写的提交，你应当避免使用 reset。 如果有任何其他提交在合并之后创建了，那么这个方法也会无效；移动引用实际上会丢失那些改动。</p>
+<blockquote>
+<p>还原提交</p>
+</blockquote>
+<p>如果上面的修改引用的方法不适合你，那么你还可以使用还原操作。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">revert </span>-m <span class="number">1</span> HEAD</div></pre></td></tr></table></figure></p>
+<p>调用了上述命令之后，提交历史看起来是这样的：</p>
+<img src="/2017/08/20/git-plumbing/reset-mainline-1.png" alt="reset-mainline-1.png" title="">
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">commit e<span class="number">5</span>a<span class="number">5</span>ab<span class="number">537309</span><span class="keyword">c</span><span class="number">2006676392</span>d<span class="number">4</span>fb<span class="number">5</span>dc<span class="number">1</span>ae<span class="number">2</span>dae<span class="number">78</span>e</div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span><span class="title">@qq.com</span>&gt;</div><div class="line">Date:   Wed Aug <span class="number">23</span> <span class="number">17</span>:<span class="number">14</span>:<span class="number">20</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    Revert <span class="string">"Merge branch 'test revert in test branch'"</span></div><div class="line"></div><div class="line">    This reverts commit <span class="number">606</span>de<span class="number">1</span>d<span class="number">0</span>d<span class="number">3</span>d<span class="number">7313</span>ca<span class="number">3</span><span class="keyword">c</span><span class="number">0914</span><span class="keyword">c</span><span class="number">65</span>eb<span class="number">5</span>f<span class="number">77</span>ca<span class="number">97</span>a<span class="number">48</span>e, reversing</div><div class="line">    changes made <span class="keyword">to</span> <span class="number">2</span>ece<span class="number">042</span>de<span class="number">65</span><span class="keyword">c</span><span class="number">693</span><span class="keyword">c</span><span class="number">709</span>b<span class="number">3</span>f<span class="number">9</span>d<span class="number">34</span>d<span class="number">7</span>b<span class="number">598697984</span>ff.</div><div class="line"></div><div class="line">commit <span class="number">606</span>de<span class="number">1</span>d<span class="number">0</span>d<span class="number">3</span>d<span class="number">7313</span>ca<span class="number">3</span><span class="keyword">c</span><span class="number">0914</span><span class="keyword">c</span><span class="number">65</span>eb<span class="number">5</span>f<span class="number">77</span>ca<span class="number">97</span>a<span class="number">48</span>e</div><div class="line">Merge: <span class="number">2</span>ece<span class="number">042</span> d<span class="number">9</span>a<span class="number">757</span>b</div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span><span class="title">@qq.com</span>&gt;</div><div class="line">Date:   Wed Aug <span class="number">23</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">16</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    Merge branch 'test revert in test branch'</div><div class="line"></div><div class="line">commit d<span class="number">9</span>a<span class="number">757</span>b<span class="number">76</span>f<span class="number">1e95</span><span class="keyword">c</span><span class="number">26</span>bd<span class="number">116</span>d<span class="number">18</span>f<span class="number">03338</span><span class="keyword">c</span><span class="number">0e5920</span><span class="keyword">c</span><span class="number">0</span></div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span><span class="title">@qq.com</span>&gt;</div><div class="line">Date:   Wed Aug <span class="number">23</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">10</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    revert 提交 in test branch</div><div class="line"></div><div class="line">commit <span class="number">2</span>ece<span class="number">042</span>de<span class="number">65</span><span class="keyword">c</span><span class="number">693</span><span class="keyword">c</span><span class="number">709</span>b<span class="number">3</span>f<span class="number">9</span>d<span class="number">34</span>d<span class="number">7</span>b<span class="number">598697984</span>ff</div><div class="line">Merge: <span class="keyword">c</span><span class="number">7434</span>ae <span class="number">44</span>ee<span class="number">440</span></div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span><span class="title">@qq.com</span>&gt;</div><div class="line">Date:   Wed Aug <span class="number">23</span> <span class="number">17</span>:<span class="number">08</span>:<span class="number">25</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    Merge branch 'feat <span class="keyword">add</span> <span class="number">9999</span> in feat branch'</div></pre></td></tr></table></figure>
+<p>该命令会生成一条新的提交，我们如果查看上面的log,可以看出第一天提交信息，其中明确的写明了<code>e5a5ab5</code>是在<code>606de1d</code>的基础上生成的新提交，并且将<code>2ece042</code>的提交还原了。</p>
+<blockquote>
+<p>再来看看<code>git revert -m 1 HEAD</code>之后的历史</p>
+</blockquote>
+<p>新的提交 ^M 与 C6 有完全一样的内容，所以从这儿开始就像合并从未发生过，但是如果你尝试再次合并 topic 到 master Git 会感到困惑：<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">merge</span> topic</div><div class="line">Already up-<span class="built_in">to</span>-<span class="built_in">date</span>.</div></pre></td></tr></table></figure></p>
+<p>因为我们调用<code>git revert -m 1 HEAD</code>之后，已经将topic中提交剔除出去了，但是现在再来合并却发现并没有不一样的内容，也就是说我们无法再次将topic分支的提交合并到master.更糟的是，如果你在 topic 中增加工作然后再次合并，会产生冲突。</p>
+<img src="/2017/08/20/git-plumbing/reset-merge.png" alt="reset-merge.png" title="">
+<p>解决这个最好的方式是撤消还原原始的合并，因为现在你想要引入被还原出去的修改，然后 创建一个新的合并提交：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// <span class="keyword">revert </span>^M之后，又会产生一次新的提交^^M，这次新的提交包含了开始剔除出去的内容（<span class="built_in">C3</span>,<span class="built_in">C4</span>）</div><div class="line">$ git <span class="keyword">revert </span>^M</div><div class="line">[master <span class="number">09</span>f0126] <span class="keyword">Revert </span><span class="string">"Revert "</span>Merge <span class="keyword">branch </span><span class="string">'topic'</span><span class="string">""</span></div><div class="line">$ git merge topic</div><div class="line"></div><div class="line">// merge topic时，会将^^M，<span class="built_in">C7</span>，<span class="built_in">C2</span>做一个三方合并</div></pre></td></tr></table></figure></p>
+<img src="/2017/08/20/git-plumbing/reset-merge-2.png" alt="reset-merge-2.png" title="">
+<blockquote>
+<p>在重新合并一个还原合并后的历史<br>在本例中，M 与 ^M 抵消了。 ^^M 事实上合并入了 C3 与 C4 的修改，C8 合并了 C7 的修改，所以现在 topic 已经完全被合并了。</p>
+</blockquote>
+<p>所有遇到以上情况，我们需要做三步：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">revert </span>-m -<span class="number">1</span> HEAD</div><div class="line"><span class="symbol">git</span> <span class="keyword">revert </span>^M</div><div class="line"><span class="symbol">git</span> merge topic</div></pre></td></tr></table></figure></p>
 <h2 id="reset与checkout的区别"><a href="#reset与checkout的区别" class="headerlink" title="reset与checkout的区别"></a>reset与checkout的区别</h2><blockquote>
 <p>因为checkout也是操纵这三棵树，所以有必要了解下他们之间的区别</p>
 </blockquote>
@@ -263,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/08/20/git-plumbing/" data-id="cj6oq7r08000hqro0hh1ll6th" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/08/20/git-plumbing/" data-id="cj6oum42d000duro0sr4418wo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -409,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/08/13/web-components/" data-id="cj6oq7r17002dqro0dj8w5pdg" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/08/13/web-components/" data-id="cj6oum43o0027uro08o9gopzm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -535,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/08/12/share-vue/" data-id="cj6oq7r0t001qqro0ifawtebf" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/08/12/share-vue/" data-id="cj6oum436001furo0h4hqqwf1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend-framework/">frontend-framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -655,7 +683,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj6oq7r1k003bqro0uc114pcv" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj6oum44h0038uro0iszbcuhe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -706,7 +734,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj6oq7r0i000yqro08m50nmcn" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj6oum42p000yuro02tq6b2st" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -780,7 +808,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj6oq7qzr0005qro0fzpvp3rh" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj6oum41x0004uro0942qbp0z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -1056,7 +1084,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj6oq7r0q001fqro0wg340ve1" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj6oum42z001auro0f9ia6wvj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -1326,7 +1354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj6oq7qzj0001qro0j7lypdo7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj6oum41r0001uro0gfv7pw0p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1427,7 +1455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj6oq7r09000kqro09jmmsmue" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj6oum42i000puro0uxcez9oe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1478,7 +1506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj6oq7r150026qro0ye8i4shd" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj6oum43m0024uro0ajwkvj5x" class="article-share-link">Share</a>
       
       
     </footer>
