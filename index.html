@@ -85,7 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/20/git-plumbing/">git-plumbing</a>
+      <a class="article-title" href="/2017/08/20/git-plumbing/">git进阶（一）</a>
     </h1>
   
 
@@ -95,23 +95,15 @@
       
         
         <h2 id="git文件一览"><a href="#git文件一览" class="headerlink" title=".git文件一览"></a>.git文件一览</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">├── COMMIT_EDITMSG</div><div class="line">├── FETCH_HEAD</div><div class="line">├── HEAD <span class="comment">// 保存了当前分支的引用, 该引用指向refs/heads下对应的文件</span></div><div class="line">├── ORIG_HEAD</div><div class="line">├── branches</div><div class="line">├── config <span class="comment">// 当前选项的配置文件</span></div><div class="line">├── description</div><div class="line">├── hooks <span class="comment">// git相关钩子</span></div><div class="line">│   ├── applypatch-msg<span class="selector-class">.sample</span></div><div class="line">│   ├── commit-msg<span class="selector-class">.sample</span></div><div class="line">│   ├── post-update<span class="selector-class">.sample</span></div><div class="line">│   ├── pre-applypatch<span class="selector-class">.sample</span></div><div class="line">│   ├── pre-commit<span class="selector-class">.sample</span></div><div class="line">│   ├── pre-push<span class="selector-class">.sample</span></div><div class="line">│   ├── pre-rebase<span class="selector-class">.sample</span></div><div class="line">│   ├── prepare-commit-msg<span class="selector-class">.sample</span></div><div class="line">│   └── update<span class="selector-class">.sample</span></div><div class="line">├── index <span class="comment">// index区（暂存区）</span></div><div class="line">├── info</div><div class="line">│   └── exclude <span class="comment">// 配置.gitignore相关</span></div><div class="line">├── logs <span class="comment">// 日志</span></div><div class="line">│   ├── HEAD</div><div class="line">│   └── refs</div><div class="line">│       ├── heads</div><div class="line">│       │   ├── dev</div><div class="line">│       │   ├── feat</div><div class="line">│       │   ├── master</div><div class="line">│       │   ├── revert</div><div class="line">│       │   └── test</div><div class="line">│       └── remotes</div><div class="line">│           └── origin</div><div class="line">│               ├── HEAD</div><div class="line">│               ├── dev</div><div class="line">│               ├── master</div><div class="line">│               ├── severfix</div><div class="line">│               └── test</div><div class="line">├── objects <span class="comment">// 每个提交的记录</span></div><div class="line">│   ├── <span class="number">00</span></div><div class="line">│   │   └── <span class="number">0</span>c30b7f4429c3d4c3ad782cc051798724b66f7</div><div class="line">│   ├── <span class="number">01</span></div><div class="line">│   │   ├── <span class="number">143716</span>b369d9720651644bf6ad8543d3c9ff64</div><div class="line">│   │   └── <span class="number">2</span>c1fbd55bee496631593d14814c2370f61e64a</div><div class="line">│   ├── info</div><div class="line">│   └── pack</div><div class="line">│       ├── pack-edc94ec3aa0349b77e3e1b8264644068e4118389<span class="selector-class">.idx</span></div><div class="line">│       └── pack-edc94ec3aa0349b77e3e1b8264644068e4118389<span class="selector-class">.pack</span></div><div class="line">├── packed-refs</div><div class="line">└── refs</div><div class="line">    ├── heads <span class="comment">// 本地各个分支最新提交</span></div><div class="line">    │   ├── dev</div><div class="line">    │   ├── feat</div><div class="line">    │   ├── master</div><div class="line">    │   ├── revert</div><div class="line">    │   └── test</div><div class="line">    ├── remotes</div><div class="line">    │   └── origin <span class="comment">//保存了远程分支最新提交</span></div><div class="line">    │       ├── HEAD</div><div class="line">    │       ├── dev</div><div class="line">    │       ├── master</div><div class="line">    │       ├── severfix</div><div class="line">    │       └── test</div><div class="line">    └── tags</div></pre></td></tr></table></figure>
-<h2 id="远程分支"><a href="#远程分支" class="headerlink" title="远程分支"></a>远程分支</h2><ul>
-<li>远程引用</li>
-</ul>
-<blockquote>
+<img src="/2017/08/20/git-plumbing/git-plumbing-commit-tree.png" alt="git底层分支树" title="git底层分支树">
+<h2 id="远程分支"><a href="#远程分支" class="headerlink" title="远程分支"></a>远程分支</h2><h3 id="远程引用"><a href="#远程引用" class="headerlink" title="远程引用"></a>远程引用</h3><blockquote>
 <p>远程引用（指针）是对远程仓库的引用<br><code>git remote show origin</code></p>
 </blockquote>
-<ul>
-<li>远程分支</li>
-</ul>
-<blockquote>
+<h3 id="远程分支-1"><a href="#远程分支-1" class="headerlink" title="远程分支"></a>远程分支</h3><blockquote>
 <p>远程跟踪分支是远程分支状态的引用, 他们是你不能移动的本地引用。<br>已(remote)/(branch)</p>
 </blockquote>
 <p><code>git branch -a</code></p>
-<ul>
-<li>跟踪分支（上游分支）</li>
-</ul>
-<blockquote>
+<h3 id="跟踪分支（上游分支）"><a href="#跟踪分支（上游分支）" class="headerlink" title="跟踪分支（上游分支）"></a>跟踪分支（上游分支）</h3><blockquote>
 <p>本地分支关联远程分支。做了关联之后，就可以简化很多命令，比如<code>git pull</code>, git能自动的识别去哪个服务器上抓取，合并到哪个分支。</p>
 </blockquote>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">-b</span> <span class="selector-attr">[branch]</span> <span class="selector-attr">[remotename]</span>/<span class="selector-attr">[branch]</span></div><div class="line"></div><div class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">--track</span> <span class="selector-tag">origin</span>/<span class="selector-tag">master</span>(快捷方式)</div></pre></td></tr></table></figure>
@@ -127,16 +119,13 @@
 <p>取消上游分支</p>
 </blockquote>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch <span class="comment">--unset-upstream</span></div></pre></td></tr></table></figure>
-<h2 id="重写历史"><a href="#重写历史" class="headerlink" title="重写历史"></a>重写历史</h2><blockquote>
-<p>修改最近一次的提交信息</p>
-</blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></div></pre></td></tr></table></figure>
+<h2 id="重写历史"><a href="#重写历史" class="headerlink" title="重写历史"></a>重写历史</h2><h3 id="修改最近一次的提交信息"><a href="#修改最近一次的提交信息" class="headerlink" title="修改最近一次的提交信息"></a>修改最近一次的提交信息</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">commit</span> <span class="comment">--amend</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>如果你已经使用上述命令完成了最近一次提交信息的修改，又因为之前提交时忘记添加一个新创建的文件，想通过添加或修改文件来更改提交的快照，也可以通过类似的操作来完成。</p>
 </blockquote>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">add</span><span class="bash"> || git rm</span></div><div class="line">git commit --amend</div></pre></td></tr></table></figure>
-<blockquote>
-<p>修改多个提交信息。<br>如果要修改多个提交信息，可以通过交互式变基来实现。<br>这是一个变基命令: 在 HEAD~3..HEAD 范围内的每一个提交都会被重写，无论你是否修改信息。</p>
+<h3 id="修改多个提交信息。"><a href="#修改多个提交信息。" class="headerlink" title="修改多个提交信息。"></a>修改多个提交信息。</h3><blockquote>
+<p>如果要修改多个提交信息，可以通过交互式变基来实现。<br>这是一个变基命令: 在 HEAD~3..HEAD 范围内的每一个提交都会被重写，无论你是否修改信息。</p>
 </blockquote>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase -<span class="selector-tag">i</span> HEAD~<span class="number">3</span></div></pre></td></tr></table></figure>
 <p>Note: 需要注意的是，rebase命令会将你带入文本编辑模式，这个文本编辑模式中所列出来的提交列表和使用<code>git log</code>列出来的提交是相反的。rebase:从旧到新，log:从新到旧</p>
@@ -147,7 +136,62 @@
 <p>退出保存，终端会显示如下的信息:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Stopped at 3d8f8dbe792fb8ec971d697470ec8bfd0ce0f8d6... <span class="keyword">delete</span> <span class="number">4</span> <span class="number">5</span> <span class="number">7</span> <span class="keyword">rows</span></div><div class="line">You can amend the <span class="keyword">commit</span> <span class="keyword">now</span>, <span class="keyword">with</span></div><div class="line"></div><div class="line">    git <span class="keyword">commit</span> <span class="comment">--amend</span></div><div class="line"></div><div class="line">Once you <span class="keyword">are</span> satisfied <span class="keyword">with</span> your changes, run</div><div class="line"></div><div class="line">    git rebase <span class="comment">--continue</span></div></pre></td></tr></table></figure>
 <p>注意：此次HEAD指针已经移动到了<code>3d8f8db</code>这一次的提交，那么我们可以继续运行<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git commit --amend <span class="regexp">//</span> 修改第一次的提交</div><div class="line">git rebase --<span class="keyword">continue</span> <span class="regexp">//</span> 将HEAD指针在移动回最近的那次提交</div><div class="line"></div><div class="line"><span class="regexp">//</span> 上述<span class="number">2</span>个命令执行完成后，终端会显示如下信息</div><div class="line">Successfully rebased and updated refs<span class="regexp">/heads/</span>test.</div></pre></td></tr></table></figure></p>
-<h2 id="reset重写历史"><a href="#reset重写历史" class="headerlink" title="reset重写历史"></a>reset重写历史</h2><h2 id="reset与checkout的区别"><a href="#reset与checkout的区别" class="headerlink" title="reset与checkout的区别"></a>reset与checkout的区别</h2><h2 id="快速合并与三方合并策略"><a href="#快速合并与三方合并策略" class="headerlink" title="快速合并与三方合并策略"></a>快速合并与三方合并策略</h2><h2 id="ours和theirs冲突合并策略"><a href="#ours和theirs冲突合并策略" class="headerlink" title="ours和theirs冲突合并策略"></a>ours和theirs冲突合并策略</h2><h2 id="git-grep搜索"><a href="#git-grep搜索" class="headerlink" title="git grep搜索"></a>git grep搜索</h2><blockquote>
+<h3 id="压缩提交"><a href="#压缩提交" class="headerlink" title="压缩提交"></a>压缩提交</h3><blockquote>
+<p>如果多个提交都是完成一个功能的，我们可以将这些提交压缩成一个提交，使用的命令也是rebase。我们从上面的例子可以知道，一旦进入文本编辑模式，会有’pick’, ‘edit’, ‘squash’, ‘fixup’选项。如果我们要压缩多个提交，只需要将每条提交前面的’pick’改为’squash’(后面再讲解squash与fixup的区别)。</p>
+</blockquote>
+<p>加入进入文本编辑模式如下<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">pick f<span class="number">7f</span><span class="number">3f</span>6d changed my name a <span class="keyword">bit</span></div><div class="line">pick <span class="number">310154</span>e updated README formatting <span class="keyword">and </span><span class="keyword">added </span><span class="keyword">blame</span></div><div class="line">pick a<span class="number">5f</span>4a0d <span class="keyword">added </span>cat-file</div><div class="line"></div><div class="line"><span class="comment"># Rebase 710f0f8..a5f4a0d onto 710f0f8</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Commands:</span></div><div class="line"><span class="comment">#  p, pick = use commit</span></div><div class="line"><span class="comment">#  r, reword = use commit, but edit the commit message</span></div><div class="line"><span class="comment">#  e, edit = use commit, but stop for amending</span></div><div class="line"><span class="comment">#  s, squash = use commit, but meld into previous commit</span></div><div class="line"><span class="comment">#  f, fixup = like "squash", but discard this commit's log message</span></div><div class="line"><span class="comment">#  x, exec = run command (the rest of the line) using shell</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># These lines can be re-ordered; they are executed from top to bottom.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># If you remove a line here THAT COMMIT WILL BE LOST.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># However, if you remove everything, the rebase will be aborted.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Note that empty commits are commented out</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>squash就是下面的提交记录压缩到前面的提交记录中（将几条提交记录整合到一起），但是需要注意的是，不能讲最上面的那一条提交记录前面的<code>pick</code>改为<code>squash</code>, 那样就没有<strong>前一条记录了</strong>。如果你真的将最上面的那一天提交记录也改为<code>squash</code>，那么在退出文本编辑模式的时候，会提示<code>Cannot &#39;squash&#39; without a previous commit</code>。</p>
+</blockquote>
+<p>那么squash后的log如下<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">commit</span> <span class="number">8406738</span>ce7740d8800890b58bf3b6ee6aab23f3d</div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span>@qq.com&gt;</div><div class="line"><span class="built_in">Date</span>:   Wed Aug <span class="number">23</span> <span class="number">10</span>:<span class="number">44</span>:<span class="number">34</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    <span class="keyword">changed</span> my <span class="keyword">name</span> a <span class="built_in">bit</span></div><div class="line">    <span class="keyword">updated</span> README formatting <span class="keyword">and</span> added blame</div><div class="line">    added cat-<span class="keyword">file</span></div><div class="line"></div><div class="line"><span class="keyword">commit</span> <span class="number">20559</span>c2e26d7c8183c4ad73761d3e26c81de6af2</div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span>@qq.com&gt;</div><div class="line"><span class="built_in">Date</span>:   Sat Aug <span class="number">19</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">24</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    <span class="keyword">test</span> rebase configs</div></pre></td></tr></table></figure></p>
+<p>查看log信息可以squash将三条提交记录压缩为一条，但是如果你使用<code>fixup</code>选项，那么rebase后会丢掉每条被你标记为<code>fixup</code>的提交记录，这是他和<code>squash</code>的唯一区别。</p>
+<p>使用<code>fixup</code>的log会看起来如下<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">commit</span> <span class="number">8406738</span>ce7740d8800890b58bf3b6ee6aab23f3d</div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span>@qq.com&gt;</div><div class="line"><span class="built_in">Date</span>:   Wed Aug <span class="number">23</span> <span class="number">10</span>:<span class="number">44</span>:<span class="number">34</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line">    <span class="keyword">changed</span> my <span class="keyword">name</span> a <span class="built_in">bit</span></div><div class="line"></div><div class="line"><span class="keyword">commit</span> <span class="number">20559</span>c2e26d7c8183c4ad73761d3e26c81de6af2</div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span>@qq.com&gt;</div><div class="line"><span class="built_in">Date</span>:   Sat Aug <span class="number">19</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">24</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    <span class="keyword">test</span> rebase configs</div></pre></td></tr></table></figure></p>
+<h2 id="git中的三棵树（三个区）"><a href="#git中的三棵树（三个区）" class="headerlink" title="git中的三棵树（三个区）"></a>git中的三棵树（三个区）</h2><blockquote>
+<p>平时我们使用<code>git add</code>,<code>git commit</code>, <code>git checkout</code>, <code>git reset</code>等这些命令来做git的一些操作，其实内部就是在操作这三个区域：</p>
+</blockquote>
+<p>working: 工作区，平时文件的增删改都是在working区<br>index: 暂存区，使用<code>git add</code>将工作区的内容保存在暂存区，暂存区中的内容是即将要提交的内容<br>HEAD: 提交区，保存了当前分支最近的一次提交</p>
+<img src="/2017/08/20/git-plumbing/git-three-tree.png" alt="git中的三棵树" title="git中的三棵树">
+<h2 id="reset压缩提交历史"><a href="#reset压缩提交历史" class="headerlink" title="reset压缩提交历史"></a>reset压缩提交历史</h2><blockquote>
+<p>有了上面三棵树的基础，那么了解reset工作的机理就比较清晰了。</p>
+</blockquote>
+<p>reset 命令会以特定的顺序重写这三棵树，在你指定以下选项时停止：</p>
+<ol>
+<li><p>移动 HEAD 分支的指向 （若指定了 –soft，则到此停止）</p>
+</li>
+<li><p>使索引看起来像 HEAD （若未指定 –hard，则到此停止）</p>
+</li>
+<li><p>使工作目录看起来像索引</p>
+</li>
+</ol>
+<p>再来解析下上面1,2中括号中说明的含义</p>
+<p>加入我们要修改前3次的提交<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 移动HEAD中的指针指向倒数第四次提交，此时修改的文件处于暂存区</div><div class="line">// 也就是说加了<span class="comment">--soft，会回退到git commit之前</span></div><div class="line">git <span class="keyword">reset</span> <span class="comment">--soft HEAD~3</span></div><div class="line"></div><div class="line">// 移动<span class="keyword">HEAD</span>中的指针指向倒数第四次提交，此时修改的文件处于暂存区</div><div class="line">// 更新暂存区，使工作区和暂存区看起来是一样的</div><div class="line">// 也就是说不加<span class="comment">--soft选项，回会退到git add之前</span></div><div class="line">git <span class="keyword">reset</span> <span class="keyword">HEAD</span>~<span class="number">3</span></div><div class="line"></div><div class="line">// <span class="comment">--hard是个危险选项，会让你撤销所有的修改</span></div><div class="line">git <span class="keyword">reset</span> <span class="comment">--hard HEAD~3</span></div></pre></td></tr></table></figure></p>
+<h3 id="reset重置路径"><a href="#reset重置路径" class="headerlink" title="reset重置路径"></a>reset重置路径</h3><blockquote>
+<p>上面说的reset是针对提交历史的，我们也可以使用reset针对某个具体路径。<br>比如我们在使用<code>git add .</code>添加了所有的东西到暂存区，但是在提交的时候，发送有个文件或者文件夹中的东西不是当前功能的，那么可以通过reset来让文件或者文件集合回到工作区，只提交本次要提交的功能。<br>实际上，<code>git add</code>和<code>git reset</code>所做的事情是相反的，<code>git reset</code>本质是将HEAD区的中的文件拷贝到暂存区，并且不会移动HEAD中的分支指针。</p>
+</blockquote>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">On branch test</div><div class="line">Your branch <span class="keyword">and</span> <span class="string">'origin/test'</span> have diverged,</div><div class="line"><span class="keyword">and</span> have <span class="number">4</span> <span class="keyword">and</span> <span class="number">15</span> different commits <span class="keyword">each</span>, respectively.</div><div class="line">  (use <span class="string">"git pull"</span> <span class="built_in">to</span> <span class="built_in">merge</span> <span class="keyword">the</span> remote branch <span class="keyword">into</span> yours)</div><div class="line">Changes <span class="built_in">to</span> be committed:</div><div class="line">  (use <span class="string">"git reset HEAD &lt;file&gt;..."</span> <span class="built_in">to</span> unstage)</div><div class="line"></div><div class="line">    modified:   test.txt</div><div class="line"></div><div class="line">Changes <span class="keyword">not</span> staged <span class="keyword">for</span> commit:</div><div class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> <span class="built_in">to</span> update what will be committed)</div><div class="line">  (use <span class="string">"git checkout -- &lt;file&gt;..."</span> <span class="built_in">to</span> discard changes <span class="keyword">in</span> working <span class="built_in">directory</span>)</div><div class="line"></div><div class="line">    modified:   test.txt</div></pre></td></tr></table></figure>
+<h2 id="reset与checkout的区别"><a href="#reset与checkout的区别" class="headerlink" title="reset与checkout的区别"></a>reset与checkout的区别</h2><blockquote>
+<p>因为checkout也是操纵这三棵树，所以有必要了解下他们之间的区别</p>
+</blockquote>
+<img src="/2017/08/20/git-plumbing/reset-checkout.png" alt="reset和checkout区别对照表" title="reset和checkout区别对照表">
+<h2 id="快速合并与三方合并策略"><a href="#快速合并与三方合并策略" class="headerlink" title="快速合并与三方合并策略"></a>快速合并与三方合并策略</h2><h3 id="快速合并"><a href="#快速合并" class="headerlink" title="快速合并"></a>快速合并</h3><p>我们在合并2个分支的时候，经常看到如下信息<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Updating <span class="number">44</span>bc42f..a65dae0</div><div class="line">Fast-forward</div><div class="line"> test.txt | <span class="number">13</span> -------------</div><div class="line"> <span class="number">1</span> file <span class="section">changed</span>, <span class="number">13</span> deletions(-)</div></pre></td></tr></table></figure></p>
+<img src="/2017/08/20/git-plumbing/git-fast-forward.png" alt="快速合并" title="快速合并">
+<blockquote>
+<p>如果一个分支和它的源分支没有存在支路，如上图。<br>就是说iss53分支从master分支上切出来之后，并且在iss53上做了几次提交，但是在这期间master分支并未有新的提交合并，那么此时将iss53分支合并到master分支采用的就是<code>Fast-forward</code>策略。</p>
+</blockquote>
+<h3 id="三方合并策略"><a href="#三方合并策略" class="headerlink" title="三方合并策略"></a>三方合并策略</h3><blockquote>
+<p>将几个分支的共同祖先节点和每个分支最后提交的节点进行一个合并。</p>
+</blockquote>
+<p>我们在合并2个分支的时候，也会经常看到如下信息<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Merge made by the 'recursive' strategy.</div><div class="line"> test.txt | <span class="number">2</span> +-</div><div class="line"> <span class="number">1</span> file <span class="section">changed</span>, <span class="number">1</span> insertion(+), <span class="number">1</span> deletion(-)</div></pre></td></tr></table></figure></p>
+<img src="/2017/08/20/git-plumbing/three-part-merge.png" alt="git三方合并" title="git三方合并">
+<blockquote>
+<p>如上图，topic分支从master分支C2切出来，然后做了C3,C4的提交，在此期间，master分支也有C5，C6的提交合并，那么此时将topic分支合并到master分支就会采用三方合并的策略。</p>
+</blockquote>
+<h2 id="ours和theirs冲突合并策略"><a href="#ours和theirs冲突合并策略" class="headerlink" title="ours和theirs冲突合并策略"></a>ours和theirs冲突合并策略</h2><blockquote>
+<p>合并分支，偶有遇到冲突在所难免，git通常让你自己手动解决冲突后再进行一个合并。但是也提供了一些其他快速解决冲突的方案。</p>
+</blockquote>
+<p>比如，2个人同时修改了某一个文件，那么在合并的时候就会遇到冲突，但是我只想保留某一方的提交。那么此时我们就可以使用ours和theirs策略。</p>
+<p>如：将topic分支合并到master分支存在冲突<br><figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 保留master分支上的代码</span></div><div class="line">git <span class="keyword">merge</span> -Xours topic</div><div class="line"></div><div class="line"><span class="comment">// 保留topic分支上的代码</span></div><div class="line">git <span class="keyword">merge</span> -Xtheirs topic</div></pre></td></tr></table></figure></p>
+<h2 id="git-grep搜索"><a href="#git-grep搜索" class="headerlink" title="git grep搜索"></a>git grep搜索</h2><blockquote>
 <p>从提交历史或者工作目录中查找一个字符串或者正则表达式<br><code>git grep -n fmtDate</code></p>
 </blockquote>
 <h2 id="几个常用的底层命令"><a href="#几个常用的底层命令" class="headerlink" title="几个常用的底层命令"></a>几个常用的底层命令</h2><ul>
@@ -219,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/08/20/git-plumbing/" data-id="cj6nvzas5000c05o074fys7yv" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/08/20/git-plumbing/" data-id="cj6oq7r08000hqro0hh1ll6th" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -365,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/08/13/web-components/" data-id="cj6nvzati002705o0p26vxtz7" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/08/13/web-components/" data-id="cj6oq7r17002dqro0dj8w5pdg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -491,7 +535,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/08/12/share-vue/" data-id="cj6nvzat0001f05o0e0ilf76c" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/08/12/share-vue/" data-id="cj6oq7r0t001qqro0ifawtebf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend-framework/">frontend-framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -611,7 +655,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj6nvzau1003c05o05l6dr66b" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj6oq7r1k003bqro0uc114pcv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -662,7 +706,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj6nvzash000q05o0q13l7fh5" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj6oq7r0i000yqro08m50nmcn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -736,7 +780,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj6nvzart000505o0diy6a9w2" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj6oq7qzr0005qro0fzpvp3rh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -1012,7 +1056,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj6nvzasv001a05o05i20rkku" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj6oq7r0q001fqro0wg340ve1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -1282,7 +1326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj6nvzari000105o0p8fdsxef" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj6oq7qzj0001qro0j7lypdo7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1383,7 +1427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj6nvzasd000j05o0004iyqrm" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj6oq7r09000kqro09jmmsmue" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1434,7 +1478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj6nvzath002405o02kll5ggu" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj6oq7r150026qro0ye8i4shd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1499,7 +1543,7 @@
       <ul>
         
           <li>
-            <a href="/2017/08/20/git-plumbing/">git-plumbing</a>
+            <a href="/2017/08/20/git-plumbing/">git进阶（一）</a>
           </li>
         
           <li>
