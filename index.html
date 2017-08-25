@@ -180,7 +180,7 @@
 <blockquote>
 <p>还原提交</p>
 </blockquote>
-<p>如果上面的修改引用的方法不适合你，那么你还可以使用还原操作。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">git</span> <span class="keyword">revert </span>-m <span class="number">1</span> HEAD</div></pre></td></tr></table></figure></p>
+<p>如果上面的修改引用的方法不适合你，那么你还可以使用还原操作。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// <span class="number">1</span>,表示需要保留下来的父节点，如下图，我们此处的父节点是<span class="built_in">C6</span>或则<span class="built_in">C4</span>，</div><div class="line">// 因为我们此时在master分支上，所有保留下来的父节点是<span class="built_in">C6</span></div><div class="line"><span class="symbol">git</span> <span class="keyword">revert </span>-m <span class="number">1</span> HEAD</div></pre></td></tr></table></figure></p>
 <p>调用了上述命令之后，提交历史看起来是这样的：</p>
 <img src="/2017/08/20/git-plumbing/reset-mainline-1.png" alt="reset-mainline-1.png" title="">
 <figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">commit e<span class="number">5</span>a<span class="number">5</span>ab<span class="number">537309</span><span class="keyword">c</span><span class="number">2006676392</span>d<span class="number">4</span>fb<span class="number">5</span>dc<span class="number">1</span>ae<span class="number">2</span>dae<span class="number">78</span>e</div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span><span class="title">@qq.com</span>&gt;</div><div class="line">Date:   Wed Aug <span class="number">23</span> <span class="number">17</span>:<span class="number">14</span>:<span class="number">20</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    Revert <span class="string">"Merge branch 'test revert in test branch'"</span></div><div class="line"></div><div class="line">    This reverts commit <span class="number">606</span>de<span class="number">1</span>d<span class="number">0</span>d<span class="number">3</span>d<span class="number">7313</span>ca<span class="number">3</span><span class="keyword">c</span><span class="number">0914</span><span class="keyword">c</span><span class="number">65</span>eb<span class="number">5</span>f<span class="number">77</span>ca<span class="number">97</span>a<span class="number">48</span>e, reversing</div><div class="line">    changes made <span class="keyword">to</span> <span class="number">2</span>ece<span class="number">042</span>de<span class="number">65</span><span class="keyword">c</span><span class="number">693</span><span class="keyword">c</span><span class="number">709</span>b<span class="number">3</span>f<span class="number">9</span>d<span class="number">34</span>d<span class="number">7</span>b<span class="number">598697984</span>ff.</div><div class="line"></div><div class="line">commit <span class="number">606</span>de<span class="number">1</span>d<span class="number">0</span>d<span class="number">3</span>d<span class="number">7313</span>ca<span class="number">3</span><span class="keyword">c</span><span class="number">0914</span><span class="keyword">c</span><span class="number">65</span>eb<span class="number">5</span>f<span class="number">77</span>ca<span class="number">97</span>a<span class="number">48</span>e</div><div class="line">Merge: <span class="number">2</span>ece<span class="number">042</span> d<span class="number">9</span>a<span class="number">757</span>b</div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span><span class="title">@qq.com</span>&gt;</div><div class="line">Date:   Wed Aug <span class="number">23</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">16</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    Merge branch 'test revert in test branch'</div><div class="line"></div><div class="line">commit d<span class="number">9</span>a<span class="number">757</span>b<span class="number">76</span>f<span class="number">1e95</span><span class="keyword">c</span><span class="number">26</span>bd<span class="number">116</span>d<span class="number">18</span>f<span class="number">03338</span><span class="keyword">c</span><span class="number">0e5920</span><span class="keyword">c</span><span class="number">0</span></div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span><span class="title">@qq.com</span>&gt;</div><div class="line">Date:   Wed Aug <span class="number">23</span> <span class="number">17</span>:<span class="number">10</span>:<span class="number">10</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    revert 提交 in test branch</div><div class="line"></div><div class="line">commit <span class="number">2</span>ece<span class="number">042</span>de<span class="number">65</span><span class="keyword">c</span><span class="number">693</span><span class="keyword">c</span><span class="number">709</span>b<span class="number">3</span>f<span class="number">9</span>d<span class="number">34</span>d<span class="number">7</span>b<span class="number">598697984</span>ff</div><div class="line">Merge: <span class="keyword">c</span><span class="number">7434</span>ae <span class="number">44</span>ee<span class="number">440</span></div><div class="line">Author: chenxianlong &lt;<span class="number">794465731</span><span class="title">@qq.com</span>&gt;</div><div class="line">Date:   Wed Aug <span class="number">23</span> <span class="number">17</span>:<span class="number">08</span>:<span class="number">25</span> <span class="number">2017</span> +<span class="number">0800</span></div><div class="line"></div><div class="line">    Merge branch 'feat <span class="keyword">add</span> <span class="number">9999</span> in feat branch'</div></pre></td></tr></table></figure>
@@ -291,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/08/20/git-plumbing/" data-id="cj6oum42d000duro0sr4418wo" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/08/20/git-plumbing/" data-id="cj6rt9zup000hc4o0hzavdtgb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -437,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/08/13/web-components/" data-id="cj6oum43o0027uro08o9gopzm" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/08/13/web-components/" data-id="cj6rt9zx6002wc4o0o7b7gqik" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -563,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/08/12/share-vue/" data-id="cj6oum436001furo0h4hqqwf1" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/08/12/share-vue/" data-id="cj6rt9zvf001dc4o0qnuhe6z4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frontend-framework/">frontend-framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -683,7 +683,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj6oum44h0038uro0iszbcuhe" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/30/zeroclipboard/" data-id="cj6rt9zxx003xc4o0zl8vq3qq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -734,7 +734,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj6oum42p000yuro02tq6b2st" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/16/nodejs-cluster/" data-id="cj6rt9zuv000rc4o0380gz1dp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -808,7 +808,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj6oum41x0004uro0942qbp0z" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/14/event-loop/" data-id="cj6rt9zue0006c4o0zhcke457" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -1084,7 +1084,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj6oum42z001auro0f9ia6wvj" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/07/12/nodejs-process/" data-id="cj6rt9zvb0018c4o04pxvvuta" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
@@ -1354,7 +1354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj6oum41r0001uro0gfv7pw0p" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/06/05/RegExp/" data-id="cj6rt9zu40001c4o0y3x31yxx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1455,7 +1455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj6oum42i000puro0uxcez9oe" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/js-scope/" data-id="cj6rt9zut000pc4o0a6zqg1e1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -1506,7 +1506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj6oum43m0024uro0ajwkvj5x" class="article-share-link">Share</a>
+      <a data-url="https://xxxxxmiss.github.io/2017/05/28/vue-src-overview/" data-id="cj6rt9zx8002zc4o06fhhj32n" class="article-share-link">Share</a>
       
       
     </footer>
