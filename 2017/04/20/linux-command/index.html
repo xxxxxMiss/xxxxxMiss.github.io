@@ -343,6 +343,23 @@ Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的�
 
 
 
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'xxxxxMiss',
+            repo: 'https://github.com/xxxxxMiss/test',
+            oauth: {
+                client_id: 'c884dd9d2dfab48c79be',
+                client_secret: 'dc8fb124cf576aaed6500ffbd59545c1ccf98a06',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
 
 
 
