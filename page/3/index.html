@@ -1,1315 +1,898 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>青史成灰</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>青史成灰 | Every journey begins with the first step</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="undefined">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="青史成灰">
 <meta property="og:url" content="https://xxxxxmiss.github.io/page/3/index.html">
 <meta property="og:site_name" content="青史成灰">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="青史成灰">
-  
-    <link rel="alternate" href="/atom.xml" title="青史成灰" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    <link href="//cdn.bootcss.com/highlight.js/8.5/styles/monokai_sublime.min.css" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
+    
+        <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
 
 </head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">青史成灰</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Every journey begins with the first step</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xxxxxmiss.github.io"></form>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xxxxxMiss</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
       </div>
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-shell-redirect" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/15/shell-redirect/" class="article-date">
-  <time datetime="2017-04-15T03:10:47.000Z" itemprop="datePublished">2017-04-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/15/shell-redirect/">shell重定向</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
         
-        <h2 id="重定向列表"><a href="#重定向列表" class="headerlink" title="重定向列表"></a>重定向列表</h2><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>command &gt;&gt; file</td>
-<td>将输出以<strong>追加的方式</strong>重定向到file</td>
-</tr>
-<tr>
-<td>n &gt;&gt; file</td>
-<td>将文件描述符为n的文件已追加的方式重定向到file</td>
-</tr>
-<tr>
-<td>n &lt;&amp; m</td>
-<td>将输入文件m 和 n 合并</td>
-</tr>
-<tr>
-<td>&lt;&lt; tag</td>
-<td>将开始标记tag和结束标记tag之间的内容作为输入</td>
-</tr>
-</tbody>
-</table>
-<h2 id="3个特殊文件"><a href="#3个特殊文件" class="headerlink" title="3个特殊文件"></a>3个特殊文件</h2><table>
-<thead>
-<tr>
-<th>文件类型</th>
-<th>文件描述符</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>标准输入(stdin)</td>
-<td>0</td>
-<td>程序默认从stdin读取数据</td>
-</tr>
-<tr>
-<td>标准输出(stdout)</td>
-<td>1</td>
-<td>程序默认向stdout输出数据</td>
-</tr>
-<tr>
-<td>标准错误(stderr)</td>
-<td>2</td>
-<td>程序会向stderr流中写入错误信息</td>
-</tr>
-</tbody>
-</table>
-<h2 id="dev-null-文件"><a href="#dev-null-文件" class="headerlink" title="/dev/null 文件"></a>/dev/null 文件</h2><blockquote>
-<p>如果希望执行某个命令，但是又不希望在屏幕上输出结果，那么可以将输出重定向到/dev/null。<br>/dev/null 是一个特殊的文件，写入到它的内容都会被丢弃；如果尝试从该文件读取内容，那么什么也读不到。但是 /dev/null 文件非常有用，将命令的输出重定向到它，会起到”禁止输出”的效果。</p>
-</blockquote>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">屏蔽<span class="keyword">stdout</span>和<span class="keyword">stderr</span><span class="comment"> //？？？？？？未测试成功</span></div><div class="line"><span class="keyword">command</span> &gt; /<span class="title">dev</span>/<span class="title">null</span> <span class="title">2</span>&gt;&amp;<span class="title">1</span></div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/shell-redirect/" data-id="cj6rt9zx2002tc4o0xe7phz4u" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-sails" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/15/sails/" class="article-date">
-  <time datetime="2017-04-14T16:42:53.000Z" itemprop="datePublished">2017-04-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/nodejs/">nodejs</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/15/sails/">sails</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
         
-        <h2 id="sails-v0-12-目录结构"><a href="#sails-v0-12-目录结构" class="headerlink" title="sails(v0.12) 目录结构"></a>sails(v0.12) 目录结构</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">├── Gruntfile<span class="selector-class">.js</span></div><div class="line">├── README<span class="selector-class">.md</span></div><div class="line">├── api <span class="comment">// 核心</span></div><div class="line">│   ├── controllers <span class="comment">// 充当model和view的桥梁</span></div><div class="line">│   ├── models</div><div class="line">│   ├── policies</div><div class="line">│   ├── responses</div><div class="line">│   └── services</div><div class="line">├── app<span class="selector-class">.js</span></div><div class="line">├── assets</div><div class="line">│   ├── favicon<span class="selector-class">.ico</span></div><div class="line">│   ├── images</div><div class="line">│   ├── js</div><div class="line">│   ├── robots<span class="selector-class">.txt</span></div><div class="line">│   ├── styles</div><div class="line">│   └── templates</div><div class="line">├── config</div><div class="line">│   ├── blueprints<span class="selector-class">.js</span></div><div class="line">│   ├── bootstrap<span class="selector-class">.js</span></div><div class="line">│   ├── connections<span class="selector-class">.js</span></div><div class="line">│   ├── cors<span class="selector-class">.js</span></div><div class="line">│   ├── csrf<span class="selector-class">.js</span></div><div class="line">│   ├── env</div><div class="line">│   ├── globals<span class="selector-class">.js</span></div><div class="line">│   ├── http<span class="selector-class">.js</span></div><div class="line">│   ├── i18n<span class="selector-class">.js</span></div><div class="line">│   ├── local<span class="selector-class">.js</span></div><div class="line">│   ├── locales</div><div class="line">│   ├── log<span class="selector-class">.js</span></div><div class="line">│   ├── models<span class="selector-class">.js</span></div><div class="line">│   ├── policies<span class="selector-class">.js</span></div><div class="line">│   ├── routes<span class="selector-class">.js</span></div><div class="line">│   ├── session<span class="selector-class">.js</span></div><div class="line">│   ├── sockets<span class="selector-class">.js</span></div><div class="line">│   └── views<span class="selector-class">.js</span></div><div class="line">├── config<span class="selector-class">.yaml</span></div><div class="line">├── package<span class="selector-class">.json</span></div><div class="line">├── tasks <span class="comment">// 不启用grunt,可以直接删除tasks文件夹</span></div><div class="line">│   ├── README<span class="selector-class">.md</span></div><div class="line">│   ├── config</div><div class="line">│   ├── pipeline<span class="selector-class">.js</span></div><div class="line">│   └── register</div><div class="line">└── views <span class="comment">// 不需要服务端渲染,可以直接删除views文件夹</span></div><div class="line">    ├── <span class="number">403</span><span class="selector-class">.ejs</span></div><div class="line">    ├── <span class="number">404</span><span class="selector-class">.ejs</span></div><div class="line">    ├── <span class="number">500</span><span class="selector-class">.ejs</span></div><div class="line">    ├── homepage<span class="selector-class">.ejs</span></div><div class="line">    └── layout.ejs</div></pre></td></tr></table></figure>
-<h2 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h2><blockquote>
-<p>由一系列被称为<code>action</code>的方法构成,<code>action</code>和<code>routes</code>绑定在一起，所以当请求某一个路由时，触发对应的对应的路由方法，并返回一个响应(这里的响应主要指路由的分发)</p>
-</blockquote>
-<h3 id="controller的定义"><a href="#controller的定义" class="headerlink" title="controller的定义"></a>controller的定义</h3><blockquote>
-<p>在<code>sails</code>中<code>controller</code>定义在<code>controller</code>文件夹下，按照约定，全部采用<a href="http://baike.baidu.com/link?url=kjvNUyU140pHXUqZO4h4_tnPfpr6OudXYBe4ArkaZEEjggrCIOY0w-XrNStkdgcPJjlWo-v2kIPvZRQ4y_T2r_RceI9rx_8jZaaQwqXs2iW" target="_blank" rel="external">pascal-case</a>写法（及每个单词的首字母都是大写），并且必须必须以<code>Controller.js</code>结尾。</p>
-<ul>
-<li>NOTE: 可以将<code>controller</code>分文件夹定义，那么此时子文件夹也会成为路由标示的一部分。</li>
-</ul>
-</blockquote>
-<h3 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h3><p><code>SayController.js</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 一个controller就是一个纯对象，对象的属性为action的名字，值为对应的action的处理函数</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    <span class="comment">// req, res跟express中的一样，不过没有第三个参数next</span></div><div class="line">    <span class="comment">// 如果有next的需求，那么应该见该逻辑写到policies中</span></div><div class="line">    hi: <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> res.send(<span class="string">'Hi there!'</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">bye</span>: <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> res.redirect(<span class="string">'http://www.sayonara.com'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="隐式路由（sails自动绑定）"><a href="#隐式路由（sails自动绑定）" class="headerlink" title="隐式路由（sails自动绑定）"></a>隐式路由（sails自动绑定）</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/<span class="symbol">:controllerIdentity/</span><span class="symbol">:nameOfAction</span></div><div class="line">/controller标识符/action的名字</div></pre></td></tr></table></figure>
-<blockquote>
-<p>拿上面的<code>SayController.js</code>来说，那么当程序启动时，就会自动绑定到这样的路由<code>/say/hi</code>, <code>/say/bye</code>。<br>如果上面的<code>controller</code>在一个子文件夹中<code>/we</code>中，那么就会绑定到这样的路由<code>/we/say/hi</code>, <code>/we/say/bye</code></p>
-</blockquote>
-<h3 id="显式路由（自定义路由）"><a href="#显式路由（自定义路由）" class="headerlink" title="显式路由（自定义路由）"></a>显式路由（自定义路由）</h3><blockquote>
-<p>手动绑定路由，可以在<code>config/routes.js</code>中按照如下规则进行路由的配置:<br>http请求方法（POST,GET等）+ 路由地址 : <code>controller</code>的名字+<code>.</code>+<code>action</code>的名字</p>
-</blockquote>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">'POST</span> /make/a/sandwith': <span class="symbol">'SandwichController</span>.makeIt'</div><div class="line"></div><div class="line"><span class="comment">// 当controller在子文件夹中定义时，子文件夹是controller的一部分</span></div><div class="line">'/<span class="keyword">do</span>/homework': <span class="symbol">'stuff</span>/things/HomeworkController.<span class="keyword">do</span>'</div></pre></td></tr></table></figure>
-<h3 id="显式路由常见定义方式"><a href="#显式路由常见定义方式" class="headerlink" title="显式路由常见定义方式"></a>显式路由常见定义方式</h3><figure class="highlight sml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports.routes = &#123;</div><div class="line">  <span class="symbol">'get</span> /signup': &#123; view: <span class="symbol">'conversion</span>/signup' &#125;,</div><div class="line">  <span class="symbol">'post</span> /signup': <span class="symbol">'AuthController</span>.processSignup',</div><div class="line">  <span class="symbol">'get</span> /login': &#123; view: <span class="symbol">'portal</span>/login' &#125;,</div><div class="line">  <span class="symbol">'post</span> /login': <span class="symbol">'AuthController</span>.processLogin',</div><div class="line">  <span class="string">'/logout'</span>: <span class="symbol">'AuthController</span>.logout',</div><div class="line">  <span class="symbol">'get</span> /me': <span class="symbol">'UserController</span>.profile'</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="自定义响应和responses文件夹"><a href="#自定义响应和responses文件夹" class="headerlink" title="自定义响应和responses文件夹"></a>自定义响应和<code>responses</code>文件夹</h2><blockquote>
-<p>一般情况下，<code>controller</code>中的响应都会定义在<code>responses</code>文件夹中.<br>任何定义在<code>/api/responses.js</code>中方法都是通过<code>res.[responsesName]</code>这种形式在<code>controller</code>中调用的。<br>在<code>responses</code>函数中，可以使用<code>this.req</code>, <code>this.res</code>来获取<code>Request</code>和<code>Response</code>对象。 </p>
-</blockquote>
-<h2 id="数据库适配器Adapters"><a href="#数据库适配器Adapters" class="headerlink" title="数据库适配器Adapters"></a>数据库适配器Adapters</h2><blockquote>
-<p>可以连接不同的数据库，主要用来和数据库之间的通信。<br>在<code>adapter</code>中，我们主要关注的是<code>CRUD</code>操作。<br>在<code>sails</code>中，主要指这个几个方法<code>create()</code>, <code>find()</code>, <code>update()</code>, <code>destroy()</code></p>
-</blockquote>
-<h3 id="可选的Adapter"><a href="#可选的Adapter" class="headerlink" title="可选的Adapter"></a>可选的Adapter</h3><ul>
-<li>官方支持的数据库器</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>数据库名称</th>
-<th>简介</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sails-disk</td>
-<td>sails默认捆绑的，不需要做任何的配置。直接将数据写入磁盘，不适合用在生成环境，一般用在开发环境或者一些小的项目中</td>
-</tr>
-<tr>
-<td>sails-memory</td>
-<td>将数据写入内存中，不会正在的持久化，所以一般适合用在开发环境或者磁盘空间不足的时候</td>
-</tr>
-<tr>
-<td>sails-mysql</td>
-<td>链接mysql（关系型数据库）</td>
-</tr>
-<tr>
-<td>sails-postgres</td>
-<td>链接postgres(关系型数据库)</td>
-</tr>
-<tr>
-<td>sails-mongo</td>
-<td>链接mongo(非关系型数据库)</td>
-</tr>
-<tr>
-<td>sails-redis</td>
-<td>链接redis</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>社区支持的数据库</li>
-</ul>
-<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><blockquote>
-<p>全局变量可以在<code>sails</code><strong>加载完毕之后</strong>全局访问，这些全局变量都可以在<code>config/globals.js</code>中禁用。</p>
-<ul>
-<li>models(文件名作为全局变量名)</li>
-<li>services(文件名作为全局变量名)</li>
-<li>sails</li>
-<li>_(Lodash实例，默认提供，无需安装)</li>
-<li>async(Async实例，默认提供，无需安装)</li>
-</ul>
-</blockquote>
-<p>NOTE: 必须等到<code>sails</code>加载完成之后，才可以访问这些全局变量。也就是说，不能再导出的函数外部使用（此时<code>sails</code>尚未加载完毕）,必须导出的函数内部使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 禁用所有</span></div><div class="line"><span class="keyword">module</span>.<span class="keyword">exports</span>.globals = <span class="keyword">false</span></div><div class="line"></div><div class="line"><span class="keyword">module</span>.<span class="keyword">exports</span>.globals = &#123;</div><div class="line">    _: <span class="keyword">false</span>, <span class="comment">// 禁用具体的</span></div><div class="line">    async: <span class="keyword">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="日志（Logging）"><a href="#日志（Logging）" class="headerlink" title="日志（Logging）"></a>日志（Logging）</h2><blockquote>
-<p><code>sails</code>内建一个日志输出，可以在<code>/config/logs.js</code>中配置日志输出等级。<br>详情参看<a href="http://sailsjs.com/documentation/concepts/logging" target="_blank" rel="external">sails内建日志</a></p>
-</blockquote>
-<h2 id="原则（Policies）"><a href="#原则（Policies）" class="headerlink" title="原则（Policies）"></a>原则（Policies）</h2><blockquote>
-<p>该文件夹中定义的脚本主要用来处理一些<code>权限认证</code>，<code>第三方单点登录</code>等具有一些通用逻辑，有点类似于<code>spring</code>中的<code>AOP</code>。<br><code>policies</code>只应该在<code>controller</code>的<code>actions</code>中使用，不应该在<code>views</code>中使用。如果是在<code>config/routes.js</code>中直接定义的视图，那么就无法使用<code>policies</code>了。如果想要继续使用使用<code>policies</code>,因该使用<code>controller</code>+<code>.</code>+<code>action</code>的方式。<br>如下:</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// routes.js</span></div><div class="line"></div><div class="line">module<span class="selector-class">.exports</span><span class="selector-class">.routes</span> = &#123;</div><div class="line">    <span class="comment">// 这种形式无法使用policies</span></div><div class="line">    <span class="string">'/'</span>: <span class="string">'homepage'</span>, </div><div class="line"></div><div class="line">    <span class="comment">// 可以这种方式</span></div><div class="line">    <span class="string">'POST /article/comment'</span>: <span class="string">'ArticleController.comment'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="Policies的定义"><a href="#Policies的定义" class="headerlink" title="Policies的定义"></a>Policies的定义</h3><blockquote>
-<p>定义在<code>api/policies</code>目录下，每个<code>policy</code>应该对应一个文件，只处理一件事情，导出为单一的函数。<br>事实上，每个<code>policies</code>都是作为<code>Connect/Express</code>中间件的函数，在<code>controller</code>之前执行。</p>
-</blockquote>
-<figure class="highlight openscad"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 只处理一件事情，导出为单一函数</span></div><div class="line"><span class="function"><span class="keyword">module</span>.<span class="title">exports</span> =</span> <span class="function"><span class="keyword">function</span> <span class="title">canWrite</span><span class="params">(req, res, next)</span>&#123;</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="api-policies和config-policies-js的关系"><a href="#api-policies和config-policies-js的关系" class="headerlink" title="api/policies和config/policies.js的关系"></a><code>api/policies</code>和<code>config/policies.js</code>的关系</h3><blockquote>
-<p>在<code>config/policies.js</code>中配置<code>controller</code>和<code>policies</code>之间的映射关系。就是说哪些<code>controller</code>使用哪些<code>policies</code>来做权限控制。</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module<span class="selector-class">.exports</span><span class="selector-class">.policies</span> = &#123;</div><div class="line">    CommentController: &#123; <span class="comment">// controller名称</span></div><div class="line">        <span class="string">"*"</span>: <span class="string">'isLoggedIn'</span>, <span class="comment">// 对controller中所有的action生效</span></div><div class="line">        create: <span class="string">'isLoggedIn'</span>,  <span class="comment">// key: action名称， value: policies</span></div><div class="line">        tag: [<span class="string">'isLoggedIn'</span>, <span class="string">'isAdmin'</span>]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module<span class="selector-class">.exports</span><span class="selector-class">.policies</span> = &#123;</div><div class="line">    <span class="string">"*"</span>: <span class="string">'isLoggedIn'</span>, <span class="comment">// 映射到所有的controller中的actions</span></div><div class="line">    CommentController: &#123;</div><div class="line">        <span class="comment">// 如果某一个action显式的声明了policy, 那么全局的`isLoggedIn`不会映射到该action上</span></div><div class="line">        create: <span class="string">'isAdmin'</span> </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Services"><a href="#Services" class="headerlink" title="Services"></a>Services</h2><blockquote>
-<p>一个导出各种函数的纯对象，对象中的每个方法被称为<code>helper</code>。<br>因为是全局的，所以可以在各个地方使用：<code>controller</code>的<code>actions</code>, 其他的<code>services</code>, 自定义的<code>model</code>方法中，甚至在命令行脚本中。</p>
-</blockquote>
-<h3 id="Service的创建"><a href="#Service的创建" class="headerlink" title="Service的创建"></a>Service的创建</h3><blockquote>
-<p>在<code>api/services</code>文件夹中创建，文件名必须以<code>Service.js</code>结尾。</p>
-</blockquote>
-<h3 id="Service函数参数说明"><a href="#Service函数参数说明" class="headerlink" title="Service函数参数说明"></a>Service函数参数说明</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Mailgun = <span class="built_in">require</span>(<span class="string">'machinepack-mailgun'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">sendWelcomeEmail</span>: <span class="function"><span class="keyword">function</span> (<span class="params">options, done</span>) </span>&#123;</div><div class="line">    Mailgun.sendHtmlEmail(&#123;</div><div class="line">      <span class="attr">toEmail</span>: options.emailAddress,</div><div class="line">      <span class="attr">toName</span>: options.firstName</div><div class="line">    &#125;).exec(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> done(err); &#125;</div><div class="line">      <span class="keyword">return</span> done();</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>sendWelcomeEmail</code>方法中<code>option</code>,<code>done</code>参数说明：</p>
-<ul>
-<li>option: 一个自定义属性的对象。</li>
-<li>done: 一个函数。这个一个可选的参数，当<code>helper</code>为一个异步方法时，那么当<code>helper</code>被调用时，必须传入<code>done</code>回调函数作为第二个参数。</li>
-<li>按照nodejs的约定，<code>done</code>中第一个参数为一个<code>error</code>对象，第二个参数为需要的数据结果。</li>
-</ul>
-<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>在<code>sails</code>中，session主要由一下3部分要素组成：</p>
-<ul>
-<li><code>session store</code>: 保存信息</li>
-<li>管理<code>session</code>的中间件</li>
-<li>每次请求都会携带<code>cookie</code>,并且<code>session id</code>（默认的<code>sails.sid</code>）都会被存储到<code>cookie</code>中<blockquote>
-<p><code>session store</code>既可以是内存（<code>sails</code>中默认使用内存存储）,也可以是数据库。<code>sails</code>在<code>Connect</code>中间件的最顶层管理<code>session</code>，包括将<code>session id</code>保存到<code>cookie</code>中。</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h2><p><code>views</code>的使用,一般有2种方法：</p>
-<ul>
-<li>res.view(), 由于可以在各个都可以使用<code>res</code>对象，所以可以用这种方式方式将<code>view</code>编译成功<code>html</code>返回给客户端</li>
-<li>在<code>/config/routes.js</code>中对路由进行配置</li>
-</ul>
-<h3 id="locals"><a href="#locals" class="headerlink" title="locals"></a>locals</h3><blockquote>
-<p>在模板引擎中使用的变量称为<code>locals</code>, <code>sails</code>默认传入一些变量作为<code>locals</code>,比如<code>lodash</code>。如果某些数据是通过硬编码的方式填充到模板中，那么可以在<code>config/routes.js</code>中配置：</p>
-</blockquote>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">module.exports.routes = &#123;</div><div class="line">    <span class="string">'get /profile'</span>: &#123;</div><div class="line">        view: <span class="string">'backOffice/profile'</span>,</div><div class="line">        locals: &#123; // 硬编码的数据，可以直接通过locals配置</div><div class="line">          user: &#123;</div><div class="line">            name: <span class="string">'Frank'</span>,</div><div class="line">            emailAddress: <span class="string">'frank@enfurter.com'</span></div><div class="line">          &#125;,</div><div class="line">          corndogs: [</div><div class="line">            &#123; name: <span class="string">'beef corndog'</span> &#125;,</div><div class="line">            &#123; name: <span class="string">'chicken corndog'</span> &#125;,</div><div class="line">            &#123; name: <span class="string">'soy corndog'</span> &#125;</div><div class="line">          ]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="在模板中使用动态数据"><a href="#在模板中使用动态数据" class="headerlink" title="在模板中使用动态数据"></a>在模板中使用动态数据</h3><blockquote>
-<p>大多数时候，数据都是动态获取到的（通过action从model中获取），所以大多时候是按照如下方式进行渲染数据的：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// in api/controllers/UserController.js...</span></div><div class="line"></div><div class="line">  profile: <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    <span class="keyword">return</span> res.view(<span class="string">'backOffice/profile'</span>, &#123;</div><div class="line">      <span class="attr">user</span>: theUser,</div><div class="line">      <span class="attr">corndogs</span>: theUser.corndogCollection</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// ...</span></div></pre></td></tr></table></figure>
-<h3 id="Partials-模板包含"><a href="#Partials-模板包含" class="headerlink" title="Partials(模板包含)"></a>Partials(模板包含)</h3><blockquote>
-<p>支持模板包含，及在一些模板中，将另外一些模板包含进来，达到模板的复用。在<code>sails</code>中使用模板包含，需要注意的就是路径都是相对于<code>view</code>文件夹的。如</p>
-</blockquote>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// views/partials/widget.ejs</span></div><div class="line"></div><div class="line"><span class="comment">// views/pages/dashboard/user-profile.ejs</span></div><div class="line">&lt;<span class="meta">%</span>- partial<span class="comment">('../../partials/widget.ejs')</span> <span class="meta">%</span>&gt;</div></pre></td></tr></table></figure>
-<h2 id="关于EJS模板"><a href="#关于EJS模板" class="headerlink" title="关于EJS模板"></a>关于<code>EJS</code>模板</h2><blockquote>
-<p>在<code>ejs</code>中，模板的标签就以下3种：</p>
-<ul>
-<li><code>&lt;%= %&gt;</code>: 转义输出</li>
-<li><code>&lt;%- %&gt;</code>: 不转义输出</li>
-<li><code>&lt;% %&gt;</code>: 里面直接写js代码</li>
-</ul>
-</blockquote>
-<h2 id="models文件夹"><a href="#models文件夹" class="headerlink" title="models文件夹"></a>models文件夹</h2><blockquote>
-<p>全局访问</p>
-</blockquote>
-<h2 id="services文件夹"><a href="#services文件夹" class="headerlink" title="services文件夹"></a>services文件夹</h2><blockquote>
-<p>全局访问</p>
-</blockquote>
-<h2 id="responses文件夹"><a href="#responses文件夹" class="headerlink" title="responses文件夹"></a>responses文件夹</h2><blockquote>
-<p>里面的方法都会挂载到<code>controller</code>的<code>req</code>对象上</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/15/sails/" data-id="cj6rt9zva0013c4o0eax0iucr" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sails/">sails</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-variable-hoist" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/05/variable-hoist/" class="article-date">
-  <time datetime="2017-04-05T15:05:04.000Z" itemprop="datePublished">2017-04-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/js/">js</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/05/variable-hoist/">JS中变量提升</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
         
-        <h3 id="变量的生命周期"><a href="#变量的生命周期" class="headerlink" title="变量的生命周期"></a>变量的生命周期</h3><ul>
-<li>声明阶段：这一阶段在作用域中注册一个变量。</li>
-<li>初始化阶段：这一阶段分配了内存并在作用域中让内存与变量建立了一个绑定。这一步变量自动被初始化为<code>undefined</code>。</li>
-<li>赋值阶段：这一阶段为初始化的变量分配一个具体的值。</li>
-</ul>
-<h3 id="var变量生命周期"><a href="#var变量生命周期" class="headerlink" title="var变量生命周期"></a><code>var</code>变量生命周期</h3><img src="/2017/04/05/variable-hoist/var-lifecycle.png" alt="var变量生命周期" title="var变量生命周期">
-<blockquote>
-<p>当 <code>JavaScript</code> 遇到了一个函数作用域，其中包含了 <code>var variable</code> 的语句。则在任何语句执行之前，这个变量在作用域的开头就通过了声明阶段并马上来到了初始化阶段（步骤一）。</p>
-</blockquote>
-<p>同时 <code>var variable</code> 在函数作用域中的位置并不会影响它的声明和初始化阶段的进行。</p>
-<p>在声明和初始化阶段之后，赋值阶段之前，变量的值便是 <code>undefined</code> 并已经可以被使用了。</p>
-<p>在赋值阶段 <code>variable = &#39;value&#39;</code> 语句使变量接受了它的初始化值（步骤二）。</p>
-<p>这里的变量提升严格的说是指变量在函数作用域的开始位置就完成了声明和初始化阶段。在这里这两个阶段之间并没有任何的间隙。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// 在这之前，就已经完成了变量的提升（经过了声明和初始化阶段，此时变量已经可以使用了，并且值为undefined）</span></div><div class="line">    <span class="built_in">console</span>.log(a) <span class="comment">// undefined</span></div><div class="line">    <span class="keyword">var</span> a</div><div class="line">    a = <span class="number">10</span> <span class="comment">// 赋值</span></div><div class="line">    <span class="built_in">console</span>.log(a) <span class="comment">// 10</span></div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<h3 id="函数声明的生命周期"><a href="#函数声明的生命周期" class="headerlink" title="函数声明的生命周期"></a>函数声明的生命周期</h3><img src="/2017/04/05/variable-hoist/fun-lifecycle.png" alt="函数声明的生命周期" title="函数声明的生命周期">
-<blockquote>
-<p>声明、初始化和赋值阶段在封闭的函数作用域的开头便立刻进行（只有一步）。 <code>funName()</code>可以在作用域中的任意位置被调用，这与其声明语句所在的位置无关（它甚至可以被放在程序的最底部）。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">sumArray</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> array.reduce(sum) <span class="comment">//9</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a + b</div><div class="line">  &#125;</div><div class="line">&#125;)([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>])</div></pre></td></tr></table></figure>
-<h3 id="let变量的生命周期"><a href="#let变量的生命周期" class="headerlink" title="let变量的生命周期"></a><code>let</code>变量的生命周期</h3><blockquote>
-<p><code>let</code> 变量的处理方式不同于 <code>var</code>, 它的主要区分点在于<strong><em>声明</em></strong>和<strong><em>初始化</em></strong>阶段是分开的。<br><img src="/2017/04/05/variable-hoist/let-lifecycle.png" alt="let变量生命周期" title="let变量生命周期"><br>当解释器进入了一个包含 <code>let variable</code>语句的块级作用域中。这个变量立即通过了声明阶段，并在作用域内注册了它的名称（步骤一）。</p>
-</blockquote>
-<p>然后解释器继续逐行解析块语句。</p>
-<p>在这个阶段尝试访问 <code>variable</code>，JavaScript 将会抛出 <code>ReferenceError: variable is not defined</code>。因为这个变量的状态依然是未初始化的。</p>
-<p>此时 <code>variable</code> 处于<strong><em>临时死区</em></strong>(从块的开始到声明这段)中。</p>
-<p>当解释器到达语句 <code>let variable</code>时，此时变量通过了初始化阶段（步骤二）。现在变量状态是初始化的并且访问它的值是 <code>undefined</code>。</p>
-<p>同时变量在此时也离开了<strong><em>临时死区</em></strong>。</p>
-<p>之后当到达赋值语句 <code>variable = &#39;value&#39;</code> 时，变量通过了赋值阶段（步骤三）。</p>
-<p>如果 JavaScript 遇到这样的语句 <code>let variable = &#39;value&#39;</code> ，那么变量会在这一条语句中同时经过初始化和赋值阶段。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> condition = <span class="literal">true</span>;</div><div class="line"><span class="keyword">if</span> (condition) &#123;</div><div class="line">    <span class="comment">// 一但进入if块作用域中，number变量立即通过了声明阶段，此时number变量处于暂存死区中</span></div><div class="line">    <span class="comment">// 此时试图访问该变量会抛出 ReferenceError: number is not defined.</span></div><div class="line">  <span class="comment">// console.log(number); // =&gt; Throws ReferenceError</span></div><div class="line">  <span class="keyword">let</span> number;</div><div class="line">  <span class="built_in">console</span>.log(number); <span class="comment">// =&gt; undefined</span></div><div class="line">  number = <span class="number">5</span>;</div><div class="line">  <span class="built_in">console</span>.log(number); <span class="comment">// =&gt; 5</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">const</span> a = <span class="number">5</span></div><div class="line">    <span class="built_in">console</span>.log(a)</div><div class="line">    <span class="keyword">let</span> a </div><div class="line">    <span class="built_in">console</span>.log(a)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的例子不会有任何的输出，会抛出<code>Identifier &#39;a&#39; has already been declared</code>。抛出了这个错误是由于已经用<code>const</code>定义了一个变量<code>a</code>, 再次用<code>let</code>声明变量<code>a</code>抛出的错误。但是这个错误也说明了使用<code>let</code>声明的变量会存在<strong><em>变量提升</em></strong></p>
-</blockquote>
-<h3 id="let-var比较"><a href="#let-var比较" class="headerlink" title="let,var比较"></a><code>let</code>,<code>var</code>比较</h3><table>
-<thead>
-<tr>
-<th></th>
-<th>let</th>
-<th>var</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>定义变量</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>可被释放</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>可被提升(hoist)</td>
-<td>✅(注意暂存死区)</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>重复定义检查</td>
-<td>✅</td>
-<td>❎</td>
-</tr>
-<tr>
-<td>可被用于块状作用域</td>
-<td>✅</td>
-<td>❎</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> i = <span class="number">1</span></div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">    <span class="comment">// 会提升到var语句下面，但是由于已经声明了变量i</span></div><div class="line">    <span class="comment">// 所以抛出Identifier 'i' has already been declared</span></div><div class="line">    <span class="keyword">let</span> i = <span class="number">1</span></div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<h3 id="循环定义中的let作用域"><a href="#循环定义中的let作用域" class="headerlink" title="循环定义中的let作用域"></a>循环定义中的let作用域</h3><blockquote>
-<p>循环体中是可以引用在for声明时用let定义的变量，尽管let不是出现在大括号之间.</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = i; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);  <span class="comment">// 抛出`ReferenceError: i is not defined`。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="域作用规则"><a href="#域作用规则" class="headerlink" title="域作用规则"></a>域作用规则</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> expr1; expr2; expr3) statement</div></pre></td></tr></table></figure>
-<blockquote>
-<p>在for循环中，<code>expr1, expr2, expr3, statement</code>都被包含在一个隐藏的块作用域中。<br>所以上面的例子推荐写成如下：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>; </div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> l = i; l &lt; <span class="number">10</span>; l++) &#123;  </div><div class="line">　<span class="built_in">console</span>.log(l); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/variable-hoist/" data-id="cj6rt9zx90032c4o0t6g3kk67" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-z-index" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/05/z-index/" class="article-date">
-  <time datetime="2017-04-05T06:25:57.000Z" itemprop="datePublished">2017-04-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/css/">css</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/05/z-index/">深入理解z-index</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="z-index基本规则"><a href="#z-index基本规则" class="headerlink" title="z-index基本规则"></a>z-index基本规则</h3><ol>
-<li>如果定位元素<code>z-index</code>没有发生嵌套（就是说一个定位元素的子元素的<code>position</code>都是<code>static</code>）,那么此时遵守的规则为：</li>
-</ol>
-<ul>
-<li>后来居上的准则</li>
-<li>哪个大，哪个上</li>
-</ul>
-<ol>
-<li>如果定位元素发生了嵌套<ul>
-<li>祖先优先原则（z-index的值非<code>auto</code>）</li>
-<li>如果<code>z-index: auto</code>,那么就不遵守祖先优先的原则了   </li>
-</ul>
-</li>
-</ol>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// z-index的值非auto</span></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: 1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; z-index: 2"</span>&gt; <span class="comment">// z-index: 2</span></div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: 1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; left: 100px; z-index: 1"</span>&gt; <span class="comment">// z-index: 1</span></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的例子，虽然第一个图片的<code>z-index:2</code>，第二个图片的<code>z-index: 1</code>，但是由于发生了嵌套，祖先元素都是<code>z-index: 1</code>，所以第二个图片覆盖在第一个图片上面。</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// z-index的值为auto</span></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: auto"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; z-index: 2"</span>&gt; <span class="comment">// z-index: 2</span></div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> style=<span class="string">"position: relative; z-index: 1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> style=<span class="string">"position: absolute; left: 100px; z-index: 1"</span>&gt; <span class="comment">// z-index: 1</span></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的例子，同第一个例子一样，唯一不同的地方就是第一个图片祖先元素的<code>z-index:auto</code>, 那么此时第一个图片在覆盖第二个图片。<br>解释：<code>z-index: auto</code>当前层叠上下文生成的盒子层叠水平是<strong><em>0</em></strong>。盒子（除非是根元素）不会创建一个新的层叠上下文。</p>
-</blockquote>
-<h3 id="z-index中涉及到的重要概念"><a href="#z-index中涉及到的重要概念" class="headerlink" title="z-index中涉及到的重要概念"></a>z-index中涉及到的重要概念</h3><ul>
-<li><p>层叠上下文（stacking context）：html中元素在z轴上的堆叠顺序。</p>
-<ul>
-<li>页面根元素（可以理解为html或者为body）天生具有层叠上下文，称之为”根层叠上下文“。</li>
-<li>z-index为数值的定位元素具有层叠上下文。</li>
-<li>一些其他属性的元素<img src="/2017/04/05/z-index/stacking-props.png" alt="其他属性的元素" title="其他属性的元素">
-</li>
-</ul>
-</li>
-<li><p>层叠水平（stacking level）：层叠上下文中的每个元素都有一个层叠水平，层叠水平决定了<strong><em>同一个层叠上下文</em></strong>中的元素在z轴上的堆叠顺序。</p>
-</li>
-<li>层叠顺序（stacking order）：元素发生层叠时有着特定的垂直显示顺序。</li>
-</ul>
-<h3 id="层叠上下文的几个特性"><a href="#层叠上下文的几个特性" class="headerlink" title="层叠上下文的几个特性"></a>层叠上下文的几个特性</h3><ul>
-<li>层叠上下文可以嵌套，组合成一个分层次的层叠上下文。</li>
-<li>每个层叠上下文和兄弟元素独立：当进行层叠变化或者渲染的时候，只需要考虑后代元素。</li>
-<li>每个层叠上下文是自成体系的：当元素的内容被层叠后，整个元素被认为是在父层的层叠顺序中。</li>
-</ul>
-<h3 id="7阶层叠水平-stacking-level"><a href="#7阶层叠水平-stacking-level" class="headerlink" title="7阶层叠水平(stacking level)"></a>7阶层叠水平(stacking level)</h3><img src="/2017/04/05/z-index/stacking-level.png" alt="7阶层叠水平图" title="7阶层叠水平图">
-<p>为什么层叠顺序是这样的？</p>
-<blockquote>
-<p>可以这样理解：<code>background,border</code>等主要用来装饰元素，<code>block</code>盒子<code>float</code>元素主要用来布局，而<code>inline, inline-block</code>主要用来展示内容，而内容是页面中最重要的实体，所以应该让其层叠水平更高。</p>
-</blockquote>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">.<span class="built_in">block</span>, .inline-<span class="built_in">block</span>&#123;</div><div class="line">    <span class="built_in">height</span>: 200px;</div><div class="line">&#125;</div><div class="line">.<span class="built_in">block</span>&#123;</div><div class="line">    <span class="built_in">width</span>: 300px;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>: rgba(<span class="number">37</span>,<span class="number">148</span>,<span class="number">233</span>, .<span class="number">4</span>);</div><div class="line">    margin-top: -13px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.inline-<span class="built_in">block</span>&#123;</div><div class="line">    <span class="built_in">display</span>: inline-<span class="built_in">block</span>;</div><div class="line">    <span class="built_in">width</span>: 200px;</div><div class="line">    <span class="built_in">background</span>-<span class="built_in">color</span>: #ff8200;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;div class=<span class="string">"inline-block"</span>&gt;</div><div class="line">    <span class="built_in">display</span>: inline-<span class="built_in">block</span></div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=<span class="string">"block"</span>&gt;</div><div class="line">    <span class="built_in">display</span>: <span class="built_in">block</span></div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的例子: <code>inline-block</code>的元素会覆盖在<code>block</code>元素的上面，但是<code>block</code>元素中的文字并没有被覆盖。因为文字是属于<code>inline</code>元素，对照7阶层叠上下文可以知道<code>inline</code>的堆叠顺序和<code>inline-block</code>是一个等级的，并且<code>block</code>元素出现在<code>inline-block</code>元素的后面，按照<strong><em>后来居上</em></strong>的规则，<code>inline-block</code>元素并不会覆盖<code>block</code>元素中的文字。</p>
-</blockquote>
-<h3 id="z-index元层叠上下文的关系"><a href="#z-index元层叠上下文的关系" class="headerlink" title="z-index元层叠上下文的关系"></a>z-index元层叠上下文的关系</h3><ul>
-<li>定位元素默认<code>z-index:auto</code>可以看成是<code>z-index: 0</code>。</li>
-<li><code>z-index</code>不为<code>auto</code>的定位元素创建层叠上下文。</li>
-<li><code>z-index</code>层叠顺序的比较止步于父级层叠上下文。</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">    <span class="comment">/*z-index: 0;*/</span></div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">display</span>: inline-block;</div><div class="line">&#125;</div><div class="line">.img&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">margin-left</span>: -<span class="number">100px</span>;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;    </div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的例子，如果<code>box</code>不加上<code>z-index:0</code>,那么此时的层叠上下文就是<code>body</code>元素，那么<code>z-index:-1</code>的元素会处于<code>body</code>元素的下面，所以<code>box</code>元素覆盖图片。<br>但是如果<code>box</code>元素加上<code>z-index:0</code>, 那么此次层叠上下文就变成了<code>box</code>元素，那么按照<strong><em>7阶层叠水平</em></strong>, <code>background</code>是处于最底层的，所以<code>z-index:-1</code>的图片会覆盖背景。</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">.box1&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box1</span> img&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">99999</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.box2&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box2</span> img&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">left</span>: <span class="number">250px</span>;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box1"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box2"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的例子，虽然<code>box1</code>中的<code>img</code>图片的<code>z-index:99999</code>很大，但是其父元素的<code>z-index: 0</code>没有第二个图片的父元素<code>box2</code>的<code>z-index:1</code>大，所以依然是第二个图片覆盖第一个图片。</p>
-</blockquote>
-<h3 id="其他参与层叠上下文的属性"><a href="#其他参与层叠上下文的属性" class="headerlink" title="其他参与层叠上下文的属性"></a>其他参与层叠上下文的属性</h3><ul>
-<li><code>z-index</code>值不为<code>auto</code>的flex项（父元素display:flex|inline-flex）<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置为flex的父元素，可以改变子元素z-index不为auto的元素参数参与堆叠上下文</span></div><div class="line">.box&#123;</div><div class="line">    <span class="comment">/*display: flex;*/</span></div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; <span class="selector-tag">div</span> &#123;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; <span class="selector-tag">div</span> &gt; img&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>当没有为<code>box</code>设置<code>display: flex</code>时，此时层叠上下文为根元素（html或者body），所以<code>img</code>设置为<code>z-index:-1</code>会堆叠在根元素下面，也就是背景会覆盖图片。但如果设置<code>box</code>为<code>display: flex</code>,那么此时<code>display:flex</code>的<strong><em>子元素</em></strong><code>z-index</code>不为<code>auto</code>的元素参与堆叠顺序，那么按照<strong><em>7阶堆叠顺序</em></strong>，<code>z-index</code>为负值的会堆叠在<code>background</code>上面。</p>
-</blockquote>
-<ul>
-<li><code>opacity != 1</code><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">    <span class="comment">/*opacity: .9;*/</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; img&#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>当没有给<code>box</code>元素设置<code>opacity:.9</code>时，那么此时<code>box</code>为非层叠上下文元素，那么<code>img</code>会层叠到根层叠上下文元素的下面，所以<code>box</code>会覆盖<code>img</code>。一旦设置了<code>box</code>的<code>opacity: .9</code>是，此时层叠上下文为<code>box</code>元素，那么按照<strong><em>7阶堆叠顺序</em></strong>, 负的<code>z-index</code>会覆盖在<code>background</code>的上面。</p>
-</blockquote>
-<ul>
-<li>剩下的<code>transform != none</code>, <code>mix-blend-mode != normal</code>, <code>filter != none</code>, <code>isolation: isolation</code>, <code>position: fixed</code>, <code>will-change: 任意支持过渡的元素</code>, <code>-webkit-overflow-scrolling: touch</code>同理。</li>
-</ul>
-<h3 id="非定位元素层叠上下文和z-index的关系"><a href="#非定位元素层叠上下文和z-index的关系" class="headerlink" title="非定位元素层叠上下文和z-index的关系"></a>非定位元素层叠上下文和<code>z-index</code>的关系</h3><ul>
-<li>不依赖<code>z-index</code>的层叠上下文元素的层叠顺序均是<code>z-index:auto</code>级别。（可以查看上面的”其他属性创建层叠上下文的图“, 需要注意的是<code>flex</code>, 他是依赖<code>z-index</code>的）</li>
-<li>依赖<code>z-index</code>的层叠上下文元素的层叠顺序取决于<code>z-index</code>的值。<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.a&#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</div><div class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">40px</span>;</div><div class="line">&#125;</div><div class="line">.box&#123;</div><div class="line">    <span class="attribute">display</span>: flex; <span class="comment">/*普通元素*/</span></div><div class="line">    <span class="attribute">background-color</span>: blue;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span> &gt; img&#123;</div><div class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;  <span class="comment">/*flex项是层叠上下文元素*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">img</span> class=<span class="string">"a"</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"box"</span>&gt;</div><div class="line">    &lt;<span class="selector-tag">img</span> class=<span class="string">"img"</span> src=<span class="string">"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"</span> alt=<span class="string">""</span>&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/04/05/z-index/" data-id="cj6rt9zxv003rc4o0rblcty54" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-shell-operation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/30/shell-operation/" class="article-date">
-  <time datetime="2017-03-30T13:10:24.000Z" itemprop="datePublished">2017-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/shell-operation/">shell运算符</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><blockquote>
-<p>原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。<br>一个完整的表达式需要用反引号(`)包裹, 在mac系统中，求值表达式也可以这样$(($a + $b))。<br>表达式和运算符之间必须有空格，如<code>2+2</code>是不对的，必须写成<code>2 + 2</code>。<br>乘号（*）在表达式中必须转义 <code>expr $a \* $b</code>,否则抛出<code>syntax error</code></p>
-</blockquote>
-<h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><blockquote>
-<p>条件表达式必须放在方括号内，并且之间要有空格</p>
-</blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 方括号的前后也必须含有空格,可以有多个空格</span></div><div class="line">[ <span class="variable">$a</span> == <span class="variable">$b</span> ] <span class="regexp">//</span> right</div><div class="line">[<span class="variable">$a</span>==<span class="variable">$b</span>] <span class="regexp">//</span> error</div></pre></td></tr></table></figure>
-<h3 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h3><table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>！</td>
-<td>非运算</td>
-</tr>
-<tr>
-<td>-o</td>
-<td>或运算, 记忆：or(-o)</td>
-</tr>
-<tr>
-<td>-a</td>
-<td>与运算, 记忆：and(-a)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><blockquote>
-<p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-eq</td>
-<td>equal, 是否相等</td>
-</tr>
-<tr>
-<td>-ne</td>
-<td>not equal, 不相等</td>
-</tr>
-<tr>
-<td>-gt</td>
-<td>greater than,  大于</td>
-</tr>
-<tr>
-<td>-lt</td>
-<td>less than, 小于</td>
-</tr>
-<tr>
-<td>-ge</td>
-<td>greater equal, 大于等于</td>
-</tr>
-<tr>
-<td>-le</td>
-<td>less equal, 小于等于</td>
-</tr>
-</tbody>
-</table>
-<h3 id="字符串运算符"><a href="#字符串运算符" class="headerlink" title="字符串运算符"></a>字符串运算符</h3><blockquote>
-<p>假设a=”abc”, b=”efg”</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>=</td>
-<td>检测2个字符串是否相等， 相等返回true</td>
-<td>[ $a = $b ], false</td>
-</tr>
-<tr>
-<td>!=</td>
-<td>…., 不相等返回true</td>
-<td>[ $a != $b ], true</td>
-</tr>
-<tr>
-<td>-z</td>
-<td>字符串的长度为0，返回true. 记忆: zero</td>
-<td>[ -z $a ], false</td>
-</tr>
-<tr>
-<td>-n</td>
-<td>…..不为0，返回true. 记忆: not</td>
-<td>[ -n $a ], true</td>
-</tr>
-<tr>
-<td>str</td>
-<td>字符串不为空，返回true</td>
-<td>[ $a ], true</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-operation/" data-id="cj6rt9zvi001hc4o0zbwswazy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-shell-params" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/30/shell-params/" class="article-date">
-  <time datetime="2017-03-30T12:31:56.000Z" itemprop="datePublished">2017-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/shell-params/">shell传递参数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="脚本获取参数格式-n"><a href="#脚本获取参数格式-n" class="headerlink" title="脚本获取参数格式$n"></a>脚本获取参数格式$n</h3><blockquote>
-<p>n为从0开始的数字，$0：获取执行的脚本名称；$1获取第一个参数，$2获取第二个参数,以此类推。。。</p>
-</blockquote>
-<h3 id="几个特殊的字符用来处理参数"><a href="#几个特殊的字符用来处理参数" class="headerlink" title="几个特殊的字符用来处理参数"></a>几个特殊的字符用来处理参数</h3><blockquote>
-<p>这些特殊的字符也可以用在shell函数中</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$#</td>
-<td>传递到脚本的个数</td>
-</tr>
-<tr>
-<td>$*</td>
-<td>以“$1 $2 … $n”的形式输出所有传递的参数</td>
-</tr>
-<tr>
-<td>$$</td>
-<td>脚本运行的当前进程ID号</td>
-</tr>
-<tr>
-<td>$!</td>
-<td>后台运行的最后一个进程ID号</td>
-</tr>
-<tr>
-<td>$@</td>
-<td>以“$1” “$2” “$n”的形式输出所有参数</td>
-</tr>
-<tr>
-<td>$-</td>
-<td>显示shell使用的当前选项，与set命令功能相同</td>
-</tr>
-<tr>
-<td>$?</td>
-<td>显示最后命令退出的状态。 0表示没有错误，其他任何值表明有错误</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-params/" data-id="cj6rt9zx1002rc4o0vh4dm5ne" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-shell-variable" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/30/shell-variable/" class="article-date">
-  <time datetime="2017-03-29T16:21:20.000Z" itemprop="datePublished">2017-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/shell-variable/">shell变量</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">your_name</span>=<span class="string">"rou"</span></div></pre></td></tr></table></figure>
-<ul>
-<li>变量名只能有字母和下划线<code>_</code>组成，且不能使用<code>bash</code>里的关键字</li>
-<li>变量名和等号之间不能有空格</li>
-</ul>
-<h3 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">your_name=<span class="string">"rou"</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$your_name</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$&#123;your_name&#125;</span> // 推荐使用这种方式</div></pre></td></tr></table></figure>
-<h3 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">readonly</span> myUrl=<span class="string">"www.baidu.com"</span></div></pre></td></tr></table></figure>
-<h3 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">unset</span> varibale_name</div></pre></td></tr></table></figure>
-<blockquote>
-<p>变量被删除后不能再次使用。<code>unset</code>命令不能删除<strong><em>只读</em></strong>变量</p>
-</blockquote>
-<h3 id="Shell字符串"><a href="#Shell字符串" class="headerlink" title="Shell字符串"></a>Shell字符串</h3><blockquote>
-<p>shell中字符串即可用单引号包裹，也可以用双引号包裹</p>
-<ul>
-<li>当引号中包裹的字符中照原样输出</li>
-<li>双引号包裹的字符串可以包含变量</li>
-</ul>
-</blockquote>
-<h3 id="获取字符串的长度"><a href="#获取字符串的长度" class="headerlink" title="获取字符串的长度"></a>获取字符串的长度</h3><figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">my_str=<span class="comment">"this is a test string"</span></div><div class="line"><span class="string">$&#123;</span><span class="symbol">#my_str</span>&#125;</div></pre></td></tr></table></figure>
-<h3 id="提取字符串"><a href="#提取字符串" class="headerlink" title="提取字符串"></a>提取字符串</h3><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">str</span>=<span class="string">"my name is test"</span></div><div class="line">$&#123;<span class="keyword">str</span>:<span class="number">1</span>:<span class="number">4</span>&#125; <span class="comment">// 从第2个位置开始截取4个字符串（下标索引从0开始）</span></div></pre></td></tr></table></figure>
-<h3 id="Shell数组"><a href="#Shell数组" class="headerlink" title="Shell数组"></a>Shell数组</h3><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">array<span class="number">_n</span>ame=(<span class="keyword">value</span><span class="number">1</span> <span class="keyword">value</span><span class="number">2</span> valu<span class="number">3</span>...)</div><div class="line">或者</div><div class="line">array<span class="number">_n</span>ame=(</div><div class="line">    <span class="keyword">value</span><span class="number">1</span></div><div class="line">    <span class="keyword">value</span><span class="number">2</span></div><div class="line">    <span class="keyword">value</span><span class="number">3</span></div><div class="line">)</div></pre></td></tr></table></figure>
-<h3 id="获取数组中所有的元素"><a href="#获取数组中所有的元素" class="headerlink" title="获取数组中所有的元素"></a>获取数组中所有的元素</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">array=(<span class="selector-tag">a</span> <span class="selector-tag">b</span> c)</div><div class="line">$&#123;array[@]&#125; 或者 $&#123;array[*]&#125;</div></pre></td></tr></table></figure>
-<h3 id="获取数组的长度"><a href="#获取数组的长度" class="headerlink" title="获取数组的长度"></a>获取数组的长度</h3><blockquote>
-<p>和获取字符的长度语法是一致的</p>
-</blockquote>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 获取数组的长度</div><div class="line">$&#123;#array[@]&#125; 或者 $&#123;#array[*]&#125;</div><div class="line"></div><div class="line"># 获取数组中某个元素的长度</div><div class="line">$&#123;#array[n]&#125; <span class="comment">// 下标n从0开始</span></div><div class="line">`</div></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/30/shell-variable/" data-id="cj6rt9zx0002qc4o0s21dfju2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-shell-overview" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/29/shell-overview/" class="article-date">
-  <time datetime="2017-03-29T15:54:33.000Z" itemprop="datePublished">2017-03-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/shell-overview/">shell基本知识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="常见Linux-Shell种类"><a href="#常见Linux-Shell种类" class="headerlink" title="常见Linux Shell种类"></a>常见Linux Shell种类</h3><ul>
-<li>Bourne Shell (/usr/bin/sh 或 /bin/sh)</li>
-<li>Bourne Again Shell (/bin/bash)</li>
-<li>C Shell (/usr/bin/csh)</li>
-<li>K Shell (/usr/bin/ksh)</li>
-<li>Shell for Root (/sbin/sh)</li>
-</ul>
-<h3 id="第一个Shell脚本"><a href="#第一个Shell脚本" class="headerlink" title="第一个Shell脚本"></a>第一个Shell脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'Hello World !'</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>“#!” 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种Shell</p>
-</blockquote>
-<h3 id="运行Shell脚本的2种方法"><a href="#运行Shell脚本的2种方法" class="headerlink" title="运行Shell脚本的2种方法"></a>运行Shell脚本的2种方法</h3><ol>
-<li><p>作为可执行程序</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将上面的脚本保存为test.sh</span></div><div class="line">chmod +x ./<span class="keyword">test</span>.<span class="keyword">sh</span> <span class="comment">// 使脚本具有可执行的权限</span></div><div class="line">./<span class="keyword">test</span>.<span class="keyword">sh</span> <span class="comment">// 执行脚本</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>作为解释器参数</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/bin/<span class="keyword">sh</span> <span class="keyword">test</span>.<span class="keyword">sh</span></div><div class="line">/bin/php <span class="keyword">test</span>.php</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>这种方式运行的脚本，不需要再第一行指定解释器的信息，即使指定了也没用</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/29/shell-overview/" data-id="cj6rt9zvj001kc4o0xjqn5dty" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-webpack2-server" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/webpack2-server/" class="article-date">
-  <time datetime="2017-03-22T03:00:47.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/构建工具/">构建工具</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/webpack2-server/">webpack2-server</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <h3 id="devServer"><a href="#devServer" class="headerlink" title="devServer"></a>devServer</h3><blockquote>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.server.js</span></div><div class="line"></div><div class="line"><span class="selector-tag">var</span> config = require(<span class="string">'./webpack.config'</span>)</div><div class="line"><span class="selector-tag">var</span> webpack = require(<span class="string">'webpack'</span>)</div><div class="line"><span class="selector-tag">var</span> WebpackDevServer = require(<span class="string">'webpack-dev-server'</span>)</div><div class="line"><span class="selector-tag">var</span> compiler = webpack(config)</div><div class="line"></div><div class="line"><span class="selector-tag">var</span> server = new WebpackDevServer(compiler, devServer)</div></pre></td></tr></table></figure>
-<h4 id="devServer-clientLogLevel"><a href="#devServer-clientLogLevel" class="headerlink" title="devServer.clientLogLevel"></a>devServer.clientLogLevel</h4><p>string</p>
-<blockquote>
-<p>Default: info,可选值有<code>none</code>, <code>error</code>, <code>warning</code>, <code>info</code><br>指定终端输出日志信息的等级, 设置为<code>none</code>, 表示什么日志都不输出。</p>
-</blockquote>
-<h4 id="devServer-compress"><a href="#devServer-compress" class="headerlink" title="devServer.compress"></a>devServer.compress</h4><p>boolean</p>
-<blockquote>
-<p>放到服务器上的文件全部使用<code>gzip</code>压缩</p>
-</blockquote>
-<h4 id="devServer-contentBase"><a href="#devServer-contentBase" class="headerlink" title="devServer.contentBase"></a>devServer.contentBase</h4><p>boolean string array</p>
-<blockquote>
-<p>将哪些文件放到服务器上，默认使用当前工作目录。你可以像下面这样修改文件目录</p>
-</blockquote>
-<figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">contentBase: path.<span class="built_in">join</span>(<span class="variable">__dirname</span>, <span class="string">'public'</span>)</div><div class="line"></div><div class="line"><span class="comment">// 或则</span></div><div class="line">contentBase: [path.<span class="built_in">join</span>(<span class="variable">__dirname</span>, <span class="string">'public'</span>), path.<span class="built_in">join</span>(<span class="variable">__dirname</span>, <span class="string">'assets'</span>)]</div></pre></td></tr></table></figure>
-<h4 id="devServer-filename"><a href="#devServer-filename" class="headerlink" title="devServer.filename"></a>devServer.filename</h4><p>string</p>
-<blockquote>
-<p>模块的编译默认是处于<code>lazy</code>模式，就是每次请求的时候才会编译。<br>通过该选项，可以配置每次请求的时候编译某个具体的文件，而不是编译所有的文件。</p>
-</blockquote>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">lazy:</span> <span class="literal">true</span>,</div><div class="line"><span class="string">filename:</span> <span class="string">'bundle.js'</span></div></pre></td></tr></table></figure>
-<p><strong><em>注意：该选项只有在<code>lazy: true</code>时才有效</em></strong></p>
-<h4 id="devServer-noInfo"><a href="#devServer-noInfo" class="headerlink" title="devServer.noInfo"></a>devServer.noInfo</h4><p>boolean</p>
-<blockquote>
-<p>除了错误信息和警告信息，其他的信息都不在输出。</p>
-</blockquote>
-<h4 id="devServer-quiet"><a href="#devServer-quiet" class="headerlink" title="devServer.quiet"></a>devServer.quiet</h4><p>boolean</p>
-<blockquote>
-<p>不在输出任何信息，包括错误信息和警告信息。</p>
-</blockquote>
-<h4 id="devServer-stats"><a href="#devServer-stats" class="headerlink" title="devServer.stats"></a>devServer.stats</h4><p>string object</p>
-<blockquote>
-<p>这个选项可以让你精确的控制在编译的过程中哪些信息应该显示在终端。就相当于可以局部的控制应该显示哪些编译信息，而不是总体的设置。<br><strong><em>如果激活了<code>quiet</code>, <code>noInfo</code>选项，那么该选项就失效了</em></strong></p>
-</blockquote>
-<p>具体有哪些选项可以使用，可以参看<a href="https://webpack.js.org/configuration/stats/" target="_blank" rel="external">这里</a></p>
-<h4 id="devServer-watchContentBase"><a href="#devServer-watchContentBase" class="headerlink" title="devServer.watchContentBase"></a>devServer.watchContentBase</h4><p>boolan</p>
-<blockquote>
-<p>监听<code>contentBase</code>下的文件变动情况，一旦有文件发生了改动，就立即重新编译并刷新页面。</p>
-</blockquote>
-<h4 id="devServer-watchOptions"><a href="#devServer-watchOptions" class="headerlink" title="devServer.watchOptions"></a>devServer.watchOptions</h4><p>object</p>
-<blockquote>
-<p>配置文件监听的相关选项。</p>
-</blockquote>
-<h5 id="watchOptions-aggregateTimeout"><a href="#watchOptions-aggregateTimeout" class="headerlink" title="watchOptions.aggregateTimeout"></a>watchOptions.aggregateTimeout</h5><p>number</p>
-<blockquote>
-<p>Default: 300（毫秒数）<br>在这个300内发生的多次改动，不会重新编译，而是汇聚到一起做一次编译。</p>
-</blockquote>
-<h5 id="watchOptions-ignored"><a href="#watchOptions-ignored" class="headerlink" title="watchOptions.ignored"></a>watchOptions.ignored</h5><blockquote>
-<p>忽略对某些文件的监听，因为监听一个很大的文件夹是很浪费内存和消耗CPU</p>
-</blockquote>
-<p>支持正则和通配符使用<br><code>ignored: /node_modules/</code></p>
-<p><code>ignored: &#39;files/**/*.js&#39;</code></p>
-<h5 id="watchOptions-poll"><a href="#watchOptions-poll" class="headerlink" title="watchOptions.poll"></a>watchOptions.poll</h5><p>boolean number</p>
-<blockquote>
-<p>在某些文件系统，比如NFS中，监听如果不能正常工作，可以开启该选项。</p>
-</blockquote>
-<p><code>poll: true</code></p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 每隔1000ms检查一次文件是否改动</span></div><div class="line"><span class="symbol">poll:</span> <span class="number">1000</span></div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-server/" data-id="cj6rt9zxw003uc4o0vhwcvkp8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <!-- id="post-variable-hoist" -->
-<article id="post-webpack2-resolve" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/22/webpack2-resolve/" class="article-date">
-  <time datetime="2017-03-22T03:00:15.000Z" itemprop="datePublished">2017-03-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/构建工具/">构建工具</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/webpack2-resolve/">webpack2-resolve</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-        <p>[TOC]</p>
-<h3 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h3><blockquote>
-<p>配置模块解析策略。<br>比如，<code>import lodash</code>, 可以通过配置<code>resolve.modules</code>来指定当解析<code>lodash</code>是，去哪个路径下去寻找<code>lodash</code>。</p>
-</blockquote>
-<h4 id="resolve-alias"><a href="#resolve-alias" class="headerlink" title="resolve.alias"></a>resolve.alias</h4><p>object</p>
-<blockquote>
-<p>配置模块的别名,这样当使用<code>import</code>或者<code>require</code>就可以使用别名来代替冗长的相对路径。<br>比如你<code>import</code>某一路径下的一个js文件:<code>import ../../src/js/index.js</code><br>如果没有配置别名，那么你每次引入<code>src/js</code>这个路径下的某个js,都需要写很长的路径,通过配置别名，你可以简化书写。</p>
-</blockquote>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  <span class="built_in">resolve</span>: &#123;</div><div class="line">    alia<span class="variable">s:</span> &#123;</div><div class="line">      <span class="keyword">j</span><span class="variable">s:</span> path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src/js'</span>),</div><div class="line">      <span class="keyword">cs</span><span class="variable">s:</span> path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src/css'</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>没有配置别名之前<br><code>import { getData } from &#39;../../src/js/fetData&#39;</code><br>配置别名后<br><code>import { getData } from &#39;js/fetData&#39;</code></p>
-<p>在配置别名，关于填写文件路径的各种写法，可以移步<a href="https://webpack.js.org/configuration/resolve/" target="_blank" rel="external">这里</a></p>
-<h4 id="resolve-aliasFields"><a href="#resolve-aliasFields" class="headerlink" title="resolve.aliasFields"></a>resolve.aliasFields</h4><p>string</p>
-<blockquote>
-<p>指定某些属性，用来配置别名所指定的js文件解析的环境。</p>
-</blockquote>
-<p><code>aliasFields: [&#39;browser&#39;]</code></p>
-<p>直接这么一句话，很难理解什么意思，详细的意思可以参阅<a href="http://www.ibm.com/developerworks/cn/web/1501_chengfu_browserify/" target="_blank" rel="external">这里</a></p>
-<h4 id="resolve-descriptionFiles"><a href="#resolve-descriptionFiles" class="headerlink" title="resolve.descriptionFiles"></a>resolve.descriptionFiles</h4><p>arry</p>
-<blockquote>
-<p>指定用哪个json文件作为描述文件。一般情况下使用默认值即可，不需要显式的配置。</p>
-</blockquote>
-<p><code>descriptionFiles: [&#39;package.json&#39;]</code></p>
-<h4 id="resolve-enforceExtensions"><a href="#resolve-enforceExtensions" class="headerlink" title="resolve.enforceExtensions"></a>resolve.enforceExtensions</h4><p>boolean</p>
-<blockquote>
-<p>指定是否必须使用扩展名。<br>比如一般情况下，我们会像这样引入某个js, <code>import &#39;lodash&#39;</code>, 但是如果你指定了<code>enforceExtensions: true</code>，那么你就必须这样引入<code>import &#39;lodash.js&#39;</code></p>
-</blockquote>
-<h4 id="resolve-extensions"><a href="#resolve-extensions" class="headerlink" title="resolve.extensions"></a>resolve.extensions</h4><blockquote>
-<p>自动解析文件扩展名，默认值[‘.js’, ‘.json’]。<br>意思就是比如你<code>import _ from &#39;../path/file&#39;</code>, 会先去<code>path</code>下寻找<code>file.js</code>文件，没有找到，那么继续寻找<code>file.json</code>文件，都没找找到抛出<code>Module not found: Error: Can&#39;t resolve &#39;xx&#39; in &#39;xxx&#39;</code>错误。<br>NOTE: 一旦你配置了该选项，那就意味着webpack不在使用默认的解析机制。比如你配置为<br><code>extensions: [&#39;.txt&#39;]</code>, 那么webpack就只会去寻找<code>xx.txt</code>,并不会去寻找<code>xx.js</code>,<code>xx.json</code>,即使你指定的文件夹下有<code>xx.js</code>,<code>xx.json</code>，因为默认的选项已经被你重写了，只会按照你配置的选项来解析。<br><a href="https://nodejs.org/dist/latest-v7.x/docs/api/modules.html" target="_blank" rel="external">node包寻找机制</a></p>
-</blockquote>
-<h4 id="resolve-mainFields"><a href="#resolve-mainFields" class="headerlink" title="resolve.mainFields"></a>resolve.mainFields</h4><blockquote>
-<p>当你引入某一个包时，使用包下面的哪一个文件。<br>配置: <code>mainFields: [&#39;module&#39;, &#39;browser&#39;, &#39;main&#39;]</code>，具体看例子解释。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> D3 <span class="keyword">from</span> <span class="string">'d3'</span></div></pre></td></tr></table></figure>
-<p>在<code>d3</code>这个<code>package.json</code>中，有这几个选项<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"main"</span>: <span class="string">"build/d3.node.js"</span>, <span class="comment">// 适用node环境</span></div><div class="line"><span class="string">"browser"</span>: <span class="string">"build/d3.js"</span>, <span class="comment">// 适用浏览器环境</span></div><div class="line"><span class="string">"module"</span>: <span class="string">"index"</span> <span class="comment">// 都支持</span></div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>以上的几个选项可以分别支持不同的环境，你应该选择你需要的环境选项，通过该选项的配置，可以满足你的需求。</p>
-</blockquote>
-<h4 id="resolve-mainFiles"><a href="#resolve-mainFiles" class="headerlink" title="resolve.mainFiles"></a>resolve.mainFiles</h4><blockquote>
-<p>当解析到的文件是一个目录是，如何处理该目录。<br>默认：<code>mainFiles: [&#39;index&#39;]</code>。<br>关于该选项的具体含义，只要理解了node中包的寻找机制，就能明白该选项的含义。<br><a href="https://nodejs.org/dist/latest-v7.x/docs/api/modules.html" target="_blank" rel="external">node包寻找机制</a></p>
-</blockquote>
-<p>这里举例简单说明：<br>index.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fns <span class="keyword">from</span> <span class="string">'./js'</span> <span class="comment">//js是一个文件夹</span></div></pre></td></tr></table></figure></p>
-<p>webpack.config.js<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolve</span>: &#123;</div><div class="line">  <span class="attribute">mainFields</span>: [<span class="string">'canvas'</span>, <span class="string">'utils'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>当webpack解析到<code>js</code>是一个文件夹时，如果你的<code>mainFields</code>配置如上，那么webpack会去<code>js</code>文件夹下寻找<code>canvas.js</code>，如果没有找到,那么继续寻找<code>js</code>文件夹下的<code>utils.js</code>，如果还没有找到，抛出错误<code>Module not found: Error: &#39;xx&#39; in &#39;xx&#39;</code></p>
-</blockquote>
-<h4 id="resolve-modules"><a href="#resolve-modules" class="headerlink" title="resolve.modules"></a>resolve.modules</h4><p>array</p>
-<blockquote>
-<p>默认配置：modules: [‘node_modules’]<br>告诉webpack在解析模块的时候，去哪些目录搜索这些即将被解析的模块。<br>既可以传入一个相对路径，也可以传入一个绝对路径。但是你要知道的是，他们之间是有一些区别的。<br>相对路径：比如你传入一个<code>./node_modules</code>, webpack会在当前路径下的<code>node_modules</code>下寻找，如果没有找到，会继续搜寻当前目录的父目录下的<code>node_modules</code>,如果还没有找到，依次类推，继续向上搜寻，直至跟目录结束。<br>绝对路径：只会在传入的路径中搜索。</p>
-</blockquote>
-<p>如果你想优先搜索你指定的目录，而不是默认的<code>node_modules</code>, 那么你可以将这个路径插入到默认路径的前面，就像下面这样的<br><code>modules: [path.resolve(__dirname, &#39;src&#39;), &#39;node_modules&#39;]</code></p>
-<h4 id="resolve-unsafeCache"><a href="#resolve-unsafeCache" class="headerlink" title="resolve.unsafeCache"></a>resolve.unsafeCache</h4><p><code>regexp</code> <code>array</code> <code>boolean</code></p>
-<blockquote>
-<p>开启缓存，但不是那么的安全（现在还不太明白怎么个不安全法）</p>
-</blockquote>
-<p>如果你想缓存所有的解析模块，那么可以这样设置<br><code>unsafeCache: true</code></p>
-<p>你也可以传入正则表达式或这则表达式的数组来缓存某些解析的模块<br><code>unsafeCache: /src\/utils/</code></p>
-<h3 id="resolve-plugins"><a href="#resolve-plugins" class="headerlink" title="resolve.plugins"></a>resolve.plugins</h3><blockquote>
-<p>添加目录命名的一些额外的插件列表。</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolve</span>: &#123;</div><div class="line">  <span class="attribute">plugins</span>: [new <span class="built_in">DirectoryNamedWebpackPlugin</span>()]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="resolveLoader-prop"><a href="#resolveLoader-prop" class="headerlink" title="resolveLoader[prop]"></a>resolveLoader[prop]</h3><p>object</p>
-<blockquote>
-<p>这个选项拥有的属性配置和上面的<code>resolve</code>是一样的，不过他<strong>只能用来</strong>配置webpack的<code>loader</code>包，默认值如下</p>
-</blockquote>
-<h3 id="resolveLoader-moduleExtensions"><a href="#resolveLoader-moduleExtensions" class="headerlink" title="resolveLoader.moduleExtensions"></a>resolveLoader.moduleExtensions</h3><blockquote>
-<p>用来配置<code>loader</code>的扩展名，默认是一个空数组。比如你使用<code>loader</code>的时候，想省去后缀<code>-loader</code>,那么你可以如下配置</p>
-</blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolveLoader</span>: &#123;</div><div class="line">  <span class="attribute">moduleExtensions</span>: [<span class="string">'-loader'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>NOTE: 在<code>webpack1.x</code>，可以省去<code>-loader</code>后缀，webpack默认会加上。但是在<code>webpack2.x</code>，必须通过上面的这个配置才可以省去。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xxxxxmiss.github.io/2017/03/22/webpack2-resolve/" data-id="cj6rt9zxs003oc4o07uq02xuo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
-  </nav>
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端框架/">前端框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/构建工具/">构建工具</a><span class="category-list-count">9</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/framework7/">framework7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frontend-framework/">frontend-framework</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hybrid/">hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sails/">sails</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/">shell</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">9</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 11.67px; color: #d56c28">css</a> <a href="/tags/flex/" style="font-size: 10px; color: #ff8200">flex</a> <a href="/tags/framework7/" style="font-size: 10px; color: #ff8200">framework7</a> <a href="/tags/frontend-framework/" style="font-size: 10px; color: #ff8200">frontend-framework</a> <a href="/tags/git/" style="font-size: 10px; color: #ff8200">git</a> <a href="/tags/hybrid/" style="font-size: 10px; color: #ff8200">hybrid</a> <a href="/tags/js/" style="font-size: 20px; color: #00e">js</a> <a href="/tags/linux/" style="font-size: 13.33px; color: #aa574f">linux</a> <a href="/tags/nodejs/" style="font-size: 16.67px; color: #552b9f">nodejs</a> <a href="/tags/sails/" style="font-size: 10px; color: #ff8200">sails</a> <a href="/tags/shell/" style="font-size: 15px; color: #804177">shell</a> <a href="/tags/webpack/" style="font-size: 18.33px; color: #2b16c6">webpack</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/08/20/git-plumbing/">git进阶（一）</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/13/web-components/">web-components</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/12/share-vue/">share-vue</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/30/zeroclipboard/">zeroclipboard</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/16/nodejs-cluster/">nodejs-cluster</a>
-          </li>
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
         
       </ul>
     </div>
   </div>
-
-  
 </aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">青史成灰</div>
         
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2014-2017 xxxxxMiss<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
     </div>
-  </div>
-</footer>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">青史成灰</h1>
+        <h5 class="subtitle">
+            
+                Every journey begins with the first step
+            
+        </h5>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-js-ASI"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-20 23:32:09" datetime="2017-04-20T15:32:09.000Z"  itemprop="datePublished">2017-04-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+    </div>
+
+    
 
 
-<script src="/js/script.js"></script>
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/20/js-ASI/">ASI(auto semicolon insertion)自动分号补齐</a>
+    </h3>
+  
 
-  </div>
-  <script src="//cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad()
-  </script>
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        ASI
+在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：
+
+
+return xxx(xxx是要返回的对象)
+throw xxx(xxx是要抛出的错误对象)
+bre...
+    
+
+        <a href="/2017/04/20/js-ASI/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-linux-config"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-20 01:23:39" datetime="2017-04-19T17:23:39.000Z"  itemprop="datePublished">2017-04-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/20/linux-config/">linux系统中常用的配置文件</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        ~, /
+以下讲解的都是针对用户级别的~, 不讲解系统级别的/。一些用户级别的配置，在系统级别也有相同的配置，就类似于全局变量和局部变量的关系。
+
+~/.bash_profile
+每个用户都可使用该文件配置自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,并且执行用户的~/.bashrc文件。
+
+~/.bash_logout
+每次退出bash she...
+    
+
+        <a href="/2017/04/20/linux-config/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-linux-command"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-20 01:21:30" datetime="2017-04-19T17:21:30.000Z"  itemprop="datePublished">2017-04-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/20/linux-command/">linux常用命令</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        创建软链接
+为某一个文件或目录在另外一个位置建立一个同步的链接，类似Windows下的快捷方式。-s选项表示创建的是软链接（符号链接）, 不加-s表示创建的是硬链接,我们常用的都是软链接。
+
+1ln -s 源文件 目标文件
+删除软连接
+Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的所有文件了。
+
+1rm -rf 目标文件或目录
+
+    
+
+        <a href="/2017/04/20/linux-command/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-shell-redirect"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-15 11:10:47" datetime="2017-04-15T03:10:47.000Z"  itemprop="datePublished">2017-04-15</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/15/shell-redirect/">shell重定向</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        重定向列表
+
+
+命令
+说明
+
+
+
+
+command &gt;&gt; file
+将输出以追加的方式重定向到file
+
+
+n &gt;&gt; file
+将文件描述符为n的文件已追加的方式重定向到file
+
+
+n &lt;&amp; m
+将输入文件m 和 n 合并
+
+
+&lt;&lt; tag
+将开始标记tag和结束标记tag之间的内容作为输入
+
+
+
+3个特殊文件
+
+
+文件类型
+文件描述符
+简...
+    
+
+        <a href="/2017/04/15/shell-redirect/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-sails"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-15 00:42:53" datetime="2017-04-14T16:42:53.000Z"  itemprop="datePublished">2017-04-15</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/15/sails/">sails</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        sails(v0.12) 目录结构123456789101112131415161718192021222324252627282930313233343536373839404142434445464748├── Gruntfile.js├── README.md├── api // 核心│   ├── controllers // 充当model和view的桥梁│   ├── model...
+    
+
+        <a href="/2017/04/15/sails/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sails/">sails</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-variable-hoist"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-05 23:05:04" datetime="2017-04-05T15:05:04.000Z"  itemprop="datePublished">2017-04-05</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/05/variable-hoist/">JS中变量提升</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        变量的生命周期
+声明阶段：这一阶段在作用域中注册一个变量。
+初始化阶段：这一阶段分配了内存并在作用域中让内存与变量建立了一个绑定。这一步变量自动被初始化为undefined。
+赋值阶段：这一阶段为初始化的变量分配一个具体的值。
+
+var变量生命周期
+
+当 JavaScript 遇到了一个函数作用域，其中包含了 var variable 的语句。则在任何语句执行之前，这个变量在作用域的开头就通...
+    
+
+        <a href="/2017/04/05/variable-hoist/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-z-index"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-05 14:25:57" datetime="2017-04-05T06:25:57.000Z"  itemprop="datePublished">2017-04-05</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/05/z-index/">深入理解z-index</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        z-index基本规则
+如果定位元素z-index没有发生嵌套（就是说一个定位元素的子元素的position都是static）,那么此时遵守的规则为：
+
+
+后来居上的准则
+哪个大，哪个上
+
+
+如果定位元素发生了嵌套
+祖先优先原则（z-index的值非auto）
+如果z-index: auto,那么就不遵守祖先优先的原则了   
+
+
+
+12345678// z-index的值非auto&lt;...
+    
+
+        <a href="/2017/04/05/z-index/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-shell-operation"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-30 21:10:24" datetime="2017-03-30T13:10:24.000Z"  itemprop="datePublished">2017-03-30</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/30/shell-operation/">shell运算符</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        表达式
+原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。一个完整的表达式需要用反引号(`)包裹, 在mac系统中，求值表达式也可以这样$(($a + $b))。表达式和运算符之间必须有空格，如2+2是不对的，必须写成2 + 2。乘号（*）在表达式中必须转义 expr $a \* $b,否则抛出syntax error
+
+条件表达式
+...
+    
+
+        <a href="/2017/03/30/shell-operation/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-shell-params"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-30 20:31:56" datetime="2017-03-30T12:31:56.000Z"  itemprop="datePublished">2017-03-30</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/30/shell-params/">shell传递参数</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        脚本获取参数格式$n
+n为从0开始的数字，$0：获取执行的脚本名称；$1获取第一个参数，$2获取第二个参数,以此类推。。。
+
+几个特殊的字符用来处理参数
+这些特殊的字符也可以用在shell函数中
+
+
+
+
+字符
+描述
+
+
+
+
+$#
+传递到脚本的个数
+
+
+$*
+以“$1 $2 … $n”的形式输出所有传递的参数
+
+
+$$
+脚本运行的当前进程ID号
+
+
+$!
+后台运行的最后一个进程ID号
+
+
+$@...
+    
+
+        <a href="/2017/03/30/shell-params/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-shell-variable"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-30 00:21:20" datetime="2017-03-29T16:21:20.000Z"  itemprop="datePublished">2017-03-30</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/30/shell-variable/">shell变量</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        变量的定义1your_name="rou"
+
+变量名只能有字母和下划线_组成，且不能使用bash里的关键字
+变量名和等号之间不能有空格
+
+使用变量123your_name="rou"echo $your_nameecho $&#123;your_name&#125; // 推荐使用这种方式
+只读变量1readonly myUrl="www.baidu.com"
+删除变量1unset vari...
+    
+
+        <a href="/2017/03/30/shell-variable/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    </div>
+</nav>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>xxxxxMiss &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/page/3/&title=青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/page/3/&title=青史成灰&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xxxxxmiss.github.io/page/3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=青史成灰&url=https://xxxxxmiss.github.io/page/3/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xxxxxmiss.github.io/page/3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABuUlEQVR42u3ay4rDMAwF0Pz/T7cwq0JpubJsNQzHqxBa5yQLoYevK16Pv/V6/Xon//37uk4sXFzcNjfZ7vsDvt//9N/FV8LFxR3kngteyQsUPgQuLu7NuLsouLi4/5ubr1sEMlxc3CI3eczelsfxWg0XF3ekS3nu+nh/FxcXd9NUolrMJElMJ1XCxcWd4e4qSKqhKk+AoowMFxd3K7czROm82IaSBhcX9zC3iuvstnYIAxcX91fcfGi6ltx02qm4uLiT3Ch8FIcu1eSmPILFxcUd5+ZNz7XjVtsGqLi4uIPcJITlbY58lJKURri4uDPcPOHYG2eSNuvH74qLizvOXRuodI5hFYofXFzcEW4VWt2oU/wUAiguLu5WbjU8JQ/oFDzlVikuLu4It3AYojgm2Vb84OLiHua28qClRmq+f4TGxcU9wH0UV9IeXQNFo1xcXNwRbjVgFSa3SyPYfmDFxcXdxU2CV942zY9yrj0LFxd3kpsHmvzgZmFQmh/jwMXFvRm33wDd0KLFxcW9Jbd6nKvaglkcn+Di4h7g5sVPtTmSpzhRSoSLizvCXWuYVgNTZyRTpuPi4q5zn82Cw0LIrImzAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
 </html>

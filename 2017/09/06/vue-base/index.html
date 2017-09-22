@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>vue-base | 青史成灰 | Every journey begins with the first step</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="vm.$mount( [elementOrSelector] )
+该方法返回vue实例本身。.vue文件，基本写法都是export default {}, 这导出的是一个构造配置选项。Vue构造函数如下
+
+1234567function Vue (options) &amp;#123;  if (process.env.NODE_ENV !== &apos;production&apos; &amp;amp;&amp;amp;    !(t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-base">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/09/06/vue-base/index.html">
+<meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="vm.$mount( [elementOrSelector] )
+该方法返回vue实例本身。.vue文件，基本写法都是export default {}, 这导出的是一个构造配置选项。Vue构造函数如下
+
+1234567function Vue (options) &amp;#123;  if (process.env.NODE_ENV !== &apos;production&apos; &amp;amp;&amp;amp;    !(t">
+<meta property="og:updated_time" content="2017-09-07T17:37:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-base">
+<meta name="twitter:description" content="vm.$mount( [elementOrSelector] )
+该方法返回vue实例本身。.vue文件，基本写法都是export default {}, 这导出的是一个构造配置选项。Vue构造函数如下
+
+1234567function Vue (options) &amp;#123;  if (process.env.NODE_ENV !== &apos;production&apos; &amp;amp;&amp;amp;    !(t">
+    
+        <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xxxxxMiss</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vue-base</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vue-base</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-09-06T03:11:27.000Z" itemprop="datePublished" class="page-time">
+  2017-09-06
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#vm-mount-elementOrSelector"><span class="post-toc-number">1.</span> <span class="post-toc-text">vm.$mount( [elementOrSelector] )</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#响应式"><span class="post-toc-number">2.</span> <span class="post-toc-text">响应式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Vue-util"><span class="post-toc-number">3.</span> <span class="post-toc-text">Vue.util</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Vue中props的校验"><span class="post-toc-number">4.</span> <span class="post-toc-text">Vue中props的校验</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-vue-base"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vue-base</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-09-06 11:11:27" datetime="2017-09-06T03:11:27.000Z"  itemprop="datePublished">2017-09-06</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="vm-mount-elementOrSelector"><a href="#vm-mount-elementOrSelector" class="headerlink" title="vm.$mount( [elementOrSelector] )"></a>vm.$mount( [elementOrSelector] )</h2><blockquote>
+<p>该方法返回vue实例本身。<code>.vue</code>文件，基本写法都是<code>export default {}</code>, 这导出的是一个构造配置选项。<br>Vue构造函数如下</p>
+</blockquote>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vue</span> <span class="params">(options)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp;</div><div class="line">    !(<span class="keyword">this</span> <span class="keyword">instanceof</span> Vue)) &#123;</div><div class="line">    warn(<span class="string">'Vue is a constructor and should be called with the `new` keyword'</span>)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>._init(options)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以我们.vue导出的就是构造函数需要的<code>options</code>。</p>
+<p>如果<code>options</code>提供了<code>el</code>选项，那么vm实例会挂载到<code>el</code>对应的dom元素上（el所对应的元素被vm生成的html字符串替换掉）。如果<code>options</code>选项为提供<code>el</code>选项，那么生成的vm实例处于未挂载的状态。</p>
+<p>但是我们.vue文件中，并未提供<code>el</code>选项，但是vm生成的html字符串依然可以正常的渲染在文档流中，为什么？</p>
+<blockquote>
+<p>因为我们在搭配路由使用的时候，需要指定<code>&lt;router-view&gt;</code>组件，其实该组件就是一个挂载点。</p>
+</blockquote>
+<p>TODO：经常看到<code>new Vue(options).$mount().$el</code>, 其实<code>new Vue(options).$el</code>返回同样的结果，有什么区别？</p>
+<h2 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h2><blockquote>
+</blockquote>
+<h2 id="Vue-util"><a href="#Vue-util" class="headerlink" title="Vue.util"></a>Vue.util</h2><blockquote>
+<p>Vue.util上挂载了一些有用的工具方法</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="string">var</span> <span class="string">util</span> <span class="string">=</span> <span class="string">Object.freeze(&#123;</span></div><div class="line"><span class="attr">  defineReactive:</span> <span class="string">defineReactive$$1,</span></div><div class="line"><span class="attr">  _toString:</span> <span class="string">_toString,</span></div><div class="line"><span class="attr">  toNumber:</span> <span class="string">toNumber,</span></div><div class="line"><span class="attr">  makeMap:</span> <span class="string">makeMap,</span></div><div class="line"><span class="attr">  isBuiltInTag:</span> <span class="string">isBuiltInTag,</span></div><div class="line"><span class="attr">  remove:</span> <span class="string">remove$1,</span></div><div class="line"><span class="attr">  hasOwn:</span> <span class="string">hasOwn,</span></div><div class="line"><span class="attr">  isPrimitive:</span> <span class="string">isPrimitive,</span></div><div class="line"><span class="attr">  cached:</span> <span class="string">cached,</span></div><div class="line"><span class="attr">  camelize:</span> <span class="string">camelize,</span></div><div class="line"><span class="attr">  capitalize:</span> <span class="string">capitalize,</span></div><div class="line"><span class="attr">  hyphenate:</span> <span class="string">hyphenate,</span></div><div class="line"><span class="attr">  bind:</span> <span class="string">bind$1,</span></div><div class="line"><span class="attr">  toArray:</span> <span class="string">toArray,</span></div><div class="line"><span class="attr">  extend:</span> <span class="string">extend,</span></div><div class="line"><span class="attr">  isObject:</span> <span class="string">isObject,</span></div><div class="line"><span class="attr">  isPlainObject:</span> <span class="string">isPlainObject,</span></div><div class="line"><span class="attr">  toObject:</span> <span class="string">toObject,</span></div><div class="line"><span class="attr">  noop:</span> <span class="string">noop,</span></div><div class="line"><span class="attr">  no:</span> <span class="literal">no</span><span class="string">,</span></div><div class="line"><span class="attr">  identity:</span> <span class="string">identity,</span></div><div class="line"><span class="attr">  genStaticKeys:</span> <span class="string">genStaticKeys,</span></div><div class="line"><span class="attr">  looseEqual:</span> <span class="string">looseEqual,</span></div><div class="line"><span class="attr">  looseIndexOf:</span> <span class="string">looseIndexOf,</span></div><div class="line"><span class="attr">  isReserved:</span> <span class="string">isReserved,</span></div><div class="line"><span class="attr">  def:</span> <span class="string">def,</span></div><div class="line"><span class="attr">  parsePath:</span> <span class="string">parsePath,</span></div><div class="line"><span class="attr">  hasProto:</span> <span class="string">hasProto,</span></div><div class="line"><span class="attr">  inBrowser:</span> <span class="string">inBrowser,</span></div><div class="line"><span class="attr">  UA:</span> <span class="string">UA,</span></div><div class="line"><span class="attr">  isIE:</span> <span class="string">isIE,</span></div><div class="line"><span class="attr">  isIE9:</span> <span class="string">isIE9,</span></div><div class="line"><span class="attr">  isEdge:</span> <span class="string">isEdge,</span></div><div class="line"><span class="attr">  isAndroid:</span> <span class="string">isAndroid,</span></div><div class="line"><span class="attr">  isIOS:</span> <span class="string">isIOS,</span></div><div class="line"><span class="attr">  isServerRendering:</span> <span class="string">isServerRendering,</span></div><div class="line"><span class="attr">  devtools:</span> <span class="string">devtools,</span></div><div class="line"><span class="attr">  nextTick:</span> <span class="string">nextTick,</span></div><div class="line">  <span class="string">get</span> <span class="string">_Set</span> <span class="string">()</span> <span class="string">&#123;</span> <span class="string">return</span> <span class="string">_Set;</span> <span class="string">&#125;,</span></div><div class="line"><span class="attr">  mergeOptions:</span> <span class="string">mergeOptions,</span></div><div class="line"><span class="attr">  resolveAsset:</span> <span class="string">resolveAsset,</span></div><div class="line">  <span class="string">get</span> <span class="string">warn</span> <span class="string">()</span> <span class="string">&#123;</span> <span class="string">return</span> <span class="string">warn;</span> <span class="string">&#125;,</span></div><div class="line">  <span class="string">get</span> <span class="string">formatComponentName</span> <span class="string">()</span> <span class="string">&#123;</span> <span class="string">return</span> <span class="string">formatComponentName;</span> <span class="string">&#125;,</span></div><div class="line"><span class="attr">  validateProp:</span> <span class="string">validateProp</span></div><div class="line"><span class="string">&#125;);</span></div></pre></td></tr></table></figure>
+<p>isServerRendering的实现：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _isServer;</div><div class="line"><span class="keyword">var</span> isServerRendering = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (_isServer === <span class="literal">undefined</span>) &#123;</div><div class="line">    <span class="comment">/* istanbul ignore if */</span></div><div class="line">    <span class="keyword">if</span> (!inBrowser &amp;&amp; <span class="keyword">typeof</span> global !== <span class="string">'undefined'</span>) &#123;</div><div class="line">      <span class="comment">// detect presence of vue-server-renderer and avoid</span></div><div class="line">      <span class="comment">// Webpack shimming the process</span></div><div class="line">      _isServer = global[<span class="string">'process'</span>].env.VUE_ENV === <span class="string">'server'</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      _isServer = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> _isServer</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// vm.$isServer，调用getter，执行isServerRendering函数</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(Vue$<span class="number">3.</span>prototype, <span class="string">'$isServer'</span>, &#123;</div><div class="line">  <span class="attr">get</span>: isServerRendering</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>camelize实现：</p>
+<blockquote>
+<p>将连字符变量名转化为驼峰命名</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> camelizeRE = <span class="regexp">/-(\w)/g</span>;</div><div class="line"><span class="keyword">var</span> camelize = cached(<span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> str.replace(camelizeRE, <span class="function"><span class="keyword">function</span> (<span class="params">_, c</span>) </span>&#123; <span class="keyword">return</span> c ? c.toUpperCase() : <span class="string">''</span>; &#125;)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>capitalize实现：</p>
+<blockquote>
+<p>将一个单词（变量名）的首字母转化为大写</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> capitalize = cached(<span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> str.charAt(<span class="number">0</span>).toUpperCase() + str.slice(<span class="number">1</span>)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>extend实现：</p>
+<blockquote>
+<p>将第二个对象的属性全部拷贝到第一个对象上并返回该对象.<br>to上的同名属性会被_from覆盖</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span> (<span class="params">to, _from</span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> _from) &#123;</div><div class="line">    to[key] = _from[key];</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> to</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Vue中props的校验"><a href="#Vue中props的校验" class="headerlink" title="Vue中props的校验"></a>Vue中props的校验</h2><figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Use function string name to<span class="built_in"> check </span>built-in types,</div><div class="line"> * because a simple equality<span class="built_in"> check </span>will fail when running</div><div class="line"> * across different vms / iframes.</div><div class="line"> */</div><div class="line">// 直接利用正则匹配出函数名</div><div class="line">function getType (fn) &#123;</div><div class="line">  var match = fn &amp;&amp; fn.toString().match(/^\s*function (\w+)/);</div><div class="line"> <span class="built_in"> return </span>match &amp;&amp; match[1]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-09-07T17:37:02.000Z" itemprop="dateUpdated">2017-09-08 01:37:02</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2017/09/06/vue-base/" target="_blank" rel="external">https://xxxxxmiss.github.io/2017/09/06/vue-base/</a>
+        
+    </div>
+    <footer>
+        <a href="https://xxxxxmiss.github.io">
+            <img src="/img/avatar.jpg" alt="xxxxxMiss">
+            xxxxxMiss
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2017/09/06/vue-base/&title=《vue-base》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2017/09/06/vue-base/&title=《vue-base》 — 青史成灰&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xxxxxmiss.github.io/2017/09/06/vue-base/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-base》 — 青史成灰&url=https://xxxxxmiss.github.io/2017/09/06/vue-base/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xxxxxmiss.github.io/2017/09/06/vue-base/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/09/19/git-plumbing-2/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">git进阶（二）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/20/git-plumbing/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">git进阶（一）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>xxxxxMiss &copy; 2015 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2017/09/06/vue-base/&title=《vue-base》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2017/09/06/vue-base/&title=《vue-base》 — 青史成灰&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xxxxxmiss.github.io/2017/09/06/vue-base/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue-base》 — 青史成灰&url=https://xxxxxmiss.github.io/2017/09/06/vue-base/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xxxxxmiss.github.io/2017/09/06/vue-base/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOUlEQVR42u3aS27DMAxF0ex/0+40QBDlPtIuIOp6FASxqqMBK35eL/xcb8/7N5+fv/1+vXL6VvGRIUPGtoxr+dQY6y2mK6/3JkOGjHMYZBNp0PwWiPnfIr+XIUOGDH6BW6+zDqzp8cmQIUNGh8GT29oKMmTIOJlBklgeWDsB9PFcXIYMGRsyeNX9/z8/0t+QIUPGVowrfGpXw7RJGe9KhgwZoxk8wPESG7848nYC2o8MGTIOY5A0ko9QrDfXaTm8+InKkCFjWwYfz0qzyFoprdickCFDxmhG59LWH0JN26jBWcqQIWMQo5OCpgUyvtoN0yIyZMgYxKilrLX2J28bpIcoQ4aM2Yx06IqHyHTIrBaCUSdWhgwZmzNqwxM8yNYGLGrBWoYMGVMZ/LU0CKbluXUboDhmIUOGjBGMWpK53lyQPTdKbDJkyDiHkQbcWimftxb4N62roQwZMrZi8LEJXiDrh9pa+0GGDBlTGbWGZRpYg8ofLsCh/oYMGTJGMHgCuX45fTcNr7zJKkOGjKkMUj4jS6eJbjrw+uPoZciQcQCDL8GDL78OkktqMDMiQ4aMwxidxLI2ilG8IMqQIWMo4wqftMRWK9vFVBkyZIxm9LuEHMmD+3NjZzJkyNiXQTZHlkvHMtJCXlxukyFDxjhGGvj6o2O1/wA/cnEZMmTIaDcv1wW4tLQX5MQyZMg4ksHDYmfMIkiDZciQcQDjrnS0355MD0KGDBknMHjqSL7nBbu72gMyZMgYzfgDOqnk8yuKAoAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
