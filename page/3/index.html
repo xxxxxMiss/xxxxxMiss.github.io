@@ -160,6 +160,110 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-webpack2-entry-context"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-24 16:32:33" datetime="2017-04-24T08:32:33.000Z"  itemprop="datePublished">2017-04-24</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/24/webpack2-entry-context/">webpack2-entry-context</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Entry anc Context
+告诉webpack哪个文件作为打包的入口点。
+
+context
+一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。
+
+1context: path.resove(__dirname, 'app'...
+    
+
+        <a href="/2017/04/24/webpack2-entry-context/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-linux-process"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-23 13:39:13" datetime="2017-04-23T05:39:13.000Z"  itemprop="datePublished">2017-04-23</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/23/linux-process/">linux进程</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        进程简介
+在unix或者linux系统中，每当运行一个程序，系统都会为这个程序创建一个特殊的环境，这个特殊的环境包含了运行该程序所依赖的一切东西。不论什么时候，你触发一个unix或者linux命令，都会创建或者启动一个新的进程。所以可以这样理解，一个进程，就是一个运行中的程序的实例，它包含了该程序执行所需要的一切依赖。
+
+进程追踪
+操作系统给每个进程分配一个5位数字的pid来标示每个进程，每...
+    
+
+        <a href="/2017/04/23/linux-process/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-js-ASI"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -598,138 +702,6 @@ var变量生命周期
     
 
         <a href="/2017/03/30/shell-operation/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-shell-params"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-03-30 20:31:56" datetime="2017-03-30T12:31:56.000Z"  itemprop="datePublished">2017-03-30</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/03/30/shell-params/">shell传递参数</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        脚本获取参数格式$n
-n为从0开始的数字，$0：获取执行的脚本名称；$1获取第一个参数，$2获取第二个参数,以此类推。。。
-
-几个特殊的字符用来处理参数
-这些特殊的字符也可以用在shell函数中
-
-
-
-
-字符
-描述
-
-
-
-
-$#
-传递到脚本的个数
-
-
-$*
-以“$1 $2 … $n”的形式输出所有传递的参数
-
-
-$$
-脚本运行的当前进程ID号
-
-
-$!
-后台运行的最后一个进程ID号
-
-
-$@...
-    
-
-        <a href="/2017/03/30/shell-params/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-shell-variable"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-03-30 00:21:20" datetime="2017-03-29T16:21:20.000Z"  itemprop="datePublished">2017-03-30</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/03/30/shell-variable/">shell变量</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        变量的定义1your_name="rou"
-
-变量名只能有字母和下划线_组成，且不能使用bash里的关键字
-变量名和等号之间不能有空格
-
-使用变量123your_name="rou"echo $your_nameecho $&#123;your_name&#125; // 推荐使用这种方式
-只读变量1readonly myUrl="www.baidu.com"
-删除变量1unset vari...
-    
-
-        <a href="/2017/03/30/shell-variable/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
