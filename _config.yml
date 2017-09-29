@@ -72,7 +72,7 @@ theme: indigo
 deploy:
   type: git
   repo: git@github.com:xxxxxMiss/xxxxxMiss.github.io.git
-  branch: 
+  branch:
   message:
 
 #

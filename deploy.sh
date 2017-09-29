@@ -31,7 +31,9 @@ select option in "Yes" "No"; do
     fi
 
     git commit -m "${commit_msg}" \
-    && git push git@github.com:xxxxxMiss/xxxxxMiss.github.io.git master:gh-pages
+    && git push git@github.com:xxxxxMiss/xxxxxMiss.github.io.git master:gh-pages \
+    && echo -e "\033[32m push completed...\033[0m" \
+    && exit 0
     ;;
     No )
     echo -e "\033[32m Bye! \033[0m"
