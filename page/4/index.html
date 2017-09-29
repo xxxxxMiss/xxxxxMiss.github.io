@@ -160,6 +160,57 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-shell-operation"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-30 21:10:24" datetime="2017-03-30T13:10:24.000Z"  itemprop="datePublished">2017-03-30</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/30/shell-operation/">shell运算符</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        表达式
+原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。一个完整的表达式需要用反引号(`)包裹, 在mac系统中，求值表达式也可以这样$(($a + $b))。表达式和运算符之间必须有空格，如2+2是不对的，必须写成2 + 2。乘号（*）在表达式中必须转义 expr $a \* $b,否则抛出syntax error
+
+条件表达式
+...
+    
+
+        <a href="/2017/03/30/shell-operation/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-shell-params"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -643,56 +694,6 @@ output.filenamestring
     
 
         <a href="/2017/03/22/webpack2-ensure/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-webpack2-coding-split"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-03-22 10:57:18" datetime="2017-03-22T02:57:18.000Z"  itemprop="datePublished">2017-03-22</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/03/22/webpack2-coding-split/">webpack2-conding-split</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        [TOC]
-代码分割
-一个应用有第三方库和程序代码组成，第三方库和程序代码最大的不同就是一般第三方库是不会轻易改动的。
-在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。实现假如在index.js中引用第三方库moment.jsindex.js12var moment = ...
-    
-
-        <a href="/2017/03/22/webpack2-coding-split/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
