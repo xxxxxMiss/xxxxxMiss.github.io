@@ -6,10 +6,10 @@ tags:
     - frontend-framework
 ---
 ## 环境
-- Node
+- [Node](https://nodejs.org/en/)
 - [github](https://github.com/)
 - [git-pages](https://pages.github.com/)
-- git或者其他的版本控制工具
+- [git](https://git-scm.com/)或者其他的版本控制工具
 - [Hexo](https://github.com/hexojs/hexo)或者其他的SSG
 
 ## Hexo相关配置
@@ -29,9 +29,11 @@ tags:
 
 > 推送到仓库到远程
 
+当然，你也可以加入自己的逻辑，用脚本将这些命令串起来，这样在发布以及提交源代码的时候就可以一步到位：比如[像这样](https://github.com/xxxxxMiss/xxxxxMiss.github.io/blob/gh-pages/deploy.sh)
 
 ## markdown语法
-> [markdown](http://www.appinn.com/markdown/)
+> github上常用markdown语法：[Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
+> 简体中文版：[markdown](http://www.appinn.com/markdown/)
 
 注意：
 - 在hexo中使用markdown时，引用外部资源的时候，需要按照hexo提供的语法来引用。
