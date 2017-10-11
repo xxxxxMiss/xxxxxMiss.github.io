@@ -63,15 +63,17 @@
     <link href="https://xxxxxmiss.github.io/2017/09/28/event-1/"/>
     <id>https://xxxxxmiss.github.io/2017/09/28/event-1/</id>
     <published>2017-09-28T03:50:36.000Z</published>
-    <updated>2017-09-29T06:58:26.000Z</updated>
+    <updated>2017-10-11T04:04:33.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="浏览器事件系统"><a href="#浏览器事件系统" class="headerlink" title="浏览器事件系统"></a>浏览器事件系统</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="浏览器事件系统"><a href="#浏览器事件系统" class="headerlink" title="浏览器事件系统"></a>浏览器事件系统</h2><ul><li>[x] this is a completed item</li><li>[ ] this is a incomplete item</li></ul><p>emoji! :sparkles: :camel: :boom:</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;浏览器事件系统&quot;&gt;&lt;a href=&quot;#浏览器事件系统&quot; class=&quot;headerlink&quot; title=&quot;浏览器事件系统&quot;&gt;&lt;/a&gt;浏览器事件系统&lt;/h2&gt;
+        &lt;h2 id=&quot;浏览器事件系统&quot;&gt;&lt;a href=&quot;#浏览器事件系统&quot; class=&quot;headerlink&quot; title=&quot;浏览器事件系统&quot;&gt;&lt;/a&gt;浏览器事件系统&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;[x] this is a completed item&lt;/li&gt;
+&lt;li&gt;[ ] th
       
     
     </summary>
