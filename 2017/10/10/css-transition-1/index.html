@@ -20,13 +20,43 @@
     
     
     <meta name="keywords" content="css">
-    <meta property="og:type" content="article">
+    <meta name="description" content=".container{
+     margin: 50px;
+   }
+   .btn{
+     position: relative;
+     display: inline-block;
+     box-sizing: border-box;
+     outline: none;
+     border: 1px solid #ebebeb;
+     padding: 0 1">
+<meta property="og:type" content="article">
 <meta property="og:title" content="css动画常见案例">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/10/10/css-transition-1/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:updated_time" content="2017-10-10T12:49:34.000Z">
+<meta property="og:description" content=".container{
+     margin: 50px;
+   }
+   .btn{
+     position: relative;
+     display: inline-block;
+     box-sizing: border-box;
+     outline: none;
+     border: 1px solid #ebebeb;
+     padding: 0 1">
+<meta property="og:updated_time" content="2017-10-14T12:28:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css动画常见案例">
+<meta name="twitter:description" content=".container{
+     margin: 50px;
+   }
+   .btn{
+     position: relative;
+     display: inline-block;
+     box-sizing: border-box;
+     outline: none;
+     border: 1px solid #ebebeb;
+     padding: 0 1">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -71,7 +101,7 @@
             <li class="waves-block waves-effect">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                Archives
+                存档
               </a>
             </li>
         
@@ -151,6 +181,8 @@
 </time>
 
 
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/frontend/">frontend</a></li></ul>
+
             
         </h5>
     </div>
@@ -163,6 +195,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#按钮"><span class="post-toc-number">1.</span> <span class="post-toc-text">按钮</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#闪烁效果"><span class="post-toc-number">2.</span> <span class="post-toc-text">闪烁效果</span></a></li></ol>
+        </nav>
+    </aside>
+    
 <article id="post-css-transition-1"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -172,6 +211,8 @@
             <time class="post-time" title="2017-10-10 20:28:18" datetime="2017-10-10T12:28:18.000Z"  itemprop="datePublished">2017-10-10</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/frontend/">frontend</a></li></ul>
+
 
 
             
@@ -182,14 +223,119 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <style type="text/css" media="screen">
+   .container{
+     margin: 50px;
+   }
+   .btn{
+     position: relative;
+     display: inline-block;
+     box-sizing: border-box;
+     outline: none;
+     border: 1px solid #ebebeb;
+     padding: 0 15px;
+     height: 30px;
+     line-height: 30px;
+     border-radius: 4px;
+     user-select: none;
+     cursor: pointer;
+     text-align: center;
+     color: #fff;
+     background-color: #00c1de;
+   }
+   .btn.btn-blink:after{
+     position: absolute;
+     content: "";
+     top: 0;
+     left: 0;
+     bottom: 0;
+     right: 0;
+     border: 1px solid #00c1de;
+     border-radius: 4px;
+     box-shadow: 0 0 2px 0 #00c1de;
+     animation: blink .3s cubic-bezier(.645,.045,.355,1);
+   }
+   @keyframes blink{
+     from {
+       opacity: 1;
+       transform: scale(1);
+     }
+     to {
+       opacity: 0;
+       transform: scale3d(1.15, 1.25, 0);
+     }
+   }
+
+   .btn-round-blink{
+     font-size: 30px;
+     font-weight: 500;
+     margin: 0 30px;
+     height: 30px;
+     width: 30px;
+     border-radius: 50%;
+   }
+   .btn-round-blink:before,
+   .btn-round-blink:after{
+     position: absolute;
+     content: "";
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     border: 1px solid #00c1de;
+     border-radius: 50%;
+   }
+   .btn-round-blink:before{
+     animation: round-blink 2s infinite;
+   }
+   .btn-round-blink:after{
+     animation: round-blink 1s infinite;
+   }
+
+   @keyframes round-blink{
+     from {
+       opacity: 1;
+       transform: scale(1);
+     }
+     to {
+       opacity: 0;
+       transform: scale(1.88);
+     }
+   }
+</style>
+
+<div class="container"><br>    <button id="btn">点击查看效果</button><br>    <button class="btn btn-round-blink"></button><br></div>
+
+<script>
+  var btn = document.getElementById('btn')
+  btn.addEventListener('mouseup', function () {
+    this.classList.add('btn-blink')
+  })
+  btn.addEventListener('animationend', function () {
+    this.classList.remove('btn-blink')
+  })
+</script>
+
+<blockquote>
+<p>本篇主要内容是如何自己实现各种网站，UI框架的一些过渡效果</p>
+</blockquote>
+<h2 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h2><blockquote>
+<p>之前看到<a href="https://ant.design/components/button-cn/" target="_blank" rel="external">ant design</a>上按钮的那种点击效果，于是按照自己的思路来模拟下。</p>
+</blockquote>
+<p>这种效果其实有多种实现方式，我们这里提供一种:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">// 按钮的样式</div><div class="line">.btn&#123;</div><div class="line">  position: relative;</div><div class="line">  display: inline-block;</div><div class="line">  box-sizing: border-box;</div><div class="line">  outline: none;</div><div class="line">  border: 1px solid #ebebeb;</div><div class="line">  padding: 0 15px;</div><div class="line">  height: 30px;</div><div class="line">  line-height: 30px;</div><div class="line">  border-radius: 4px;</div><div class="line">  user-select: none;</div><div class="line">  cursor: pointer;</div><div class="line">  text-align: center;</div><div class="line">  color: #fff;</div><div class="line">  background-color: #00c1de;</div><div class="line">&#125;</div><div class="line">// 一闪而过的矩形</div><div class="line">.btn.btn-blink:after&#123;</div><div class="line">  position: absolute;</div><div class="line">  content: "";</div><div class="line">  top: 0;</div><div class="line">  left: 0;</div><div class="line">  bottom: 0;</div><div class="line">  right: 0;</div><div class="line">  border: 1px solid #00c1de;</div><div class="line">  border-radius: 4px;</div><div class="line">  box-shadow: 0 0 2px 0 #00c1de;</div><div class="line">  animation: blink .3s cubic-bezier(.645,.045,.355,1);</div><div class="line">&#125;</div><div class="line">// 一闪而过的动画</div><div class="line">@keyframes blink&#123;</div><div class="line">  from &#123;</div><div class="line">    opacity: 1;</div><div class="line">    transform: scale(1);</div><div class="line">  &#125;</div><div class="line">  to &#123;</div><div class="line">    opacity: 0;</div><div class="line">    transform: scale3d(1.15, 1.25, 0);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="闪烁效果"><a href="#闪烁效果" class="headerlink" title="闪烁效果"></a>闪烁效果</h2><blockquote>
+<p>这种效果就跟水波一样，一层一层的像远处散开然后消失。<br>最简单的用before和after伪类就可以实现，当然了这也只是一种实现。如果觉得不够逼真，那么就需要你慢慢的调试，改动缓动函数以及动画执行的事件。</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">.btn&#123;</div><div class="line">    // 同上 </div><div class="line">&#125;</div><div class="line">.btn-round-blink&#123;</div><div class="line">  font-size: 30px;</div><div class="line">  font-weight: 500;</div><div class="line">  margin: 0 30px;</div><div class="line">  height: 30px;</div><div class="line">  width: 30px;</div><div class="line">  border-radius: 50%;</div><div class="line">&#125;</div><div class="line">.btn-round-blink:before,</div><div class="line">.btn-round-blink:after&#123;</div><div class="line">  position: absolute;</div><div class="line">  content: "";</div><div class="line">  top: 0;</div><div class="line">  left: 0;</div><div class="line">  right: 0;</div><div class="line">  bottom: 0;</div><div class="line">  border: 1px solid #00c1de;</div><div class="line">  border-radius: 50%;</div><div class="line">&#125;</div><div class="line">.btn-round-blink:before&#123;</div><div class="line">  animation: round-blink 2s infinite;</div><div class="line">&#125;</div><div class="line">.btn-round-blink:after&#123;</div><div class="line">  animation: round-blink 1s infinite;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-10-10T12:49:34.000Z" itemprop="dateUpdated">2017-10-10 20:49:34</time>
+    最后更新时间：<time datetime="2017-10-14T12:28:01.000Z" itemprop="dateUpdated">2017-10-14 20:28:01</time>
 </span><br>
 
 
@@ -270,7 +416,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/14/nodejs-deploy/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">centos7部署nodejs+mongodb工程</h4>
+      </a>
+    </div>
   
 
   

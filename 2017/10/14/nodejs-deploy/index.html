@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>centos7部署nodejs+mongodb工程 | 青史成灰 | Every journey begins with the first step</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="nodejs,mongodb">
+    <meta name="description" content="通过ssh登录阿里云主机
+ssh username@公网ip
+
+1234567891011121314151617181920binbootdevetchomeliblib64lost+foundmediamntoptprocroot    [使用ssh root@公网ip成功登录后进入的目录]runsbinsrvsystmpusrvar
+当使用root用户登录以后，会进入root目录，当你切换到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos7部署nodejs+mongodb工程">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/index.html">
+<meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="通过ssh登录阿里云主机
+ssh username@公网ip
+
+1234567891011121314151617181920binbootdevetchomeliblib64lost+foundmediamntoptprocroot    [使用ssh root@公网ip成功登录后进入的目录]runsbinsrvsystmpusrvar
+当使用root用户登录以后，会进入root目录，当你切换到">
+<meta property="og:updated_time" content="2017-10-14T09:28:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="centos7部署nodejs+mongodb工程">
+<meta name="twitter:description" content="通过ssh登录阿里云主机
+ssh username@公网ip
+
+1234567891011121314151617181920binbootdevetchomeliblib64lost+foundmediamntoptprocroot    [使用ssh root@公网ip成功登录后进入的目录]runsbinsrvsystmpusrvar
+当使用root用户登录以后，会进入root目录，当你切换到">
+    
+        <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.gif">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xxxxxMiss</h5>
+          <a href="mailto:794465731@qq.com" title="794465731@qq.com" class="mail">794465731@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                存档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/xxxxxMiss" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/qschqd" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">centos7部署nodejs+mongodb工程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">centos7部署nodejs+mongodb工程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-14T06:13:20.000Z" itemprop="datePublished" class="page-time">
+  2017-10-14
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#通过ssh登录阿里云主机"><span class="post-toc-number">1.</span> <span class="post-toc-text">通过ssh登录阿里云主机</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装nvm"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装nvm</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装nodejs"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装nodejs</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装mongodb"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装mongodb</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置包管理系统-yum"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">配置包管理系统(yum)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装mongodb包和相关的工具"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">安装mongodb包和相关的工具</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动mongodb"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">启动mongodb</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看mongodb是否成功启动"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">查看mongodb是否成功启动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#停止mongodb"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">停止mongodb</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重启mongodb"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">重启mongodb</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#卸载mongodb"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">卸载mongodb</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#停止mongodb-1"><span class="post-toc-number">4.7.1.</span> <span class="post-toc-text">停止mongodb</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#移除包"><span class="post-toc-number">4.7.2.</span> <span class="post-toc-text">移除包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#移除数据"><span class="post-toc-number">4.7.3.</span> <span class="post-toc-text">移除数据</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装nginx"><span class="post-toc-number">5.</span> <span class="post-toc-text">安装nginx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装nginx所需的几个依赖包"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">安装nginx所需的几个依赖包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通过源码构建"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">通过源码构建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动nginx"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">启动nginx</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重启nginx"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">重启nginx</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装git"><span class="post-toc-number">6.</span> <span class="post-toc-text">安装git</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装pm2"><span class="post-toc-number">7.</span> <span class="post-toc-text">安装pm2</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开始部署项目"><span class="post-toc-number">8.</span> <span class="post-toc-text">开始部署项目</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#克隆nodejs工程到阿里云主机"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">克隆nodejs工程到阿里云主机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装工程依赖"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">安装工程依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动工程"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">启动工程</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-nodejs-deploy"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">centos7部署nodejs+mongodb工程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-14 14:13:20" datetime="2017-10-14T06:13:20.000Z"  itemprop="datePublished">2017-10-14</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="通过ssh登录阿里云主机"><a href="#通过ssh登录阿里云主机" class="headerlink" title="通过ssh登录阿里云主机"></a>通过ssh登录阿里云主机</h2><blockquote>
+<p>ssh username@公网ip</p>
+</blockquote>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">bin</div><div class="line">boot</div><div class="line">dev</div><div class="line">etc</div><div class="line">home</div><div class="line"><span class="class"><span class="keyword">lib</span></span></div><div class="line">lib64</div><div class="line">lost+found</div><div class="line">media</div><div class="line">mnt</div><div class="line">opt</div><div class="line">proc</div><div class="line">root    [使用ssh root@公网ip成功登录后进入的目录]</div><div class="line">run</div><div class="line">sbin</div><div class="line">srv</div><div class="line">sys</div><div class="line">tmp</div><div class="line">usr</div><div class="line">var</div></pre></td></tr></table></figure>
+<p>当使用root用户登录以后，会进入root目录，当你切换到上一层目录后，会看到如上所示的目录结构。</p>
+<h2 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h2><blockquote>
+<p>通过上一步的登录阿里云主机之后，你可以直接在root目录下，也可以新建其他的目录，然后安装nvm。<br><code>nvm</code>是node版本管理工具，通过该工具可以很方便的管理Node版本。</p>
+</blockquote>
+<p>具体的安装步骤参考官方文档：<br><a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a></p>
+<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><blockquote>
+<p>一旦<code>nvm</code>成功安装以后，我们就可以通过<code>nvm</code>来安装nodejs。比如：</p>
+</blockquote>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm install <span class="keyword">node</span> <span class="title">// 安装最新版的nodejs</span></div></pre></td></tr></table></figure>
+<h2 id="安装mongodb"><a href="#安装mongodb" class="headerlink" title="安装mongodb"></a>安装mongodb</h2><blockquote>
+<p>具体的安装细节可以参照<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/" target="_blank" rel="external">mongodb官方文档</a>。</p>
+</blockquote>
+<p>注意： 下面以在<strong>64-bit systems</strong>安装最新版的<strong>mongdb3.4</strong>为例：</p>
+<h3 id="配置包管理系统-yum"><a href="#配置包管理系统-yum" class="headerlink" title="配置包管理系统(yum)"></a>配置包管理系统(yum)</h3><blockquote>
+<p>新建/etc/yum.repos.d/mongodb-org-3.4.repo文件，然后将以下代码拷贝到该文件中.</p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="section">[mongodb-org-3.4]</span></div><div class="line"><span class="attr">name</span>=MongoDB Repository</div><div class="line"><span class="attr">baseurl</span>=https://repo.mongodb.org/yum/redhat/<span class="variable">$releasever</span>/mongodb-org/<span class="number">3.4</span>/x<span class="number">86_64</span>/</div><div class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></div><div class="line"><span class="attr">enabled</span>=<span class="number">1</span></div><div class="line"><span class="attr">gpgkey</span>=https://www.mongodb.org/static/pgp/server-<span class="number">3.4</span>.asc</div></pre></td></tr></table></figure>
+<h3 id="安装mongodb包和相关的工具"><a href="#安装mongodb包和相关的工具" class="headerlink" title="安装mongodb包和相关的工具"></a>安装mongodb包和相关的工具</h3><blockquote>
+<p>sudo yum install -y mongodb-org</p>
+</blockquote>
+<p>默认情况下，mongodb存储数据在<code>/var/lib/mongo</code>，日志文件在<code>/var/log/mongodb</code>。当然，这些配置都是可以在<code>/etc/mongod.conf</code>中修改。</p>
+<h3 id="启动mongodb"><a href="#启动mongodb" class="headerlink" title="启动mongodb"></a>启动mongodb</h3><blockquote>
+<p>sudo service mongod start</p>
+</blockquote>
+<h3 id="查看mongodb是否成功启动"><a href="#查看mongodb是否成功启动" class="headerlink" title="查看mongodb是否成功启动"></a>查看mongodb是否成功启动</h3><blockquote>
+<p>在日志文件中查看是否有这样的一行：[initandlisten] waiting for connections on port <port></port></p>
+</blockquote>
+<p>port：默认端口27017，可以在<code>/etc/mongod.conf</code>中修改。</p>
+<h3 id="停止mongodb"><a href="#停止mongodb" class="headerlink" title="停止mongodb"></a>停止mongodb</h3><blockquote>
+<p>sudo service mongod stop</p>
+</blockquote>
+<h3 id="重启mongodb"><a href="#重启mongodb" class="headerlink" title="重启mongodb"></a>重启mongodb</h3><blockquote>
+<p>sudo service mongod restart</p>
+</blockquote>
+<h3 id="卸载mongodb"><a href="#卸载mongodb" class="headerlink" title="卸载mongodb"></a>卸载mongodb</h3><blockquote>
+<p>卸载mongodb，会将mongodb程序本身，他的配置文件，以及所有的数据删除，并且该过程是不可逆的。所以在卸载之前，确保已经备份。</p>
+</blockquote>
+<h4 id="停止mongodb-1"><a href="#停止mongodb-1" class="headerlink" title="停止mongodb"></a>停止mongodb</h4><blockquote>
+<p>sudo service mongod stop</p>
+</blockquote>
+<h4 id="移除包"><a href="#移除包" class="headerlink" title="移除包"></a>移除包</h4><blockquote>
+<p>sudo yum erase $(rpm -qa | grep mongodb-org)</p>
+</blockquote>
+<h4 id="移除数据"><a href="#移除数据" class="headerlink" title="移除数据"></a>移除数据</h4><blockquote>
+<p>sudo rm -r /var/log/mongodb<br>sudo rm -r /var/lib/mongo</p>
+</blockquote>
+<h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><blockquote>
+<p>可以直接从官网下载压缩包，也可以通过源码构建。因为nginx还依赖一些其他的包来扩展功能，所以还需要安装一些其他的依赖包。具体选择安装哪些依赖包，看你需要什么功能。</p>
+</blockquote>
+<h3 id="安装nginx所需的几个依赖包"><a href="#安装nginx所需的几个依赖包" class="headerlink" title="安装nginx所需的几个依赖包"></a>安装nginx所需的几个依赖包</h3><blockquote>
+<p>yum install gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel</p>
+</blockquote>
+<h3 id="通过源码构建"><a href="#通过源码构建" class="headerlink" title="通过源码构建"></a>通过源码构建</h3><blockquote>
+<p><a href="http://nginx.org/en/docs/configure.html" target="_blank" rel="external">build nginx from source</a></p>
+</blockquote>
+<h3 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h3><blockquote>
+<p>service nginx start</p>
+</blockquote>
+<h3 id="重启nginx"><a href="#重启nginx" class="headerlink" title="重启nginx"></a>重启nginx</h3><blockquote>
+<p>service nginx restart</p>
+</blockquote>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><blockquote>
+<p>yum install git</p>
+</blockquote>
+<p>更多git信息<a href="https://git-scm.com/download/linux" target="_blank" rel="external">传送门</a></p>
+<h2 id="安装pm2"><a href="#安装pm2" class="headerlink" title="安装pm2"></a>安装pm2</h2><blockquote>
+<p>npm install pm2 -g</p>
+</blockquote>
+<p>更多pm2信息<a href="https://github.com/Unitech/pm2" target="_blank" rel="external">传送门</a></p>
+<h2 id="开始部署项目"><a href="#开始部署项目" class="headerlink" title="开始部署项目"></a>开始部署项目</h2><blockquote>
+<p>当上面的准备工作全部成功的完成以后，我们就可以部署我们的nodejs工程了。</p>
+</blockquote>
+<h3 id="克隆nodejs工程到阿里云主机"><a href="#克隆nodejs工程到阿里云主机" class="headerlink" title="克隆nodejs工程到阿里云主机"></a>克隆nodejs工程到阿里云主机</h3><blockquote>
+<p>git clone …</p>
+</blockquote>
+<h3 id="安装工程依赖"><a href="#安装工程依赖" class="headerlink" title="安装工程依赖"></a>安装工程依赖</h3><blockquote>
+<p>npm install</p>
+</blockquote>
+<h3 id="启动工程"><a href="#启动工程" class="headerlink" title="启动工程"></a>启动工程</h3><blockquote>
+<p>pm2 start app.js</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-10-14T09:28:49.000Z" itemprop="dateUpdated">2017-10-14 17:28:49</time>
+</span><br>
+
+
+        
+        <!-- 此处因为使用了lodash的template方法，所以可以注入html字符串 -->
+        文章中有任何不对或者讲的不足的地方，欢迎评论，也可发邮件至794465731@qq.com或者xxxxxmiss@gmail.com
+        
+    </div>
+    <footer>
+        <a href="https://xxxxxmiss.github.io">
+            <img src="/img/avatar.gif" alt="xxxxxMiss">
+            xxxxxMiss
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/&title=《centos7部署nodejs+mongodb工程》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.gif" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/&title=《centos7部署nodejs+mongodb工程》 — 青史成灰&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《centos7部署nodejs+mongodb工程》 — 青史成灰&url=https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/10/css-transition-1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">css动画常见案例</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'xxxxxMiss',
+            repo: 'xxxxxMiss.github.io',
+            oauth: {
+                client_id: 'c884dd9d2dfab48c79be',
+                client_secret: 'dc8fb124cf576aaed6500ffbd59545c1ccf98a06',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>xxxxxMiss &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/&title=《centos7部署nodejs+mongodb工程》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.gif" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/&title=《centos7部署nodejs+mongodb工程》 — 青史成灰&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《centos7部署nodejs+mongodb工程》 — 青史成灰&url=https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xxxxxmiss.github.io/2017/10/14/nodejs-deploy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3a0W7jQAgF0Pz/T7vSPlVqk1zArjb4zFNlV7bPVKIw8HjE6/i3kuvfrzy7+3P9vPu4YmFgYHws43i5Xr8gv/56I579ZvJtGBgY92G8DqY5dR6ge8/BwMDAyENqEljzLcDAwMCYMCaY/yjgYmBgfBQjD4gTZF64XliLY2BgfCCj2hj4y58v7G9gYGB8COMorjwpTO72vuGX52BgYKxmJC+oNgzyqJiPdCTpJgYGxlbG5PW90nRSvj59FwYGxmpGHtTyo7fqcNikUYqBgXEHRvJBvYGwvPjMGW9yWwwMjKWMPNlK0sezPqX6NAwMjN2Ms5qLvTZAb8ziaS2OgYGxlJHH4wmmevTfK60xMDC2Ms4dp+h9aJ4mvkkNMTAwljKSEYrq2EQ5mWs1St/838DAwFjE6A1D5Adz1T5q0kj45V0YGBirGZMw2guOk/K43N/AwMBYwcg/Lh/LSBLB6qRE+S+AgYGxiDE5vs9TtysO4JozbhgYGCsYR7Cq53m9Z5abEBgYGEsZ1eZlr7mYH6KNGgMYGBg3ZuSJ47nFcH70hoGBsZvRW0kyVy2PzyqbMTAw9jGO4prv0OSZT7cMAwNjNeOKw/p8LCwJ0812JgYGxjpGdeSiV/Tmbc7qpmBgYNyH0StWz00HR6EfAwMDo1h2VkNzftz/JjXEwMDAaI1tTYJ1YVsxMDBuwJiMSpx13D8pcTEwMHYzJqVj82js5ZN7G4qBgbGU8QVhDBQZ08mlRQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1264698790&web_id=1264698790')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'where are you going?';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'come back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
