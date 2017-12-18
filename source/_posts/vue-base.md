@@ -153,3 +153,46 @@ function getType (fn) {
   return match && match[1]
 }
 ```
+
+## 默认子路由
+> 当一个命名路由需要显示一个默认的子路由时，那么当从一个路由跳转到该路由时，必须使用`path`或则`redirect`来跳转，不能使用路由的名字导航，否则默认子路由无法渲染。
+
+```js
+routes: [
+  {
+    path: '/user', 
+    component: User,
+    name: 'user'
+    children: [
+      { path: '', component: UserArticle },
+      { path: 'article', component: UserArticle },
+      { path: 'follower', component: UserFollower }
+    ]
+  }
+]
+```
+
+```html
+<!-- 这种情况下是无法渲染默认子路由 article的 -->
+<router-link :to="{name: 'user' }"></router-link>
+
+<!-- 必须使用路径，这样就正确了 -->
+<router-link :to="{path: '/user/article'}"></router-link>
+```
+
+或则在路由配置中使用`redirect`选项:
+```js
+routes: [
+  {
+    path: '/user', 
+    component: User,
+    redirect: '/user/article'
+    children: [
+      { path: 'article', component: UserArticle },
+      { path: 'follower', component: UserFollower }
+    ]
+  }
+]
+```
+
+源码参看：line:95 vue-router/src/create-route-map.js

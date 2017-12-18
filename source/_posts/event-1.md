@@ -6,3 +6,8 @@ tags:
 ---
 
 ## 浏览器事件系统
+
+- [x] this is a completed item
+- [ ] this is a incomplete item
+
+emoji! :sparkles: :camel: :boom:

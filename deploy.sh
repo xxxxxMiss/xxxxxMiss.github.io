@@ -23,11 +23,12 @@ select option in "Yes" "No"; do
     Yes )
     git add .
 
-    if [[ -z ${#new_files[@]} ]]; then
-      read -r -p "Enter a commit msg" msg
-      commit_msg=$msg
-    else
+    read -t 5 -p "Enter a commit msg" msg
+
+    if [[ -z $msg ]]; then
       commit_msg=${new_files[@]}
+    else
+      commit_msg=$msg
     fi
 
     git commit -m "${commit_msg}" \
