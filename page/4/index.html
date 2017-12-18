@@ -160,6 +160,131 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-shell-redirect"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-15 11:10:47" datetime="2017-04-15T03:10:47.000Z"  itemprop="datePublished">2017-04-15</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/15/shell-redirect/">shell重定向</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        重定向列表
+
+
+命令
+说明
+
+
+
+
+command &gt;&gt; file
+将输出以追加的方式重定向到file
+
+
+n &gt;&gt; file
+将文件描述符为n的文件已追加的方式重定向到file
+
+
+n &lt;&amp; m
+将输入文件m 和 n 合并
+
+
+&lt;&lt; tag
+将开始标记tag和结束标记tag之间的内容作为输入
+
+
+
+3个特殊文件
+
+
+文件类型
+文件描述符
+简...
+    
+
+        <a href="/2017/04/15/shell-redirect/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-sails"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-15 00:42:53" datetime="2017-04-14T16:42:53.000Z"  itemprop="datePublished">2017-04-15</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/15/sails/">sails</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        sails(v0.12) 目录结构123456789101112131415161718192021222324252627282930313233343536373839404142434445464748├── Gruntfile.js├── README.md├── api // 核心│   ├── controllers // 充当model和view的桥梁│   ├── model...
+    
+
+        <a href="/2017/04/15/sails/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sails/">sails</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-variable-hoist"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -599,116 +724,6 @@ resolve.aliasobject
     
 
         <a href="/2017/03/22/webpack2-resolve/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-webpack2-module"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-03-22 10:59:48" datetime="2017-03-22T02:59:48.000Z"  itemprop="datePublished">2017-03-22</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/03/22/webpack2-module/">webpack2-module</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-本章节主要介绍module常用配置项一个工程中的各种modules应该如何被webpack处理。
-
-module.noParseRegExp
-
-让webpack不解析匹配到正则的模块，比如一些第三方库或者辅助模块，我们不需要解析的，那么就可以通过该选项来配置，这样可以节省编译的时间。
-
-noParse: /jquery|backbone/
-这章讲解的内容配置起来是最简单的，但是用文字描述起...
-    
-
-        <a href="/2017/03/22/webpack2-module/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-webpack2-output"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-03-22 10:59:12" datetime="2017-03-22T02:59:12.000Z"  itemprop="datePublished">2017-03-22</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/03/22/webpack2-output/">webpack2-output</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-本章节主要介绍output常用配置项
-
-output.filenamestring
-
-用来指定打包生成的文件的名称。默认值是[name].js,该默认值的含义并不是说你可以不指定该选项就使用默认的[name].js ，他的含义是当entry配置为单入口时（单个字符串或者字符串数组），就是[name]会被替换为mian；多入口时，[name]会被替换为对象的key值。
-
-
-单入口的时候，我们...
-    
-
-        <a href="/2017/03/22/webpack2-output/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
