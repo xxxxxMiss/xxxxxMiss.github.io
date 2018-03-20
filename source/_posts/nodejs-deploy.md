@@ -132,3 +132,42 @@ port：默认端口27017，可以在`/etc/mongod.conf`中修改。
 
 ### 启动工程
 > pm2 start app.js
+
+## 安装docker
+> [centos7安装docker](https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository)
+
+这里有一个需要注意的地方，就是按照官方文档安装`yum`工具包的时候，如果当前用户非`root`用户，那么使用`sudo`安装的时候，会出现`xxx 不在 sudoers 文件中`的错误提示。
+我们可以按照如下步骤将`xxx`用户添加到`sudoers`列表中
+
+- 切换到`root`用户登录centos，查看`sudoers`文件
+
+```
+# ll /etc/sudoers
+-r-------- 1 root root 3907 6月  23 2017 /etc/sudoers
+(上面这一行代表 /etc/sudoers 文件的权限是400)
+```
+
+- 修改该文件的权限，让其可写：
+
+```
+# chmod 600 /etc/sudoers
+```
+
+- 将`xxx`用户添加至 `/etc/sudoers` 文件
+
+```
+root ALL=(ALL) ALL # 这行本来就有，你需要将下面的那行添加至改行的后面
+
+xxx ALL=(ALL) ALL
+```
+
+- 再将`/etc/sudoers` 权限改回去
+
+```
+# chmod 400 /etc/sudoers
+```
+
+那么现在在切换到`xxx`用户登录centos,就可以成功的安装`yum`工具包了。
+
+## 配置linux主机,以便和docker更好的协作
+> [官方详细文档传送门](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user)
