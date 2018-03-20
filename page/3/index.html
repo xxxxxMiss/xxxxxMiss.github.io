@@ -160,6 +160,259 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-event-loop"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-07-14 10:58:29" datetime="2017-07-14T02:58:29.000Z"  itemprop="datePublished">2017-07-14</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/07/14/event-loop/">event-loop(事件循环)</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+  .list li{
+    list-style-type: decimal;
+  }
+
+
+2个名词
+microtask: 称之为小型任务
+macrotask（task queue）: 称之为大型任务
+
+事件循环模型
+当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
+
+  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macr...
+    
+
+        <a href="/2017/07/14/event-loop/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-nodejs-process"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-07-12 23:00:05" datetime="2017-07-12T15:00:05.000Z"  itemprop="datePublished">2017-07-12</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/07/12/nodejs-process/">nodejs-process</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Process Events(进程事件)
+process对象是EventEmitter的一个实例
+
+beforeExit
+当Node清空事件队列并且没有额外的任务加入到事件队列中，触发该事件。通常情况下，当没有额外的任务加入到事件队列中时，Node进程会自动退出。但是如果’beforeExit’事件绑定的监听器的回调函数中，含有一个可以进行异步调用的操作，那么Node.js进程会继续运行。
+...
+    
+
+        <a href="/2017/07/12/nodejs-process/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-RegExp"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-06-05 11:35:04" datetime="2017-06-05T03:35:04.000Z"  itemprop="datePublished">2017-06-05</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/06/05/RegExp/">RegExp</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Character Classes or Character Sets (字符类, 字符集合)
+在正则表达式中，字符类就是用一对方括号[]包裹你要匹配的字符。需要注意以下几点：
+
+
+一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
+在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-...
+    
+
+        <a href="/2017/06/05/RegExp/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-js-scope"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-05-28 23:54:27" datetime="2017-05-28T15:54:27.000Z"  itemprop="datePublished">2017-05-28</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/05/28/js-scope/">词法作用域VS动态作用</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        词法作用域(lexical scoping)
+js中有2种作用域，词法作用域和动态作用域。下面用例子来解释这2种作用域的概念。
+
+1234567891011121314151617181920212223var outerFunction  = function()&#123;   if(true)&#123;      var x = 5;      //console.log(y); /...
+    
+
+        <a href="/2017/05/28/js-scope/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-vue-src-overview"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-05-28 19:12:10" datetime="2017-05-28T11:12:10.000Z"  itemprop="datePublished">2017-05-28</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/05/28/vue-src-overview/">vue-src-overview</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        源码目录总览12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910...
+    
+
+        <a href="/2017/05/28/vue-src-overview/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Object-keys"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -425,278 +678,12 @@ NOTE: encodeURIComponent不转义以下字符：
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-webpack2-entry-context"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-24 16:32:33" datetime="2017-04-24T08:32:33.000Z"  itemprop="datePublished">2017-04-24</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/24/webpack2-entry-context/">webpack2-entry-context</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Entry anc Context
-告诉webpack哪个文件作为打包的入口点。
-
-context
-一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。
-
-1context: path.resove(__dirname, 'app'...
-    
-
-        <a href="/2017/04/24/webpack2-entry-context/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-linux-process"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-23 13:39:13" datetime="2017-04-23T05:39:13.000Z"  itemprop="datePublished">2017-04-23</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/23/linux-process/">linux进程</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        进程简介
-在unix或者linux系统中，每当运行一个程序，系统都会为这个程序创建一个特殊的环境，这个特殊的环境包含了运行该程序所依赖的一切东西。不论什么时候，你触发一个unix或者linux命令，都会创建或者启动一个新的进程。所以可以这样理解，一个进程，就是一个运行中的程序的实例，它包含了该程序执行所需要的一切依赖。
-
-进程追踪
-操作系统给每个进程分配一个5位数字的pid来标示每个进程，每...
-    
-
-        <a href="/2017/04/23/linux-process/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-js-ASI"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-20 23:32:09" datetime="2017-04-20T15:32:09.000Z"  itemprop="datePublished">2017-04-20</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/20/js-ASI/">ASI(auto semicolon insertion)自动分号补齐</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        ASI
-在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：
-
-
-return xxx(xxx是要返回的对象)
-throw xxx(xxx是要抛出的错误对象)
-bre...
-    
-
-        <a href="/2017/04/20/js-ASI/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-linux-config"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-20 01:23:39" datetime="2017-04-19T17:23:39.000Z"  itemprop="datePublished">2017-04-20</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/20/linux-config/">linux系统中常用的配置文件</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        ~, /
-以下讲解的都是针对用户级别的~, 不讲解系统级别的/。一些用户级别的配置，在系统级别也有相同的配置，就类似于全局变量和局部变量的关系。
-
-~/.bash_profile
-每个用户都可使用该文件配置自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,并且执行用户的~/.bashrc文件。
-
-~/.bash_logout
-每次退出bash she...
-    
-
-        <a href="/2017/04/20/linux-config/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-linux-command"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-20 01:21:30" datetime="2017-04-19T17:21:30.000Z"  itemprop="datePublished">2017-04-20</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/20/linux-command/">linux常用命令</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        创建软链接
-为某一个文件或目录在另外一个位置建立一个同步的链接，类似Windows下的快捷方式。-s选项表示创建的是软链接（符号链接）, 不加-s表示创建的是硬链接,我们常用的都是软链接。
-
-1ln -s 源文件 目标文件
-删除软连接
-Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的所有文件了。
-
-1rm -rf 目标文件或目录
-
-    
-
-        <a href="/2017/04/20/linux-command/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
     </div>
 </nav>
 
@@ -725,7 +712,7 @@ Note: 目标文件或目录后面不能带/, 否则就是删除该目录下的�
         </p>
     </div>
     <div class="bottom">
-        <p><span>xxxxxMiss &copy; 2016 - 2017</span>
+        <p><span>xxxxxMiss &copy; 2016 - 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
