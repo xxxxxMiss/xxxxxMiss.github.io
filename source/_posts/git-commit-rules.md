@@ -90,3 +90,54 @@ categories: 版本管理
 [semantic versioning](https://semver.org/#spec-item-9)
 [git conventional commits](https://conventionalcommits.org/)
 [git emojis](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
+
+## 使用`commitlint`校验本地提交信息
+安装包
+```
+npm i @commitlint/cli @commitlint/config-conventional husky --save-dev
+```
+
+在项目的根目录下新建`commitlint.config.js`
+```
+module.exports = {extends: ['@commitlint/config-conventional']}
+```
+
+在`scripts`中添加如下`script`
+``` json
+{
+  "scripts": {
+    "commitmsg": "commitlint -e $GIT_PARAMS"
+  }
+}
+```
+
+## 使用`commitizen`交互式窗口生成约定的提交信息
+### 作为项目依赖安装使用
+```
+npm i commitizen cz-conventional-changelog --save-dev
+```
+package.json配置
+``` json
+{
+  "scripts": {
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
+```
+然后每次提交的时候，使用`npm run commit`代替`git commit`。
+
+### 作为全局安装使用
+``` bash
+npm i -g commitizen cz-conventional-changelog
+```
+创建commitizen配置文件：
+``` bash
+echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+```
+现在每次提交的时候就可以使用`git cz`代替`git commit`。
+`git cz`**支持和**`git commit`**一样的选项，如：git cz -a**。
