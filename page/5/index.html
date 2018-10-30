@@ -160,6 +160,118 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-z-index"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-04-05 14:25:57" datetime="2017-04-05T06:25:57.000Z"  itemprop="datePublished">2017-04-05</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/04/05/z-index/">深入理解z-index</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        z-index基本规则
+如果定位元素z-index没有发生嵌套（就是说一个定位元素的子元素的position都是static）,那么此时遵守的规则为：
+
+
+后来居上的准则
+哪个大，哪个上
+
+
+如果定位元素发生了嵌套
+祖先优先原则（z-index的值非auto）
+如果z-index: auto,那么就不遵守祖先优先的原则了   
+
+
+
+12345678// z-index的值非auto&lt;...
+    
+
+        <a href="/2017/04/05/z-index/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-shell-operation"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-03-30 21:10:24" datetime="2017-03-30T13:10:24.000Z"  itemprop="datePublished">2017-03-30</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/03/30/shell-operation/">shell运算符</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        表达式
+原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。一个完整的表达式需要用反引号(`)包裹, 在mac系统中，求值表达式也可以这样$(($a + $b))。表达式和运算符之间必须有空格，如2+2是不对的，必须写成2 + 2。乘号（*）在表达式中必须转义 expr $a \* $b,否则抛出syntax error
+
+条件表达式
+...
+    
+
+        <a href="/2017/03/30/shell-operation/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-shell-params"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -594,105 +706,6 @@ output.filenamestring
     
 
         <a href="/2017/03/22/webpack2-library/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-webpack2-ensure"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-03-22 10:58:05" datetime="2017-03-22T02:58:05.000Z"  itemprop="datePublished">2017-03-22</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/03/22/webpack2-ensure/">webpack2-ensure</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        [TOC]
-懒加载在开发中，经常会遇到这样的需求：比如在React,Vue中的路由加载组件，如果在首次加载的时候，就将一堆的组件全部加载，毫无疑问在打开首页的时候会非常的慢，影响用户体验。为了实现第一次快速的加载，优化用户体验，可以通过动态路由。就是第一次只会加载一些必须的组件，剩下的组件等到需要的时候再去加载。使用webpack提供的require.ensure()可以轻松实现这一要求。
-...
-    
-
-        <a href="/2017/03/22/webpack2-ensure/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-webpack2-coding-split"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-03-22 10:57:18" datetime="2017-03-22T02:57:18.000Z"  itemprop="datePublished">2017-03-22</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/03/22/webpack2-coding-split/">webpack2-conding-split</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        [TOC]
-代码分割
-一个应用有第三方库和程序代码组成，第三方库和程序代码最大的不同就是一般第三方库是不会轻易改动的。
-在打包的时候，如果能将这些第三方库和程序代码分开打包，那么就可以利用浏览器的缓存机制来缓存这些不需要经常改动的第三方库文件，这样可以节省很多的打包时间，加快资源加载速度。实现假如在index.js中引用第三方库moment.jsindex.js12var moment = ...
-    
-
-        <a href="/2017/03/22/webpack2-coding-split/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
