@@ -20,25 +20,38 @@
     
     
     <meta name="keywords" content="小程序,Hybrid开发">
-    <meta name="description" content="Android WebView简介
-WebView是Android提供的一种可以插在Activities中的视图容器，该容器可以用来承载web页面。
-
-123456789101112&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/re">
+    <meta name="description" content="原生小程序开发痛点：
+仅支持大部分es2015语法，无法使用es2016+语法（async/await等）
+对于背景图片，无法使用本地路径，需要上传图片至服务器以使用远程地址或者转化为base64编码
+对于直接使用iconfont，需要转换成base64编码
+不支持css预处理器（less, scss, stylus等）
+无法使用eslint等代码检查工具
+对于第三方依赖，需要手动拷贝源代码到项目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="share-miniapp">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="Android WebView简介
-WebView是Android提供的一种可以插在Activities中的视图容器，该容器可以用来承载web页面。
-
-123456789101112&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/re">
-<meta property="og:updated_time" content="2018-11-09T11:40:20.273Z">
+<meta property="og:description" content="原生小程序开发痛点：
+仅支持大部分es2015语法，无法使用es2016+语法（async/await等）
+对于背景图片，无法使用本地路径，需要上传图片至服务器以使用远程地址或者转化为base64编码
+对于直接使用iconfont，需要转换成base64编码
+不支持css预处理器（less, scss, stylus等）
+无法使用eslint等代码检查工具
+对于第三方依赖，需要手动拷贝源代码到项目">
+<meta property="og:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/miniapp-render.png">
+<meta property="og:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/js-oc-call.png">
+<meta property="og:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/js-oc-type.png">
+<meta property="og:updated_time" content="2018-11-13T17:28:43.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="share-miniapp">
-<meta name="twitter:description" content="Android WebView简介
-WebView是Android提供的一种可以插在Activities中的视图容器，该容器可以用来承载web页面。
-
-123456789101112&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/re">
+<meta name="twitter:description" content="原生小程序开发痛点：
+仅支持大部分es2015语法，无法使用es2016+语法（async/await等）
+对于背景图片，无法使用本地路径，需要上传图片至服务器以使用远程地址或者转化为base64编码
+对于直接使用iconfont，需要转换成base64编码
+不支持css预处理器（less, scss, stylus等）
+无法使用eslint等代码检查工具
+对于第三方依赖，需要手动拷贝源代码到项目">
+<meta name="twitter:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/miniapp-render.png">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -180,7 +193,7 @@ WebView是Android提供的一种可以插在Activities中的视图容器，该�
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>目录</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android-WebView简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">Android WebView简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IOS-UIWebView-WKWebView"><span class="post-toc-number">2.</span> <span class="post-toc-text">IOS UIWebView/WKWebView</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小程序架构"><span class="post-toc-number">3.</span> <span class="post-toc-text">小程序架构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Taro"><span class="post-toc-number">4.</span> <span class="post-toc-text">Taro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nanachi"><span class="post-toc-number">5.</span> <span class="post-toc-text">nanachi</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mpvue"><span class="post-toc-number">6.</span> <span class="post-toc-text">mpvue</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#megalo"><span class="post-toc-number">7.</span> <span class="post-toc-text">megalo</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Runtime"><span class="post-toc-number">8.</span> <span class="post-toc-text">Runtime</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JSCore"><span class="post-toc-number">9.</span> <span class="post-toc-text">JSCore</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原生小程序开发痛点："><span class="post-toc-number">1.</span> <span class="post-toc-text">原生小程序开发痛点：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android-WebView简介"><span class="post-toc-number">2.</span> <span class="post-toc-text">Android WebView简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优化"><span class="post-toc-number">3.</span> <span class="post-toc-text">优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分包优点以及限制"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">分包优点以及限制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#避免不当使用setData"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">避免不当使用setData</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#避免不当使用onPageScroll"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">避免不当使用onPageScroll</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript-与-Objective-C-交互"><span class="post-toc-number">4.</span> <span class="post-toc-text">JavaScript 与 Objective-C 交互</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小程序架构"><span class="post-toc-number">5.</span> <span class="post-toc-text">小程序架构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Taro"><span class="post-toc-number">6.</span> <span class="post-toc-text">Taro</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nanachi"><span class="post-toc-number">7.</span> <span class="post-toc-text">nanachi</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mpvue"><span class="post-toc-number">8.</span> <span class="post-toc-text">mpvue</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#megalo"><span class="post-toc-number">9.</span> <span class="post-toc-text">megalo</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Runtime"><span class="post-toc-number">10.</span> <span class="post-toc-text">Runtime</span></a></li></ol>
         </nav>
     </aside>
     
@@ -205,7 +218,17 @@ WebView是Android提供的一种可以插在Activities中的视图容器，该�
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="Android-WebView简介"><a href="#Android-WebView简介" class="headerlink" title="Android WebView简介"></a>Android WebView简介</h2><blockquote>
+            <h2 id="原生小程序开发痛点："><a href="#原生小程序开发痛点：" class="headerlink" title="原生小程序开发痛点："></a>原生小程序开发痛点：</h2><ul>
+<li>仅支持大部分es2015语法，无法使用es2016+语法（async/await等）</li>
+<li>对于背景图片，无法使用本地路径，需要上传图片至服务器以使用远程地址或者转化为base64编码</li>
+<li>对于直接使用iconfont，需要转换成base64编码</li>
+<li>不支持css预处理器（less, scss, stylus等）</li>
+<li>无法使用eslint等代码检查工具</li>
+<li>对于第三方依赖，需要手动拷贝源代码到项目中，无法直接使用npm包</li>
+<li>…</li>
+<li>总结起来就是无法<em>工程化</em></li>
+</ul>
+<h2 id="Android-WebView简介"><a href="#Android-WebView简介" class="headerlink" title="Android WebView简介"></a>Android WebView简介</h2><blockquote>
 <p><code>WebView</code>是Android提供的一种可以插在<code>Activities</code>中的视图容器，该容器可以用来承载web页面。</p>
 </blockquote>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line">&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">    android:layout_width="match_parent"</div><div class="line">    android:layout_height="match_parent"</div><div class="line">    android:orientation="vertical" &gt;</div><div class="line"></div><div class="line">    &lt;WebView</div><div class="line">      android:id="@+id/webview"</div><div class="line">      android:layout_width="fill_parent"</div><div class="line">      android:layout_height="fill_parent"</div><div class="line">  /&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
@@ -221,7 +244,46 @@ WebView是Android提供的一种可以插在Activities中的视图容器，该�
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.BufferedReader;</div><div class="line"><span class="keyword">import</span> java.io.InputStream;</div><div class="line"><span class="keyword">import</span> java.io.InputStreamReader;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.app.Activity;</div><div class="line"><span class="keyword">import</span> android.content.res.AssetManager;</div><div class="line"><span class="keyword">import</span> android.os.Bundle;</div><div class="line"><span class="keyword">import</span> android.webkit.JavascriptInterface;</div><div class="line"><span class="keyword">import</span> android.webkit.WebSettings;</div><div class="line"><span class="keyword">import</span> android.webkit.WebView;</div><div class="line"><span class="keyword">import</span> android.widget.Toast;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebViewActivityWithJavaScript</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> WebView myWebView;</div><div class="line"></div><div class="line">    <span class="comment">/* (non-Javadoc)</span></div><div class="line">     * @see android.app.Activity#onCreate(android.os.Bundle)</div><div class="line">     */</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_with_web_view);</div><div class="line"></div><div class="line">        myWebView = (WebView) findViewById(R.id.webview);</div><div class="line">        WebSettings webSettings = myWebView.getSettings();</div><div class="line">        webSettings.setJavaScriptEnabled(<span class="keyword">true</span>);</div><div class="line">        myWebView.addJavascriptInterface(<span class="keyword">new</span> MyJavaScriptInterface(<span class="keyword">this</span>), <span class="string">"Android"</span>);</div><div class="line">        myWebView.loadData(getHTMLData(),<span class="string">"text/html"</span>, <span class="string">"UTF-8"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@return</span> - Static HTML data</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getHTMLData</span><span class="params">()</span> </span>&#123;</div><div class="line">        StringBuilder html = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            AssetManager assetManager = getAssets();</div><div class="line"></div><div class="line">            InputStream input = assetManager.open(<span class="string">"javascriptexample.html"</span>);</div><div class="line">            BufferedReader  br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(input));</div><div class="line">            String line;</div><div class="line">            <span class="keyword">while</span> ((line = br.readLine()) != <span class="keyword">null</span>) &#123;</div><div class="line">                html.append(line);</div><div class="line">            &#125;</div><div class="line">            br.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">           <span class="comment">//Handle the exception here</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> html.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJavaScriptInterface</span> </span>&#123;</div><div class="line">        Activity activity;</div><div class="line"></div><div class="line">        MyJavaScriptInterface(Activity activity) &#123;</div><div class="line">            <span class="keyword">this</span>.activity = activity;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@JavascriptInterface</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showToast</span><span class="params">(String toast)</span> </span>&#123;</div><div class="line">            Toast.makeText(activity, toast, Toast.LENGTH_SHORT).show();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@JavascriptInterface</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">closeActivity</span><span class="params">()</span> </span>&#123;</div><div class="line">            activity.finish();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在web页面中调用原生方法：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Show Toast"</span> <span class="attr">onClick</span>=<span class="string">"showAndroidToast('Toast to JavaScript interface')"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Close this Activity"</span> <span class="attr">onClick</span>=<span class="string">"closeActivity()"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="actionscript"></span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">showAndroidToast</span><span class="params">(toast)</span> </span>&#123;</div><div class="line">        Android.showToast(toast);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">function</span> <span class="title">closeActivity</span><span class="params">()</span> </span>&#123;</div><div class="line">        Android.closeActivity();</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h2 id="IOS-UIWebView-WKWebView"><a href="#IOS-UIWebView-WKWebView" class="headerlink" title="IOS UIWebView/WKWebView"></a>IOS <a href="http://www.imlifengfeng.com/blog/?p=528" target="_blank" rel="external">UIWebView/WKWebView</a></h2><h2 id="小程序架构"><a href="#小程序架构" class="headerlink" title="小程序架构"></a><a href="https://www.jianshu.com/p/4e8ed26d3b7a" target="_blank" rel="external">小程序架构</a></h2><h2 id="Taro"><a href="#Taro" class="headerlink" title="Taro"></a><a href="https://nervjs.github.io/taro/docs/router.html" target="_blank" rel="external">Taro</a></h2><blockquote>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><ul>
+<li>代码压缩</li>
+<li>及时清理无用代码和资源文件（这条已经变得不是很重要了，因为现在没用到的资源并不会被打包）</li>
+<li>减少代码包中的图片等资源文件的大小和数量</li>
+<li>提前请求，但是请求的数据不立即发送到视图层渲染，而是在合适的时机在渲染（<code>setData</code>）</li>
+<li>缓存，利用 storage API 对异步请求数据进行缓存，二次启动时先利用缓存数据渲染页面，在进行后台更新</li>
+<li>分包加载</li>
+</ul>
+<h3 id="分包优点以及限制"><a href="#分包优点以及限制" class="headerlink" title="分包优点以及限制"></a>分包优点以及限制</h3><p>优点：</p>
+<blockquote>
+<p>对开发者而言，能使小程序有更大的代码体积，承载更多的功能与服务<br>对用户而言，可以更快地打开小程序，同时在不影响启动速度前提下使用更多功能</p>
+</blockquote>
+<p>限制：</p>
+<blockquote>
+<p>整个小程序所有分包大小不超过 8M<br>单个分包/主包大小不能超过 2M</p>
+</blockquote>
+<h3 id="避免不当使用setData"><a href="#避免不当使用setData" class="headerlink" title="避免不当使用setData"></a>避免不当使用setData</h3><img src="/2018/10/20/share-miniapp/miniapp-render.png" alt="小程序的渲染机制" title="小程序的渲染机制">
+<ul>
+<li>使用 data 在方法间共享数据，可能增加 setData 传输的数据量。。data 应仅包括与页面渲染相关的数据。</li>
+<li>使用 setData 传输大量数据，<strong>通讯耗时与数据正相关，页面更新延迟可能造成页面更新开销增加。</strong>仅传输页面中发生变化的数据，使用 setData 的特殊 key 实现局部更新。</li>
+<li>短时间内频繁调用 setData，<strong>操作卡顿，交互延迟，阻塞通信，页面渲染延迟。</strong>避免不必要的 setData，对连续的setData调用进行合并。</li>
+<li>在后台页面进行 setData，<strong>抢占前台页面的渲染资源。</strong>页面切入后台后的 setData 调用，延迟到页面重新展示时执行。</li>
+</ul>
+<h3 id="避免不当使用onPageScroll"><a href="#避免不当使用onPageScroll" class="headerlink" title="避免不当使用onPageScroll"></a>避免不当使用onPageScroll</h3><ul>
+<li>只在有必要的时候监听 pageScroll 事件。不监听，则不会派发。</li>
+<li>避免在 onPageScroll 中执行复杂逻辑</li>
+<li>避免在 onPageScroll 中频繁调用 setData</li>
+<li>避免滑动时频繁查询节点信息（SelectQuery）用以判断是否显示，部分场景建议使用节点布局橡胶状态监听（inersectionObserver）替代</li>
+</ul>
+<h2 id="JavaScript-与-Objective-C-交互"><a href="#JavaScript-与-Objective-C-交互" class="headerlink" title="JavaScript 与 Objective-C 交互"></a>JavaScript 与 Objective-C 交互</h2><p>主要通过以下2种方式：</p>
+<ul>
+<li>Block: 第一种方式是使用block，block也可以称作闭包和匿名函数，使用block可以很方便的将OC中的单个方法暴露给JS调用，具体实现我们稍后再说。</li>
+<li>JSExport 协议: 第二种方式，是使用JSExport协议，可以将OC的中某个对象直接暴露给JS使用，而且在JS中使用就像调用JS的对象一样自然。</li>
+</ul>
+<p>栗子：通过Block形式</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">context[<span class="string">@"makeNSColor"</span>] = ^(<span class="built_in">NSDictionary</span> *rgb)&#123;</div><div class="line">  <span class="keyword">float</span> r = [colors[<span class="string">@"red"</span>] floatValue];</div><div class="line">  <span class="keyword">float</span> g = [colors[<span class="string">@"green"</span>] floatValue];</div><div class="line">  <span class="keyword">float</span> b = [colors[<span class="string">@"blue"</span>] floatValue];</div><div class="line">  <span class="keyword">return</span> [<span class="built_in">NSColor</span> colorWithRed:(r / <span class="number">255.0</span>)</div><div class="line">    green: (g / <span class="number">255.0</span>f)</div><div class="line">    blue: (b / <span class="number">255.0</span>f)</div><div class="line">    alpha: <span class="number">1.0</span></div><div class="line">  ];</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> colorForWord = <span class="function"><span class="keyword">function</span> (<span class="params">word</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!colorMap(word)) <span class="keyword">return</span></div><div class="line"></div><div class="line">  <span class="keyword">return</span> makeNSColor(colorMap(word))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> colorMap = &#123;</div><div class="line">  <span class="attr">orange</span>: &#123; <span class="attr">red</span>: <span class="number">255</span>, <span class="attr">green</span>: <span class="number">255</span>, <span class="attr">blue</span>: <span class="number">0</span> &#125;,</div><div class="line">  <span class="attr">cyan</span>: &#123; <span class="attr">red</span>: <span class="number">255</span>, <span class="attr">green</span>: <span class="number">155</span>, <span class="attr">blue</span>: <span class="number">0</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<img src="/2018/10/20/share-miniapp/js-oc-call.png" alt="js和oc的相互调用" title="js和oc的相互调用">
+<img src="/2018/10/20/share-miniapp/js-oc-type.png" alt="js和oc的类型对应关系" title="js和oc的类型对应关系">
+<h2 id="小程序架构"><a href="#小程序架构" class="headerlink" title="小程序架构"></a><a href="https://www.jianshu.com/p/4e8ed26d3b7a" target="_blank" rel="external">小程序架构</a></h2><h2 id="Taro"><a href="#Taro" class="headerlink" title="Taro"></a><a href="https://nervjs.github.io/taro/docs/router.html" target="_blank" rel="external">Taro</a></h2><blockquote>
 <p><a href="https://github.com/NervJS/taro/issues" target="_blank" rel="external">官方仓库</a></p>
 </blockquote>
 <ul>
@@ -236,14 +298,14 @@ WebView是Android提供的一种可以插在Activities中的视图容器，该�
 <h2 id="megalo"><a href="#megalo" class="headerlink" title="megalo"></a><a href="https://kaola-fed.github.io/megalo-docs/#/" target="_blank" rel="external">megalo</a></h2><blockquote>
 <p><a href="https://github.com/kaola-fed/megalo/issues" target="_blank" rel="external">官方仓库</a></p>
 </blockquote>
-<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a><a href="https://en.wikipedia.org/wiki/Runtime_library" target="_blank" rel="external">Runtime</a></h2><h2 id="JSCore"><a href="#JSCore" class="headerlink" title="JSCore"></a><a href="https://www.jianshu.com/p/ac534f508fb0" target="_blank" rel="external">JSCore</a></h2>
+<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a><a href="https://en.wikipedia.org/wiki/Runtime_library" target="_blank" rel="external">Runtime</a></h2>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-11-09T11:40:20.273Z" itemprop="dateUpdated">2018-11-09 19:40:20</time>
+    最后更新时间：<time datetime="2018-11-13T17:28:43.255Z" itemprop="dateUpdated">2018-11-14 01:28:43</time>
 </span><br>
 
 
@@ -324,7 +386,14 @@ WebView是Android提供的一种可以插在Activities中的视图容器，该�
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/13/platform-compatibility/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">platform-compatibility</h4>
+      </a>
+    </div>
   
 
   
