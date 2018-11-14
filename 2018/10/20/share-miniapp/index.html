@@ -20,14 +20,17 @@
     
     
     <meta name="keywords" content="小程序,Hybrid开发">
-    <meta name="description" content="小程序架构JSBridge
-JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Webkit 引擎、JSCore）。由于这些 Context 与原生运行环境的天然隔离，我们可以将这种情况与 RPC（Remote Procedure Call，远程过程调用）通信进行类比，将 Native 与 JavaScript 的每次互相调用看做一次 RPC 调用。在 J">
+    <meta name="description" content="小程序架构
+JSBridge
+JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Webkit 引擎、JSCore）。由于这些 Context 与原生运行环境的天然隔离，我们可以将这种情况与 RPC（Remote Procedure Call，远程过程调用）通信进行类比，将 Native 与 JavaScript 的每次互相调用看做一次 RPC 调用。在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="share-miniapp">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="小程序架构JSBridge
-JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Webkit 引擎、JSCore）。由于这些 Context 与原生运行环境的天然隔离，我们可以将这种情况与 RPC（Remote Procedure Call，远程过程调用）通信进行类比，将 Native 与 JavaScript 的每次互相调用看做一次 RPC 调用。在 J">
+<meta property="og:description" content="小程序架构
+JSBridge
+JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Webkit 引擎、JSCore）。由于这些 Context 与原生运行环境的天然隔离，我们可以将这种情况与 RPC（Remote Procedure Call，远程过程调用）通信进行类比，将 Native 与 JavaScript 的每次互相调用看做一次 RPC 调用。在">
+<meta property="og:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/miniapp-structure.png">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/jsbridge.png">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/js-oc-call.png">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/js-oc-type.png">
@@ -35,12 +38,13 @@ JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Web
 <meta property="og:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/miniapp-render.png">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/framework-comparison.png">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/taro-build.png">
-<meta property="og:updated_time" content="2018-11-14T08:38:46.390Z">
+<meta property="og:updated_time" content="2018-11-14T09:07:01.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="share-miniapp">
-<meta name="twitter:description" content="小程序架构JSBridge
-JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Webkit 引擎、JSCore）。由于这些 Context 与原生运行环境的天然隔离，我们可以将这种情况与 RPC（Remote Procedure Call，远程过程调用）通信进行类比，将 Native 与 JavaScript 的每次互相调用看做一次 RPC 调用。在 J">
-<meta name="twitter:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/jsbridge.png">
+<meta name="twitter:description" content="小程序架构
+JSBridge
+JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Webkit 引擎、JSCore）。由于这些 Context 与原生运行环境的天然隔离，我们可以将这种情况与 RPC（Remote Procedure Call，远程过程调用）通信进行类比，将 Native 与 JavaScript 的每次互相调用看做一次 RPC 调用。在">
+<meta name="twitter:image" content="https://xxxxxmiss.github.io/2018/10/20/share-miniapp/miniapp-structure.png">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -207,7 +211,8 @@ JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Web
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="小程序架构"><a href="#小程序架构" class="headerlink" title="小程序架构"></a><a href="https://www.jianshu.com/p/4e8ed26d3b7a" target="_blank" rel="external">小程序架构</a></h2><h2 id="JSBridge"><a href="#JSBridge" class="headerlink" title="JSBridge"></a>JSBridge</h2><blockquote>
+            <h2 id="小程序架构"><a href="#小程序架构" class="headerlink" title="小程序架构"></a><a href="https://www.jianshu.com/p/4e8ed26d3b7a" target="_blank" rel="external">小程序架构</a></h2><img src="/2018/10/20/share-miniapp/miniapp-structure.png" alt="小程序架构" title="小程序架构">
+<h2 id="JSBridge"><a href="#JSBridge" class="headerlink" title="JSBridge"></a>JSBridge</h2><blockquote>
 <p>JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Webkit 引擎、JSCore）。由于这些 Context 与原生运行环境的天然隔离，我们可以将这种情况与 RPC（Remote Procedure Call，远程过程调用）通信进行类比，将 Native 与 JavaScript 的每次互相调用看做一次 RPC 调用。<br>在 JSBridge 的设计中，可以把前端看做 RPC 的客户端，把 Native 端看做 RPC 的服务器端，从而 JSBridge 要实现的主要逻辑就出现了：通信调用（Native 与 JS 通信） 和 句柄解析调用。（如果你是个前端，而且并不熟悉 RPC 的话，你也可以把这个流程类比成 <a href="#JSONP实现原理">JSONP</a> 的流程）</p>
 </blockquote>
 <img src="/2018/10/20/share-miniapp/jsbridge.png" alt="js桥接" title="js桥接">
@@ -303,7 +308,7 @@ JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Web
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-11-14T08:38:46.390Z" itemprop="dateUpdated">2018-11-14 16:38:46</time>
+    最后更新时间：<time datetime="2018-11-14T09:07:01.615Z" itemprop="dateUpdated">2018-11-14 17:07:01</time>
 </span><br>
 
 
