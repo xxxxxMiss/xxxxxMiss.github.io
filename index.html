@@ -227,13 +227,8 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        原生小程序开发痛点：
-仅支持大部分es2015语法，无法使用es2016+语法（async/await等）
-对于背景图片，无法使用本地路径，需要上传图片至服务器以使用远程地址或者转化为base64编码
-对于直接使用iconfont，需要转换成base64编码
-不支持css预处理器（less, scss, stylus等）
-无法使用eslint等代码检查工具
-对于第三方依赖，需要手动拷贝源代码...
+        小程序架构JSBridge
+JavaScript 是运行在一个单独的 JS Context 中（例如，WebView 的 Webkit 引擎、JSCore）。由于这些 Context 与原生运行环境的天然隔离，我们可以将这种情况与 RPC（Remote Procedure Call，远程过程调用）通信进行类比，将 Native 与 JavaScript 的每次互相调用看做一次 RPC 调用。...
     
 
         <a href="/2018/10/20/share-miniapp/" class="post-more waves-effect waves-button">
