@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xxxxxmiss.github.io/"/>
-  <updated>2018-11-16T03:47:31.742Z</updated>
+  <updated>2018-11-16T03:49:51.341Z</updated>
   <id>https://xxxxxmiss.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://xxxxxmiss.github.io/2018/11/13/platform-compatibility/"/>
     <id>https://xxxxxmiss.github.io/2018/11/13/platform-compatibility/</id>
     <published>2018-11-13T03:40:24.000Z</published>
-    <updated>2018-11-16T03:47:31.742Z</updated>
+    <updated>2018-11-16T03:49:51.341Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="new-Date"><a href="#new-Date" class="headerlink" title="new Date()"></a>new Date()</h2><blockquote><p>如果使用格式化字符串的形式，一般有如下几种形式：</p></blockquote><p>|   | yyyy-MM-dd | yyyy/MM/dd | yyyy.MM.dd |</p><p>| –  | – | – | – |<br>| IOS | ✅ |  ✅ | ❎ |<br>| Android | ✅ | ✅ | ✅ |</p><p>所以对于<code>yyyy.MM.dd</code>的形式，一般转化成前面2种形式：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dateStr.replace(<span class="string">'.'</span>, <span class="string">'/'</span>)</div></pre></td></tr></table></figure><p>Note: 经测试发现，如果少了<em>日</em>的字符，也会出现兼容性问题。<br>就比如这种<code>yyyy/MM</code>, 所以为了安全起见，最好这样转化下：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="regexp">/^[\d]&#123;2,4&#125;[-/.]\d&#123;1,2&#125;$/</span>.test(dateStr)) &#123;</div><div class="line">  dateStr.replace(<span class="regexp">/[.-]/g</span>, <span class="string">'/'</span>) + <span class="string">'/01'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="new-Date"><a href="#new-Date" class="headerlink" title="new Date()"></a>new Date()</h2><blockquote><p>如果使用格式化字符串的形式，一般有如下几种形式：</p></blockquote><table><thead><tr><th></th><th>yyyy-MM-dd</th><th>yyyy/MM/dd</th><th>yyyy.MM.dd</th></tr></thead><tbody><tr><td>IOS</td><td>✅</td><td>✅</td><td>❎</td></tr><tr><td>Android</td><td>✅</td><td>✅</td><td>✅</td></tr></tbody></table><p>所以对于<code>yyyy.MM.dd</code>的形式，一般转化成前面2种形式：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dateStr.replace(<span class="string">'.'</span>, <span class="string">'/'</span>)</div></pre></td></tr></table></figure><p>Note: 经测试发现，如果少了<em>日</em>的字符，也会出现兼容性问题。<br>就比如这种<code>yyyy/MM</code>, 所以为了安全起见，最好这样转化下：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="regexp">/^[\d]&#123;2,4&#125;[-/.]\d&#123;1,2&#125;$/</span>.test(dateStr)) &#123;</div><div class="line">  dateStr.replace(<span class="regexp">/[.-]/g</span>, <span class="string">'/'</span>) + <span class="string">'/01'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     

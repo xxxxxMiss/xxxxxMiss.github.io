@@ -189,10 +189,33 @@
         new Date()
 如果使用格式化字符串的形式，一般有如下几种形式：
 
-|   | yyyy-MM-dd | yyyy/MM/dd | yyyy.MM.dd |
-| –  | – | – | – || IOS | ✅ |  ✅ | ❎ || Android | ✅ | ✅ | ✅ |
+
+
+
+
+yyyy-MM-dd
+yyyy/MM/dd
+yyyy.MM.dd
+
+
+
+
+IOS
+✅
+✅
+❎
+
+
+Android
+✅
+✅
+✅
+
+
+
 所以对于yyyy.MM.dd的形式，一般转化成前面2种形式：
-1dateStr.replace('.', ...
+1dateStr.replace('.', '/')
+Note: 经测试发现，如果少了日的字符，也会出现兼容性问题。就...
     
 
         <a href="/2018/11/13/platform-compatibility/" class="post-more waves-effect waves-button">
