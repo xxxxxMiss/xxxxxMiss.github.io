@@ -20,13 +20,34 @@
     
     
     <meta name="keywords" content="">
-    <meta property="og:type" content="article">
+    <meta name="description" content="new Date()
+如果使用格式化字符串的形式，一般有如下几种形式：
+
+|   | yyyy-MM-dd | yyyy/MM/dd | yyyy.MM.dd |
+| –  | – | – | – || IOS | ✅ |  ✅ | ❎ || Android | ✅ | ✅ | ✅ |
+所以对于yyyy.MM.dd的形式，一般转化成前面2种形式：
+1dateStr.replace(&apos;.&apos;, &apos;/&apos;">
+<meta property="og:type" content="article">
 <meta property="og:title" content="platform-compatibility">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2018/11/13/platform-compatibility/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:updated_time" content="2018-11-13T03:40:24.169Z">
+<meta property="og:description" content="new Date()
+如果使用格式化字符串的形式，一般有如下几种形式：
+
+|   | yyyy-MM-dd | yyyy/MM/dd | yyyy.MM.dd |
+| –  | – | – | – || IOS | ✅ |  ✅ | ❎ || Android | ✅ | ✅ | ✅ |
+所以对于yyyy.MM.dd的形式，一般转化成前面2种形式：
+1dateStr.replace(&apos;.&apos;, &apos;/&apos;">
+<meta property="og:updated_time" content="2018-11-16T03:47:31.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="platform-compatibility">
+<meta name="twitter:description" content="new Date()
+如果使用格式化字符串的形式，一般有如下几种形式：
+
+|   | yyyy-MM-dd | yyyy/MM/dd | yyyy.MM.dd |
+| –  | – | – | – || IOS | ✅ |  ✅ | ❎ || Android | ✅ | ✅ | ✅ |
+所以对于yyyy.MM.dd的形式，一般转化成前面2种形式：
+1dateStr.replace(&apos;.&apos;, &apos;/&apos;">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -163,6 +184,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#new-Date"><span class="post-toc-number">1.</span> <span class="post-toc-text">new Date()</span></a></li></ol>
+        </nav>
+    </aside>
+    
 <article id="post-platform-compatibility"
   class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -182,14 +210,23 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <h2 id="new-Date"><a href="#new-Date" class="headerlink" title="new Date()"></a>new Date()</h2><blockquote>
+<p>如果使用格式化字符串的形式，一般有如下几种形式：</p>
+</blockquote>
+<p>|   | yyyy-MM-dd | yyyy/MM/dd | yyyy.MM.dd |</p>
+<p>| –  | – | – | – |<br>| IOS | ✅ |  ✅ | ❎ |<br>| Android | ✅ | ✅ | ✅ |</p>
+<p>所以对于<code>yyyy.MM.dd</code>的形式，一般转化成前面2种形式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dateStr.replace(<span class="string">'.'</span>, <span class="string">'/'</span>)</div></pre></td></tr></table></figure>
+<p>Note: 经测试发现，如果少了<em>日</em>的字符，也会出现兼容性问题。<br>就比如这种<code>yyyy/MM</code>, 所以为了安全起见，最好这样转化下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="regexp">/^[\d]&#123;2,4&#125;[-/.]\d&#123;1,2&#125;$/</span>.test(dateStr)) &#123;</div><div class="line">  dateStr.replace(<span class="regexp">/[.-]/g</span>, <span class="string">'/'</span>) + <span class="string">'/01'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-11-13T03:40:24.169Z" itemprop="dateUpdated">2018-11-13 11:40:24</time>
+    最后更新时间：<time datetime="2018-11-16T03:47:31.742Z" itemprop="dateUpdated">2018-11-16 11:47:31</time>
 </span><br>
 
 
