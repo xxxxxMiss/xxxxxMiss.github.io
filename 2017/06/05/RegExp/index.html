@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_pigchickens.svg">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_number.svg">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_slow.svg">
-<meta property="og:updated_time" content="2018-11-18T04:46:42.357Z">
+<meta property="og:updated_time" content="2018-11-18T04:49:52.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RegExp">
 <meta name="twitter:description" content="Character Classes or Character Sets (字符类, 字符集合)
@@ -293,11 +293,11 @@
 <p>因为正则表达式引擎一旦匹配到满足的字符，会立即停止匹配。而按照上面的写法，<code>Set</code>是匹配<code>SetValue</code>的。解决方法可以有如下几种：</p>
 </blockquote>
 <ul>
-<li><p>改变<em>Alterlation</em>的顺序：</p>
+<li>改变<em>Alterlation</em>的顺序：</li>
+</ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/GetValue|Get|SetValue|<span class="built_in">Set</span>/.exec(<span class="string">'SetValue'</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>利用<code>?</code>,<code>+</code>,<code>*</code>,<code>{m,n}</code>等贪婪匹配的特性：</p>
-</li>
+<ul>
+<li>利用<code>?</code>,<code>+</code>,<code>*</code>,<code>{m,n}</code>等贪婪匹配的特性：</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Get(Value)?|<span class="built_in">Set</span>(Value)?<span class="regexp">/.exec('SetValue')</span></div></pre></td></tr></table></figure>
 <ul>
@@ -469,7 +469,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-11-18T04:46:42.357Z" itemprop="dateUpdated">2018-11-18 12:46:42</time>
+    最后更新时间：<time datetime="2018-11-18T04:49:52.673Z" itemprop="dateUpdated">2018-11-18 12:49:52</time>
 </span><br>
 
 
