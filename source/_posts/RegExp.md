@@ -122,6 +122,36 @@ console.log(animalCount.test("15 pigchickens"))
 综上所述, 在一个字符串中搜寻匹配的字符时，正则表达式引擎会进行如下的查找了流程：
 从一个字符串的起始位置，一个一个字符进行匹配，直到找到了一个匹配或者达到字符串的末尾才能决定最终的匹配情况。
 
+在举个例子：
+> 假设你要匹配一个函数名`SetValue`，你写的正则如下：
+
+``` js
+/Get|GetValue|Set|SetValue/.exec('SetValue')
+// -> Set
+```
+
+在控制台运行下，就会发现我们匹配到的是`Set`, 而不是`SetValue`。解释如下：
+
+> 因为正则表达式引擎一旦匹配到满足的字符，会立即停止匹配。而按照上面的写法，`Set`是匹配`SetValue`的。解决方法可以有如下几种：
+
+- 改变*Alterlation*的顺序：
+
+``` js
+/GetValue|Get|SetValue|Set/.exec('SetValue')
+```
+
+- 利用`?`,`+`,`*`,`{m,n}`等贪婪匹配的特性：
+
+``` js
+/Get(Value)?|Set(Value)?/.exec('SetValue')
+```
+
+- 将上面的表达式进一步优化
+
+``` js
+/(Get|Set)(Value)?/.exec('SetValue')
+```
+
 ### Backtracking(回溯)
 > 在正则表达式中，有一种叫做**回溯查找**，就是沿着某一条路径匹配多次。回溯通常出现在数量匹配中，如`*`, `+`, `{m, n}`。
 下面以具体的图表和例子来说明匹配情况。
