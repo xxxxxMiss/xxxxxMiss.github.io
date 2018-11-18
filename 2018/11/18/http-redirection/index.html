@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>http-redirection | 青史成灰 | Every journey begins with the first step</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="http,redirection">
+    <meta name="description" content="Permanent Redirection(永久重定向)
+
+
+statusCode
+含义
+处理方法
+场景
+
+
+
+
+301
+Moved Permanently
+GET 方法不会发生变更，其他方法有可能会变更为 GET 方法
+-
+
+
+308
+Permanent Redirect
+方法和消息主体都不发生变化
+-
+
+
+
+Temporary Redirection(临时重定向)
+
+
+statusCode
+含">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http-redirection">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2018/11/18/http-redirection/index.html">
+<meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="Permanent Redirection(永久重定向)
+
+
+statusCode
+含义
+处理方法
+场景
+
+
+
+
+301
+Moved Permanently
+GET 方法不会发生变更，其他方法有可能会变更为 GET 方法
+-
+
+
+308
+Permanent Redirect
+方法和消息主体都不发生变化
+-
+
+
+
+Temporary Redirection(临时重定向)
+
+
+statusCode
+含">
+<meta property="og:updated_time" content="2018-11-18T08:33:56.933Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="http-redirection">
+<meta name="twitter:description" content="Permanent Redirection(永久重定向)
+
+
+statusCode
+含义
+处理方法
+场景
+
+
+
+
+301
+Moved Permanently
+GET 方法不会发生变更，其他方法有可能会变更为 GET 方法
+-
+
+
+308
+Permanent Redirect
+方法和消息主体都不发生变化
+-
+
+
+
+Temporary Redirection(临时重定向)
+
+
+statusCode
+含">
+    
+        <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.gif">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xxxxxMiss</h5>
+          <a href="mailto:794465731@qq.com" title="794465731@qq.com" class="mail">794465731@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                存档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/xxxxxMiss" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/qschqd" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">http-redirection</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">http-redirection</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-18T06:51:13.000Z" itemprop="datePublished" class="page-time">
+  2018-11-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/http/">http</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Permanent-Redirection-永久重定向"><span class="post-toc-number">1.</span> <span class="post-toc-text">Permanent Redirection(永久重定向)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Temporary-Redirection-临时重定向"><span class="post-toc-number">2.</span> <span class="post-toc-text">Temporary Redirection(临时重定向)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Special-Redirection-特殊重定向"><span class="post-toc-number">3.</span> <span class="post-toc-text">Special Redirection(特殊重定向)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重定向的3种方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">重定向的3种方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于不安全请求的临时响应节"><span class="post-toc-number">5.</span> <span class="post-toc-text">对于不安全请求的临时响应节</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于耗时请求的临时响应节"><span class="post-toc-number">6.</span> <span class="post-toc-text">对于耗时请求的临时响应节</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Nginx中配置重定向"><span class="post-toc-number">7.</span> <span class="post-toc-text">Nginx中配置重定向</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-http-redirection"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">http-redirection</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-18 14:51:13" datetime="2018-11-18T06:51:13.000Z"  itemprop="datePublished">2018-11-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/http/">http</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Permanent-Redirection-永久重定向"><a href="#Permanent-Redirection-永久重定向" class="headerlink" title="Permanent Redirection(永久重定向)"></a>Permanent Redirection(永久重定向)</h2><table>
+<thead>
+<tr>
+<th>statusCode</th>
+<th>含义</th>
+<th>处理方法</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>301</td>
+<td>Moved Permanently</td>
+<td>GET 方法不会发生变更，其他方法有可能会变更为 GET 方法</td>
+<td>-</td>
+</tr>
+<tr>
+<td>308</td>
+<td>Permanent Redirect</td>
+<td>方法和消息主体都不发生变化</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Temporary-Redirection-临时重定向"><a href="#Temporary-Redirection-临时重定向" class="headerlink" title="Temporary Redirection(临时重定向)"></a>Temporary Redirection(临时重定向)</h2><table>
+<thead>
+<tr>
+<th>statusCode</th>
+<th>含义</th>
+<th>处理方法</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>302</td>
+<td>Found</td>
+<td>GET 方法不会发生变更，其他方法有可能会变更为 GET 方法</td>
+<td>-</td>
+</tr>
+<tr>
+<td>303</td>
+<td>See Other</td>
+<td>GET 方法不会发生变更，其他方法会变更为 GET 方法（消息主体会丢失)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>307</td>
+<td>Temporary Redirect</td>
+<td>方法和消息主体都不发生变化</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Special-Redirection-特殊重定向"><a href="#Special-Redirection-特殊重定向" class="headerlink" title="Special Redirection(特殊重定向)"></a>Special Redirection(特殊重定向)</h2><table>
+<thead>
+<tr>
+<th>statusCode</th>
+<th>含义</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>300</td>
+<td>Multiple Choice</td>
+<td>不会太多：所有的选项在消息主体的 HTML 页面中列出。也可以返回 200 OK 状态码。</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+<td>缓存刷新：该状态码表示缓存值依然有效，可以使用。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="重定向的3种方法"><a href="#重定向的3种方法" class="headerlink" title="重定向的3种方法"></a>重定向的3种方法</h2><blockquote>
+<p>当这3种方式同时存在时，优先级由高到低：http &gt; html meta &gt; js。</p>
+</blockquote>
+<ul>
+<li>使用http协议重定向（上面介绍的3种重定向）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">res.statusCode = <span class="number">307</span></div><div class="line">res.setHeader(<span class="string">'Location'</span>, <span class="string">'/doc-new'</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>使用html<code>meta</code>标签</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> </div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"0;URL=http://www.example.com/"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>content</code> 属性的值开头是一个数字，指示浏览器在等待该数字表示的秒数之后再进行跳转。建议始终将其设置为 0 来获取更好的可访问性。</p>
+</blockquote>
+<ul>
+<li>使用js</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.location.href = <span class="string">'http://www.example.com/'</span></div></pre></td></tr></table></figure>
+<h2 id="对于不安全请求的临时响应节"><a href="#对于不安全请求的临时响应节" class="headerlink" title="对于不安全请求的临时响应节"></a>对于不安全请求的临时响应节</h2><p>不安全请求会修改服务器端的状态，应该避免用户无意的重复操作。一般地，你并不想要你的用户重复发送 <code>PUT</code>、<code>POST</code> 或 <code>DELETE</code> 请求。假如你仅仅为该类请求返回响应的话，简单地点击刷新按钮就会（可能会有一个确认信息）导致请求的重复发送。</p>
+<p>在这种情况下，服务器可以返回一个 303 (See Other) 响应，其中含有合适的响应信息。如果刷新按钮被点击的话，只会导致该页面被刷新，而不会重复提交不安全的请求。</p>
+<h2 id="对于耗时请求的临时响应节"><a href="#对于耗时请求的临时响应节" class="headerlink" title="对于耗时请求的临时响应节"></a>对于耗时请求的临时响应节</h2><p>一些请求的处理会需要比较长的时间，比如有时候 DELETE 请求会被安排为稍后处理。在这种情况下，会返回一个 303 (See Other)  重定向响应，该响应链接到一个页面，表示请求的操作已经被列入计划，并且最终会通知用户操作的进展情况，或者允许用户将其取消。</p>
+<h2 id="Nginx中配置重定向"><a href="#Nginx中配置重定向" class="headerlink" title="Nginx中配置重定向"></a>Nginx中配置重定向</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</div><div class="line">  <span class="attribute">server_name</span> example.com;</div><div class="line">  <span class="attribute">return</span> <span class="number">301</span> <span class="variable">$schema</span>://www.example.com<span class="variable">$request_uri</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以使用 rewrite 指令来针对一个文件目录或者一部分页面应用重定向设置：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">rewrite</span><span class="regexp"> ^/images/(.*)$</span> http://images.example.com/<span class="variable">$1</span> <span class="literal">redirect</span>;</div><div class="line"><span class="attribute">rewrite</span><span class="regexp"> ^/images/(.*)$</span> http://images.example.com/<span class="variable">$1</span> <span class="literal">permanent</span>;</div></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-11-18T08:33:56.933Z" itemprop="dateUpdated">2018-11-18 16:33:56</time>
+</span><br>
+
+
+        
+        <!-- 此处因为使用了lodash的template方法，所以可以注入html字符串 -->
+        文章中有任何不对或者讲的不足的地方，欢迎评论，也可发邮件至794465731@qq.com或者xxxxxmiss@gmail.com
+        
+    </div>
+    <footer>
+        <a href="https://xxxxxmiss.github.io">
+            <img src="/img/avatar.gif" alt="xxxxxMiss">
+            xxxxxMiss
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redirection/">redirection</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2018/11/18/http-redirection/&title=《http-redirection》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.gif" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2018/11/18/http-redirection/&title=《http-redirection》 — 青史成灰&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xxxxxmiss.github.io/2018/11/18/http-redirection/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《http-redirection》 — 青史成灰&url=https://xxxxxmiss.github.io/2018/11/18/http-redirection/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xxxxxmiss.github.io/2018/11/18/http-redirection/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/13/platform-compatibility/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">platform-compatibility</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'xxxxxMiss',
+            repo: 'xxxxxMiss.github.io',
+            oauth: {
+                client_id: 'c884dd9d2dfab48c79be',
+                client_secret: 'dc8fb124cf576aaed6500ffbd59545c1ccf98a06',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>xxxxxMiss &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2018/11/18/http-redirection/&title=《http-redirection》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.gif" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2018/11/18/http-redirection/&title=《http-redirection》 — 青史成灰&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xxxxxmiss.github.io/2018/11/18/http-redirection/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《http-redirection》 — 青史成灰&url=https://xxxxxmiss.github.io/2018/11/18/http-redirection/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xxxxxmiss.github.io/2018/11/18/http-redirection/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aUW6DQAwFwNz/0ukBosCzTSphZr+ipoUdKhl77dcrXu+P9fnt5+fkasnPL1sYGBi3ZbwP17fNfX6b847vcvybX6kYGBgPYHyLYMc3SIJs9TElV8bAwMCohtSEcfxXGBgYGFcxeuE42kTxOhgYGM9kJKlbXohWH0rygC6rxTEwMG7IyE/d///zT/obGBgYt2K8x+sXmyvvAQMDYzWjuoleMyBPJXvpKQYGxm5GcqDWawlUhzZ6TdDCuSAGBsZtGb2G5SQ45sdnzXCPgYGxjjFJ1JJximtbmCfvDQwMjNWMJBGsjl/0Wgs9GAYGxm5GXqxOwmg1WeylrRgYGLsZ+bFX+aLFsbPefjAwMJ7MyI/Seg2D3qM8eQFgYGCsYxRKxHGwTlqhSdg9mW7DwMBYx0gOwqrJWbVVOR/7wMDAeCajGv7y8Yi8oK0WvRgYGFsZk8vNk7xqa/MrBgMDYzVjPkiRBNnj6yRlc2EoBAMDYx0jv001dctL4ir+5D+AgYGxjlHdVu+4rZcgjsYsMDAwFjHygJgE32pRWt3bybAFBgbGUkZeOk6SwmrqWX0xYGBg7Ga8i2ueiVXbnxEbAwNjNaNXmvZqyagB2UsKMTAwHsCojmrl1HkrNGlIYGBgPIdRDXx5C6GKb4Z+DAwMjHGqVw3ZedGLgYGBkSd5k8CaJ6OXvTcwMDBuyKgWsT3kpJEQDVtgYGAsZeSl42RsojpU0QvrGBgY6xh/Cs/+9cG7F/AAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1264698790&web_id=1264698790')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'where are you going?';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'come back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
