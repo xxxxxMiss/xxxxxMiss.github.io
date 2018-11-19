@@ -111,7 +111,7 @@ function entitytag (entity) {
 文件结构：
 --
 |-rxjs
-    |-index.html
+|------index.html
 |-server.js
 |-client.html
 
