@@ -38,7 +38,7 @@ W/&amp;quot;&amp;lt;etag_value&amp;gt;&amp;quot;: 弱验证器很容易生成，
 W/&amp;quot;&amp;lt;etag_value&amp;gt;&amp;quot;: 弱验证器很容易生成，但不利于比较。 强验证器是比较的理想选择，但很难有效地生成。 相同资源的两个弱Etag值可能语义等同，但不是每个字节都相同。
 
 &amp;quot;&amp;lt;etag_">
-<meta property="og:updated_time" content="2018-11-19T17:41:24.921Z">
+<meta property="og:updated_time" content="2018-11-19T17:44:50.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http-etag-if-none-match">
 <meta name="twitter:description" content="ETag简介
@@ -265,7 +265,7 @@ W/&amp;quot;&amp;lt;etag_value&amp;gt;&amp;quot;: 弱验证器很容易生成，
 <li>第一次请求由服务端生成etag，并随响应头一起返回给客户端</li>
 <li>当你第二次发起<em>同一个请求</em>时，客户端会发送一个<code>If-None-Match</code>的请求头，该请求头的值就是etag的值。然后服务器会将客户端发送过来的etag与自己保存的etag做比较。如果是一样的，那么就返回<code>304</code>，表明客户端可以继续使用本地缓存。否则就返回<code>200</code>，客户端重新解析服务器返回的数据。</li>
 </ol>
-<h3 id="演示demo"><a href="#演示demo" class="headerlink" title="演示demo"></a>演示demo</h3><h2 id="文件结构："><a href="#文件结构：" class="headerlink" title="文件结构："></a>文件结构：</h2><p>|-rxjs<br>    |-index.html<br>|-server.js<br>|-client.html</p>
+<h3 id="演示demo"><a href="#演示demo" class="headerlink" title="演示demo"></a>演示demo</h3><h2 id="文件结构："><a href="#文件结构：" class="headerlink" title="文件结构："></a>文件结构：</h2><p>|-rxjs<br>|——index.html<br>|-server.js<br>|-client.html</p>
 <p>客户端：<br>client.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://127.0.0.1:3000"</span>&gt;</span>测试链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>服务端<br>server.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</div><div class="line"><span class="keyword">const</span> serveStatic = <span class="built_in">require</span>(<span class="string">'serve-static'</span>)</div><div class="line"><span class="keyword">const</span> finalhandler = <span class="built_in">require</span>(<span class="string">'finalhandler'</span>)</div><div class="line"></div><div class="line"><span class="comment">// rxjs是和该脚本放在同一个目录下的一个文件夹</span></div><div class="line"><span class="comment">// 可以在rxjs文件夹下放置一个index.html</span></div><div class="line"><span class="comment">// 修改rxjs/index.html中的内容，然后观察network中etag和if-none-match的变化以及stausCode的变化</span></div><div class="line"><span class="keyword">const</span> serve = serveStatic(<span class="string">'rxjs'</span>)</div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">  serve(req, res, finalhandler(req, res))</div><div class="line">&#125;)</div><div class="line"></div><div class="line">server.listen(<span class="number">3000</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Server is listening port: 3000'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <h2 id="Last-Modified-amp-If-Modified-Since"><a href="#Last-Modified-amp-If-Modified-Since" class="headerlink" title="Last-Modified &amp; If-Modified-Since"></a>Last-Modified &amp; If-Modified-Since</h2><p>Last-Modified与Etag类似。不过Last-Modified表示响应资源在服务器最后修改时间而已。与Etag相比，不足为：</p>
@@ -285,7 +285,7 @@ W/&amp;quot;&amp;lt;etag_value&amp;gt;&amp;quot;: 弱验证器很容易生成，
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-11-19T17:41:24.921Z" itemprop="dateUpdated">2018-11-20 01:41:24</time>
+    最后更新时间：<time datetime="2018-11-19T17:44:50.026Z" itemprop="dateUpdated">2018-11-20 01:44:50</time>
 </span><br>
 
 
