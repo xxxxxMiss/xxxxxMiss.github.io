@@ -38,7 +38,7 @@ W/&amp;quot;&amp;lt;etag_value&amp;gt;&amp;quot;: 弱验证器很容易生成，
 W/&amp;quot;&amp;lt;etag_value&amp;gt;&amp;quot;: 弱验证器很容易生成，但不利于比较。 强验证器是比较的理想选择，但很难有效地生成。 相同资源的两个弱Etag值可能语义等同，但不是每个字节都相同。
 
 &amp;quot;&amp;lt;etag_">
-<meta property="og:updated_time" content="2018-11-20T12:29:37.661Z">
+<meta property="og:updated_time" content="2018-11-23T09:21:50.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http-etag-if-none-match">
 <meta name="twitter:description" content="ETag简介
@@ -242,7 +242,7 @@ W/&amp;quot;&amp;lt;etag_value&amp;gt;&amp;quot;: 弱验证器很容易生成，
 <li>Etag</li>
 </ul>
 <h3 id="Cache-Control易混淆点解释"><a href="#Cache-Control易混淆点解释" class="headerlink" title="Cache-Control易混淆点解释"></a>Cache-Control易混淆点解释</h3><blockquote>
-<p>Cache-Control响应头中常用字段的具体含义：</p>
+<p>单个的，常用的属性解释：</p>
 </blockquote>
 <ul>
 <li><p>max-age：用来设置资源可以被缓存多长时间，单位为秒；</p>
@@ -258,6 +258,14 @@ W/&amp;quot;&amp;lt;etag_value&amp;gt;&amp;quot;: 弱验证器很容易生成，
 <li><p>no-store：禁止一切缓存（这个才是响应不被缓存的意思）。</p>
 </li>
 </ul>
+<blockquote>
+<p>组合属性解释：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cache</span>-control:<span class="keyword">private</span>, <span class="keyword">no</span>-<span class="keyword">cache</span>, <span class="keyword">no</span>-<span class="keyword">store</span>, must-revalidate</div></pre></td></tr></table></figure>
+<p>很多情况下，你会看到如上的组合。其实上面的组合是冗余的，但是它可能并不是原始服务器设置的，而是经过多个设备，最终组合成上面的形式。<br>我们可以根据上面<a href="#Cache-Control易混淆点解释">单个属性</a>的解释，可以得出上面的组合其实等同于如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cache</span>-control:<span class="keyword">no</span>-<span class="keyword">store</span></div></pre></td></tr></table></figure>
+<p>也就是当出现多个属性组合时，要根据单个属性的定义得出最终的值，并不是所有的值都生效。</p>
+<p><a href="https://tools.ietf.org/html/rfc7234#section-4.2.1" target="_blank" rel="external">More</a></p>
 <h2 id="常用条件请求的搭配之一"><a href="#常用条件请求的搭配之一" class="headerlink" title="常用条件请求的搭配之一"></a>常用条件请求的搭配之一</h2><blockquote>
 <p><code>ETag</code>和<code>If-None-Math</code>，原理解释如下：</p>
 </blockquote>
@@ -285,7 +293,7 @@ W/&amp;quot;&amp;lt;etag_value&amp;gt;&amp;quot;: 弱验证器很容易生成，
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-11-20T12:29:37.661Z" itemprop="dateUpdated">2018-11-20 20:29:37</time>
+    最后更新时间：<time datetime="2018-11-23T09:21:50.286Z" itemprop="dateUpdated">2018-11-23 17:21:50</time>
 </span><br>
 
 

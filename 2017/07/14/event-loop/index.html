@@ -19,20 +19,20 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="js,nodejs">
+    <meta name="keywords" content="nodejs,js">
     <meta name="description" content=".list li{
     list-style-type: decimal;
   }
 
 
-2个名词
+2 个名词
 microtask: 称之为小型任务
 macrotask（task queue）: 称之为大型任务
 
 事件循环模型
 当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
 
-  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrota">
+  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="event-loop(事件循环)">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/07/14/event-loop/index.html">
@@ -42,16 +42,16 @@ macrotask（task queue）: 称之为大型任务
   }
 
 
-2个名词
+2 个名词
 microtask: 称之为小型任务
 macrotask（task queue）: 称之为大型任务
 
 事件循环模型
 当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
 
-  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrota">
+  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrot">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/07/14/event-loop/event-loop.png">
-<meta property="og:updated_time" content="2017-07-16T12:17:55.000Z">
+<meta property="og:updated_time" content="2018-11-23T09:23:28.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="event-loop(事件循环)">
 <meta name="twitter:description" content=".list li{
@@ -59,14 +59,14 @@ macrotask（task queue）: 称之为大型任务
   }
 
 
-2个名词
+2 个名词
 microtask: 称之为小型任务
 macrotask（task queue）: 称之为大型任务
 
 事件循环模型
 当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
 
-  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrota">
+  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrot">
 <meta name="twitter:image" content="https://xxxxxmiss.github.io/2017/07/14/event-loop/event-loop.png">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
@@ -209,7 +209,7 @@ macrotask（task queue）: 称之为大型任务
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>目录</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2个名词"><span class="post-toc-number">1.</span> <span class="post-toc-text">2个名词</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事件循环模型"><span class="post-toc-number">2.</span> <span class="post-toc-text">事件循环模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#需要知道的一些事情："><span class="post-toc-number">3.</span> <span class="post-toc-text">需要知道的一些事情：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#call-stack-执行栈-与event-loop-事件循环-之间的关系"><span class="post-toc-number">4.</span> <span class="post-toc-text">call stack(执行栈)与event loop(事件循环)之间的关系</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-个名词"><span class="post-toc-number">1.</span> <span class="post-toc-text">2 个名词</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事件循环模型"><span class="post-toc-number">2.</span> <span class="post-toc-text">事件循环模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#需要知道的一些事情："><span class="post-toc-number">3.</span> <span class="post-toc-text">需要知道的一些事情：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#call-stack-执行栈-与-event-loop-事件循环-之间的关系"><span class="post-toc-number">4.</span> <span class="post-toc-text">call stack(执行栈)与 event loop(事件循环)之间的关系</span></a></li></ol>
         </nav>
     </aside>
     
@@ -240,7 +240,7 @@ macrotask（task queue）: 称之为大型任务
   }
 </style>
 
-<h2 id="2个名词"><a href="#2个名词" class="headerlink" title="2个名词"></a>2个名词</h2><ul>
+<h2 id="2-个名词"><a href="#2-个名词" class="headerlink" title="2 个名词"></a>2 个名词</h2><ul>
 <li>microtask: 称之为小型任务</li>
 <li>macrotask（task queue）: 称之为大型任务</li>
 </ul>
@@ -251,14 +251,15 @@ macrotask（task queue）: 称之为大型任务
 
 <p>精简的概括就是：</p>
 <ul>
-<li>先从macrotask队列中选择最老的一个任务开始执行，然后移除这个最老的任务</li>
-<li>再执行microtask队列中所有的任务，然后移除他们</li>
-<li>继续下一轮，重复以上2步</li>
+<li>先从 macrotask 队列中选择最老的一个任务开始执行，然后移除这个最老的任务</li>
+<li>再执行 microtask 队列中所有的任务，然后移除他们</li>
+<li>继续下一轮，重复以上 2 步</li>
 </ul>
 <h2 id="需要知道的一些事情："><a href="#需要知道的一些事情：" class="headerlink" title="需要知道的一些事情："></a>需要知道的一些事情：</h2><ol class="list"><br>  <li>当一个macrotask任务正在运行的时候，新的事件可以被注册，也即创建新的任务。例如：<br>    <ul><br>      <li>promiseA.then()的回调是一个任务<br>        <ul><br>          <li>promiseA如果处于resolve/reject状态时，那么该任务被推到事件循环的当前轮次的microtask中</li><br>          <li>promiseA处于pending状态时，那么该任务将会被推到事件循环的下一个轮次的microtask中。</li><br>        </ul><br>      </li><br>      <li>setTimeout(callback, n)的回调是一个任务，将会被推到macrotask中，及时n=0。</li><br>    </ul><br>  </li><br>  <li>如果事件循环正在执行microtask中的任务，那么你可以继续往microtask中添加任务，这些任务都会在本轮次的循环中执行。</li><br>  <li>只有等到本轮次的microtask中的所有任务执行完毕，才会执行下一轮的macrotask任务。</li><br>  <li>常见的microtask任务：<code>process.nextTick</code>,<code>Promise</code>, <code>Object.observe</code>, <code>MutationObserver</code></li><br>  <li>常见的macrotask任务：<code>setTimeout</code>,<code>setInterval</code>, <code>setImmediate</code>,Dom事件（click, scroll, mouseup等）， <code>ajax</code>，I/O, UI rendering等。还需要注意的是，整个的脚本也是一个macrotask任务。</li><br></ol>
 
-<p>经过上面的分析，可以看如下例子输出：<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</div><div class="line"></div><div class="line">const interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setInterval'</span>)</div><div class="line">&#125;, <span class="number">0</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout1'</span>)</div><div class="line"></div><div class="line">  Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise3'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise4'</span>)</div><div class="line">  &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'setTimeout2'</span>)</div><div class="line"></div><div class="line">      Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise5'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'promise6'</span>)</div><div class="line">      &#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        clearInterval(interval)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">&#125;)</div><div class="line"></div><div class="line">Promise.resolve().<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="regexp">//</span> script start</div><div class="line"><span class="regexp">//</span> promise1</div><div class="line"><span class="regexp">//</span> promise2</div><div class="line"><span class="regexp">//</span> setInterval</div><div class="line"><span class="regexp">//</span> setTimeout1</div><div class="line"><span class="regexp">//</span> promise3</div><div class="line"><span class="regexp">//</span> promise4</div><div class="line"><span class="regexp">//</span> interval</div><div class="line"><span class="regexp">//</span> setTimout2</div><div class="line"><span class="regexp">//</span> promise5</div><div class="line"><span class="regexp">//</span> pormise6</div></pre></td></tr></table></figure></p>
-<h2 id="call-stack-执行栈-与event-loop-事件循环-之间的关系"><a href="#call-stack-执行栈-与event-loop-事件循环-之间的关系" class="headerlink" title="call stack(执行栈)与event loop(事件循环)之间的关系"></a>call stack(执行栈)与event loop(事件循环)之间的关系</h2><blockquote>
+<p>经过上面的分析，可以看如下例子输出：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</div><div class="line"></div><div class="line"><span class="keyword">const</span> interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setInterval'</span>)</div><div class="line">&#125;, <span class="number">0</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout1'</span>)</div><div class="line"></div><div class="line">  <span class="built_in">Promise</span>.resolve()</div><div class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'promise3'</span>)</div><div class="line">    &#125;)</div><div class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'promise4'</span>)</div><div class="line">    &#125;)</div><div class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'setTimeout2'</span>)</div><div class="line"></div><div class="line">        <span class="built_in">Promise</span>.resolve()</div><div class="line">          .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'promise5'</span>)</div><div class="line">          &#125;)</div><div class="line">          .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'promise6'</span>)</div><div class="line">          &#125;)</div><div class="line">          .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            clearInterval(interval)</div><div class="line">          &#125;)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="built_in">Promise</span>.resolve()</div><div class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</div><div class="line">  &#125;)</div><div class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</div><div class="line">  &#125;)</div><div class="line"></div><div class="line"><span class="comment">// script start</span></div><div class="line"><span class="comment">// promise1</span></div><div class="line"><span class="comment">// promise2</span></div><div class="line"><span class="comment">// setInterval</span></div><div class="line"><span class="comment">// setTimeout1</span></div><div class="line"><span class="comment">// promise3</span></div><div class="line"><span class="comment">// promise4</span></div><div class="line"><span class="comment">// interval</span></div><div class="line"><span class="comment">// setTimout2</span></div><div class="line"><span class="comment">// promise5</span></div><div class="line"><span class="comment">// pormise6</span></div></pre></td></tr></table></figure>
+<h2 id="call-stack-执行栈-与-event-loop-事件循环-之间的关系"><a href="#call-stack-执行栈-与-event-loop-事件循环-之间的关系" class="headerlink" title="call stack(执行栈)与 event loop(事件循环)之间的关系"></a>call stack(执行栈)与 event loop(事件循环)之间的关系</h2><blockquote>
 <p>为了形象的表示，可以参看下图：</p>
 </blockquote>
 <img src="/2017/07/14/event-loop/event-loop.png" alt="事件循环与函数调用栈的关系" title="事件循环与函数调用栈的关系">
@@ -271,7 +272,7 @@ macrotask（task queue）: 称之为大型任务
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-07-16T12:17:55.000Z" itemprop="dateUpdated">2017-07-16 20:17:55</time>
+    最后更新时间：<time datetime="2018-11-23T09:23:28.585Z" itemprop="dateUpdated">2018-11-23 17:23:28</time>
 </span><br>
 
 
