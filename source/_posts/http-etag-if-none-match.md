@@ -87,7 +87,7 @@ function entitytag (entity) {
 - Etag
 
 ### Cache-Control易混淆点解释
-> Cache-Control响应头中常用字段的具体含义：
+> 单个的，常用的属性解释：
 
 - max-age：用来设置资源可以被缓存多长时间，单位为秒；
 
@@ -100,6 +100,23 @@ function entitytag (entity) {
 - no-cache：强制客户端直接向服务器发送请求,也就是说每次请求都必须向服务器发送。服务器接收到请求，然后判断资源是否变更，是则返回新内容，否则返回304，未变更。这个很容易让人产生误解，使人误以为是响应不被缓存。实际上Cache-Control: no-cache是会被缓存的，只不过每次在向客户端（浏览器）提供响应数据时，缓存都要向服务器评估缓存响应的有效性。
 
 - no-store：禁止一切缓存（这个才是响应不被缓存的意思）。
+
+> 组合属性解释：
+
+```
+cache-control:private, no-cache, no-store, must-revalidate
+```
+
+很多情况下，你会看到如上的组合。其实上面的组合是冗余的，但是它可能并不是原始服务器设置的，而是经过多个设备，最终组合成上面的形式。
+我们可以根据上面[单个属性](#Cache-Control易混淆点解释)的解释，可以得出上面的组合其实等同于如下：
+
+```
+cache-control:no-store
+```
+
+也就是当出现多个属性组合时，要根据单个属性的定义得出最终的值，并不是所有的值都生效。
+
+[More](https://tools.ietf.org/html/rfc7234#section-4.2.1)
 
 ## 常用条件请求的搭配之一
 > `ETag`和`If-None-Math`，原理解释如下：

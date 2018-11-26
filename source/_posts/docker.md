@@ -5,33 +5,39 @@ tags:
 categories:
 ---
 
-## docker简介
-> docker是一个开发，运输，运行程序的一个平台。docker将你的程序和基础设施隔离开来，以便于快速的运输，测试，开发。
+## docker 简介
 
-## docker引擎
+> docker 是一个开发，运输，运行程序的一个平台。docker 将你的程序和基础设施隔离开来，以便于快速的运输，测试，开发。
+
+## docker 引擎
+
 > [官方传送门](https://docs.docker.com/engine/docker-overview/#the-docker-platform)
 
-## docker架构（体系结构）
-> 使用`client-server`架构，docker客户端告诉daemon(docker后台常驻进程)去做一个**构建，运行，分发**docker容器。
-> docker客户端和daemon的交流通信使用`rest api`，基于一个`unix socket`或者`network interface`之上。
+## docker 架构（体系结构）
+
+> 使用`client-server`架构，docker 客户端告诉 daemon(docker 后台常驻进程)去做一个**构建，运行，分发**docker 容器。
+> docker 客户端和 daemon 的交流通信使用`rest api`，基于一个`unix socket`或者`network interface`之上。
 
 ### 几个术语（glossary）
-- `Docker registries`: docker镜像源，docker默认被配置为去`docker hub`上下载镜像。
 
-- `images`: 镜像，一个镜像是带有一系列指令的只读的模板(包)，用来创建docker容器。当你创建自己的镜像的时候，你需要在`Dockerfile`中按照一定的简单的语法去定义一些步骤去创建镜像并运行它。
-一个镜像包含了运行一个程序所需要的各种依赖（代码，运行时，库，环境变量，配置文件）。
-`Dockerfile`中的每一条指令都会生成一个**层**。
+- `Docker registries`: docker 镜像源，docker 默认被配置为去`docker hub`上下载镜像。
+
+- `images`: 镜像，一个镜像是带有一系列指令的只读的模板(包)，用来创建 docker 容器。当你创建自己的镜像的时候，你需要在`Dockerfile`中按照一定的简单的语法去定义一些步骤去创建镜像并运行它。
+  一个镜像包含了运行一个程序所需要的各种依赖（代码，运行时，库，环境变量，配置文件）。
+  `Dockerfile`中的每一条指令都会生成一个**层**。
 
 - `containers`: 容器，一个容器是一个镜像的可运行的实例。可以通过`docker api`或则`CLI`对实例进行`CRUD`等操作。
 
-- `services`: 服务，服务允许你跨多个daemon扫描容器，这些daemon相互协作称之为一个集群（swarm）。
+- `services`: 服务，服务允许你跨多个 daemon 扫描容器，这些 daemon 相互协作称之为一个集群（swarm）。
 
-## docker基本开发环境搭建
+## docker 基本开发环境搭建
+
 ### 容器（containers）
 
 - 使用`Dockerfile`定义容器
 
 Dockerfile
+
 ```
 # Use an official Python runtime as a parent image
 FROM python:2.7-slim
@@ -56,6 +62,7 @@ CMD ["python", "app.py"]
 ```
 
 app.py
+
 ```
 from flask import Flask
 from redis import Redis, RedisError
@@ -83,7 +90,7 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-- 构建docker镜像
+- 构建 docker 镜像
 
 ```
 $ docker build -t friendlyhello .
@@ -95,15 +102,16 @@ $ docker build -t friendlyhello .
 $ docker image ls
 ```
 
-- 运行app
+- 运行 app
 
 ```
 $ docker run -p 4000:80 friendlyhello
 ```
 
-- 查看app.py的输出
-在浏览器访问`http://localhost:4000`或者
-在终端使用curl查看：
+- 查看 app.py 的输出
+  在浏览器访问`http://localhost:4000`或者
+  在终端使用 curl 查看：
+
 ```
 $ curl http://localhost:4000
 ```
@@ -121,14 +129,16 @@ $ docker container stop <IMAGE_ID>
 ```
 
 ### 服务（services）
+
 > 一个服务只会运行一个镜像，但是它定义了镜像运行的法规：比如该使用什么端口，产生多少个容器的复制品。
 > 关于服务的概念比较的抽象，可以查看[官方例子对于服务的解释](https://docs.docker.com/get-started/part3/#about-services)
 
 task:
-> 一个service中运行的一个容器叫做task。task被给予一个自增的id,增加到`replicas`的数量位置。
-查看service中的tasks
 
->一个`docker-compose.yml`文件定义了docker容器在产品模式下应该具有的行为。
+> 一个 service 中运行的一个容器叫做 task。task 被给予一个自增的 id,增加到`replicas`的数量位置。
+> 查看 service 中的 tasks
+
+> 一个`docker-compose.yml`文件定义了 docker 容器在产品模式下应该具有的行为。
 
 ```
 version: "3"
@@ -157,12 +167,15 @@ networks:
 ```
 $ docker stack deploy -c docker-compose.yml getstartedlab
 ```
-在使用上面的命令来启动一个服务的时候，必须先设置一个`swarm manager`（集群leader）, 不然会抛出一个错误提示。后面解释为什么要这样做：
+
+在使用上面的命令来启动一个服务的时候，必须先设置一个`swarm manager`（集群 leader）, 不然会抛出一个错误提示。后面解释为什么要这样做：
+
 ```
 $ docker swarm init
 ```
 
 查看启动的服务：
+
 ```
 $ docker service ls
 # 通过该命令查看，可以看出该服务的名称为 getstartedlab_web
@@ -171,22 +184,25 @@ $ docker service ls
 ```
 
 列出一个服务中有多少个任务：
+
 ```
 docker service ps getstartedlab_web
 ```
 
 请求服务：
+
 ```
 $ curl -4 http://localhost
 # 或者在浏览器中打开并刷新几次，可以看到Hostname在改变
 ```
 
-扫描app: 可以改变`docker-compose.yml`中的相关配置，然后重新运行发布命令
+扫描 app: 可以改变`docker-compose.yml`中的相关配置，然后重新运行发布命令
+
 ```
 $ docker stack deploy -c docker-compose.yml getstartedlab
 ```
 
-拆卸app和swarm
+拆卸 app 和 swarm
 
 ```
 $ docker stack rm getstartedlab
@@ -194,38 +210,47 @@ $ docker swarm leave --force
 ```
 
 ### Stacks(栈)
+
 > 栈是一组相互关联的服务，这些服务可以共享依赖关系,被组织和缩放。一个栈有着定义和协调整个应用的能力。
 
-## Dockerfile常用指令（选项）
+## Dockerfile 常用指令（选项）
+
 [官方传送门](https://docs.docker.com/engine/reference/builder/)
+
 > `Dockerfile`中的指令大小写不敏感，但是按照约定都使用大写，以便于和指定的参数区分。
 > `Dockerfile`中的指令按顺序一条一条的执行，并且`Dockerfile`文件必须以`FROM`开始
 
-### 构建上下文context
+### 构建上下文 context
+
 > `docker build`命令基于`Dockerfile`文件和`context`构建镜像。
 > `context`是一个`PATH`或则`URL`指定的文件集合。
-> `PATH`是一个本地文件系统的一个目录，`URL`是一个git仓库。
+> `PATH`是一个本地文件系统的一个目录，`URL`是一个 git 仓库。
 
 ### `.dockerignore`
+
 > 为了增加构建的性能，可以将不需要的文件添加到`.dockerignore`
 
 一般情况下，`Dockerfile`放置在`context`的根目录下，可以使用`-f`选项指定`Dockerfile`文件的位置：
+
 ```
 $ docker build -f /path/to/a/Dockerfile .
 ```
 
 可以为一个镜像指定多个仓库标签:
+
 ```
 $ docker build -t shykes/myapp:1.0.2 -t shykes/myapp:latest .
 ```
 
 ### 解析器指令（parser directives）
+
 > `Dockerfile`中的注释已`#`开头，但是解析器指令时一种特殊的注释，必须出现在`Dockerfile`中的开头部分。
 > 语法：# directive=value
 
 ### FROM
+
 > 初始化一个新的构建时期，为接下来的指令设置一个[基本镜像](https://docs.docker.com/glossary/)。
-> 常用的3种形式：
+> 常用的 3 种形式：
 
 ```
 FROM <image> [AS <name>]
@@ -234,9 +259,10 @@ FROM <image>[@<digest>] [AS <name>]
 ```
 
 ### RUN
+
 > 在当前镜像的顶部新的层里运行任何指令，并将结果提交到下一步中。
 > 层运行指令并且生成提交信息符合`Docker`的核心概念：这个提交是非常便宜的，容器可以基于一个镜像的任何历史点创建。
-> 2种使用形式：shell形式和exec形式
+> 2 种使用形式：shell 形式和 exec 形式
 
 ```
 RUN /bin/bash -c 'source $HOME/.bashrc; \
@@ -246,8 +272,9 @@ RUN ["/bin/bash", "-c", "echo hello"]
 ```
 
 ### CMD
+
 > 一个`Dockerfile`中只能出现一个`CMD`,如果出现了多个，那么只有最后一个起作用。
-> 3种使用形式：
+> 3 种使用形式：
 
 ```
 # exec形式，最受欢迎的形式
@@ -261,13 +288,15 @@ CMD command param1 param2
 ```
 
 ### LABEL
-> 为镜像添加一些元数据，可以使用`docker inspect`查看label的值。使用形式:
+
+> 为镜像添加一些元数据，可以使用`docker inspect`查看 label 的值。使用形式:
 
 ```
 LABEL <key>=<value> <key>=<value> <key>=<value> ...
 ```
 
 一些常用情况的例子
+
 ```
 LABEL "com.example.vendor"="ACME Incorporated"
 LABEL com.example.label-with-value="foo"
@@ -277,16 +306,19 @@ that label-values can span multiple lines."
 ```
 
 ### ~~MAINTAINER~~
+
 > 已过期，使用`LABEL`代替。
 
 ### EXPOSE
-> 指定docker容器在运行的时候监听那个网络端口，可以指定使用TCP还是DUP。如果没有指定协议，默认使用TCP。使用形式：
+
+> 指定 docker 容器在运行的时候监听那个网络端口，可以指定使用 TCP 还是 DUP。如果没有指定协议，默认使用 TCP。使用形式：
 
 ```
 EXPOSE <port> [<port>/<protocol>...]
 ```
 
 ### ENV
+
 > 可以使用`docker inspect`查看它的值，
 > 可以使用`docker run --env <key>=<value>`改变值。
 > 环境变量持久化可能会带来一些副作用，所以可以通过`RUN <key>=<value> <command>`来设置单个指令变量。
@@ -308,6 +340,7 @@ ENV myName="John Doe" myDog=Rex\ The\ Dog \
 ```
 
 等价于
+
 ```
 ENV myname John Doe
 ENV myDog Rex The Dog
@@ -315,6 +348,7 @@ ENV myCat fluffy
 ```
 
 ### ADD
+
 > 该指令将`src`中的文件，文件夹或者远程文件拷贝到镜像所在的文件系统的`dest`目录。
 > `src`中的路径被解析为相对于构建上下文`context`的路径，路径中可包含通配符。
 > `dest`路径必须是一个绝对路径或者相对于`WORKDIR`的路径。
@@ -328,17 +362,20 @@ ADD [--chown=<user>:<group>] ["<src>",... "<dest>"]
 关于该指令的详细说明，请参看[官方文旦](https://docs.docker.com/engine/reference/builder/#add)
 
 ### COPY
+
 > 该指令和`ADD`指令类似。区别是`ADD`支持`src`是一个`URL`，而`COPY`不支持。
 
 ### ENTRYPOINT
-> 2种使用形式：shell形式和exec形式
+
+> 2 种使用形式：shell 形式和 exec 形式
 
 ```
 ENTRYPOINT ["executable", "param1", "param2"] (exec form, preferred)
-ENTRYPOINT command param1 param2 
+ENTRYPOINT command param1 param2
 ```
 
 ### VOLUME
+
 > 用指定的名称创建一个挂载点。使用形式：
 
 ```
@@ -347,7 +384,8 @@ VOLUME /var/log /var/db
 ```
 
 ### USER
-> 设置docker镜像跑在哪个用户或者用户ID下，也可以设置一个可选的组或者组ID下。
+
+> 设置 docker 镜像跑在哪个用户或者用户 ID 下，也可以设置一个可选的组或者组 ID 下。
 > 如果没有设置组，默认使用`root`组。
 > 其他的指令`RUN, CMD, ENTRYPOINT`也遵守这一规则。
 
@@ -357,10 +395,11 @@ USER <UID>[:<GID>]
 ```
 
 ### WORKDIR
+
 > 为`Dockerfile`中的`RUN, CMD, ENTRYPOINT, ADD, COPY`指令提供工作目录。
 > `WORKDIR`可以在`Dockerfile`中出现多次，那么后面的路径时相对于前面的。
 
-TODO: 类似于nodejs中的resolve方法？解析到一个绝对路径为止？
+TODO: 类似于 nodejs 中的 resolve 方法？解析到一个绝对路径为止？
 
 ```
 WORKDIR /a
@@ -520,56 +559,64 @@ networks
 volumes
 ```
 
-
 ## 网络（network）
+
 ### 桥接网络（bridge networks）
+
 > 一个桥接可以是一个硬件设备或者是运行在一个主机内核中的软件。
 
 用户自定义桥接网路的好处：
+
 1. 提供更好的隔离和互通性。
 2. 在容器间提供自动化`DNS`解析。
 3. 随时绑定或者解绑一个容器到自定义网络。
 4. 每个用户自定义网络可以创建一个可配置的网络。
 
 创建用户自定义的网络：
+
 ```
 $ docker network create my-net
 ```
 
 移除一个自定义网络：
+
 ```
 $ docker network rm my-net
 ```
+
 如果一个容器当前正在使用这个网络，那么必须选断开：
+
 ```
 $ docker network disconnect my-net my-nginx
 ```
 
 ## 宗卷（Volumes）
-> docker中挂载数据的3种方式：
+
+> docker 中挂载数据的 3 种方式：
 
 - bind mount：利用机器的文件系统。
-- volumes：在文件系统中开辟一块区域来持久化数据，专门由docker管理。
+- volumes：在文件系统中开辟一块区域来持久化数据，专门由 docker 管理。
 - tmpfs： 在内存中挂载数据，并不能持久化，当容器停止，数据丢失。
 
-关于以上3种的数据挂载方式，具体的介绍查[看官方文档](https://docs.docker.com/storage/#choose-the-right-type-of-mount)
+关于以上 3 种的数据挂载方式，具体的介绍查[看官方文档](https://docs.docker.com/storage/#choose-the-right-type-of-mount)
 
-最推荐的方式是使用Volumes（实际还是视具体情况而定），此处只讲Volumes。
+最推荐的方式是使用 Volumes（实际还是视具体情况而定），此处只讲 Volumes。
 
-创建Volumes:
+创建 Volumes:
 
 ```
 $ docker volume create my-vol
 ```
 
-列出所有的Volumes:
+列出所有的 Volumes:
 
 ```
 $ docker volume ls
 ```
 
 ## 发布镜像
-1. [创建docker仓库](https://cloud.docker.com/)
+
+1. [创建 docker 仓库](https://cloud.docker.com/)
 
 > 在`docker cloud`上只能免费创建一个私有仓库，无限制多个公有仓库。
 
@@ -590,5 +637,3 @@ docker login
 ```
 $ docker push
 ```
-
-

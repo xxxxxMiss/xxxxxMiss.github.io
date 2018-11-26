@@ -1,10 +1,10 @@
 ---
 title: event-loop(事件循环)
 date: 2017-07-14 10:58:29
-tags: 
+tags:
   - js
   - nodejs
-categories: 
+categories:
   - js
 ---
 
@@ -14,11 +14,13 @@ categories:
   }
 </style>
 
-## 2个名词
+## 2 个名词
+
 - microtask: 称之为小型任务
 - macrotask（task queue）: 称之为大型任务
 
 ## 事件循环模型
+
 > 当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
 
 <ol class="list">
@@ -43,11 +45,12 @@ categories:
 
 精简的概括就是：
 
-- 先从macrotask队列中选择最老的一个任务开始执行，然后移除这个最老的任务
-- 再执行microtask队列中所有的任务，然后移除他们
-- 继续下一轮，重复以上2步
+- 先从 macrotask 队列中选择最老的一个任务开始执行，然后移除这个最老的任务
+- 再执行 microtask 队列中所有的任务，然后移除他们
+- 继续下一轮，重复以上 2 步
 
 ## 需要知道的一些事情：
+
 <ol class="list">
   <li>当一个macrotask任务正在运行的时候，新的事件可以被注册，也即创建新的任务。例如：
     <ul>
@@ -67,7 +70,8 @@ categories:
 </ol>
 
 经过上面的分析，可以看如下例子输出：
-```
+
+```js
 console.log('script start')
 
 const interval = setInterval(() => {
@@ -77,31 +81,38 @@ const interval = setInterval(() => {
 setTimeout(() => {
   console.log('setTimeout1')
 
-  Promise.resolve().then(() => {
-    console.log('promise3')
-  }).then(() => {
-    console.log('promise4')
-  }).then(() => {
-    setTimeout(() => {
-      console.log('setTimeout2')
+  Promise.resolve()
+    .then(() => {
+      console.log('promise3')
+    })
+    .then(() => {
+      console.log('promise4')
+    })
+    .then(() => {
+      setTimeout(() => {
+        console.log('setTimeout2')
 
-      Promise.resolve().then(() => {
-        console.log('promise5')
-      }).then(() => {
-        console.log('promise6')
-      }).then(() => {
-        clearInterval(interval)
+        Promise.resolve()
+          .then(() => {
+            console.log('promise5')
+          })
+          .then(() => {
+            console.log('promise6')
+          })
+          .then(() => {
+            clearInterval(interval)
+          })
       })
     })
+})
+
+Promise.resolve()
+  .then(() => {
+    console.log('promise1')
   })
-
-})
-
-Promise.resolve().then(() => {
-  console.log('promise1')
-}).then(() => {
-  console.log('promise2')
-})
+  .then(() => {
+    console.log('promise2')
+  })
 
 // script start
 // promise1
@@ -116,11 +127,11 @@ Promise.resolve().then(() => {
 // pormise6
 ```
 
-## call stack(执行栈)与event loop(事件循环)之间的关系
+## call stack(执行栈)与 event loop(事件循环)之间的关系
+
 > 为了形象的表示，可以参看下图：
 
 {% asset_img event-loop.png 事件循环与函数调用栈的关系 %}
-
 
 关于他们之间的关系的说明，此处就不在叙述了，具体可以[参看这里](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
 
