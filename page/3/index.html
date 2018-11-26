@@ -160,6 +160,116 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-awk-build-in-functions"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-09-19 20:42:18" datetime="2017-09-19T12:42:18.000Z"  itemprop="datePublished">2017-09-19</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/shell/">shell</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/09/19/awk-build-in-functions/">awk内置函数</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        在awk中, 需要知道的点
+数组，字符串等等，索引都是从1开始
+变量的取值直接写变量名var，而不像shell中需要$var，除了内置的特殊变量$0，$1，$2，…等
+FS：指定列分隔符，如：BEGIN{FS=&quot;:&quot;}
+内置NF变量：以指定分隔符FS分割出来的列数
+内置NR变量：当前处理的行数
+
+split(str, arr, field separator)
+使用指定的...
+    
+
+        <a href="/2017/09/19/awk-build-in-functions/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-git-plumbing-2"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-09-19 01:23:39" datetime="2017-09-18T17:23:39.000Z"  itemprop="datePublished">2017-09-19</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/09/19/git-plumbing-2/">git进阶（二）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        git配置文件的位置
+/etc/gitconfig
+~/.gitconfig || $XDG_CONFIG_HOME/git/config
+$PWD/.git/config
+
+查看git配置
+对于配置选项的CURD操作，不指定–system,–global,–local选项，CUD默认都是–local选项, R操作查询所有的配置（相当于同时指定了三个选项）。
+
+123456789101112...
+    
+
+        <a href="/2017/09/19/git-plumbing-2/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-git-plumbing"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -566,106 +676,6 @@ beforeExit
     
 
         <a href="/2017/06/05/RegExp/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-js-scope"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-05-28 23:54:27" datetime="2017-05-28T15:54:27.000Z"  itemprop="datePublished">2017-05-28</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/05/28/js-scope/">词法作用域VS动态作用</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        词法作用域(lexical scoping)
-js中有2种作用域，词法作用域和动态作用域。下面用例子来解释这2种作用域的概念。
-
-1234567891011121314151617181920212223var outerFunction  = function()&#123;   if(true)&#123;      var x = 5;      //console.log(y); /...
-    
-
-        <a href="/2017/05/28/js-scope/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Object-keys"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-05-20 19:55:45" datetime="2017-05-20T11:55:45.000Z"  itemprop="datePublished">2017-05-20</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/05/20/Object-keys/">Object类方法之keys()</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Object.keys()
-返回一个由给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for…in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 一个 for-in 循环还会枚举其原型链上的属性）。
-
-通过例子来看下什么叫“和for…in”顺序一致：123456789// 注意，这并不是类数组var obj = &#123;    100: 'a',    2: 'b...
-    
-
-        <a href="/2017/05/20/Object-keys/" class="post-more waves-effect waves-button">
             阅读全文…
         </a>
     </div>
