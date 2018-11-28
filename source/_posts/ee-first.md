@@ -1,5 +1,5 @@
 ---
-title: ee-first模块源码解读
+title: ee-first源码解读
 date: 2018-11-26 21:51:16
 tags:
   - nodejs
