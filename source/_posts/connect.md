@@ -11,7 +11,7 @@ categories:
 
 ## connect 简介
 
-> connect 是一款极简的 web 框架，粘合各种中间件来处理请求。
+> connect 是一款极简的 web 框架，串联各种中间件来处理请求。
 
 ## API
 
@@ -125,13 +125,19 @@ proto.use = function use(route, fn) {
 proto.handle = function handle(req, res, out) {
   // 这个变量用来控制中间件是否已经全部结束
   var index = 0
+  // 得到协议+主机部分
+  // getProtohost的解释看下面
   var protohost = getProtohost(req.url) || ''
+  // 要移除的route部分
   var removed = ''
+  // 是否在path的最前面添加过'/'的标记
   var slashAdded = false
   // 拿到所有的中间件
   var stack = this.stack
 
   // final function handler
+  // 可以指定自己的最终处理函数（所有的中间件都执行完毕后调用）
+  // 如果没有指定，那么使用`finalhandler`模块来处理
   var done =
     out ||
     finalhandler(req, res, {
@@ -144,16 +150,21 @@ proto.handle = function handle(req, res, out) {
   // 所以此处会把请求原始的url挂载到req的originUrl上
   req.originalUrl = req.originalUrl || req.url
 
-  // 这个next方法就是每个中间件的next
+  // 这个next方法就是每个中间件中最后一个参数next
   // 使用它来控制是否继续执行下一个中间件
   function next(err) {
+    // 如果手动添加过path部分前面的'/',
+    // 那么此处先去掉前面的'/',并且将slashAdded标记重置为false
     if (slashAdded) {
       req.url = req.url.substr(1)
       slashAdded = false
     }
 
+    // 表明有移除的部分
     if (removed.length !== 0) {
+      // 那么完整的url应该为protohost + removed + path（这一部分是去掉removed，剩下的部分）
       req.url = protohost + removed + req.url.substr(protohost.length)
+      // 将removed置空
       removed = ''
     }
 
@@ -200,12 +211,22 @@ proto.handle = function handle(req, res, out) {
 
     // trim off the part of the url that matches the route
     if (route.length !== 0 && route !== '/') {
+      // 如果route为：/blog，path为：/blog/post
+      // 那么该url会被处理成 protohost + '/post'
+
+      // route这段会被移除
       removed = route
+      // ①
       req.url = protohost + req.url.substr(protohost.length + removed.length)
 
       // ensure leading slash
+      // getProtohost函数可以知道，可能没有得到协议加主机部分
+      // 并且有可能你请求的path为'/'，
+      // 那么上面①处得到url就为空('')
+      // 所以此处的操作确在这种情况下,url前面有个`/`
       if (!protohost && req.url[0] !== '/') {
         req.url = '/' + req.url
+        // 表明已经添加过'/'
         slashAdded = true
       }
     }
@@ -216,5 +237,77 @@ proto.handle = function handle(req, res, out) {
   }
 
   next()
+}
+```
+
+通过`getProtohost`函数得到一个 url 的*协议+主机*：
+
+```js
+function getProtohost(url) {
+  // 如果url为一个空字符串
+  // 或者是以`/`开头，那么表明不带有协议部分
+  // 那么直接返回undefined
+  if (url.length === 0 || url[0] === '/') {
+    return undefined
+  }
+
+  // 找到search出现的位置
+  var searchIndex = url.indexOf('?')
+  var pathLength = searchIndex !== -1 ? searchIndex : url.length
+  // 从url中找到`://`出现的位置
+  var fqdnIndex = url.substr(0, pathLength).indexOf('://')
+
+  // 如果url中含有`://`，那么表示这是一个带有协议的url
+  return fqdnIndex !== -1
+    ? // 得到path中第一次出现`/`前面的部分，也就是协议+主机
+      url.substr(0, url.indexOf('/', 3 + fqdnIndex))
+    : undefined
+}
+```
+
+> 关于一个 url 中的各个部分的名称，可以看下图：
+
+{% asset_img url-segments.png url片段术语 %}
+
+上面的介绍的`next`方法用来控制是否继续执行下一个中间件，此处的`call`方法就是用来执行某一个中间件。
+
+```js
+// handle，就是每一个中间件
+// route，就是调用app.use(route,fn)中的route，在该函数中没有什么特别的用处，主要用来显示日志
+// err，调用错误中间件中的err
+// req，http.IncommingMessage
+// res，http.ServerResponse
+// next，上面介绍的next
+function call(handle, route, err, req, res, next) {
+  // 函数的形参个数
+  var arity = handle.length
+  var error = err
+  var hasError = Boolean(err)
+
+  debug('%s %s : %s', handle.name || '<anonymous>', route, req.originalUrl)
+
+  try {
+    // 经过此处的条件语句，我们可以知道
+    // 在你调用使用错误中间件的时候，形参一定要是4个参数
+    // 多余4个或者少于4个都不会执行
+    if (hasError && arity === 4) {
+      // error-handling middleware
+      handle(err, req, res, next)
+      return
+    } else if (!hasError && arity < 4) {
+      // 不是错误中间件，那么形参一定要小于4个
+      // request-handling middleware
+      handle(req, res, next)
+      return
+    }
+  } catch (e) {
+    // replace the error
+    error = e
+  }
+
+  // continue
+  // 当前中间件执行完毕后，调用next来启动下一个中间件的执行
+  // 并且将error对象一直传递下去
+  next(error)
 }
 ```
