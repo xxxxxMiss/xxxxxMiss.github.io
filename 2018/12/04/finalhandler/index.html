@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>finalhandler | 青史成灰 | Every journey begins with the first step</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="nodejs,http,finalhandler">
+    <meta name="description" content="finalhandler 简介
+作为最后一步去响应一个 http 请求。这个模块被用在connect中，作为所有中间的最后一步去响应一个请求。
+
+API1var finalhandler = require(&apos;finalhandler&apos;)
+finalhandler(req, res, [options])
+
+调用该函数，返回一个新的函数。这个新的函数会被传入一个err。如果这个err是个假值，那么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="finalhandler">
+<meta property="og:url" content="https://xxxxxmiss.github.io/2018/12/04/finalhandler/index.html">
+<meta property="og:site_name" content="青史成灰">
+<meta property="og:description" content="finalhandler 简介
+作为最后一步去响应一个 http 请求。这个模块被用在connect中，作为所有中间的最后一步去响应一个请求。
+
+API1var finalhandler = require(&apos;finalhandler&apos;)
+finalhandler(req, res, [options])
+
+调用该函数，返回一个新的函数。这个新的函数会被传入一个err。如果这个err是个假值，那么">
+<meta property="og:updated_time" content="2018-12-04T14:49:01.531Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="finalhandler">
+<meta name="twitter:description" content="finalhandler 简介
+作为最后一步去响应一个 http 请求。这个模块被用在connect中，作为所有中间的最后一步去响应一个请求。
+
+API1var finalhandler = require(&apos;finalhandler&apos;)
+finalhandler(req, res, [options])
+
+调用该函数，返回一个新的函数。这个新的函数会被传入一个err。如果这个err是个假值，那么">
+    
+        <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.gif">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">xxxxxMiss</h5>
+          <a href="mailto:794465731@qq.com" title="794465731@qq.com" class="mail">794465731@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                存档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/xxxxxMiss" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/qschqd" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">finalhandler</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">finalhandler</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-04T12:28:30.000Z" itemprop="datePublished" class="page-time">
+  2018-12-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#finalhandler-简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">finalhandler 简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#API"><span class="post-toc-number">2.</span> <span class="post-toc-text">API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#options-env"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">options.env</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#options-onerror"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">options.onerror</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-finalhandler"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">finalhandler</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-04 20:28:30" datetime="2018-12-04T12:28:30.000Z"  itemprop="datePublished">2018-12-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="finalhandler-简介"><a href="#finalhandler-简介" class="headerlink" title="finalhandler 简介"></a><a href="https://github.com/pillarjs/finalhandler" target="_blank" rel="external">finalhandler</a> 简介</h2><blockquote>
+<p>作为最后一步去响应一个 http 请求。这个模块被用在<a href="https://github.com/senchalabs/connect" target="_blank" rel="external">connect</a>中，作为所有中间的最后一步去响应一个请求。</p>
+</blockquote>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> finalhandler = <span class="built_in">require</span>(<span class="string">'finalhandler'</span>)</div></pre></td></tr></table></figure>
+<p>finalhandler(req, res, [options])</p>
+<blockquote>
+<p>调用该函数，返回一个新的函数。这个新的函数会被传入一个<code>err</code>。<br>如果这个<code>err</code>是个<code>假值</code>，那么新的函数会将<code>res</code>的响应码设置为<code>404</code>。如果<code>err</code>是<code>真值</code>，那么响应一个错误的<code>res</code>。</p>
+</blockquote>
+<p>当错误发生时，以下信息会被设置到<code>res</code>上：</p>
+<ul>
+<li><p>会将<code>res</code>上的<code>status</code>或者<code>statusCode</code>设置到<code>res</code>上。如果该值小于<code>4xx</code>或者大于<code>5xx</code>，那么<code>res</code>上的<code>statusCode</code>会被设置为 500。</p>
+</li>
+<li><p>会依据<code>res.statusCode</code>设置<code>res.statusMessage</code>。</p>
+</li>
+<li><p>如果在生产环境下(process.env.NODE_ENV === ‘production’），会响应一个带有状态码信息的 html 页面。否则，打印堆栈信息。</p>
+</li>
+<li><p>任何头信息被指定在<code>err.headers</code>对象中。</p>
+</li>
+</ul>
+<h3 id="options-env"><a href="#options-env" class="headerlink" title="options.env"></a>options.env</h3><blockquote>
+<p>默认情况下，环境变量会通过<code>process.env.NODE_ENV</code>指定，可以通过该选项重写。</p>
+</blockquote>
+<h3 id="options-onerror"><a href="#options-onerror" class="headerlink" title="options.onerror"></a>options.onerror</h3><blockquote>
+<p>指定一个错误处理函数，会按<code>onerror(error, req, res)</code>形式调用。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = finalhandler</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">finalhandler</span>(<span class="params">req, res, options</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> opts = options || &#123;&#125;</div><div class="line"></div><div class="line">  <span class="comment">// get environment</span></div><div class="line">  <span class="keyword">var</span> env = opts.env || process.env.NODE_ENV || <span class="string">'development'</span></div><div class="line"></div><div class="line">  <span class="comment">// get error callback</span></div><div class="line">  <span class="keyword">var</span> onerror = opts.onerror</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> headers</div><div class="line">    <span class="keyword">var</span> msg</div><div class="line">    <span class="keyword">var</span> status</div><div class="line"></div><div class="line">    <span class="comment">// ignore 404 on in-flight response</span></div><div class="line">    <span class="keyword">if</span> (!err &amp;&amp; headersSent(res)) &#123;</div><div class="line">      debug(<span class="string">'cannot 404 after headers sent'</span>)</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// unhandled error</span></div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">      <span class="comment">// respect status code from error</span></div><div class="line">      <span class="comment">// 从err对象上取得合法的code</span></div><div class="line">      status = getErrorStatusCode(err)</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (status === <span class="literal">undefined</span>) &#123;</div><div class="line">        <span class="comment">// fallback to status code on response</span></div><div class="line">        <span class="comment">// 从res上取得合法的code</span></div><div class="line">        status = getResponseStatusCode(res)</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// respect headers from error</span></div><div class="line">        <span class="comment">// 从err.headers上去的一个headers对象</span></div><div class="line">        headers = getErrorHeaders(err)</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      <span class="comment">// get error message</span></div><div class="line">      <span class="comment">// 得到错误信息</span></div><div class="line">      msg = getErrorMessage(err, status, env)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="comment">// 如果没有发生错误，那么设置status为404</span></div><div class="line">      <span class="comment">// not found</span></div><div class="line">      status = <span class="number">404</span></div><div class="line">      msg = <span class="string">'Cannot '</span> + req.method + <span class="string">' '</span> + encodeUrl(getResourceName(req))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    debug(<span class="string">'default %s'</span>, status)</div><div class="line"></div><div class="line">    <span class="comment">// schedule onerror callback</span></div><div class="line">    <span class="keyword">if</span> (err &amp;&amp; onerror) &#123;</div><div class="line">      defer(onerror, err, req, res)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// cannot actually respond</span></div><div class="line">    <span class="keyword">if</span> (headersSent(res)) &#123;</div><div class="line">      debug(<span class="string">'cannot %d after headers sent'</span>, status)</div><div class="line">      req.socket.destroy()</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// send response</span></div><div class="line">    send(req, res, status, headers, msg)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 从一个err对象上取得http状态码</span></div><div class="line"><span class="comment">// 优先从status上取，然后再从statusCode上取</span></div><div class="line"><span class="comment">// status或者statusCode必须是number类型，并且是一个有效的状态码（&gt;=400 &amp;&amp; &lt;600）</span></div><div class="line"><span class="comment">// 4xx代表的是客户端的错误，5xx代表的是服务端错误</span></div><div class="line"><span class="comment">// 1xx-3xx表示没有错误</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getErrorStatusCode</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="comment">// check err.status</span></div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> err.status === <span class="string">'number'</span> &amp;&amp; err.status &gt;= <span class="number">400</span> &amp;&amp; err.status &lt; <span class="number">600</span>) &#123;</div><div class="line">    <span class="keyword">return</span> err.status</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// check err.statusCode</span></div><div class="line">  <span class="keyword">if</span> (</div><div class="line">    <span class="keyword">typeof</span> err.statusCode === <span class="string">'number'</span> &amp;&amp;</div><div class="line">    err.statusCode &gt;= <span class="number">400</span> &amp;&amp;</div><div class="line">    err.statusCode &lt; <span class="number">600</span></div><div class="line">  ) &#123;</div><div class="line">    <span class="keyword">return</span> err.statusCode</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="literal">undefined</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 如果通过getErrorStatusCodes没有取得状态码，那么从res.statusCode上查找</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getResponseStatusCode</span> (<span class="params">res</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> status = res.statusCode</div><div class="line"></div><div class="line">  <span class="comment">// default status code to 500 if outside valid range</span></div><div class="line">  <span class="comment">// 如果status不是一个number类型，或者不是错误状态码或则超出了范围（是一个无效的状态码）</span></div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> status !== <span class="string">'number'</span> || status &lt; <span class="number">400</span> || status &gt; <span class="number">599</span>) &#123;</div><div class="line">    <span class="comment">// 直接赋值为500</span></div><div class="line">    status = <span class="number">500</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> status</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 那么继续在err的headers对象上查找</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getErrorHeaders</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="comment">// err.headers应该是一个对象（此处简单的判断了下）</span></div><div class="line">  <span class="keyword">if</span> (!err.headers || <span class="keyword">typeof</span> err.headers !== <span class="string">'object'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">undefined</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> headers = <span class="built_in">Object</span>.create(<span class="literal">null</span>)</div><div class="line">  <span class="keyword">var</span> keys = <span class="built_in">Object</span>.keys(err.headers)</div><div class="line"></div><div class="line">  <span class="comment">// 将err.headers拷贝到headers上</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</div><div class="line">    <span class="keyword">var</span> key = keys[i]</div><div class="line">    headers[key] = err.headers[key]</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> headers</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 根据环境的不同，返回不同的错误信息</span></div><div class="line"><span class="comment">// 生产环境展示http code对应的错误信息</span></div><div class="line"><span class="comment">// 非生产环境展示错误堆栈信息</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getErrorMessage</span> (<span class="params">err, status, env</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> msg</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (env !== <span class="string">'production'</span>) &#123;</div><div class="line">    <span class="comment">// use err.stack, which typically includes err.message</span></div><div class="line">    msg = err.stack</div><div class="line"></div><div class="line">    <span class="comment">// fallback to err.toString() when possible</span></div><div class="line">    <span class="keyword">if</span> (!msg &amp;&amp; <span class="keyword">typeof</span> err.toString === <span class="string">'function'</span>) &#123;</div><div class="line">      msg = err.toString()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> msg || statuses[status]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>发送最终的响应：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">send</span> (<span class="params">req, res, status, headers, message</span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">write</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// response body</span></div><div class="line">    <span class="keyword">var</span> body = createHtmlDocument(message)</div><div class="line"></div><div class="line">    <span class="comment">// response status</span></div><div class="line">    res.statusCode = status</div><div class="line">    res.statusMessage = statuses[status]</div><div class="line"></div><div class="line">    <span class="comment">// response headers</span></div><div class="line">    setHeaders(res, headers)</div><div class="line"></div><div class="line">    <span class="comment">// security headers</span></div><div class="line">    res.setHeader(<span class="string">'Content-Security-Policy'</span>, <span class="string">"default-src 'self'"</span>)</div><div class="line">    res.setHeader(<span class="string">'X-Content-Type-Options'</span>, <span class="string">'nosniff'</span>)</div><div class="line"></div><div class="line">    <span class="comment">// standard headers</span></div><div class="line">    res.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html; charset=utf-8'</span>)</div><div class="line">    res.setHeader(<span class="string">'Content-Length'</span>, Buffer.byteLength(body, <span class="string">'utf8'</span>))</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (req.method === <span class="string">'HEAD'</span>) &#123;</div><div class="line">      res.end()</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    res.end(body, <span class="string">'utf8'</span>)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (isFinished(req)) &#123;</div><div class="line">    write()</div><div class="line">    <span class="keyword">return</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// unpipe everything from the request</span></div><div class="line">  unpipe(req)</div><div class="line"></div><div class="line">  <span class="comment">// flush the request</span></div><div class="line">  onFinished(req, write)</div><div class="line">  req.resume()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-12-04T14:49:01.531Z" itemprop="dateUpdated">2018-12-04 22:49:01</time>
+</span><br>
+
+
+        
+        <!-- 此处因为使用了lodash的template方法，所以可以注入html字符串 -->
+        文章中有任何不对或者讲的不足的地方，欢迎评论，也可发邮件至794465731@qq.com或者xxxxxmiss@gmail.com
+        
+    </div>
+    <footer>
+        <a href="https://xxxxxmiss.github.io">
+            <img src="/img/avatar.gif" alt="xxxxxMiss">
+            xxxxxMiss
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/finalhandler/">finalhandler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2018/12/04/finalhandler/&title=《finalhandler》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.gif" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2018/12/04/finalhandler/&title=《finalhandler》 — 青史成灰&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xxxxxmiss.github.io/2018/12/04/finalhandler/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《finalhandler》 — 青史成灰&url=https://xxxxxmiss.github.io/2018/12/04/finalhandler/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xxxxxmiss.github.io/2018/12/04/finalhandler/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/27/connect/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">connect源码解读</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'xxxxxMiss',
+            repo: 'xxxxxMiss.github.io',
+            oauth: {
+                client_id: 'c884dd9d2dfab48c79be',
+                client_secret: 'dc8fb124cf576aaed6500ffbd59545c1ccf98a06',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.png" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>xxxxxMiss &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2018/12/04/finalhandler/&title=《finalhandler》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.gif" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2018/12/04/finalhandler/&title=《finalhandler》 — 青史成灰&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://xxxxxmiss.github.io/2018/12/04/finalhandler/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《finalhandler》 — 青史成灰&url=https://xxxxxmiss.github.io/2018/12/04/finalhandler/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://xxxxxmiss.github.io/2018/12/04/finalhandler/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aSW4DMQwFUd//0soJWqlPug1ILK0CxBpeLwQO+nzwWA+D/J7/hsxqDRkyZBzLWNvx9BuycW2F/azHHWXIkDGAQQ6xv+v2x31ahzD2O8qQIUMGYZB1eHApQ4YMGd9ipEEeSYbJCjJkyJjMIBvwoLBzgb6ei8uQIeNABq+6//7vV/obMmTIOIqxwpFeuPxyXI0hQ4aMuxlpKY0EjjztJIlx8JhDhgwZVzNq5bDaI4l+GtwKFmXIkHEgIy1gpa2CzixehpMhQ8bdDBK0kW36l2/QquRvPWTIkHEFo3PZpcWyNFktPrOQIUPGpQxe1ifXLvkvfxYWFNdkyJBxKaMTDvKN0xLei5evDBkyDmSkAV8t6U1X4GeQIUPGNEattZk2OHlQGIShMmTIGMAI2oQgmONt0U57QIYMGXMYaVE+fX5Bim78oDzNliFDxjQGD9fiIn4YFMatAhkyZFzB6G9G2o28bEe+99dycRkyZBzC6By09syi3xD95xPIkCHjUkYaCO63788qNlNlyJAxhlF7PJHO5Y3S4AwyZMgYzHij9ZiW5NBHkSFDxqWMFQ5+lLTQHweC+wkyZMi4iNFZup/udhqotStbhgwZ5zL4JVsr+vOruVO8kyFDxgRGevHVSvm1MhxaWYYMGTLAQdMiXfrAAmXkMmTIkAEairxIxz8EKvbJkCFjAKPWDCBJLwkBa+vIkCFjDoOnjrz0Rg5Ua4K2mpoyZMg4j/EHukJ0csGKlGkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1264698790&web_id=1264698790')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'where are you going?';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'come back!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
