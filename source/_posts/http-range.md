@@ -18,10 +18,10 @@ categories:
 
 ## 语法
 
-> Range: <unit>=<range-start>-
-> Range: <unit>=<range-start>-<range-end>
-> Range: <unit>=<range-start>-<range-end>, <range-start>-<range-end>
-> Range: <unit>=<range-start>-<range-end>, <range-start>-<range-end>, <range-start>-<range-end>
+> Range: &lt;unit&gt;=&lt;range-start&gt;-
+> Range: &lt;unit&gt;=&lt;range-start&gt;-&lt;range-end&gt;
+> Range: &lt;unit&gt;=&lt;range-start&gt;-&lt;range-end&gt;, &lt;range-start&gt;-&lt;range-end&gt;
+> Range: &lt;unit&gt;=&lt;range-start&gt;-&lt;range-end&gt;, &lt;range-start&gt;-&lt;range-end&gt;, &lt;range-start&gt;-&lt;range-end&gt;
 
 ## [range-parser](https://github.com/jshttp/range-parser)源码解读
 
