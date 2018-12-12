@@ -13,14 +13,14 @@
     
     
     
-    <title>git-commit-rules | 青史成灰 | Every journey begins with the first step</title>
+    <title>代码规范 | 青史成灰 | Every journey begins with the first step</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="git">
-    <meta name="description" content="git日志提交规范
+    <meta name="keywords" content="workflow,git,lint,prettier,changelog">
+    <meta name="description" content="git 日志提交规范
 格式如下：
 
 12345&amp;lt;type&amp;gt;[optional scope]: &amp;lt;description&amp;gt;[optional body][optional footer]
@@ -29,12 +29,12 @@ fix(:bug:)
 指定具体的模块，功能等
 
 
-fi">
+f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git-commit-rules">
+<meta property="og:title" content="代码规范">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="git日志提交规范
+<meta property="og:description" content="git 日志提交规范
 格式如下：
 
 12345&amp;lt;type&amp;gt;[optional scope]: &amp;lt;description&amp;gt;[optional body][optional footer]
@@ -43,11 +43,11 @@ fix(:bug:)
 指定具体的模块，功能等
 
 
-fi">
-<meta property="og:updated_time" content="2018-10-20T07:27:37.257Z">
+f">
+<meta property="og:updated_time" content="2018-12-12T09:20:24.650Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git-commit-rules">
-<meta name="twitter:description" content="git日志提交规范
+<meta name="twitter:title" content="代码规范">
+<meta name="twitter:description" content="git 日志提交规范
 格式如下：
 
 12345&amp;lt;type&amp;gt;[optional scope]: &amp;lt;description&amp;gt;[optional body][optional footer]
@@ -56,7 +56,7 @@ fix(:bug:)
 指定具体的模块，功能等
 
 
-fi">
+f">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -151,7 +151,7 @@ fi">
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">git-commit-rules</div>
+        <div class="flex-col header-title ellipsis">代码规范</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -173,7 +173,7 @@ fi">
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">git-commit-rules</h1>
+        <h1 class="title">代码规范</h1>
         <h5 class="subtitle">
             
                 <time datetime="2018-03-16T08:21:48.000Z" itemprop="datePublished" class="page-time">
@@ -181,7 +181,7 @@ fi">
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/版本管理/">版本管理</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/工作流/">工作流</a></li></ul>
 
             
         </h5>
@@ -198,7 +198,7 @@ fi">
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>目录</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git日志提交规范"><span class="post-toc-number">1.</span> <span class="post-toc-text">git日志提交规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#fix-bug"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">fix(:bug:)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#feat-sparkles"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">feat(:sparkles:)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BREAKING-CHANGE"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">BREAKING CHANGE</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#build"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">build</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#test"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">test</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#types"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">types</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#workflow"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">workflow</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#chore"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">chore</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#refactor"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">refactor</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docs-memo"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">docs(:memo:)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ci"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">ci</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#polish"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">polish</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#revert"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">revert</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#perf-zap"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">perf(:zap:)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用commitlint校验本地提交信息"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用commitlint校验本地提交信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用commitizen交互式窗口生成约定的提交信息"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用commitizen交互式窗口生成约定的提交信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作为项目依赖安装使用"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">作为项目依赖安装使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作为全局安装使用"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">作为全局安装使用</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-日志提交规范"><span class="post-toc-number">1.</span> <span class="post-toc-text">git 日志提交规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#fix-bug"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">fix(:bug:)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#feat-sparkles"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">feat(:sparkles:)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BREAKING-CHANGE"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">BREAKING CHANGE</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#build"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">build</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#test"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">test</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#types"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">types</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#workflow"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">workflow</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#chore"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">chore</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#refactor"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">refactor</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#docs-memo"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">docs(:memo:)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ci"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">ci</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#polish"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">polish</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#revert"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">revert</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#perf-zap"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">perf(:zap:)</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用commitlint校验本地提交信息"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用commitlint校验本地提交信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用commitizen交互式窗口生成约定的提交信息"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用commitizen交互式窗口生成约定的提交信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作为项目依赖安装使用"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">作为项目依赖安装使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#作为全局安装使用"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">作为全局安装使用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自定义-commit-校验"><span class="post-toc-number">4.</span> <span class="post-toc-text">自定义 commit 校验</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-钩子"><span class="post-toc-number">5.</span> <span class="post-toc-text">git 钩子</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#husky"><span class="post-toc-number">6.</span> <span class="post-toc-text">husky</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#lint-staged"><span class="post-toc-number">7.</span> <span class="post-toc-text">lint-staged</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#prettier"><span class="post-toc-number">8.</span> <span class="post-toc-text">prettier</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#prettier整合eslint"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">prettier整合eslint</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#eslint"><span class="post-toc-number">9.</span> <span class="post-toc-text">eslint</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Airbnb-Javascript-Style"><span class="post-toc-number">10.</span> <span class="post-toc-text">Airbnb Javascript Style</span></a></li></ol>
         </nav>
     </aside>
     
@@ -206,12 +206,12 @@ fi">
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">git-commit-rules</h1>
+        <h1 class="post-card-title">代码规范</h1>
         <div class="post-meta">
             <time class="post-time" title="2018-03-16 16:21:48" datetime="2018-03-16T08:21:48.000Z"  itemprop="datePublished">2018-03-16</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/版本管理/">版本管理</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/工作流/">工作流</a></li></ul>
 
 
 
@@ -223,7 +223,7 @@ fi">
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="git日志提交规范"><a href="#git日志提交规范" class="headerlink" title="git日志提交规范"></a>git日志提交规范</h2><blockquote>
+            <h2 id="git-日志提交规范"><a href="#git-日志提交规范" class="headerlink" title="git 日志提交规范"></a>git 日志提交规范</h2><blockquote>
 <p>格式如下：</p>
 </blockquote>
 <figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">type</span>&gt;[<span class="keyword">optional</span> scope]: &lt;description&gt;</div><div class="line"></div><div class="line">[<span class="keyword">optional</span> body]</div><div class="line"></div><div class="line">[<span class="keyword">optional</span> footer]</div></pre></td></tr></table></figure>
@@ -250,7 +250,7 @@ fi">
 <p>测试相关<br>test(vdom): add test case for #7786 (#7793)</p>
 </blockquote>
 <h3 id="types"><a href="#types" class="headerlink" title="types"></a>types</h3><blockquote>
-<p>当使用<code>type script</code>的时候，如果修改的内容和types相关。<br>types: add Fragment in RenderState typing (#7802)</p>
+<p>当使用<code>type script</code>的时候，如果修改的内容和 types 相关。<br>types: add Fragment in RenderState typing (#7802)</p>
 </blockquote>
 <h3 id="workflow"><a href="#workflow" class="headerlink" title="workflow"></a>workflow</h3><blockquote>
 <p>有关工作流的修改<br>workflow: specify e2e env when releasing<br>workflow: remove setup script</p>
@@ -260,13 +260,13 @@ fi">
 </blockquote>
 <h3 id="refactor"><a href="#refactor" class="headerlink" title="refactor"></a>refactor</h3><blockquote>
 <p>重构代码<br>refactor: observerState</p>
-<p>重构具体的模块<br>refactor(core): remove unnecessary switch case (#5971) </p>
+<p>重构具体的模块<br>refactor(core): remove unnecessary switch case (#5971)</p>
 </blockquote>
 <h3 id="docs-memo"><a href="#docs-memo" class="headerlink" title="docs(:memo:)"></a>docs(:memo:)</h3><blockquote>
 <p>有关文档的修改<br>docs: update Angular’s commit convention link (#7666)</p>
 </blockquote>
 <h3 id="ci"><a href="#ci" class="headerlink" title="ci"></a>ci</h3><blockquote>
-<p>相关工具的修改，比如<code>vue-cli</code><br>ci: use latest version of codecov binary (#7665) </p>
+<p>相关工具的修改，比如<code>vue-cli</code><br>ci: use latest version of codecov binary (#7665)</p>
 </blockquote>
 <h3 id="polish"><a href="#polish" class="headerlink" title="polish"></a>polish</h3><blockquote>
 <p>美化代码<br>polish: raise warning when Vue.set/delete is called on invalid values</p>
@@ -278,23 +278,58 @@ fi">
 <p>优化性能<br>perf(v-model): tweak setSelected</p>
 </blockquote>
 <p><a href="https://github.com/conventional-changelog/conventional-changelog" target="_blank" rel="external">Conventional Changelog Ecosystem</a><br><a href="https://semver.org/#spec-item-9" target="_blank" rel="external">semantic versioning</a><br><a href="https://conventionalcommits.org/" target="_blank" rel="external">git conventional commits</a><br><a href="https://www.webpagefx.com/tools/emoji-cheat-sheet/" target="_blank" rel="external">git emojis</a></p>
-<h2 id="使用commitlint校验本地提交信息"><a href="#使用commitlint校验本地提交信息" class="headerlink" title="使用commitlint校验本地提交信息"></a>使用<code>commitlint</code>校验本地提交信息</h2><p>安装包<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> i @commitlint/cli @commitlint/config-conventional husky --save-dev</div></pre></td></tr></table></figure></p>
-<p>在项目的根目录下新建<code>commitlint.config.js</code><br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">module</span>.exports = &#123;<span class="keyword">extends</span>: [<span class="string">'@commitlint/config-conventional'</span>]&#125;</div></pre></td></tr></table></figure></p>
-<p>在<code>scripts</code>中添加如下<code>script</code><br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"commitmsg"</span>: <span class="string">"commitlint -e $GIT_PARAMS"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="使用commitlint校验本地提交信息"><a href="#使用commitlint校验本地提交信息" class="headerlink" title="使用commitlint校验本地提交信息"></a>使用<code>commitlint</code>校验本地提交信息</h2><p>安装包</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> i @commitlint/cli @commitlint/config-conventional husky --save-dev</div></pre></td></tr></table></figure>
+<p>在项目的根目录下新建<code>commitlint.config.js</code></p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">module</span>.exports = &#123;<span class="keyword">extends</span>: [<span class="string">'@commitlint/config-conventional'</span>]&#125;</div></pre></td></tr></table></figure>
+<p>在<code>scripts</code>中添加如下<code>script</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"commitmsg"</span>: <span class="string">"commitlint -e $GIT_PARAMS"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="使用commitizen交互式窗口生成约定的提交信息"><a href="#使用commitizen交互式窗口生成约定的提交信息" class="headerlink" title="使用commitizen交互式窗口生成约定的提交信息"></a>使用<code>commitizen</code>交互式窗口生成约定的提交信息</h2><h3 id="作为项目依赖安装使用"><a href="#作为项目依赖安装使用" class="headerlink" title="作为项目依赖安装使用"></a>作为项目依赖安装使用</h3><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i commitizen cz-conventional-changelog --<span class="built_in">save</span>-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
-<p>package.json配置<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"commit"</span>: <span class="string">"git-cz"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"config"</span>: &#123;</div><div class="line">    <span class="attr">"commitizen"</span>: &#123;</div><div class="line">      <span class="attr">"path"</span>: <span class="string">"cz-conventional-changelog"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>package.json 配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"commit"</span>: <span class="string">"git-cz"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"config"</span>: &#123;</div><div class="line">    <span class="attr">"commitizen"</span>: &#123;</div><div class="line">      <span class="attr">"path"</span>: <span class="string">"cz-conventional-changelog"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然后每次提交的时候，使用<code>npm run commit</code>代替<code>git commit</code>。</p>
 <h3 id="作为全局安装使用"><a href="#作为全局安装使用" class="headerlink" title="作为全局安装使用"></a>作为全局安装使用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -g commitizen cz-conventional-changelog</div></pre></td></tr></table></figure>
-<p>创建commitizen配置文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">'&#123; "path": "cz-conventional-changelog" &#125;'</span> &gt; ~/.czrc</div></pre></td></tr></table></figure></p>
+<p>创建 commitizen 配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">'&#123; "path": "cz-conventional-changelog" &#125;'</span> &gt; ~/.czrc</div></pre></td></tr></table></figure>
 <p>现在每次提交的时候就可以使用<code>git cz</code>代替<code>git commit</code>。<br><code>git cz</code><strong>支持和</strong><code>git commit</code><strong>一样的选项，如：git cz -a</strong>。</p>
-
+<h2 id="自定义-commit-校验"><a href="#自定义-commit-校验" class="headerlink" title="自定义 commit 校验"></a>自定义 commit 校验</h2><p>verify-commit-msg.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> chalk = <span class="built_in">require</span>(<span class="string">'chalk'</span>)</div><div class="line"><span class="keyword">const</span> msgPath = process.env.GIT_PARAMS</div><div class="line"><span class="keyword">const</span> msg = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line">  .readFileSync(msgPath, <span class="string">'utf-8'</span>)</div><div class="line">  .trim()</div><div class="line"></div><div class="line"><span class="keyword">const</span> commitRE = <span class="regexp">/^(revert: )?(feat|fix|docs|style|refactor|perf|test|workflow|ci|chore|types)(\(.+\))?: .&#123;1,50&#125;/</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (!commitRE.test(msg)) &#123;</div><div class="line">  <span class="built_in">console</span>.log()</div><div class="line">  <span class="built_in">console</span>.error(</div><div class="line">    <span class="string">`  <span class="subst">$&#123;chalk.bgRed.white(<span class="string">' ERROR '</span>)&#125;</span> <span class="subst">$&#123;chalk.red(</span></span></div><div class="line">      <span class="string">`invalid commit message format.`</span></div><div class="line">    )&#125;\n\n` +</div><div class="line">      chalk.red(</div><div class="line">        <span class="string">`  Proper commit message format is required for automated changelog generation. Examples:\n\n`</span></div><div class="line">      ) +</div><div class="line">      <span class="string">`    <span class="subst">$&#123;chalk.green(<span class="string">`feat(compiler): add 'comments' option`</span>)&#125;</span>\n`</span> +</div><div class="line">      <span class="string">`    <span class="subst">$&#123;chalk.green(</span></span></div><div class="line">        <span class="string">`fix(v-model): handle events on blur (close #28)`</span></div><div class="line">      )&#125;\n\n` +</div><div class="line">      chalk.red(</div><div class="line">        <span class="string">`  You can also use <span class="subst">$&#123;chalk.cyan(</span></span></div><div class="line">          <span class="string">`npm run commit`</span></div><div class="line">        )&#125; to interactively generate a commit message.\n`</div><div class="line">      )</div><div class="line">  )</div><div class="line">  process.exit(<span class="number">1</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="git-钩子"><a href="#git-钩子" class="headerlink" title="git 钩子"></a><a href="https://git-scm.com/docs/githooks" target="_blank" rel="external">git 钩子</a></h2><blockquote>
+<p>在 git 执行特定的阶段触发的程序，这些程序被放置在特定的目录下<code>$GIT_DIR/hooks</code>。</p>
+</blockquote>
+<p>常用的钩子：</p>
+<ul>
+<li><p>pre-commit：执行<code>git-commit</code>时触发，但是你可以通过<code>--no-verify</code>选项绕过这个钩子。如果该钩子以非零状态码退出，那么会取消这次的提交。</p>
+</li>
+<li><p>commit-msg：执行<code>git-commit</code>和<code>git-merge</code>的时候触发，但是你可以通过<code>--no-verify</code>选项绕过这个钩子。执行该钩子，会将握有提案信息的文件名作为参数传给该钩子。可以使用该钩子来编辑提交信息文件以规范提交信息，也可以拒绝提交信息。</p>
+</li>
+<li><p>post-commit：执行这个钩子时，提交信息已经生成。主要用来发送一些通知等。</p>
+</li>
+<li><p>pre-push：执行<code>git-push</code>时触发，会将远程地址和分支名称传入该钩子。如果该钩子以非零状态码退出，那么退出该次推送。</p>
+</li>
+</ul>
+<h2 id="husky"><a href="#husky" class="headerlink" title="husky"></a><a href="https://github.com/typicode/husky" target="_blank" rel="external">husky</a></h2><blockquote>
+<p>通过<code>npm scripts</code>来触发<code>git hooks</code>，让使用<code>git hooks</code>更加的简单。</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"husky"</span>: &#123;</div><div class="line">    <span class="attr">"hooks"</span>: &#123;</div><div class="line">      <span class="attr">"pre-commit"</span>: <span class="string">"lint-staged"</span>,</div><div class="line">      <span class="attr">"commit-msg"</span>: <span class="string">"node verify-commit-msg.js"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="lint-staged"><a href="#lint-staged" class="headerlink" title="lint-staged"></a><a href="https://github.com/okonet/lint-staged" target="_blank" rel="external">lint-staged</a></h2><blockquote>
+<p>在 git 执行的特定时期来触发校验。</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"lint-staged"</span>: &#123;</div><div class="line">    <span class="attr">"*.&#123;js,jsx,json&#125;"</span>: [<span class="string">"prettier --write"</span>, <span class="string">"git add"</span>]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="prettier"><a href="#prettier" class="headerlink" title="prettier"></a><a href="https://prettier.io/" target="_blank" rel="external">prettier</a></h2><blockquote>
+<p>一款强大的代码格式化工具，支持<code>js</code>,<code>jsx</code>,<code>Vue</code>, <code>Flow</code>, <code>TypeScript</code>等。</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"prettier"</span>: &#123;</div><div class="line">    <span class="attr">"semi"</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">"singleQuote"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"arrowParens"</span>: <span class="string">"avoid"</span>,</div><div class="line">    <span class="attr">"trailingComma"</span>: <span class="string">"es5"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="prettier整合eslint"><a href="#prettier整合eslint" class="headerlink" title="prettier整合eslint"></a>prettier整合eslint</h3><p>.eslintrc.json:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"plugins"</span>: [<span class="string">"prettier"</span>],</div><div class="line">  <span class="attr">"extends"</span>: [<span class="string">"plugin:prettier/recommended"</span>],</div><div class="line">  <span class="attr">"rules"</span>: &#123;</div><div class="line">    <span class="attr">"prettier/prettier"</span>: <span class="string">"warn"</span></div><div class="line">    // other eslint rules</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="eslint"><a href="#eslint" class="headerlink" title="eslint"></a><a href="https://eslint.org/" target="_blank" rel="external">eslint</a></h2><h2 id="Airbnb-Javascript-Style"><a href="#Airbnb-Javascript-Style" class="headerlink" title="Airbnb Javascript Style"></a><a href="https://github.com/airbnb/javascript" target="_blank" rel="external">Airbnb Javascript Style</a></h2>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-10-20T07:27:37.257Z" itemprop="dateUpdated">2018-10-20 15:27:37</time>
+    最后更新时间：<time datetime="2018-12-12T09:20:24.650Z" itemprop="dateUpdated">2018-12-12 17:20:24</time>
 </span><br>
 
 
@@ -320,7 +355,7 @@ fi">
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/changelog/">changelog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lint/">lint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/prettier/">prettier</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/workflow/">workflow</a></li></ul>
 
 
             
@@ -330,7 +365,7 @@ fi">
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&title=《git-commit-rules》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.gif" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&title=《代码规范》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.gif" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -340,7 +375,7 @@ fi">
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&title=《git-commit-rules》 — 青史成灰&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&title=《代码规范》 — 青史成灰&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -350,7 +385,7 @@ fi">
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git-commit-rules》 — 青史成灰&url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《代码规范》 — 青史成灰&url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -497,7 +532,7 @@ fi">
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&title=《git-commit-rules》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.gif" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&title=《代码规范》 — 青史成灰&pic=https://xxxxxmiss.github.io/img/avatar.gif" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -507,7 +542,7 @@ fi">
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&title=《git-commit-rules》 — 青史成灰&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&title=《代码规范》 — 青史成灰&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -517,7 +552,7 @@ fi">
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git-commit-rules》 — 青史成灰&url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《代码规范》 — 青史成灰&url=https://xxxxxmiss.github.io/2018/03/16/git-commit-rules/&via=https://xxxxxmiss.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
