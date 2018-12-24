@@ -20,40 +20,40 @@
     
     
     <meta name="keywords" content="git">
-    <meta name="description" content="git配置文件的位置
+    <meta name="description" content="git 配置文件的位置
 /etc/gitconfig
-~/.gitconfig || $XDG_CONFIG_HOME/git/config
-$PWD/.git/config
+~/.gitconfig || \$XDG_CONFIG_HOME/git/config
+\$PWD/.git/config
 
-查看git配置
-对于配置选项的CURD操作，不指定–system,–global,–local选项，CUD默认都是–local选项, R操作查询所有的配置（相当于同时指定了三个选项）。
+查看 git 配置
+对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。
 
-12345678910111213/">
+1234567">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git进阶（二）">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/09/19/git-plumbing-2/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="git配置文件的位置
+<meta property="og:description" content="git 配置文件的位置
 /etc/gitconfig
-~/.gitconfig || $XDG_CONFIG_HOME/git/config
-$PWD/.git/config
+~/.gitconfig || \$XDG_CONFIG_HOME/git/config
+\$PWD/.git/config
 
-查看git配置
-对于配置选项的CURD操作，不指定–system,–global,–local选项，CUD默认都是–local选项, R操作查询所有的配置（相当于同时指定了三个选项）。
+查看 git 配置
+对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。
 
-12345678910111213/">
-<meta property="og:updated_time" content="2017-09-19T17:22:22.000Z">
+1234567">
+<meta property="og:updated_time" content="2018-12-24T08:41:35.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git进阶（二）">
-<meta name="twitter:description" content="git配置文件的位置
+<meta name="twitter:description" content="git 配置文件的位置
 /etc/gitconfig
-~/.gitconfig || $XDG_CONFIG_HOME/git/config
-$PWD/.git/config
+~/.gitconfig || \$XDG_CONFIG_HOME/git/config
+\$PWD/.git/config
 
-查看git配置
-对于配置选项的CURD操作，不指定–system,–global,–local选项，CUD默认都是–local选项, R操作查询所有的配置（相当于同时指定了三个选项）。
+查看 git 配置
+对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。
 
-12345678910111213/">
+1234567">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -195,7 +195,7 @@ $PWD/.git/config
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>目录</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git配置文件的位置"><span class="post-toc-number">1.</span> <span class="post-toc-text">git配置文件的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看git配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">查看git配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置git配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">设置git配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#删除某个配置"><span class="post-toc-number">4.</span> <span class="post-toc-text">删除某个配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#commit-template"><span class="post-toc-number">5.</span> <span class="post-toc-text">commit.template</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#core-excludesfile"><span class="post-toc-number">6.</span> <span class="post-toc-text">core.excludesfile</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#core-autocrlf"><span class="post-toc-number">7.</span> <span class="post-toc-text">core.autocrlf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用npm安装你自己编写的脚本"><span class="post-toc-number">8.</span> <span class="post-toc-text">使用npm安装你自己编写的脚本</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-配置文件的位置"><span class="post-toc-number">1.</span> <span class="post-toc-text">git 配置文件的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看-git-配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">查看 git 配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置-git-配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">设置 git 配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#删除某个配置"><span class="post-toc-number">4.</span> <span class="post-toc-text">删除某个配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#commit-template"><span class="post-toc-number">5.</span> <span class="post-toc-text">commit.template</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#core-excludesfile"><span class="post-toc-number">6.</span> <span class="post-toc-text">core.excludesfile</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#core-autocrlf"><span class="post-toc-number">7.</span> <span class="post-toc-text">core.autocrlf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-npm-安装你自己编写的脚本"><span class="post-toc-number">8.</span> <span class="post-toc-text">使用 npm 安装你自己编写的脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">9.</span> <span class="post-toc-text">常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-rm-r-–cached-logs"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">git rm -r –cached /logs</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -220,40 +220,43 @@ $PWD/.git/config
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="git配置文件的位置"><a href="#git配置文件的位置" class="headerlink" title="git配置文件的位置"></a>git配置文件的位置</h2><ul>
+            <h2 id="git-配置文件的位置"><a href="#git-配置文件的位置" class="headerlink" title="git 配置文件的位置"></a>git 配置文件的位置</h2><ul>
 <li>/etc/gitconfig</li>
-<li>~/.gitconfig || $XDG_CONFIG_HOME/git/config</li>
-<li>$PWD/.git/config</li>
+<li>~/.gitconfig || \$XDG_CONFIG_HOME/git/config</li>
+<li>\$PWD/.git/config</li>
 </ul>
-<h2 id="查看git配置"><a href="#查看git配置" class="headerlink" title="查看git配置"></a>查看git配置</h2><blockquote>
-<p>对于配置选项的CURD操作，不指定–system,–global,–local选项，<br>CUD默认都是–local选项, R操作查询所有的配置（相当于同时指定了三个选项）。</p>
+<h2 id="查看-git-配置"><a href="#查看-git-配置" class="headerlink" title="查看 git 配置"></a>查看 git 配置</h2><blockquote>
+<p>对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，<br>CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。</p>
 </blockquote>
 <figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 查看系统级别的所有配置</span></div><div class="line">git <span class="keyword">config</span> --system -l</div><div class="line"></div><div class="line"><span class="comment">// 查看全局的所有配置(默认查看global级别)</span></div><div class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> -l</div><div class="line"></div><div class="line"><span class="comment">// 查看当前仓库的配置</span></div><div class="line">git <span class="keyword">config</span> --<span class="keyword">local</span> -l</div><div class="line"></div><div class="line"><span class="comment">// 查看具体某一项的配置</span></div><div class="line">git <span class="keyword">config</span> [--system|--<span class="keyword">global</span>|--<span class="keyword">local</span>] --get core<span class="variable">.editor</span></div><div class="line"><span class="comment">// 默认查看local级别</span></div><div class="line">git <span class="keyword">config</span> --get core<span class="variable">.editor</span></div></pre></td></tr></table></figure>
-<h2 id="设置git配置"><a href="#设置git配置" class="headerlink" title="设置git配置"></a>设置git配置</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">config</span> [--system|--<span class="keyword">global</span>|--<span class="keyword">local</span>] user<span class="variable">.name</span> <span class="string">"qsch"</span></div></pre></td></tr></table></figure>
+<h2 id="设置-git-配置"><a href="#设置-git-配置" class="headerlink" title="设置 git 配置"></a>设置 git 配置</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">config</span> [--system|--<span class="keyword">global</span>|--<span class="keyword">local</span>] user<span class="variable">.name</span> <span class="string">"qsch"</span></div></pre></td></tr></table></figure>
 <h2 id="删除某个配置"><a href="#删除某个配置" class="headerlink" title="删除某个配置"></a>删除某个配置</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 删除global级别的commit.template配置</span></div><div class="line">git <span class="built_in">config</span> --global --unset commit.<span class="keyword">template</span></div><div class="line"></div><div class="line"><span class="comment">// 删除local级别</span></div><div class="line">git <span class="built_in">config</span> --local --unset commit.<span class="keyword">template</span></div><div class="line"><span class="comment">// 或则</span></div><div class="line">git <span class="built_in">config</span> --unset commit.<span class="keyword">template</span></div></pre></td></tr></table></figure>
 <h2 id="commit-template"><a href="#commit-template" class="headerlink" title="commit.template"></a>commit.template</h2><blockquote>
 <p>配置提交信息的模板。使用同一份模板，可以保持团队成员的提交信息风格保持一致。</p>
 </blockquote>
 <p>比如你这样设置<code>git config commit.template ~/.gitmessage.txt</code>,<br>那么当你<code>git commit</code>的时候，会进入你设置的提交信息的模板编辑页面，修改保存，那么修改后的提交信息就是本次的提交信息。</p>
 <h2 id="core-excludesfile"><a href="#core-excludesfile" class="headerlink" title="core.excludesfile"></a>core.excludesfile</h2><blockquote>
-<p>global级别的.gitignore。<br>一般每个项目下都会有.gitignore文件，如果配置了global级别的.gitignore,那么对于所有的git仓库都会生效。<br>如：<br><code>git config core.excludesfile ~/.gitignore_global</code> </p>
+<p>global 级别的.gitignore。<br>一般每个项目下都会有.gitignore 文件，如果配置了 global 级别的.gitignore,那么对于所有的 git 仓库都会生效。<br>如：<br><code>git config core.excludesfile ~/.gitignore_global</code></p>
 </blockquote>
 <h2 id="core-autocrlf"><a href="#core-autocrlf" class="headerlink" title="core.autocrlf"></a>core.autocrlf</h2><blockquote>
 <p>用来处理各平台之间的换行符回车符之间的一致性问题</p>
 </blockquote>
 <ul>
-<li>使用linux或者mac,一般设置为<code>input</code>,那么在检出的时候，自动将<code>\r\n</code>转化为<code>\n</code>。</li>
-<li>使用windows，可以设置为<code>true</code>,那么在检出的时候，自动将<code>\n</code>转化为<code>\r\n</code>。</li>
-<li>如果只在windows上开发，那么可以设置为<code>false</code>,关闭该功能。</li>
+<li>使用 linux 或者 mac,一般设置为<code>input</code>,那么在检出的时候，自动将<code>\r\n</code>转化为<code>\n</code>。</li>
+<li>使用 windows，可以设置为<code>true</code>,那么在检出的时候，自动将<code>\n</code>转化为<code>\r\n</code>。</li>
+<li>如果只在 windows 上开发，那么可以设置为<code>false</code>,关闭该功能。</li>
 </ul>
-<h2 id="使用npm安装你自己编写的脚本"><a href="#使用npm安装你自己编写的脚本" class="headerlink" title="使用npm安装你自己编写的脚本"></a>使用npm安装你自己编写的脚本</h2>
+<h2 id="使用-npm-安装你自己编写的脚本"><a href="#使用-npm-安装你自己编写的脚本" class="headerlink" title="使用 npm 安装你自己编写的脚本"></a>使用 npm 安装你自己编写的脚本</h2><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="git-rm-r-–cached-logs"><a href="#git-rm-r-–cached-logs" class="headerlink" title="git rm -r –cached /logs"></a>git rm -r –cached /logs</h3><blockquote>
+<p>该命令主要用在你之前已经提交了某个文件或者文件夹，但是后面想要忽略它，那么使用该命令之后，再在<code>.gitignore</code>中添加下需要忽略的文件，再次提交就可以了。</p>
+</blockquote>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-09-19T17:22:22.000Z" itemprop="dateUpdated">2017-09-20 01:22:22</time>
+    最后更新时间：<time datetime="2018-12-24T08:41:35.876Z" itemprop="dateUpdated">2018-12-24 16:41:35</time>
 </span><br>
 
 
