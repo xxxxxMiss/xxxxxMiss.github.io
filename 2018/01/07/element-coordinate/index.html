@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -20,25 +20,18 @@
     
     
     <meta name="keywords" content="dom">
-    <meta name="description" content="getBoundingClientRect()
-该API返回元素的大小及其相对于视口的位置。需要注意的是：不论该元素是普通的元素，还是相对定位、绝对定位，还是fixed定位，亦或被定位（相对，绝对，fixed）元素包裹的元素，返回的对象中坐标(x,y)，top,left都是相对于视口的坐标。如果该元素是可以滚动或者滑动的，那么坐标会立即改变的。如果需要得到文档坐标，可以参看这里
-
-Note: 该A">
+    <meta name="description" content="getBoundingClientRect() 该API返回元素的大小及其相对于视口的位置。需要注意的是：不论该元素是普通的元素，还是相对定位、绝对定位，还是fixed定位，亦或被定位（相对，绝对，fixed）元素包裹的元素，返回的对象中坐标(x,y)，top,left都是相对于视口的坐标。如果该元素是可以滚动或者滑动的，那么坐标会立即改变的。如果需要得到文档坐标，可以参看这里  Note: 该A">
+<meta name="keywords" content="dom">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DOM元素的坐标，大小相关API梳理">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2018/01/07/element-coordinate/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="getBoundingClientRect()
-该API返回元素的大小及其相对于视口的位置。需要注意的是：不论该元素是普通的元素，还是相对定位、绝对定位，还是fixed定位，亦或被定位（相对，绝对，fixed）元素包裹的元素，返回的对象中坐标(x,y)，top,left都是相对于视口的坐标。如果该元素是可以滚动或者滑动的，那么坐标会立即改变的。如果需要得到文档坐标，可以参看这里
-
-Note: 该A">
+<meta property="og:description" content="getBoundingClientRect() 该API返回元素的大小及其相对于视口的位置。需要注意的是：不论该元素是普通的元素，还是相对定位、绝对定位，还是fixed定位，亦或被定位（相对，绝对，fixed）元素包裹的元素，返回的对象中坐标(x,y)，top,left都是相对于视口的坐标。如果该元素是可以滚动或者滑动的，那么坐标会立即改变的。如果需要得到文档坐标，可以参看这里  Note: 该A">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-01-07T17:34:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM元素的坐标，大小相关API梳理">
-<meta name="twitter:description" content="getBoundingClientRect()
-该API返回元素的大小及其相对于视口的位置。需要注意的是：不论该元素是普通的元素，还是相对定位、绝对定位，还是fixed定位，亦或被定位（相对，绝对，fixed）元素包裹的元素，返回的对象中坐标(x,y)，top,left都是相对于视口的坐标。如果该元素是可以滚动或者滑动的，那么坐标会立即改变的。如果需要得到文档坐标，可以参看这里
-
-Note: 该A">
+<meta name="twitter:description" content="getBoundingClientRect() 该API返回元素的大小及其相对于视口的位置。需要注意的是：不论该元素是普通的元素，还是相对定位、绝对定位，还是fixed定位，亦或被定位（相对，绝对，fixed）元素包裹的元素，返回的对象中坐标(x,y)，top,left都是相对于视口的坐标。如果该元素是可以滚动或者滑动的，那么坐标会立即改变的。如果需要得到文档坐标，可以参看这里  Note: 该A">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -54,7 +47,7 @@ Note: 该A">
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -74,49 +67,49 @@ Note: 该A">
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 存档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/xxxxxMiss" target="_blank" >
+              <a href="https://github.com/xxxxxMiss" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/qschqd" target="_blank" >
+              <a href="http://www.weibo.com/qschqd" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom"  >
+              <a href="/custom">
                 <i class="icon icon-lg icon-link"></i>
                 测试
               </a>
@@ -184,13 +177,12 @@ Note: 该A">
         </nav>
     </aside>
     
-<article id="post-element-coordinate"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-element-coordinate" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">DOM元素的坐标，大小相关API梳理</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-01-07 22:47:43" datetime="2018-01-07T14:47:43.000Z"  itemprop="datePublished">2018-01-07</time>
+            <time class="post-time" title="2018-01-07 22:47:43" datetime="2018-01-07T14:47:43.000Z" itemprop="datePublished">2018-01-07</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
@@ -198,7 +190,7 @@ Note: 该A">
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -206,9 +198,9 @@ Note: 该A">
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h2 id="getBoundingClientRect"><a href="#getBoundingClientRect" class="headerlink" title="getBoundingClientRect()"></a>getBoundingClientRect()</h2><blockquote>
-<p>该API返回元素的大小及其相对于视口的位置。<br>需要注意的是：不论该元素是普通的元素，还是相对定位、绝对定位，还是fixed定位，亦或被定位（相对，绝对，fixed）元素包裹的元素，返回的对象中坐标(x,y)，top,left都是相对于视口的坐标。<br>如果该元素是可以滚动或者滑动的，那么坐标会立即改变的。<br>如果需要得到文档坐标，可以<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="external">参看这里</a></p>
+<p>该API返回元素的大小及其相对于视口的位置。<br>需要注意的是：不论该元素是普通的元素，还是相对定位、绝对定位，还是fixed定位，亦或被定位（相对，绝对，fixed）元素包裹的元素，返回的对象中坐标(x,y)，top,left都是相对于视口的坐标。<br>如果该元素是可以滚动或者滑动的，那么坐标会立即改变的。<br>如果需要得到文档坐标，可以<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">参看这里</a></p>
 </blockquote>
-<p>Note: 该API返回的对象包含如下几个属性，并且这些属性的值可以包含浮点数：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;   <span class="attr">top</span>: <span class="string">''</span>,</div><div class="line">    <span class="attr">right</span>: <span class="string">''</span>,</div><div class="line">    <span class="attr">bottom</span>: <span class="string">''</span></div><div class="line">    left: <span class="string">''</span>,</div><div class="line">    <span class="attr">width</span>: <span class="string">''</span>, <span class="comment">// 该width是content+padding+border的宽度</span></div><div class="line">    height: <span class="string">''</span>,</div><div class="line">    <span class="attr">x</span>: <span class="string">''</span>,</div><div class="line">    <span class="attr">y</span>: <span class="string">''</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Note: 该API返回的对象包含如下几个属性，并且这些属性的值可以包含浮点数：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;   <span class="attr">top</span>: <span class="string">''</span>,</span><br><span class="line">    right: <span class="string">''</span>,</span><br><span class="line">    bottom: <span class="string">''</span></span><br><span class="line">    left: <span class="string">''</span>,</span><br><span class="line">    width: <span class="string">''</span>, <span class="comment">// 该width是content+padding+border的宽度</span></span><br><span class="line">    height: <span class="string">''</span>,</span><br><span class="line">    x: <span class="string">''</span>,</span><br><span class="line">    y: <span class="string">''</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <p>以下的这些API返回的都是整数的像素值，不带单位的</p>
 <h2 id="clientWidth"><a href="#clientWidth" class="headerlink" title="clientWidth"></a>clientWidth</h2><blockquote>
@@ -227,7 +219,7 @@ Note: 该A">
 <p>该属性返回一个元素的<code>content + padding + border + 滚动条（如果有）</code>的高度，不论该元素是<code>inline</code>还是<code>block</code>类型的元素。</p>
 </blockquote>
 <h2 id="offsetLeft"><a href="#offsetLeft" class="headerlink" title="offsetLeft"></a>offsetLeft</h2><blockquote>
-<p>只读属性，返回当前元素左上角相对于<code>offsetParent</code>节点的左边界偏移的像素值。<br>详细信息可<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetLeft" target="_blank" rel="external">参看这里</a></p>
+<p>只读属性，返回当前元素左上角相对于<code>offsetParent</code>节点的左边界偏移的像素值。<br>详细信息可<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetLeft" target="_blank" rel="noopener">参看这里</a></p>
 </blockquote>
 <h2 id="offsetParent"><a href="#offsetParent" class="headerlink" title="offsetParent"></a>offsetParent</h2><blockquote>
 <p>只读属性，返回一个<strong>最近的</strong>的包含该元素的定位元素。如果没有定位元素，那么<code>offsetParent</code>为<strong>最近的</strong><code>table</code>,<code>table cell</code>或者根元素<code>html</code>。</p>
@@ -387,8 +379,7 @@ Note: 该A">
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -407,10 +398,10 @@ Note: 该A">
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

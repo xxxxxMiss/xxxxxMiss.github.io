@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -20,34 +20,21 @@
     
     
     <meta name="keywords" content="js">
-    <meta name="description" content="Character Classes or Character Sets (字符类, 字符集合)
-在正则表达式中，字符类就是用一对方括号[]包裹你要匹配的字符。需要注意以下几点：
-
-
-一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
-在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
+    <meta name="description" content="Character Classes or Character Sets (字符类, 字符集合) 在正则表达式中，字符类就是用一对方括号[]包裹你要匹配的字符。需要注意以下几点：   一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。 在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RegExp">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="Character Classes or Character Sets (字符类, 字符集合)
-在正则表达式中，字符类就是用一对方括号[]包裹你要匹配的字符。需要注意以下几点：
-
-
-一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
-在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
+<meta property="og:description" content="Character Classes or Character Sets (字符类, 字符集合) 在正则表达式中，字符类就是用一对方括号[]包裹你要匹配的字符。需要注意以下几点：   一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。 在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_pigchickens.svg">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_number.svg">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_slow.svg">
 <meta property="og:updated_time" content="2018-11-18T04:49:52.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RegExp">
-<meta name="twitter:description" content="Character Classes or Character Sets (字符类, 字符集合)
-在正则表达式中，字符类就是用一对方括号[]包裹你要匹配的字符。需要注意以下几点：
-
-
-一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。
-在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
+<meta name="twitter:description" content="Character Classes or Character Sets (字符类, 字符集合) 在正则表达式中，字符类就是用一对方括号[]包裹你要匹配的字符。需要注意以下几点：   一个字符类仅仅匹配一个单字符。如/gr[ae]/y, 只会匹配gray, grey, 不会匹配graey。 在字符类中，可以使用连接符-来表示一个范围。当然了，你可以使用多个连字符来表示多个范围。如/[0-9a-fA-">
 <meta name="twitter:image" content="https://xxxxxmiss.github.io/2017/06/05/RegExp/re_pigchickens.svg">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
@@ -64,7 +51,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -84,49 +71,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 存档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/xxxxxMiss" target="_blank" >
+              <a href="https://github.com/xxxxxMiss" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/qschqd" target="_blank" >
+              <a href="http://www.weibo.com/qschqd" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom"  >
+              <a href="/custom">
                 <i class="icon icon-lg icon-link"></i>
                 测试
               </a>
@@ -194,13 +181,12 @@
         </nav>
     </aside>
     
-<article id="post-RegExp"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-RegExp" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">RegExp</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-06-05 11:35:04" datetime="2017-06-05T03:35:04.000Z"  itemprop="datePublished">2017-06-05</time>
+            <time class="post-time" title="2017-06-05 11:35:04" datetime="2017-06-05T03:35:04.000Z" itemprop="datePublished">2017-06-05</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
@@ -208,7 +194,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -225,22 +211,22 @@
 <li>还有一个比较特别的就是闭合方括号<code>]</code>。如<code>[]x]</code>, <code>[^]x]</code>等这些含有未转义的<code>]</code>正则，在不同的语言中可能会有不同的情况。以上列举的这2种情况，在javascript中是不能正常工作的。例如在ruby中，空的字符类<code>[]</code>被视为一个错误。 还有就是方括号中嵌套方括号，这时也需要注意的,如<code>/[-.*+?^${}()|[\]\/\\]/g</code>。<br><br></li>
 <li>所以综上所述，对于字符类中的<code>]</code>, <code>\</code>, <code>^</code>, <code>-</code>，如果要把他们当做普通字符使用，最好都转义。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/[.*?+]/.test(<span class="string">'.'</span>) <span class="comment">// true</span></div><div class="line"></div><div class="line">/[.*?+]/.test(<span class="string">'a'</span>) <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/[.*?+]/.test(<span class="string">'.'</span>) <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line">/[.*?+]/.test(<span class="string">'a'</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 <h2 id="Negated-Character-Classes-（否定的字符类）"><a href="#Negated-Character-Classes-（否定的字符类）" class="headerlink" title="Negated Character Classes （否定的字符类）"></a>Negated Character Classes （否定的字符类）</h2><blockquote>
 <p>表示的意思就是匹配任何不包含在这个字符类中的字符。需要注意以下几点：</p>
 </blockquote>
 <ul>
 <li>我们知道，<code>/./</code>表示的是除换行符以外的任何字符（当然这里有范围的限制，此处暂不讨论），否定字符类恰好能匹配换行符，所以<code>/[^]/</code>表示的就是匹配任何字符（包括换行符）。所以如果你不想否定字符类匹配换行符，你需要在否定字符类中显示的包含换行符，如<code>/[^0-9\r\n]/</code>,匹配任何不是数字或者换行符的字符。</li>
 </ul>
-<p>举例验证<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// \u000A 为换行符所对应的unicode</span></div><div class="line"></div><div class="line">/./.test(<span class="string">'\u000A'</span>)  <span class="comment">// fasle</span></div><div class="line">/[^]/.test(<span class="string">'\u000A'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p>举例验证<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// \u000A 为换行符所对应的unicode</span></span><br><span class="line"></span><br><span class="line">/./.test(<span class="string">'\u000A'</span>)  <span class="comment">// fasle</span></span><br><span class="line">/[^]/.test(<span class="string">'\u000A'</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="Repeating-Character-Classes（重复字符类）"><a href="#Repeating-Character-Classes（重复字符类）" class="headerlink" title="Repeating Character Classes（重复字符类）"></a>Repeating Character Classes（重复字符类）</h2><blockquote>
 <p>当你在字符类上使用<code>*</code>, <code>?</code>, <code>+</code>进行重复时，需要知道的是，你重复的是这些字符类，而不是重复字符类匹配的字符。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/[<span class="number">0</span><span class="number">-9</span>]+<span class="regexp">/ /</span><span class="regexp">/ match 837 as well as 222</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[<span class="number">0</span><span class="number">-9</span>]+<span class="regexp">/ /</span><span class="regexp">/ match 837 as well as 222</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>如果你想重复字符类匹配的字符，可以使用<strong>反向引用</strong></p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/([<span class="number">0</span><span class="number">-9</span>])\<span class="number">1</span>+<span class="regexp">/ /</span><span class="regexp">/ match 222 but not 837</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/([<span class="number">0</span><span class="number">-9</span>])\<span class="number">1</span>+<span class="regexp">/ /</span><span class="regexp">/ match 222 but not 837</span></span><br></pre></td></tr></table></figure>
 <h2 id="Shorthand-Character-Classes-字符类简写"><a href="#Shorthand-Character-Classes-字符类简写" class="headerlink" title="Shorthand Character Classes(字符类简写)"></a>Shorthand Character Classes(字符类简写)</h2><blockquote>
 <p>因为一些特定的字符类经常被使用，所以就制定了一些特定的字符代表字符类。在不同的语言中，这些特定的字符所代表的字符不一定是完全一样的。</p>
 </blockquote>
@@ -253,7 +239,7 @@
 <p>元字符<code>.</code>匹配除了换行符以外的任意一个单字符。<br>至于为什么不包含换行符是由于历史原因造成的：第一代工具使用正则表达式是基于行的。他们一行一行的读取文件，使用正则表达式分割行。由于这些工具的影响，导致了<code>.</code>元字符不包括换行符。</p>
 </blockquote>
 <p>NOTE: 虽然元字符<code>.</code>不包括换行符，但是在不同的语言中，实现并不相同，有些语言是可以通过一些选项来控制是否包含换行符的。但是在javascript和vbscript中，是没有任何选项来控制的。</p>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 在js中，可以使用[<span class="symbol">\s</span><span class="symbol">\S</span>]来匹配任何字符</div><div class="line">/[<span class="symbol">\s</span><span class="symbol">\S</span>]/  // match any character, include line breaks</div></pre></td></tr></table></figure>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 在js中，可以使用[<span class="symbol">\s</span><span class="symbol">\S</span>]来匹配任何字符</span><br><span class="line">/[<span class="symbol">\s</span><span class="symbol">\S</span>]/  // match any character, include line breaks</span><br></pre></td></tr></table></figure>
 <h2 id="Line-Breaks-Character-换行符"><a href="#Line-Breaks-Character-换行符" class="headerlink" title="Line Breaks Character(换行符)"></a>Line Breaks Character(换行符)</h2><blockquote>
 <p>换行符在不同的操作系统以及不同的语言中实现也有所不同，尽管如此，但是我们依然可以认为<code>\n</code>就是我们所说的换行符。因为在我们熟悉的脚本语言中，都只会将<code>\n</code>作为换行符，而不会将其他字符作为换行符。<br>尽管window系统中的换行符是<code>\r\n</code>,但是我们说换行符就是<code>\n</code>依然没有问题。这是因为这些脚本语言默认是处于<strong>文本模式</strong>下读写文件的。<br>当脚本运行在window系统中，在读取文件时，<code>\r\n</code>自动转换为<code>\n</code>;写文件时，<code>\n</code>自动转换为<code>\r\n</code>。</p>
 </blockquote>
@@ -268,10 +254,10 @@
 <h2 id="Alternation（选择）"><a href="#Alternation（选择）" class="headerlink" title="Alternation（选择）"></a>Alternation（选择）</h2><blockquote>
 <p>正则表达式中使用管道符（pipe character）<code>|</code>来对匹配模式进行选择匹配。<br>需要注意的是<strong>选择操作</strong>在正则表达式中的<strong>优先级是最低</strong>的。</p>
 </blockquote>
-<p>如：假设我们要匹配的是一个单词及其左右边界，正则如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\bcat|dog\b/  <span class="comment">// 能匹配catxx或者xxdog等</span></div></pre></td></tr></table></figure></p>
-<p>解释：按照上面的写法只会匹配cat及其左边界或者dog及其右边界，如果要匹配cat或则dog及其左右边界，必须使用分组来改变其优先级。如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\b(cat|dog)\b/</div></pre></td></tr></table></figure></p>
-<p>关于正则表达式中的“选择”，下面我们来通过例子详细的说明他们是如何工作的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> animalCount = <span class="regexp">/\b\d+ (pig|cow|chicken)s?\b/</span></div><div class="line"><span class="built_in">console</span>.log(animalCount.test(<span class="string">"15 pigs"</span>))</div><div class="line"><span class="comment">// → true</span></div><div class="line"><span class="built_in">console</span>.log(animalCount.test(<span class="string">"15 pigchickens"</span>))</div><div class="line"><span class="comment">// → false</span></div></pre></td></tr></table></figure></p>
-<img src="/2017/06/05/RegExp/re_pigchickens.svg" alt="/bd+ (pig|cow|chicken)s?b/" title="/bd+ (pig|cow|chicken)s?b/">
+<p>如：假设我们要匹配的是一个单词及其左右边界，正则如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\bcat|dog\b/  <span class="comment">// 能匹配catxx或者xxdog等</span></span><br></pre></td></tr></table></figure></p>
+<p>解释：按照上面的写法只会匹配cat及其左边界或者dog及其右边界，如果要匹配cat或则dog及其左右边界，必须使用分组来改变其优先级。如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\b(cat|dog)\b/</span><br></pre></td></tr></table></figure></p>
+<p>关于正则表达式中的“选择”，下面我们来通过例子详细的说明他们是如何工作的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> animalCount = <span class="regexp">/\b\d+ (pig|cow|chicken)s?\b/</span></span><br><span class="line"><span class="built_in">console</span>.log(animalCount.test(<span class="string">"15 pigs"</span>))</span><br><span class="line"><span class="comment">// → true</span></span><br><span class="line"><span class="built_in">console</span>.log(animalCount.test(<span class="string">"15 pigchickens"</span>))</span><br><span class="line"><span class="comment">// → false</span></span><br></pre></td></tr></table></figure></p>
+<img src="/2017/06/05/RegExp/re_pigchickens.svg" title="/bd+ (pig|cow|chicken)s?b/">
 <p>假设我们的正则表达式已经实例化成上面的图表，图表中的每个正则<code>token</code>看成一个盒子。要匹配的字符串为<code>the 3 pigs</code>。那么匹配的流程会像下面的步骤进行：</p>
 <ul>
 <li>在第4个位置（从0开始），有一个单词边界，因此通过了第一个盒子。<br><br></li>
@@ -287,7 +273,7 @@
 <blockquote>
 <p>假设你要匹配一个函数名<code>SetValue</code>，你写的正则如下：</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/Get|GetValue|<span class="built_in">Set</span>|SetValue/.exec(<span class="string">'SetValue'</span>)</div><div class="line"><span class="comment">// -&gt; Set</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/Get|GetValue|<span class="built_in">Set</span>|SetValue/.exec(<span class="string">'SetValue'</span>)</span><br><span class="line"><span class="comment">// -&gt; Set</span></span><br></pre></td></tr></table></figure>
 <p>在控制台运行下，就会发现我们匹配到的是<code>Set</code>, 而不是<code>SetValue</code>。解释如下：</p>
 <blockquote>
 <p>因为正则表达式引擎一旦匹配到满足的字符，会立即停止匹配。而按照上面的写法，<code>Set</code>是匹配<code>SetValue</code>的。解决方法可以有如下几种：</p>
@@ -295,28 +281,28 @@
 <ul>
 <li>改变<em>Alterlation</em>的顺序：</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/GetValue|Get|SetValue|<span class="built_in">Set</span>/.exec(<span class="string">'SetValue'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/GetValue|Get|SetValue|<span class="built_in">Set</span>/.exec(<span class="string">'SetValue'</span>)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>利用<code>?</code>,<code>+</code>,<code>*</code>,<code>{m,n}</code>等贪婪匹配的特性：</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Get(Value)?|<span class="built_in">Set</span>(Value)?<span class="regexp">/.exec('SetValue')</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Get(Value)?|<span class="built_in">Set</span>(Value)?<span class="regexp">/.exec('SetValue')</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>将上面的表达式进一步优化</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/(Get|<span class="built_in">Set</span>)(Value)?<span class="regexp">/.exec('SetValue')</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(Get|<span class="built_in">Set</span>)(Value)?<span class="regexp">/.exec('SetValue')</span></span><br></pre></td></tr></table></figure>
 <h3 id="Backtracking-回溯"><a href="#Backtracking-回溯" class="headerlink" title="Backtracking(回溯)"></a>Backtracking(回溯)</h3><blockquote>
 <p>在正则表达式中，有一种叫做<strong>回溯查找</strong>，就是沿着某一条路径匹配多次。回溯通常出现在数量匹配中，如<code>*</code>, <code>+</code>, <code>{m, n}</code>。<br>下面以具体的图表和例子来说明匹配情况。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/\b([<span class="number">01</span>]+b|\d+|[\da-f]+h)\b/.test(<span class="string">'103'</span>)</div></pre></td></tr></table></figure>
-<img src="/2017/06/05/RegExp/re_number.svg" alt="/b([01]+b|d+|[da-f]+h)b/" title="/b([01]+b|d+|[da-f]+h)b/">
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\b([<span class="number">01</span>]+b|\d+|[\da-f]+h)\b/.test(<span class="string">'103'</span>)</span><br></pre></td></tr></table></figure>
+<img src="/2017/06/05/RegExp/re_number.svg" title="/b([01]+b|d+|[da-f]+h)b/">
 <ul>
 <li>上面的例子中，匹配器会一直在最上面的那条路径进行匹配，只有达到字符<code>3</code>，才知道进错了路径。</li>
 <li>此时匹配器进行回溯。其实在选择匹配的时候，匹配器首先会记录当前的位置（也就是每条路径中第一个字符的位置）以便于当进入到错误的路径时可以快速返回到这个位置。</li>
 <li>此时进入到第二条路径（从上往下），发现可以完整匹配，匹配结束。</li>
 </ul>
-<p>NOTE: 一旦找到一个完整匹配，匹配器会立马停止匹配。这就意味着如果多个分支可以匹配这个正则，那么返回的匹配是第一个（每个分支按在正则表达式中出现的先后顺序来排序）<br>举例如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^(h|hello)(.*)$/.exec(<span class="string">"hello"</span>) <span class="comment">// ['hello', 'h', 'ello']</span></div></pre></td></tr></table></figure></p>
-<p>下面来看一个正则表达式中类似于多次循环的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/([<span class="number">01</span>]+)+b/</div></pre></td></tr></table></figure></p>
-<img src="/2017/06/05/RegExp/re_slow.svg" alt="/([01]+)+b/" title="/([01]+)+b/">
+<p>NOTE: 一旦找到一个完整匹配，匹配器会立马停止匹配。这就意味着如果多个分支可以匹配这个正则，那么返回的匹配是第一个（每个分支按在正则表达式中出现的先后顺序来排序）<br>举例如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(h|hello)(.*)$/.exec(<span class="string">"hello"</span>) <span class="comment">// ['hello', 'h', 'ello']</span></span><br></pre></td></tr></table></figure></p>
+<p>下面来看一个正则表达式中类似于多次循环的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/([<span class="number">01</span>]+)+b/</span><br></pre></td></tr></table></figure></p>
+<img src="/2017/06/05/RegExp/re_slow.svg" title="/([01]+)+b/">
 <p>关于上面的例子中的正则表达式有什么问题，此处先不做说明。</p>
 <h2 id="Greedy-and-non-greedy-贪婪匹配和非贪婪匹配"><a href="#Greedy-and-non-greedy-贪婪匹配和非贪婪匹配" class="headerlink" title="Greedy and non-greedy(贪婪匹配和非贪婪匹配)"></a>Greedy and non-greedy(贪婪匹配和非贪婪匹配)</h2><blockquote>
 <p>正则引擎默认是贪婪匹配的，就是尽可能多的匹配。除非尽可能多的导致整个匹配失败，那么才会回溯到重复的位置重新开始匹配。贪婪匹配一般出现在量词中，如下：</p>
@@ -327,16 +313,16 @@
 <li><code>+</code> &lt;=&gt; <code>{1,}</code></li>
 <li><code>{m, n}</code></li>
 </ul>
-<p>下面以一个具体的例子来说明贪婪匹配，<br>假设我们要匹配一个字符串中不带任何属性的html标签，你的正则可能会像下面这样：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/<span class="tag">&lt;<span class="name">.+</span>&gt;</span>/.exec('This is a <span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span> test')</div><div class="line">// prints: ['<span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span>']</div></pre></td></tr></table></figure></p>
+<p>下面以一个具体的例子来说明贪婪匹配，<br>假设我们要匹配一个字符串中不带任何属性的html标签，你的正则可能会像下面这样：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/<span class="tag">&lt;<span class="name">.+</span>&gt;</span>/.exec('This is a <span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span> test')</span><br><span class="line">// prints: ['<span class="tag">&lt;<span class="name">EM</span>&gt;</span>first<span class="tag">&lt;/<span class="name">EM</span>&gt;</span>']</span><br></pre></td></tr></table></figure></p>
 <p>你会看到匹配的结果和我们所期盼的<code>&lt;EM&gt;</code>,<code>&lt;/EM&gt;</code>并不一样。究其原因就是因为量词<code>+</code>是贪婪的，它会让正则引擎尽可能多的匹配。其实这个匹配过程可以用上面的图表来解释更加的清楚：<br>匹配完第一个<code>.</code>所代表的字符后，进入到下一个字符会有2条路径：一条是<code>.</code>形成的环路，一条直接进入<code>&gt;</code>, 但是<code>+</code>是贪婪的，那么正则引擎会一直进入这条环路，直接匹配失败了才会退出这条路径。<br><br><br>下面是更加详细的关于正则引擎是如何匹配<code>&lt;EM&gt;first&lt;/EM&gt;</code>的：</p>
 <blockquote>
 <p>The first token in the regex is <code>&lt;</code>. As we already know, the first place where it will match is the first <code>&lt;</code> in the string. The next token is dot, which matches any character except newlines. The dot is repeated by the plus. The plus is greedy. Therefore, the engine will repeat the dot as many times as it can. The dot matches <code>E</code>, so the regex continues to try to match the dot with the next character. <code>M</code> is matched, and the dot is repeated once more. The next character is <code>&gt;</code>. You should see the problem by now. The dot matches the <code>&gt;</code>, and the engine continues repeating the dot. The dot will match all characters in the string. The dot fails when the engine has reached the void after the end of the string. Only at this point does the regex engine continue with next token <code>&gt;</code>.<br><br><br>So far, <code>&lt;.+</code> has matched <code>&lt;EM&gt;first&lt;/EM&gt; test</code> and the regex engine has arrived at the end of the string. <code>&gt;</code> cannot match here. The engine remembers that the plus has repeated the dot more often than is required. (Remember that the plus requires the dot to match only once.) Rather than admitting failure, the engine will backtrack. It will reduce the repetition of the plus by one, and then continue trying the remainder of the regex.<br><br><br>So the match of <code>.+</code> is reduced to <code>EM&gt;first&lt;/EM&gt;</code> tes. The next token in the regex is still <code>&gt;</code>. But now the next character in the string is the last <code>t</code>. Again, these cannot match, causing the engine to backtrack further. The total match so far is reduced to <code>&lt;EM&gt;first&lt;/EM&gt; te</code>. But <code>&gt;</code> still cannot match. So the engine continues backtracking until the match of <code>.+</code> is reduced to <code>EM&gt;first&lt;/EM. Now</code>, <code>&gt;</code> can match the next character in the string. The last token in the regex has been matched. The engine reports that <code>&lt;EM&gt;first&lt;/EM&gt;</code> has been successfully matched.</p>
 </blockquote>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/^(.+) ((?<span class="symbol">:BBB</span> )?CCC)<span class="variable">$/</span>.exec(<span class="string">'AAA BBB CCC'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(.+) ((?<span class="symbol">:BBB</span> )?CCC)<span class="variable">$/</span>.exec(<span class="string">'AAA BBB CCC'</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="正则相关方法"><a href="#正则相关方法" class="headerlink" title="正则相关方法"></a>正则相关方法</h2><blockquote>
 <p>操作字符串的一些常用方法，如replace, split, match, search等，这些方法的第一个参数都可以是一个正则表达式对象，也可以是一个子字符串，此处主要讲解第一个参数是正则表达式的情况。<br>RegExp的一些实例方法，如test, exec等</p>
 </blockquote>
-<h3 id="str-replace-regexp-substr-newSubstr-function"><a href="#str-replace-regexp-substr-newSubstr-function" class="headerlink" title="str.replace(regexp|substr, newSubstr|function)"></a>str.replace(regexp|substr, newSubstr|function)</h3><p>先来看一个例子：假设我们要匹配动态的匹配一个人的姓名，在匹配到姓名前后插入下划线，但是这个人的姓名很特殊（含有一些特殊的符号）。所以我们可以按照下面的做法来处理：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'dea+hl[]rd'</span></div><div class="line"><span class="keyword">var</span> text = <span class="string">'This dea+hl[]rd guy is super annoying.'</span></div><div class="line"><span class="comment">// 匹配除了单词和空白以外的任何字符</span></div><div class="line"><span class="comment">// 不能对任何字符进行转义，以为\n,\b这些字符也是有特殊意义的</span></div><div class="line"><span class="keyword">var</span> escaped = name.replace(<span class="regexp">/[^\w\s]/g</span>, <span class="string">"\\$&amp;"</span>)</div><div class="line"><span class="keyword">var</span> regexp = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\b("</span> + escaped + <span class="string">")\\b"</span>, <span class="string">"gi"</span>);</div><div class="line"><span class="built_in">console</span>.log(text.replace(regexp, <span class="string">"_$1_"</span>));</div><div class="line"><span class="comment">// → This _dea+hl[]rd_ guy is super annoying.</span></div></pre></td></tr></table></figure></p>
+<h3 id="str-replace-regexp-substr-newSubstr-function"><a href="#str-replace-regexp-substr-newSubstr-function" class="headerlink" title="str.replace(regexp|substr, newSubstr|function)"></a>str.replace(regexp|substr, newSubstr|function)</h3><p>先来看一个例子：假设我们要匹配动态的匹配一个人的姓名，在匹配到姓名前后插入下划线，但是这个人的姓名很特殊（含有一些特殊的符号）。所以我们可以按照下面的做法来处理：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'dea+hl[]rd'</span></span><br><span class="line"><span class="keyword">var</span> text = <span class="string">'This dea+hl[]rd guy is super annoying.'</span></span><br><span class="line"><span class="comment">// 匹配除了单词和空白以外的任何字符</span></span><br><span class="line"><span class="comment">// 不能对任何字符进行转义，以为\n,\b这些字符也是有特殊意义的</span></span><br><span class="line"><span class="keyword">var</span> escaped = name.replace(<span class="regexp">/[^\w\s]/g</span>, <span class="string">"\\$&amp;"</span>)</span><br><span class="line"><span class="keyword">var</span> regexp = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\b("</span> + escaped + <span class="string">")\\b"</span>, <span class="string">"gi"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(text.replace(regexp, <span class="string">"_$1_"</span>));</span><br><span class="line"><span class="comment">// → This _dea+hl[]rd_ guy is super annoying.</span></span><br></pre></td></tr></table></figure></p>
 <p>第二个参数<code>newSubstr</code>可以使用下面的这些特殊的变量名。</p>
 <table>
 <thead>
@@ -368,7 +354,7 @@
 </tr>
 </tbody>
 </table>
-<p>例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">"dea+hl[]rd"</span>.replace(<span class="regexp">/[^\w\s]/g</span>, <span class="string">"\\$`"</span>)</div><div class="line"><span class="comment">// prints: "dea\deahl\dea+hl\dea+hl[rd"</span></div></pre></td></tr></table></figure></p>
+<p>例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"dea+hl[]rd"</span>.replace(<span class="regexp">/[^\w\s]/g</span>, <span class="string">"\\$`"</span>)</span><br><span class="line"><span class="comment">// prints: "dea\deahl\dea+hl\dea+hl[rd"</span></span><br></pre></td></tr></table></figure></p>
 <p>第二个参数可以是一个函数，在这种情况下，当匹配执行后， 该函数就会执行。 函数的返回值作为替换字符串。 (注意:  上面提到的特殊替换参数在这里不能被使用。) 另外要注意的是， 如果第一个参数是正则表达式， 并且其为全局匹配模式， 那么这个方法将被多次调用， 每次匹配都会被调用。</p>
 <table>
 <thead>
@@ -397,13 +383,13 @@
 </tbody>
 </table>
 <p>NOTE: 精确的参数个数依赖于replace()的第一个参数是否是一个正则表达式对象， 以及这个正则表达式中指定了多少个括号子串。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">replacer</span>(<span class="params">match, p1, p2, p3, offset, string</span>) </span>&#123;</div><div class="line">  <span class="comment">// p1 is nondigits, p2 digits, and p3 non-alphanumerics</span></div><div class="line">  <span class="keyword">return</span> [p1, p2, p3].join(<span class="string">' - '</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> newString = <span class="string">'abc12345#$*%'</span>.replace(<span class="regexp">/([^\d]*)(\d*)([^\w]*)/</span>, replacer)</div><div class="line"><span class="comment">// prints: 'abc - 12345 - #$*%'</span></div></pre></td></tr></table></figure>
-<p>该方法的详细用法可以<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace" target="_blank" rel="external">参考这里</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replacer</span>(<span class="params">match, p1, p2, p3, offset, string</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// p1 is nondigits, p2 digits, and p3 non-alphanumerics</span></span><br><span class="line">  <span class="keyword">return</span> [p1, p2, p3].join(<span class="string">' - '</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> newString = <span class="string">'abc12345#$*%'</span>.replace(<span class="regexp">/([^\d]*)(\d*)([^\w]*)/</span>, replacer)</span><br><span class="line"><span class="comment">// prints: 'abc - 12345 - #$*%'</span></span><br></pre></td></tr></table></figure>
+<p>该方法的详细用法可以<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace" target="_blank" rel="noopener">参考这里</a></p>
 <h3 id="str-search-regexp"><a href="#str-search-regexp" class="headerlink" title="str.search(regexp)"></a>str.search(regexp)</h3><blockquote>
 <p>我们知道，字符串有个<code>indexOf</code>方法，但是它不能使用正则表达式作为参数，而search方法就需要一个正则表达式作为参数。和indexOf方法一样，它返回第一个匹配字符串的索引；没有找到任何匹配，返回-1。</p>
 </blockquote>
 <p>NOTE: indexOf方法可以传入第二个参数作为搜索的起始偏移量，而search却不能。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"  word"</span>.search(<span class="regexp">/\S/</span>));</div><div class="line"><span class="comment">// → 2</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"    "</span>.search(<span class="regexp">/\S/</span>));</div><div class="line"><span class="comment">// → -1</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"  word"</span>.search(<span class="regexp">/\S/</span>));</span><br><span class="line"><span class="comment">// → 2</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"    "</span>.search(<span class="regexp">/\S/</span>));</span><br><span class="line"><span class="comment">// → -1</span></span><br></pre></td></tr></table></figure>
 <h3 id="str-split-separator-limit"><a href="#str-split-separator-limit" class="headerlink" title="str.split([separator, [limit]])"></a>str.split([separator, [limit]])</h3><blockquote>
 <p>分割一个字符串，返回分割后的字符串组成的数组。</p>
 </blockquote>
@@ -414,7 +400,7 @@
 <li>支持第二个参数limit, 代表切割后返回的数组的长度。如<code>limit=3</code>，表示需要切割3次（形成4个子串），返回前3个元素组成的数组。</li>
 </ul>
 <p>当separator是一个正则时，需要注意：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">'abc2d3f'</span>.split(<span class="regexp">/\d/</span>) <span class="comment">// ["abc", "d", "f"]</span></div><div class="line"></div><div class="line"><span class="string">'abc2d3f'</span>.split(<span class="regexp">/(\d)/</span>) <span class="comment">// ["abc", "2", "d", "3", "f"]</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'abc2d3f'</span>.split(<span class="regexp">/\d/</span>) <span class="comment">// ["abc", "d", "f"]</span></span><br><span class="line"></span><br><span class="line"><span class="string">'abc2d3f'</span>.split(<span class="regexp">/(\d)/</span>) <span class="comment">// ["abc", "2", "d", "3", "f"]</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>由上面的例子可以看出，当split方法第一个参数为正则时，如果这个正则包含捕获性分组时，这个分组匹配的子串是不会被移除的，而是会被包含到返回的数组中。</p>
 </blockquote>
@@ -426,23 +412,23 @@
 <li>input: 包含被解析的原始字符串</li>
 <li>index: 该属性表示匹配结果在原字符串中的索引（以0开始）</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'bac12d3'</span>.match(<span class="regexp">/[a-z]+(\d)*/</span>)</div><div class="line"><span class="comment">// prints: ["bac12", "2", index: 0, input: "bac12d3"]</span></div></pre></td></tr></table></figure>
-<p>此时它和正则对象的<code>exec</code>方法返回值是一样的:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/[a-z]+(\d)*/.exec('bac12d3')</div><div class="line">// prints: ["bac12", "2", index: 0, input: "bac12d3"]</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'bac12d3'</span>.match(<span class="regexp">/[a-z]+(\d)*/</span>)</span><br><span class="line"><span class="comment">// prints: ["bac12", "2", index: 0, input: "bac12d3"]</span></span><br></pre></td></tr></table></figure>
+<p>此时它和正则对象的<code>exec</code>方法返回值是一样的:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/[a-z]+(\d)*<span class="regexp">/.exec('bac12d3')</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ prints: ["bac12", "2", index: 0, input: "bac12d3"]</span></span><br></pre></td></tr></table></figure></p>
 <p>如果使用的正则包含修饰符<code>g</code>, 那么返回的数组只包含所有的子匹配，并不包含额外的属性以及捕获性分组：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'bac12d3'</span>.match(<span class="regexp">/[a-z]+(\d)*/g</span>)</div><div class="line"><span class="comment">// prints: ["bac12", "d3"]</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'bac12d3'</span>.match(<span class="regexp">/[a-z]+(\d)*/g</span>)</span><br><span class="line"><span class="comment">// prints: ["bac12", "d3"]</span></span><br></pre></td></tr></table></figure>
 <p>不管是哪种情况，没有找到任何匹配，那么返回<code>null</code>。</p>
-<p>该方法的详细用法可以<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/match" target="_blank" rel="external">参考这里</a></p>
+<p>该方法的详细用法可以<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/match" target="_blank" rel="noopener">参考这里</a></p>
 <h3 id="regex-exec"><a href="#regex-exec" class="headerlink" title="regex.exec"></a>regex.exec</h3><blockquote>
 <p>我们知道，字符串的indexOf方法提供了起始搜索偏移量这个参数，可以更加高效的执行字符串查找。但是字符串的一些有关正则方法并没有直接提供这样的方式。正则对象虽然也没有直接提供这样的快捷方式，但是正则对象的exec方法提供了一种”不是很方便”的方式来让我们做这样一个操作, 那就是通过<code>lastIndex</code>这个正则属性。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="regexp">/quick\s(brown).+?(jumps)/ig</span></div><div class="line"><span class="keyword">var</span> result = re.exec(<span class="string">'The Quick Brown Fox Jumps Over The Lazy Dog'</span>)</div><div class="line"><span class="comment">// prints: ["Quick Brown Fox Jumps", "Brown", "Jumps", index: 4, input: "The Quick Brown Fox Jumps Over The Lazy Dog"]</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/quick\s(brown).+?(jumps)/ig</span></span><br><span class="line"><span class="keyword">var</span> result = re.exec(<span class="string">'The Quick Brown Fox Jumps Over The Lazy Dog'</span>)</span><br><span class="line"><span class="comment">// prints: ["Quick Brown Fox Jumps", "Brown", "Jumps", index: 4, input: "The Quick Brown Fox Jumps Over The Lazy Dog"]</span></span><br></pre></td></tr></table></figure>
 <p>关于上面的脚本中的<code>re</code>,<code>result</code>对象相关属性说明如下：</p>
 <table><br>    <thead><br>        <tr><br>            <th width="10%" align="center">对象</th><br>            <th width="10%" align="center">属性/索引</th><br>            <th width="40%" align="center">描述</th><br>            <th width="40%" align="center">例子</th><br>        </tr><br>    </thead><br>    <tbody><br>        <tr><br>            <td rowspan="4">result</td><br>            <td>[0]</td><br>            <td>完全匹配</td><br>            <td>Quick Brown Fox Jumps</td><br>        </tr><br>        <tr><br>            <td>[1], …[n]</td><br>            <td>捕获性分组</td><br>            <td>[1] = Brown<br>[2] = Jumps</td><br>        </tr><br>        <tr><br>            <td>index</td><br>            <td>完整的匹配在整个字符串中的索引</td><br>            <td>4</td><br>        </tr><br>        <tr><br>            <td>input</td><br>            <td>要匹配的原始字符串</td><br>            <td>The Quick Brown Fox Jumps Over The Lazy Dog</td><br>        </tr><br>        <tr><br>            <td rowspan="5">re</td><br>            <td>lastIndex</td><br>            <td>执行下一次搜索时起始的位置</td><br>            <td>25</td><br>        </tr><br>        <tr><br>            <td>ignoreCase</td><br>            <td>表示是否使用了i标记</td><br>            <td>true</td><br>        </tr><br>        <tr><br>            <td>global</td><br>            <td>表示是否使用了g标记</td><br>            <td>true</td><br>        </tr><br>        <tr><br>            <td>multiline</td><br>            <td>表示是否使用了m标记</td><br>            <td>false</td><br>        </tr><br>        <tr><br>            <td>source</td><br>            <td>匹配模式的字符串文本</td><br>            <td>quick\s(brown).+?(jumps)</td><br>        </tr><br>    </tbody><br></table>
 
 <blockquote>
 <p>下面就关于上表中的相关注意事项做下说明： 我们知道，正则引擎是eager(急切的，渴望的)的，也就是说当从整个字符串中找到一个匹配时，会立马停止继续查找，并返回找到的子串。<br>像字符串的<code>match</code>, <code>replace</code>方法，当第一个参数为正则对象时，可以传入修饰符<code>g</code>来进行全局的查找，也就说找到从一行字符中找到所有的匹配，直到查找到这行字符串的尽头。<br>但是正则对象的exec方法却并不是这样的，即使你传入全局标记<code>g</code>,依然只是返回第一个匹配。我们测试下：</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(\d)/g.exec(<span class="string">'ab12c45'</span>)</div><div class="line"><span class="comment">// prints: ["1", "1", index: 2, input: "ab12c45"]</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/(\d)/g.exec(<span class="string">'ab12c45'</span>)</span><br><span class="line"><span class="comment">// prints: ["1", "1", index: 2, input: "ab12c45"]</span></span><br></pre></td></tr></table></figure>
 <p>经过上面例子的验证，我们看到确实如我们所言：尽管是全局匹配，但是依然只是返回了第一个匹配。<br>还有就是需要注意exec方法和match方法的对比：</p>
 <ul>
 <li>exec方法使用了全局标记<code>g</code>,它虽然只返回了第一个匹配，但是它返回的信息非常全面，包含<code>index</code>,<code>innput</code>属性以及捕获性分组。</li>
@@ -452,13 +438,13 @@
 <h3 id="正则对象的lastIndex属性"><a href="#正则对象的lastIndex属性" class="headerlink" title="正则对象的lastIndex属性"></a>正则对象的lastIndex属性</h3><blockquote>
 <p>一当一个正则对象或者正则字面量开启了全局标记<code>g</code>，那么配合正则对象的<code>lastIndex</code>属性，我们就可以指定下次搜索时，从什么位置开始搜索。并且通过循环判断exec方法来的返回值对字符串进行一个全局的匹配。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span></div><div class="line"><span class="built_in">console</span>.log(reg.lastIndex) <span class="comment">// 0</span></div><div class="line"><span class="built_in">console</span>.log(reg.exec(<span class="string">'abc12d3bb4'</span>)) <span class="comment">// ["12", index: 3, input: "abc12d3bb4"]</span></div><div class="line"><span class="built_in">console</span>.log(reg.lastIndex) <span class="comment">// 5</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex) <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(<span class="string">'abc12d3bb4'</span>)) <span class="comment">// ["12", index: 3, input: "abc12d3bb4"]</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex) <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>默认情况下正则对象的<code>lastIndex</code>值是0，表示起始偏移量。<br>一旦成功的找到一个匹配后，正则引擎会自动更新<code>lastIndex</code>的值，表示下一次匹配时默认从这个地方开始。<br>什么从一开始就没有找到任何匹配，那么<code>lastIndex</code>的值还是0。</p>
 </blockquote>
 <p>当然了，你可以设置<code>lastIndex</code>的值，表示一开始就从你设置的这个位置开始查找：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span></div><div class="line">reg.lastIndex = <span class="number">5</span></div><div class="line"><span class="built_in">console</span>.log(reg.exec(<span class="string">'abc12d3bb4'</span>)) <span class="comment">// ["3", index: 6, input: "abc12d3bb4"]</span></div><div class="line"><span class="built_in">console</span>.log(reg.lastIndex) <span class="comment">// 7</span></div></pre></td></tr></table></figure>
-<p>使用exec方法找到所有匹配，一般这样做：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span></div><div class="line"><span class="keyword">var</span> match = <span class="literal">null</span></div><div class="line"><span class="keyword">var</span> str = <span class="string">'abc12d3bb4'</span></div><div class="line"><span class="keyword">while</span>(match = reg.exec(str))&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'$&amp;: '</span>, match[<span class="number">0</span>])</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'lastIndex: '</span>, reg.lastIndex)</div><div class="line">&#125;</div><div class="line"><span class="comment">// prints: </span></div><div class="line"><span class="comment">// $&amp;:  12</span></div><div class="line"><span class="comment">// lastIndex:  5</span></div><div class="line"><span class="comment">// $&amp;:  3</span></div><div class="line"><span class="comment">// lastIndex:  7</span></div><div class="line"><span class="comment">// $&amp;:  4</span></div><div class="line"><span class="comment">// lastIndex:  10</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span></span><br><span class="line">reg.lastIndex = <span class="number">5</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(<span class="string">'abc12d3bb4'</span>)) <span class="comment">// ["3", index: 6, input: "abc12d3bb4"]</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex) <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+<p>使用exec方法找到所有匹配，一般这样做：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/g</span></span><br><span class="line"><span class="keyword">var</span> match = <span class="literal">null</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'abc12d3bb4'</span></span><br><span class="line"><span class="keyword">while</span>(match = reg.exec(str))&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'$&amp;: '</span>, match[<span class="number">0</span>])</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'lastIndex: '</span>, reg.lastIndex)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// prints: </span></span><br><span class="line"><span class="comment">// $&amp;:  12</span></span><br><span class="line"><span class="comment">// lastIndex:  5</span></span><br><span class="line"><span class="comment">// $&amp;:  3</span></span><br><span class="line"><span class="comment">// lastIndex:  7</span></span><br><span class="line"><span class="comment">// $&amp;:  4</span></span><br><span class="line"><span class="comment">// lastIndex:  10</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="字符串相关方法-VS-正则对象的相关方法"><a href="#字符串相关方法-VS-正则对象的相关方法" class="headerlink" title="字符串相关方法 VS 正则对象的相关方法"></a>字符串相关方法 VS 正则对象的相关方法</h2><blockquote>
 <p>// TODO …</p>
 </blockquote>
@@ -617,8 +603,7 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -637,10 +622,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -20,28 +20,18 @@
     
     
     <meta name="keywords" content="linux">
-    <meta name="description" content="进程简介
-在unix或者linux系统中，每当运行一个程序，系统都会为这个程序创建一个特殊的环境，这个特殊的环境包含了运行该程序所依赖的一切东西。不论什么时候，你触发一个unix或者linux命令，都会创建或者启动一个新的进程。所以可以这样理解，一个进程，就是一个运行中的程序的实例，它包含了该程序执行所需要的一切依赖。
-
-进程追踪
-操作系统给每个进程分配一个5位数字的pid来标示每个进程，每个进程">
+    <meta name="description" content="进程简介 在unix或者linux系统中，每当运行一个程序，系统都会为这个程序创建一个特殊的环境，这个特殊的环境包含了运行该程序所依赖的一切东西。不论什么时候，你触发一个unix或者linux命令，都会创建或者启动一个新的进程。所以可以这样理解，一个进程，就是一个运行中的程序的实例，它包含了该程序执行所需要的一切依赖。  进程追踪 操作系统给每个进程分配一个5位数字的pid来标示每个进程，每个进程">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux进程">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/04/23/linux-process/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="进程简介
-在unix或者linux系统中，每当运行一个程序，系统都会为这个程序创建一个特殊的环境，这个特殊的环境包含了运行该程序所依赖的一切东西。不论什么时候，你触发一个unix或者linux命令，都会创建或者启动一个新的进程。所以可以这样理解，一个进程，就是一个运行中的程序的实例，它包含了该程序执行所需要的一切依赖。
-
-进程追踪
-操作系统给每个进程分配一个5位数字的pid来标示每个进程，每个进程">
+<meta property="og:description" content="进程简介 在unix或者linux系统中，每当运行一个程序，系统都会为这个程序创建一个特殊的环境，这个特殊的环境包含了运行该程序所依赖的一切东西。不论什么时候，你触发一个unix或者linux命令，都会创建或者启动一个新的进程。所以可以这样理解，一个进程，就是一个运行中的程序的实例，它包含了该程序执行所需要的一切依赖。  进程追踪 操作系统给每个进程分配一个5位数字的pid来标示每个进程，每个进程">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-23T17:10:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux进程">
-<meta name="twitter:description" content="进程简介
-在unix或者linux系统中，每当运行一个程序，系统都会为这个程序创建一个特殊的环境，这个特殊的环境包含了运行该程序所依赖的一切东西。不论什么时候，你触发一个unix或者linux命令，都会创建或者启动一个新的进程。所以可以这样理解，一个进程，就是一个运行中的程序的实例，它包含了该程序执行所需要的一切依赖。
-
-进程追踪
-操作系统给每个进程分配一个5位数字的pid来标示每个进程，每个进程">
+<meta name="twitter:description" content="进程简介 在unix或者linux系统中，每当运行一个程序，系统都会为这个程序创建一个特殊的环境，这个特殊的环境包含了运行该程序所依赖的一切东西。不论什么时候，你触发一个unix或者linux命令，都会创建或者启动一个新的进程。所以可以这样理解，一个进程，就是一个运行中的程序的实例，它包含了该程序执行所需要的一切依赖。  进程追踪 操作系统给每个进程分配一个5位数字的pid来标示每个进程，每个进程">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -57,7 +47,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -77,49 +67,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 存档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/xxxxxMiss" target="_blank" >
+              <a href="https://github.com/xxxxxMiss" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/qschqd" target="_blank" >
+              <a href="http://www.weibo.com/qschqd" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom"  >
+              <a href="/custom">
                 <i class="icon icon-lg icon-link"></i>
                 测试
               </a>
@@ -187,13 +177,12 @@
         </nav>
     </aside>
     
-<article id="post-linux-process"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-linux-process" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">linux进程</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-04-23 13:39:13" datetime="2017-04-23T05:39:13.000Z"  itemprop="datePublished">2017-04-23</time>
+            <time class="post-time" title="2017-04-23 13:39:13" datetime="2017-04-23T05:39:13.000Z" itemprop="datePublished">2017-04-23</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
@@ -201,7 +190,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -221,7 +210,7 @@
 <p>一个后台进程的运行无需接受键盘的输入。后台进程的最大的好处就是无需等待当前进程处理完毕就可以执行其他的命令。如果某个后台进程需要接受一个输入，那么它会处于一个暂停状态直到它被切换到前后进程并且接受到从键盘输入的数据。</p>
 <h3 id="启动后台进程"><a href="#启动后台进程" class="headerlink" title="启动后台进程"></a>启动后台进程</h3><p>启动一个后台进程最简单的方式就是在一个命令的末尾加上<code>&amp;</code>符号。</p>
 </blockquote>
-<p>比如在终端下输入<code>ls -l &amp;</code><br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ls -l &amp;</div><div class="line">[<span class="number">2</span>] <span class="number">30721</span>  <span class="comment">// 第一行</span></div><div class="line">[<span class="number">1</span>]   Done                    ls -l  <span class="comment">// 第二行</span></div><div class="line">$ <span class="comment">// 第三行</span></div></pre></td></tr></table></figure></p>
+<p>比如在终端下输入<code>ls -l &amp;</code><br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l &amp;</span><br><span class="line">[<span class="number">2</span>] <span class="number">30721</span>  <span class="comment">// 第一行</span></span><br><span class="line">[<span class="number">1</span>]   Done                    ls -l  <span class="comment">// 第二行</span></span><br><span class="line">$ <span class="comment">// 第三行</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>其中的第一行的<code>[2]</code>表示job number,它是用来操作前后台进程切换的。<br>第二行表示<code>ls -l</code>命令后台进程成功的执行完成<br>第三行是等待下一个命令的输入</p>
 </blockquote>
@@ -261,7 +250,7 @@
 <blockquote>
 <p>以上的这些选项，<code>-x</code>, <code>-e</code>列出了一大堆信息，包括系统进程的，具体什么东西目前不是很清楚（TODO）。<br><code>-u</code>在mac下测试不支持，或许是打开方式不对。。。</p>
 </blockquote>
-<p>通过<code>ps -f</code>会在终端下显示如下信息<br><figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</div><div class="line">501<span class="number"> 26649 </span>26648  <span class="number"> 0 </span>四12上午 ttys000    0:00.68 -bash</div><div class="line">501<span class="number"> 11212 </span>11210  <span class="number"> 0 </span>15<span class="number"> 417 </span> ttys001    0:00.31 -bash</div><div class="line">501<span class="number"> 11267 </span>11266  <span class="number"> 0 </span>15<span class="number"> 417 </span> ttys002    0:00.11 -bash</div><div class="line">501<span class="number"> 11545 </span>11544  <span class="number"> 0 </span>15<span class="number"> 417 </span> ttys003    0:00.19 -bash</div><div class="line">501<span class="number"> 24268 </span>24267  <span class="number"> 0 </span>三12下午 ttys004    0:00.39 -bash</div><div class="line">501<span class="number"> 16770 </span>16766  <span class="number"> 0 </span>一11上午 ttys007    0:00.92 -bash</div></pre></td></tr></table></figure></p>
+<p>通过<code>ps -f</code>会在终端下显示如下信息<br><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</span><br><span class="line">501<span class="number"> 26649 </span>26648  <span class="number"> 0 </span>四12上午 ttys000    0:00.68 -bash</span><br><span class="line">501<span class="number"> 11212 </span>11210  <span class="number"> 0 </span>15<span class="number"> 417 </span> ttys001    0:00.31 -bash</span><br><span class="line">501<span class="number"> 11267 </span>11266  <span class="number"> 0 </span>15<span class="number"> 417 </span> ttys002    0:00.11 -bash</span><br><span class="line">501<span class="number"> 11545 </span>11544  <span class="number"> 0 </span>15<span class="number"> 417 </span> ttys003    0:00.19 -bash</span><br><span class="line">501<span class="number"> 24268 </span>24267  <span class="number"> 0 </span>三12下午 ttys004    0:00.39 -bash</span><br><span class="line">501<span class="number"> 16770 </span>16766  <span class="number"> 0 </span>一11上午 ttys007    0:00.92 -bash</span><br></pre></td></tr></table></figure></p>
 <p>关于以上每列所代表的含义如下:</p>
 <table>
 <thead>
@@ -312,15 +301,15 @@
 <li>通过<code>kill pid</code></li>
 </ul>
 </blockquote>
-<p>举例如下<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ①</span></div><div class="line"><span class="meta"><span class="meta-keyword">$ps</span> -f</span></div><div class="line"><span class="number">501</span> <span class="number">16770</span> <span class="number">16766</span>   <span class="number">0</span> 一<span class="number">11</span>上午 ttys007    <span class="number">0</span>:<span class="number">00.92</span> -bash</div><div class="line"><span class="comment">// ②</span></div><div class="line"><span class="meta"><span class="meta-keyword">$kill</span> 16770</span></div></pre></td></tr></table></figure></p>
-<p>但是有时候通过<code>kill pid</code>并不能终止一个进程，那么此时可以加个参数<code>-9</code>:<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"><span class="meta-keyword">$kill</span> -9 16770</span></div></pre></td></tr></table></figure></p>
+<p>举例如下<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ①</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$ps</span> -f</span></span><br><span class="line"><span class="number">501</span> <span class="number">16770</span> <span class="number">16766</span>   <span class="number">0</span> 一<span class="number">11</span>上午 ttys007    <span class="number">0</span>:<span class="number">00.92</span> -bash</span><br><span class="line"><span class="comment">// ②</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">$kill</span> 16770</span></span><br></pre></td></tr></table></figure></p>
+<p>但是有时候通过<code>kill pid</code>并不能终止一个进程，那么此时可以加个参数<code>-9</code>:<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><span class="meta-keyword">$kill</span> -9 16770</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="父进程和子进程"><a href="#父进程和子进程" class="headerlink" title="父进程和子进程"></a>父进程和子进程</h2><blockquote>
 <p>在<code>unix</code>或者<code>linux</code>系统中, 每个进程会被分配2个id，<code>pid</code>(process id), <code>ppid</code>(parent process id), 每个用户进程都会有一个父进程。</p>
 </blockquote>
 <h2 id="常驻进程-Daemon-Processes"><a href="#常驻进程-Daemon-Processes" class="headerlink" title="常驻进程(Daemon Processes)"></a>常驻进程(Daemon Processes)</h2><blockquote>
 <p>常驻进程作为系统级别的进程，以<code>root</code>权限运行，为其他的进程服务。常驻进程是无法通过终端来控制的。你通过<code>ps -ef</code>来查看进程信息，可以看到所有的常驻进程的<code>tty</code>列显示的都是<code>?</code></p>
 </blockquote>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ps -ef</div><div class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</div><div class="line">0    <span class="number"> 1 </span>   <span class="number"> 0 </span> <span class="number"> 0 </span>18<span class="number"> 217 </span>   ??        92:25.03 /sbin/launchd</div></pre></td></tr></table></figure>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ps -ef</span><br><span class="line">UID   PID  PPID   C STIME   TTY           TIME CMD</span><br><span class="line">0    <span class="number"> 1 </span>   <span class="number"> 0 </span> <span class="number"> 0 </span>18<span class="number"> 217 </span>   ??        92:25.03 /sbin/launchd</span><br></pre></td></tr></table></figure>
 <h2 id="其他的一些进程"><a href="#其他的一些进程" class="headerlink" title="其他的一些进程"></a>其他的一些进程</h2><blockquote>
 <p>….(不列了)</p>
 </blockquote>
@@ -482,8 +471,7 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -502,10 +490,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

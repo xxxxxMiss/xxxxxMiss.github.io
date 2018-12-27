@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -20,40 +20,18 @@
     
     
     <meta name="keywords" content="git">
-    <meta name="description" content="git 配置文件的位置
-/etc/gitconfig
-~/.gitconfig || \$XDG_CONFIG_HOME/git/config
-\$PWD/.git/config
-
-查看 git 配置
-对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。
-
-1234567">
+    <meta name="description" content="git 配置文件的位置 /etc/gitconfig ~/.gitconfig || \$XDG_CONFIG_HOME/git/config \$PWD/.git/config  查看 git 配置 对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。  1234567">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git进阶（二）">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/09/19/git-plumbing-2/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="git 配置文件的位置
-/etc/gitconfig
-~/.gitconfig || \$XDG_CONFIG_HOME/git/config
-\$PWD/.git/config
-
-查看 git 配置
-对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。
-
-1234567">
+<meta property="og:description" content="git 配置文件的位置 /etc/gitconfig ~/.gitconfig || \$XDG_CONFIG_HOME/git/config \$PWD/.git/config  查看 git 配置 对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。  1234567">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-12-24T08:41:35.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git进阶（二）">
-<meta name="twitter:description" content="git 配置文件的位置
-/etc/gitconfig
-~/.gitconfig || \$XDG_CONFIG_HOME/git/config
-\$PWD/.git/config
-
-查看 git 配置
-对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。
-
-1234567">
+<meta name="twitter:description" content="git 配置文件的位置 /etc/gitconfig ~/.gitconfig || \$XDG_CONFIG_HOME/git/config \$PWD/.git/config  查看 git 配置 对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。  1234567">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -69,7 +47,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -89,49 +67,49 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 存档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/xxxxxMiss" target="_blank" >
+              <a href="https://github.com/xxxxxMiss" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/qschqd" target="_blank" >
+              <a href="http://www.weibo.com/qschqd" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom"  >
+              <a href="/custom">
                 <i class="icon icon-lg icon-link"></i>
                 测试
               </a>
@@ -199,13 +177,12 @@
         </nav>
     </aside>
     
-<article id="post-git-plumbing-2"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-git-plumbing-2" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">git进阶（二）</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-09-19 01:23:39" datetime="2017-09-18T17:23:39.000Z"  itemprop="datePublished">2017-09-19</time>
+            <time class="post-time" title="2017-09-19 01:23:39" datetime="2017-09-18T17:23:39.000Z" itemprop="datePublished">2017-09-19</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
@@ -213,7 +190,7 @@
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -228,9 +205,9 @@
 <h2 id="查看-git-配置"><a href="#查看-git-配置" class="headerlink" title="查看 git 配置"></a>查看 git 配置</h2><blockquote>
 <p>对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，<br>CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。</p>
 </blockquote>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 查看系统级别的所有配置</span></div><div class="line">git <span class="keyword">config</span> --system -l</div><div class="line"></div><div class="line"><span class="comment">// 查看全局的所有配置(默认查看global级别)</span></div><div class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> -l</div><div class="line"></div><div class="line"><span class="comment">// 查看当前仓库的配置</span></div><div class="line">git <span class="keyword">config</span> --<span class="keyword">local</span> -l</div><div class="line"></div><div class="line"><span class="comment">// 查看具体某一项的配置</span></div><div class="line">git <span class="keyword">config</span> [--system|--<span class="keyword">global</span>|--<span class="keyword">local</span>] --get core<span class="variable">.editor</span></div><div class="line"><span class="comment">// 默认查看local级别</span></div><div class="line">git <span class="keyword">config</span> --get core<span class="variable">.editor</span></div></pre></td></tr></table></figure>
-<h2 id="设置-git-配置"><a href="#设置-git-配置" class="headerlink" title="设置 git 配置"></a>设置 git 配置</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">config</span> [--system|--<span class="keyword">global</span>|--<span class="keyword">local</span>] user<span class="variable">.name</span> <span class="string">"qsch"</span></div></pre></td></tr></table></figure>
-<h2 id="删除某个配置"><a href="#删除某个配置" class="headerlink" title="删除某个配置"></a>删除某个配置</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 删除global级别的commit.template配置</span></div><div class="line">git <span class="built_in">config</span> --global --unset commit.<span class="keyword">template</span></div><div class="line"></div><div class="line"><span class="comment">// 删除local级别</span></div><div class="line">git <span class="built_in">config</span> --local --unset commit.<span class="keyword">template</span></div><div class="line"><span class="comment">// 或则</span></div><div class="line">git <span class="built_in">config</span> --unset commit.<span class="keyword">template</span></div></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查看系统级别的所有配置</span></span><br><span class="line">git <span class="keyword">config</span> --system -l</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查看全局的所有配置(默认查看global级别)</span></span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">global</span> -l</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查看当前仓库的配置</span></span><br><span class="line">git <span class="keyword">config</span> --<span class="keyword">local</span> -l</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查看具体某一项的配置</span></span><br><span class="line">git <span class="keyword">config</span> [--system|--<span class="keyword">global</span>|--<span class="keyword">local</span>] --get core<span class="variable">.editor</span></span><br><span class="line"><span class="comment">// 默认查看local级别</span></span><br><span class="line">git <span class="keyword">config</span> --get core<span class="variable">.editor</span></span><br></pre></td></tr></table></figure>
+<h2 id="设置-git-配置"><a href="#设置-git-配置" class="headerlink" title="设置 git 配置"></a>设置 git 配置</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>[--system|--global|--local] user.name <span class="string">"qsch"</span></span><br></pre></td></tr></table></figure>
+<h2 id="删除某个配置"><a href="#删除某个配置" class="headerlink" title="删除某个配置"></a>删除某个配置</h2><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除global级别的commit.template配置</span></span><br><span class="line">git <span class="built_in">config</span> --global --unset commit.<span class="keyword">template</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除local级别</span></span><br><span class="line">git <span class="built_in">config</span> --local --unset commit.<span class="keyword">template</span></span><br><span class="line"><span class="comment">// 或则</span></span><br><span class="line">git <span class="built_in">config</span> --unset commit.<span class="keyword">template</span></span><br></pre></td></tr></table></figure>
 <h2 id="commit-template"><a href="#commit-template" class="headerlink" title="commit.template"></a>commit.template</h2><blockquote>
 <p>配置提交信息的模板。使用同一份模板，可以保持团队成员的提交信息风格保持一致。</p>
 </blockquote>
@@ -404,8 +381,7 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -424,10 +400,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

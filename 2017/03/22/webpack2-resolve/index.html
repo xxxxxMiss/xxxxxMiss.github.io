@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -20,34 +20,18 @@
     
     
     <meta name="keywords" content="webpack">
-    <meta name="description" content="[TOC]
-resolve
-配置模块解析策略。比如，import lodash, 可以通过配置resolve.modules来指定当解析lodash是，去哪个路径下去寻找lodash。
-
-resolve.aliasobject
-
-配置模块的别名,这样当使用import或者require就可以使用别名来代替冗长的相对路径。比如你import某一路径下的一个js文件:import ../../src/">
+    <meta name="description" content="[TOC] resolve 配置模块解析策略。比如，import lodash, 可以通过配置resolve.modules来指定当解析lodash是，去哪个路径下去寻找lodash。  resolve.aliasobject  配置模块的别名,这样当使用import或者require就可以使用别名来代替冗长的相对路径。比如你import某一路径下的一个js文件:import ../../src/">
+<meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack2-resolve">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/22/webpack2-resolve/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="[TOC]
-resolve
-配置模块解析策略。比如，import lodash, 可以通过配置resolve.modules来指定当解析lodash是，去哪个路径下去寻找lodash。
-
-resolve.aliasobject
-
-配置模块的别名,这样当使用import或者require就可以使用别名来代替冗长的相对路径。比如你import某一路径下的一个js文件:import ../../src/">
+<meta property="og:description" content="[TOC] resolve 配置模块解析策略。比如，import lodash, 可以通过配置resolve.modules来指定当解析lodash是，去哪个路径下去寻找lodash。  resolve.aliasobject  配置模块的别名,这样当使用import或者require就可以使用别名来代替冗长的相对路径。比如你import某一路径下的一个js文件:import ../../src/">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-24T11:31:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack2-resolve">
-<meta name="twitter:description" content="[TOC]
-resolve
-配置模块解析策略。比如，import lodash, 可以通过配置resolve.modules来指定当解析lodash是，去哪个路径下去寻找lodash。
-
-resolve.aliasobject
-
-配置模块的别名,这样当使用import或者require就可以使用别名来代替冗长的相对路径。比如你import某一路径下的一个js文件:import ../../src/">
+<meta name="twitter:description" content="[TOC] resolve 配置模块解析策略。比如，import lodash, 可以通过配置resolve.modules来指定当解析lodash是，去哪个路径下去寻找lodash。  resolve.aliasobject  配置模块的别名,这样当使用import或者require就可以使用别名来代替冗长的相对路径。比如你import某一路径下的一个js文件:import ../../src/">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -63,7 +47,7 @@ resolve.aliasobject
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -83,49 +67,49 @@ resolve.aliasobject
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 存档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/xxxxxMiss" target="_blank" >
+              <a href="https://github.com/xxxxxMiss" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/qschqd" target="_blank" >
+              <a href="http://www.weibo.com/qschqd" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom"  >
+              <a href="/custom">
                 <i class="icon icon-lg icon-link"></i>
                 测试
               </a>
@@ -193,13 +177,12 @@ resolve.aliasobject
         </nav>
     </aside>
     
-<article id="post-webpack2-resolve"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-webpack2-resolve" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">webpack2-resolve</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-03-22 11:00:15" datetime="2017-03-22T03:00:15.000Z"  itemprop="datePublished">2017-03-22</time>
+            <time class="post-time" title="2017-03-22 11:00:15" datetime="2017-03-22T03:00:15.000Z" itemprop="datePublished">2017-03-22</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
@@ -207,7 +190,7 @@ resolve.aliasobject
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -222,15 +205,15 @@ resolve.aliasobject
 <blockquote>
 <p>配置模块的别名,这样当使用<code>import</code>或者<code>require</code>就可以使用别名来代替冗长的相对路径。<br>比如你<code>import</code>某一路径下的一个js文件:<code>import ../../src/js/index.js</code><br>如果没有配置别名，那么你每次引入<code>src/js</code>这个路径下的某个js,都需要写很长的路径,通过配置别名，你可以简化书写。</p>
 </blockquote>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  <span class="built_in">resolve</span>: &#123;</div><div class="line">    alia<span class="variable">s:</span> &#123;</div><div class="line">      <span class="keyword">j</span><span class="variable">s:</span> path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src/js'</span>),</div><div class="line">      <span class="keyword">cs</span><span class="variable">s:</span> path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src/css'</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  <span class="built_in">resolve</span>: &#123;</span><br><span class="line">    alia<span class="variable">s:</span> &#123;</span><br><span class="line">      <span class="keyword">j</span><span class="variable">s:</span> path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src/js'</span>),</span><br><span class="line">      <span class="keyword">cs</span><span class="variable">s:</span> path.<span class="built_in">resolve</span>(__dirname, <span class="string">'src/css'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>没有配置别名之前<br><code>import { getData } from &#39;../../src/js/fetData&#39;</code><br>配置别名后<br><code>import { getData } from &#39;js/fetData&#39;</code></p>
-<p>在配置别名，关于填写文件路径的各种写法，可以移步<a href="https://webpack.js.org/configuration/resolve/" target="_blank" rel="external">这里</a></p>
+<p>在配置别名，关于填写文件路径的各种写法，可以移步<a href="https://webpack.js.org/configuration/resolve/" target="_blank" rel="noopener">这里</a></p>
 <h4 id="resolve-aliasFields"><a href="#resolve-aliasFields" class="headerlink" title="resolve.aliasFields"></a>resolve.aliasFields</h4><p>string</p>
 <blockquote>
 <p>指定某些属性，用来配置别名所指定的js文件解析的环境。</p>
 </blockquote>
 <p><code>aliasFields: [&#39;browser&#39;]</code></p>
-<p>直接这么一句话，很难理解什么意思，详细的意思可以参阅<a href="http://www.ibm.com/developerworks/cn/web/1501_chengfu_browserify/" target="_blank" rel="external">这里</a></p>
+<p>直接这么一句话，很难理解什么意思，详细的意思可以参阅<a href="http://www.ibm.com/developerworks/cn/web/1501_chengfu_browserify/" target="_blank" rel="noopener">这里</a></p>
 <h4 id="resolve-descriptionFiles"><a href="#resolve-descriptionFiles" class="headerlink" title="resolve.descriptionFiles"></a>resolve.descriptionFiles</h4><p>arry</p>
 <blockquote>
 <p>指定用哪个json文件作为描述文件。一般情况下使用默认值即可，不需要显式的配置。</p>
@@ -241,21 +224,21 @@ resolve.aliasobject
 <p>指定是否必须使用扩展名。<br>比如一般情况下，我们会像这样引入某个js, <code>import &#39;lodash&#39;</code>, 但是如果你指定了<code>enforceExtensions: true</code>，那么你就必须这样引入<code>import &#39;lodash.js&#39;</code></p>
 </blockquote>
 <h4 id="resolve-extensions"><a href="#resolve-extensions" class="headerlink" title="resolve.extensions"></a>resolve.extensions</h4><blockquote>
-<p>自动解析文件扩展名，默认值[‘.js’, ‘.json’]。<br>意思就是比如你<code>import _ from &#39;../path/file&#39;</code>, 会先去<code>path</code>下寻找<code>file.js</code>文件，没有找到，那么继续寻找<code>file.json</code>文件，都没找找到抛出<code>Module not found: Error: Can&#39;t resolve &#39;xx&#39; in &#39;xxx&#39;</code>错误。<br>NOTE: 一旦你配置了该选项，那就意味着webpack不在使用默认的解析机制。比如你配置为<br><code>extensions: [&#39;.txt&#39;]</code>, 那么webpack就只会去寻找<code>xx.txt</code>,并不会去寻找<code>xx.js</code>,<code>xx.json</code>,即使你指定的文件夹下有<code>xx.js</code>,<code>xx.json</code>，因为默认的选项已经被你重写了，只会按照你配置的选项来解析。<br><a href="https://nodejs.org/dist/latest-v7.x/docs/api/modules.html" target="_blank" rel="external">node包寻找机制</a></p>
+<p>自动解析文件扩展名，默认值[‘.js’, ‘.json’]。<br>意思就是比如你<code>import _ from &#39;../path/file&#39;</code>, 会先去<code>path</code>下寻找<code>file.js</code>文件，没有找到，那么继续寻找<code>file.json</code>文件，都没找找到抛出<code>Module not found: Error: Can&#39;t resolve &#39;xx&#39; in &#39;xxx&#39;</code>错误。<br>NOTE: 一旦你配置了该选项，那就意味着webpack不在使用默认的解析机制。比如你配置为<br><code>extensions: [&#39;.txt&#39;]</code>, 那么webpack就只会去寻找<code>xx.txt</code>,并不会去寻找<code>xx.js</code>,<code>xx.json</code>,即使你指定的文件夹下有<code>xx.js</code>,<code>xx.json</code>，因为默认的选项已经被你重写了，只会按照你配置的选项来解析。<br><a href="https://nodejs.org/dist/latest-v7.x/docs/api/modules.html" target="_blank" rel="noopener">node包寻找机制</a></p>
 </blockquote>
 <h4 id="resolve-mainFields"><a href="#resolve-mainFields" class="headerlink" title="resolve.mainFields"></a>resolve.mainFields</h4><blockquote>
 <p>当你引入某一个包时，使用包下面的哪一个文件。<br>配置: <code>mainFields: [&#39;module&#39;, &#39;browser&#39;, &#39;main&#39;]</code>，具体看例子解释。</p>
 </blockquote>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> D3 <span class="keyword">from</span> <span class="string">'d3'</span></div></pre></td></tr></table></figure>
-<p>在<code>d3</code>这个<code>package.json</code>中，有这几个选项<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"main"</span>: <span class="string">"build/d3.node.js"</span>, <span class="comment">// 适用node环境</span></div><div class="line"><span class="string">"browser"</span>: <span class="string">"build/d3.js"</span>, <span class="comment">// 适用浏览器环境</span></div><div class="line"><span class="string">"module"</span>: <span class="string">"index"</span> <span class="comment">// 都支持</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> D3 <span class="keyword">from</span> <span class="string">'d3'</span></span><br></pre></td></tr></table></figure>
+<p>在<code>d3</code>这个<code>package.json</code>中，有这几个选项<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"main"</span>: <span class="string">"build/d3.node.js"</span>, <span class="comment">// 适用node环境</span></span><br><span class="line"><span class="string">"browser"</span>: <span class="string">"build/d3.js"</span>, <span class="comment">// 适用浏览器环境</span></span><br><span class="line"><span class="string">"module"</span>: <span class="string">"index"</span> <span class="comment">// 都支持</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>以上的几个选项可以分别支持不同的环境，你应该选择你需要的环境选项，通过该选项的配置，可以满足你的需求。</p>
 </blockquote>
 <h4 id="resolve-mainFiles"><a href="#resolve-mainFiles" class="headerlink" title="resolve.mainFiles"></a>resolve.mainFiles</h4><blockquote>
-<p>当解析到的文件是一个目录是，如何处理该目录。<br>默认：<code>mainFiles: [&#39;index&#39;]</code>。<br>关于该选项的具体含义，只要理解了node中包的寻找机制，就能明白该选项的含义。<br><a href="https://nodejs.org/dist/latest-v7.x/docs/api/modules.html" target="_blank" rel="external">node包寻找机制</a></p>
+<p>当解析到的文件是一个目录是，如何处理该目录。<br>默认：<code>mainFiles: [&#39;index&#39;]</code>。<br>关于该选项的具体含义，只要理解了node中包的寻找机制，就能明白该选项的含义。<br><a href="https://nodejs.org/dist/latest-v7.x/docs/api/modules.html" target="_blank" rel="noopener">node包寻找机制</a></p>
 </blockquote>
-<p>这里举例简单说明：<br>index.js<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fns <span class="keyword">from</span> <span class="string">'./js'</span> <span class="comment">//js是一个文件夹</span></div></pre></td></tr></table></figure></p>
-<p>webpack.config.js<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolve</span>: &#123;</div><div class="line">  <span class="attribute">mainFields</span>: [<span class="string">'canvas'</span>, <span class="string">'utils'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里举例简单说明：<br>index.js<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> fns <span class="keyword">from</span> <span class="string">'./js'</span> <span class="comment">//js是一个文件夹</span></span><br></pre></td></tr></table></figure></p>
+<p>webpack.config.js<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">resolve</span>: &#123;</span><br><span class="line">  <span class="attribute">mainFields</span>: [<span class="string">'canvas'</span>, <span class="string">'utils'</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>当webpack解析到<code>js</code>是一个文件夹时，如果你的<code>mainFields</code>配置如上，那么webpack会去<code>js</code>文件夹下寻找<code>canvas.js</code>，如果没有找到,那么继续寻找<code>js</code>文件夹下的<code>utils.js</code>，如果还没有找到，抛出错误<code>Module not found: Error: &#39;xx&#39; in &#39;xx&#39;</code></p>
 </blockquote>
@@ -273,7 +256,7 @@ resolve.aliasobject
 <h3 id="resolve-plugins"><a href="#resolve-plugins" class="headerlink" title="resolve.plugins"></a>resolve.plugins</h3><blockquote>
 <p>添加目录命名的一些额外的插件列表。</p>
 </blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolve</span>: &#123;</div><div class="line">  <span class="attribute">plugins</span>: [new <span class="built_in">DirectoryNamedWebpackPlugin</span>()]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">resolve</span>: &#123;</span><br><span class="line">  <span class="attribute">plugins</span>: [new <span class="built_in">DirectoryNamedWebpackPlugin</span>()]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="resolveLoader-prop"><a href="#resolveLoader-prop" class="headerlink" title="resolveLoader[prop]"></a>resolveLoader[prop]</h3><p>object</p>
 <blockquote>
 <p>这个选项拥有的属性配置和上面的<code>resolve</code>是一样的，不过他<strong>只能用来</strong>配置webpack的<code>loader</code>包，默认值如下</p>
@@ -281,7 +264,7 @@ resolve.aliasobject
 <h3 id="resolveLoader-moduleExtensions"><a href="#resolveLoader-moduleExtensions" class="headerlink" title="resolveLoader.moduleExtensions"></a>resolveLoader.moduleExtensions</h3><blockquote>
 <p>用来配置<code>loader</code>的扩展名，默认是一个空数组。比如你使用<code>loader</code>的时候，想省去后缀<code>-loader</code>,那么你可以如下配置</p>
 </blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">resolveLoader</span>: &#123;</div><div class="line">  <span class="attribute">moduleExtensions</span>: [<span class="string">'-loader'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">resolveLoader</span>: &#123;</span><br><span class="line">  <span class="attribute">moduleExtensions</span>: [<span class="string">'-loader'</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>NOTE: 在<code>webpack1.x</code>，可以省去<code>-loader</code>后缀，webpack默认会加上。但是在<code>webpack2.x</code>，必须通过上面的这个配置才可以省去。</p>
 
         </div>
@@ -438,8 +421,7 @@ resolve.aliasobject
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -458,10 +440,10 @@ resolve.aliasobject
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

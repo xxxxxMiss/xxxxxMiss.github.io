@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -20,53 +20,19 @@
     
     
     <meta name="keywords" content="nodejs,js">
-    <meta name="description" content=".list li{
-    list-style-type: decimal;
-  }
-
-
-2 个名词
-microtask: 称之为小型任务
-macrotask（task queue）: 称之为大型任务
-
-事件循环模型
-当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
-
-  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrot">
+    <meta name="description" content=".list li{     list-style-type: decimal;   }   2 个名词 microtask: 称之为小型任务 macrotask（task queue）: 称之为大型任务  事件循环模型 当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：    从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrot">
+<meta name="keywords" content="nodejs,js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="event-loop(事件循环)">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/07/14/event-loop/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content=".list li{
-    list-style-type: decimal;
-  }
-
-
-2 个名词
-microtask: 称之为小型任务
-macrotask（task queue）: 称之为大型任务
-
-事件循环模型
-当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
-
-  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrot">
+<meta property="og:description" content=".list li{     list-style-type: decimal;   }   2 个名词 microtask: 称之为小型任务 macrotask（task queue）: 称之为大型任务  事件循环模型 当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：    从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrot">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://xxxxxmiss.github.io/2017/07/14/event-loop/event-loop.png">
 <meta property="og:updated_time" content="2018-11-23T09:23:28.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="event-loop(事件循环)">
-<meta name="twitter:description" content=".list li{
-    list-style-type: decimal;
-  }
-
-
-2 个名词
-microtask: 称之为小型任务
-macrotask（task queue）: 称之为大型任务
-
-事件循环模型
-当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
-
-  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrot">
+<meta name="twitter:description" content=".list li{     list-style-type: decimal;   }   2 个名词 microtask: 称之为小型任务 macrotask（task queue）: 称之为大型任务  事件循环模型 当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：    从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即macrot">
 <meta name="twitter:image" content="https://xxxxxmiss.github.io/2017/07/14/event-loop/event-loop.png">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
@@ -83,7 +49,7 @@ macrotask（task queue）: 称之为大型任务
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -103,49 +69,49 @@ macrotask（task queue）: 称之为大型任务
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 存档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/xxxxxMiss" target="_blank" >
+              <a href="https://github.com/xxxxxMiss" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/qschqd" target="_blank" >
+              <a href="http://www.weibo.com/qschqd" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom"  >
+              <a href="/custom">
                 <i class="icon icon-lg icon-link"></i>
                 测试
               </a>
@@ -213,13 +179,12 @@ macrotask（task queue）: 称之为大型任务
         </nav>
     </aside>
     
-<article id="post-event-loop"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-event-loop" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">event-loop(事件循环)</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-07-14 10:58:29" datetime="2017-07-14T02:58:29.000Z"  itemprop="datePublished">2017-07-14</time>
+            <time class="post-time" title="2017-07-14 10:58:29" datetime="2017-07-14T02:58:29.000Z" itemprop="datePublished">2017-07-14</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
@@ -227,7 +192,7 @@ macrotask（task queue）: 称之为大型任务
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -258,13 +223,13 @@ macrotask（task queue）: 称之为大型任务
 <h2 id="需要知道的一些事情："><a href="#需要知道的一些事情：" class="headerlink" title="需要知道的一些事情："></a>需要知道的一些事情：</h2><ol class="list"><br>  <li>当一个macrotask任务正在运行的时候，新的事件可以被注册，也即创建新的任务。例如：<br>    <ul><br>      <li>promiseA.then()的回调是一个任务<br>        <ul><br>          <li>promiseA如果处于resolve/reject状态时，那么该任务被推到事件循环的当前轮次的microtask中</li><br>          <li>promiseA处于pending状态时，那么该任务将会被推到事件循环的下一个轮次的microtask中。</li><br>        </ul><br>      </li><br>      <li>setTimeout(callback, n)的回调是一个任务，将会被推到macrotask中，及时n=0。</li><br>    </ul><br>  </li><br>  <li>如果事件循环正在执行microtask中的任务，那么你可以继续往microtask中添加任务，这些任务都会在本轮次的循环中执行。</li><br>  <li>只有等到本轮次的microtask中的所有任务执行完毕，才会执行下一轮的macrotask任务。</li><br>  <li>常见的microtask任务：<code>process.nextTick</code>,<code>Promise</code>, <code>Object.observe</code>, <code>MutationObserver</code></li><br>  <li>常见的macrotask任务：<code>setTimeout</code>,<code>setInterval</code>, <code>setImmediate</code>,Dom事件（click, scroll, mouseup等）， <code>ajax</code>，I/O, UI rendering等。还需要注意的是，整个的脚本也是一个macrotask任务。</li><br></ol>
 
 <p>经过上面的分析，可以看如下例子输出：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</div><div class="line"></div><div class="line"><span class="keyword">const</span> interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setInterval'</span>)</div><div class="line">&#125;, <span class="number">0</span>)</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout1'</span>)</div><div class="line"></div><div class="line">  <span class="built_in">Promise</span>.resolve()</div><div class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'promise3'</span>)</div><div class="line">    &#125;)</div><div class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'promise4'</span>)</div><div class="line">    &#125;)</div><div class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'setTimeout2'</span>)</div><div class="line"></div><div class="line">        <span class="built_in">Promise</span>.resolve()</div><div class="line">          .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'promise5'</span>)</div><div class="line">          &#125;)</div><div class="line">          .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'promise6'</span>)</div><div class="line">          &#125;)</div><div class="line">          .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            clearInterval(interval)</div><div class="line">          &#125;)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="built_in">Promise</span>.resolve()</div><div class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</div><div class="line">  &#125;)</div><div class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</div><div class="line">  &#125;)</div><div class="line"></div><div class="line"><span class="comment">// script start</span></div><div class="line"><span class="comment">// promise1</span></div><div class="line"><span class="comment">// promise2</span></div><div class="line"><span class="comment">// setInterval</span></div><div class="line"><span class="comment">// setTimeout1</span></div><div class="line"><span class="comment">// promise3</span></div><div class="line"><span class="comment">// promise4</span></div><div class="line"><span class="comment">// interval</span></div><div class="line"><span class="comment">// setTimout2</span></div><div class="line"><span class="comment">// promise5</span></div><div class="line"><span class="comment">// pormise6</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> interval = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setInterval'</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout1'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Promise</span>.resolve()</span><br><span class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'promise3'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'promise4'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'setTimeout2'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">Promise</span>.resolve()</span><br><span class="line">          .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'promise5'</span>)</span><br><span class="line">          &#125;)</span><br><span class="line">          .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'promise6'</span>)</span><br><span class="line">          &#125;)</span><br><span class="line">          .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            clearInterval(interval)</span><br><span class="line">          &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// script start</span></span><br><span class="line"><span class="comment">// promise1</span></span><br><span class="line"><span class="comment">// promise2</span></span><br><span class="line"><span class="comment">// setInterval</span></span><br><span class="line"><span class="comment">// setTimeout1</span></span><br><span class="line"><span class="comment">// promise3</span></span><br><span class="line"><span class="comment">// promise4</span></span><br><span class="line"><span class="comment">// interval</span></span><br><span class="line"><span class="comment">// setTimout2</span></span><br><span class="line"><span class="comment">// promise5</span></span><br><span class="line"><span class="comment">// pormise6</span></span><br></pre></td></tr></table></figure>
 <h2 id="call-stack-执行栈-与-event-loop-事件循环-之间的关系"><a href="#call-stack-执行栈-与-event-loop-事件循环-之间的关系" class="headerlink" title="call stack(执行栈)与 event loop(事件循环)之间的关系"></a>call stack(执行栈)与 event loop(事件循环)之间的关系</h2><blockquote>
 <p>为了形象的表示，可以参看下图：</p>
 </blockquote>
-<img src="/2017/07/14/event-loop/event-loop.png" alt="事件循环与函数调用栈的关系" title="事件循环与函数调用栈的关系">
-<p>关于他们之间的关系的说明，此处就不在叙述了，具体可以<a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="external">参看这里</a></p>
-<p>参考文章如下：<br><a href="https://stackoverflow.com/questions/25915634/difference-between-microtask-and-macrotask-within-an-event-loop-context" target="_blank" rel="external">microtask and macrotask</a><br><a href="https://blog.risingstack.com/node-js-at-scale-understanding-node-js-event-loop/" target="_blank" rel="external">event loop</a><br><a href="https://html.spec.whatwg.org/multipage/webappapis.html#task-queue" target="_blank" rel="external">task-queue spec</a><br><a href="https://vimeo.com/96425312" target="_blank" rel="external">call stack</a></p>
+<img src="/2017/07/14/event-loop/event-loop.png" title="事件循环与函数调用栈的关系">
+<p>关于他们之间的关系的说明，此处就不在叙述了，具体可以<a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">参看这里</a></p>
+<p>参考文章如下：<br><a href="https://stackoverflow.com/questions/25915634/difference-between-microtask-and-macrotask-within-an-event-loop-context" target="_blank" rel="noopener">microtask and macrotask</a><br><a href="https://blog.risingstack.com/node-js-at-scale-understanding-node-js-event-loop/" target="_blank" rel="noopener">event loop</a><br><a href="https://html.spec.whatwg.org/multipage/webappapis.html#task-queue" target="_blank" rel="noopener">task-queue spec</a><br><a href="https://vimeo.com/96425312" target="_blank" rel="noopener">call stack</a></p>
 
         </div>
 
@@ -420,8 +385,7 @@ macrotask（task queue）: 称之为大型任务
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -440,10 +404,10 @@ macrotask（task queue）: 称之为大型任务
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

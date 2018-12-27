@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -20,40 +20,18 @@
     
     
     <meta name="keywords" content="shell">
-    <meta name="description" content="在awk中, 需要知道的点
-数组，字符串等等，索引都是从1开始
-变量的取值直接写变量名var，而不像shell中需要$var，除了内置的特殊变量$0，$1，$2，…等
-FS：指定列分隔符，如：BEGIN{FS=&amp;quot;:&amp;quot;}
-内置NF变量：以指定分隔符FS分割出来的列数
-内置NR变量：当前处理的行数
-
-split(str, arr, field separator)
-使用指定的列分隔">
+    <meta name="description" content="在awk中, 需要知道的点 数组，字符串等等，索引都是从1开始 变量的取值直接写变量名var，而不像shell中需要$var，除了内置的特殊变量$0，$1，$2，…等 FS：指定列分隔符，如：BEGIN{FS=&amp;quot;:&amp;quot;} 内置NF变量：以指定分隔符FS分割出来的列数 内置NR变量：当前处理的行数  split(str, arr, field separator) 使用指定的列分隔">
+<meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="awk内置函数">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/09/19/awk-build-in-functions/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="在awk中, 需要知道的点
-数组，字符串等等，索引都是从1开始
-变量的取值直接写变量名var，而不像shell中需要$var，除了内置的特殊变量$0，$1，$2，…等
-FS：指定列分隔符，如：BEGIN{FS=&amp;quot;:&amp;quot;}
-内置NF变量：以指定分隔符FS分割出来的列数
-内置NR变量：当前处理的行数
-
-split(str, arr, field separator)
-使用指定的列分隔">
+<meta property="og:description" content="在awk中, 需要知道的点 数组，字符串等等，索引都是从1开始 变量的取值直接写变量名var，而不像shell中需要$var，除了内置的特殊变量$0，$1，$2，…等 FS：指定列分隔符，如：BEGIN{FS=&amp;quot;:&amp;quot;} 内置NF变量：以指定分隔符FS分割出来的列数 内置NR变量：当前处理的行数  split(str, arr, field separator) 使用指定的列分隔">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-09-20T02:48:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="awk内置函数">
-<meta name="twitter:description" content="在awk中, 需要知道的点
-数组，字符串等等，索引都是从1开始
-变量的取值直接写变量名var，而不像shell中需要$var，除了内置的特殊变量$0，$1，$2，…等
-FS：指定列分隔符，如：BEGIN{FS=&amp;quot;:&amp;quot;}
-内置NF变量：以指定分隔符FS分割出来的列数
-内置NR变量：当前处理的行数
-
-split(str, arr, field separator)
-使用指定的列分隔">
+<meta name="twitter:description" content="在awk中, 需要知道的点 数组，字符串等等，索引都是从1开始 变量的取值直接写变量名var，而不像shell中需要$var，除了内置的特殊变量$0，$1，$2，…等 FS：指定列分隔符，如：BEGIN{FS=&amp;quot;:&amp;quot;} 内置NF变量：以指定分隔符FS分割出来的列数 内置NR变量：当前处理的行数  split(str, arr, field separator) 使用指定的列分隔">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -69,7 +47,7 @@ split(str, arr, field separator)
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -89,49 +67,49 @@ split(str, arr, field separator)
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 存档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/xxxxxMiss" target="_blank" >
+              <a href="https://github.com/xxxxxMiss" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/qschqd" target="_blank" >
+              <a href="http://www.weibo.com/qschqd" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom"  >
+              <a href="/custom">
                 <i class="icon icon-lg icon-link"></i>
                 测试
               </a>
@@ -199,13 +177,12 @@ split(str, arr, field separator)
         </nav>
     </aside>
     
-<article id="post-awk-build-in-functions"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-awk-build-in-functions" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">awk内置函数</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-09-19 20:42:18" datetime="2017-09-19T12:42:18.000Z"  itemprop="datePublished">2017-09-19</time>
+            <time class="post-time" title="2017-09-19 20:42:18" datetime="2017-09-19T12:42:18.000Z" itemprop="datePublished">2017-09-19</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/shell/">shell</a></li></ul>
@@ -213,7 +190,7 @@ split(str, arr, field separator)
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -230,28 +207,28 @@ split(str, arr, field separator)
 <h2 id="split-str-arr-field-separator"><a href="#split-str-arr-field-separator" class="headerlink" title="split(str, arr, field separator)"></a>split(str, arr, field separator)</h2><blockquote>
 <p>使用指定的列分隔符将行分割到一个数组中。如果列分隔符没有传值，默认使用IFS的值。</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">➜  shell cat test.sh</div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;split($0, arr, ":"); print arr[1]"--&gt;"arr[2]"--&gt;"arr[3]&#125;'</span></div><div class="line"></div><div class="line">➜  shell ./test.sh</div><div class="line">12--&gt;ab--&gt;&amp;&amp;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">➜  shell cat test.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;split($0, arr, ":"); print arr[1]"--&gt;"arr[2]"--&gt;"arr[3]&#125;'</span></span><br><span class="line"></span><br><span class="line">➜  shell ./test.sh</span><br><span class="line">12--&gt;ab--&gt;&amp;&amp;</span><br></pre></td></tr></table></figure>
 <h2 id="substr-str-start-length"><a href="#substr-str-start-length" class="headerlink" title="substr(str, start, length)"></a>substr(str, start, length)</h2><blockquote>
 <p>从str中start位置开始截取长度为length的字符串。<br>如果没有截取长度length,那么默认截取到str的末尾。</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">➜  shell cat test.sh</div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;s=substr($0, 3); print s&#125;'</span></div><div class="line"></div><div class="line">➜  shell ./test.sh</div><div class="line">:ab:&amp;&amp;</div><div class="line"></div><div class="line"></div><div class="line">➜  shell cat test.sh</div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;s=substr($0, 3, 4); print s&#125;'</span></div><div class="line"></div><div class="line">➜  shell ./test.sh</div><div class="line">:ab:</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">➜  shell cat test.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;s=substr($0, 3); print s&#125;'</span></span><br><span class="line"></span><br><span class="line">➜  shell ./test.sh</span><br><span class="line">:ab:&amp;&amp;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">➜  shell cat test.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;s=substr($0, 3, 4); print s&#125;'</span></span><br><span class="line"></span><br><span class="line">➜  shell ./test.sh</span><br><span class="line">:ab:</span><br></pre></td></tr></table></figure>
 <h2 id="index-str-target-str"><a href="#index-str-target-str" class="headerlink" title="index(str, target_str)"></a>index(str, target_str)</h2><blockquote>
 <p>查找target_str在str中出现的位置，如果找到了，那么返回第一次找到的索引；<br>如果没有找到，返回0</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">➜  shell cat test.sh</div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;i=index($0, "a"); print "index: "i&#125;'</span></div><div class="line"></div><div class="line"><span class="comment"># 字符a在time中索引为4</span></div><div class="line">➜  shell ./test.sh</div><div class="line">index: 4</div><div class="line"></div><div class="line"></div><div class="line">➜  shell cat test.sh</div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;i=index($0, "x"); print "index: "i&#125;'</span></div><div class="line"></div><div class="line"><span class="comment"># 没有找到，返回0</span></div><div class="line">➜  shell ./test.sh</div><div class="line">index: 0</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">➜  shell cat test.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;i=index($0, "a"); print "index: "i&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符a在time中索引为4</span></span><br><span class="line">➜  shell ./test.sh</span><br><span class="line">index: 4</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">➜  shell cat test.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;i=index($0, "x"); print "index: "i&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 没有找到，返回0</span></span><br><span class="line">➜  shell ./test.sh</span><br><span class="line">index: 0</span><br></pre></td></tr></table></figure>
 <h2 id="gsub-regexp-sub-str-str"><a href="#gsub-regexp-sub-str-str" class="headerlink" title="gsub(regexp, sub_str, str)"></a>gsub(regexp, sub_str, str)</h2><blockquote>
 <p>将str中匹配regexp的子串全部替换为sub_str, 并返回成功匹配的次数。</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">➜  shell cat test.sh</div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></div><div class="line"><span class="comment"># count为当前行成功匹配的次数</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;count=gsub("[[:digit:]]", "**", $0); print $0"\nmatches count: "count&#125;'</span></div><div class="line"></div><div class="line">➜  shell ./test.sh</div><div class="line">****:ab:&amp;&amp;</div><div class="line">matches count: 2</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">➜  shell cat test.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">time=<span class="string">"12:ab:&amp;&amp;"</span></span><br><span class="line"><span class="comment"># count为当前行成功匹配的次数</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;count=gsub("[[:digit:]]", "**", $0); print $0"\nmatches count: "count&#125;'</span></span><br><span class="line"></span><br><span class="line">➜  shell ./test.sh</span><br><span class="line">****:ab:&amp;&amp;</span><br><span class="line">matches count: 2</span><br></pre></td></tr></table></figure>
 <h2 id="sub-regexp-sub-str-str"><a href="#sub-regexp-sub-str-str" class="headerlink" title="sub(regexp, sub_str, str)"></a>sub(regexp, sub_str, str)</h2><blockquote>
 <p>将str中第一次匹配regexp的子串替换为sub_str, 并返回成功匹配的次数(0或者1)。<br>和上面的gsub比较，就相当于一个是全局匹配，一个是单词匹配。</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">➜  shell cat test.sh</div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">time=<span class="string">"c21:ab:&amp;&amp;"</span></div><div class="line"><span class="comment"># count为当前行成功匹配的次数</span></div><div class="line"><span class="comment"># 因为只会匹配一次，所以成功匹配，那么返回1；没有找到一个匹配，返回0</span></div><div class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;count=sub("[[:digit:]]", "**", $0); print $0"\nmatches count: "count&#125;'</span></div><div class="line"></div><div class="line"></div><div class="line">➜  shell ./test.sh</div><div class="line">c**1:ab:&amp;&amp;</div><div class="line">matches count: 1</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">➜  shell cat test.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">time=<span class="string">"c21:ab:&amp;&amp;"</span></span><br><span class="line"><span class="comment"># count为当前行成功匹配的次数</span></span><br><span class="line"><span class="comment"># 因为只会匹配一次，所以成功匹配，那么返回1；没有找到一个匹配，返回0</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'&#123;count=sub("[[:digit:]]", "**", $0); print $0"\nmatches count: "count&#125;'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">➜  shell ./test.sh</span><br><span class="line">c**1:ab:&amp;&amp;</span><br><span class="line">matches count: 1</span><br></pre></td></tr></table></figure>
 <h2 id="length-str"><a href="#length-str" class="headerlink" title="length(str)"></a>length(str)</h2><blockquote>
 <p>返回指定字符串的长。当不指定str,那么返回当前行的字符串长度。</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">➜  shell cat test.sh</div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">time=<span class="string">"c21:ab:&amp;&amp;"</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'BEGIN&#123;FS=":"&#125; &#123;</span></div><div class="line">  for(i = 1; i &lt;= NF; i++)&#123;</div><div class="line">    print "line&lt; "i" &gt; char count: "length($i)</div><div class="line">  &#125;</div><div class="line">&#125;'</div><div class="line"></div><div class="line">➜  shell ./test.sh</div><div class="line">line&lt; 1 &gt; char count: 3</div><div class="line">line&lt; 2 &gt; char count: 2</div><div class="line">line&lt; 3 &gt; char count: 2</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">➜  shell cat test.sh</div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line">time=<span class="string">"c21:ab:&amp;&amp;"</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'BEGIN&#123;FS=":"&#125; &#123;print length()&#125;'</span></div><div class="line"></div><div class="line">➜  shell ./test.sh</div><div class="line">9</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">➜  shell cat test.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">time=<span class="string">"c21:ab:&amp;&amp;"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'BEGIN&#123;FS=":"&#125; &#123;</span></span><br><span class="line"><span class="string">  for(i = 1; i &lt;= NF; i++)&#123;</span></span><br><span class="line"><span class="string">    print "line&lt; "i" &gt; char count: "length($i)</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;'</span></span><br><span class="line"></span><br><span class="line">➜  shell ./test.sh</span><br><span class="line">line&lt; 1 &gt; char count: 3</span><br><span class="line">line&lt; 2 &gt; char count: 2</span><br><span class="line">line&lt; 3 &gt; char count: 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">➜  shell cat test.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">time=<span class="string">"c21:ab:&amp;&amp;"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$time</span> | awk <span class="string">'BEGIN&#123;FS=":"&#125; &#123;print length()&#125;'</span></span><br><span class="line"></span><br><span class="line">➜  shell ./test.sh</span><br><span class="line">9</span><br></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
@@ -406,8 +383,7 @@ split(str, arr, field separator)
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -426,10 +402,10 @@ split(str, arr, field separator)
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

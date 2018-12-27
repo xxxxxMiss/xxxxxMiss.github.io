@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -20,28 +20,18 @@
     
     
     <meta name="keywords" content="nodejs">
-    <meta name="description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）
-
-[TOC]
-先看一个例子foo.js12const circle = require(&apos;./circle.js&apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125;
-circle.j">
+    <meta name="description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）  [TOC] 先看一个例子foo.js12const circle = require(&apos;./circle.js&apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125; circle.j">
+<meta name="keywords" content="nodejs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nodejs学习之module模块">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/03/22/nodejs-module/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）
-
-[TOC]
-先看一个例子foo.js12const circle = require(&apos;./circle.js&apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125;
-circle.j">
+<meta property="og:description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）  [TOC] 先看一个例子foo.js12const circle = require(&apos;./circle.js&apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125; circle.j">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-19T17:32:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs学习之module模块">
-<meta name="twitter:description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）
-
-[TOC]
-先看一个例子foo.js12const circle = require(&apos;./circle.js&apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125;
-circle.j">
+<meta name="twitter:description" content="nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）  [TOC] 先看一个例子foo.js12const circle = require(&apos;./circle.js&apos;)console.log(`The area of a circle of radius 4 is $&amp;#123;circle.area(4)`&amp;#125; circle.j">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -57,7 +47,7 @@ circle.j">
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -77,49 +67,49 @@ circle.j">
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 存档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/xxxxxMiss" target="_blank" >
+              <a href="https://github.com/xxxxxMiss" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/qschqd" target="_blank" >
+              <a href="http://www.weibo.com/qschqd" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom"  >
+              <a href="/custom">
                 <i class="icon icon-lg icon-link"></i>
                 测试
               </a>
@@ -187,13 +177,12 @@ circle.j">
         </nav>
     </aside>
     
-<article id="post-nodejs-module"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-nodejs-module" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">nodejs学习之module模块</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-03-22 10:55:52" datetime="2017-03-22T02:55:52.000Z"  itemprop="datePublished">2017-03-22</time>
+            <time class="post-time" title="2017-03-22 10:55:52" datetime="2017-03-22T02:55:52.000Z" itemprop="datePublished">2017-03-22</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
@@ -201,7 +190,7 @@ circle.j">
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -212,27 +201,27 @@ circle.j">
 <p>nodejs有一个简单的模块加载系统。在nodejs中，文件和模块是一对一的关系（每个文件都被视为一个模块）</p>
 </blockquote>
 <p>[TOC]</p>
-<p>先看一个例子<br>foo.js<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> circle = <span class="built_in">require</span>(<span class="string">'./circle.js'</span>)</div><div class="line"><span class="built_in">console</span>.log(`The area <span class="keyword">of</span> a circle <span class="keyword">of</span> radius <span class="number">4</span> <span class="keyword">is</span> $&#123;circle.area(<span class="number">4</span>)`&#125;</div></pre></td></tr></table></figure></p>
-<p>circle.js<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const PI = Math.PI</div><div class="line"></div><div class="line">exports.area = <span class="function"><span class="params">(r)</span> =&gt;</span> PI * r * r</div><div class="line"></div><div class="line">exports.circumference = <span class="function"><span class="params">(r)</span> =&gt;</span> <span class="number">2</span> * PI * r</div></pre></td></tr></table></figure></p>
+<p>先看一个例子<br>foo.js<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> circle = <span class="built_in">require</span>(<span class="string">'./circle.js'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(`The area <span class="keyword">of</span> a circle <span class="keyword">of</span> radius <span class="number">4</span> <span class="keyword">is</span> $&#123;circle.area(<span class="number">4</span>)`&#125;</span><br></pre></td></tr></table></figure></p>
+<p>circle.js<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const PI = Math.PI</span><br><span class="line"></span><br><span class="line">exports.area = <span class="function"><span class="params">(r)</span> =&gt;</span> PI * r * r</span><br><span class="line"></span><br><span class="line">exports.circumference = <span class="function"><span class="params">(r)</span> =&gt;</span> <span class="number">2</span> * PI * r</span><br></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <ul>
 <li>circle.js导出了2个方法<code>area()</code>, <code>circumference()</code>, 导出一个模块中的方法或者对象，你可以将他们挂载到<code>exports</code>对象上</li>
 <li>如果没有导出一个模块中的方法或则对象，那么他么都是私有的，因为在解析的时候，这些模块都会被一个函数包裹起来。在上面的例子中，<code>PI</code>变量就是私有的，因为他没有挂载到<code>exports</code>对象上。</li>
 <li>如果你想导出的就是一个函数，那么重写<code>module.exports</code>即可。因为默认导出的是<code>module.exports</code>, <code>module.exports</code>是一个对象。</li>
 </ul>
-<p>看下面的例子<br>bar.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> square = <span class="built_in">require</span>(<span class="string">'./square.js'</span>);</div><div class="line"><span class="comment">// 因为square.js导出的就是一个函数，所以直接调用。</span></div><div class="line"><span class="keyword">var</span> mySquare = square(<span class="number">2</span>);  <span class="comment">// 如果导出的是一个对象，那么此处应该这样调用square.square(2)</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">`The area of my square is <span class="subst">$&#123;mySquare.area()&#125;</span>`</span>);</div></pre></td></tr></table></figure></p>
-<p>square.js<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span> assigning to exports will <span class="keyword">not</span> modify <span class="built_in">module</span>, must use <span class="built_in">module</span>.exports</div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">(width)</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    area: <span class="function"><span class="params">()</span> =&gt;</span> width * width</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>看下面的例子<br>bar.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> square = <span class="built_in">require</span>(<span class="string">'./square.js'</span>);</span><br><span class="line"><span class="comment">// 因为square.js导出的就是一个函数，所以直接调用。</span></span><br><span class="line"><span class="keyword">var</span> mySquare = square(<span class="number">2</span>);  <span class="comment">// 如果导出的是一个对象，那么此处应该这样调用square.square(2)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`The area of my square is <span class="subst">$&#123;mySquare.area()&#125;</span>`</span>);</span><br></pre></td></tr></table></figure></p>
+<p>square.js<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">//</span> assigning to exports will <span class="keyword">not</span> modify <span class="built_in">module</span>, must use <span class="built_in">module</span>.exports</span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">(width)</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    area: <span class="function"><span class="params">()</span> =&gt;</span> width * width</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h2><blockquote>
 <p>如果一个模块中引入了核心模块，那么核心模块总是被优先加载。<br>例如，<code>require(http)</code>, 总是会加载nodejs的<code>http</code>模块，即使你有一个模块也叫<code>http</code></p>
 </blockquote>
-<p>// 始终返回核心模块的实现<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">exports.builtinLibs = [</div><div class="line">  <span class="string">'assert'</span>, <span class="string">'buffer'</span>, <span class="string">'child_process'</span>, <span class="string">'cluster'</span>, <span class="string">'crypto'</span>, <span class="string">'dgram'</span>, <span class="string">'dns'</span>,</div><div class="line">  <span class="string">'domain'</span>, <span class="string">'events'</span>, <span class="string">'fs'</span>, <span class="string">'http'</span>, <span class="string">'https'</span>, <span class="string">'net'</span>, <span class="string">'os'</span>, <span class="string">'path'</span>, <span class="string">'punycode'</span>,</div><div class="line">  <span class="string">'querystring'</span>, <span class="string">'readline'</span>, <span class="string">'repl'</span>, <span class="string">'stream'</span>, <span class="string">'string_decoder'</span>, <span class="string">'tls'</span>, <span class="string">'tty'</span>,</div><div class="line">  <span class="string">'url'</span>, <span class="string">'util'</span>, <span class="string">'v8'</span>, <span class="string">'vm'</span>, <span class="string">'zlib'</span></div><div class="line">];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addBuiltinLibsToObject</span>(<span class="params">object</span>) </span>&#123;</div><div class="line">  <span class="comment">// Make built-in modules available directly (loaded lazily).</span></div><div class="line">  exports.builtinLibs.forEach(<span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</div><div class="line">    <span class="comment">// Goals of this mechanism are:</span></div><div class="line">    <span class="comment">// - Lazy loading of built-in modules</span></div><div class="line">    <span class="comment">// - Having all built-in modules available as non-enumerable properties</span></div><div class="line">    <span class="comment">// - Allowing the user to re-assign these variables as if there were no</span></div><div class="line">    <span class="comment">//   pre-existing globals with the same name.</span></div><div class="line"></div><div class="line">    <span class="keyword">const</span> setReal = <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</div><div class="line">      <span class="comment">// Deleting the property before re-assigning it disables the</span></div><div class="line">      <span class="comment">// getter/setter mechanism.</span></div><div class="line">      <span class="keyword">delete</span> object[name];</div><div class="line">      object[name] = val;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="built_in">Object</span>.defineProperty(object, name, &#123;</div><div class="line">      <span class="keyword">get</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">const</span> lib = <span class="built_in">require</span>(name);</div><div class="line"></div><div class="line">        <span class="comment">// Disable the current getter/setter and set up a new</span></div><div class="line">        <span class="comment">// non-enumerable property.</span></div><div class="line">        <span class="keyword">delete</span> object[name];</div><div class="line">        <span class="built_in">Object</span>.defineProperty(object, name, &#123;</div><div class="line">          <span class="keyword">get</span>: <span class="function"><span class="params">()</span> =&gt;</span> lib,</div><div class="line">          <span class="keyword">set</span>: setReal,</div><div class="line">          configurable: <span class="literal">true</span>,</div><div class="line">          enumerable: <span class="literal">false</span></div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> lib;</div><div class="line">      &#125;,</div><div class="line">      <span class="keyword">set</span>: setReal,</div><div class="line">      configurable: <span class="literal">true</span>,</div><div class="line">      enumerable: <span class="literal">false</span></div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>// 始终返回核心模块的实现<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">exports.builtinLibs = [</span><br><span class="line">  <span class="string">'assert'</span>, <span class="string">'buffer'</span>, <span class="string">'child_process'</span>, <span class="string">'cluster'</span>, <span class="string">'crypto'</span>, <span class="string">'dgram'</span>, <span class="string">'dns'</span>,</span><br><span class="line">  <span class="string">'domain'</span>, <span class="string">'events'</span>, <span class="string">'fs'</span>, <span class="string">'http'</span>, <span class="string">'https'</span>, <span class="string">'net'</span>, <span class="string">'os'</span>, <span class="string">'path'</span>, <span class="string">'punycode'</span>,</span><br><span class="line">  <span class="string">'querystring'</span>, <span class="string">'readline'</span>, <span class="string">'repl'</span>, <span class="string">'stream'</span>, <span class="string">'string_decoder'</span>, <span class="string">'tls'</span>, <span class="string">'tty'</span>,</span><br><span class="line">  <span class="string">'url'</span>, <span class="string">'util'</span>, <span class="string">'v8'</span>, <span class="string">'vm'</span>, <span class="string">'zlib'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addBuiltinLibsToObject</span>(<span class="params">object</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Make built-in modules available directly (loaded lazily).</span></span><br><span class="line">  exports.builtinLibs.forEach(<span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Goals of this mechanism are:</span></span><br><span class="line">    <span class="comment">// - Lazy loading of built-in modules</span></span><br><span class="line">    <span class="comment">// - Having all built-in modules available as non-enumerable properties</span></span><br><span class="line">    <span class="comment">// - Allowing the user to re-assign these variables as if there were no</span></span><br><span class="line">    <span class="comment">//   pre-existing globals with the same name.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> setReal = <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// Deleting the property before re-assigning it disables the</span></span><br><span class="line">      <span class="comment">// getter/setter mechanism.</span></span><br><span class="line">      <span class="keyword">delete</span> object[name];</span><br><span class="line">      object[name] = val;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Object</span>.defineProperty(object, name, &#123;</span><br><span class="line">      <span class="keyword">get</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> lib = <span class="built_in">require</span>(name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Disable the current getter/setter and set up a new</span></span><br><span class="line">        <span class="comment">// non-enumerable property.</span></span><br><span class="line">        <span class="keyword">delete</span> object[name];</span><br><span class="line">        <span class="built_in">Object</span>.defineProperty(object, name, &#123;</span><br><span class="line">          <span class="keyword">get</span>: <span class="function"><span class="params">()</span> =&gt;</span> lib,</span><br><span class="line">          <span class="keyword">set</span>: setReal,</span><br><span class="line">          configurable: <span class="literal">true</span>,</span><br><span class="line">          enumerable: <span class="literal">false</span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> lib;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="keyword">set</span>: setReal,</span><br><span class="line">      configurable: <span class="literal">true</span>,</span><br><span class="line">      enumerable: <span class="literal">false</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="循环加载"><a href="#循环加载" class="headerlink" title="循环加载"></a>循环加载</h2><blockquote>
 <p>指的是一个模块a依赖模块b,而模块b又依赖模块a。</p>
 </blockquote>
 <p>下面通过nodejs官方文档的例子来说明nodejs是如何处理模块的循环加载</p>
-<p>a.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</div><div class="line">exports.done = <span class="literal">false</span>;</div><div class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);  <span class="comment">// ①</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</div><div class="line">exports.done = <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</div></pre></td></tr></table></figure></p>
-<p>b.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</div><div class="line">exports.done = <span class="literal">false</span>;</div><div class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);  <span class="comment">// ②</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</div><div class="line">exports.done = <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</div></pre></td></tr></table></figure></p>
-<p>main.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</div><div class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</div><div class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</div></pre></td></tr></table></figure></p>
+<p>a.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'a starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);  <span class="comment">// ①</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in a, b.done = %j'</span>, b.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a done'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>b.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'b starting'</span>);</span><br><span class="line">exports.done = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);  <span class="comment">// ②</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in b, a.done = %j'</span>, a.done);</span><br><span class="line">exports.done = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b done'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>main.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'main starting'</span>);</span><br><span class="line"><span class="keyword">const</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</span><br><span class="line"><span class="keyword">const</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'in main, a.done=%j, b.done=%j'</span>, a.done, b.done);</span><br></pre></td></tr></table></figure></p>
 <p>说明：</p>
 <ul>
 <li>main.js加载a.js, 进入a.js, 执行到<code>require(&#39;./b.js&#39;)</code>，进入b.js, 执行到<code>require(&#39;./a.js&#39;)</code></li>
@@ -241,7 +230,7 @@ circle.j">
 <li>等到b.js全部执行完毕，在从①暂停的地方继续执行a.js, 此时b.js中<code>exports.done = true</code></li>
 <li>最后执行main.js中为执行的部分</li>
 </ul>
-<p>所以最终输出的结果如下<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">index starting</div><div class="line"><span class="selector-tag">a</span> starting</div><div class="line"><span class="selector-tag">b</span> starting</div><div class="line"><span class="keyword">in</span> <span class="selector-tag">b</span>, <span class="selector-tag">a</span><span class="selector-class">.done</span> = false</div><div class="line"><span class="selector-tag">b</span> done</div><div class="line"><span class="keyword">in</span> <span class="selector-tag">a</span>, <span class="selector-tag">b</span><span class="selector-class">.done</span> = true</div><div class="line"><span class="selector-tag">a</span> done</div><div class="line"><span class="keyword">in</span> main, <span class="selector-tag">a</span><span class="selector-class">.done</span> = true, <span class="selector-tag">b</span><span class="selector-class">.done</span> = true</div></pre></td></tr></table></figure></p>
+<p>所以最终输出的结果如下<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">index starting</span><br><span class="line"><span class="selector-tag">a</span> starting</span><br><span class="line"><span class="selector-tag">b</span> starting</span><br><span class="line"><span class="keyword">in</span> <span class="selector-tag">b</span>, <span class="selector-tag">a</span><span class="selector-class">.done</span> = false</span><br><span class="line"><span class="selector-tag">b</span> done</span><br><span class="line"><span class="keyword">in</span> <span class="selector-tag">a</span>, <span class="selector-tag">b</span><span class="selector-class">.done</span> = true</span><br><span class="line"><span class="selector-tag">a</span> done</span><br><span class="line"><span class="keyword">in</span> main, <span class="selector-tag">a</span><span class="selector-class">.done</span> = true, <span class="selector-tag">b</span><span class="selector-class">.done</span> = true</span><br></pre></td></tr></table></figure></p>
 <h2 id="nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载"><a href="#nodejs-CommonJS-模块循环加载-VS-ES2015模块循环加载" class="headerlink" title="nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载"></a>nodejs(CommonJS)模块循环加载  VS  ES2015模块循环加载</h2>
         </div>
 
@@ -397,8 +386,7 @@ circle.j">
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -417,10 +405,10 @@ circle.j">
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>

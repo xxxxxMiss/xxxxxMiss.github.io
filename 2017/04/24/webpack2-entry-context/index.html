@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     
 
     
@@ -20,37 +20,18 @@
     
     
     <meta name="keywords" content="webpack">
-    <meta name="description" content="Entry anc Context
-告诉webpack哪个文件作为打包的入口点。
-
-context
-一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。
-
-1context: path.resove(__dirname, &apos;app&apos;)
-e">
+    <meta name="description" content="Entry anc Context 告诉webpack哪个文件作为打包的入口点。  context 一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。  1context: path.resove(__dirname, &apos;app&apos;) e">
+<meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack2-entry-context">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/04/24/webpack2-entry-context/index.html">
 <meta property="og:site_name" content="青史成灰">
-<meta property="og:description" content="Entry anc Context
-告诉webpack哪个文件作为打包的入口点。
-
-context
-一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。
-
-1context: path.resove(__dirname, &apos;app&apos;)
-e">
+<meta property="og:description" content="Entry anc Context 告诉webpack哪个文件作为打包的入口点。  context 一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。  1context: path.resove(__dirname, &apos;app&apos;) e">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-04-24T09:24:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack2-entry-context">
-<meta name="twitter:description" content="Entry anc Context
-告诉webpack哪个文件作为打包的入口点。
-
-context
-一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。
-
-1context: path.resove(__dirname, &apos;app&apos;)
-e">
+<meta name="twitter:description" content="Entry anc Context 告诉webpack哪个文件作为打包的入口点。  context 一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。  1context: path.resove(__dirname, &apos;app&apos;) e">
     
         <link rel="alternate" type="application/atom+xml" title="青史成灰" href="/atom.xml">
     
@@ -66,7 +47,7 @@ e">
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -86,49 +67,49 @@ e">
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/"  >
+              <a href="/">
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives"  >
+              <a href="/archives">
                 <i class="icon icon-lg icon-archives"></i>
                 存档
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags"  >
+              <a href="/tags">
                 <i class="icon icon-lg icon-tags"></i>
                 标签
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories"  >
+              <a href="/categories">
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/xxxxxMiss" target="_blank" >
+              <a href="https://github.com/xxxxxMiss" target="_blank">
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/qschqd" target="_blank" >
+              <a href="http://www.weibo.com/qschqd" target="_blank">
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom"  >
+              <a href="/custom">
                 <i class="icon icon-lg icon-link"></i>
                 测试
               </a>
@@ -196,13 +177,12 @@ e">
         </nav>
     </aside>
     
-<article id="post-webpack2-entry-context"
-  class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-webpack2-entry-context" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">webpack2-entry-context</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-04-24 16:32:33" datetime="2017-04-24T08:32:33.000Z"  itemprop="datePublished">2017-04-24</time>
+            <time class="post-time" title="2017-04-24 16:32:33" datetime="2017-04-24T08:32:33.000Z" itemprop="datePublished">2017-04-24</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
@@ -210,7 +190,7 @@ e">
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -223,7 +203,7 @@ e">
 <h2 id="context"><a href="#context" class="headerlink" title="context"></a>context</h2><blockquote>
 <p>一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。<br>如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。<br>推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。</p>
 </blockquote>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">context:</span> path.resove(__dirname, <span class="string">'app'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">context:</span> path.resove(__dirname, <span class="string">'app'</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="entry"><a href="#entry" class="headerlink" title="entry"></a>entry</h2><blockquote>
 <p>指定打包的入口点, 最简单的规则就是：单页应用一个入口点，多页应用多个入口点。<br>可以提供多种类型，如下</p>
 </blockquote>
@@ -236,8 +216,8 @@ e">
 <h2 id="生成的chunk名称"><a href="#生成的chunk名称" class="headerlink" title="生成的chunk名称"></a>生成的chunk名称</h2><blockquote>
 <p>如果<code>entry</code>提供的是一个字符串或者字符串数组，那么生成的chunk名称是<code>main</code>。<br>如果<code>entry</code>提供的是一个对象，那么对象的key作为chunk名称，value作为chunk的打包入口。</p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">    entry: <span class="string">'./index.js'</span>,</div><div class="line">    <span class="regexp">//</span> entry: [<span class="string">'./index.js'</span>, <span class="string">'scroller.js'</span>]</div><div class="line">    output: &#123;</div><div class="line">        filename: <span class="string">'[name].js'</span> <span class="regexp">//</span> [name]会被替换为main</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">    entry: &#123;</div><div class="line">        <span class="built_in">index</span>: <span class="string">'./index.js'</span>,</div><div class="line">        contac<span class="variable">t:</span> <span class="string">'./contact.js'</span></div><div class="line">    &#125;,</div><div class="line">    outpu<span class="variable">t:</span> &#123;</div><div class="line">        filename: <span class="string">'[name].js'</span> // [name]会被替换为<span class="built_in">index</span>, contact</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    entry: <span class="string">'./index.js'</span>,</span><br><span class="line">    <span class="regexp">//</span> entry: [<span class="string">'./index.js'</span>, <span class="string">'scroller.js'</span>]</span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: <span class="string">'[name].js'</span> <span class="regexp">//</span> [name]会被替换为main</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        <span class="built_in">index</span>: <span class="string">'./index.js'</span>,</span><br><span class="line">        contac<span class="variable">t:</span> <span class="string">'./contact.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    outpu<span class="variable">t:</span> &#123;</span><br><span class="line">        filename: <span class="string">'[name].js'</span> // [name]会被替换为<span class="built_in">index</span>, contact</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="动态入口"><a href="#动态入口" class="headerlink" title="动态入口"></a>动态入口</h2><blockquote>
 <p>// TODO updating…</p>
 </blockquote>
@@ -396,8 +376,7 @@ e">
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.png" data-alipay="/img/alipay.png">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -416,10 +395,10 @@ e">
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
+    <span id="busuanzi_container_site_uv" style="display:none">
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
+    <span id="busuanzi_container_site_pv" style="display:none">
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
