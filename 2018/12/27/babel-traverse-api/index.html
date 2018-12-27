@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="青史成灰">
 <meta property="og:description" content="父节点相关1findParent(callback): ?NodePath  从当前节点的父节点（不包括当前节点自己）开始向上查找并调用 callback，如果 callback 返回一个真值，那么返回那个父节点；都没有找到，返回 null。  1find(callback): ?NodePath  同findParent，唯一的区别是从当前节点（包括自己）开始查找。  1getFunctionP">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-27T13:56:46.356Z">
+<meta property="og:updated_time" content="2018-12-27T16:22:45.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="babel-traverse API">
 <meta name="twitter:description" content="父节点相关1findParent(callback): ?NodePath  从当前节点的父节点（不包括当前节点自己）开始向上查找并调用 callback，如果 callback 返回一个真值，那么返回那个父节点；都没有找到，返回 null。  1find(callback): ?NodePath  同findParent，唯一的区别是从当前节点（包括自己）开始查找。  1getFunctionP">
@@ -211,7 +211,7 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getStatementParent(): NodePath</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>向上遍历节点书，直到命中一个处于<code>list</code>中的父节点。</p>
+<p>向上遍历节点树，直到命中一个处于<code>list</code>中的父节点。</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getEarliestCommonAncestorFrom(</span><br><span class="line">  paths: <span class="built_in">Array</span>&lt;NodePath&gt;,</span><br><span class="line">): NodePath</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getDeepestCommonAncestorFrom(</span><br><span class="line">  paths: <span class="built_in">Array</span>&lt;NodePath&gt;,</span><br><span class="line">  filter?: <span class="built_in">Function</span>,</span><br><span class="line">): NodePath</span><br></pre></td></tr></table></figure>
@@ -298,7 +298,13 @@
 <p>判断一个模块或者函数是否处于严格模式。<br>ES6 模块默认是处于严格模式，其实情况看是否使用<code>use strict</code>指令。</p>
 </blockquote>
 <h2 id="修改当前节点相关"><a href="#修改当前节点相关" class="headerlink" title="修改当前节点相关"></a>修改当前节点相关</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insertBefore(nodes)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在当前节点的前面插入节点。</p>
+</blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insertAfter(nodes)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在当前节点的后面插入节点。</p>
+</blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">updateSiblingKeys(fromIndex, incrementBy)</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unshiftContainer(listKey, nodes)</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// listKey: path.listKey =&gt; "body" | "params"</span></span><br><span class="line">pushContainer(listKey, nodes)</span><br></pre></td></tr></table></figure>
@@ -360,7 +366,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-12-27T13:56:46.356Z" itemprop="dateUpdated">2018-12-27 21:56:46</time>
+    最后更新时间：<time datetime="2018-12-27T16:22:45.763Z" itemprop="dateUpdated">2018-12-28 00:22:45</time>
 </span><br>
 
 
