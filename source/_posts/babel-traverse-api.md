@@ -33,7 +33,7 @@ getFunctionParent(): ?NodePath
 getStatementParent(): NodePath
 ```
 
-> 向上遍历节点书，直到命中一个处于`list`中的父节点。
+> 向上遍历节点树，直到命中一个处于`list`中的父节点。
 
 ```js
 getEarliestCommonAncestorFrom(
@@ -270,9 +270,13 @@ isInStrictMode()
 insertBefore(nodes)
 ```
 
+> 在当前节点的前面插入节点。
+
 ```js
 insertAfter(nodes)
 ```
+
+> 在当前节点的后面插入节点。
 
 ```js
 updateSiblingKeys(fromIndex, incrementBy)
