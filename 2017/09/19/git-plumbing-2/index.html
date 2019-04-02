@@ -19,16 +19,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="git">
+    <meta name="keywords" content="workflow,git">
     <meta name="description" content="git 配置文件的位置 /etc/gitconfig ~/.gitconfig || \$XDG_CONFIG_HOME/git/config \$PWD/.git/config  查看 git 配置 对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。  1234567">
-<meta name="keywords" content="git">
+<meta name="keywords" content="workflow,git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git进阶（二）">
 <meta property="og:url" content="https://xxxxxmiss.github.io/2017/09/19/git-plumbing-2/index.html">
 <meta property="og:site_name" content="青史成灰">
 <meta property="og:description" content="git 配置文件的位置 /etc/gitconfig ~/.gitconfig || \$XDG_CONFIG_HOME/git/config \$PWD/.git/config  查看 git 配置 对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。  1234567">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-24T08:41:35.876Z">
+<meta property="og:updated_time" content="2019-01-22T03:13:03.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git进阶（二）">
 <meta name="twitter:description" content="git 配置文件的位置 /etc/gitconfig ~/.gitconfig || \$XDG_CONFIG_HOME/git/config \$PWD/.git/config  查看 git 配置 对于配置选项的 CURD 操作，不指定–system,–global,–local 选项，CUD 默认都是–local 选项, R 操作查询所有的配置（相当于同时指定了三个选项）。  1234567">
@@ -173,7 +173,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>目录</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-配置文件的位置"><span class="post-toc-number">1.</span> <span class="post-toc-text">git 配置文件的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看-git-配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">查看 git 配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置-git-配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">设置 git 配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#删除某个配置"><span class="post-toc-number">4.</span> <span class="post-toc-text">删除某个配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#commit-template"><span class="post-toc-number">5.</span> <span class="post-toc-text">commit.template</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#core-excludesfile"><span class="post-toc-number">6.</span> <span class="post-toc-text">core.excludesfile</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#core-autocrlf"><span class="post-toc-number">7.</span> <span class="post-toc-text">core.autocrlf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-npm-安装你自己编写的脚本"><span class="post-toc-number">8.</span> <span class="post-toc-text">使用 npm 安装你自己编写的脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">9.</span> <span class="post-toc-text">常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-rm-r-–cached-logs"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">git rm -r –cached /logs</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-配置文件的位置"><span class="post-toc-number">1.</span> <span class="post-toc-text">git 配置文件的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看-git-配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">查看 git 配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置-git-配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">设置 git 配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#删除某个配置"><span class="post-toc-number">4.</span> <span class="post-toc-text">删除某个配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#commit-template"><span class="post-toc-number">5.</span> <span class="post-toc-text">commit.template</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#core-excludesfile"><span class="post-toc-number">6.</span> <span class="post-toc-text">core.excludesfile</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#core-autocrlf"><span class="post-toc-number">7.</span> <span class="post-toc-text">core.autocrlf</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-npm-安装你自己编写的脚本"><span class="post-toc-number">8.</span> <span class="post-toc-text">使用 npm 安装你自己编写的脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">9.</span> <span class="post-toc-text">常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#git-rm-r-–cached-logs"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">git rm -r –cached /logs</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-目录一览"><span class="post-toc-number">10.</span> <span class="post-toc-text">.git 目录一览</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#底层命令"><span class="post-toc-number">11.</span> <span class="post-toc-text">底层命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内部对象类型"><span class="post-toc-number">12.</span> <span class="post-toc-text">内部对象类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件类型"><span class="post-toc-number">13.</span> <span class="post-toc-text">文件类型</span></a></li></ol>
         </nav>
     </aside>
     
@@ -226,6 +226,79 @@
 <h2 id="使用-npm-安装你自己编写的脚本"><a href="#使用-npm-安装你自己编写的脚本" class="headerlink" title="使用 npm 安装你自己编写的脚本"></a>使用 npm 安装你自己编写的脚本</h2><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="git-rm-r-–cached-logs"><a href="#git-rm-r-–cached-logs" class="headerlink" title="git rm -r –cached /logs"></a>git rm -r –cached /logs</h3><blockquote>
 <p>该命令主要用在你之前已经提交了某个文件或者文件夹，但是后面想要忽略它，那么使用该命令之后，再在<code>.gitignore</code>中添加下需要忽略的文件，再次提交就可以了。</p>
 </blockquote>
+<h2 id="git-目录一览"><a href="#git-目录一览" class="headerlink" title=".git 目录一览"></a>.git 目录一览</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">.git</span><br><span class="line">├── COMMIT_EDITMSG</span><br><span class="line">├── FETCH_HEAD</span><br><span class="line">├── HEAD <span class="comment"># HEAD 文件指示目前被检出的分支</span></span><br><span class="line">├── branches</span><br><span class="line">├── config</span><br><span class="line">├── description</span><br><span class="line">├── hooks</span><br><span class="line">│   ├── applypatch-msg</span><br><span class="line">│   ├── applypatch-msg.sample</span><br><span class="line">│   ├── commit-msg</span><br><span class="line">│   ├── commit-msg.sample</span><br><span class="line">│   ├── post-applypatch</span><br><span class="line">│   ├── post-checkout</span><br><span class="line">│   ├── post-commit</span><br><span class="line">│   ├── post-merge</span><br><span class="line">│   ├── post-receive</span><br><span class="line">│   ├── post-rewrite</span><br><span class="line">│   ├── post-update</span><br><span class="line">│   ├── post-update.sample</span><br><span class="line">│   ├── pre-applypatch</span><br><span class="line">│   ├── pre-applypatch.sample</span><br><span class="line">│   ├── pre-auto-gc</span><br><span class="line">│   ├── pre-commit</span><br><span class="line">│   ├── pre-commit.sample</span><br><span class="line">│   ├── pre-push</span><br><span class="line">│   ├── pre-push.sample</span><br><span class="line">│   ├── pre-rebase</span><br><span class="line">│   ├── pre-rebase.sample</span><br><span class="line">│   ├── pre-receive</span><br><span class="line">│   ├── pre-receive.sample</span><br><span class="line">│   ├── prepare-commit-msg</span><br><span class="line">│   ├── prepare-commit-msg.sample</span><br><span class="line">│   ├── push-to-checkout</span><br><span class="line">│   ├── sendemail-validate</span><br><span class="line">│   ├── update</span><br><span class="line">│   └── update.sample</span><br><span class="line">├── index <span class="comment"># index 文件保存暂存区信息</span></span><br><span class="line">├── info</span><br><span class="line">│   └── exclude</span><br><span class="line">├── logs</span><br><span class="line">│   ├── HEAD</span><br><span class="line">│   └── refs</span><br><span class="line">│       ├── heads</span><br><span class="line">│       │   └── master</span><br><span class="line">│       └── remotes</span><br><span class="line">│           ├── ic</span><br><span class="line">│           │   └── master</span><br><span class="line">│           └── origin</span><br><span class="line">│               ├── HEAD</span><br><span class="line">│               └── master</span><br><span class="line">├── objects <span class="comment"># objects 目录存储所有数据内容</span></span><br><span class="line">│   ├── 00</span><br><span class="line">│   │   ├── 1944b907297391ac895a43ccb5182db4ba1d5e</span><br><span class="line">│   │   └── 7f05591d83caf91021ca21106599fd3b0719ed</span><br><span class="line">│   ├── 02</span><br><span class="line">│   │   ├── 72bb2098373fbb55fa5137b31d2b979233b371</span><br><span class="line">│   │   └── bcdd0387939012661c2aa1e25746d4503e5c66</span><br><span class="line">│   ├── 03</span><br><span class="line">│   │   └── 871471b02a1a65b016b6378462a57148e9e4aa</span><br><span class="line">│   ├── 04</span><br><span class="line">│   │   ├── 0b659ee4d47c704a9f26d7415151209e7ad280</span><br><span class="line">│   │   ├── 2d65662492648b48e5ccffd6b25aa6fa581183</span><br><span class="line">│   │   └── c378b8542bcc82b951fd6e198c3e203aafd009</span><br><span class="line">│   ├── 05</span><br><span class="line">│   │   └── f1bdae4365ff4d7d6f6202ea198aae7c158712</span><br><span class="line">│   ├── 06</span><br><span class="line">│   │   └── 978ea7e95ca7be09d6bc0cdbcb378bef7b2b4b</span><br><span class="line">│   ├── 07</span><br><span class="line">│   │   └── a3b7248bb9ae391b23a34a7f3c35b5fe181066</span><br><span class="line">│   ├── 09</span><br><span class="line">│   │   ├── 3c46ea357bcde01ba8ddbf090756242974b92b</span><br><span class="line">│   │   └── 55f9e5879eb0e7e154384a84ca88993f26cf4e</span><br><span class="line">│   ├── 0a</span><br><span class="line">│   │   └── 742dd09293f7f13252a58d10bf1cca6454e221</span><br><span class="line">│   ├── 0b</span><br><span class="line">│   │   └── f5c975b7d8992626aed02a8ad6d865214e4592</span><br><span class="line">│   ├── 0c</span><br><span class="line">│   │   └── 2bb456d818e8bc6f133895526811a24fadc6bb</span><br><span class="line">│   ├── 0d</span><br><span class="line">│   │   ├── 114e8b92703196c358a00ae1499a6e1d58f87f</span><br><span class="line">│   │   ├── 49a9ef13725bd17500a7ca79959ff27f3fb2c7</span><br><span class="line">│   │   └── d7eb84cc190cffb011b031bf1f5ddaed958e61</span><br><span class="line">│   ├── 11</span><br><span class="line">│   │   ├── 807b67ecc6d9a3ee1d8fe2c1b5fe9f6a75d71f</span><br><span class="line">│   │   ├── a6b34c5c00221bd88cc1d4e47d6320d710b08e</span><br><span class="line">│   │   └── d9f79cb34afec894a1a31905437442d5af96dc</span><br><span class="line">│   ├── 12</span><br><span class="line">│   │   └── cb2f867712289514b0da06446513180adee0ce</span><br><span class="line">│   ├── 13</span><br><span class="line">│   │   ├── 2562d2de5a81f1eb136a2bef15aa4ba74bb1a6</span><br><span class="line">│   │   └── d2bc813fcc31cc2910c83a343723e101cd9148</span><br><span class="line">│   ├── info</span><br><span class="line">│   └── pack</span><br><span class="line">│       ├── pack-6b734ba9803a97aa7ebb24027c097d914d9860ff.idx</span><br><span class="line">│       └── pack-6b734ba9803a97aa7ebb24027c097d914d9860ff.pack</span><br><span class="line">├── packed-refs</span><br><span class="line">└── refs <span class="comment"># refs 目录存储指向数据（分支）的提交对象的指针</span></span><br><span class="line">    ├── heads</span><br><span class="line">    │   ├── autoliv</span><br><span class="line">    │   ├── camelot</span><br><span class="line">    │   ├── feature</span><br><span class="line">    │   ├── hotfix</span><br><span class="line">    │   │   └── 20181113</span><br><span class="line">    │   ├── master</span><br><span class="line">    │   ├── page-title</span><br><span class="line">    │   ├── release</span><br><span class="line">    │   │   ├── 20180809</span><br><span class="line">    │   │   └── 20180906</span><br><span class="line">    │   └── wicresoft-share</span><br><span class="line">    ├── remotes</span><br><span class="line">    │   └── origin</span><br><span class="line">    │   │   ├── 1129</span><br><span class="line">    │   │   ├── hotfix</span><br><span class="line">    │   │   │   └── 20181113</span><br><span class="line">    │   │   ├── master</span><br><span class="line">    │   │   ├── page-title</span><br><span class="line">    │   │   ├── release</span><br><span class="line">    │   │   │   ├── 20181115</span><br><span class="line">    │   │   │   ├── 20181129</span><br><span class="line">    │   │   │   └── 20181228</span><br><span class="line">    │   │   ├── weichuang</span><br><span class="line">    │   │   └── wicresoft-share</span><br><span class="line">    │   ├── ic</span><br><span class="line">    │       └── master</span><br></pre></td></tr></table></figure>
+<h2 id="底层命令"><a href="#底层命令" class="headerlink" title="底层命令"></a>底层命令</h2><ul>
+<li><p>git hash-object</p>
+<blockquote>
+<p>生成内容的 SHA-1</p>
+</blockquote>
+</li>
+<li><p>git cat-file</p>
+<blockquote>
+<p>解析 SHA-1，得到原始内容<br><code>git cat-file -t SHA-1</code>可以得到内部存储的任何对象类型</p>
+</blockquote>
+</li>
+<li><p>git update-index</p>
+<blockquote>
+<p>创建文件的暂存区</p>
+</blockquote>
+</li>
+<li><p>git write-tree</p>
+<blockquote>
+<p>将暂存区内容写入一个树对象</p>
+</blockquote>
+</li>
+<li><p>git read-tree</p>
+<blockquote>
+<p>把树对象读入暂存区</p>
+</blockquote>
+</li>
+<li><p>git commit-tree</p>
+<blockquote>
+<p>创建一个提交对象</p>
+</blockquote>
+</li>
+<li><p>git update-ref</p>
+<blockquote>
+<p>更新引用</p>
+</blockquote>
+</li>
+<li><p>git symbolic-ref HEAD [refs/heads/test]</p>
+<blockquote>
+<p>查看/更新 HEAD 中的引用</p>
+</blockquote>
+</li>
+<li><p>git update-ref refs/tags/v1.0 sha-1</p>
+<blockquote>
+<p>创建一个轻量标签</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="内部对象类型"><a href="#内部对象类型" class="headerlink" title="内部对象类型"></a>内部对象类型</h2><blockquote>
+<p>所有内容均以树对象和数据对象的形式存储，其中树对象对应了 UNIX 中的目录项，数据对象则大致上对应了 inodes 或文件内容。</p>
+</blockquote>
+<ul>
+<li><p>blob（数据对象）：只保存了文件的内容</p>
+</li>
+<li><p>tree（树对象）：层次关系结构</p>
+</li>
+<li><p>commit（提交对象）：提交记录</p>
+</li>
+<li><p>tag（标签对象）：tag</p>
+</li>
+</ul>
+<h2 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h2><ul>
+<li><p>100644（blob）：普通文件</p>
+</li>
+<li><p>040000（tree）：文件夹</p>
+</li>
+<li><p>100755（blob)：表示一个可执行文件</p>
+</li>
+<li><p>120000（blob）：表示一个符号链接</p>
+</li>
+<li><p>160000（commit）：表示一次提交记录</p>
+</li>
+</ul>
 
         </div>
 
@@ -233,7 +306,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-12-24T08:41:35.876Z" itemprop="dateUpdated">2018-12-24 16:41:35</time>
+    最后更新时间：<time datetime="2019-01-22T03:13:03.808Z" itemprop="dateUpdated">2019-01-22 11:13:03</time>
 </span><br>
 
 
@@ -259,7 +332,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/workflow/">workflow</a></li></ul>
 
 
             
@@ -417,7 +490,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>xxxxxMiss &copy; 2016 - 2018</span>
+        <p><span>xxxxxMiss &copy; 2016 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

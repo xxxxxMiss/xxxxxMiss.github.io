@@ -162,6 +162,166 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-nodejs-cluster" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-07-16 00:44:48" datetime="2017-07-15T16:44:48.000Z" itemprop="datePublished">2017-07-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/07/16/nodejs-cluster/">nodejs-cluster</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Cluster
+一个Node实例运行在一个单线程中。为了高效的利用多核系统，用户有时候需要启动一个Node进程的集群去处理负载。通过cluster模块很容易的创建一些共享服务端口的子进程。
+
+How It Works(它是如何工作的)
+work进程通过child_process.fork()方法复制而来，因此它可以和父进程之间通过IPC信道交流，并且在他们之间来来回回的传递服务句柄。clus...
+    
+
+        <a href="/2017/07/16/nodejs-cluster/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-event-loop" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-07-14 10:58:29" datetime="2017-07-14T02:58:29.000Z" itemprop="datePublished">2017-07-14</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/07/14/event-loop/">event-loop(事件循环)</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+  .list li{
+    list-style-type: decimal;
+  }
+
+
+2 个名词
+microtask: 称之为小型任务
+macrotask（task queue）: 称之为大型任务
+
+事件循环模型
+当执行栈（call stack）为空时，一个事件循环会按照下面的步骤进行：
+
+  从macrotask队列中选择最老一个任务taskA  如果taskA不存在，即mac...
+    
+
+        <a href="/2017/07/14/event-loop/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-nodejs-process" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-07-12 23:00:05" datetime="2017-07-12T15:00:05.000Z" itemprop="datePublished">2017-07-12</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/nodejs/">nodejs</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/07/12/nodejs-process/">nodejs-process</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Process Events(进程事件)
+process对象是EventEmitter的一个实例
+
+beforeExit
+当Node清空事件队列并且没有额外的任务加入到事件队列中，触发该事件。通常情况下，当没有额外的任务加入到事件队列中时，Node进程会自动退出。但是如果’beforeExit’事件绑定的监听器的回调函数中，含有一个可以进行异步调用的操作，那么Node.js进程会继续运行。
+...
+    
+
+        <a href="/2017/07/12/nodejs-process/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-RegExp" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -522,166 +682,12 @@ NOTE: encodeURIComponent不转义以下字符：
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-webpack2-entry-context" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-24 16:32:33" datetime="2017-04-24T08:32:33.000Z" itemprop="datePublished">2017-04-24</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/构建工具/">构建工具</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/24/webpack2-entry-context/">webpack2-entry-context</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Entry anc Context
-告诉webpack哪个文件作为打包的入口点。
-
-context
-一个绝对路径字符串，告诉webpack要打包的文件都是基于该路径的，就相当于是一个基础路径。如果不提供该选项，那么相对于当前工作目录（项目的跟路径）。推荐提供该选项，这样可以将你的配置文件和当前的工作路径独立开来。
-
-1context: path.resove(__dirname, 'app'...
-    
-
-        <a href="/2017/04/24/webpack2-entry-context/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-linux-process" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-23 13:39:13" datetime="2017-04-23T05:39:13.000Z" itemprop="datePublished">2017-04-23</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/23/linux-process/">linux进程</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        进程简介
-在unix或者linux系统中，每当运行一个程序，系统都会为这个程序创建一个特殊的环境，这个特殊的环境包含了运行该程序所依赖的一切东西。不论什么时候，你触发一个unix或者linux命令，都会创建或者启动一个新的进程。所以可以这样理解，一个进程，就是一个运行中的程序的实例，它包含了该程序执行所需要的一切依赖。
-
-进程追踪
-操作系统给每个进程分配一个5位数字的pid来标示每个进程，每...
-    
-
-        <a href="/2017/04/23/linux-process/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-js-ASI" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-20 23:32:09" datetime="2017-04-20T15:32:09.000Z" itemprop="datePublished">2017-04-20</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/20/js-ASI/">ASI(auto semicolon insertion)自动分号补齐</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        ASI
-在ASI的机制中有一类语句叫做restricted productions（不知道中文叫啥）。简单来说，就是组成这类语句的两个token当中不允许出现换行符 \n。如果在第一个token后面遇到了换行符，则判断语句结束，插入分号。restricted productions包括：
-
-
-return xxx(xxx是要返回的对象)
-throw xxx(xxx是要抛出的错误对象)
-bre...
-    
-
-        <a href="/2017/04/20/js-ASI/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
     </div>
 </nav>
 
@@ -710,7 +716,7 @@ bre...
         </p>
     </div>
     <div class="bottom">
-        <p><span>xxxxxMiss &copy; 2016 - 2018</span>
+        <p><span>xxxxxMiss &copy; 2016 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
