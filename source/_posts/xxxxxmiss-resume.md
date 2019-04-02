@@ -30,7 +30,7 @@ categories:
 
 义橙网络科技(上海)有限公司
 
-#### EDM邮件后台（2017.07-2017.09）
+### EDM邮件后台（2017.07-2017.09）
 
 ##### 责任描述
 
@@ -44,7 +44,7 @@ EDM邮件后台是一个内部的发邮件项目，主要用来帮助e成以及e
 
 Vue + vue-router + vuex + axios + elementui + echarts + stylus
 
-#### 内推伯乐移动端项目（2017.11-2018.02）
+### 内推伯乐移动端项目（2017.11-2018.02）
 
 ##### 责任描述
 
@@ -58,7 +58,7 @@ Vue + vue-router + vuex + axios + elementui + echarts + stylus
 
 nuxtjs + axios + 自己开发的vue组件库 + stylus
 
-#### 内推伯乐移动端项目重构（2018.05-2018.06）
+### 内推伯乐移动端项目重构（2018.05-2018.06）
 
 ##### 责任描述
 
@@ -69,7 +69,7 @@ nuxtjs + axios + 自己开发的vue组件库 + stylus
 eggjs + vue + vue-router + vuex + axios + 自己开发的vue组件库 + stylus
 
 
-#### 内推伯乐pc端（2018.06-2018.08）
+### 内推伯乐pc端（2018.06-2018.08）
 
 ##### 责任描述
 
@@ -83,7 +83,7 @@ eggjs + vue + vue-router + vuex + axios + 自己开发的vue组件库 + stylus
 
 react + antd + axios + scss
 
-#### 内推伯乐小程序（2018.08-2018.09）
+### 内推伯乐小程序（2018.08-2018.09）
 
 ##### 责任描述
 
@@ -97,7 +97,7 @@ react + antd + axios + scss
 
 微信原生框架
 
-#### 新C端官网（2018.11-2019.01）
+### 新C端官网（2018.11-2019.01）
 
 ##### 责任描述
 
@@ -108,7 +108,7 @@ react + antd + axios + scss
 eggjs + nujunks + webpack + scss + axios
 
 
-#### 职位咨询bot（2019.01-2019.03）
+### 职位咨询bot（2019.01-2019.03）
 
 ##### 责任描述
 
@@ -122,7 +122,7 @@ eggjs + nujunks + webpack + scss + axios
 
 微信原生框架
 
-#### ATS项目支援（2019.03-至今）
+### ATS项目支援（2019.03-至今）
 
 ##### 责任描述
 
@@ -156,7 +156,7 @@ react + redux + redux-saga + scss
 
 > 2017.04 - 2017.04
 
-vue2-cnode 社区（个人项目）
+### vue2-cnode 社区（个人项目）
 
 ##### 责任描述
 
@@ -181,7 +181,7 @@ vue2+vuex+vue-router+superagent+stylus+pug+webpack2.x
 - 企业性质：上市公司
 - 规模：500-999 人
 
-#### 手机银行积分乐园前端项目：
+### 手机银行积分乐园
 
 ##### 责任描述
 
@@ -191,7 +191,7 @@ vue2+vuex+vue-router+superagent+stylus+pug+webpack2.x
 
 该项目是一个类似于积分商城的业务，提供了很多便民服务如`水电费`，`保险`，`购物`等功能，所有的这些操作都可以产生相应的积分，这些积分可以用在相关的消费业务中抵扣一定的金额。
 
-#### 手机银行 o2o 新平台电影院前端开发：
+### 手机银行 o2o 新平台电影院
 
 ##### 责任描述
 
@@ -227,7 +227,7 @@ jquery、echarts、公司自己封装的 YT 框架。
 
 > 2014.10 -- 2015.12
 
-四川省农村信用社移动门户 hybrid 开发
+### 四川省农村信用社移动门户 hybrid 开发
 
 - 软件环境：jdk1.7,oracle
 - 硬件环境：windows8
@@ -247,7 +247,7 @@ jquery、echarts、iswiper、公司自己封装的 YT 框架。
 
 > 2014.02 —- 2014.08
 
-- 河北承德银行 java 开发
+### 河北承德银行 java 开发
 - 软件环境：jdk1.7,oracle
 - 硬件环境：windows8
 - 开发工具：eclipse，axure，markman，xshell
