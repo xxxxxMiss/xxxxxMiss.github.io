@@ -267,8 +267,10 @@ Spring、Mybatis、Oracle、公司自己封装的一套 Java 框架。
 - JS 插件/类库：swiper，iscroll，zepto，jquery，lodash 等
 - 前端UI框架/组件：mui, FrozenUI，elementui, antd 等
 - 前端 MVVM 框架: vue，React，了解 react-native, weex 等
+- Nodejs框架：熟悉express，koa2，eggjs
 - 小程序：微信原生，mpvue等
 - css 相关：常用 sass，stylus，less 等
+- 类型约束：了解typescript，flow
 - 构建工具：gulp，webpack，rollup 等
 - 后端语言：java(14 年做过半年的 java 开发), nodejs
 - 版本控制工具：SVN，git 版本控制工具的使用
