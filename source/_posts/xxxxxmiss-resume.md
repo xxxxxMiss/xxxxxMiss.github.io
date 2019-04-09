@@ -30,7 +30,7 @@ categories:
 
 义橙网络科技(上海)有限公司
 
-### EDM邮件后台（2017.07-2017.09）
+### EDM 邮件后台（2017.07-2017.09）
 
 ##### 责任描述
 
@@ -38,7 +38,7 @@ categories:
 
 ##### 项目简介
 
-EDM邮件后台是一个内部的发邮件项目，主要用来帮助e成以及e成合作的客户发送职位推荐邮件。发送人员可配置公司相关的东西，如公司logo，公司综合实力，公司介绍等；可配置与职位相关的东西，如职位介绍，职位要求等。可统计发送的邮件在各个时间端内被查看的次数等，可统计邮件发送的进度等等。
+EDM 邮件后台是一个内部的发邮件项目，主要用来帮助 e 成以及 e 成合作的客户发送职位推荐邮件。发送人员可配置公司相关的东西，如公司 logo，公司综合实力，公司介绍等；可配置与职位相关的东西，如职位介绍，职位要求等。可统计发送的邮件在各个时间端内被查看的次数等，可统计邮件发送的进度等等。
 
 ##### 技术栈
 
@@ -56,7 +56,7 @@ Vue + vue-router + vuex + axios + elementui + echarts + stylus
 
 ##### 技术栈（vue ssr）
 
-nuxtjs + axios + 自己开发的vue组件库 + stylus
+nuxtjs + axios + 自己开发的 vue 组件库 + stylus
 
 ### 内推伯乐移动端项目重构（2018.05-2018.06）
 
@@ -66,10 +66,9 @@ nuxtjs + axios + 自己开发的vue组件库 + stylus
 
 ##### 技术栈
 
-eggjs + vue + vue-router + vuex + axios + 自己开发的vue组件库 + stylus
+eggjs + vue + vue-router + vuex + axios + 自己开发的 vue 组件库 + stylus
 
-
-### 内推伯乐pc端（2018.06-2018.08）
+### 内推伯乐 pc 端（2018.06-2018.08）
 
 ##### 责任描述
 
@@ -77,7 +76,7 @@ eggjs + vue + vue-router + vuex + axios + 自己开发的vue组件库 + stylus
 
 ##### 项目简介
 
-同伯乐移动端，不过是pc端的实现
+同伯乐移动端，不过是 pc 端的实现
 
 ##### 技术栈
 
@@ -97,7 +96,7 @@ react + antd + axios + scss
 
 微信原生框架
 
-### 新C端官网（2018.11-2019.01）
+### 新 C 端官网（2018.11-2019.01）
 
 ##### 责任描述
 
@@ -107,26 +106,25 @@ react + antd + axios + scss
 
 eggjs + nujunks + webpack + scss + axios
 
-
-### 职位咨询bot（2019.01-2019.03）
+### 职位咨询 bot（2019.01-2019.03）
 
 ##### 责任描述
 
-负责某些功能的优化，bug修复
+负责某些功能的优化，bug 修复
 
 ##### 项目简介
 
-职位咨询bot是一款帮助候选人通过和机器人对话的形式快速了解一个企业的文化背景，相关职位信息等。
+职位咨询 bot 是一款帮助候选人通过和机器人对话的形式快速了解一个企业的文化背景，相关职位信息等。
 
 ##### 技术栈
 
 微信原生框架
 
-### ATS项目支援（2019.03-至今）
+### ATS 项目支援（2019.03-至今）
 
 ##### 责任描述
 
-支持tob的ATS相关功能的开发
+支持 tob 的 ATS 相关功能的开发
 
 ##### 技术栈
 
@@ -248,6 +246,7 @@ jquery、echarts、iswiper、公司自己封装的 YT 框架。
 > 2014.02 —- 2014.08
 
 ### 河北承德银行 java 开发
+
 - 软件环境：jdk1.7,oracle
 - 硬件环境：windows8
 - 开发工具：eclipse，axure，markman，xshell
@@ -265,16 +264,17 @@ Spring、Mybatis、Oracle、公司自己封装的一套 Java 框架。
 - JS: ES2015，Nodejs
 - JS 模板: pug(jade)， juicer， nujunks， twig 等
 - JS 插件/类库：swiper，iscroll，zepto，jquery，lodash 等
-- 前端UI框架/组件：mui, FrozenUI，elementui, antd 等
+- 前端 UI 框架/组件：mui, FrozenUI，elementui, antd 等
 - 前端 MVVM 框架: vue，React，了解 react-native, weex 等
-- Nodejs框架：熟悉express，koa2，eggjs
-- 小程序：微信原生，mpvue等
+- Nodejs 框架：熟悉 express，koa2，eggjs
+- 小程序：微信原生，mpvue 等
 - css 相关：常用 sass，stylus，less 等
-- 类型约束：了解typescript，flow
+- 测试框架：jest，熟悉 mocha，karma 等
+- 类型约束：熟悉 typescript，flow
 - 构建工具：gulp，webpack，rollup 等
 - 后端语言：java(14 年做过半年的 java 开发), nodejs
 - 版本控制工具：SVN，git 版本控制工具的使用
-- linux： 熟悉常用 linux 命令，编写基本的shell脚本
+- linux： 熟悉常用 linux 命令，编写基本的 shell 脚本
 
 ## 教育经历
 
